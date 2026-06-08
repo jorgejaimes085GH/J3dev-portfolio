@@ -1,221 +1,10 @@
-# AGENTS.md
-
-## Project Name
-
-J3dev Portfolio
-
----
-
-## Project Purpose
-
-J3dev Portfolio is a professional portfolio website created to present Jorge Jaimes as a Software Engineer with strong Backend specialization in .NET and Fullstack capabilities.
-
-The portfolio is designed to demonstrate technical evolution, software engineering principles, real-world production experience, project history, problem-solving skills, and continuous professional growth.
-
-This project is intended for recruiters, hiring managers, technical leaders, architects, and software engineering teams.
-
----
-
-## Target Audience
-
-Primary Audience:
-
-* Technical Recruiters
-* Hiring Managers
-* Software Architects
-* Technical Leads
-* Engineering Managers
-
-Secondary Audience:
-
-* Software Developers
-* Students
-* Technology Enthusiasts
-
-The website must prioritize credibility, clarity, professionalism, and technical depth.
-
----
-
-## Professional Positioning
-
-The portfolio should present Jorge as:
-
-* Software Engineer
-* Backend Developer specialized in .NET
-* SQL Server specialist
-* Enterprise Software Developer
-* Legacy System Modernization Engineer
-* API and Architecture Oriented Developer
-* Fullstack Developer with Angular experience
-* Problem Solver
-* Continuous Learner
-
-The portfolio must NOT position Jorge as:
-
-* Freelancer
-* Agency Owner
-* Independent Consultant
-* Software Service Seller
-
-The objective is to demonstrate value as a long-term contributor within technology companies.
-
----
-
-## Engineering Philosophy
-
-The portfolio should reflect the following principles:
-
-### Understand Before Building
-
-Always understand the problem before implementing the solution.
-
-### Architecture Before Code
-
-Design and planning should guide implementation.
-
-### Fundamentals Before Frameworks
-
-Frameworks evolve. Fundamentals remain valuable.
-
-### Real Experience Over Buzzwords
-
-Production experience is more valuable than technology lists.
-
-### Evolution Matters
-
-Professional growth and learning journey are as important as technical skills.
-
-### Maintainability First
-
-Maintainability should always be preferred over unnecessary complexity.
-
----
-
-## Technical Evolution Narrative
-
-The portfolio should communicate a journey similar to:
-
-* Algorithms and Flowcharts
-* Visual Basic 6
-* Microsoft Access
-* C++
-* FoxPro
-* University Studies
-* VB.NET
-* WinForms
-* SQL Server
-* JavaScript
-* Enterprise Applications
-* Software Architecture
-* SOLID Principles
-* APIs
-* Angular
-* .NET Modern Development
-
-The emphasis should be on evolution, learning, and problem-solving rather than technology accumulation.
-
----
-
-## Core Technologies To Highlight
-
-Primary Technologies:
-
-* .NET
-* C#
-* SQL Server
-* ASP.NET Core
-* REST APIs
-* JWT Authentication
-* Dapper
-* LINQ
-* ADO.NET
-* SOLID Principles
-
-Secondary Technologies:
-
-* Angular
-* TypeScript
-* RxJS
-* SCSS
-* Responsive Design
-
-Historical Technologies:
-
-* Visual Basic 6
-* FoxPro
-* VB.NET
-* WinForms
-* Microsoft Access
-* Vanilla JavaScript
-
----
-
-## Project Architecture
-
-The project must follow the approved architecture:
-
-```text
-src/app/
-
-core/
-layout/
-pages/
-shared/
-models/
-data/
-themes/
-```
-
-### Core
-
-Application-wide services and shared logic.
-
-Examples:
-
-* ThemeService
-* NavigationService
-* ViewportPreviewService
-
-### Layout
-
-Global layout structure.
-
-Examples:
-
-* Navbar
-* Footer
-* Theme Switcher
-* Viewport Switcher
-
-### Pages
-
-Application pages and navigation endpoints.
-
-### Shared
-
-Reusable UI components.
-
-### Models
-
-Shared domain entities.
-
-### Data
-
-Typed static application data.
-
-### Themes
-
-Theme definitions and visual configurations.
-
----
-
-## Main Navigation
+ ## Main Navigation
 
 The application should include:
 
 * Home
 * About
-* Why Hire Me
+* How I Add Value
 * Skills
 * Projects
 * Journey
@@ -237,31 +26,20 @@ The home page should contain:
 
 Sections below the hero:
 
-* Why Hire Me Preview
+* How I Add Value Preview
 * Featured Projects
 * Core Skills
 * Professional Highlights
 
 ---
 
-## About Page
+## How I Add Value Page
 
-Include:
+Focus on demonstrated value rather than self-promotion.
 
-* Professional profile
-* Personal story
-* Philosophy
-* Vision
-* Goals
-* Professional values
+The objective is to communicate how Jorge contributes to software teams, projects, and organizations.
 
----
-
-## Why Hire Me Page
-
-Focus on evidence rather than self-promotion.
-
-Demonstrate:
+The page should emphasize:
 
 * Production experience
 * Problem-solving ability
@@ -269,132 +47,20 @@ Demonstrate:
 * Legacy modernization experience
 * Continuous learning
 * Long-term commitment
+* Maintainable software practices
+* Business-oriented technical decisions
 
----
+Avoid exaggerated self-promotion.
 
-## Skills Page
+Prioritize evidence, examples, and practical impact.
 
-Skills must NOT use:
+The page should answer:
 
-* Percentages
-* Progress bars
-* Beginner / Intermediate / Expert labels
+"What value does Jorge bring to a team?"
 
-Skills should present:
+instead of:
 
-* Years of usage
-* Production experience
-* Context of usage
-* Related projects
-
-Each skill should be linked to one or more projects.
-
----
-
-## Projects Page
-
-Primary Projects:
-
-* Worker
-* Expensux
-* ItHelpCenter
-
-Additional Projects:
-
-* Maximum 3 public showcase projects
-
-Prioritize quality over quantity.
-
-Each project should include:
-
-* Problem
-* Solution
-* Technologies
-* Responsibilities
-* Results
-* Lessons Learned
-
----
-
-## Project Details
-
-Project detail pages should support:
-
-* Screenshots
-* Videos
-* Architecture information
-* Technologies used
-* Business context
-* Lessons learned
-
-Project types:
-
-### Worker
-
-Production software.
-
-No source code exposure.
-
-Use:
-
-* Screenshots
-* Videos
-* Business impact
-
-### Expensux
-
-Demo access allowed.
-
-Source code remains private.
-
-### ItHelpCenter
-
-Describe contributions.
-
-Use public company references.
-
-Do not expose proprietary information.
-
----
-
-## Journey Page
-
-Represent:
-
-* Technical evolution
-* Professional growth
-* Career milestones
-* Technology adoption timeline
-
-Focus on growth rather than employment history.
-
----
-
-## Education Page
-
-Include:
-
-* University studies
-* Independent learning
-* Courses
-* Certifications
-* Self-directed education
-
-Present learning continuity as a strength.
-
----
-
-## Documents Page
-
-Support:
-
-* Spanish CV
-* English CV
-* Cover Letters
-* Recommendation Letters
-* Certificates
-
-Documents should be viewable and downloadable.
+"Why should someone hire Jorge?"
 
 ---
 
@@ -408,17 +74,53 @@ Supported themes:
 
 Theme preference must persist locally.
 
----
+### Theme Purpose
 
-## Responsive Design
+#### Light Professional
 
-Support:
+Default professional experience intended for:
 
-* Mobile
-* Tablet
-* Desktop
+* Recruiters
+* Hiring Managers
+* Business Stakeholders
+* Human Resources
 
-Include a manual viewport preview selector for recruiter demonstrations.
+This theme should prioritize clarity, readability, simplicity, and professionalism.
+
+#### Dark Tech
+
+Technical-focused experience intended for:
+
+* Software Engineers
+* Technical Leads
+* Architects
+* Developers
+
+This theme should emphasize technical credibility while maintaining excellent usability.
+
+#### Premium 3D
+
+Advanced interactive experience intended to showcase:
+
+* Frontend capabilities
+* UI engineering
+* Interaction design
+* Creative problem solving
+* Technical innovation
+
+Premium 3D exists to create a memorable experience without sacrificing professionalism.
+
+Premium 3D must never reduce usability.
+
+All information available in Premium 3D must remain fully accessible through the standard navigation.
+
+Premium 3D is an enhancement, not a replacement.
+
+Users must always be able to navigate the application through traditional navigation elements.
+
+Recruiters must be able to access all content without interacting with advanced UI features.
+
+Visual effects must never interfere with readability, accessibility, or content discovery.
 
 ---
 
@@ -436,43 +138,17 @@ Use animations only when they improve the experience.
 
 Avoid excessive visual noise.
 
----
+Visual innovation is encouraged only when it supports usability and communication.
 
-## Data Management
+The application should balance professional presentation with memorable interaction design.
 
-Do NOT use:
+A visitor should always understand:
 
-* Backend
-* Database
-* API
+* Where they are
+* What they are viewing
+* Where they can go next
 
-Use static typed TypeScript data sources.
-
-Examples:
-
-* projects.data.ts
-* skills.data.ts
-* experience.data.ts
-* education.data.ts
-* documents.data.ts
-
----
-
-## Code Standards
-
-Use:
-
-* Angular Standalone Components
-* TypeScript Strict Mode
-* Reusable Components
-* Clean Architecture
-* Separation of Concerns
-
-Avoid:
-
-* Duplicated Logic
-* Hardcoded Data Inside Components
-* Unnecessary Dependencies
+without needing instructions.
 
 ---
 
@@ -491,3 +167,9 @@ Before creating new code:
 9. Do not introduce backend functionality.
 10. Do not expose private or proprietary project information.
 11. Prefer incremental changes over large uncontrolled modifications.
+12. Premium 3D features must never replace standard navigation.
+13. Experimental UI elements must remain optional enhancements.
+14. Accessibility and usability always take precedence over visual effects.
+15. Recruiters must be able to access all content without interacting with advanced UI features.
+16. Professional communication is more important than visual effects.
+17. User experience should guide interface decisions before aesthetics.
