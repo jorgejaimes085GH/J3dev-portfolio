@@ -18,3 +18,18 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+.theme-switcher__button {
+  color: var(--app-text-color);
+  background: var(--app-background-color);
+  border: 1px solid var(--app-border-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.theme-switcher__button--active {
+  color: var(--app-background-color);
+  background: var(--app-link-color);
+  border-color: var(--app-link-color);
+}

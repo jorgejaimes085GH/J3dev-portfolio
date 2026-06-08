@@ -1,5 +1,34 @@
 html {
   box-sizing: border-box;
+  --app-background-color: #ffffff;
+  --app-text-color: #1f2933;
+  --app-link-color: #0f5ea8;
+  --app-border-color: #cbd5e1;
+  color-scheme: light;
+}
+
+html.theme-dark-tech {
+  --app-background-color: #0f172a;
+  --app-text-color: #e2e8f0;
+  --app-link-color: #38bdf8;
+  --app-border-color: #334155;
+  color-scheme: dark;
+}
+
+html.theme-light-professional {
+  --app-background-color: #ffffff;
+  --app-text-color: #1f2933;
+  --app-link-color: #0f5ea8;
+  --app-border-color: #cbd5e1;
+  color-scheme: light;
+}
+
+html.theme-premium-3d {
+  --app-background-color: #18122b;
+  --app-text-color: #f4f0ff;
+  --app-link-color: #c4a7ff;
+  --app-border-color: #574b90;
+  color-scheme: dark;
 }
 
 *,
@@ -10,8 +39,14 @@ html {
 
 body {
   margin: 0;
+  color: var(--app-text-color);
+  background: var(--app-background-color);
   font-family: Arial, sans-serif;
   line-height: 1.5;
+}
+
+a {
+  color: var(--app-link-color);
 }
 
 button,
