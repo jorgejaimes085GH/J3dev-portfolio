@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
 import { Footer } from '../footer/footer';
 import { Navbar } from '../navbar/navbar';
 
@@ -13,8 +14,10 @@ import { Navbar } from '../navbar/navbar';
       <app-navbar />
 
       <main class="app-shell__main" id="main-content">
-        <div class="app-shell__content">
-          <router-outlet />
+        <div class="viewport-preview" [class]="viewportPreviewClasses()">
+          <div class="app-shell__content">
+            <router-outlet />
+          </div>
         </div>
       </main>
 
@@ -23,4 +26,11 @@ import { Navbar } from '../navbar/navbar';
   `,
   styleUrl: './main-layout.scss',
 })
-export class MainLayout {}
+export class MainLayout {
+  private readonly viewportPreviewService = inject(ViewportPreviewService);
+
+  readonly viewportPreviewClasses = computed(
+    () =>
+      `viewport-preview ${this.viewportPreviewService.getViewportClass(this.viewportPreviewService.currentViewport())}`,
+  );
+}

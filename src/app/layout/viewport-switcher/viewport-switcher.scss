@@ -18,3 +18,19 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+.viewport-switcher__button {
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.25rem 0.5rem;
+}
+
+.viewport-switcher__button--active {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
