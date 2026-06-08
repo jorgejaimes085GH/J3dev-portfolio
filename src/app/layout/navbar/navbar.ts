@@ -10,27 +10,37 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, ThemeSwitcher, ViewportSwitcher],
   template: `
-    <header>
-      <nav aria-label="Main navigation">
-        <a routerLink="/">J3dev Portfolio</a>
-        <ul>
-          @for (item of navigationItems; track item.path) {
-            <li>
-              <a
-                [routerLink]="item.path"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-              >
-                {{ item.label }}
-              </a>
-            </li>
-          }
-        </ul>
-      </nav>
-      <app-theme-switcher />
-      <app-viewport-switcher />
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__brand" routerLink="/" aria-label="J3dev Portfolio home">
+          J3dev Portfolio
+        </a>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="site-nav__list">
+            @for (item of navigationItems; track item.path) {
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  [routerLink]="item.path"
+                  routerLinkActive="site-nav__link--active"
+                  [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+                >
+                  {{ item.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        </nav>
+
+        <div class="site-header__tools" aria-label="Display options">
+          <app-theme-switcher />
+          <app-viewport-switcher />
+        </div>
+      </div>
     </header>
   `,
+  styleUrl: './navbar.scss',
 })
 export class Navbar {
   private readonly navigationService = inject(NavigationService);

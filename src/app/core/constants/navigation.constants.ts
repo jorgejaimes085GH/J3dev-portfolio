@@ -6,7 +6,7 @@ export interface NavigationItem {
 export const MAIN_NAVIGATION: NavigationItem[] = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Why Hire Me', path: '/why-hire-me' },
+  { label: 'How I Add Value', path: '/why-hire-me' },
   { label: 'Skills', path: '/skills' },
   { label: 'Projects', path: '/projects' },
   { label: 'Journey', path: '/journey' },

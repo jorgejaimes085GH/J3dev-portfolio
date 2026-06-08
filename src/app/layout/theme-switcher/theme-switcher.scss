@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.theme-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-switcher__label {
+  font-weight: 600;
+}
+
+.theme-switcher__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
