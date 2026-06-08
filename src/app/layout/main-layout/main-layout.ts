@@ -9,11 +9,18 @@ import { Navbar } from '../navbar/navbar';
   standalone: true,
   imports: [Footer, Navbar, RouterOutlet],
   template: `
-    <app-navbar />
-    <main>
-      <router-outlet />
-    </main>
-    <app-footer />
+    <div class="app-shell">
+      <app-navbar />
+
+      <main class="app-shell__main" id="main-content">
+        <div class="app-shell__content">
+          <router-outlet />
+        </div>
+      </main>
+
+      <app-footer />
+    </div>
   `,
+  styleUrl: './main-layout.scss',
 })
 export class MainLayout {}

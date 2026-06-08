@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.site-footer {
+  border-top: 1px solid currentColor;
+}
+
+.site-footer__inner {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.site-footer__project,
+.site-footer__copyright {
+  margin: 0;
+}
+
+.site-footer__copyright {
+  margin-top: 0.25rem;
+}
