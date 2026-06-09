@@ -1,50 +1,50 @@
 import { Project, ProjectTimeBlock } from '../models/project.model';
 
-const PLACEHOLDER_TIME_BLOCKS: ProjectTimeBlock[] = [
+const ESTIMATED_TIME_BLOCKS: ProjectTimeBlock[] = [
   {
     label: 'Database architecture',
-    duration: 'Placeholder: 2-4 weeks',
+    duration: 'Estimated planning range: 2-4 weeks',
     note: 'Data modeling and storage decisions are summarized without exposing private schema details.',
   },
   {
     label: 'API implementation',
-    duration: 'Placeholder: 3-6 weeks',
+    duration: 'Estimated implementation range: 3-6 weeks',
     note: 'Backend implementation scope is described at a high level only.',
   },
-  { label: 'Swagger/API testing', duration: 'Placeholder: 1-2 weeks' },
-  { label: 'Frontend implementation', duration: 'Placeholder: 4-8 weeks' },
-  { label: 'Frontend testing', duration: 'Placeholder: 1-3 weeks' },
+  { label: 'Swagger/API testing', duration: 'Estimated review range: 1-2 weeks' },
+  { label: 'Frontend implementation', duration: 'Estimated implementation range: 4-8 weeks' },
+  { label: 'Frontend testing', duration: 'Estimated validation range: 1-3 weeks' },
   {
     label: 'Documentation / review',
-    duration: 'Placeholder: 1-2 weeks',
+    duration: 'Estimated review range: 1-2 weeks',
     note: 'Review time includes notes for maintainability and future handoff.',
   },
 ];
 
-const LEVERIT_PLACEHOLDER_TIME_BLOCKS: ProjectTimeBlock[] = [
+const LEVERIT_ESTIMATED_TIME_BLOCKS: ProjectTimeBlock[] = [
   {
     label: 'Production maintenance and support',
-    duration: 'Placeholder: multi-year professional involvement',
+    duration: 'Multi-year professional involvement',
     note: 'Scope is summarized without exposing client workflows, source code, or internal operational details.',
   },
   {
     label: 'Feature improvements',
-    duration: 'Placeholder: iterative releases',
+    duration: 'Iterative enterprise release work',
     note: 'Enhancements are described by capability area rather than proprietary implementation details.',
   },
   {
     label: 'Database and backend work',
-    duration: 'Placeholder: ongoing enterprise delivery cycles',
+    duration: 'Ongoing enterprise delivery cycles',
     note: 'SQL Server, API, and server-side responsibilities are represented at a public-safe level.',
   },
   {
     label: 'Frontend and user experience work',
-    duration: 'Placeholder: incremental improvements',
+    duration: 'Incremental improvement work',
     note: 'UI behavior, search, and workflow updates are generalized for confidentiality.',
   },
   {
     label: 'Team coordination and conventions',
-    duration: 'Placeholder: recurring collaboration',
+    duration: 'Recurring team collaboration',
     note: 'Includes alignment with team practices, maintainability expectations, and handoff-friendly changes.',
   },
 ];
@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
     typeStatus: 'Production software / Enterprise internal system',
     shortDescription:
       'Business workflow and operational management system evolved from legacy desktop architecture into a modern .NET-based solution.',
-    visualLabel: 'Enterprise workflow system visual placeholder',
+    visualLabel: 'Enterprise workflow system visual reference pending final asset',
     context: [
       'Initially created as a monolithic Access + VB.NET application using ADO.NET.',
       'Later evolved to support multi-connection scenarios with Access and SQL Server.',
@@ -85,36 +85,36 @@ export const PROJECTS: Project[] = [
       'Excel Export',
       'Reporting',
     ],
-    timeBlocks: PLACEHOLDER_TIME_BLOCKS,
+    timeBlocks: ESTIMATED_TIME_BLOCKS,
     links: [
       {
-        label: 'Video availability placeholder',
+        label: 'Video availability note',
         type: 'Video',
         isExternal: false,
         isPlaceholder: true,
         placeholderMessage:
-          'A safe overview video may be added later without exposing source code.',
+          'A safe overview video may be published in a future update without exposing source code.',
       },
       {
-        label: 'Company reference placeholder',
+        label: 'Company reference pending approval',
         type: 'Reference',
         isExternal: false,
         isPlaceholder: true,
         placeholderMessage:
-          'Real company reference details will be added later when approved for public use.',
+          'Real company reference details will be published only after approval for public use.',
       },
     ],
     placeholders: {
-      companyName: 'Company name placeholder',
-      companyAddress: 'Company address placeholder',
-      companyPhone: 'Company phone placeholder',
-      videoUrl: 'Video URL placeholder',
+      companyName: 'Company name pending approval',
+      companyAddress: 'Company address pending approval',
+      companyPhone: 'Company phone pending approval',
+      videoUrl: 'Video URL pending publication',
     },
     referencePlaceholders: {
-      companyName: 'Company name placeholder',
-      companyAddress: 'Address placeholder',
-      companyPhone: 'Phone placeholder',
-      availabilityNote: 'Real company details will be added later after review and approval.',
+      companyName: 'Company name pending approval',
+      companyAddress: 'Address pending approval',
+      companyPhone: 'Phone pending approval',
+      availabilityNote: 'Real company details will be published only after review and approval.',
     },
     sourceCodeNote: 'Private production source code is not publicly available.',
     confidentialityNote:
@@ -127,10 +127,10 @@ export const PROJECTS: Project[] = [
     typeStatus: 'Demo-oriented financial control application',
     shortDescription:
       'Personal and business expense control application focused on financial organization, profiles, accounts, debts, payments, categories, movements, JWT authentication, API layers, and Angular frontend.',
-    visualLabel: 'Financial control application visual placeholder',
+    visualLabel: 'Financial control application visual reference pending final asset',
     context: [
       'Demo-oriented financial control application for organizing financial workflows.',
-      'Demo link will be added later.',
+      'Public demo link is pending publication.',
       'Source code remains private for now.',
     ],
     architectureNotes: [
@@ -150,18 +150,18 @@ export const PROJECTS: Project[] = [
       'SCSS',
       'SOLID',
     ],
-    timeBlocks: PLACEHOLDER_TIME_BLOCKS,
+    timeBlocks: ESTIMATED_TIME_BLOCKS,
     links: [
       {
-        label: 'Demo link placeholder',
+        label: 'Demo availability note',
         type: 'Demo',
         isExternal: true,
         isPlaceholder: true,
-        placeholderMessage: 'Demo link will be added later when the public demo is ready.',
+        placeholderMessage: 'Public demo link will be published when the demo is ready for review.',
       },
     ],
     placeholders: {
-      demoUrl: 'Demo URL placeholder',
+      demoUrl: 'Demo URL pending publication',
     },
     sourceCodeNote: 'Source code is private while the demo is being prepared.',
     confidentialityNote:
@@ -175,12 +175,12 @@ export const PROJECTS: Project[] = [
     typeStatus: 'LeverIT enterprise project / Help desk platform',
     shortDescription:
       'Enterprise help desk platform evolved over years through maintenance, improvements, new workflows, search experience enhancements, and frontend/backend feature development.',
-    visualLabel: 'LeverIT help desk platform logo placeholder',
+    visualLabel: 'LeverIT help desk platform visual reference pending approved asset',
     context: [
       'Professional enterprise project worked on during Jorge’s LeverIT experience.',
       'Contributions are described without exposing source code, private demos, client names, or proprietary implementation details.',
       'Work included maintenance, improvements, new workflow support, search experience enhancements, and frontend/backend feature development.',
-      'Official LeverIT website and logo references are represented as placeholders until approved public assets are finalized.',
+      'Official LeverIT website and logo references will be added after approved public assets are finalized.',
     ],
     architectureNotes: [
       'Supported SPA-like navigation patterns over a single main index in general terms, preserving the confidentiality of the internal implementation.',
@@ -203,20 +203,20 @@ export const PROJECTS: Project[] = [
       'Search UX',
       'AI-assisted UX',
     ],
-    timeBlocks: LEVERIT_PLACEHOLDER_TIME_BLOCKS,
+    timeBlocks: LEVERIT_ESTIMATED_TIME_BLOCKS,
     links: [
       {
-        label: 'Official LeverIT website placeholder',
+        label: 'Official LeverIT website reference pending approval',
         type: 'Reference',
         isExternal: true,
         isPlaceholder: true,
         placeholderMessage:
-          'Official LeverIT website link placeholder. No private demo, GitHub repository, or proprietary project access is provided.',
+          'Official LeverIT website reference pending approval. No private demo, GitHub repository, or proprietary project access is provided.',
       },
     ],
     placeholders: {
-      officialWebsiteUrl: 'Official LeverIT website URL placeholder',
-      logoLabel: 'LeverIT logo placeholder',
+      officialWebsiteUrl: 'Official LeverIT website URL pending approval',
+      logoLabel: 'LeverIT logo pending approved public asset',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this LeverIT enterprise project.',
@@ -230,12 +230,12 @@ export const PROJECTS: Project[] = [
     typeStatus: 'LeverIT enterprise project / Maintenance and improvements',
     shortDescription:
       'Enterprise project supported through maintenance, improvements, SQL Server work, ASP.NET features, and WebSocket-related functionality.',
-    visualLabel: 'LeverIT enterprise maintenance project logo placeholder',
+    visualLabel: 'LeverIT enterprise maintenance project visual reference pending approved asset',
     context: [
       'Professional enterprise project worked on during Jorge’s LeverIT experience.',
       'Supported maintenance, improvements, SQL Server work, ASP.NET features, and WebSocket-related functionality.',
       'Descriptions remain general and non-confidential, with no private demo or source code exposure.',
-      'Official LeverIT website and logo references are represented as placeholders until approved public assets are finalized.',
+      'Official LeverIT website and logo references will be added after approved public assets are finalized.',
     ],
     architectureNotes: [
       'Contributed to enterprise maintenance and incremental improvement work within an existing production-oriented codebase.',
@@ -251,20 +251,20 @@ export const PROJECTS: Project[] = [
       'Maintenance',
       'Enterprise Software',
     ],
-    timeBlocks: LEVERIT_PLACEHOLDER_TIME_BLOCKS,
+    timeBlocks: LEVERIT_ESTIMATED_TIME_BLOCKS,
     links: [
       {
-        label: 'Official LeverIT website placeholder',
+        label: 'Official LeverIT website reference pending approval',
         type: 'Reference',
         isExternal: true,
         isPlaceholder: true,
         placeholderMessage:
-          'Official LeverIT website link placeholder. No private demo, GitHub repository, or proprietary project access is provided.',
+          'Official LeverIT website reference pending approval. No private demo, GitHub repository, or proprietary project access is provided.',
       },
     ],
     placeholders: {
-      officialWebsiteUrl: 'Official LeverIT website URL placeholder',
-      logoLabel: 'LeverIT logo placeholder',
+      officialWebsiteUrl: 'Official LeverIT website URL pending approval',
+      logoLabel: 'LeverIT logo pending approved public asset',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this LeverIT enterprise project.',
@@ -278,12 +278,12 @@ export const PROJECTS: Project[] = [
     typeStatus: 'LeverIT custom client project / Built from scratch',
     shortDescription:
       'Custom client project developed collaboratively from scratch using SQL Server, REST APIs, and Angular.',
-    visualLabel: 'LeverIT custom client project logo placeholder',
+    visualLabel: 'LeverIT custom client project visual reference pending approved asset',
     context: [
       'Professional custom client project worked on during Jorge’s LeverIT experience.',
       'Built collaboratively from scratch with two teammates using SQL Server, REST APIs, and Angular.',
       'No source code, private demo, client names, real addresses, or confidential implementation details are exposed.',
-      'Official LeverIT website and logo references are represented as placeholders until approved public assets are finalized.',
+      'Official LeverIT website and logo references will be added after approved public assets are finalized.',
     ],
     architectureNotes: [
       'Collaborated on a from-scratch enterprise delivery effort with clear separation between database, API, and frontend responsibilities.',
@@ -300,20 +300,20 @@ export const PROJECTS: Project[] = [
       'Team Collaboration',
       'Enterprise Software',
     ],
-    timeBlocks: LEVERIT_PLACEHOLDER_TIME_BLOCKS,
+    timeBlocks: LEVERIT_ESTIMATED_TIME_BLOCKS,
     links: [
       {
-        label: 'Official LeverIT website placeholder',
+        label: 'Official LeverIT website reference pending approval',
         type: 'Reference',
         isExternal: true,
         isPlaceholder: true,
         placeholderMessage:
-          'Official LeverIT website link placeholder. No private demo, GitHub repository, or proprietary project access is provided.',
+          'Official LeverIT website reference pending approval. No private demo, GitHub repository, or proprietary project access is provided.',
       },
     ],
     placeholders: {
-      officialWebsiteUrl: 'Official LeverIT website URL placeholder',
-      logoLabel: 'LeverIT logo placeholder',
+      officialWebsiteUrl: 'Official LeverIT website URL pending approval',
+      logoLabel: 'LeverIT logo pending approved public asset',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this LeverIT custom client project.',
@@ -327,7 +327,7 @@ export const PROJECTS: Project[] = [
     typeStatus: 'Public portfolio / Open source showcase',
     shortDescription:
       'Professional Angular portfolio built to present backend specialization, fullstack capability, project evidence, technical evolution, and recruiter-focused navigation.',
-    visualLabel: 'Portfolio application visual placeholder',
+    visualLabel: 'Portfolio application visual reference pending final asset',
     context: [
       'Presents backend specialization, fullstack capability, technical evolution, and recruiter-focused navigation.',
       'Public portfolio and open-source showcase for professional presentation.',
@@ -349,10 +349,10 @@ export const PROJECTS: Project[] = [
       'Theme System',
       'Static Data',
     ],
-    timeBlocks: PLACEHOLDER_TIME_BLOCKS,
+    timeBlocks: ESTIMATED_TIME_BLOCKS,
     links: [
       {
-        label: 'GitHub repository placeholder',
+        label: 'GitHub repository availability note',
         type: 'GitHub',
         isExternal: true,
         isPlaceholder: true,
@@ -361,10 +361,10 @@ export const PROJECTS: Project[] = [
       },
     ],
     placeholders: {
-      githubUrl: 'GitHub URL placeholder',
+      githubUrl: 'GitHub URL pending publication',
     },
     sourceCodeNote: 'Public repository link can be updated when the final URL is available.',
     confidentialityNote:
-      'This portfolio is intended as a public showcase. Placeholder repository details will be replaced with the correct public link when finalized.',
+      'This portfolio is intended as a public showcase. Repository availability details will be updated with the correct public link when finalized.',
   },
 ];

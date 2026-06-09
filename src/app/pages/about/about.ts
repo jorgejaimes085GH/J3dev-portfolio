@@ -24,7 +24,7 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
             role="img"
             [attr.aria-label]="aboutData.introduction.profileImageAlt"
           >
-            <span>Profile Image Placeholder</span>
+            <span>Professional Profile Image Pending</span>
           </div>
           <figcaption>Professional profile image area</figcaption>
         </figure>
@@ -34,7 +34,10 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         <div class="about-section__header">
           <p class="about-section__eyebrow">Professional Journey Overview</p>
           <h2 id="journey-overview-title">Technical evolution timeline</h2>
-          <p>Placeholder overview for the professional growth story.</p>
+          <p>
+            A concise view of how Jorge’s work evolved from early business software into backend
+            .NET, SQL Server, architecture, and Angular application development.
+          </p>
         </div>
 
         <ol class="journey-timeline">
@@ -53,7 +56,10 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         <div class="about-section__header">
           <p class="about-section__eyebrow">Engineering Philosophy</p>
           <h2 id="engineering-philosophy-title">Principles behind the work</h2>
-          <p>Placeholder cards for engineering habits and decision-making.</p>
+          <p>
+            These principles describe the engineering habits that guide implementation choices,
+            maintenance work, and modernization decisions.
+          </p>
         </div>
 
         <div class="about-card-grid about-card-grid--four">
@@ -70,7 +76,10 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         <div class="about-section__header">
           <p class="about-section__eyebrow">Professional Values</p>
           <h2 id="professional-values-title">Work habits that support teams</h2>
-          <p>Placeholder cards for values that guide long-term contribution.</p>
+          <p>
+            These values support dependable team contribution across production systems,
+            documentation, collaboration, and continuous improvement.
+          </p>
         </div>
 
         <div class="about-card-grid about-card-grid--values">
@@ -87,7 +96,10 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         <div>
           <p class="about-section__eyebrow">Next Steps</p>
           <h2 id="about-cta-title">Continue exploring the portfolio evidence</h2>
-          <p>Placeholder CTA copy for recruiters and technical reviewers.</p>
+          <p>
+            Review the value, project, and skills sections for concrete examples of production
+            experience, technical evolution, and maintainable software thinking.
+          </p>
         </div>
 
         <div class="about-cta__actions" aria-label="About page exploration links">

@@ -18,8 +18,8 @@ import { PROJECTS } from '../../../data/projects.data';
             architecture, modernization, and production experience.
           </p>
           <p>
-            These cards are intentionally simple for now. Final visuals, deeper case studies,
-            and detail pages can be added later without changing the typed project data source.
+            These cards are intentionally simple for now. Final visuals, deeper case studies, and
+            detail pages can be added later without changing the typed project data source.
           </p>
         </div>
       </section>
@@ -30,18 +30,14 @@ import { PROJECTS } from '../../../data/projects.data';
           <h2 id="project-list-title">Professional proof points</h2>
           <p>
             Each project highlights its current status, practical context, technology stack, and
-            placeholder time investment summary.
+            time investment context.
           </p>
         </div>
 
         <div class="project-grid" aria-label="Project list">
           @for (project of projects; track project.id) {
             <article class="project-card" [attr.aria-labelledby]="project.id + '-title'">
-              <div
-                class="project-card__visual"
-                role="img"
-                [attr.aria-label]="project.visualLabel"
-              >
+              <div class="project-card__visual" role="img" [attr.aria-label]="project.visualLabel">
                 <span aria-hidden="true">{{ project.title.slice(0, 2).toUpperCase() }}</span>
               </div>
 
@@ -50,8 +46,8 @@ import { PROJECTS } from '../../../data/projects.data';
                 <h3 [id]="project.id + '-title'">{{ project.title }}</h3>
                 <p>{{ project.shortDescription }}</p>
 
-                <div class="project-card__time-preview" aria-label="Time investment preview">
-                  <h4>Time investment preview</h4>
+                <div class="project-card__time-preview" aria-label="Time investment context">
+                  <h4>Time investment context</h4>
                   <ul>
                     @for (timeBlock of project.timeBlocks.slice(0, 3); track timeBlock.label) {
                       <li>

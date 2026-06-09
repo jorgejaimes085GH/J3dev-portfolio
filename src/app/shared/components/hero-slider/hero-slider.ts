@@ -33,8 +33,8 @@ import { HeroSlide } from '../../../models/hero-slide.model';
             </div>
           </div>
 
-          <div class="hero-slider__visual" aria-label="Slide visual placeholder">
-            <span>{{ slide.visualLabel || 'Hero visual placeholder' }}</span>
+          <div class="hero-slider__visual" aria-label="Slide visual reference">
+            <span>{{ slide.visualLabel || 'Hero visual reference pending final asset' }}</span>
           </div>
         </div>
 

@@ -70,8 +70,7 @@ export const JOURNEY_STAGES: JourneyStage[] = [
       'Development standards',
       'Maintainability',
     ],
-    keyLearning:
-      'Thinking beyond isolated features and designing software that can evolve.',
+    keyLearning: 'Thinking beyond isolated features and designing software that can evolve.',
     relatedProjectSlugs: ['worker', 'expensux'],
     evidenceNote:
       'Related projects show architectural direction through sanitized summaries and public-safe implementation context.',
@@ -94,7 +93,14 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     periodLabel: 'Ongoing evolution stage',
     summary:
       'The current stage emphasizes disciplined use of modern development tools while keeping maintainability, architecture, and professional judgment first.',
-    focusAreas: ['Git', 'GitHub', 'Azure learning', 'AI-assisted development', 'Codex', 'Cloud mindset'],
+    focusAreas: [
+      'Git',
+      'GitHub',
+      'Azure learning',
+      'AI-assisted development',
+      'Codex',
+      'Cloud mindset',
+    ],
     keyLearning:
       'Using modern tools responsibly while keeping architecture and maintainability first.',
     relatedProjectSlugs: ['j3dev-portfolio'],
@@ -107,17 +113,17 @@ export const JOURNEY_INSIGHTS: JourneyInsight[] = [
   {
     title: 'From tools to systems',
     description:
-      'Placeholder insight describing the transition from learning individual tools to understanding complete business and technical systems.',
+      'The progression moved from learning individual tools toward understanding how applications, databases, workflows, and users fit together inside complete business systems.',
   },
   {
     title: 'From coding to architecture',
     description:
-      'Placeholder insight describing the shift from implementing features to designing maintainable boundaries, layers, and standards.',
+      'Experience shifted from completing isolated features toward defining boundaries, layers, standards, and conventions that make future work easier to maintain.',
   },
   {
     title: 'From execution to evolution',
     description:
-      'Placeholder insight describing the habit of improving software over time instead of treating delivery as a one-time event.',
+      'Long-term project work reinforced that useful software continues to evolve through maintenance, modernization, documentation, and careful incremental decisions.',
   },
 ];
 

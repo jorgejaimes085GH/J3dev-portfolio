@@ -14,8 +14,8 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
           <h1 id="documents-page-title">Documents</h1>
           <p class="documents-hero__summary">
             This page contains professional evidence that can be viewed online, downloaded as PDFs,
-            or opened for printing. Final PDF files will be uploaded later; current links use safe
-            placeholder paths so the page structure remains ready without exposing unfinished files.
+            or opened for printing. Final PDF files are pending publication; current links use safe
+            document paths so the page structure remains ready without exposing unfinished files.
           </p>
         </div>
       </section>
@@ -92,8 +92,8 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
       <section class="documents-section documents-note" aria-labelledby="documents-note-title">
         <h2 id="documents-note-title">Evidence note</h2>
         <p>
-          Some documents are placeholders until final PDFs are uploaded. Placeholder links are kept
-          intentionally simple and may not resolve until the document files are added.
+          Some professional documents are pending PDF publication. Current document links are kept
+          intentionally simple and may not resolve until the final files are added.
         </p>
       </section>
     </main>

@@ -4,90 +4,106 @@ export const VALUE_PAGE_DATA: ValuePageData = {
   introduction: {
     title: 'How I Add Value',
     introduction:
-      'Placeholder introduction explaining that this page focuses on practical contribution to software teams and projects.',
+      'Jorge contributes by connecting practical software delivery with maintainable backend design, SQL Server experience, and a careful approach to evolving existing systems.',
     supportingStatement:
-      'Placeholder supporting statement for recruiters, architects, technical leads, and hiring managers.',
+      'The focus is evidence-based: production systems, legacy modernization, enterprise maintenance, fullstack collaboration, and steady technical growth without exposing private implementation details.',
   },
   valuePillars: [
     {
       title: 'Understand Before Building',
-      description: 'Placeholder description about clarifying context before implementation.',
+      description:
+        'Clarifies the business context, existing workflows, data needs, and constraints before committing to an implementation path.',
       categoryLabel: 'Analysis',
     },
     {
       title: 'Architecture Before Code',
-      description: 'Placeholder description about considering structure before writing code.',
+      description:
+        'Looks for clear boundaries, responsible layering, and service contracts so solutions can be tested, maintained, and extended.',
       categoryLabel: 'Design',
     },
     {
       title: 'Maintainability First',
-      description: 'Placeholder description about readable, adaptable, long-lived software.',
+      description:
+        'Prioritizes readable code, practical conventions, and incremental improvements that reduce long-term maintenance risk.',
       categoryLabel: 'Quality',
     },
     {
       title: 'Continuous Learning',
-      description: 'Placeholder description about steady technical growth and adaptation.',
+      description:
+        'Builds on experience from VB6, Access, WinForms, SQL Server, enterprise .NET systems, Angular, and modern development tools.',
       categoryLabel: 'Growth',
     },
     {
       title: 'Production Experience',
-      description: 'Placeholder description about working with production-oriented constraints.',
+      description:
+        'Understands that production systems require stability, confidentiality, careful changes, and respect for real operational workflows.',
       categoryLabel: 'Delivery',
     },
     {
       title: 'Problem Solving',
-      description: 'Placeholder description about breaking down issues into practical steps.',
+      description:
+        'Breaks issues into understandable parts, traces behavior through data and application layers, and moves toward practical fixes.',
       categoryLabel: 'Execution',
     },
   ],
   contributionAreas: [
     {
       title: 'Legacy System Modernization',
-      description: 'Placeholder description for improving existing systems responsibly.',
+      description:
+        'Helps move existing systems forward responsibly by preserving useful behavior while improving structure and technology direction.',
     },
     {
       title: 'Backend Development',
-      description: 'Placeholder description for backend application development contribution.',
+      description:
+        'Contributes to .NET-centered application services, data access flows, authentication concepts, and maintainable business logic.',
     },
     {
       title: 'API Design',
-      description: 'Placeholder description for designing clear service boundaries.',
+      description:
+        'Supports REST API boundaries that separate frontend needs from backend responsibilities and make integrations easier to understand.',
     },
     {
       title: 'Database Design',
-      description: 'Placeholder description for organizing relational data with care.',
+      description:
+        'Applies SQL Server experience to organize data, stored procedures, and relational workflows around business use cases.',
     },
     {
       title: 'Technical Analysis',
-      description: 'Placeholder description for reviewing requirements and system behavior.',
+      description:
+        'Reviews requirements, existing behavior, data movement, and implementation tradeoffs before recommending changes.',
     },
     {
       title: 'Software Maintenance',
-      description: 'Placeholder description for sustaining and improving existing software.',
+      description:
+        'Works inside established systems with attention to regression risk, continuity, documentation, and future maintainability.',
     },
   ],
   teamContributions: [
     {
       title: 'Collaboration',
-      description: 'Placeholder description for working with teammates and stakeholders.',
+      description:
+        'Works with teammates and stakeholders to align technical decisions with delivery needs and system constraints.',
     },
     {
       title: 'Knowledge Sharing',
-      description: 'Placeholder description for helping technical understanding move across a team.',
+      description:
+        'Makes technical context easier to transfer through clear explanations, reusable patterns, and practical examples.',
     },
     {
       title: 'Documentation',
-      description: 'Placeholder description for preserving context and decisions.',
+      description:
+        'Records relevant decisions, behavior, and availability notes so project context is easier to preserve over time.',
     },
     {
       title: 'Long-Term Thinking',
-      description: 'Placeholder description for decisions that support future maintenance.',
+      description:
+        'Considers how today’s implementation will affect future maintenance, onboarding, troubleshooting, and modernization.',
     },
   ],
   philosophySummary: {
     title: 'Engineering Philosophy Summary',
     description:
-      'Placeholder summary connecting problem understanding, design, maintainability, and ongoing learning.',
+      'Useful software starts with understanding the problem, choosing a maintainable structure, protecting production context, and improving systems over time.',
     principles: [
       'Understand problems first',
       'Design before implementation',

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <footer class="site-footer">
       <div class="site-footer__inner">
         <p class="site-footer__project">J3dev Portfolio</p>
-        <p class="site-footer__copyright">Copyright placeholder.</p>
+        <p class="site-footer__copyright">Copyright information pending final publication.</p>
       </div>
     </footer>
   `,
