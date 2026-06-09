@@ -57,13 +57,19 @@ a {
 
 /* Viewport preview responsive layout safeguards.
    The preview frame can be narrower than the browser viewport, so these
-   class-aware rules mirror mobile/tablet breakpoints inside manual previews. */
-.viewport-preview--mobile {
+   class-aware rules mirror mobile/tablet breakpoints inside manual previews.
+   Selectors intentionally include both preview classes on the frame to outrank
+   Angular component-scoped desktop rules without relying on browser @media width. */
+.viewport-preview.viewport-preview--mobile {
+  overflow-x: clip;
+
   .app-shell__content {
-    padding: 1rem 0;
+    width: 100%;
+    padding: 0.75rem 0;
   }
 
   :is(
+      .hero-slider,
       .home-section,
       .home-cta,
       .about-section,
@@ -83,15 +89,20 @@ a {
       .contact-section
     ) {
     width: 100%;
+    max-width: 100%;
     padding-right: 1rem;
     padding-left: 1rem;
   }
 
   :is(
+      .hero-slider__content,
+      .preview-grid,
       .preview-grid--three,
       .skill-grid,
+      .about-card-grid,
       .about-card-grid--four,
       .about-card-grid--values,
+      .value-card-grid,
       .value-card-grid--three,
       .value-card-grid--four,
       .value-highlight,
@@ -114,6 +125,7 @@ a {
   }
 
   :is(
+      .hero-slider__content,
       .about-introduction,
       .about-cta,
       .value-cta,
@@ -122,6 +134,32 @@ a {
     ) {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  :is(
+      .hero-slider__copy,
+      .hero-slider__visual,
+      .home-section__header,
+      .about-introduction__content,
+      .about-profile-placeholder,
+      .about-section__header,
+      .value-section__header,
+      .value-introduction__content,
+      .skills-section__header,
+      .projects-section__header,
+      .project-detail-hero__content,
+      .project-detail-visual,
+      .project-detail-section__header,
+      .journey-section__header,
+      .journey-hero__content,
+      .education-section__header,
+      .documents-section__header,
+      .contact-section__header,
+      .contact-final-cta__content
+    ) {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
   }
 
   :is(
@@ -136,14 +174,43 @@ a {
     justify-content: flex-start;
   }
 
-  :is(.button-link, .contact-action, .document-action, .project-card__link) {
-    max-width: 100%;
-    text-align: center;
-    white-space: normal;
+  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
+    font-size: clamp(2rem, 11vw, 2.75rem);
+    overflow-wrap: anywhere;
   }
 
-  :is(.contact-action, .document-action) {
+  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .projects-section h2, .project-detail-section h2, .journey-section h2, .journey-cta h2, .education-section h2, .documents-section h2, .contact-section h2) {
+    font-size: clamp(1.45rem, 8vw, 2rem);
+    overflow-wrap: anywhere;
+  }
+
+  .hero-slider {
+    min-height: auto;
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .hero-slider__content {
+    min-height: auto;
+    gap: 1.5rem;
+  }
+
+  .hero-slider__visual {
+    min-height: 12rem;
+    padding: 1rem;
+  }
+
+  .hero-slider__actions,
+  .document-actions {
+    flex-direction: column;
     width: 100%;
+  }
+
+  :is(.hero-slider__cta, .button-link, .contact-action, .document-action, .project-card__link) {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+    white-space: normal;
   }
 
   :is(.document-card__header, .skill-panel__header) {
@@ -151,17 +218,46 @@ a {
   }
 }
 
-.viewport-preview--tablet {
+.viewport-preview.viewport-preview--tablet {
+  overflow-x: clip;
+
   .app-shell__content {
+    width: 100%;
     padding-right: 1rem;
     padding-left: 1rem;
   }
 
   :is(
+      .hero-slider,
+      .home-section,
+      .home-cta,
+      .about-section,
+      .about-cta,
+      .value-section,
+      .value-cta,
+      .skills-section,
+      .projects-section,
+      .project-detail-nav,
+      .project-detail-hero,
+      .project-detail-section,
+      .journey-section,
+      .journey-cta,
+      .education-section,
+      .education-cta,
+      .documents-section,
+      .contact-section
+    ) {
+    max-width: 100%;
+  }
+
+  :is(
+      .preview-grid,
       .preview-grid--three,
       .skill-grid,
+      .about-card-grid,
       .about-card-grid--four,
       .about-card-grid--values,
+      .value-card-grid,
       .value-card-grid--three,
       .value-card-grid--four,
       .project-grid,
@@ -179,13 +275,48 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  :is(.project-detail-hero, .journey-stage__card, .education-cta) {
+  :is(.hero-slider__content, .project-detail-hero, .journey-stage__card, .education-cta) {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
+    font-size: clamp(2.25rem, 7vw, 3.5rem);
   }
 }
 
-:is(.viewport-preview--mobile, .viewport-preview--tablet) {
-  overflow-x: clip;
+:is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet) {
+  :is(
+      .hero-slider__content,
+      .hero-slider__copy,
+      .hero-slider__visual,
+      .preview-grid,
+      .skill-grid,
+      .about-introduction,
+      .about-card-grid,
+      .value-card-grid,
+      .value-highlight,
+      .project-grid,
+      .project-card__body,
+      .project-card__technologies,
+      .project-detail-hero,
+      .project-detail-hero__content,
+      .project-detail-visual,
+      .project-time-grid,
+      .project-link-list,
+      .project-reference-list,
+      .journey-stage__card,
+      .journey-stage__body,
+      .journey-insight-grid,
+      .formal-education-list,
+      .learning-grid,
+      .highlight-grid,
+      .education-cta,
+      .document-grid,
+      .document-meta,
+      .contact-method-grid
+    ) {
+    min-width: 0;
+  }
 
   :is(
       .preview-card,
@@ -216,7 +347,15 @@ a {
       .project-detail-badges,
       .project-card__technologies,
       .contact-badge-list
-    ) li {
+    ) li,
+  :is(
+      .technology-badge,
+      .project-detail-badge,
+      .hero-slider__description,
+      .hero-slider__subtitle,
+      .project-detail-summary,
+      .contact-method-card__value
+    ) {
     overflow-wrap: anywhere;
   }
 }
