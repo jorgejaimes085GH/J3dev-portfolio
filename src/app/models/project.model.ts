@@ -22,6 +22,8 @@ export interface ProjectPlaceholders {
   demoUrl?: string;
   githubUrl?: string;
   videoUrl?: string;
+  officialWebsiteUrl?: string;
+  logoLabel?: string;
 }
 
 export interface ProjectReferencePlaceholders {
