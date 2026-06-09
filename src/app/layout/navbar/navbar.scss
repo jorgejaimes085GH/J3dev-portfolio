@@ -2,15 +2,26 @@
   display: block;
 }
 
+:host(.site-header-shell--sticky) {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  align-self: stretch;
+}
+
+:host(.site-header-shell--static) {
+  position: static;
+}
+
 .site-header {
   border-bottom: 1px solid var(--app-border-color);
   background: var(--app-background-color);
 }
 
+.site-header--sticky,
 .site-header--pinned {
-  position: sticky;
-  top: 0;
-  z-index: 20;
+  position: relative;
+  z-index: 1;
 }
 
 .site-header--unpinned {
