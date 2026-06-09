@@ -1,12 +1,18 @@
 export interface ProjectTimeBlock {
   label: string;
   duration: string;
+  note?: string;
 }
+
+export type ProjectLinkType = 'Demo' | 'GitHub' | 'Video' | 'Reference';
 
 export interface ProjectLink {
   label: string;
-  url: string;
+  type: ProjectLinkType;
+  url?: string;
   isExternal: boolean;
+  isPlaceholder?: boolean;
+  placeholderMessage?: string;
 }
 
 export interface ProjectPlaceholders {
@@ -18,6 +24,13 @@ export interface ProjectPlaceholders {
   videoUrl?: string;
 }
 
+export interface ProjectReferencePlaceholders {
+  companyName: string;
+  companyAddress: string;
+  companyPhone: string;
+  availabilityNote: string;
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -26,9 +39,12 @@ export interface Project {
   shortDescription: string;
   visualLabel: string;
   context: string[];
+  architectureNotes: string[];
   technologies: string[];
   timeBlocks: ProjectTimeBlock[];
+  links?: ProjectLink[];
   placeholders?: ProjectPlaceholders;
-  primaryLink?: ProjectLink;
+  referencePlaceholders?: ProjectReferencePlaceholders;
   sourceCodeNote: string;
+  confidentialityNote: string;
 }
