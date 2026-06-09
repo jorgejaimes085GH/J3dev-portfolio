@@ -5,7 +5,8 @@ export type SkillCategory =
   | 'Architecture'
   | 'Legacy & Desktop'
   | 'Dev Tools / Cloud'
-  | 'Soft Skills';
+  | 'Soft Skills'
+  | 'Enterprise Practices';
 
 export interface Skill {
   id: string;

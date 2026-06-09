@@ -8,6 +8,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   'Legacy & Desktop',
   'Dev Tools / Cloud',
   'Soft Skills',
+  'Enterprise Practices',
 ];
 
 export const SKILLS: Skill[] = [
@@ -15,12 +16,15 @@ export const SKILLS: Skill[] = [
     id: 'dotnet',
     name: '.NET',
     category: 'Backend',
-    shortDescription: 'Backend platform experience across production modernization and API direction.',
+    shortDescription:
+      'Backend platform experience across production modernization and API direction.',
     iconLabel: '.N',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'ithelpcenter'],
     evidenceSummary:
-      '.NET appears in the Worker modernization path, where legacy desktop architecture is being evolved toward maintainable service and application boundaries.',
-    contextNotes: ['Public details stay high-level to avoid exposing proprietary production logic.'],
+      '.NET appears in the Worker modernization path and ItHelpCenter enterprise work, where application boundaries and maintainability matter in production contexts.',
+    contextNotes: [
+      'Public details stay high-level to avoid exposing proprietary production logic.',
+    ],
   },
   {
     id: 'csharp',
@@ -28,9 +32,9 @@ export const SKILLS: Skill[] = [
     category: 'Backend',
     shortDescription: 'Primary language for modern backend and maintainable application code.',
     iconLabel: 'C#',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'ithelpcenter', 'discovery', 'testigo-electoral'],
     evidenceSummary:
-      'C# supports the Worker modernization direction, including clearer application layers and maintainable backend-oriented implementation.',
+      'C# supports Worker modernization and LeverIT enterprise work, including maintainable backend-oriented implementation and REST API responsibilities.',
   },
   {
     id: 'aspnet-core',
@@ -38,9 +42,9 @@ export const SKILLS: Skill[] = [
     category: 'Backend',
     shortDescription: 'API-focused backend framework for structured application services.',
     iconLabel: 'API',
-    relatedProjectSlugs: ['expensux'],
+    relatedProjectSlugs: ['expensux', 'ithelpcenter', 'discovery'],
     evidenceSummary:
-      'Expensux uses ASP.NET Core concepts to organize financial workflows behind API layers and authentication boundaries.',
+      'ASP.NET and ASP.NET Core experience is represented through Expensux API concepts plus LeverIT enterprise feature and maintenance work.',
   },
   {
     id: 'rest-apis',
@@ -48,9 +52,9 @@ export const SKILLS: Skill[] = [
     category: 'Backend',
     shortDescription: 'HTTP API boundaries for separating frontend and backend responsibilities.',
     iconLabel: '↔',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'testigo-electoral'],
     evidenceSummary:
-      'REST API concepts are part of both the Worker modernization direction and the Expensux layered application approach.',
+      'REST API concepts are part of Worker modernization, Expensux, and LeverIT enterprise work that separated backend responsibilities from frontend workflows.',
   },
   {
     id: 'jwt',
@@ -98,15 +102,16 @@ export const SKILLS: Skill[] = [
     category: 'Database',
     shortDescription: 'Relational database work for production and demo application workflows.',
     iconLabel: 'SQL',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'discovery', 'testigo-electoral'],
     evidenceSummary:
-      'SQL Server supports Worker multi-connection modernization and Expensux financial workflow data storage concepts.',
+      'SQL Server supports Worker, Expensux, and LeverIT enterprise projects through public-safe database, maintenance, and application workflow evidence.',
   },
   {
     id: 'stored-procedures',
     name: 'Stored Procedures',
     category: 'Database',
-    shortDescription: 'Database-side routines used where they support maintainable data operations.',
+    shortDescription:
+      'Database-side routines used where they support maintainable data operations.',
     iconLabel: 'SP',
     relatedProjectSlugs: ['worker', 'expensux'],
     evidenceSummary:
@@ -126,11 +131,12 @@ export const SKILLS: Skill[] = [
     id: 'angular',
     name: 'Angular',
     category: 'Frontend',
-    shortDescription: 'Frontend application structure for professional, navigable user experiences.',
+    shortDescription:
+      'Frontend application structure for professional, navigable user experiences.',
     iconLabel: 'NG',
-    relatedProjectSlugs: ['expensux', 'j3dev-portfolio'],
+    relatedProjectSlugs: ['expensux', 'j3dev-portfolio', 'testigo-electoral'],
     evidenceSummary:
-      'Angular is used in Expensux frontend concepts and this portfolio application, including routes, static data, themes, and reusable page structures.',
+      'Angular is used in Expensux frontend concepts, this portfolio application, and the from-scratch LeverIT Testigo Electoral project.',
   },
   {
     id: 'typescript',
@@ -138,9 +144,9 @@ export const SKILLS: Skill[] = [
     category: 'Frontend',
     shortDescription: 'Typed frontend code for clearer data contracts and maintainable UI logic.',
     iconLabel: 'TS',
-    relatedProjectSlugs: ['expensux', 'j3dev-portfolio'],
+    relatedProjectSlugs: ['expensux', 'j3dev-portfolio', 'testigo-electoral'],
     evidenceSummary:
-      'TypeScript supports the typed data model approach used in the portfolio and Angular application work represented by Expensux.',
+      'TypeScript supports the typed data model approach used in the portfolio and Angular application work represented by Expensux and Testigo Electoral.',
   },
   {
     id: 'scss',
@@ -176,7 +182,8 @@ export const SKILLS: Skill[] = [
     id: 'layered-architecture',
     name: 'Layered Architecture',
     category: 'Architecture',
-    shortDescription: 'Organizing applications so UI, API, business logic, and data concerns stay clear.',
+    shortDescription:
+      'Organizing applications so UI, API, business logic, and data concerns stay clear.',
     iconLabel: 'LAY',
     relatedProjectSlugs: ['worker', 'expensux'],
     evidenceSummary:
@@ -186,7 +193,8 @@ export const SKILLS: Skill[] = [
     id: 'clean-code',
     name: 'Clean Code',
     category: 'Architecture',
-    shortDescription: 'Readable naming, focused responsibilities, and practical maintainability habits.',
+    shortDescription:
+      'Readable naming, focused responsibilities, and practical maintainability habits.',
     iconLabel: 'CC',
     relatedProjectSlugs: ['worker', 'j3dev-portfolio'],
     evidenceSummary:
@@ -196,11 +204,12 @@ export const SKILLS: Skill[] = [
     id: 'api-design',
     name: 'API Design',
     category: 'Architecture',
-    shortDescription: 'Planning API boundaries around clear responsibilities and business workflows.',
+    shortDescription:
+      'Planning API boundaries around clear responsibilities and business workflows.',
     iconLabel: 'AD',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'testigo-electoral'],
     evidenceSummary:
-      'API design appears in Worker modernization goals and Expensux workflows for authentication, accounts, payments, categories, and movements.',
+      'API design appears in Worker modernization, Expensux workflows, and LeverIT enterprise work that required backend boundaries around practical business needs.',
   },
   {
     id: 'vb-net',
@@ -320,11 +329,12 @@ export const SKILLS: Skill[] = [
     id: 'problem-solving',
     name: 'Problem Solving',
     category: 'Soft Skills',
-    shortDescription: 'Breaking down business needs, technical constraints, and maintainable solutions.',
+    shortDescription:
+      'Breaking down business needs, technical constraints, and maintainable solutions.',
     iconLabel: 'PS',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'discovery', 'testigo-electoral'],
     evidenceSummary:
-      'Problem solving is demonstrated through legacy modernization, production workflow support, and financial control workflow design.',
+      'Problem solving is demonstrated through legacy modernization, production workflow support, financial control workflow design, and LeverIT enterprise delivery.',
   },
   {
     id: 'technical-analysis',
@@ -352,9 +362,9 @@ export const SKILLS: Skill[] = [
     category: 'Soft Skills',
     shortDescription: 'Communicating technical tradeoffs in a practical, team-oriented way.',
     iconLabel: 'TC',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'ithelpcenter', 'discovery', 'testigo-electoral'],
     evidenceSummary:
-      'Team collaboration is connected to long-term production software work where technical decisions must support business users and maintainers.',
+      'Team collaboration is connected to long-term production software work and LeverIT projects, including a custom client project built with two teammates.',
   },
   {
     id: 'continuous-learning',
@@ -370,10 +380,137 @@ export const SKILLS: Skill[] = [
     id: 'maintainability-mindset',
     name: 'Maintainability Mindset',
     category: 'Soft Skills',
-    shortDescription: 'Prioritizing readable, sustainable software decisions over short-term complexity.',
+    shortDescription:
+      'Prioritizing readable, sustainable software decisions over short-term complexity.',
     iconLabel: 'MM',
-    relatedProjectSlugs: ['worker', 'expensux', 'j3dev-portfolio'],
+    relatedProjectSlugs: ['worker', 'expensux', 'j3dev-portfolio', 'ithelpcenter', 'discovery'],
     evidenceSummary:
-      'Maintainability is a repeated theme across Worker modernization, Expensux API organization, and the portfolio static data architecture.',
+      'Maintainability is a repeated theme across Worker modernization, Expensux API organization, the portfolio static data architecture, and LeverIT enterprise maintenance work.',
+  },
+
+  {
+    id: 'javascript',
+    name: 'JavaScript',
+    category: 'Frontend',
+    shortDescription:
+      'Frontend behavior and reusable client-side patterns for enterprise workflows.',
+    iconLabel: 'JS',
+    relatedProjectSlugs: ['ithelpcenter'],
+    evidenceSummary:
+      'JavaScript is connected to ItHelpCenter through SPA-like navigation, reusable class patterns, controlled lazy loading, and search experience improvements described at a public-safe level.',
+    contextNotes: [
+      'Implementation details remain generalized to protect proprietary LeverIT project information.',
+    ],
+  },
+  {
+    id: 'html',
+    name: 'HTML',
+    category: 'Frontend',
+    shortDescription:
+      'Semantic page structure for maintainable enterprise and portfolio interfaces.',
+    iconLabel: 'HTML',
+    relatedProjectSlugs: ['ithelpcenter', 'j3dev-portfolio'],
+    evidenceSummary:
+      'HTML is represented through ItHelpCenter frontend feature work and the portfolio’s accessible static page structure.',
+  },
+  {
+    id: 'css',
+    name: 'CSS',
+    category: 'Frontend',
+    shortDescription:
+      'Readable styling foundations for enterprise interfaces and professional presentation.',
+    iconLabel: 'CSS',
+    relatedProjectSlugs: ['ithelpcenter', 'j3dev-portfolio'],
+    evidenceSummary:
+      'CSS is connected to ItHelpCenter frontend improvements and the portfolio’s theme-friendly, readable styling approach.',
+  },
+  {
+    id: 'aspnet',
+    name: 'ASP.NET',
+    category: 'Backend',
+    shortDescription:
+      'Enterprise web application feature and maintenance experience in the Microsoft stack.',
+    iconLabel: 'ASP',
+    relatedProjectSlugs: ['ithelpcenter', 'discovery'],
+    evidenceSummary:
+      'ASP.NET is represented through LeverIT enterprise feature development, maintenance, and improvements described without proprietary implementation details.',
+    contextNotes: [
+      'This skill is separate from ASP.NET Core to reflect enterprise project maintenance context.',
+    ],
+  },
+  {
+    id: 'websockets',
+    name: 'WebSockets',
+    category: 'Backend',
+    shortDescription: 'Real-time communication concepts connected to enterprise functionality.',
+    iconLabel: 'WS',
+    relatedProjectSlugs: ['discovery'],
+    evidenceSummary:
+      'WebSocket-related functionality is represented through Discovery maintenance and improvements while keeping internal message flows confidential.',
+  },
+  {
+    id: 'search-ux',
+    name: 'Search UX',
+    category: 'Frontend',
+    shortDescription: 'Improving how users discover categories, records, and workflow guidance.',
+    iconLabel: 'SRCH',
+    relatedProjectSlugs: ['ithelpcenter'],
+    evidenceSummary:
+      'Search UX is connected to ItHelpCenter search experience enhancements and category discovery improvements described in general terms.',
+  },
+  {
+    id: 'spa-like-architecture',
+    name: 'SPA-like Architecture',
+    category: 'Architecture',
+    shortDescription:
+      'Client-side navigation patterns that improve continuity without replacing accessible navigation.',
+    iconLabel: 'SPA',
+    relatedProjectSlugs: ['ithelpcenter'],
+    evidenceSummary:
+      'SPA-like architecture is represented by ItHelpCenter navigation patterns over a single main index, summarized without exposing internal code.',
+  },
+  {
+    id: 'lazy-loading',
+    name: 'Lazy Loading',
+    category: 'Architecture',
+    shortDescription:
+      'Controlled loading patterns used to support maintainable and responsive interfaces.',
+    iconLabel: 'LOAD',
+    relatedProjectSlugs: ['ithelpcenter'],
+    evidenceSummary:
+      'Lazy loading is connected to ItHelpCenter controlled loading patterns used as part of maintainable frontend architecture improvements.',
+  },
+  {
+    id: 'ai-assisted-ux',
+    name: 'AI-assisted UX',
+    category: 'Frontend',
+    shortDescription:
+      'Using AI-assisted guidance concepts to help users discover the right path or category.',
+    iconLabel: 'AIUX',
+    relatedProjectSlugs: ['ithelpcenter'],
+    evidenceSummary:
+      'AI-assisted UX is represented by later ItHelpCenter category discovery and user guidance concepts, kept at a high level for confidentiality.',
+  },
+  {
+    id: 'enterprise-maintenance',
+    name: 'Enterprise Maintenance',
+    category: 'Enterprise Practices',
+    shortDescription:
+      'Supporting long-running production systems through safe, incremental improvements.',
+    iconLabel: 'ENT',
+    relatedProjectSlugs: ['ithelpcenter', 'discovery', 'worker'],
+    evidenceSummary:
+      'Enterprise maintenance is demonstrated through LeverIT project support and Worker production evolution, with details sanitized for public presentation.',
+  },
+  {
+    id: 'team-conventions',
+    name: 'Team Conventions',
+    category: 'Enterprise Practices',
+    shortDescription:
+      'Following and improving shared practices so teams can maintain software consistently.',
+    iconLabel: 'TEAM',
+    relatedProjectSlugs: ['ithelpcenter', 'discovery', 'testigo-electoral'],
+    evidenceSummary:
+      'Team conventions are connected to LeverIT enterprise work, including reusable JavaScript patterns, collaborative delivery, and maintainable handoff practices.',
   },
 ];
