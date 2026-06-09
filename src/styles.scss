@@ -54,3 +54,169 @@ button,
 a {
   font: inherit;
 }
+
+/* Viewport preview responsive layout safeguards.
+   The preview frame can be narrower than the browser viewport, so these
+   class-aware rules mirror mobile/tablet breakpoints inside manual previews. */
+.viewport-preview--mobile {
+  .app-shell__content {
+    padding: 1rem 0;
+  }
+
+  :is(
+      .home-section,
+      .home-cta,
+      .about-section,
+      .about-cta,
+      .value-section,
+      .value-cta,
+      .skills-section,
+      .projects-section,
+      .project-detail-nav,
+      .project-detail-hero,
+      .project-detail-section,
+      .journey-section,
+      .journey-cta,
+      .education-section,
+      .education-cta,
+      .documents-section,
+      .contact-section
+    ) {
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  :is(
+      .preview-grid--three,
+      .skill-grid,
+      .about-card-grid--four,
+      .about-card-grid--values,
+      .value-card-grid--three,
+      .value-card-grid--four,
+      .value-highlight,
+      .project-grid,
+      .project-detail-hero,
+      .project-time-grid,
+      .project-link-list,
+      .project-reference-list,
+      .journey-stage__card,
+      .journey-insight-grid,
+      .formal-education-list,
+      .learning-grid,
+      .highlight-grid,
+      .education-cta,
+      .document-grid,
+      .document-meta,
+      .contact-method-grid
+    ) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  :is(
+      .about-introduction,
+      .about-cta,
+      .value-cta,
+      .journey-cta,
+      .contact-final-cta
+    ) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  :is(
+      .home-cta__actions,
+      .about-cta__actions,
+      .value-cta__actions,
+      .journey-cta__actions,
+      .education-cta__actions,
+      .contact-final-cta__actions
+    ) {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  :is(.button-link, .contact-action, .document-action, .project-card__link) {
+    max-width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
+  :is(.contact-action, .document-action) {
+    width: 100%;
+  }
+
+  :is(.document-card__header, .skill-panel__header) {
+    flex-direction: column;
+  }
+}
+
+.viewport-preview--tablet {
+  .app-shell__content {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  :is(
+      .preview-grid--three,
+      .skill-grid,
+      .about-card-grid--four,
+      .about-card-grid--values,
+      .value-card-grid--three,
+      .value-card-grid--four,
+      .project-grid,
+      .project-time-grid,
+      .project-link-list,
+      .project-reference-list,
+      .journey-insight-grid,
+      .formal-education-list,
+      .learning-grid,
+      .highlight-grid,
+      .document-grid,
+      .document-meta,
+      .contact-method-grid
+    ) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  :is(.project-detail-hero, .journey-stage__card, .education-cta) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+:is(.viewport-preview--mobile, .viewport-preview--tablet) {
+  overflow-x: clip;
+
+  :is(
+      .preview-card,
+      .skill-card,
+      .about-card,
+      .value-card,
+      .project-card,
+      .project-time-card,
+      .project-link-card,
+      .project-reference-list div,
+      .journey-stage__card,
+      .journey-insight-card,
+      .education-card,
+      .learning-card,
+      .highlight-card,
+      .philosophy-card,
+      .document-card,
+      .contact-method-card
+    ) {
+    min-width: 0;
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  :is(
+      .badge-list,
+      .tag-list,
+      .project-detail-badges,
+      .project-card__technologies,
+      .contact-badge-list
+    ) li {
+    overflow-wrap: anywhere;
+  }
+}
