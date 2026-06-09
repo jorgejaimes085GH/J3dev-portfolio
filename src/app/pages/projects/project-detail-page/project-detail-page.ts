@@ -164,6 +164,10 @@ import { PROJECTS } from '../../../data/projects.data';
           </div>
           <p class="project-detail-note">{{ selectedProject.confidentialityNote }}</p>
         </section>
+
+        <nav class="project-detail-nav project-detail-nav--bottom" aria-label="Project navigation">
+          <a routerLink="/projects">← Back to Projects</a>
+        </nav>
       } @else {
         <section
           class="project-detail-section project-not-found"
@@ -200,6 +204,11 @@ import { PROJECTS } from '../../../data/projects.data';
         padding-top: 2rem;
         padding-bottom: 1rem;
         border-bottom: 0;
+      }
+
+      .project-detail-nav--bottom {
+        padding-top: 1.5rem;
+        padding-bottom: 3rem;
       }
 
       .project-detail-nav a,

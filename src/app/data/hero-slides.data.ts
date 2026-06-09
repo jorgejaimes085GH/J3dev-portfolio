@@ -21,7 +21,7 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
     subtitle: 'Maintainability, modernization, and decisions that support future change.',
     description:
       'Experience with legacy systems and enterprise applications shapes a practical approach: understand the problem, design with care, and keep the solution adaptable.',
-    primaryActionLabel: 'Why Hire Me',
+    primaryActionLabel: 'How I Add Value',
     primaryActionRoute: '/why-hire-me',
     secondaryActionLabel: 'See Journey',
     secondaryActionRoute: '/journey',
