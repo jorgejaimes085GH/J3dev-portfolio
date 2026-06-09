@@ -32,7 +32,7 @@ export const FORMAL_EDUCATION: FormalEducationEntry[] = [
     period: '2015 - 2019',
     status: 'Completed through semester 9',
     summary:
-      'Advanced studies in software engineering, architecture, project development, databases, and systems design.',
+      'Further studies in software engineering, architecture, project development, databases, and systems design.',
   },
 ];
 
@@ -58,13 +58,26 @@ export const CONTINUOUS_LEARNING: ContinuousLearningEntry[] = [
   {
     id: 'database-learning',
     title: 'Database Learning',
-    focusAreas: ['SQL Server', 'Data modeling', 'Stored Procedures', 'Performance', 'Business rules'],
+    focusAreas: [
+      'SQL Server',
+      'Data modeling',
+      'Stored Procedures',
+      'Performance',
+      'Business rules',
+    ],
     summary: 'Designing and maintaining business databases.',
   },
   {
     id: 'enterprise-development-learning',
     title: 'Enterprise Development Learning',
-    focusAreas: ['C#', 'ASP.NET', 'REST APIs', 'WebSockets', 'JavaScript', 'Enterprise maintenance'],
+    focusAreas: [
+      'C#',
+      'ASP.NET',
+      'REST APIs',
+      'WebSockets',
+      'JavaScript',
+      'Enterprise maintenance',
+    ],
     summary: 'Building and evolving enterprise software platforms.',
   },
   {

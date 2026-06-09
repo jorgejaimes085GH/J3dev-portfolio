@@ -4,86 +4,98 @@ export const ABOUT_PAGE_DATA: AboutPageData = {
   introduction: {
     professionalTitle: 'Software Engineer',
     shortIntroduction:
-      'Placeholder introduction for Jorge Jaimes and his backend-centered software engineering journey.',
-    profileImageAlt: 'Placeholder profile image area for Jorge Jaimes',
+      'Jorge Jaimes is a backend-centered Software Engineer whose work has evolved from desktop business systems and SQL Server data workflows into modern .NET, REST API, and Angular application development.',
+    profileImageAlt: 'Professional profile image area for Jorge Jaimes',
   },
   journeyMilestones: [
     {
       title: 'Early technology curiosity',
-      description: 'Placeholder milestone about discovering technology and problem solving.',
+      description:
+        'Built an early foundation by exploring how technology can solve practical problems for real users.',
     },
     {
       title: 'VB6 / Access',
       description:
-        'Placeholder milestone about early desktop and data-driven application practice.',
+        'Worked with desktop and data-driven applications, gaining direct experience with business workflows, forms, reports, and legacy constraints.',
     },
     {
       title: 'WinForms',
       description:
-        'Placeholder milestone about building structured desktop application interfaces.',
+        'Expanded into structured desktop interfaces where usability, data entry, reporting, and operational reliability mattered.',
     },
     {
       title: 'SQL Server',
       description:
-        'Placeholder milestone about relational data, queries, and business information.',
+        'Developed stronger relational database habits around queries, stored procedures, data organization, and business information integrity.',
     },
     {
       title: 'Enterprise software',
       description:
-        'Placeholder milestone about production-focused business application experience.',
+        'Contributed to production-oriented systems where maintenance, incremental delivery, team conventions, and confidentiality were part of daily engineering work.',
     },
     {
       title: 'Architecture',
-      description: 'Placeholder milestone about maintainable structure and design decisions.',
+      description:
+        'Moved from isolated implementation toward clearer boundaries, maintainable layers, and design decisions that support future change.',
     },
     {
       title: 'Modern .NET',
-      description: 'Placeholder milestone about current backend development practices with .NET.',
+      description:
+        'Continued evolving backend practice with C#, .NET 8, REST API direction, Dapper, SQL Server, and SOLID principles.',
     },
     {
       title: 'Angular',
       description:
-        'Placeholder milestone about fullstack UI development and responsive interfaces.',
+        'Added frontend capability through Angular and TypeScript to connect usable interfaces with backend services and application workflows.',
     },
   ],
   engineeringPhilosophy: [
     {
       title: 'Understand the problem first',
-      description: 'Placeholder note about clarifying needs before selecting a solution.',
+      description:
+        'Clarify business needs, constraints, and existing system behavior before choosing an implementation approach.',
     },
     {
       title: 'Architecture before implementation',
-      description: 'Placeholder note about planning structure before writing code.',
+      description:
+        'Define responsibilities, boundaries, and data flow early so code remains easier to reason about as requirements change.',
     },
     {
       title: 'Maintainable software',
-      description: 'Placeholder note about keeping solutions readable and easy to evolve.',
+      description:
+        'Favor readable solutions, practical structure, and incremental improvement over unnecessary complexity.',
     },
     {
       title: 'Continuous learning',
-      description: 'Placeholder note about steady technical growth and adaptation.',
+      description:
+        'Treat each project as part of a long-term technical evolution across legacy systems, enterprise delivery, and modern tooling.',
     },
   ],
   professionalValues: [
     {
       title: 'Responsibility',
-      description: 'Placeholder value about ownership and reliability in software work.',
+      description:
+        'Take ownership of assigned work while respecting production constraints, team practices, and confidentiality.',
     },
     {
       title: 'Maintainability',
-      description: 'Placeholder value about reducing unnecessary complexity over time.',
+      description:
+        'Reduce avoidable complexity so future changes can be completed with less risk and clearer technical context.',
     },
     {
       title: 'Teamwork',
-      description: 'Placeholder value about collaboration and shared technical clarity.',
+      description:
+        'Contribute through clear communication, shared standards, and practical support for teammates and stakeholders.',
     },
     {
       title: 'Documentation',
-      description: 'Placeholder value about preserving context for future decisions.',
+      description:
+        'Preserve useful context around decisions, behavior, and handoff needs so systems are easier to maintain.',
     },
     {
       title: 'Continuous improvement',
-      description: 'Placeholder value about learning from each iteration and project.',
+      description:
+        'Use each iteration to refine technical judgment, improve delivery habits, and keep the work aligned with business needs.',
     },
   ],
 };

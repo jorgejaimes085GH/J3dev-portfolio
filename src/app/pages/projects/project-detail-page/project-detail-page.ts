@@ -74,10 +74,11 @@ import { PROJECTS } from '../../../data/projects.data';
         <section class="project-detail-section" aria-labelledby="project-time-title">
           <div class="project-detail-section__header">
             <p class="project-detail-page__eyebrow">Time Investment Detail</p>
-            <h2 id="project-time-title">Placeholder implementation blocks</h2>
+            <h2 id="project-time-title">Implementation work areas</h2>
             <p>
-              These time blocks are placeholders used to communicate the type of work involved.
-              Final durations can be refined later.
+              These time blocks summarize the type of work involved while keeping private
+              implementation details protected. Durations can be refined as more public-safe project
+              material becomes available.
             </p>
           </div>
 
@@ -121,7 +122,10 @@ import { PROJECTS } from '../../../data/projects.data';
                     </a>
                   } @else {
                     <p class="project-link-card__placeholder">
-                      {{ projectLink.placeholderMessage || 'This link will be added later.' }}
+                      {{
+                        projectLink.placeholderMessage ||
+                          'This link will be published when available.'
+                      }}
                     </p>
                   }
                 </article>
@@ -135,7 +139,7 @@ import { PROJECTS } from '../../../data/projects.data';
         @if (selectedProject.referencePlaceholders; as referencePlaceholders) {
           <section class="project-detail-section" aria-labelledby="project-reference-title">
             <div class="project-detail-section__header">
-              <p class="project-detail-page__eyebrow">Reference Placeholders</p>
+              <p class="project-detail-page__eyebrow">Reference Availability</p>
               <h2 id="project-reference-title">Company reference details</h2>
               <p>{{ referencePlaceholders.availabilityNote }}</p>
             </div>

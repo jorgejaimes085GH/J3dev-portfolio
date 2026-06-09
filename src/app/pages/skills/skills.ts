@@ -30,7 +30,10 @@ interface SkillGroup {
       </section>
 
       @for (skillGroup of skillGroups; track skillGroup.category) {
-        <section class="skills-section" [attr.aria-labelledby]="categoryTitleId(skillGroup.category)">
+        <section
+          class="skills-section"
+          [attr.aria-labelledby]="categoryTitleId(skillGroup.category)"
+        >
           <div class="skills-section__header">
             <p class="skills-section__eyebrow">Skill Category</p>
             <h2 [id]="categoryTitleId(skillGroup.category)">{{ skillGroup.category }}</h2>
@@ -113,8 +116,9 @@ interface SkillGroup {
                 </ul>
               } @else {
                 <p class="skill-panel__placeholder">
-                  No public-safe related project is linked for this skill yet. Evidence can be added
-                  later without exposing private or proprietary information.
+                  No public-safe related project is linked for this skill yet. Supporting evidence
+                  can be added in a future update without exposing private or proprietary
+                  information.
                 </p>
               }
             </section>
@@ -368,7 +372,7 @@ export class Skills {
     const relatedProjectCount = this.getRelatedProjects(skill).length;
 
     if (relatedProjectCount === 0) {
-      return 'Evidence placeholder';
+      return 'Evidence pending';
     }
 
     return `${relatedProjectCount} related project${relatedProjectCount === 1 ? '' : 's'}`;

@@ -22,7 +22,10 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         <div class="value-section__header">
           <p class="value-section__eyebrow">Value Pillars</p>
           <h2 id="value-pillars-title">Practical habits that support delivery</h2>
-          <p>Placeholder overview for the recurring engineering habits behind the work.</p>
+          <p>
+            These habits connect technical decisions with production reliability, maintainability,
+            and clear business context.
+          </p>
         </div>
 
         <div class="value-card-grid value-card-grid--three">
@@ -42,7 +45,10 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         <div class="value-section__header">
           <p class="value-section__eyebrow">Real-World Contribution Areas</p>
           <h2 id="contribution-areas-title">Areas where technical work becomes team value</h2>
-          <p>Placeholder overview for contribution areas connected to software project needs.</p>
+          <p>
+            These contribution areas reflect the types of work Jorge has handled across backend
+            development, databases, modernization, and enterprise systems.
+          </p>
         </div>
 
         <div class="value-card-grid value-card-grid--three">
@@ -59,7 +65,10 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         <div class="value-section__header">
           <p class="value-section__eyebrow">Team Contribution</p>
           <h2 id="team-contribution-title">Value beyond writing code</h2>
-          <p>Placeholder overview for collaboration, communication, and long-term team support.</p>
+          <p>
+            Team value also comes from communication, documentation, knowledge sharing, and
+            decisions that make future maintenance easier.
+          </p>
         </div>
 
         <div class="value-card-grid value-card-grid--four">
@@ -90,16 +99,15 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         <div>
           <p class="value-section__eyebrow">Evidence Navigation</p>
           <h2 id="evidence-navigation-title">Continue toward supporting portfolio evidence</h2>
-          <p>Placeholder CTA copy guiding visitors to projects, skills, and journey context.</p>
+          <p>
+            Continue into the supporting sections to review project context, skill evidence, and the
+            technical journey behind the portfolio narrative.
+          </p>
         </div>
 
         <nav class="value-cta__actions" aria-label="Evidence navigation links">
           @for (link of valueData.evidenceLinks; track link.route) {
-            <a
-              class="button-link"
-              [class.button-link--primary]="$first"
-              [routerLink]="link.route"
-            >
+            <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
             </a>
           }

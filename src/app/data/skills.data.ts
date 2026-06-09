@@ -304,26 +304,26 @@ export const SKILLS: Skill[] = [
       'Swagger/API testing appears in the project implementation blocks and supports clearer API validation workflows.',
   },
   {
-    id: 'azure-placeholder',
-    name: 'Azure placeholder',
+    id: 'azure-learning',
+    name: 'Azure Learning',
     category: 'Dev Tools / Cloud',
     shortDescription: 'Cloud deployment topic reserved for future verified evidence.',
     iconLabel: 'AZ',
     relatedProjectSlugs: [],
     evidenceSummary:
-      'Azure is intentionally marked as a placeholder until public-safe project evidence or deployment context is available.',
+      'Azure is listed as a current learning area until public-safe project evidence or deployment context is available.',
     contextNotes: ['This avoids overstating cloud experience before evidence is added.'],
   },
   {
-    id: 'docker-placeholder',
-    name: 'Docker placeholder',
+    id: 'docker-learning',
+    name: 'Docker Learning',
     category: 'Dev Tools / Cloud',
     shortDescription: 'Container workflow topic reserved for future verified evidence.',
     iconLabel: 'DK',
     relatedProjectSlugs: [],
     evidenceSummary:
-      'Docker is intentionally marked as a placeholder until it can be connected to public-safe project evidence.',
-    contextNotes: ['Placeholder status keeps the skills page evidence-based.'],
+      'Docker is listed as a current learning area until it can be connected to public-safe project evidence.',
+    contextNotes: ['Current-learning status keeps the skills page evidence-based.'],
   },
   {
     id: 'problem-solving',
@@ -354,7 +354,7 @@ export const SKILLS: Skill[] = [
     iconLabel: 'DOC',
     relatedProjectSlugs: ['worker', 'j3dev-portfolio'],
     evidenceSummary:
-      'Documentation appears through safe public project summaries, placeholder notes, and review-oriented implementation blocks.',
+      'Documentation appears through safe public project summaries, availability notes, and review-oriented implementation blocks.',
   },
   {
     id: 'team-collaboration',
