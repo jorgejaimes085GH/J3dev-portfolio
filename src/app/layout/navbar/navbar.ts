@@ -10,7 +10,11 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, ThemeSwitcher, ViewportSwitcher],
   template: `
-    <header class="site-header">
+    <header
+      class="site-header"
+      [class.site-header--pinned]="isHeaderPinned()"
+      [class.site-header--unpinned]="!isHeaderPinned()"
+    >
       <div class="site-header__inner">
         <a class="site-header__brand" routerLink="/" aria-label="J3dev Portfolio home">
           J3dev Portfolio
@@ -34,6 +38,18 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
         </nav>
 
         <div class="site-header__tools" aria-label="Display options">
+          <button
+            class="site-header__pin-toggle"
+            type="button"
+            (click)="toggleHeaderPinned()"
+            [attr.aria-label]="
+              isHeaderPinned()
+                ? 'Unpin header so it scrolls with the page'
+                : 'Pin header so it remains visible while scrolling'
+            "
+          >
+            {{ isHeaderPinned() ? 'Unpin' : 'Pin' }}
+          </button>
           <app-theme-switcher />
           <app-viewport-switcher />
         </div>
@@ -46,4 +62,9 @@ export class Navbar {
   private readonly navigationService = inject(NavigationService);
 
   readonly navigationItems = this.navigationService.getMainNavigation();
+  readonly isHeaderPinned = this.navigationService.isHeaderPinned;
+
+  protected toggleHeaderPinned(): void {
+    this.navigationService.toggleHeaderPinned();
+  }
 }
