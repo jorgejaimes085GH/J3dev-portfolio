@@ -19,7 +19,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: Home, title: 'Home | J3dev Portfolio' },
       { path: 'about', component: About, title: 'About | J3dev Portfolio' },
-      { path: 'why-hire-me', component: WhyHireMe, title: 'Why Hire Me | J3dev Portfolio' },
+      { path: 'why-hire-me', component: WhyHireMe, title: 'How I Add Value | J3dev Portfolio' },
       { path: 'skills', component: Skills, title: 'Skills | J3dev Portfolio' },
       { path: 'projects', component: ProjectsPage, title: 'Projects | J3dev Portfolio' },
       {
