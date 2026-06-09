@@ -9,9 +9,14 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
   selector: 'app-navbar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive, ThemeSwitcher, ViewportSwitcher],
+  host: {
+    '[class.site-header-shell--sticky]': 'isHeaderPinned()',
+    '[class.site-header-shell--static]': '!isHeaderPinned()',
+  },
   template: `
     <header
       class="site-header"
+      [class.site-header--sticky]="isHeaderPinned()"
       [class.site-header--pinned]="isHeaderPinned()"
       [class.site-header--unpinned]="!isHeaderPinned()"
     >
