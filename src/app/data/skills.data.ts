@@ -132,21 +132,21 @@ export const SKILLS: Skill[] = [
     name: 'Angular',
     category: 'Frontend',
     shortDescription:
-      'Frontend application structure for professional, navigable user experiences.',
+      'Complementary frontend structure for backend-driven user workflows.',
     iconLabel: 'NG',
     relatedProjectSlugs: ['expensux', 'j3dev-portfolio', 'testigo-electoral'],
     evidenceSummary:
-      'Angular is used in Expensux frontend concepts, this portfolio application, and the from-scratch LeverIT Testigo Electoral project.',
+      'Angular supports Expensux frontend concepts, this portfolio application, and the from-scratch LeverIT Testigo Electoral project while Backend .NET remains the primary profile focus.',
   },
   {
     id: 'typescript',
     name: 'TypeScript',
     category: 'Frontend',
-    shortDescription: 'Typed frontend code for clearer data contracts and maintainable UI logic.',
+    shortDescription: 'Typed frontend code that clarifies API contracts and maintainable UI logic.',
     iconLabel: 'TS',
     relatedProjectSlugs: ['expensux', 'j3dev-portfolio', 'testigo-electoral'],
     evidenceSummary:
-      'TypeScript supports the typed data model approach used in the portfolio and Angular application work represented by Expensux and Testigo Electoral.',
+      'TypeScript supports clearer API-facing models in the portfolio and Angular work represented by Expensux and Testigo Electoral.',
   },
   {
     id: 'scss',

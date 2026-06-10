@@ -2,9 +2,9 @@ import { AboutPageData } from '../models/about.model';
 
 export const ABOUT_PAGE_DATA: AboutPageData = {
   introduction: {
-    professionalTitle: 'Software Engineer',
+    professionalTitle: 'Backend .NET Developer',
     shortIntroduction:
-      'Jorge Jaimes is a backend-centered Software Engineer whose work has evolved from desktop business systems and SQL Server data workflows into modern .NET, REST API, and Angular application development.',
+      'Jorge Jaimes is a Backend .NET Developer whose work has evolved from desktop business systems and SQL Server data workflows into modern C#, .NET, REST API, and Angular-supported application development.',
     profileImageAlt: 'Professional profile image area for Jorge Jaimes',
   },
   journeyMilestones: [
@@ -41,12 +41,12 @@ export const ABOUT_PAGE_DATA: AboutPageData = {
     {
       title: 'Modern .NET',
       description:
-        'Continued evolving backend practice with C#, .NET 8, REST API direction, Dapper, SQL Server, and SOLID principles.',
+        'Continued evolving backend practice with C#, .NET 8, REST API direction, Dapper, SQL Server, layered architecture, and SOLID principles.',
     },
     {
       title: 'Angular',
       description:
-        'Added frontend capability through Angular and TypeScript to connect usable interfaces with backend services and application workflows.',
+        'Added Angular and TypeScript as complementary fullstack capabilities for connecting usable interfaces to backend services and application workflows.',
     },
   ],
   engineeringPhilosophy: [

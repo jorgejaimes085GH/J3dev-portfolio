@@ -96,7 +96,7 @@ export const CONTINUOUS_LEARNING: ContinuousLearningEntry[] = [
     id: 'modern-fullstack-learning',
     title: 'Modern Fullstack Learning',
     focusAreas: ['Angular', 'TypeScript', 'JWT', 'Dapper', '.NET 8', 'Responsive Design'],
-    summary: 'Integrating modern backend and frontend development practices.',
+    summary: 'Integrating modern Backend .NET practices with frontend collaboration where needed.',
   },
   {
     id: 'current-learning-focus',
@@ -120,7 +120,7 @@ export const EDUCATION_HIGHLIGHTS: EducationHighlight[] = [
   },
   {
     title: 'Independent Learning',
-    description: 'More than a decade of self-directed technical growth.',
+    description: 'Self-directed technical growth from legacy systems toward modern Backend .NET practices.',
   },
   {
     title: 'Production Experience',

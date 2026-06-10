@@ -4,9 +4,9 @@ export const VALUE_PAGE_DATA: ValuePageData = {
   introduction: {
     title: 'How I Add Value',
     introduction:
-      'Jorge contributes by connecting practical software delivery with maintainable backend design, SQL Server experience, and a careful approach to evolving existing systems.',
+      'Jorge contributes to teams by connecting practical software delivery with Backend .NET design, SQL Server experience, and a careful approach to evolving existing systems.',
     supportingStatement:
-      'The focus is evidence-based: production systems, legacy modernization, enterprise maintenance, fullstack collaboration, and steady technical growth without exposing private implementation details.',
+      'The focus is evidence-based: production systems, legacy modernization, enterprise maintenance, backend-first fullstack collaboration, and steady technical growth without exposing private implementation details.',
   },
   valuePillars: [
     {
@@ -30,7 +30,7 @@ export const VALUE_PAGE_DATA: ValuePageData = {
     {
       title: 'Continuous Learning',
       description:
-        'Builds on experience from VB6, Access, WinForms, SQL Server, enterprise .NET systems, Angular, and modern development tools.',
+        'Builds on experience from VB6, Access, WinForms, SQL Server, enterprise .NET systems, REST APIs, Angular, and modern development tools.',
       categoryLabel: 'Growth',
     },
     {
@@ -55,7 +55,7 @@ export const VALUE_PAGE_DATA: ValuePageData = {
     {
       title: 'Backend Development',
       description:
-        'Contributes to .NET-centered application services, data access flows, authentication concepts, and maintainable business logic.',
+        'Contributes to Backend .NET application services, SQL-centered data access flows, authentication concepts, and maintainable business logic.',
     },
     {
       title: 'API Design',

@@ -124,17 +124,17 @@ export const PROJECTS: Project[] = [
     id: 'expensux',
     slug: 'expensux',
     title: 'Expensux',
-    typeStatus: 'Demo-oriented financial control application',
+    typeStatus: 'Backend API demo / Financial control application',
     shortDescription:
-      'Personal and business expense control application focused on financial organization, profiles, accounts, debts, payments, categories, movements, JWT authentication, API layers, and Angular frontend.',
+      'Financial control application centered on a .NET API, SQL Server workflows, JWT authentication, Dapper data access, and an Angular interface as the supporting presentation layer.',
     visualLabel: 'Financial control application visual reference pending final asset',
     context: [
-      'Demo-oriented financial control application for organizing financial workflows.',
+      'Backend-oriented financial control application for organizing practical financial workflows.',
       'Public demo link is pending publication.',
       'Source code remains private for now.',
     ],
     architectureNotes: [
-      'Uses layered API concepts and an Angular frontend to organize financial control workflows.',
+      'Uses layered .NET API concepts with SQL Server data access and an Angular frontend to organize financial control workflows.',
       'Designed around profiles, accounts, debts, payments, categories, movements, authentication, and clear API responsibilities.',
       'Current public detail remains intentionally high-level while the demo experience is prepared.',
     ],
@@ -277,11 +277,11 @@ export const PROJECTS: Project[] = [
     title: 'Testigo Electoral',
     typeStatus: 'LeverIT custom client project / Built from scratch',
     shortDescription:
-      'Custom client project developed collaboratively from scratch using SQL Server, REST APIs, and Angular.',
+      'Custom client project developed collaboratively from scratch using SQL Server, REST APIs, and Angular as a supporting UI layer.',
     visualLabel: 'LeverIT custom client project visual reference pending approved asset',
     context: [
       'Professional custom client project worked on during Jorge’s LeverIT experience.',
-      'Built collaboratively from scratch with two teammates using SQL Server, REST APIs, and Angular.',
+      'Built collaboratively from scratch with two teammates using SQL Server, REST APIs, and Angular for the presentation layer.',
       'No source code, private demo, client names, real addresses, or confidential implementation details are exposed.',
       'Official LeverIT website and logo references will be added after approved public assets are finalized.',
     ],
@@ -289,7 +289,7 @@ export const PROJECTS: Project[] = [
       'Collaborated on a from-scratch enterprise delivery effort with clear separation between database, API, and frontend responsibilities.',
       'Used SQL Server and REST API concepts to support structured backend communication without exposing private schema or business rules.',
       'Used Angular and TypeScript for frontend implementation while keeping client-specific UI details confidential.',
-      'Demonstrates team collaboration, practical delivery, and maintainable fullstack development in an enterprise context.',
+      'Demonstrates team collaboration, practical delivery, and maintainable backend/frontend integration in an enterprise context.',
     ],
     technologies: [
       'SQL Server',
@@ -326,10 +326,10 @@ export const PROJECTS: Project[] = [
     title: 'J3dev Portfolio',
     typeStatus: 'Public portfolio / Open source showcase',
     shortDescription:
-      'Professional Angular portfolio built to present backend specialization, fullstack capability, project evidence, technical evolution, and recruiter-focused navigation.',
+      'Professional Angular portfolio built to present Backend .NET specialization, supporting fullstack capability, project evidence, technical evolution, and recruiter-focused navigation.',
     visualLabel: 'Portfolio application visual reference pending final asset',
     context: [
-      'Presents backend specialization, fullstack capability, technical evolution, and recruiter-focused navigation.',
+      'Presents Backend .NET specialization, supporting fullstack capability, technical evolution, and recruiter-focused navigation.',
       'Public portfolio and open-source showcase for professional presentation.',
       'Uses static data and a theme system without backend, API, or database logic.',
     ],

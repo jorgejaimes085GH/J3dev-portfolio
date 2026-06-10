@@ -19,7 +19,8 @@ import { Project } from '../../models/project.model';
           <p class="journey-hero__summary">
             This page is not a traditional employment timeline. It shows Jorge's evolution as a
             software engineer: what changed in his technical mindset, what he learned from each
-            stage, and how those stages support his current backend and fullstack profile.
+            stage, and how those stages support his current Backend .NET profile with complementary
+            fullstack capability.
           </p>
         </div>
       </section>

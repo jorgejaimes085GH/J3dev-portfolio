@@ -14,8 +14,8 @@ import { PROJECTS } from '../../../data/projects.data';
           <p class="projects-section__eyebrow">Selected Project Evidence</p>
           <h1 id="projects-page-title">Projects</h1>
           <p class="projects-introduction__summary">
-            A structured overview of selected work that demonstrates backend, fullstack,
-            architecture, modernization, and production experience.
+            A structured overview of selected work that demonstrates Backend .NET, SQL Server,
+            architecture, modernization, production experience, and supporting fullstack capability.
           </p>
           <p>
             These cards are intentionally simple for now. Final visuals, deeper case studies, and

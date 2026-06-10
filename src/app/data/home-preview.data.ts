@@ -5,19 +5,19 @@ export const HOME_VALUE_PREVIEWS: readonly HomeValuePreview[] = [
     title: 'Think before building',
     label: 'Problem first',
     description:
-      'I start by clarifying the business need, constraints, and maintainability expectations before selecting a technical solution.',
+      'Jorge starts by clarifying the business need, constraints, and maintainability expectations before selecting a technical solution.',
   },
   {
     title: 'Architecture before code',
     label: 'Design matters',
     description:
-      'I prefer simple, well-structured solutions that keep responsibilities clear and make future changes easier to reason about.',
+      'He prefers simple, well-structured solutions that keep responsibilities clear and make future changes easier to reason about.',
   },
   {
     title: 'Software that evolves',
     label: 'Long-term value',
     description:
-      'I focus on systems that can be maintained, extended, and modernized without unnecessary complexity or risky rewrites.',
+      'The focus is on systems that can be maintained, extended, and modernized without unnecessary complexity or risky rewrites.',
   },
 ];
 
@@ -32,9 +32,9 @@ export const HOME_PROJECT_PREVIEWS: readonly HomeProjectPreview[] = [
   },
   {
     name: 'Expensux',
-    statusLabel: 'Demo-oriented · Source private',
+    statusLabel: 'Backend API demo · Source private',
     description:
-      'Expense management showcase focused on practical workflows, API structure, authentication, and maintainable implementation decisions.',
+      'Expense management showcase focused on .NET API structure, authentication, SQL-backed workflows, and maintainable implementation decisions.',
     technologies: ['ASP.NET Core', 'REST APIs', 'JWT', 'Angular'],
     route: '/projects',
   },
@@ -55,6 +55,6 @@ export const HOME_SKILL_PREVIEWS: readonly HomeSkillPreview[] = [
   { name: 'JWT', context: 'Token-based authentication flows' },
   { name: 'Dapper', context: 'Lightweight data access for SQL-centered applications' },
   { name: 'LINQ', context: 'Readable C# querying and data transformations' },
-  { name: 'Angular', context: 'Structured front-end features and responsive UI' },
+  { name: 'Angular', context: 'Complementary UI layer for backend-driven workflows' },
   { name: 'SOLID', context: 'Maintainable object-oriented design principles' },
 ];

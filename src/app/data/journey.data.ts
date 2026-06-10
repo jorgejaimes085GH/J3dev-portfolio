@@ -28,9 +28,9 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     title: 'Independent Product Development',
     periodLabel: 'Long-term product stage',
     summary:
-      'Product work expanded into building, maintaining, and adapting a system across changing operational needs over multiple years.',
+      'Product work expanded into building, maintaining, and adapting a system across changing operational needs over multiple years, showing autonomy without making freelancing the main professional identity.',
     focusAreas: ['Worker', 'VB.NET', 'Access', 'SQL Server', 'Reports', 'Excel export'],
-    keyLearning: 'Building and maintaining software that evolves over years.',
+    keyLearning: 'Building and maintaining software that evolves over years while preserving business continuity.',
     relatedProjectSlugs: ['worker'],
     evidenceNote:
       'Worker is referenced as public-safe portfolio evidence while proprietary source code and operational details remain private.',
@@ -80,9 +80,9 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     title: 'Modern Fullstack Development',
     periodLabel: 'Modern application stage',
     summary:
-      'Current work combines backend depth with frontend integration, using typed APIs, authentication, data access, and Angular interfaces.',
+      'Current work keeps Backend .NET as the center while adding frontend integration through typed APIs, authentication, data access, and Angular interfaces.',
     focusAreas: ['.NET 8', 'REST APIs', 'JWT', 'Dapper', 'Angular', 'TypeScript', 'SQL Server'],
-    keyLearning: 'Building modern applications with backend depth and frontend integration.',
+    keyLearning: 'Building modern applications with backend depth first and frontend integration as a complement.',
     relatedProjectSlugs: ['expensux', 'j3dev-portfolio'],
     evidenceNote:
       'Expensux and this portfolio provide safe examples of modern fullstack direction without adding backend logic to the portfolio itself.',
