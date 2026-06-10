@@ -30,6 +30,43 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         </figure>
       </section>
 
+      <section class="about-section" aria-labelledby="professional-mindset-title">
+        <div class="about-section__header">
+          <p class="about-section__eyebrow">Professional Mindset</p>
+          <h2 id="professional-mindset-title">How Jorge approaches professional work</h2>
+          <p>
+            This mindset connects technical decisions with responsibility, consistency, and the
+            practical value expected from business software.
+          </p>
+        </div>
+
+        <div class="about-card-grid about-card-grid--four">
+          @for (item of aboutData.professionalMindset; track item.title) {
+            <article class="about-card">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </article>
+          }
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="adaptability-title">
+        <div class="about-section__header">
+          <p class="about-section__eyebrow">Adaptability</p>
+          <h2 id="adaptability-title">Evolving with real business needs</h2>
+          <p>{{ aboutData.adaptability.summary }}</p>
+        </div>
+
+        <div class="about-card-grid about-card-grid--four">
+          @for (item of aboutData.adaptability.evidence; track item.title) {
+            <article class="about-card">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </article>
+          }
+        </div>
+      </section>
+
       <section class="about-section" aria-labelledby="journey-overview-title">
         <div class="about-section__header">
           <p class="about-section__eyebrow">Professional Journey Overview</p>
