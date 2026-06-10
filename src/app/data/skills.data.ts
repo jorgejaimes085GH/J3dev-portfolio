@@ -1,4 +1,4 @@
-import { Skill, SkillCategory } from '../models/skill.model';
+import { BackendSkillGroup, Skill, SkillCategory } from '../models/skill.model';
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   'Backend',
@@ -11,11 +11,20 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   'Enterprise Practices',
 ];
 
+export const BACKEND_SKILL_GROUPS: BackendSkillGroup[] = [
+  'Platform & Language',
+  'Application Frameworks',
+  'Data Access & Querying',
+  'API & Communication',
+  'Backend Tooling',
+];
+
 const SKILL_ITEMS: Skill[] = [
   {
     id: 'dotnet',
     name: '.NET',
     category: 'Backend',
+    backendGroup: 'Platform & Language',
     shortDescription:
       'Backend platform experience across production modernization and API direction.',
     iconLabel: '.N',
@@ -30,6 +39,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'csharp',
     name: 'C#',
     category: 'Backend',
+    backendGroup: 'Platform & Language',
     shortDescription: 'Primary language for modern backend and maintainable application code.',
     iconLabel: 'C#',
     relatedProjectSlugs: ['worker', 'ithelpcenter', 'discovery', 'testigo-electoral'],
@@ -40,6 +50,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'aspnet-core',
     name: 'ASP.NET Core',
     category: 'Backend',
+    backendGroup: 'Application Frameworks',
     shortDescription: 'API-focused backend framework for structured application services.',
     iconLabel: 'API',
     relatedProjectSlugs: ['expensux', 'ithelpcenter', 'discovery'],
@@ -50,6 +61,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'rest-apis',
     name: 'REST APIs',
     category: 'Backend',
+    backendGroup: 'API & Communication',
     shortDescription: 'HTTP API boundaries for separating frontend and backend responsibilities.',
     iconLabel: '↔',
     relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'testigo-electoral'],
@@ -60,6 +72,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'jwt',
     name: 'JWT',
     category: 'Backend',
+    backendGroup: 'API & Communication',
     shortDescription: 'Token-based authentication concepts for API-protected workflows.',
     iconLabel: 'JWT',
     relatedProjectSlugs: ['expensux'],
@@ -70,6 +83,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'dapper',
     name: 'Dapper',
     category: 'Backend',
+    backendGroup: 'Data Access & Querying',
     shortDescription: 'Lightweight data access for SQL-backed application flows.',
     iconLabel: 'DP',
     relatedProjectSlugs: ['worker', 'expensux'],
@@ -80,6 +94,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'ado-net',
     name: 'ADO.NET',
     category: 'Backend',
+    backendGroup: 'Data Access & Querying',
     shortDescription: 'Legacy data access experience from production desktop systems.',
     iconLabel: 'ADO',
     relatedProjectSlugs: ['worker'],
@@ -90,11 +105,27 @@ const SKILL_ITEMS: Skill[] = [
     id: 'linq',
     name: 'LINQ',
     category: 'Backend',
+    backendGroup: 'Data Access & Querying',
     shortDescription: 'Query and transformation patterns for readable C# application logic.',
     iconLabel: 'LQ',
     relatedProjectSlugs: ['worker'],
     evidenceSummary:
       'LINQ is represented as part of the C#/.NET application development skill set used to keep business logic readable and maintainable.',
+  },
+  {
+    id: 'entity-framework-core',
+    name: 'Entity Framework Core',
+    category: 'Backend',
+    backendGroup: 'Data Access & Querying',
+    shortDescription:
+      'ORM technology currently being strengthened through training, architecture exercises, and modern .NET project practice.',
+    iconLabel: 'EF',
+    relatedProjectSlugs: [],
+    evidenceSummary:
+      'Entity Framework Core is listed as an active strengthening area for modern .NET data access. It is not presented as strong production experience yet.',
+    contextNotes: [
+      'Current focus: training, architecture exercises, and practice projects before linking public-safe production evidence.',
+    ],
   },
   {
     id: 'sql-server',
@@ -131,8 +162,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'angular',
     name: 'Angular',
     category: 'Frontend',
-    shortDescription:
-      'Complementary frontend structure for backend-driven user workflows.',
+    shortDescription: 'Complementary frontend structure for backend-driven user workflows.',
     iconLabel: 'NG',
     relatedProjectSlugs: ['expensux', 'j3dev-portfolio', 'testigo-electoral'],
     evidenceSummary:
@@ -296,7 +326,8 @@ const SKILL_ITEMS: Skill[] = [
   {
     id: 'swagger',
     name: 'Swagger',
-    category: 'Dev Tools / Cloud',
+    category: 'Backend',
+    backendGroup: 'Backend Tooling',
     shortDescription: 'API documentation and testing support for backend workflows.',
     iconLabel: 'SWG',
     relatedProjectSlugs: ['worker'],
@@ -428,6 +459,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'aspnet',
     name: 'ASP.NET',
     category: 'Backend',
+    backendGroup: 'Application Frameworks',
     shortDescription:
       'Enterprise web application feature and maintenance experience in the Microsoft stack.',
     iconLabel: 'ASP',
@@ -442,6 +474,7 @@ const SKILL_ITEMS: Skill[] = [
     id: 'websockets',
     name: 'WebSockets',
     category: 'Backend',
+    backendGroup: 'API & Communication',
     shortDescription: 'Real-time communication concepts connected to enterprise functionality.',
     iconLabel: 'WS',
     relatedProjectSlugs: ['discovery'],
