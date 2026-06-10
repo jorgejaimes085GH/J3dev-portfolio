@@ -165,7 +165,6 @@ import { Project } from '../../models/project.model';
       .journey-insight-card h3,
       .journey-stage h4 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .journey-hero__summary {

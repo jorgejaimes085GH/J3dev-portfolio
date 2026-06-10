@@ -113,7 +113,6 @@ import { HeroSlide } from '../../../models/hero-slide.model';
 
       .hero-slider h1 {
         margin: 0;
-        line-height: 1.05;
       }
 
       .hero-slider__subtitle {

@@ -157,7 +157,6 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
       .about-section h2,
       .about-cta h2 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .about-introduction__summary {

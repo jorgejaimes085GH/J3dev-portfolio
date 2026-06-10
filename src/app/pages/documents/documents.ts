@@ -133,7 +133,6 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
       .documents-section h2,
       .document-card h3 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .documents-hero__summary {

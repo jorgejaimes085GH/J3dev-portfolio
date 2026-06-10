@@ -96,6 +96,7 @@ html.viewport-preview--mobile,
   ) h1,
 .hero-slider h1 {
   font-size: var(--portfolio-h1-size);
+  line-height: 1.1;
   overflow-wrap: normal;
   word-break: normal;
   hyphens: manual;
@@ -103,6 +104,7 @@ html.viewport-preview--mobile,
 
 .hero-slider h1 {
   font-size: var(--portfolio-hero-h1-size);
+  line-height: 1.05;
 }
 
 :is(
@@ -124,6 +126,7 @@ html.viewport-preview--mobile,
     .contact-section
   ) h2 {
   font-size: var(--portfolio-h2-size);
+  line-height: 1.15;
   overflow-wrap: normal;
   word-break: normal;
   hyphens: manual;
@@ -146,6 +149,7 @@ html.viewport-preview--mobile,
   ) h3,
 .skill-card__name {
   font-size: var(--portfolio-h3-size);
+  line-height: 1.15;
   overflow-wrap: normal;
   word-break: normal;
   hyphens: manual;

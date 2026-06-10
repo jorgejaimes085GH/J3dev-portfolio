@@ -118,7 +118,6 @@ import { PROJECTS } from '../../../data/projects.data';
       .project-card h3,
       .project-card h4 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .projects-introduction__summary {
