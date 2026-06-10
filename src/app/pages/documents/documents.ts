@@ -136,14 +136,6 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
         line-height: 1.15;
       }
 
-      .documents-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.5rem);
-      }
-
-      .documents-section h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-      }
-
       .documents-hero__summary {
         font-size: 1.15rem;
       }

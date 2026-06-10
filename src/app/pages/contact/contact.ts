@@ -168,14 +168,6 @@ import { ContactMethod } from '../../models/contact.model';
         line-height: 1.15;
       }
 
-      .contact-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.5rem);
-      }
-
-      .contact-section h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-      }
-
       .contact-hero__subtitle {
         max-width: 46rem;
         font-size: 1.2rem;

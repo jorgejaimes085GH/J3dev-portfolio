@@ -166,15 +166,6 @@ interface SkillGroup {
         line-height: 1.15;
       }
 
-      .skills-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.5rem);
-      }
-
-      .skills-section h2,
-      .skill-panel h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-      }
-
       .skills-hero__summary {
         font-size: 1.15rem;
       }
@@ -223,7 +214,6 @@ interface SkillGroup {
       }
 
       .skill-card__name {
-        font-size: 1.1rem;
         font-weight: 700;
       }
 

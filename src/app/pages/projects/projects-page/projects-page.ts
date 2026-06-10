@@ -121,14 +121,6 @@ import { PROJECTS } from '../../../data/projects.data';
         line-height: 1.15;
       }
 
-      .projects-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.5rem);
-      }
-
-      .projects-section h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-      }
-
       .projects-introduction__summary {
         font-size: 1.15rem;
       }
@@ -174,10 +166,6 @@ import { PROJECTS } from '../../../data/projects.data';
         flex-direction: column;
         gap: 0.9rem;
         padding: 1.25rem;
-      }
-
-      .project-card h3 {
-        font-size: 1.35rem;
       }
 
       .project-card__body p {

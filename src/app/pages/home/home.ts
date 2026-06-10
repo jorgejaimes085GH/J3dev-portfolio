@@ -139,7 +139,6 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       .home-section h2,
       .home-cta h2 {
         margin: 0;
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
         line-height: 1.15;
       }
 
@@ -174,7 +173,6 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       .preview-card h3,
       .skill-card h3 {
         margin: 0;
-        font-size: 1.2rem;
       }
 
       .project-preview {

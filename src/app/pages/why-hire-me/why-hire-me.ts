@@ -162,15 +162,6 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         line-height: 1.15;
       }
 
-      .value-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.5rem);
-      }
-
-      .value-section h2,
-      .value-cta h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-      }
-
       .value-introduction__summary {
         font-size: 1.15rem;
       }
@@ -196,7 +187,6 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
 
       .value-card h3 {
         margin: 0;
-        font-size: 1.15rem;
       }
 
       .value-highlight {

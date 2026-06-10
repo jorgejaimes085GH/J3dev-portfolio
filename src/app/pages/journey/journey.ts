@@ -168,15 +168,6 @@ import { Project } from '../../models/project.model';
         line-height: 1.15;
       }
 
-      .journey-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.5rem);
-      }
-
-      .journey-section h2,
-      .journey-cta h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-      }
-
       .journey-hero__summary {
         font-size: 1.15rem;
       }

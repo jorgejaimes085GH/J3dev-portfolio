@@ -260,15 +260,6 @@ import { PROJECTS } from '../../../data/projects.data';
         line-height: 1.15;
       }
 
-      .project-detail-hero h1,
-      .project-detail-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.25rem);
-      }
-
-      .project-detail-section h2 {
-        font-size: clamp(1.6rem, 4vw, 2.5rem);
-      }
-
       .project-detail-summary {
         max-width: 56rem;
         font-size: 1.15rem;
