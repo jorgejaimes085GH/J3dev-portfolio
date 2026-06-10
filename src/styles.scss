@@ -58,21 +58,24 @@ a {
 /* Central responsive typography scale for page, section, and card headings.
    Component styles keep local spacing, while heading size and wrapping live here so
    manual viewport previews stay visually consistent even on wide browser windows. */
-html {
+html,
+.viewport-preview.viewport-preview--desktop {
   --portfolio-h1-size: clamp(2.25rem, 6vw, 4.5rem);
   --portfolio-hero-h1-size: clamp(2.25rem, 6vw, 4.75rem);
   --portfolio-h2-size: clamp(1.75rem, 4vw, 2.75rem);
   --portfolio-h3-size: clamp(1.15rem, 2.25vw, 1.35rem);
 }
 
-html.viewport-preview--tablet {
+html.viewport-preview--tablet,
+.viewport-preview.viewport-preview--tablet {
   --portfolio-h1-size: clamp(2rem, 5vw, 3rem);
   --portfolio-hero-h1-size: clamp(2rem, 5vw, 3rem);
   --portfolio-h2-size: clamp(1.5rem, 4vw, 2rem);
   --portfolio-h3-size: clamp(1.1rem, 3vw, 1.35rem);
 }
 
-html.viewport-preview--mobile {
+html.viewport-preview--mobile,
+.viewport-preview.viewport-preview--mobile {
   --portfolio-h1-size: clamp(1.55rem, 5vw, 2rem);
   --portfolio-hero-h1-size: clamp(1.55rem, 5vw, 2rem);
   --portfolio-h2-size: clamp(1.25rem, 4vw, 1.6rem);
@@ -149,8 +152,74 @@ html.viewport-preview--mobile {
 }
 
 :is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
-  :is(h1, h2, h3) {
+  :is(h1, h2, h3, .skill-card__name) {
   max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+:is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
+  :is(
+    .hero-slider h1,
+    .about-section h1,
+    .value-section h1,
+    .skills-section h1,
+    .projects-section h1,
+    .project-detail-hero h1,
+    .journey-section h1,
+    .education-section h1,
+    .documents-section h1,
+    .contact-section h1
+  ) {
+  font-size: var(--portfolio-h1-size);
+}
+
+:is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
+  .hero-slider h1 {
+  font-size: var(--portfolio-hero-h1-size);
+}
+
+:is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
+  :is(
+    .home-section h2,
+    .home-cta h2,
+    .about-section h2,
+    .about-cta h2,
+    .value-section h2,
+    .value-cta h2,
+    .skills-section h2,
+    .skill-panel h2,
+    .projects-section h2,
+    .project-detail-section h2,
+    .journey-section h2,
+    .journey-cta h2,
+    .education-section h2,
+    .education-cta h2,
+    .documents-section h2,
+    .contact-section h2
+  ) {
+  font-size: var(--portfolio-h2-size);
+}
+
+:is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
+  :is(
+    .preview-card h3,
+    .skill-card h3,
+    .about-card h3,
+    .value-card h3,
+    .project-card h3,
+    .project-time-card h3,
+    .project-link-card h3,
+    .journey-stage h3,
+    .journey-insight-card h3,
+    .education-section h3,
+    .document-card h3,
+    .contact-method-card h3,
+    .skill-panel h3,
+    .skill-card__name
+  ) {
+  font-size: var(--portfolio-h3-size);
 }
 
 /* Viewport preview responsive layout safeguards.
@@ -458,4 +527,11 @@ html.viewport-preview--mobile {
     ) {
     overflow-wrap: anywhere;
   }
+}
+
+:is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
+  :is(h1, h2, h3, .skill-card__name) {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
