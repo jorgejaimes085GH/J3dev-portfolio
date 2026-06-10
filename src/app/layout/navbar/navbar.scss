@@ -29,56 +29,136 @@
 }
 
 .site-header__inner {
-  width: min(100%, 72rem);
+  width: min(100%, 84rem);
   margin: 0 auto;
-  padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 0.85rem 1rem;
+  display: grid;
+  grid-template-columns: minmax(12rem, auto) minmax(0, 1fr) auto;
+  grid-template-areas: 'brand nav tools';
   align-items: center;
-  gap: 1rem;
+  column-gap: clamp(1rem, 3vw, 2.25rem);
+  row-gap: 0.85rem;
 }
 
 .site-header__brand {
+  grid-area: brand;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: max-content;
+  color: var(--app-text-color);
   font-weight: 700;
+  letter-spacing: -0.01em;
   text-decoration: none;
 }
 
-.site-nav {
-  flex: 1 1 32rem;
+.site-header__brand:hover,
+.site-header__brand:focus-visible {
+  color: var(--app-link-color);
+}
+
+.site-header__brand:focus-visible {
+  border-radius: 999px;
+  outline: 3px solid var(--app-link-color);
+  outline-offset: 4px;
+}
+
+.site-header__logo-frame {
+  display: inline-grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 2.4rem;
+  overflow: hidden;
+  border: 1px solid var(--app-border-color);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--app-link-color) 10%, var(--app-background-color));
+}
+
+.site-header__logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.site-header__logo-fallback {
+  display: none;
+  color: var(--app-link-color);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.site-header__logo-fallback--visible {
+  display: inline;
+}
+
+.site-header__brand-text {
+  white-space: nowrap;
+}
+
+.site-header__nav {
+  grid-area: nav;
+  min-width: 0;
 }
 
 .site-nav__list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1rem;
+  justify-content: center;
+  gap: 0.45rem 0.85rem;
   margin: 0;
   padding: 0;
 }
 
 .site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  color: var(--app-text-color);
+  font-size: 0.95rem;
+  font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus-visible {
+  color: var(--app-link-color);
+}
+
+.site-nav__link:focus-visible {
+  border-radius: 999px;
+  outline: 3px solid var(--app-link-color);
+  outline-offset: 3px;
 }
 
 .site-nav__link--active {
+  color: var(--app-link-color);
   text-decoration: underline;
   text-underline-offset: 0.25rem;
+  text-decoration-thickness: 0.12rem;
 }
 
 .site-header__tools {
+  grid-area: tools;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  min-width: max-content;
 }
 
 .site-header__pin-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.5rem;
-  min-height: 2.5rem;
-  padding: 0.45rem;
+  min-width: 2.35rem;
+  min-height: 2.35rem;
+  padding: 0.4rem;
   border: 1px solid var(--app-border-color);
   border-radius: 999px;
   color: var(--app-text-color);
@@ -94,8 +174,8 @@
 }
 
 .site-header__pin-icon {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .site-header__icon-fallback {
@@ -113,4 +193,58 @@
   height: auto;
   overflow: visible;
   clip: auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .site-header__inner {
+    grid-template-columns: minmax(12rem, 1fr) auto;
+    grid-template-areas:
+      'brand tools'
+      'nav nav';
+  }
+
+  .site-nav__list {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'brand'
+      'nav'
+      'tools';
+  }
+
+  .site-header__brand,
+  .site-header__tools,
+  .site-nav__list {
+    justify-content: center;
+  }
+
+  .site-header__tools {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header__inner {
+    padding-inline: 0.75rem;
+  }
+
+  .site-header__brand {
+    min-width: 0;
+  }
+
+  .site-header__brand-text {
+    white-space: normal;
+  }
+
+  .site-nav__list,
+  .site-header__tools {
+    gap: 0.45rem;
+  }
 }
