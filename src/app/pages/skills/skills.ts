@@ -1,20 +1,27 @@
 import { Component, HostListener } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { PROJECTS } from '../../data/projects.data';
-import { SKILL_CATEGORIES, SKILLS } from '../../data/skills.data';
+import { BACKEND_SKILL_GROUPS, SKILL_CATEGORIES, SKILLS } from '../../data/skills.data';
 import { Project } from '../../models/project.model';
-import { Skill, SkillCategory } from '../../models/skill.model';
+import { BackendSkillGroup, Skill, SkillCategory } from '../../models/skill.model';
+
+interface BackendSkillSection {
+  group: BackendSkillGroup;
+  skills: Skill[];
+}
 
 interface SkillGroup {
   category: SkillCategory;
   skills: Skill[];
+  backendSections?: BackendSkillSection[];
 }
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [RouterLink],
+  imports: [NgTemplateOutlet, RouterLink],
   template: `
     <main class="skills-page" aria-labelledby="skills-page-title">
       <section class="skills-section skills-hero" aria-labelledby="skills-page-title">
@@ -39,33 +46,38 @@ interface SkillGroup {
             <h2 [id]="categoryTitleId(skillGroup.category)">{{ skillGroup.category }}</h2>
           </div>
 
-          <div class="skill-grid" [attr.aria-label]="skillGroup.category + ' skills'">
-            @for (skill of skillGroup.skills; track skill.id) {
-              <button
-                class="skill-card"
-                type="button"
-                (click)="openSkill(skill)"
-                [attr.aria-label]="'View evidence for ' + skill.name"
-              >
-                <span class="skill-card__icon" aria-hidden="true">
-                  <span>{{ skill.iconLabel }}</span>
-                  @if (skill.iconUrl) {
-                    <img
-                      class="skill-card__logo"
-                      [src]="skill.iconUrl"
-                      [alt]="''"
-                      (error)="hideFailedAsset($event)"
-                    />
-                  }
-                </span>
-                <span class="skill-card__body">
-                  <span class="skill-card__name">{{ skill.name }}</span>
-                  <span class="skill-card__description">{{ skill.shortDescription }}</span>
-                  <span class="skill-card__evidence">{{ evidenceLabel(skill) }}</span>
-                </span>
-              </button>
-            }
-          </div>
+          @if (skillGroup.backendSections?.length) {
+            <div class="backend-taxonomy" aria-label="Backend skill layers">
+              @for (backendSection of skillGroup.backendSections; track backendSection.group) {
+                <section
+                  class="backend-taxonomy__section"
+                  [attr.aria-labelledby]="backendGroupTitleId(backendSection.group)"
+                >
+                  <h3 [id]="backendGroupTitleId(backendSection.group)">
+                    {{ backendSection.group }}
+                  </h3>
+
+                  <div class="skill-grid" [attr.aria-label]="backendSection.group + ' skills'">
+                    @for (skill of backendSection.skills; track skill.id) {
+                      <ng-container
+                        [ngTemplateOutlet]="skillCardTemplate"
+                        [ngTemplateOutletContext]="{ $implicit: skill }"
+                      />
+                    }
+                  </div>
+                </section>
+              }
+            </div>
+          } @else {
+            <div class="skill-grid" [attr.aria-label]="skillGroup.category + ' skills'">
+              @for (skill of skillGroup.skills; track skill.id) {
+                <ng-container
+                  [ngTemplateOutlet]="skillCardTemplate"
+                  [ngTemplateOutletContext]="{ $implicit: skill }"
+                />
+              }
+            </div>
+          }
         </section>
       }
 
@@ -135,6 +147,32 @@ interface SkillGroup {
           </aside>
         </div>
       }
+
+      <ng-template #skillCardTemplate let-skill>
+        <button
+          class="skill-card"
+          type="button"
+          (click)="openSkill(skill)"
+          [attr.aria-label]="'View evidence for ' + skill.name"
+        >
+          <span class="skill-card__icon" aria-hidden="true">
+            <span>{{ skill.iconLabel }}</span>
+            @if (skill.iconUrl) {
+              <img
+                class="skill-card__logo"
+                [src]="skill.iconUrl"
+                [alt]="''"
+                (error)="hideFailedAsset($event)"
+              />
+            }
+          </span>
+          <span class="skill-card__body">
+            <span class="skill-card__name">{{ skill.name }}</span>
+            <span class="skill-card__description">{{ skill.shortDescription }}</span>
+            <span class="skill-card__evidence">{{ evidenceLabel(skill) }}</span>
+          </span>
+        </button>
+      </ng-template>
     </main>
   `,
   styles: [
@@ -177,6 +215,21 @@ interface SkillGroup {
 
       .skills-hero__summary {
         font-size: 1.15rem;
+      }
+
+      .backend-taxonomy {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .backend-taxonomy__section {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .backend-taxonomy__section h3 {
+        margin: 0;
+        font-size: 1rem;
       }
 
       .skill-grid {
@@ -337,7 +390,6 @@ interface SkillGroup {
         .skills-section {
           padding: 2.25rem 1rem;
         }
-
         .skill-grid {
           grid-template-columns: 1fr;
         }
@@ -359,10 +411,22 @@ interface SkillGroup {
   ],
 })
 export class Skills {
-  readonly skillGroups: SkillGroup[] = SKILL_CATEGORIES.map((category) => ({
-    category,
-    skills: SKILLS.filter((skill) => skill.category === category),
-  }));
+  readonly skillGroups: SkillGroup[] = SKILL_CATEGORIES.map((category) => {
+    const skills = SKILLS.filter((skill) => skill.category === category);
+
+    if (category !== 'Backend') {
+      return { category, skills };
+    }
+
+    return {
+      category,
+      skills,
+      backendSections: BACKEND_SKILL_GROUPS.map((group) => ({
+        group,
+        skills: skills.filter((skill) => skill.backendGroup === group),
+      })).filter((section) => section.skills.length > 0),
+    };
+  });
 
   selectedSkill?: Skill;
 
@@ -374,7 +438,11 @@ export class Skills {
   }
 
   categoryTitleId(category: SkillCategory): string {
-    return `${category.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-')}-skills-title`;
+    return `${this.slugify(category)}-skills-title`;
+  }
+
+  backendGroupTitleId(group: BackendSkillGroup): string {
+    return `${this.slugify(group)}-backend-skills-title`;
   }
 
   evidenceLabel(skill: Skill): string {
@@ -403,5 +471,9 @@ export class Skills {
 
   hideFailedAsset(event: Event): void {
     (event.target as HTMLImageElement).hidden = true;
+  }
+
+  private slugify(value: string): string {
+    return value.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-');
   }
 }
