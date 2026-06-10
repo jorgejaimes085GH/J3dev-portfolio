@@ -165,7 +165,6 @@ import { ContactMethod } from '../../models/contact.model';
       .contact-section h2,
       .contact-method-card h3 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .contact-hero__subtitle {

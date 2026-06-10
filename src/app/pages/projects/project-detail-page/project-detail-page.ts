@@ -257,7 +257,6 @@ import { PROJECTS } from '../../../data/projects.data';
       .project-time-card h3,
       .project-link-card h3 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .project-detail-summary {

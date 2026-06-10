@@ -209,7 +209,6 @@ import {
       .education-section h3,
       .education-cta h2 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .education-hero__summary {

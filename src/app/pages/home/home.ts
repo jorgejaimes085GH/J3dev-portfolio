@@ -139,7 +139,6 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       .home-section h2,
       .home-cta h2 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .home-section__header p:last-child,

@@ -163,7 +163,6 @@ interface SkillGroup {
       .skill-panel h2,
       .skill-panel h3 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .skills-hero__summary {

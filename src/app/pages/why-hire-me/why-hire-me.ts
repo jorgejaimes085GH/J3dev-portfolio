@@ -159,7 +159,6 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
       .value-section h2,
       .value-cta h2 {
         margin: 0;
-        line-height: 1.15;
       }
 
       .value-introduction__summary {
