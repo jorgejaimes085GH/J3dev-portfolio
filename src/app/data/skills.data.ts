@@ -11,7 +11,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   'Enterprise Practices',
 ];
 
-export const SKILLS: Skill[] = [
+const SKILL_ITEMS: Skill[] = [
   {
     id: 'dotnet',
     name: '.NET',
@@ -514,3 +514,7 @@ export const SKILLS: Skill[] = [
       'Team conventions are connected to LeverIT enterprise work, including reusable JavaScript patterns, collaborative delivery, and maintainable handoff practices.',
   },
 ];
+export const SKILLS: Skill[] = SKILL_ITEMS.map((skill) => ({
+  ...skill,
+  iconUrl: `assets/images/logos/skills/${skill.id}.svg`,
+}));

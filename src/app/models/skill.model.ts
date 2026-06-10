@@ -14,6 +14,7 @@ export interface Skill {
   category: SkillCategory;
   shortDescription: string;
   iconLabel: string;
+  iconUrl?: string;
   relatedProjectSlugs: string[];
   evidenceSummary: string;
   contextNotes?: string[];

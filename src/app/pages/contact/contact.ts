@@ -39,6 +39,14 @@ import { ContactMethod } from '../../models/contact.model';
             <article class="contact-method-card" [attr.aria-labelledby]="method.id + '-title'">
               <div class="contact-method-card__icon" aria-hidden="true">
                 <span>{{ method.title.charAt(0) }}</span>
+                @if (method.iconUrl) {
+                  <img
+                    class="contact-method-card__icon-image"
+                    [src]="method.iconUrl"
+                    [alt]="''"
+                    (error)="hideFailedAsset($event)"
+                  />
+                }
               </div>
 
               <div class="contact-method-card__content">
@@ -193,14 +201,24 @@ import { ContactMethod } from '../../models/contact.model';
       }
 
       .contact-method-card__icon {
+        position: relative;
         display: grid;
         width: 3rem;
         height: 3rem;
         place-items: center;
+        overflow: hidden;
         border: 1px solid var(--app-border-color);
         border-radius: 999px;
         color: var(--app-link-color);
         font-weight: 700;
+      }
+
+      .contact-method-card__icon-image {
+        position: absolute;
+        inset: 0.65rem;
+        width: calc(100% - 1.3rem);
+        height: calc(100% - 1.3rem);
+        object-fit: contain;
       }
 
       .contact-method-card__content {
@@ -325,5 +343,9 @@ export class Contact {
     }
 
     return `${method.actionLabel} to ${method.value}`;
+  }
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }

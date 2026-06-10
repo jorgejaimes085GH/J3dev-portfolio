@@ -13,6 +13,7 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
     secondaryActionLabel: 'Explore Skills',
     secondaryActionRoute: '/skills',
     visualLabel: 'Backend systems visual reference pending final asset',
+    backgroundImageUrl: 'assets/images/backgrounds/hero/hero-backend-systems.webp',
   },
   {
     id: 'software-that-evolves',
@@ -26,6 +27,7 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
     secondaryActionLabel: 'See Journey',
     secondaryActionRoute: '/journey',
     visualLabel: 'Architecture planning visual reference pending final asset',
+    backgroundImageUrl: 'assets/images/backgrounds/hero/hero-architecture-planning.webp',
   },
   {
     id: 'fullstack-capability',
@@ -39,5 +41,6 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
     secondaryActionLabel: 'Contact Jorge',
     secondaryActionRoute: '/contact',
     visualLabel: 'Frontend integration visual reference pending final asset',
+    backgroundImageUrl: 'assets/images/backgrounds/hero/hero-frontend-integration.webp',
   },
 ];

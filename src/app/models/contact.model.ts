@@ -6,6 +6,7 @@ export interface ContactMethod {
   actionLabel: string;
   actionUrl: string;
   iconPlaceholder: string;
+  iconUrl?: string;
   note?: string;
 }
 

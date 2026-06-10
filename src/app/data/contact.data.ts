@@ -9,6 +9,7 @@ export const PROFESSIONAL_CONTACT_METHODS: ContactMethod[] = [
     actionLabel: 'Send Email',
     actionUrl: 'mailto:jorge.jaimes.085@gmail.com',
     iconPlaceholder: 'Email contact icon',
+    iconUrl: 'assets/images/icons/actions/email.svg',
   },
   {
     id: 'whatsapp',
@@ -18,6 +19,7 @@ export const PROFESSIONAL_CONTACT_METHODS: ContactMethod[] = [
     actionLabel: 'Open WhatsApp',
     actionUrl: 'https://wa.me/573167591878',
     iconPlaceholder: 'WhatsApp contact icon',
+    iconUrl: 'assets/images/icons/actions/whatsapp.svg',
   },
   {
     id: 'linkedin',
@@ -27,6 +29,7 @@ export const PROFESSIONAL_CONTACT_METHODS: ContactMethod[] = [
     actionLabel: 'View LinkedIn Profile',
     actionUrl: 'https://www.linkedin.com/in/jorge-jaimes-jerez-b472902b5/',
     iconPlaceholder: 'LinkedIn contact icon',
+    iconUrl: 'assets/images/icons/actions/linkedin.svg',
   },
 ];
 

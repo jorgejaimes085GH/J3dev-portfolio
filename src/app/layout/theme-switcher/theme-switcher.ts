@@ -20,7 +20,16 @@ import { PortfolioTheme } from '../../themes/theme.model';
             [attr.title]="theme.description"
             (click)="selectTheme(theme.id)"
           >
-            {{ theme.label }}
+            @if (theme.iconUrl) {
+              <img
+                class="theme-switcher__icon"
+                [src]="theme.iconUrl"
+                [alt]="''"
+                aria-hidden="true"
+                (error)="showIconFallback($event)"
+              />
+            }
+            <span class="theme-switcher__fallback">{{ theme.iconFallback }}</span>
           </button>
         }
       </div>
@@ -34,5 +43,13 @@ export class ThemeSwitcher {
 
   selectTheme(theme: PortfolioTheme): void {
     this.themeService.setTheme(theme);
+  }
+
+  showIconFallback(event: Event): void {
+    const image = event.target as HTMLImageElement;
+    image.hidden = true;
+    const fallback = image.nextElementSibling as HTMLElement | null;
+    fallback?.classList.add('theme-switcher__fallback--visible');
+    fallback?.removeAttribute('aria-hidden');
   }
 }

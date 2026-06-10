@@ -47,13 +47,20 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
             class="site-header__pin-toggle"
             type="button"
             (click)="toggleHeaderPinned()"
-            [attr.aria-label]="
-              isHeaderPinned()
-                ? 'Unpin header so it scrolls with the page'
-                : 'Pin header so it remains visible while scrolling'
-            "
+            [attr.aria-label]="pinToggleLabel"
+            [attr.aria-pressed]="isHeaderPinned()"
+            [attr.title]="pinToggleLabel"
           >
-            {{ isHeaderPinned() ? 'Unpin' : 'Pin' }}
+            <img
+              class="site-header__pin-icon"
+              [src]="isHeaderPinned() ? pinOffIconUrl : pinIconUrl"
+              [alt]="''"
+              aria-hidden="true"
+              (error)="showIconFallback($event)"
+            />
+            <span class="site-header__icon-fallback" aria-hidden="true">
+              {{ isHeaderPinned() ? 'Unpin' : 'Pin' }}
+            </span>
           </button>
           <app-theme-switcher />
           <app-viewport-switcher />
@@ -69,7 +76,24 @@ export class Navbar {
   readonly navigationItems = this.navigationService.getMainNavigation();
   readonly isHeaderPinned = this.navigationService.isHeaderPinned;
 
+  protected readonly pinIconUrl = 'assets/images/icons/actions/pin.svg';
+  protected readonly pinOffIconUrl = 'assets/images/icons/actions/pin-off.svg';
+
+  protected get pinToggleLabel(): string {
+    return this.isHeaderPinned()
+      ? 'Unpin header so it scrolls with the page'
+      : 'Pin header so it remains visible while scrolling';
+  }
+
   protected toggleHeaderPinned(): void {
     this.navigationService.toggleHeaderPinned();
+  }
+
+  protected showIconFallback(event: Event): void {
+    const image = event.target as HTMLImageElement;
+    image.hidden = true;
+    const fallback = image.nextElementSibling as HTMLElement | null;
+    fallback?.classList.add('site-header__icon-fallback--visible');
+    fallback?.removeAttribute('aria-hidden');
   }
 }

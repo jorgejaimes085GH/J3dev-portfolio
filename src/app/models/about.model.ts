@@ -2,6 +2,7 @@ export interface AboutIntroduction {
   professionalTitle: string;
   shortIntroduction: string;
   profileImageAlt: string;
+  profileImageUrl?: string;
 }
 
 export interface AboutTimelineMilestone {

@@ -73,8 +73,12 @@
 }
 
 .site-header__pin-toggle {
-  min-height: 2.25rem;
-  padding: 0.45rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.45rem;
   border: 1px solid var(--app-border-color);
   border-radius: 999px;
   color: var(--app-text-color);
@@ -85,5 +89,28 @@
 .site-header__pin-toggle:hover,
 .site-header__pin-toggle:focus-visible {
   border-color: var(--app-link-color);
-  outline: 2px solid transparent;
+  outline: 3px solid var(--app-link-color);
+  outline-offset: 2px;
+}
+
+.site-header__pin-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.site-header__icon-fallback {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.site-header__icon-fallback--visible {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
 }
