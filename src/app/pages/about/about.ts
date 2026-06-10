@@ -160,15 +160,6 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         line-height: 1.15;
       }
 
-      .about-section h1 {
-        font-size: clamp(2.25rem, 6vw, 4.5rem);
-      }
-
-      .about-section h2,
-      .about-cta h2 {
-        font-size: clamp(1.75rem, 4vw, 2.75rem);
-      }
-
       .about-introduction__summary {
         font-size: 1.15rem;
       }
@@ -239,7 +230,6 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
 
       .about-card h3 {
         margin: 0;
-        font-size: 1.15rem;
       }
 
       .about-section__header p:last-child,

@@ -113,7 +113,6 @@ import { HeroSlide } from '../../../models/hero-slide.model';
 
       .hero-slider h1 {
         margin: 0;
-        font-size: clamp(2.25rem, 6vw, 4.75rem);
         line-height: 1.05;
       }
 

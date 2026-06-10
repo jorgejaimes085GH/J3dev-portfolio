@@ -55,6 +55,104 @@ a {
   font: inherit;
 }
 
+/* Central responsive typography scale for page, section, and card headings.
+   Component styles keep local spacing, while heading size and wrapping live here so
+   manual viewport previews stay visually consistent even on wide browser windows. */
+html {
+  --portfolio-h1-size: clamp(2.25rem, 6vw, 4.5rem);
+  --portfolio-hero-h1-size: clamp(2.25rem, 6vw, 4.75rem);
+  --portfolio-h2-size: clamp(1.75rem, 4vw, 2.75rem);
+  --portfolio-h3-size: clamp(1.15rem, 2.25vw, 1.35rem);
+}
+
+html.viewport-preview--tablet {
+  --portfolio-h1-size: clamp(2rem, 5vw, 3rem);
+  --portfolio-hero-h1-size: clamp(2rem, 5vw, 3rem);
+  --portfolio-h2-size: clamp(1.5rem, 4vw, 2rem);
+  --portfolio-h3-size: clamp(1.1rem, 3vw, 1.35rem);
+}
+
+html.viewport-preview--mobile {
+  --portfolio-h1-size: clamp(1.55rem, 5vw, 2rem);
+  --portfolio-hero-h1-size: clamp(1.55rem, 5vw, 2rem);
+  --portfolio-h2-size: clamp(1.25rem, 4vw, 1.6rem);
+  --portfolio-h3-size: clamp(1.05rem, 3.5vw, 1.25rem);
+}
+
+:is(
+    .about-section,
+    .value-section,
+    .skills-section,
+    .projects-section,
+    .project-detail-hero,
+    .project-detail-section,
+    .journey-section,
+    .education-section,
+    .documents-section,
+    .contact-section
+  ) h1,
+.hero-slider h1 {
+  font-size: var(--portfolio-h1-size);
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+.hero-slider h1 {
+  font-size: var(--portfolio-hero-h1-size);
+}
+
+:is(
+    .home-section,
+    .home-cta,
+    .about-section,
+    .about-cta,
+    .value-section,
+    .value-cta,
+    .skills-section,
+    .skill-panel,
+    .projects-section,
+    .project-detail-section,
+    .journey-section,
+    .journey-cta,
+    .education-section,
+    .education-cta,
+    .documents-section,
+    .contact-section
+  ) h2 {
+  font-size: var(--portfolio-h2-size);
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+:is(
+    .preview-card,
+    .skill-card,
+    .about-card,
+    .value-card,
+    .project-card,
+    .project-time-card,
+    .project-link-card,
+    .journey-stage,
+    .journey-insight-card,
+    .education-section,
+    .document-card,
+    .contact-method-card,
+    .skill-panel
+  ) h3,
+.skill-card__name {
+  font-size: var(--portfolio-h3-size);
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+:is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
+  :is(h1, h2, h3) {
+  max-width: 100%;
+}
+
 /* Viewport preview responsive layout safeguards.
    The preview frame can be narrower than the browser viewport, so these
    class-aware rules mirror mobile/tablet breakpoints inside manual previews.
@@ -175,19 +273,11 @@ a {
   }
 
   :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
-    font-size: clamp(1.65rem, 7vw, 2.1rem);
     line-height: 1.1;
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: manual;
   }
 
-  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .projects-section h2, .project-detail-section h2, .journey-section h2, .journey-cta h2, .education-section h2, .documents-section h2, .contact-section h2) {
-    font-size: clamp(1.35rem, 5.5vw, 1.7rem);
+  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
     line-height: 1.15;
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: manual;
   }
 
   .hero-slider {
@@ -286,10 +376,11 @@ a {
   }
 
   :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
-    font-size: clamp(2rem, 5vw, 3rem);
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: manual;
+    line-height: 1.1;
+  }
+
+  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
+    line-height: 1.15;
   }
 }
 
