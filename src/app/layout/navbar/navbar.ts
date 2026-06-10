@@ -22,10 +22,20 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
     >
       <div class="site-header__inner">
         <a class="site-header__brand" routerLink="/" aria-label="J3dev Portfolio home">
-          J3dev Portfolio
+          <span class="site-header__logo-frame" aria-hidden="true">
+            <img
+              class="site-header__logo"
+              src="assets/images/logos/projects/j3dev-portfolio-logo.svg"
+              alt=""
+              aria-hidden="true"
+              (error)="showBrandLogoFallback($event)"
+            />
+            <span class="site-header__logo-fallback" aria-hidden="true">J3</span>
+          </span>
+          <span class="site-header__brand-text">J3dev Portfolio</span>
         </a>
 
-        <nav class="site-nav" aria-label="Main navigation">
+        <nav class="site-header__nav site-nav" aria-label="Main navigation">
           <ul class="site-nav__list">
             @for (item of navigationItems; track item.path) {
               <li class="site-nav__item">
@@ -43,6 +53,8 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
         </nav>
 
         <div class="site-header__tools" aria-label="Display options">
+          <app-theme-switcher />
+          <app-viewport-switcher />
           <button
             class="site-header__pin-toggle"
             type="button"
@@ -62,8 +74,6 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
               {{ isHeaderPinned() ? 'Unpin' : 'Pin' }}
             </span>
           </button>
-          <app-theme-switcher />
-          <app-viewport-switcher />
         </div>
       </div>
     </header>
@@ -95,5 +105,12 @@ export class Navbar {
     const fallback = image.nextElementSibling as HTMLElement | null;
     fallback?.classList.add('site-header__icon-fallback--visible');
     fallback?.removeAttribute('aria-hidden');
+  }
+
+  protected showBrandLogoFallback(event: Event): void {
+    const image = event.target as HTMLImageElement;
+    image.hidden = true;
+    const fallback = image.nextElementSibling as HTMLElement | null;
+    fallback?.classList.add('site-header__logo-fallback--visible');
   }
 }

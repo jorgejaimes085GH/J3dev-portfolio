@@ -1,0 +1,7 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">J3dev Portfolio logo</title>
+  <desc id="desc">A compact J3 monogram for the J3dev Portfolio brand.</desc>
+  <rect x="8" y="8" width="80" height="80" rx="22" fill="#0F5EA8"/>
+  <path d="M31 28H53V54C53 64.5 46.4 70 36.6 70C31.3 70 27 68.5 23.7 65.7L28.8 57.8C31.1 59.7 33.4 60.7 36 60.7C40.1 60.7 42.6 58.4 42.6 53.8V37.2H31V28Z" fill="white"/>
+  <path d="M60.1 43.8H64.7C68.5 43.8 70.7 42.2 70.7 39.5C70.7 36.8 68.5 35.2 64.8 35.2C61.6 35.2 58.5 36.4 56.1 38.5L51.8 30.8C55.5 27.8 60.3 26.3 65.8 26.3C75.3 26.3 81.1 31.1 81.1 38.2C81.1 42.4 78.8 45.8 75 47.6C79.6 49.2 82.3 52.9 82.3 57.9C82.3 65.8 75.6 70.9 65.4 70.9C59.2 70.9 53.8 69 50.2 65.9L54.8 57.8C57.6 60.4 61.1 61.8 65 61.8C69.2 61.8 71.8 60.1 71.8 57.1C71.8 54.1 69.2 52.4 64.9 52.4H60.1V43.8Z" fill="#DCEBFF"/>
+</svg>
