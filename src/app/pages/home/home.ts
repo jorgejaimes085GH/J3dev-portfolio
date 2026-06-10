@@ -21,7 +21,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
         <p class="home-section__eyebrow">How I Add Value</p>
         <h2 id="how-i-add-value-title">Practical engineering habits for long-term teams</h2>
         <p>
-          A recruiter-focused overview of the way I approach software work: understand the
+          A recruiter-focused overview of Jorge's approach to software work: understand the
           problem, keep architecture clear, and build solutions that can keep evolving.
         </p>
       </div>
@@ -94,7 +94,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
         <h2 id="home-cta-title">Continue into the project and skills evidence</h2>
         <p>
           Review selected project context or explore the technical skills that support Jorge's
-          backend and fullstack development work.
+          Backend .NET work and complementary fullstack capability.
         </p>
       </div>
 

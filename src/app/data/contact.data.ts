@@ -34,7 +34,7 @@ export const PROFESSIONAL_AVAILABILITY: ContactBadge[] = [
   { id: 'remote-opportunities', label: 'Remote Opportunities' },
   { id: 'hybrid-opportunities', label: 'Hybrid Opportunities' },
   { id: 'backend-dotnet-roles', label: 'Backend .NET Roles' },
-  { id: 'fullstack-dotnet-angular-roles', label: 'Fullstack .NET + Angular Roles' },
+  { id: 'fullstack-dotnet-angular-roles', label: 'Backend-first .NET + Angular Roles' },
   { id: 'software-architecture-discussions', label: 'Software Architecture Discussions' },
   { id: 'technical-leadership-growth', label: 'Technical Leadership Growth' },
 ];

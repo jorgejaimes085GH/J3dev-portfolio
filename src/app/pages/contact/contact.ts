@@ -17,8 +17,8 @@ import { ContactMethod } from '../../models/contact.model';
           <p class="contact-section__eyebrow">Professional Communication</p>
           <h1 id="contact-page-title">Let's Connect</h1>
           <p class="contact-hero__subtitle">
-            Interested in discussing backend development, software architecture, .NET
-            opportunities, or modern fullstack solutions?
+            Interested in discussing Backend .NET development, software architecture, SQL Server,
+            modernization work, or backend-first fullstack solutions?
           </p>
           <p class="contact-hero__intro">
             Professional communication channels for recruiters, hiring managers, technical leaders,
@@ -100,13 +100,13 @@ import { ContactMethod } from '../../models/contact.model';
       <section class="contact-section contact-final-cta" aria-labelledby="contact-final-cta-title">
         <div class="contact-final-cta__content">
           <p class="contact-section__eyebrow">Next Conversation</p>
-          <h2 id="contact-final-cta-title">Interested in Working Together?</h2>
+          <h2 id="contact-final-cta-title">Open to Professional Conversations?</h2>
           <p>
             Feel free to reach out through email, WhatsApp, or LinkedIn.
           </p>
           <p>
-            I am always open to discussing engineering opportunities, software architecture, backend
-            development, and long-term technology projects.
+            I am open to discussing Backend .NET opportunities, software architecture, modernization
+            work, and long-term technology projects.
           </p>
         </div>
 

@@ -5,9 +5,9 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
     id: 'backend-dotnet-specialization',
     eyebrow: 'Backend .NET specialization',
     title: 'Enterprise backend development with .NET and SQL Server.',
-    subtitle: 'APIs, data access, authentication, and maintainable server-side systems.',
+    subtitle: 'C#, .NET, SQL Server, APIs, data access, authentication, and maintainable server-side systems.',
     description:
-      'Jorge builds backend solutions focused on clear business rules, reliable data handling, and practical architecture for real production needs.',
+      'Jorge focuses on backend solutions with clear business rules, reliable data handling, and practical architecture for real production needs.',
     primaryActionLabel: 'View Projects',
     primaryActionRoute: '/projects',
     secondaryActionLabel: 'Explore Skills',
@@ -29,11 +29,11 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
   },
   {
     id: 'fullstack-capability',
-    eyebrow: 'Fullstack capability',
-    title: 'Angular interfaces connected to backend services.',
+    eyebrow: 'Fullstack support',
+    title: 'Angular used to support backend-driven workflows.',
     subtitle: 'Frontend integration with TypeScript, responsive UI, and API-driven flows.',
     description:
-      'Jorge combines backend depth with Angular experience to build user-facing features that communicate clearly with service layers and business processes.',
+      'Angular complements Jorge’s Backend .NET profile by helping deliver user-facing features that communicate clearly with service layers and business processes.',
     primaryActionLabel: 'See Core Skills',
     primaryActionRoute: '/skills',
     secondaryActionLabel: 'Contact Jorge',

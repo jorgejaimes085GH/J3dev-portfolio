@@ -8,7 +8,7 @@ export const PROFESSIONAL_DOCUMENTS: ProfessionalDocument[] = [
     id: 'cv-es',
     title: 'CV Español',
     description:
-      'Spanish curriculum vitae prepared for Spanish-speaking recruiters, hiring managers, and professional contacts.',
+      'Spanish curriculum vitae prepared for Backend .NET roles, Spanish-speaking recruiters, hiring managers, and professional contacts.',
     type: 'CV',
     language: 'Spanish',
     group: 'Resume & CV',
@@ -22,7 +22,7 @@ export const PROFESSIONAL_DOCUMENTS: ProfessionalDocument[] = [
     id: 'cv-en',
     title: 'CV English',
     description:
-      'English curriculum vitae prepared for international recruiters, hiring managers, and technical teams.',
+      'English curriculum vitae prepared for Backend .NET roles, international recruiters, hiring managers, and technical teams.',
     type: 'CV',
     language: 'English',
     group: 'Resume & CV',
@@ -36,7 +36,7 @@ export const PROFESSIONAL_DOCUMENTS: ProfessionalDocument[] = [
     id: 'cover-letter-es',
     title: 'Carta de Presentación Español',
     description:
-      'Spanish cover letter prepared for role-specific professional introductions and application context; PDF publication is pending.',
+      'Spanish cover letter prepared for Backend .NET role introductions and application context; PDF publication is pending.',
     type: 'Cover Letter',
     language: 'Spanish',
     group: 'Cover Letters',
@@ -50,7 +50,7 @@ export const PROFESSIONAL_DOCUMENTS: ProfessionalDocument[] = [
     id: 'cover-letter-en',
     title: 'Cover Letter English',
     description:
-      'English cover letter prepared for role-specific professional introductions and application context; PDF publication is pending.',
+      'English cover letter prepared for Backend .NET role introductions and application context; PDF publication is pending.',
     type: 'Cover Letter',
     language: 'English',
     group: 'Cover Letters',
