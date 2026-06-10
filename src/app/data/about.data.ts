@@ -4,8 +4,56 @@ export const ABOUT_PAGE_DATA: AboutPageData = {
   introduction: {
     professionalTitle: 'Backend .NET Developer',
     shortIntroduction:
-      'Jorge Jaimes is a Backend .NET Developer whose work has evolved from desktop business systems and SQL Server data workflows into modern C#, .NET, REST API, and Angular-supported application development.',
+      'Jorge Jaimes is a Backend .NET Developer with experience across several generations of business software. His professional growth has been shaped by maintaining real systems, understanding operational needs, and using software as a practical way to solve business problems with reliability and long-term value.',
     profileImageAlt: 'Professional profile image area for Jorge Jaimes',
+  },
+  professionalMindset: [
+    {
+      title: 'Responsible ownership',
+      description:
+        'Approach each assignment with discipline, clear communication, and respect for production constraints, team standards, and stakeholder expectations.',
+    },
+    {
+      title: 'Value before preference',
+      description:
+        'Focus decisions on the business problem, the users affected, and the maintainability of the solution rather than on personal technology preferences.',
+    },
+    {
+      title: 'Reliable, maintainable delivery',
+      description:
+        'Prioritize software that can be understood, supported, and improved after the initial implementation is complete.',
+    },
+    {
+      title: 'Continuous professional growth',
+      description:
+        'Treat learning as a permanent part of the profession, using new knowledge to improve judgment, delivery habits, and technical decisions.',
+    },
+  ],
+  adaptability: {
+    summary:
+      'A consistent part of Jorge’s career has been adapting to the needs of real systems: moving from VB6, Access, WinForms, and SQL Server environments into .NET, REST APIs, Angular integration, and more modern architecture practices. That evolution is not about following trends; it is about learning the tools and patterns required to keep business software useful, maintainable, and aligned with current needs.',
+    evidence: [
+      {
+        title: 'Legacy foundations',
+        description:
+          'Experience with earlier desktop and data-driven environments built practical awareness of workflows, reporting, data entry, and operational continuity.',
+      },
+      {
+        title: 'Modernization mindset',
+        description:
+          'Modernization is approached incrementally, with attention to existing behavior, business risk, and the users who depend on the system.',
+      },
+      {
+        title: 'Tool-agnostic problem solving',
+        description:
+          'Technology is treated as a means to deliver value, not as an identity; the priority is selecting and learning what the problem requires.',
+      },
+      {
+        title: 'Current technical direction',
+        description:
+          'Backend .NET remains the core focus while complementary frontend and architecture knowledge support clearer end-to-end delivery.',
+      },
+    ],
   },
   journeyMilestones: [
     {

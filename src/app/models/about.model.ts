@@ -14,8 +14,15 @@ export interface AboutCard {
   description: string;
 }
 
+export interface AboutAdaptabilitySection {
+  summary: string;
+  evidence: readonly AboutCard[];
+}
+
 export interface AboutPageData {
   introduction: AboutIntroduction;
+  professionalMindset: readonly AboutCard[];
+  adaptability: AboutAdaptabilitySection;
   journeyMilestones: readonly AboutTimelineMilestone[];
   engineeringPhilosophy: readonly AboutCard[];
   professionalValues: readonly AboutCard[];
