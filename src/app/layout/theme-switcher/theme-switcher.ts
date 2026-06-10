@@ -16,6 +16,8 @@ import { PortfolioTheme } from '../../themes/theme.model';
             [class.theme-switcher__button--active]="themeService.isActiveTheme(theme.id)"
             type="button"
             [attr.aria-pressed]="themeService.isActiveTheme(theme.id)"
+            [attr.aria-label]="theme.label + ': ' + theme.description"
+            [attr.title]="theme.description"
             (click)="selectTheme(theme.id)"
           >
             {{ theme.label }}

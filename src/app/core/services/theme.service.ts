@@ -2,7 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Injectable, Renderer2, RendererFactory2, inject, signal } from '@angular/core';
 import { PLATFORM_ID } from '@angular/core';
 
-import { PortfolioTheme, SUPPORTED_THEMES } from '../../themes/theme.model';
+import { DEFAULT_PORTFOLIO_THEME, PortfolioTheme, SUPPORTED_THEMES } from '../../themes/theme.model';
 
 const THEME_STORAGE_KEY = 'j3dev-portfolio-theme';
 const THEME_CLASS_PREFIX = 'theme-';
@@ -15,7 +15,7 @@ export class ThemeService {
   private readonly themeIds = SUPPORTED_THEMES.map((theme) => theme.id);
   private readonly themeClasses = this.themeIds.map((themeId) => `${THEME_CLASS_PREFIX}${themeId}`);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
-  private readonly selectedTheme = signal<PortfolioTheme>('light-professional');
+  private readonly selectedTheme = signal<PortfolioTheme>(DEFAULT_PORTFOLIO_THEME);
 
   readonly currentTheme = this.selectedTheme.asReadonly();
   readonly themes = SUPPORTED_THEMES;
@@ -27,6 +27,10 @@ export class ThemeService {
   }
 
   setTheme(theme: PortfolioTheme): void {
+    if (!this.isSupportedTheme(theme)) {
+      return;
+    }
+
     this.applyTheme(theme, true);
   }
 
@@ -73,12 +77,12 @@ export class ThemeService {
 
   private getSystemDefaultTheme(): PortfolioTheme {
     if (!this.isBrowser) {
-      return 'light-professional';
+      return DEFAULT_PORTFOLIO_THEME;
     }
 
     return window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark-tech'
-      : 'light-professional';
+      : DEFAULT_PORTFOLIO_THEME;
   }
 
   private isSupportedTheme(theme: string | null): theme is PortfolioTheme {
