@@ -9,4 +9,5 @@ export interface HeroSlide {
   secondaryActionLabel: string;
   secondaryActionRoute: string;
   visualLabel?: string;
+  backgroundImageUrl?: string;
 }

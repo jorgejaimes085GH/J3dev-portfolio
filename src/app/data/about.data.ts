@@ -5,7 +5,8 @@ export const ABOUT_PAGE_DATA: AboutPageData = {
     professionalTitle: 'Backend .NET Developer',
     shortIntroduction:
       'Jorge Jaimes is a Backend .NET Developer with experience across several generations of business software. His professional growth has been shaped by maintaining real systems, understanding operational needs, and using software as a practical way to solve business problems with reliability and long-term value.',
-    profileImageAlt: 'Professional profile image area for Jorge Jaimes',
+    profileImageAlt: 'Professional portrait of Jorge Jaimes',
+    profileImageUrl: 'assets/profile/photos/jorge-jaimes-professional-portrait.webp',
   },
   professionalMindset: [
     {

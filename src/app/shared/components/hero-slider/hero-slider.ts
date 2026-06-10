@@ -35,6 +35,14 @@ import { HeroSlide } from '../../../models/hero-slide.model';
 
           <div class="hero-slider__visual" aria-label="Slide visual reference">
             <span>{{ slide.visualLabel || 'Hero visual reference pending final asset' }}</span>
+            @if (slide.backgroundImageUrl) {
+              <img
+                class="hero-slider__image"
+                [src]="slide.backgroundImageUrl"
+                [alt]="slide.visualLabel || slide.title"
+                (error)="hideFailedAsset($event)"
+              />
+            }
           </div>
         </div>
 
@@ -151,14 +159,30 @@ import { HeroSlide } from '../../../models/hero-slide.model';
       }
 
       .hero-slider__visual {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         min-height: 18rem;
+        overflow: hidden;
         padding: 1.5rem;
         border: 1px dashed var(--app-border-color);
         border-radius: 1rem;
         text-align: center;
+      }
+
+      .hero-slider__visual span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-slider__image {
+        z-index: 2;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .hero-slider__navigation {
@@ -251,5 +275,9 @@ export class HeroSlider {
     }
 
     this.currentIndex = index;
+  }
+
+  hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }

@@ -40,6 +40,9 @@ export interface Project {
   typeStatus: string;
   shortDescription: string;
   visualLabel: string;
+  overviewImageUrl?: string;
+  thumbnailUrl?: string;
+  logoUrl?: string;
   context: string[];
   architectureNotes: string[];
   technologies: string[];

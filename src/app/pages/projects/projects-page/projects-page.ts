@@ -39,6 +39,14 @@ import { PROJECTS } from '../../../data/projects.data';
             <article class="project-card" [attr.aria-labelledby]="project.id + '-title'">
               <div class="project-card__visual" role="img" [attr.aria-label]="project.visualLabel">
                 <span aria-hidden="true">{{ project.title.slice(0, 2).toUpperCase() }}</span>
+                @if (project.thumbnailUrl) {
+                  <img
+                    class="project-card__image"
+                    [src]="project.thumbnailUrl"
+                    [alt]="project.title + ' project thumbnail'"
+                    (error)="hideFailedAsset($event)"
+                  />
+                }
               </div>
 
               <div class="project-card__body">
@@ -140,9 +148,11 @@ import { PROJECTS } from '../../../data/projects.data';
       }
 
       .project-card__visual {
+        position: relative;
         display: grid;
         min-height: 9rem;
         place-items: center;
+        overflow: hidden;
         border-bottom: 1px dashed var(--app-border-color);
       }
 
@@ -157,6 +167,15 @@ import { PROJECTS } from '../../../data/projects.data';
         font-size: 1.35rem;
         font-weight: 700;
         letter-spacing: 0.04em;
+      }
+
+      .project-card__image {
+        z-index: 2;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .project-card__body {
@@ -260,4 +279,8 @@ import { PROJECTS } from '../../../data/projects.data';
 })
 export class ProjectsPage {
   protected readonly projects = PROJECTS;
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
+  }
 }

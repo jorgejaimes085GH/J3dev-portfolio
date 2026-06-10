@@ -52,6 +52,21 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       <div class="preview-grid preview-grid--three">
         @for (project of projectPreviews; track project.name) {
           <article class="preview-card project-preview">
+            <div
+              class="project-preview__visual"
+              [attr.aria-label]="project.name + ' thumbnail area'"
+              role="img"
+            >
+              <span aria-hidden="true">{{ project.name.slice(0, 2).toUpperCase() }}</span>
+              @if (project.thumbnailUrl) {
+                <img
+                  class="project-preview__image"
+                  [src]="project.thumbnailUrl"
+                  [alt]="project.name + ' project thumbnail'"
+                  (error)="hideFailedAsset($event)"
+                />
+              }
+            </div>
             <p class="preview-card__label">{{ project.statusLabel }}</p>
             <h3>{{ project.name }}</h3>
             <p>{{ project.description }}</p>
@@ -169,6 +184,40 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
         border-radius: 0.75rem;
       }
 
+      .project-preview {
+        overflow: hidden;
+      }
+
+      .project-preview__visual {
+        position: relative;
+        display: grid;
+        min-height: 8rem;
+        place-items: center;
+        overflow: hidden;
+        margin: -1.25rem -1.25rem 1rem;
+        border-bottom: 1px dashed var(--app-border-color);
+      }
+
+      .project-preview__visual span {
+        display: inline-grid;
+        width: 4rem;
+        height: 4rem;
+        place-items: center;
+        border: 1px solid var(--app-border-color);
+        border-radius: 999px;
+        color: var(--app-link-color);
+        font-weight: 700;
+      }
+
+      .project-preview__image {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
       .preview-card h3,
       .skill-card h3 {
         margin: 0;
@@ -270,4 +319,8 @@ export class Home {
   protected readonly valuePreviews = HOME_VALUE_PREVIEWS;
   protected readonly projectPreviews = HOME_PROJECT_PREVIEWS;
   protected readonly skillPreviews = HOME_SKILL_PREVIEWS;
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
+  }
 }

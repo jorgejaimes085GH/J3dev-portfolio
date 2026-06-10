@@ -10,6 +10,7 @@ export interface HomeProjectPreview {
   description: string;
   technologies: readonly string[];
   route: string;
+  thumbnailUrl?: string;
 }
 
 export interface HomeSkillPreview {

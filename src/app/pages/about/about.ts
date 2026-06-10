@@ -25,6 +25,14 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
             [attr.aria-label]="aboutData.introduction.profileImageAlt"
           >
             <span>Professional Profile Image Pending</span>
+            @if (aboutData.introduction.profileImageUrl) {
+              <img
+                class="about-profile-placeholder__image"
+                [src]="aboutData.introduction.profileImageUrl"
+                [alt]="aboutData.introduction.profileImageAlt"
+                (error)="hideFailedAsset($event)"
+              />
+            }
           </div>
           <figcaption>Professional profile image area</figcaption>
         </figure>
@@ -336,4 +344,8 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
 })
 export class About {
   protected readonly aboutData = ABOUT_PAGE_DATA;
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
+  }
 }

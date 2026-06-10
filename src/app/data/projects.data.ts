@@ -49,7 +49,7 @@ const LEVERIT_ESTIMATED_TIME_BLOCKS: ProjectTimeBlock[] = [
   },
 ];
 
-export const PROJECTS: Project[] = [
+const PROJECT_ITEMS: Project[] = [
   {
     id: 'worker',
     slug: 'worker',
@@ -368,3 +368,10 @@ export const PROJECTS: Project[] = [
       'This portfolio is intended as a public showcase. Repository availability details will be updated with the correct public link when finalized.',
   },
 ];
+
+export const PROJECTS: Project[] = PROJECT_ITEMS.map((project) => ({
+  ...project,
+  overviewImageUrl: `assets/project-media/${project.slug}/${project.slug}-overview.webp`,
+  thumbnailUrl: `assets/project-media/${project.slug}/${project.slug}-thumbnail.webp`,
+  logoUrl: `assets/images/logos/projects/${project.slug}-logo.svg`,
+}));

@@ -29,6 +29,22 @@ import { PROJECTS } from '../../../data/projects.data';
           >
             <span aria-hidden="true">{{ selectedProject.title.slice(0, 2).toUpperCase() }}</span>
             <p>{{ selectedProject.visualLabel }}</p>
+            @if (selectedProject.overviewImageUrl) {
+              <img
+                class="project-detail-visual__image"
+                [src]="selectedProject.overviewImageUrl"
+                [alt]="selectedProject.title + ' project overview visual'"
+                (error)="hideFailedAsset($event)"
+              />
+            }
+            @if (selectedProject.logoUrl) {
+              <img
+                class="project-detail-visual__logo"
+                [src]="selectedProject.logoUrl"
+                [alt]="selectedProject.title + ' project logo'"
+                (error)="hideFailedAsset($event)"
+              />
+            }
           </div>
         </section>
 
@@ -265,15 +281,23 @@ import { PROJECTS } from '../../../data/projects.data';
       }
 
       .project-detail-visual {
+        position: relative;
         display: grid;
         min-height: 18rem;
         align-content: center;
         justify-items: center;
         gap: 1rem;
+        overflow: hidden;
         padding: 1.5rem;
         border: 1px dashed var(--app-border-color);
         border-radius: 0.875rem;
         text-align: center;
+      }
+
+      .project-detail-visual span,
+      .project-detail-visual p {
+        position: relative;
+        z-index: 1;
       }
 
       .project-detail-visual span {
@@ -286,6 +310,25 @@ import { PROJECTS } from '../../../data/projects.data';
         color: var(--app-link-color);
         font-size: 1.5rem;
         font-weight: 700;
+      }
+
+      .project-detail-visual__image {
+        z-index: 2;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .project-detail-visual__logo {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 3;
+        width: 4rem;
+        max-height: 4rem;
+        object-fit: contain;
       }
 
       .project-detail-list,
@@ -385,4 +428,8 @@ export class ProjectDetailPage {
   protected readonly project = PROJECTS.find(
     (project) => project.slug === this.projectId || project.id === this.projectId,
   );
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
+  }
 }

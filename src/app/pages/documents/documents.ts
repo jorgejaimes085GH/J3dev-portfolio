@@ -32,9 +32,22 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
             @for (document of group.documents; track document.id) {
               <article class="document-card" [attr.aria-labelledby]="document.id + '-title'">
                 <div class="document-card__header">
-                  <div>
-                    <p class="document-card__type">{{ document.type }}</p>
-                    <h3 [id]="document.id + '-title'">{{ document.title }}</h3>
+                  <div class="document-card__title-group">
+                    <span class="document-card__icon" aria-hidden="true">
+                      <span>{{ document.type.slice(0, 2).toUpperCase() }}</span>
+                      @if (document.iconUrl) {
+                        <img
+                          class="document-card__icon-image"
+                          [src]="document.iconUrl"
+                          [alt]="''"
+                          (error)="hideFailedAsset($event)"
+                        />
+                      }
+                    </span>
+                    <div>
+                      <p class="document-card__type">{{ document.type }}</p>
+                      <h3 [id]="document.id + '-title'">{{ document.title }}</h3>
+                    </div>
                   </div>
                   <span class="document-card__status">{{ document.statusLabel }}</span>
                 </div>
@@ -64,6 +77,13 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                     rel="noopener noreferrer"
                     [attr.aria-label]="document.viewLabel + ' in a new tab'"
                   >
+                    <img
+                      class="document-action__icon"
+                      [src]="viewActionIconUrl"
+                      [alt]="''"
+                      aria-hidden="true"
+                      (error)="hideFailedAsset($event)"
+                    />
                     View Online
                   </a>
                   <a
@@ -72,6 +92,13 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                     [attr.download]="downloadFileName(document)"
                     [attr.aria-label]="document.downloadLabel"
                   >
+                    <img
+                      class="document-action__icon"
+                      [src]="downloadActionIconUrl"
+                      [alt]="''"
+                      aria-hidden="true"
+                      (error)="hideFailedAsset($event)"
+                    />
                     Download PDF
                   </a>
                   <button
@@ -80,6 +107,13 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                     (click)="openForPrint(document)"
                     [attr.aria-label]="document.printLabel + ' in a new tab'"
                   >
+                    <img
+                      class="document-action__icon"
+                      [src]="printActionIconUrl"
+                      [alt]="''"
+                      aria-hidden="true"
+                      (error)="hideFailedAsset($event)"
+                    />
                     Print
                   </button>
                 </div>
@@ -162,6 +196,34 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
         gap: 1rem;
       }
 
+      .document-card__title-group {
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+      }
+
+      .document-card__icon {
+        position: relative;
+        display: inline-grid;
+        flex: 0 0 auto;
+        width: 3rem;
+        height: 3rem;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid var(--app-border-color);
+        border-radius: 999px;
+        color: var(--app-link-color);
+        font-weight: 700;
+      }
+
+      .document-card__icon-image {
+        position: absolute;
+        inset: 0.65rem;
+        width: calc(100% - 1.3rem);
+        height: calc(100% - 1.3rem);
+        object-fit: contain;
+      }
+
       .document-card__status {
         flex: 0 0 auto;
         padding: 0.25rem 0.55rem;
@@ -215,6 +277,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        gap: 0.4rem;
         min-height: 2.6rem;
         padding: 0.6rem 0.9rem;
         border: 1px solid var(--app-border-color);
@@ -229,6 +292,11 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
         border-color: var(--app-link-color);
         color: var(--app-link-color);
         font-weight: 700;
+      }
+
+      .document-action__icon {
+        width: 1rem;
+        height: 1rem;
       }
 
       .document-action:hover,
@@ -268,6 +336,9 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
 })
 export class Documents {
   readonly documentGroups: DocumentGroupSection[] = DOCUMENT_GROUPS;
+  protected readonly viewActionIconUrl = 'assets/images/icons/actions/open-external.svg';
+  protected readonly downloadActionIconUrl = 'assets/images/icons/actions/download.svg';
+  protected readonly printActionIconUrl = 'assets/images/icons/actions/print.svg';
 
   downloadFileName(document: ProfessionalDocument): string {
     return document.filePath.split('/').pop() ?? `${document.id}.pdf`;
@@ -275,5 +346,9 @@ export class Documents {
 
   openForPrint(document: ProfessionalDocument): void {
     window.open(document.filePath, '_blank', 'noopener,noreferrer');
+  }
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }

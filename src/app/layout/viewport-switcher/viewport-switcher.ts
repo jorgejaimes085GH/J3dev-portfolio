@@ -16,9 +16,20 @@ import { ViewportPreviewId } from '../../models/viewport-preview.model';
             class="viewport-switcher__button"
             [class.viewport-switcher__button--active]="isActiveViewport(viewport.id)"
             [attr.aria-pressed]="isActiveViewport(viewport.id)"
+            [attr.aria-label]="viewport.label + ' viewport preview'"
+            [attr.title]="viewport.label + ' preview'"
             (click)="selectViewport(viewport.id)"
           >
-            {{ viewport.label }}
+            @if (viewport.iconUrl) {
+              <img
+                class="viewport-switcher__icon"
+                [src]="viewport.iconUrl"
+                [alt]="''"
+                aria-hidden="true"
+                (error)="showIconFallback($event)"
+              />
+            }
+            <span class="viewport-switcher__fallback">{{ viewport.iconFallback }}</span>
           </button>
         }
       </div>
@@ -37,5 +48,13 @@ export class ViewportSwitcher {
 
   isActiveViewport(viewport: ViewportPreviewId): boolean {
     return this.viewportPreviewService.isActiveViewport(viewport);
+  }
+
+  showIconFallback(event: Event): void {
+    const image = event.target as HTMLImageElement;
+    image.hidden = true;
+    const fallback = image.nextElementSibling as HTMLElement | null;
+    fallback?.classList.add('viewport-switcher__fallback--visible');
+    fallback?.removeAttribute('aria-hidden');
   }
 }

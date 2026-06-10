@@ -29,6 +29,7 @@ export const HOME_PROJECT_PREVIEWS: readonly HomeProjectPreview[] = [
       'Operational software experience presented through business context, screenshots, and impact without exposing source code.',
     technologies: ['.NET', 'C#', 'SQL Server', 'WinForms'],
     route: '/projects',
+    thumbnailUrl: 'assets/project-media/worker/worker-thumbnail.webp',
   },
   {
     name: 'Expensux',
@@ -37,6 +38,7 @@ export const HOME_PROJECT_PREVIEWS: readonly HomeProjectPreview[] = [
       'Expense management showcase focused on .NET API structure, authentication, SQL-backed workflows, and maintainable implementation decisions.',
     technologies: ['ASP.NET Core', 'REST APIs', 'JWT', 'Angular'],
     route: '/projects',
+    thumbnailUrl: 'assets/project-media/expensux/expensux-thumbnail.webp',
   },
   {
     name: 'ItHelpCenter',
@@ -45,6 +47,7 @@ export const HOME_PROJECT_PREVIEWS: readonly HomeProjectPreview[] = [
       'Help center experience described through responsibilities, technologies, and lessons learned while avoiding proprietary information.',
     technologies: ['.NET', 'SQL Server', 'Dapper', 'LINQ'],
     route: '/projects',
+    thumbnailUrl: 'assets/project-media/ithelpcenter/ithelpcenter-thumbnail.webp',
   },
 ];
 

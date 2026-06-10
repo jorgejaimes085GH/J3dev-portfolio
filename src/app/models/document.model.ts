@@ -16,6 +16,7 @@ export interface ProfessionalDocument {
   viewLabel: string;
   downloadLabel: string;
   printLabel: string;
+  iconUrl?: string;
   note?: string;
 }
 

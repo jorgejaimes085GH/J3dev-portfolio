@@ -47,7 +47,17 @@ interface SkillGroup {
                 (click)="openSkill(skill)"
                 [attr.aria-label]="'View evidence for ' + skill.name"
               >
-                <span class="skill-card__icon" aria-hidden="true">{{ skill.iconLabel }}</span>
+                <span class="skill-card__icon" aria-hidden="true">
+                  <span>{{ skill.iconLabel }}</span>
+                  @if (skill.iconUrl) {
+                    <img
+                      class="skill-card__logo"
+                      [src]="skill.iconUrl"
+                      [alt]="''"
+                      (error)="hideFailedAsset($event)"
+                    />
+                  }
+                </span>
                 <span class="skill-card__body">
                   <span class="skill-card__name">{{ skill.name }}</span>
                   <span class="skill-card__description">{{ skill.shortDescription }}</span>
@@ -196,15 +206,25 @@ interface SkillGroup {
       }
 
       .skill-card__icon {
+        position: relative;
         display: inline-grid;
         min-width: 3rem;
         height: 3rem;
         place-items: center;
+        overflow: hidden;
         padding: 0 0.4rem;
         border: 1px solid var(--app-border-color);
         border-radius: 999px;
         color: var(--app-link-color);
         font-weight: 700;
+      }
+
+      .skill-card__logo {
+        position: absolute;
+        inset: 0.55rem;
+        width: calc(100% - 1.1rem);
+        height: calc(100% - 1.1rem);
+        object-fit: contain;
       }
 
       .skill-card__body {
@@ -379,5 +399,9 @@ export class Skills {
 
   closeSkill(): void {
     this.selectedSkill = undefined;
+  }
+
+  hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }
