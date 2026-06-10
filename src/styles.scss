@@ -538,9 +538,10 @@ html.viewport-preview--mobile,
 
 
 /* Force manual viewport preview heading typography above Angular component-scoped rules.
-   These selectors target the active preview frame directly so the preview width,
-   not the browser width or component stylesheet order, controls the hierarchy. */
-.viewport-preview.viewport-preview--mobile h1 {
+   Documents established this mobile scale; these selectors apply it through both
+   the preview frame class and the root html preview class so the preview width,
+   not browser width or component stylesheet order, controls every page heading. */
+:is(html.viewport-preview--mobile, .viewport-preview--mobile) .app-shell__content h1 {
   font-size: clamp(1.6rem, 5vw, 2rem) !important;
   line-height: 1.1 !important;
   overflow-wrap: normal !important;
@@ -548,7 +549,7 @@ html.viewport-preview--mobile,
   hyphens: manual !important;
 }
 
-.viewport-preview.viewport-preview--mobile h2 {
+:is(html.viewport-preview--mobile, .viewport-preview--mobile) .app-shell__content h2 {
   font-size: clamp(1.25rem, 4vw, 1.55rem) !important;
   line-height: 1.15 !important;
   overflow-wrap: normal !important;
@@ -556,7 +557,7 @@ html.viewport-preview--mobile,
   hyphens: manual !important;
 }
 
-.viewport-preview.viewport-preview--mobile h3 {
+:is(html.viewport-preview--mobile, .viewport-preview--mobile) .app-shell__content h3 {
   font-size: clamp(1.05rem, 3.5vw, 1.25rem) !important;
   line-height: 1.15 !important;
   overflow-wrap: normal !important;
