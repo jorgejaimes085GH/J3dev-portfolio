@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { NavigationService } from '../../core/services/navigation.service';
+import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
 import { ThemeSwitcher } from '../theme-switcher/theme-switcher';
 import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
 
@@ -12,6 +13,9 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
   host: {
     '[class.site-header-shell--sticky]': 'isHeaderPinned()',
     '[class.site-header-shell--static]': '!isHeaderPinned()',
+    '[class.site-header-shell--preview-desktop]': "currentViewport() === 'desktop'",
+    '[class.site-header-shell--preview-tablet]': "currentViewport() === 'tablet'",
+    '[class.site-header-shell--preview-mobile]': "currentViewport() === 'mobile'",
   },
   template: `
     <header
@@ -19,6 +23,8 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
       [class.site-header--sticky]="isHeaderPinned()"
       [class.site-header--pinned]="isHeaderPinned()"
       [class.site-header--unpinned]="!isHeaderPinned()"
+      [class.site-header--preview-tablet]="currentViewport() === 'tablet'"
+      [class.site-header--preview-mobile]="currentViewport() === 'mobile'"
     >
       <div class="site-header__inner">
         <a class="site-header__brand" routerLink="/" aria-label="J3dev Portfolio home">
@@ -45,8 +51,34 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                   [routerLink]="item.path"
                   routerLinkActive="site-nav__link--active"
                   [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+                  [attr.aria-label]="item.label"
+                  [attr.title]="item.label"
                 >
-                  {{ item.label }}
+                  <span class="site-nav__icon-frame" aria-hidden="true">
+                    @if (item.iconUrl) {
+                      <img
+                        class="site-nav__icon"
+                        [src]="item.iconUrl"
+                        [alt]="''"
+                        aria-hidden="true"
+                        (error)="showIconFallback($event)"
+                      />
+                      <span
+                        class="site-nav__icon-fallback site-header__icon-fallback"
+                        aria-hidden="true"
+                      >
+                        {{ item.iconFallback }}
+                      </span>
+                    } @else {
+                      <span
+                        class="site-nav__icon-fallback site-header__icon-fallback site-header__icon-fallback--visible"
+                        aria-hidden="true"
+                      >
+                        {{ item.iconFallback }}
+                      </span>
+                    }
+                  </span>
+                  <span class="site-nav__label">{{ item.label }}</span>
                 </a>
               </li>
             }
@@ -83,9 +115,11 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
 })
 export class Navbar {
   private readonly navigationService = inject(NavigationService);
+  private readonly viewportPreviewService = inject(ViewportPreviewService);
 
   readonly navigationItems = this.navigationService.getMainNavigation();
   readonly isHeaderPinned = this.navigationService.isHeaderPinned;
+  readonly currentViewport = this.viewportPreviewService.currentViewport;
 
   protected readonly pinIconUrl = 'assets/images/icons/actions/pin.svg';
   protected readonly pinOffIconUrl = 'assets/images/icons/actions/pin-off.svg';
@@ -105,7 +139,6 @@ export class Navbar {
     image.hidden = true;
     const fallback = image.nextElementSibling as HTMLElement | null;
     fallback?.classList.add('site-header__icon-fallback--visible');
-    fallback?.removeAttribute('aria-hidden');
   }
 
   protected showBrandLogoFallback(event: Event): void {
