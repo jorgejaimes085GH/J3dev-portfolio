@@ -103,50 +103,302 @@ a {
 
 /* Home hero theme polish lives globally to keep the standalone component lightweight
    while still supporting the three approved theme experiences. */
+
+.hero-slider__background-image,
+.hero-slider__motion-layer {
+  display: none;
+}
+
 html.theme-dark-tech .hero-slider__image,
 html.theme-premium-3d .hero-slider__image {
   opacity: 0.78;
 }
 
 html.theme-premium-3d .hero-slider {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   perspective: 1200px;
   background:
-    radial-gradient(circle at 16% 18%, rgba(196, 167, 255, 0.2), transparent 24rem),
-    radial-gradient(circle at 84% 22%, rgba(56, 189, 248, 0.14), transparent 24rem),
+    radial-gradient(circle at 16% 18%, rgba(196, 167, 255, 0.24), transparent 24rem),
+    radial-gradient(circle at 84% 22%, rgba(56, 189, 248, 0.16), transparent 24rem),
     var(--app-background-color);
 }
 
+html.theme-premium-3d .hero-slider__background-image {
+  position: absolute;
+  inset: -8%;
+  z-index: 0;
+  display: block;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  opacity: 0.2;
+  filter: saturate(1.12) contrast(1.06) blur(1px);
+  transform: scale(1.04) translate3d(-1.2%, -0.8%, 0);
+  animation: premiumHeroBackgroundDrift 18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+html.theme-premium-3d .hero-slider::before,
+html.theme-premium-3d .hero-slider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+html.theme-premium-3d .hero-slider::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(24, 18, 43, 0.92) 0%,
+      rgba(24, 18, 43, 0.74) 45%,
+      rgba(24, 18, 43, 0.84) 100%
+    ),
+    radial-gradient(circle at 72% 52%, rgba(196, 167, 255, 0.2), transparent 21rem);
+}
+
+html.theme-premium-3d .hero-slider::after {
+  opacity: 0.46;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 4.5rem 4.5rem;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+  animation: premiumHeroGridShift 22s linear infinite;
+}
+
+html.theme-premium-3d .hero-slider__content,
+html.theme-premium-3d .hero-slider__navigation {
+  position: relative;
+  z-index: 2;
+}
+
+html.theme-premium-3d .hero-slider__motion-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+html.theme-premium-3d .hero-slider__motion-orb,
+html.theme-premium-3d .hero-slider__motion-line {
+  position: absolute;
+  opacity: 0.58;
+  will-change: transform, opacity;
+}
+
+html.theme-premium-3d .hero-slider__motion-orb {
+  border: 1px solid rgba(196, 167, 255, 0.34);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(196, 167, 255, 0.28), transparent 62%);
+  box-shadow: 0 0 2rem rgba(196, 167, 255, 0.16);
+  animation: premiumHeroOrbFloat 14s ease-in-out infinite alternate;
+}
+
+html.theme-premium-3d .hero-slider__motion-orb--primary {
+  top: 16%;
+  right: 12%;
+  width: clamp(4rem, 9vw, 7.5rem);
+  height: clamp(4rem, 9vw, 7.5rem);
+}
+
+html.theme-premium-3d .hero-slider__motion-orb--secondary {
+  bottom: 18%;
+  left: 48%;
+  width: clamp(2.75rem, 6vw, 4.75rem);
+  height: clamp(2.75rem, 6vw, 4.75rem);
+  animation-delay: -5s;
+}
+
+html.theme-premium-3d .hero-slider__motion-line {
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(196, 167, 255, 0.58), transparent);
+  animation: premiumHeroLineDrift 13s ease-in-out infinite alternate;
+}
+
+html.theme-premium-3d .hero-slider__motion-line--one {
+  top: 28%;
+  right: 6%;
+  width: min(34vw, 24rem);
+  transform: rotate(-14deg);
+}
+
+html.theme-premium-3d .hero-slider__motion-line--two {
+  right: 22%;
+  bottom: 24%;
+  width: min(26vw, 18rem);
+  transform: rotate(11deg);
+  animation-delay: -4s;
+}
+
+html.theme-premium-3d .hero-slider__copy {
+  text-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.34);
+}
+
 html.theme-premium-3d .hero-slider__visual {
-  transform: rotateX(3deg) rotateY(-4deg);
+  transform: rotateX(3deg) rotateY(-4deg) translate3d(0, 0, 2rem);
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.32);
+  transition:
+    transform 700ms ease,
+    box-shadow 700ms ease;
+  animation: premiumHeroVisualFloat 10s ease-in-out infinite alternate;
+}
+
+html.theme-premium-3d .hero-slider__visual::after {
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--app-background-color) 78%, transparent),
+      transparent 58%
+    ),
+    linear-gradient(180deg, transparent, rgba(24, 18, 43, 0.68));
 }
 
 html.theme-premium-3d .hero-slider__image {
-  animation: premiumHeroDepth 12s ease-in-out infinite alternate;
+  transform: scale(1.04) translate3d(-1.1%, -0.8%, 0);
+  transition:
+    opacity 520ms ease,
+    transform 900ms ease;
+  animation: premiumHeroImageDepth 12s ease-in-out infinite alternate;
 }
 
-@keyframes premiumHeroDepth {
+@keyframes premiumHeroBackgroundDrift {
   from {
-    transform: scale(1.04) translate3d(-1.4%, -1%, 0);
+    transform: scale(1.04) translate3d(-1.2%, -0.8%, 0);
   }
 
   to {
-    transform: scale(1.1) translate3d(1.4%, 1%, 0);
+    transform: scale(1.1) translate3d(1.2%, 0.8%, 0);
+  }
+}
+
+@keyframes premiumHeroGridShift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(4.5rem, 2.25rem, 0);
+  }
+}
+
+@keyframes premiumHeroOrbFloat {
+  from {
+    opacity: 0.42;
+    transform: translate3d(-0.75rem, 0.5rem, 0) scale(0.96);
+  }
+
+  to {
+    opacity: 0.68;
+    transform: translate3d(0.9rem, -0.7rem, 0) scale(1.04);
+  }
+}
+
+@keyframes premiumHeroLineDrift {
+  from {
+    opacity: 0.34;
+    translate: -0.75rem 0;
+  }
+
+  to {
+    opacity: 0.64;
+    translate: 0.75rem 0;
+  }
+}
+
+@keyframes premiumHeroVisualFloat {
+  from {
+    transform: rotateX(3deg) rotateY(-4deg) translate3d(0, 0, 2rem);
+  }
+
+  to {
+    transform: rotateX(2deg) rotateY(-2deg) translate3d(0.35rem, -0.45rem, 2rem);
+  }
+}
+
+@keyframes premiumHeroImageDepth {
+  from {
+    transform: scale(1.04) translate3d(-1.1%, -0.8%, 0);
+  }
+
+  to {
+    transform: scale(1.1) translate3d(1.1%, 0.8%, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-slider__content,
   .hero-slider__image,
+  html.theme-premium-3d .hero-slider,
+  html.theme-premium-3d .hero-slider::after,
+  html.theme-premium-3d .hero-slider__background-image,
+  html.theme-premium-3d .hero-slider__motion-orb,
+  html.theme-premium-3d .hero-slider__motion-line,
+  html.theme-premium-3d .hero-slider__visual,
   html.theme-premium-3d .hero-slider__image {
     animation: none;
     transition: none;
   }
 }
 
+@media (max-width: 900px) {
+  html.theme-premium-3d .hero-slider__background-image {
+    inset: -5%;
+    width: 110%;
+    height: 110%;
+    opacity: 0.16;
+    animation-duration: 22s;
+  }
+
+  html.theme-premium-3d .hero-slider__visual {
+    transform: rotateX(1.5deg) rotateY(-2deg) translate3d(0, 0, 1rem);
+  }
+}
+
 @media (max-width: 760px) {
+  html.theme-premium-3d .hero-slider::after,
+  html.theme-premium-3d .hero-slider__motion-line {
+    display: none;
+  }
+
+  html.theme-premium-3d .hero-slider__motion-orb {
+    opacity: 0.26;
+  }
+
+  html.theme-premium-3d .hero-slider__background-image {
+    opacity: 0.12;
+    animation-name: premiumHeroBackgroundDriftMobile;
+  }
+
   html.theme-premium-3d .hero-slider__visual {
     transform: none;
+    animation-name: premiumHeroVisualFloatMobile;
+  }
+}
+
+@keyframes premiumHeroBackgroundDriftMobile {
+  from {
+    transform: scale(1.03) translate3d(-0.45%, -0.35%, 0);
+  }
+
+  to {
+    transform: scale(1.06) translate3d(0.45%, 0.35%, 0);
+  }
+}
+
+@keyframes premiumHeroVisualFloatMobile {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -0.25rem, 0);
   }
 }
 
