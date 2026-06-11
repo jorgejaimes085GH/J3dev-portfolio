@@ -136,59 +136,143 @@ const JOURNEY_CTA_LINKS_EN: JourneyCtaLink[] = [
   { label: 'View Documents', route: '/documents' },
 ];
 
-const JOURNEY_STAGES_ES: JourneyStage[] = JOURNEY_STAGES_EN.map((stage) => ({
-  ...stage,
-  title: stage.title
-    .replace('Early technical foundation', 'Fundamentos técnicos iniciales')
-    .replace('Legacy business systems', 'Sistemas de negocio legacy')
-    .replace('Production software ownership', 'Responsabilidad sobre software en producción')
-    .replace('Enterprise team experience', 'Experiencia en equipo empresarial')
-    .replace('Modern Backend .NET direction', 'Dirección moderna Backend .NET')
-    .replace('Public portfolio and technical evidence', 'Portfolio público y evidencia técnica'),
-  periodLabel: stage.periodLabel
-    .replace('Early stage', 'Etapa inicial')
-    .replace('Professional growth', 'Crecimiento profesional')
-    .replace('Current direction', 'Dirección actual'),
-  summary: stage.summary
-    .replace('Built practical awareness', 'Construyó comprensión práctica')
-    .replace('Focused on', 'Enfocado en')
-    .replace('Continues evolving', 'Continúa evolucionando'),
-  focusAreas: stage.focusAreas.map((area) =>
-    area
-      .replace('Business workflows', 'Flujos de negocio')
-      .replace('Data entry', 'Ingreso de datos')
-      .replace('Reporting', 'Reportes')
-      .replace('Production maintenance', 'Mantenimiento en producción')
-      .replace('Backend architecture', 'Arquitectura backend')
-      .replace('Public presentation', 'Presentación pública'),
-  ),
-  keyLearning: stage.keyLearning
-    .replace(
-      'Software value depends on understanding the business workflow before choosing technology.',
-      'El valor del software depende de entender el flujo de negocio antes de elegir tecnología.',
-    )
-    .replace(
-      'Maintainability matters when systems must keep supporting real operations over time.',
-      'La mantenibilidad importa cuando los sistemas deben seguir soportando operaciones reales en el tiempo.',
-    ),
-}));
+const JOURNEY_STAGES_ES: JourneyStage[] = [
+  {
+    ...JOURNEY_STAGES_EN[0],
+    title: 'Bases en software de negocio',
+    periodLabel: 'Etapa de fundamentos iniciales',
+    summary:
+      'La experiencia inicial se centró en aplicaciones prácticas de negocio donde el software debía apoyar operaciones diarias y usuarios reales.',
+    focusAreas: [
+      'FoxPro',
+      'SQL',
+      'Sistemas contables',
+      'Software médico',
+      'Sistemas de facturación de gas',
+    ],
+    keyLearning:
+      'Entender procesos reales de negocio antes de enfocarse en detalles de implementación.',
+    evidenceNote:
+      'Esta etapa se resume solo por dominios y tecnologías, sin exponer datos privados de negocio ni flujos propietarios.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[1],
+    title: 'Modernización legacy',
+    periodLabel: 'Etapa de modernización',
+    summary:
+      'El trabajo avanzó hacia extender sistemas existentes y llevar herramientas legacy hacia adelante, manteniendo presente la continuidad operativa.',
+    focusAreas: ['VB6', 'Access', 'VB.NET', 'SQL Server'],
+    keyLearning: 'Modernizar sistemas existentes sin perder continuidad operativa.',
+    evidenceNote:
+      'El énfasis está en el reto de ingeniería de una modernización segura, no en una línea de tiempo empresa por empresa.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[2],
+    title: 'Desarrollo independiente de producto',
+    periodLabel: 'Etapa de producto a largo plazo',
+    summary:
+      'El trabajo de producto se amplió hacia construir, mantener y adaptar un sistema durante varios años ante necesidades operativas cambiantes, mostrando autonomía sin convertir el freelance en la identidad profesional principal.',
+    focusAreas: ['Worker', 'VB.NET', 'Access', 'SQL Server', 'Reportes', 'Exportación a Excel'],
+    keyLearning:
+      'Construir y mantener software que evoluciona durante años preservando continuidad de negocio.',
+    evidenceNote:
+      'Worker se referencia como evidencia del portafolio segura para publicación, mientras el código fuente propietario y los detalles operativos permanecen privados.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[3],
+    title: 'Desarrollo de software empresarial',
+    periodLabel: 'Etapa de colaboración empresarial',
+    summary:
+      'La experiencia creció en sistemas empresariales donde mantenimiento, mejoras, puntos de integración y convenciones de equipo se volvieron centrales para la entrega.',
+    focusAreas: [
+      'ItHelpCenter',
+      'Discovery',
+      'Testigo Electoral',
+      'SQL Server',
+      'C#',
+      'APIs',
+      'JavaScript',
+      'Angular',
+      'WebSockets',
+    ],
+    keyLearning:
+      'Trabajar con sistemas empresariales, mantenimiento, mejoras y convenciones de desarrollo en equipo.',
+    evidenceNote:
+      'Los nombres de proyectos se usan solo como contexto de alto nivel; los detalles de implementación y organización no se divulgan intencionalmente.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[4],
+    title: 'Mentalidad de arquitectura',
+    periodLabel: 'Etapa de crecimiento en arquitectura',
+    summary:
+      'El enfoque maduró desde completar tareas aisladas hacia organizar código, límites y estándares para que los sistemas sigan siendo comprensibles.',
+    focusAreas: [
+      'SOLID',
+      'Arquitectura por capas',
+      'Patrones reutilizables',
+      'Estándares de desarrollo',
+      'Mantenibilidad',
+    ],
+    keyLearning:
+      'Pensar más allá de funcionalidades aisladas y diseñar software que pueda evolucionar.',
+    evidenceNote:
+      'Los proyectos relacionados muestran dirección arquitectónica mediante resúmenes sanitizados y contexto de implementación seguro para publicación.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[5],
+    title: 'Desarrollo fullstack moderno',
+    periodLabel: 'Etapa de aplicación moderna',
+    summary:
+      'El trabajo actual mantiene Backend .NET como centro y suma integración frontend mediante APIs tipadas, autenticación, acceso a datos e interfaces Angular.',
+    focusAreas: ['.NET 8', 'REST APIs', 'JWT', 'Dapper', 'Angular', 'TypeScript', 'SQL Server'],
+    keyLearning:
+      'Construir aplicaciones modernas con profundidad backend primero e integración frontend como complemento.',
+    evidenceNote:
+      'Expensux y este portafolio aportan ejemplos seguros de dirección fullstack moderna sin agregar lógica backend al portafolio en sí.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[6],
+    title: 'Evolución continua',
+    periodLabel: 'Etapa de evolución en curso',
+    summary:
+      'La etapa actual enfatiza el uso disciplinado de herramientas modernas de desarrollo, manteniendo primero la mantenibilidad, la arquitectura y el criterio profesional.',
+    focusAreas: [
+      'Git',
+      'GitHub',
+      'Aprendizaje de Azure',
+      'Desarrollo asistido por IA',
+      'Codex',
+      'Mentalidad cloud',
+    ],
+    keyLearning:
+      'Usar herramientas modernas con responsabilidad, manteniendo arquitectura y mantenibilidad como prioridad.',
+    evidenceNote:
+      'Este portafolio hace parte del ciclo de aprendizaje continuo: entrega incremental, cambios revisables y presentación pública clara.',
+  },
+];
 
 export const JOURNEY_STAGES = {
   en: JOURNEY_STAGES_EN,
   es: JOURNEY_STAGES_ES,
 } as const;
 
-const JOURNEY_INSIGHTS_ES: JourneyInsight[] = JOURNEY_INSIGHTS_EN.map((insight) => ({
-  ...insight,
-  title: insight.title
-    .replace('Legacy experience still matters', 'La experiencia legacy sigue importando')
-    .replace('Backend direction is intentional', 'La dirección backend es intencional')
-    .replace('Learning supports better judgment', 'El aprendizaje apoya mejores decisiones'),
-  description: insight.description
-    .replace('Understanding older systems', 'Entender sistemas antiguos')
-    .replace('Backend .NET is the core focus', 'Backend .NET es el foco principal')
-    .replace('Continuous learning is used', 'El aprendizaje continuo se usa'),
-}));
+const JOURNEY_INSIGHTS_ES: JourneyInsight[] = [
+  {
+    title: 'De herramientas a sistemas',
+    description:
+      'La progresión pasó de aprender herramientas individuales a entender cómo aplicaciones, bases de datos, flujos de trabajo y usuarios encajan dentro de sistemas completos de negocio.',
+  },
+  {
+    title: 'De codificar a pensar en arquitectura',
+    description:
+      'La experiencia cambió de completar funcionalidades aisladas a definir límites, capas, estándares y convenciones que facilitan el mantenimiento futuro.',
+  },
+  {
+    title: 'De ejecutar a evolucionar',
+    description:
+      'El trabajo de proyectos a largo plazo reforzó que el software útil sigue evolucionando mediante mantenimiento, modernización, documentación y decisiones incrementales cuidadosas.',
+  },
+];
 
 export const JOURNEY_INSIGHTS = {
   en: JOURNEY_INSIGHTS_EN,

@@ -13,7 +13,7 @@ import { LanguageService } from '../../core/services/language.service';
     <main class="value-page" aria-labelledby="value-page-title">
       <section class="value-section value-introduction" aria-labelledby="value-page-title">
         <div class="value-section__header value-introduction__content">
-          <p class="value-section__eyebrow">Professional Impact</p>
+          <p class="value-section__eyebrow">{{ text().impactEyebrow }}</p>
           <h1 id="value-page-title">{{ valueData().introduction.title }}</h1>
           <p class="value-introduction__summary">{{ valueData().introduction.introduction }}</p>
           <p>{{ valueData().introduction.supportingStatement }}</p>
@@ -22,12 +22,9 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="value-section" aria-labelledby="value-pillars-title">
         <div class="value-section__header">
-          <p class="value-section__eyebrow">Value Pillars</p>
-          <h2 id="value-pillars-title">Practical habits that support delivery</h2>
-          <p>
-            These habits connect technical decisions with production reliability, maintainability,
-            and clear business context.
-          </p>
+          <p class="value-section__eyebrow">{{ text().pillarsEyebrow }}</p>
+          <h2 id="value-pillars-title">{{ text().pillarsTitle }}</h2>
+          <p>{{ text().pillarsIntro }}</p>
         </div>
 
         <div class="value-card-grid value-card-grid--three">
@@ -45,12 +42,9 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="value-section" aria-labelledby="contribution-areas-title">
         <div class="value-section__header">
-          <p class="value-section__eyebrow">Real-World Contribution Areas</p>
-          <h2 id="contribution-areas-title">Areas where technical work becomes team value</h2>
-          <p>
-            These contribution areas reflect the types of work Jorge has handled across backend
-            development, databases, modernization, and enterprise systems.
-          </p>
+          <p class="value-section__eyebrow">{{ text().areasEyebrow }}</p>
+          <h2 id="contribution-areas-title">{{ text().areasTitle }}</h2>
+          <p>{{ text().areasIntro }}</p>
         </div>
 
         <div class="value-card-grid value-card-grid--three">
@@ -65,12 +59,9 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="value-section" aria-labelledby="team-contribution-title">
         <div class="value-section__header">
-          <p class="value-section__eyebrow">Team Contribution</p>
-          <h2 id="team-contribution-title">Value beyond writing code</h2>
-          <p>
-            Team value also comes from communication, documentation, knowledge sharing, and
-            decisions that make future maintenance easier.
-          </p>
+          <p class="value-section__eyebrow">{{ text().teamEyebrow }}</p>
+          <h2 id="team-contribution-title">{{ text().teamTitle }}</h2>
+          <p>{{ text().teamIntro }}</p>
         </div>
 
         <div class="value-card-grid value-card-grid--four">
@@ -85,12 +76,12 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="value-section value-highlight" aria-labelledby="philosophy-summary-title">
         <div class="value-highlight__content">
-          <p class="value-section__eyebrow">Engineering Philosophy</p>
+          <p class="value-section__eyebrow">{{ text().philosophyEyebrow }}</p>
           <h2 id="philosophy-summary-title">{{ valueData().philosophySummary.title }}</h2>
           <p>{{ valueData().philosophySummary.description }}</p>
         </div>
 
-        <ul class="philosophy-list" aria-label="Engineering philosophy principles">
+        <ul class="philosophy-list" [attr.aria-label]="text().philosophyAria">
           @for (principle of valueData().philosophySummary.principles; track principle) {
             <li>{{ principle }}</li>
           }
@@ -99,15 +90,12 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="value-cta" aria-labelledby="evidence-navigation-title">
         <div>
-          <p class="value-section__eyebrow">Evidence Navigation</p>
-          <h2 id="evidence-navigation-title">Continue toward supporting portfolio evidence</h2>
-          <p>
-            Continue into the supporting sections to review project context, skill evidence, and the
-            technical journey behind the portfolio narrative.
-          </p>
+          <p class="value-section__eyebrow">{{ text().evidenceEyebrow }}</p>
+          <h2 id="evidence-navigation-title">{{ text().evidenceTitle }}</h2>
+          <p>{{ text().evidenceIntro }}</p>
         </div>
 
-        <nav class="value-cta__actions" aria-label="Evidence navigation links">
+        <nav class="value-cta__actions" [attr.aria-label]="text().evidenceAria">
           @for (link of valueData().evidenceLinks; track link.route) {
             <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
@@ -294,6 +282,8 @@ import { LanguageService } from '../../core/services/language.service';
 })
 export class WhyHireMe {
   private readonly languageService = inject(LanguageService);
+
+  protected readonly text = computed(() => this.languageService.uiText().pages.value);
 
   protected readonly valueData = computed(() =>
     getLocalizedData(VALUE_PAGE_DATA, this.languageService.currentLanguage()),

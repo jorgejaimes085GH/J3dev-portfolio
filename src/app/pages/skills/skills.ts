@@ -28,13 +28,9 @@ interface SkillGroup {
     <main class="skills-page" aria-labelledby="skills-page-title">
       <section class="skills-section skills-hero" aria-labelledby="skills-page-title">
         <div class="skills-section__header">
-          <p class="skills-section__eyebrow">Evidence-Based Capabilities</p>
-          <h1 id="skills-page-title">Skills</h1>
-          <p class="skills-hero__summary">
-            Skills are presented through project evidence and practical context, not percentages,
-            progress bars, or vague labels. Each item connects to work where the capability is used
-            or clearly marks where evidence will be added later.
-          </p>
+          <p class="skills-section__eyebrow">{{ text().eyebrow }}</p>
+          <h1 id="skills-page-title">{{ text().title }}</h1>
+          <p class="skills-hero__summary">{{ text().summary }}</p>
         </div>
       </section>
 
@@ -44,12 +40,12 @@ interface SkillGroup {
           [attr.aria-labelledby]="categoryTitleId(skillGroup.category)"
         >
           <div class="skills-section__header">
-            <p class="skills-section__eyebrow">Skill Category</p>
+            <p class="skills-section__eyebrow">{{ text().categoryEyebrow }}</p>
             <h2 [id]="categoryTitleId(skillGroup.category)">{{ skillGroup.category }}</h2>
           </div>
 
           @if (skillGroup.backendSections?.length) {
-            <div class="backend-taxonomy" aria-label="Backend skill layers">
+            <div class="backend-taxonomy" [attr.aria-label]="text().backendLayersAria">
               @for (backendSection of skillGroup.backendSections; track backendSection.group) {
                 <section
                   class="backend-taxonomy__section"
@@ -59,7 +55,10 @@ interface SkillGroup {
                     {{ backendSection.group }}
                   </h3>
 
-                  <div class="skill-grid" [attr.aria-label]="backendSection.group + ' skills'">
+                  <div
+                    class="skill-grid"
+                    [attr.aria-label]="backendSection.group + ' ' + text().skillsSuffix"
+                  >
                     @for (skill of backendSection.skills; track skill.id) {
                       <ng-container
                         [ngTemplateOutlet]="skillCardTemplate"
@@ -71,7 +70,10 @@ interface SkillGroup {
               }
             </div>
           } @else {
-            <div class="skill-grid" [attr.aria-label]="skillGroup.category + ' skills'">
+            <div
+              class="skill-grid"
+              [attr.aria-label]="skillGroup.category + ' ' + text().skillsSuffix"
+            >
               @for (skill of skillGroup.skills; track skill.id) {
                 <ng-container
                   [ngTemplateOutlet]="skillCardTemplate"
@@ -102,20 +104,22 @@ interface SkillGroup {
                 class="skill-panel__close"
                 type="button"
                 (click)="closeSkill()"
-                [attr.aria-label]="'Close ' + skill.name + ' details'"
+                [attr.aria-label]="
+                  text().closeDetailsPrefix + ' ' + skill.name + ' ' + text().closeDetailsSuffix
+                "
               >
-                Close
+                {{ uiCommon().close }}
               </button>
             </div>
 
             <section class="skill-panel__section" aria-labelledby="skill-evidence-title">
-              <h3 id="skill-evidence-title">Evidence summary</h3>
+              <h3 id="skill-evidence-title">{{ text().evidenceSummary }}</h3>
               <p>{{ skill.evidenceSummary }}</p>
             </section>
 
             @if (skill.contextNotes?.length) {
               <section class="skill-panel__section" aria-labelledby="skill-context-title">
-                <h3 id="skill-context-title">Context notes</h3>
+                <h3 id="skill-context-title">{{ text().contextNotes }}</h3>
                 <ul>
                   @for (contextNote of skill.contextNotes; track contextNote) {
                     <li>{{ contextNote }}</li>
@@ -125,14 +129,15 @@ interface SkillGroup {
             }
 
             <section class="skill-panel__section" aria-labelledby="skill-projects-title">
-              <h3 id="skill-projects-title">Related projects</h3>
+              <h3 id="skill-projects-title">{{ text().relatedProjects }}</h3>
 
               @if (getRelatedProjects(skill).length) {
                 <ul class="related-project-list">
                   @for (project of getRelatedProjects(skill); track project.id) {
                     <li>
                       <a [routerLink]="['/projects', project.slug]" (click)="closeSkill()">
-                        View {{ project.title }} project details
+                        {{ text().viewProjectDetailsPrefix }} {{ project.title }}
+                        {{ text().viewProjectDetailsSuffix }}
                       </a>
                       <p>{{ project.shortDescription }}</p>
                     </li>
@@ -140,9 +145,7 @@ interface SkillGroup {
                 </ul>
               } @else {
                 <p class="skill-panel__placeholder">
-                  No public-safe related project is linked for this skill yet. Supporting evidence
-                  can be added in a future update without exposing private or proprietary
-                  information.
+                  {{ text().evidencePending }}
                 </p>
               }
             </section>
@@ -155,7 +158,7 @@ interface SkillGroup {
           class="skill-card"
           type="button"
           (click)="openSkill(skill)"
-          [attr.aria-label]="'View evidence for ' + skill.name"
+          [attr.aria-label]="text().viewEvidencePrefix + ' ' + skill.name"
         >
           <span class="skill-card__icon" aria-hidden="true">
             <span>{{ skill.iconLabel }}</span>
@@ -415,6 +418,9 @@ interface SkillGroup {
 export class Skills {
   private readonly languageService = inject(LanguageService);
 
+  protected readonly text = computed(() => this.languageService.uiText().pages.skills);
+  protected readonly uiCommon = computed(() => this.languageService.uiText().common);
+
   readonly skills = computed(() =>
     getLocalizedData(SKILLS, this.languageService.currentLanguage()),
   );
@@ -471,10 +477,12 @@ export class Skills {
     const relatedProjectCount = this.getRelatedProjects(skill).length;
 
     if (relatedProjectCount === 0) {
-      return 'Evidence pending';
+      return this.text().evidenceMissing;
     }
 
-    return `${relatedProjectCount} related project${relatedProjectCount === 1 ? '' : 's'}`;
+    return relatedProjectCount === 1
+      ? `${relatedProjectCount} ${this.text().evidencePrefix}`
+      : `${relatedProjectCount} ${this.text().evidencePluralPrefix}`;
   }
 
   getRelatedProjects(skill: Skill): Project[] {

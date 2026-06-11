@@ -16,33 +16,27 @@ import { Project } from '../../models/project.model';
     <main class="journey-page" aria-labelledby="journey-page-title">
       <section class="journey-section journey-hero" aria-labelledby="journey-page-title">
         <div class="journey-section__header journey-hero__content">
-          <p class="journey-section__eyebrow">Technical Evolution</p>
-          <h1 id="journey-page-title">Journey</h1>
-          <p class="journey-hero__summary">
-            This page is not a traditional employment timeline. It shows Jorge's evolution as a
-            software engineer: what changed in his technical mindset, what he learned from each
-            stage, and how those stages support his current Backend .NET profile with complementary
-            fullstack capability.
-          </p>
+          <p class="journey-section__eyebrow">{{ text().eyebrow }}</p>
+          <h1 id="journey-page-title">{{ text().title }}</h1>
+          <p class="journey-hero__summary">{{ text().summary }}</p>
         </div>
       </section>
 
       <section class="journey-section" aria-labelledby="journey-timeline-title">
         <div class="journey-section__header">
-          <p class="journey-section__eyebrow">Evolution Timeline</p>
-          <h2 id="journey-timeline-title">Learning stages that shaped the engineering profile</h2>
-          <p>
-            Each stage focuses on capability growth and practical learning rather than listing
-            roles, employers, or confidential implementation details.
-          </p>
+          <p class="journey-section__eyebrow">{{ text().timelineEyebrow }}</p>
+          <h2 id="journey-timeline-title">{{ text().timelineTitle }}</h2>
+          <p>{{ text().timelineIntro }}</p>
         </div>
 
-        <ol class="journey-timeline" aria-label="Technical and professional evolution stages">
+        <ol class="journey-timeline" [attr.aria-label]="text().timelineAria">
           @for (stage of stages(); track stage.id; let stageIndex = $index) {
             <li class="journey-stage">
               <article class="journey-stage__card" [attr.aria-labelledby]="stage.id + '-title'">
                 <div class="journey-stage__meta">
-                  <span class="journey-stage__number">Stage {{ stageIndex + 1 }}</span>
+                  <span class="journey-stage__number"
+                    >{{ text().stagePrefix }} {{ stageIndex + 1 }}</span
+                  >
                   <span class="journey-stage__period">{{ stage.periodLabel }}</span>
                 </div>
 
@@ -50,8 +44,8 @@ import { Project } from '../../models/project.model';
                   <h3 [id]="stage.id + '-title'">{{ stage.title }}</h3>
                   <p>{{ stage.summary }}</p>
 
-                  <div class="journey-stage__group" aria-label="Focus technologies and areas">
-                    <h4>Focus</h4>
+                  <div class="journey-stage__group" [attr.aria-label]="text().focusAria">
+                    <h4>{{ text().focus }}</h4>
                     <ul class="tag-list">
                       @for (focusArea of stage.focusAreas; track focusArea) {
                         <li>{{ focusArea }}</li>
@@ -60,18 +54,19 @@ import { Project } from '../../models/project.model';
                   </div>
 
                   <div class="journey-stage__learning">
-                    <h4>Key learning</h4>
+                    <h4>{{ text().keyLearning }}</h4>
                     <p>{{ stage.keyLearning }}</p>
                   </div>
 
                   @if (getRelatedProjects(stage).length) {
                     <div class="journey-stage__group">
-                      <h4>Related project evidence</h4>
+                      <h4>{{ text().relatedEvidence }}</h4>
                       <ul class="journey-stage__links">
                         @for (project of getRelatedProjects(stage); track project.id) {
                           <li>
                             <a [routerLink]="['/projects', project.slug]">
-                              View {{ project.title }} project details
+                              {{ text().viewProjectDetailsPrefix }} {{ project.title }}
+                              {{ text().viewProjectDetailsSuffix }}
                             </a>
                           </li>
                         }
@@ -91,8 +86,8 @@ import { Project } from '../../models/project.model';
 
       <section class="journey-section" aria-labelledby="journey-insights-title">
         <div class="journey-section__header">
-          <p class="journey-section__eyebrow">Journey Insights</p>
-          <h2 id="journey-insights-title">How the mindset has changed</h2>
+          <p class="journey-section__eyebrow">{{ text().insightsEyebrow }}</p>
+          <h2 id="journey-insights-title">{{ text().insightsTitle }}</h2>
         </div>
 
         <div class="journey-insight-grid">
@@ -107,15 +102,12 @@ import { Project } from '../../models/project.model';
 
       <section class="journey-cta" aria-labelledby="journey-next-title">
         <div>
-          <p class="journey-section__eyebrow">Continue Exploring</p>
-          <h2 id="journey-next-title">Connect the journey to evidence and documents</h2>
-          <p>
-            Use these links to review supporting projects, skills, value areas, and professional
-            documents through the standard navigation experience.
-          </p>
+          <p class="journey-section__eyebrow">{{ text().ctaEyebrow }}</p>
+          <h2 id="journey-next-title">{{ text().ctaTitle }}</h2>
+          <p>{{ text().ctaIntro }}</p>
         </div>
 
-        <nav class="journey-cta__actions" aria-label="Journey related navigation links">
+        <nav class="journey-cta__actions" [attr.aria-label]="text().ctaAria">
           @for (link of ctaLinks(); track link.route) {
             <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
@@ -340,6 +332,8 @@ import { Project } from '../../models/project.model';
 })
 export class Journey {
   private readonly languageService = inject(LanguageService);
+
+  protected readonly text = computed(() => this.languageService.uiText().pages.journey);
 
   readonly stages = computed(() =>
     getLocalizedData(JOURNEY_STAGES, this.languageService.currentLanguage()),

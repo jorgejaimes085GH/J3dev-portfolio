@@ -13,30 +13,21 @@ import { LanguageService } from '../../../core/services/language.service';
     <main class="projects-page" aria-labelledby="projects-page-title">
       <section class="projects-section projects-introduction" aria-labelledby="projects-page-title">
         <div class="projects-section__header">
-          <p class="projects-section__eyebrow">Selected Project Evidence</p>
-          <h1 id="projects-page-title">Projects</h1>
-          <p class="projects-introduction__summary">
-            A structured overview of selected work that demonstrates Backend .NET, SQL Server,
-            architecture, modernization, production experience, and supporting fullstack capability.
-          </p>
-          <p>
-            These cards are intentionally simple for now. Final visuals, deeper case studies, and
-            detail pages can be added later without changing the typed project data source.
-          </p>
+          <p class="projects-section__eyebrow">{{ text().eyebrow }}</p>
+          <h1 id="projects-page-title">{{ text().title }}</h1>
+          <p class="projects-introduction__summary">{{ text().summary }}</p>
+          <p>{{ text().intro }}</p>
         </div>
       </section>
 
       <section class="projects-section" aria-labelledby="project-list-title">
         <div class="projects-section__header">
-          <p class="projects-section__eyebrow">Project Cards</p>
-          <h2 id="project-list-title">Professional proof points</h2>
-          <p>
-            Each project highlights its current status, practical context, technology stack, and
-            time investment context.
-          </p>
+          <p class="projects-section__eyebrow">{{ text().cardsEyebrow }}</p>
+          <h2 id="project-list-title">{{ text().cardsTitle }}</h2>
+          <p>{{ text().cardsIntro }}</p>
         </div>
 
-        <div class="project-grid" aria-label="Project list">
+        <div class="project-grid" [attr.aria-label]="text().listAria">
           @for (project of projects(); track project.id) {
             <article class="project-card" [attr.aria-labelledby]="project.id + '-title'">
               <div class="project-card__visual" role="img" [attr.aria-label]="project.visualLabel">
@@ -45,7 +36,7 @@ import { LanguageService } from '../../../core/services/language.service';
                   <img
                     class="project-card__image"
                     [src]="project.thumbnailUrl"
-                    [alt]="project.title + ' project thumbnail'"
+                    [alt]="project.title + ' ' + text().thumbnailAltSuffix"
                     (error)="hideFailedAsset($event)"
                   />
                 }
@@ -56,8 +47,8 @@ import { LanguageService } from '../../../core/services/language.service';
                 <h3 [id]="project.id + '-title'">{{ project.title }}</h3>
                 <p>{{ project.shortDescription }}</p>
 
-                <div class="project-card__time-preview" aria-label="Time investment context">
-                  <h4>Time investment context</h4>
+                <div class="project-card__time-preview" [attr.aria-label]="text().timeContext">
+                  <h4>{{ text().timeContext }}</h4>
                   <ul>
                     @for (timeBlock of project.timeBlocks.slice(0, 3); track timeBlock.label) {
                       <li>
@@ -71,13 +62,13 @@ import { LanguageService } from '../../../core/services/language.service';
                 <a
                   class="project-card__link"
                   [routerLink]="['/projects', project.slug]"
-                  [attr.aria-label]="'View more about ' + project.title"
+                  [attr.aria-label]="text().viewMoreAriaPrefix + ' ' + project.title"
                 >
-                  View more
+                  {{ text().viewMore }}
                 </a>
               </div>
 
-              <div class="project-card__technologies" aria-label="Technologies used">
+              <div class="project-card__technologies" [attr.aria-label]="text().technologiesAria">
                 @for (technology of project.technologies; track technology) {
                   <span class="technology-badge">{{ technology }}</span>
                 }
@@ -281,6 +272,8 @@ import { LanguageService } from '../../../core/services/language.service';
 })
 export class ProjectsPage {
   private readonly languageService = inject(LanguageService);
+
+  protected readonly text = computed(() => this.languageService.uiText().pages.projects);
 
   protected readonly projects = computed(() =>
     getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
