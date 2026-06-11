@@ -10,7 +10,9 @@
 }
 
 .viewport-switcher__label {
+  min-width: 3.75rem;
   font-weight: 600;
+  text-align: end;
   white-space: nowrap;
 }
 
@@ -27,7 +29,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.35rem;
+  width: 2.35rem;
   min-height: 2.35rem;
   border: 0;
   border-right: 1px solid var(--app-border-color);

@@ -10,7 +10,9 @@
 }
 
 .theme-switcher__label {
+  min-width: 3.75rem;
   font-weight: 600;
+  text-align: end;
   white-space: nowrap;
 }
 
@@ -29,11 +31,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.35rem;
+  width: 2.35rem;
   min-height: 2.35rem;
   border: 0;
   border-right: 1px solid var(--app-border-color);
   cursor: pointer;
+  font: inherit;
   padding: 0.4rem;
 }
 
@@ -52,6 +55,12 @@
 }
 
 .theme-switcher__fallback {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.theme-switcher__icon + .theme-switcher__fallback {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -66,8 +75,6 @@
   height: auto;
   overflow: visible;
   clip: auto;
-  font-size: 0.75rem;
-  font-weight: 700;
 }
 
 .theme-switcher__button--active {
