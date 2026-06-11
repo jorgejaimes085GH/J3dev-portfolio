@@ -40,23 +40,6 @@ import { LanguageService } from '../../core/services/language.service';
         </figure>
       </section>
 
-      <section class="about-section" aria-labelledby="professional-mindset-title">
-        <div class="about-section__header">
-          <p class="about-section__eyebrow">{{ text().mindsetEyebrow }}</p>
-          <h2 id="professional-mindset-title">{{ text().mindsetTitle }}</h2>
-          <p>{{ text().mindsetIntro }}</p>
-        </div>
-
-        <div class="about-card-grid about-card-grid--four">
-          @for (item of aboutData().professionalMindset; track item.title) {
-            <article class="about-card">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
-            </article>
-          }
-        </div>
-      </section>
-
       <section class="about-section" aria-labelledby="adaptability-title">
         <div class="about-section__header">
           <p class="about-section__eyebrow">{{ text().adaptabilityEyebrow }}</p>
@@ -93,15 +76,15 @@ import { LanguageService } from '../../core/services/language.service';
         </ol>
       </section>
 
-      <section class="about-section" aria-labelledby="engineering-philosophy-title">
+      <section class="about-section" aria-labelledby="how-jorge-works-title">
         <div class="about-section__header">
-          <p class="about-section__eyebrow">{{ text().philosophyEyebrow }}</p>
-          <h2 id="engineering-philosophy-title">{{ text().philosophyTitle }}</h2>
-          <p>{{ text().philosophyIntro }}</p>
+          <p class="about-section__eyebrow">{{ text().mindsetEyebrow }}</p>
+          <h2 id="how-jorge-works-title">{{ text().mindsetTitle }}</h2>
+          <p>{{ text().mindsetIntro }}</p>
         </div>
 
         <div class="about-card-grid about-card-grid--four">
-          @for (item of aboutData().engineeringPhilosophy; track item.title) {
+          @for (item of aboutData().howJorgeWorks; track item.title) {
             <article class="about-card">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>

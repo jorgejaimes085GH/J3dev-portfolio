@@ -22,9 +22,8 @@ export interface AboutAdaptabilitySection {
 
 export interface AboutPageData {
   introduction: AboutIntroduction;
-  professionalMindset: readonly AboutCard[];
   adaptability: AboutAdaptabilitySection;
   journeyMilestones: readonly AboutTimelineMilestone[];
-  engineeringPhilosophy: readonly AboutCard[];
+  howJorgeWorks: readonly AboutCard[];
   professionalValues: readonly AboutCard[];
 }
