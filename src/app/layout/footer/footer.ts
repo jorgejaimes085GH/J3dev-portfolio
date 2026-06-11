@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
+  host: {
+    '[class.site-footer-shell--preview-desktop]': "currentViewport() === 'desktop'",
+    '[class.site-footer-shell--preview-tablet]': "currentViewport() === 'tablet'",
+    '[class.site-footer-shell--preview-mobile]': "currentViewport() === 'mobile'",
+  },
   template: `
     <footer class="site-footer">
       <div class="site-footer__inner">
@@ -13,4 +20,8 @@ import { Component } from '@angular/core';
   `,
   styleUrl: './footer.scss',
 })
-export class Footer {}
+export class Footer {
+  private readonly viewportPreviewService = inject(ViewportPreviewService);
+
+  readonly currentViewport = this.viewportPreviewService.currentViewport;
+}
