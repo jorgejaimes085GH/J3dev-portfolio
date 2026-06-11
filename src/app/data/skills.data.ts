@@ -552,9 +552,43 @@ const SKILLS_EN: Skill[] = SKILL_ITEMS.map((skill) => ({
   iconUrl: `assets/images/logos/skills/${skill.id}.svg`,
 }));
 
-const SKILL_CATEGORIES_ES: SkillCategory[] = SKILL_CATEGORIES_EN;
+const skillCategoryEsMap: Record<SkillCategory, SkillCategory> = {
+  Backend: 'Backend',
+  Database: 'Base de datos',
+  Frontend: 'Frontend',
+  Architecture: 'Arquitectura',
+  'Legacy & Desktop': 'Legacy y Desktop',
+  'Dev Tools / Cloud': 'Herramientas Dev / Cloud',
+  'Soft Skills': 'Habilidades blandas',
+  'Enterprise Practices': 'Prácticas empresariales',
+  'Base de datos': 'Base de datos',
+  Arquitectura: 'Arquitectura',
+  'Legacy y Desktop': 'Legacy y Desktop',
+  'Herramientas Dev / Cloud': 'Herramientas Dev / Cloud',
+  'Habilidades blandas': 'Habilidades blandas',
+  'Prácticas empresariales': 'Prácticas empresariales',
+};
 
-const BACKEND_SKILL_GROUPS_ES: BackendSkillGroup[] = BACKEND_SKILL_GROUPS_EN;
+const backendSkillGroupEsMap: Record<BackendSkillGroup, BackendSkillGroup> = {
+  'Platform & Language': 'Plataforma y lenguaje',
+  'Application Frameworks': 'Frameworks de aplicación',
+  'Data Access & Querying': 'Acceso a datos y consultas',
+  'API & Communication': 'API y comunicación',
+  'Backend Tooling': 'Herramientas Backend',
+  'Plataforma y lenguaje': 'Plataforma y lenguaje',
+  'Frameworks de aplicación': 'Frameworks de aplicación',
+  'Acceso a datos y consultas': 'Acceso a datos y consultas',
+  'API y comunicación': 'API y comunicación',
+  'Herramientas Backend': 'Herramientas Backend',
+};
+
+const SKILL_CATEGORIES_ES: SkillCategory[] = SKILL_CATEGORIES_EN.map(
+  (category) => skillCategoryEsMap[category],
+);
+
+const BACKEND_SKILL_GROUPS_ES: BackendSkillGroup[] = BACKEND_SKILL_GROUPS_EN.map(
+  (group) => backendSkillGroupEsMap[group],
+);
 
 const skillSpanishDescriptions: Record<
   string,
@@ -675,10 +709,175 @@ const skillSpanishDescriptions: Record<
     evidenceSummary:
       'Las convenciones de equipo se conectan con trabajo empresarial en LeverIT, patrones reutilizables y entregas mantenibles.',
   },
+
+  'ado-net': {
+    shortDescription: 'Experiencia de acceso a datos legacy desde sistemas desktop en producción.',
+    evidenceSummary:
+      'Worker inició como aplicación Access y VB.NET usando ADO.NET, aportando experiencia práctica en mantenimiento y evolución de acceso a datos legacy.',
+  },
+  linq: {
+    shortDescription: 'Patrones de consulta y transformación para lógica C# legible.',
+    evidenceSummary:
+      'LINQ se representa como parte del conjunto de habilidades de desarrollo C#/.NET usado para mantener lógica de negocio legible y mantenible.',
+  },
+  'entity-framework-core': {
+    shortDescription:
+      'Tecnología ORM actualmente fortalecida mediante formación, ejercicios de arquitectura y práctica con proyectos .NET modernos.',
+    evidenceSummary:
+      'Entity Framework Core se presenta como un área activa de fortalecimiento para acceso a datos .NET moderno. Todavía no se presenta como experiencia fuerte en producción.',
+    contextNotes: [
+      'Enfoque actual: formación, ejercicios de arquitectura y proyectos de práctica antes de vincular evidencia pública segura de producción.',
+    ],
+  },
+  'stored-procedures': {
+    shortDescription:
+      'Rutinas del lado de base de datos usadas cuando apoyan operaciones de datos mantenibles.',
+    evidenceSummary:
+      'Stored Procedures aparecen en Worker y Expensux como parte del diseño de operaciones de datos centradas en SQL Server.',
+  },
+  'microsoft-access': {
+    shortDescription:
+      'Experiencia en base de datos legacy desde historia de aplicaciones desktop en producción.',
+    evidenceSummary:
+      'Worker inició con almacenamiento en Microsoft Access, creando experiencia directa con restricciones de bases de datos legacy y planeación de migración.',
+  },
+  scss: {
+    shortDescription: 'Estilos estructurados para mantener UI Angular con mejor organización.',
+    evidenceSummary:
+      'SCSS apoya este portfolio y flujos Angular al mantener estilos organizados y componentes visuales más fáciles de sostener.',
+  },
+  'responsive-design': {
+    shortDescription:
+      'Diseño adaptable para que las interfaces funcionen en diferentes tamaños de pantalla.',
+    evidenceSummary:
+      'Responsive Design se evidencia en este portfolio y en el enfoque de UI que mantiene acceso claro al contenido.',
+  },
+  'clean-code': {
+    shortDescription: 'Hábitos de código legible orientados a mantenimiento y transferencia.',
+    evidenceSummary:
+      'Clean code apoya modernización, trabajo empresarial y entregas incrementales donde la claridad reduce riesgo futuro.',
+  },
+  'api-design': {
+    shortDescription:
+      'Planeación de límites API alrededor de responsabilidades claras y flujos de negocio.',
+    evidenceSummary:
+      'API Design aparece en la modernización de Worker, flujos de Expensux y trabajo empresarial LeverIT que requirió límites backend alrededor de necesidades reales de negocio.',
+  },
+  'vb-net': {
+    shortDescription: 'Experiencia en aplicaciones desktop y legacy en producción.',
+    evidenceSummary:
+      'Worker fue creado inicialmente como aplicación VB.NET, aportando experiencia de largo plazo con código desktop legacy en producción.',
+  },
+  winforms: {
+    shortDescription: 'Experiencia UI desktop conectada con flujos operativos de negocio.',
+    evidenceSummary:
+      'WinForms representa experiencia de aplicaciones desktop obtenida mediante software de flujos en producción y evolución de sistemas legacy.',
+  },
+  wpf: {
+    shortDescription: 'Dirección UI desktop para formularios modernizados en aplicaciones .NET.',
+    evidenceSummary:
+      'WPF hace parte de la dirección de modernización de Worker para formularios desktop mientras preserva continuidad de flujos de negocio.',
+  },
+  foxpro: {
+    shortDescription:
+      'Conocimiento de tecnología legacy útil para entender sistemas de negocio antiguos.',
+    evidenceSummary:
+      'FoxPro se presenta actualmente como familiaridad con sistemas legacy y se conectará con evidencia pública segura cuando esté disponible.',
+    contextNotes: ['Aún no hay detalle público de proyecto vinculado.'],
+  },
+  'visual-basic-6': {
+    shortDescription: 'Contexto desktop legacy útil para conversaciones de modernización.',
+    evidenceSummary:
+      'Visual Basic 6 se representa actualmente como contexto de modernización legacy y se vinculará a ejemplos públicos seguros cuando estén disponibles.',
+    contextNotes: ['No se exponen detalles propietarios ni implementaciones legacy privadas.'],
+  },
+  codex: {
+    shortDescription: 'Flujo de desarrollo asistido por IA con cambios incrementales y revisables.',
+    evidenceSummary:
+      'Codex se usa como parte de un proceso incremental de desarrollo del portfolio, manteniendo cambios buildables y revisables.',
+  },
+  swagger: {
+    shortDescription: 'Soporte de documentación y pruebas de API para flujos backend.',
+    evidenceSummary:
+      'Swagger / pruebas de API aparecen en los bloques de implementación de proyectos y apoyan una validación API más clara.',
+  },
+  'azure-learning': {
+    shortDescription: 'Tema cloud reservado para evidencia futura verificada.',
+    evidenceSummary:
+      'Azure se lista como área actual de aprendizaje hasta que exista evidencia pública segura de proyecto o contexto de despliegue.',
+    contextNotes: ['Esto evita exagerar experiencia cloud antes de agregar evidencia.'],
+  },
+  'docker-learning': {
+    shortDescription: 'Tema de flujos con contenedores reservado para evidencia futura verificada.',
+    evidenceSummary:
+      'Docker se lista como área actual de aprendizaje hasta que pueda conectarse con evidencia pública segura de proyecto.',
+    contextNotes: [
+      'El estado de aprendizaje actual mantiene la página de habilidades basada en evidencia.',
+    ],
+  },
+  'maintainability-mindset': {
+    shortDescription:
+      'Pensamiento orientado a que el software siga siendo comprensible y modificable.',
+    evidenceSummary:
+      'La mentalidad de mantenibilidad se refleja en modernización, arquitectura por capas, documentación y cambios incrementales.',
+  },
+  javascript: {
+    shortDescription:
+      'Lenguaje frontend usado en proyectos empresariales y mejoras de comportamiento UI.',
+    evidenceSummary:
+      'JavaScript aparece en trabajo empresarial LeverIT, incluyendo patrones reutilizables y mantenimiento frontend.',
+  },
+  html: {
+    shortDescription: 'Estructura de contenido web para interfaces claras y accesibles.',
+    evidenceSummary:
+      'HTML apoya interfaces Angular y empresariales donde la estructura clara facilita usabilidad y mantenimiento.',
+  },
+  css: {
+    shortDescription: 'Estilos web para interfaces mantenibles y legibles.',
+    evidenceSummary:
+      'CSS se conecta con trabajo frontend complementario y presentación profesional del portfolio.',
+  },
+  aspnet: {
+    shortDescription: 'Experiencia ASP.NET en funcionalidades empresariales y mantenimiento.',
+    evidenceSummary:
+      'ASP.NET aparece en proyectos LeverIT con trabajo de mantenimiento, mejoras y áreas funcionales empresariales.',
+  },
+  websockets: {
+    shortDescription:
+      'Capacidad relacionada con comunicación en tiempo real en contexto empresarial.',
+    evidenceSummary:
+      'WebSockets se menciona en Discovery a nivel público seguro, sin exponer flujos internos de mensajería.',
+  },
+  'search-ux': {
+    shortDescription:
+      'Mejoras de experiencia de búsqueda para ayudar a usuarios a encontrar información.',
+    evidenceSummary:
+      'Search UX se representa en mejoras de ItHelpCenter descritas de forma general por confidencialidad.',
+  },
+  'spa-like-architecture': {
+    shortDescription:
+      'Patrones de navegación tipo SPA resumidos sin exponer implementación interna.',
+    evidenceSummary:
+      'SPA-like architecture se representa mediante patrones de navegación de ItHelpCenter sobre un índice principal único, resumidos sin exponer código interno.',
+  },
+  'lazy-loading': {
+    shortDescription:
+      'Patrones de carga controlada usados para interfaces mantenibles y responsivas.',
+    evidenceSummary:
+      'Lazy Loading se conecta con patrones controlados de ItHelpCenter usados como parte de mejoras mantenibles de arquitectura frontend.',
+  },
+  'ai-assisted-ux': {
+    shortDescription:
+      'Conceptos de guía asistida por IA para ayudar al usuario a encontrar la ruta o categoría adecuada.',
+    evidenceSummary:
+      'AI-assisted UX se representa en conceptos posteriores de descubrimiento de categorías y guía de usuario en ItHelpCenter, mantenidos a alto nivel por confidencialidad.',
+  },
 };
 
 const SKILLS_ES: Skill[] = SKILLS_EN.map((skill) => ({
   ...skill,
+  category: skillCategoryEsMap[skill.category],
+  backendGroup: skill.backendGroup ? backendSkillGroupEsMap[skill.backendGroup] : undefined,
   ...(skillSpanishDescriptions[skill.id] ?? {
     shortDescription: skill.shortDescription
       .replace('Backend', 'Backend')

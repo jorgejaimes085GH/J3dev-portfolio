@@ -5,6 +5,7 @@ import { HERO_SLIDES } from '../../data/hero-slides.data';
 import { getLocalizedData } from '../../data/localized-data';
 import { LanguageService } from '../../core/services/language.service';
 import {
+  HOME_PAGE_COPY,
   HOME_PROJECT_PREVIEWS,
   HOME_SKILL_PREVIEWS,
   HOME_VALUE_PREVIEWS,
@@ -20,12 +21,9 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
     <section class="home-section" aria-labelledby="how-i-add-value-title">
       <div class="home-section__header">
-        <p class="home-section__eyebrow">How I Add Value</p>
-        <h2 id="how-i-add-value-title">Practical engineering habits for long-term teams</h2>
-        <p>
-          A recruiter-focused overview of Jorge's approach to software work: understand the problem,
-          keep architecture clear, and build solutions that can keep evolving.
-        </p>
+        <p class="home-section__eyebrow">{{ homeCopy().value.eyebrow }}</p>
+        <h2 id="how-i-add-value-title">{{ homeCopy().value.title }}</h2>
+        <p>{{ homeCopy().value.description }}</p>
       </div>
 
       <div class="preview-grid preview-grid--three">
@@ -43,12 +41,9 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
     <section class="home-section" aria-labelledby="featured-projects-title">
       <div class="home-section__header">
-        <p class="home-section__eyebrow">Featured Projects</p>
-        <h2 id="featured-projects-title">Selected work with confidentiality respected</h2>
-        <p>
-          These previews introduce the main project stories without exposing private source code,
-          client-sensitive implementation details, or proprietary information.
-        </p>
+        <p class="home-section__eyebrow">{{ homeCopy().projects.eyebrow }}</p>
+        <h2 id="featured-projects-title">{{ homeCopy().projects.title }}</h2>
+        <p>{{ homeCopy().projects.description }}</p>
       </div>
 
       <div class="preview-grid preview-grid--three">
@@ -56,7 +51,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
           <article class="preview-card project-preview">
             <div
               class="project-preview__visual"
-              [attr.aria-label]="project.name + ' thumbnail area'"
+              [attr.aria-label]="project.name + ' ' + homeCopy().projects.thumbnailAriaSuffix"
               role="img"
             >
               <span aria-hidden="true">{{ project.name.slice(0, 2).toUpperCase() }}</span>
@@ -64,7 +59,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
                 <img
                   class="project-preview__image"
                   [src]="project.thumbnailUrl"
-                  [alt]="project.name + ' project thumbnail'"
+                  [alt]="project.name + ' ' + homeCopy().projects.thumbnailAltSuffix"
                   (error)="hideFailedAsset($event)"
                 />
               }
@@ -73,13 +68,18 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
             <h3>{{ project.name }}</h3>
             <p>{{ project.description }}</p>
 
-            <ul class="badge-list" [attr.aria-label]="project.name + ' key technologies'">
+            <ul
+              class="badge-list"
+              [attr.aria-label]="project.name + ' ' + homeCopy().projects.technologyListSuffix"
+            >
               @for (technology of project.technologies; track technology) {
                 <li>{{ technology }}</li>
               }
             </ul>
 
-            <a class="text-link" [routerLink]="project.route">View {{ project.name }} context</a>
+            <a class="text-link" [routerLink]="project.route">
+              {{ getProjectContextLabel(project.name) }}
+            </a>
           </article>
         }
       </div>
@@ -87,15 +87,12 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
     <section class="home-section" aria-labelledby="core-skills-title">
       <div class="home-section__header">
-        <p class="home-section__eyebrow">Core Skills</p>
-        <h2 id="core-skills-title">Backend-centered skills with fullstack support</h2>
-        <p>
-          The skills preview avoids percentages and vague levels. Each item is presented as a
-          practical capability connected to production-minded software work.
-        </p>
+        <p class="home-section__eyebrow">{{ homeCopy().skills.eyebrow }}</p>
+        <h2 id="core-skills-title">{{ homeCopy().skills.title }}</h2>
+        <p>{{ homeCopy().skills.description }}</p>
       </div>
 
-      <div class="skill-grid" aria-label="Core skill preview list">
+      <div class="skill-grid" [attr.aria-label]="homeCopy().skills.listAriaLabel">
         @for (skill of skillPreviews(); track skill.name) {
           <article class="skill-card">
             <h3>{{ skill.name }}</h3>
@@ -107,17 +104,16 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
     <section class="home-cta" aria-labelledby="home-cta-title">
       <div>
-        <p class="home-section__eyebrow">Explore More</p>
-        <h2 id="home-cta-title">Continue into the project and skills evidence</h2>
-        <p>
-          Review selected project context or explore the technical skills that support Jorge's
-          Backend .NET work and complementary fullstack capability.
-        </p>
+        <p class="home-section__eyebrow">{{ homeCopy().cta.eyebrow }}</p>
+        <h2 id="home-cta-title">{{ homeCopy().cta.title }}</h2>
+        <p>{{ homeCopy().cta.description }}</p>
       </div>
 
-      <div class="home-cta__actions" aria-label="Home exploration links">
-        <a class="button-link button-link--primary" routerLink="/projects">View Projects</a>
-        <a class="button-link" routerLink="/skills">Explore Skills</a>
+      <div class="home-cta__actions" [attr.aria-label]="homeCopy().cta.actionsAriaLabel">
+        <a class="button-link button-link--primary" routerLink="/projects">{{
+          homeCopy().cta.projectsLabel
+        }}</a>
+        <a class="button-link" routerLink="/skills">{{ homeCopy().cta.skillsLabel }}</a>
       </div>
     </section>
   `,
@@ -319,6 +315,9 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 export class Home {
   private readonly languageService = inject(LanguageService);
 
+  protected readonly homeCopy = computed(() =>
+    getLocalizedData(HOME_PAGE_COPY, this.languageService.currentLanguage()),
+  );
   protected readonly heroSlides = computed(() =>
     getLocalizedData(HERO_SLIDES, this.languageService.currentLanguage()),
   );
@@ -331,6 +330,11 @@ export class Home {
   protected readonly skillPreviews = computed(() =>
     getLocalizedData(HOME_SKILL_PREVIEWS, this.languageService.currentLanguage()),
   );
+
+  protected getProjectContextLabel(projectName: string): string {
+    const { contextLinkPrefix, contextLinkSuffix } = this.homeCopy().projects;
+    return [contextLinkPrefix, projectName, contextLinkSuffix].filter(Boolean).join(' ');
+  }
 
   protected hideFailedAsset(event: Event): void {
     (event.target as HTMLImageElement).hidden = true;

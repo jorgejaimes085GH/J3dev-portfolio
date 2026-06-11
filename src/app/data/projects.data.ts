@@ -461,41 +461,231 @@ const projectTimeBlocksEs: ProjectTimeBlock[] = [
   },
 ];
 
+const leveritEstimatedTimeBlocksEs: ProjectTimeBlock[] = [
+  {
+    label: 'Mantenimiento y soporte en producción',
+    duration: 'Participación profesional de varios años',
+    note: 'El alcance se resume sin exponer flujos de clientes, código fuente ni detalles operativos internos.',
+  },
+  {
+    label: 'Mejoras funcionales',
+    duration: 'Trabajo iterativo de releases empresariales',
+    note: 'Las mejoras se describen por área de capacidad, no por detalles propietarios de implementación.',
+  },
+  {
+    label: 'Trabajo de base de datos y backend',
+    duration: 'Ciclos continuos de entrega empresarial',
+    note: 'SQL Server, API y responsabilidades server-side se representan a un nivel seguro para publicación.',
+  },
+  {
+    label: 'Trabajo frontend y experiencia de usuario',
+    duration: 'Trabajo incremental de mejora',
+    note: 'El comportamiento UI, búsqueda y actualizaciones de flujos se generalizan por confidencialidad.',
+  },
+  {
+    label: 'Coordinación de equipo y convenciones',
+    duration: 'Colaboración recurrente con el equipo',
+    note: 'Incluye alineación con prácticas del equipo, expectativas de mantenibilidad y cambios fáciles de transferir.',
+  },
+];
+
+const projectSpanishDetails: Record<
+  string,
+  Pick<
+    Project,
+    'context' | 'architectureNotes' | 'links' | 'placeholders' | 'referencePlaceholders'
+  >
+> = {
+  worker: {
+    context: [
+      'Creado inicialmente como una aplicación monolítica Access + VB.NET usando ADO.NET.',
+      'Luego evolucionó para soportar escenarios de múltiples conexiones con Access y SQL Server.',
+      'Usado en producción desde 2015.',
+      'El código fuente no se expone y no se proporciona enlace de demo.',
+    ],
+    architectureNotes: [
+      'Evolucionó desde una arquitectura legacy orientada a escritorio hacia un enfoque .NET por capas.',
+      'La dirección de modernización incluye C#, .NET 8, límites REST API, formularios WPF, Dapper, procedimientos almacenados en SQL Server, principios SOLID y separación de responsabilidades mantenible.',
+      'Los detalles del proyecto se resumen intencionalmente para evitar exponer implementación propietaria o reglas de negocio.',
+    ],
+    links: [
+      {
+        label: 'Nota de disponibilidad de video',
+        type: 'Video',
+        isExternal: false,
+        isPlaceholder: true,
+        placeholderMessage:
+          'Un video general seguro puede publicarse en una actualización futura sin exponer código fuente.',
+      },
+      {
+        label: 'Referencia de empresa pendiente de aprobación',
+        type: 'Reference',
+        isExternal: false,
+        isPlaceholder: true,
+        placeholderMessage:
+          'Los detalles reales de referencia empresarial se publicarán solo después de aprobación para uso público.',
+      },
+    ],
+    placeholders: {
+      companyName: 'Nombre de empresa pendiente de aprobación',
+      companyAddress: 'Dirección de empresa pendiente de aprobación',
+      companyPhone: 'Teléfono de empresa pendiente de aprobación',
+      videoUrl: 'URL de video pendiente de publicación',
+    },
+    referencePlaceholders: {
+      companyName: 'Nombre de empresa pendiente de aprobación',
+      companyAddress: 'Dirección pendiente de aprobación',
+      companyPhone: 'Teléfono pendiente de aprobación',
+      availabilityNote:
+        'Los detalles reales de la empresa se publicarán solo después de revisión y aprobación.',
+    },
+  },
+  expensux: {
+    context: [
+      'Aplicación de control financiero con enfoque backend para organizar flujos financieros prácticos.',
+      'El enlace de demo pública está pendiente de publicación.',
+      'El código fuente permanece privado por ahora.',
+    ],
+    architectureNotes: [
+      'Usa conceptos de API .NET por capas con acceso a datos en SQL Server y un frontend Angular para organizar flujos de control financiero.',
+      'Diseñada alrededor de perfiles, cuentas, deudas, pagos, categorías, movimientos, autenticación y responsabilidades claras de API.',
+      'El detalle público actual se mantiene intencionalmente a alto nivel mientras se prepara la experiencia de demo.',
+    ],
+    links: [
+      {
+        label: 'Nota de disponibilidad de demo',
+        type: 'Demo',
+        isExternal: true,
+        isPlaceholder: true,
+        placeholderMessage:
+          'El enlace de demo pública se publicará cuando la demo esté lista para revisión.',
+      },
+    ],
+    placeholders: { demoUrl: 'URL de demo pendiente de publicación' },
+    referencePlaceholders: undefined as never,
+  },
+  ithelpcenter: {
+    context: [
+      'Proyecto empresarial profesional trabajado durante la experiencia de Jorge en LeverIT.',
+      'Las contribuciones se describen sin exponer código fuente, demos privadas, nombres de clientes ni detalles propietarios de implementación.',
+      'El trabajo incluyó mantenimiento, mejoras, soporte a nuevos flujos, mejoras de experiencia de búsqueda y desarrollo frontend/backend.',
+      'Las referencias del sitio oficial y logo de LeverIT se agregarán después de finalizar activos públicos aprobados.',
+    ],
+    architectureNotes: [
+      'Apoyó patrones de navegación tipo SPA sobre un índice principal único en términos generales, preservando la confidencialidad de la implementación interna.',
+      'Mejoró patrones reutilizables de clases JavaScript y convenciones de equipo para facilitar el mantenimiento del comportamiento frontend.',
+      'Usó patrones controlados de lazy loading para apoyar entregas funcionales mantenibles y una experiencia de usuario más responsiva.',
+      'Contribuyó a mejoras de experiencia de búsqueda y posteriormente a conceptos de descubrimiento de categorías / guía de usuario asistidos por IA a alto nivel.',
+      'Equilibró necesidades de flujo de negocio con prácticas de software mantenible en un sistema empresarial de larga duración.',
+    ],
+    links: [
+      {
+        label: 'Referencia del sitio oficial de LeverIT pendiente de aprobación',
+        type: 'Reference',
+        isExternal: true,
+        isPlaceholder: true,
+        placeholderMessage:
+          'Referencia del sitio oficial de LeverIT pendiente de aprobación. No se proporciona demo privada, repositorio GitHub ni acceso propietario al proyecto.',
+      },
+    ],
+    placeholders: {
+      officialWebsiteUrl: 'URL del sitio oficial de LeverIT pendiente de aprobación',
+      logoLabel: 'Logo de LeverIT pendiente de activo público aprobado',
+    },
+    referencePlaceholders: undefined as never,
+  },
+  discovery: {
+    context: [
+      'Proyecto empresarial profesional trabajado durante la experiencia de Jorge en LeverIT.',
+      'Apoyó mantenimiento, mejoras, trabajo con SQL Server, funcionalidades ASP.NET y capacidades relacionadas con WebSocket.',
+      'Las descripciones se mantienen generales y no confidenciales, sin exponer demo privada ni código fuente.',
+      'Las referencias del sitio oficial y logo de LeverIT se agregarán después de finalizar activos públicos aprobados.',
+    ],
+    architectureNotes: [
+      'Contribuyó a mantenimiento empresarial y mejoras incrementales dentro de una base de código existente orientada a producción.',
+      'Trabajó con SQL Server y áreas funcionales ASP.NET manteniendo los detalles técnicos generalizados por confidencialidad.',
+      'Apoyó funcionalidad relacionada con WebSocket de forma segura para publicación, sin exponer flujos internos de mensajería ni comportamiento específico de clientes.',
+      'Aplicó hábitos prácticos de mantenibilidad y resolución de problemas dentro de restricciones empresariales establecidas.',
+    ],
+    links: [
+      {
+        label: 'Referencia del sitio oficial de LeverIT pendiente de aprobación',
+        type: 'Reference',
+        isExternal: true,
+        isPlaceholder: true,
+        placeholderMessage:
+          'Referencia del sitio oficial de LeverIT pendiente de aprobación. No se proporciona demo privada, repositorio GitHub ni acceso propietario al proyecto.',
+      },
+    ],
+    placeholders: {
+      officialWebsiteUrl: 'URL del sitio oficial de LeverIT pendiente de aprobación',
+      logoLabel: 'Logo de LeverIT pendiente de activo público aprobado',
+    },
+    referencePlaceholders: undefined as never,
+  },
+  'testigo-electoral': {
+    context: [
+      'Proyecto personalizado de cliente trabajado durante la experiencia de Jorge en LeverIT.',
+      'Construido colaborativamente desde cero con dos compañeros usando SQL Server, REST APIs y Angular para la capa de presentación.',
+      'No se exponen código fuente, demo privada, nombres de clientes, direcciones reales ni detalles confidenciales de implementación.',
+      'Las referencias del sitio oficial y logo de LeverIT se agregarán después de finalizar activos públicos aprobados.',
+    ],
+    architectureNotes: [
+      'Colaboró en una entrega empresarial construida desde cero con separación clara entre responsabilidades de base de datos, API y frontend.',
+      'Usó conceptos de SQL Server y REST API para soportar comunicación backend estructurada sin exponer esquemas privados ni reglas de negocio.',
+      'Usó Angular y TypeScript para implementación frontend manteniendo confidenciales los detalles UI específicos del cliente.',
+      'Demuestra colaboración de equipo, entrega práctica e integración backend/frontend mantenible en un contexto empresarial.',
+    ],
+    links: [
+      {
+        label: 'Referencia del sitio oficial de LeverIT pendiente de aprobación',
+        type: 'Reference',
+        isExternal: true,
+        isPlaceholder: true,
+        placeholderMessage:
+          'Referencia del sitio oficial de LeverIT pendiente de aprobación. No se proporciona demo privada, repositorio GitHub ni acceso propietario al proyecto.',
+      },
+    ],
+    placeholders: {
+      officialWebsiteUrl: 'URL del sitio oficial de LeverIT pendiente de aprobación',
+      logoLabel: 'Logo de LeverIT pendiente de activo público aprobado',
+    },
+    referencePlaceholders: undefined as never,
+  },
+  'j3dev-portfolio': {
+    context: [
+      'Presenta especialización Backend .NET, capacidad fullstack de apoyo, evolución técnica y navegación orientada a reclutadores.',
+      'Portfolio público y showcase open source para presentación profesional.',
+      'Usa datos estáticos y un sistema de temas sin backend, API ni lógica de base de datos.',
+    ],
+    architectureNotes: [
+      'Construido como aplicación Angular estática con fuentes de datos tipadas y estructuras de página reutilizables.',
+      'Las funciones de tema y vista previa de viewport son mejoras client-side que preservan navegación estándar y acceso al contenido.',
+      'Los detalles del proyecto pueden evolucionar incrementalmente sin introducir backend, API ni lógica de base de datos.',
+    ],
+    links: [
+      {
+        label: 'Nota de disponibilidad del repositorio GitHub',
+        type: 'GitHub',
+        isExternal: true,
+        isPlaceholder: true,
+        placeholderMessage:
+          'El enlace del repositorio GitHub se actualizará cuando la URL pública final esté disponible.',
+      },
+    ],
+    placeholders: { githubUrl: 'URL de GitHub pendiente de publicación' },
+    referencePlaceholders: undefined as never,
+  },
+};
+
 const PROJECTS_ES: Project[] = PROJECTS_EN.map((project) => ({
   ...project,
   ...projectSpanishText[project.id],
-  context: project.context.map((item) =>
-    item
-      .replace('Initially created as', 'Creado inicialmente como')
-      .replace('Later evolved to support', 'Luego evolucionó para soportar')
-      .replace('Used in production since 2015.', 'Usado en producción desde 2015.')
-      .replace(
-        'Source code is not exposed and no demo link is provided.',
-        'El código fuente no se expone y no se proporciona enlace de demo.',
-      )
-      .replace('Private source code is not public.', 'El código fuente privado no es público.')
-      .replace(
-        'Public information is limited to capability-level descriptions.',
-        'La información pública se limita a descripciones por capacidad.',
-      ),
-  ),
-  architectureNotes: project.architectureNotes.map((note) =>
-    note
-      .replace(
-        'Project details are intentionally summarized',
-        'Los detalles del proyecto se resumen intencionalmente',
-      )
-      .replace(
-        'Source code, demos, and proprietary details remain private.',
-        'El código fuente, las demos y los detalles propietarios permanecen privados.',
-      )
-      .replace(
-        'Architecture details are generalized',
-        'Los detalles de arquitectura se generalizan',
-      ),
-  ),
+  ...projectSpanishDetails[project.id],
   timeBlocks:
-    project.timeBlocks === ESTIMATED_TIME_BLOCKS ? projectTimeBlocksEs : project.timeBlocks,
+    project.timeBlocks === ESTIMATED_TIME_BLOCKS
+      ? projectTimeBlocksEs
+      : leveritEstimatedTimeBlocksEs,
 }));
 
 export const PROJECTS = {

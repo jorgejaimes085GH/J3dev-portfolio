@@ -6,14 +6,25 @@ export type SkillCategory =
   | 'Legacy & Desktop'
   | 'Dev Tools / Cloud'
   | 'Soft Skills'
-  | 'Enterprise Practices';
+  | 'Enterprise Practices'
+  | 'Base de datos'
+  | 'Arquitectura'
+  | 'Legacy y Desktop'
+  | 'Herramientas Dev / Cloud'
+  | 'Habilidades blandas'
+  | 'Prácticas empresariales';
 
 export type BackendSkillGroup =
   | 'Platform & Language'
   | 'Application Frameworks'
   | 'Data Access & Querying'
   | 'API & Communication'
-  | 'Backend Tooling';
+  | 'Backend Tooling'
+  | 'Plataforma y lenguaje'
+  | 'Frameworks de aplicación'
+  | 'Acceso a datos y consultas'
+  | 'API y comunicación'
+  | 'Herramientas Backend';
 
 export interface Skill {
   id: string;
