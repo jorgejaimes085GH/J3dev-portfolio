@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { HeroSlide } from '../../../models/hero-slide.model';
@@ -8,9 +8,16 @@ import { HeroSlide } from '../../../models/hero-slide.model';
   standalone: true,
   imports: [RouterLink],
   template: `
-    <section class="hero-slider" aria-label="Professional overview">
+    <section
+      class="hero-slider"
+      aria-label="Professional overview"
+      (mouseenter)="pauseAutoPlay()"
+      (mouseleave)="resumeAutoPlay()"
+      (focusin)="pauseAutoPlay()"
+      (focusout)="resumeAutoPlay()"
+    >
       @if (currentSlide; as slide) {
-        <div class="hero-slider__content">
+        <div class="hero-slider__content" [attr.aria-live]="isAutoPlaying ? 'off' : 'polite'">
           <div class="hero-slider__copy">
             <p class="hero-slider__eyebrow">{{ slide.eyebrow }}</p>
             <h1>{{ slide.title }}</h1>
@@ -34,15 +41,20 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           </div>
 
           <div class="hero-slider__visual" aria-label="Slide visual reference">
-            <span>{{ slide.visualLabel || 'Hero visual reference pending final asset' }}</span>
-            @if (slide.backgroundImageUrl) {
+            <div class="hero-slider__placeholder" aria-hidden="true">
+              <span>{{ slide.visualLabel || 'Hero visual reference pending final asset' }}</span>
+            </div>
+            @if (shouldShowBackground(slide)) {
               <img
                 class="hero-slider__image"
                 [src]="slide.backgroundImageUrl"
                 [alt]="slide.visualLabel || slide.title"
-                (error)="hideFailedAsset($event)"
+                (error)="hideFailedAsset(slide)"
               />
             }
+            <div class="hero-slider__visual-caption">
+              <span>{{ slide.visualLabel || 'Professional visual reference' }}</span>
+            </div>
           </div>
         </div>
 
@@ -50,7 +62,7 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           <button
             type="button"
             class="hero-slider__control"
-            (click)="showPrevious()"
+            (click)="showPrevious(true)"
             aria-label="Show previous hero slide"
           >
             Previous
@@ -64,7 +76,7 @@ import { HeroSlide } from '../../../models/hero-slide.model';
                 [class.hero-slider__indicator--active]="index === currentIndex"
                 [attr.aria-label]="'Show hero slide ' + (index + 1)"
                 [attr.aria-current]="index === currentIndex ? 'true' : null"
-                (click)="showSlide(index)"
+                (click)="showSlide(index, true)"
               >
                 <span>{{ index + 1 }}</span>
               </button>
@@ -74,7 +86,7 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           <button
             type="button"
             class="hero-slider__control"
-            (click)="showNext()"
+            (click)="showNext(true)"
             aria-label="Show next hero slide"
           >
             Next
@@ -95,6 +107,13 @@ import { HeroSlide } from '../../../models/hero-slide.model';
         min-height: min(720px, calc(100vh - 6rem));
         padding: 4rem 1.5rem;
         border-bottom: 1px solid var(--app-border-color);
+        background:
+          radial-gradient(
+            circle at 18% 18%,
+            color-mix(in srgb, var(--app-link-color) 12%, transparent),
+            transparent 28rem
+          ),
+          var(--app-background-color);
       }
 
       .hero-slider__content {
@@ -166,14 +185,31 @@ import { HeroSlide } from '../../../models/hero-slide.model';
         min-height: 18rem;
         overflow: hidden;
         padding: 1.5rem;
-        border: 1px dashed var(--app-border-color);
+        border: 1px solid var(--app-border-color);
         border-radius: 1rem;
+        background:
+          linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--app-link-color) 14%, transparent),
+            transparent 52%
+          ),
+          color-mix(in srgb, var(--app-background-color) 92%, var(--app-link-color));
         text-align: center;
+        isolation: isolate;
       }
 
-      .hero-slider__visual span {
+      .hero-slider__placeholder {
         position: relative;
         z-index: 1;
+        display: grid;
+        width: min(100%, 18rem);
+        min-height: 10rem;
+        place-items: center;
+        padding: 1.5rem;
+        border: 1px dashed var(--app-border-color);
+        border-radius: 0.75rem;
+        color: var(--app-text-color);
+        background: color-mix(in srgb, var(--app-background-color) 78%, transparent);
       }
 
       .hero-slider__image {
@@ -183,6 +219,46 @@ import { HeroSlide } from '../../../models/hero-slide.model';
         width: 100%;
         height: 100%;
         object-fit: cover;
+        opacity: 0.86;
+        transform: scale(1.01);
+        transition:
+          opacity 320ms ease,
+          transform 700ms ease;
+      }
+
+      .hero-slider__visual::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background:
+          linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--app-background-color) 72%, transparent),
+            transparent 58%
+          ),
+          linear-gradient(
+            180deg,
+            transparent,
+            color-mix(in srgb, var(--app-background-color) 42%, transparent)
+          );
+        pointer-events: none;
+      }
+
+      .hero-slider__visual-caption {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 4;
+        padding: 0.6rem 0.75rem;
+        border: 1px solid color-mix(in srgb, var(--app-border-color) 72%, transparent);
+        border-radius: 0.75rem;
+        color: var(--app-text-color);
+        background: color-mix(in srgb, var(--app-background-color) 86%, transparent);
+        backdrop-filter: blur(8px);
+        font-size: 0.9rem;
+        font-weight: 700;
       }
 
       .hero-slider__navigation {
@@ -220,6 +296,15 @@ import { HeroSlide } from '../../../models/hero-slide.model';
         border-radius: 999px;
       }
 
+      .hero-slider__control:hover,
+      .hero-slider__control:focus-visible,
+      .hero-slider__indicator:hover,
+      .hero-slider__indicator:focus-visible {
+        border-color: var(--app-link-color);
+        outline: 2px solid color-mix(in srgb, var(--app-link-color) 38%, transparent);
+        outline-offset: 2px;
+      }
+
       .hero-slider__indicator--active {
         color: var(--app-background-color);
         background: var(--app-link-color);
@@ -240,44 +325,116 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           grid-template-columns: 1fr;
           min-height: auto;
         }
+
+        .hero-slider__visual {
+          min-height: 14rem;
+        }
+
+        .hero-slider__visual-caption {
+          right: 0.75rem;
+          bottom: 0.75rem;
+          left: 0.75rem;
+        }
       }
     `,
   ],
 })
-export class HeroSlider {
+export class HeroSlider implements OnChanges, OnDestroy {
   @Input() slides: readonly HeroSlide[] = [];
 
   currentIndex = 0;
+  isAutoPlaying = false;
+
+  private readonly autoPlayDelay = 6500;
+  private autoPlayTimer: ReturnType<typeof setInterval> | null = null;
+  private readonly failedBackgrounds = new Set<string>();
 
   get currentSlide(): HeroSlide | undefined {
     return this.slides[this.currentIndex];
   }
 
-  showPrevious(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('slides' in changes) {
+      this.currentIndex =
+        this.slides.length > 0 ? Math.min(this.currentIndex, this.slides.length - 1) : 0;
+      this.startAutoPlay();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoPlay();
+  }
+
+  showPrevious(userInitiated = false): void {
     if (this.slides.length === 0) {
       return;
     }
 
     this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+    this.handleUserInteraction(userInitiated);
   }
 
-  showNext(): void {
+  showNext(userInitiated = false): void {
     if (this.slides.length === 0) {
       return;
     }
 
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+    this.handleUserInteraction(userInitiated);
   }
 
-  showSlide(index: number): void {
+  showSlide(index: number, userInitiated = false): void {
     if (index < 0 || index >= this.slides.length) {
       return;
     }
 
     this.currentIndex = index;
+    this.handleUserInteraction(userInitiated);
   }
 
-  hideFailedAsset(event: Event): void {
-    (event.target as HTMLImageElement).hidden = true;
+  pauseAutoPlay(): void {
+    this.stopAutoPlay();
+  }
+
+  resumeAutoPlay(): void {
+    this.startAutoPlay();
+  }
+
+  shouldShowBackground(slide: HeroSlide): boolean {
+    return Boolean(
+      slide.backgroundImageUrl && !this.failedBackgrounds.has(slide.backgroundImageUrl),
+    );
+  }
+
+  hideFailedAsset(slide: HeroSlide): void {
+    if (slide.backgroundImageUrl) {
+      this.failedBackgrounds.add(slide.backgroundImageUrl);
+    }
+  }
+
+  private startAutoPlay(): void {
+    this.stopAutoPlay();
+
+    if (this.slides.length <= 1) {
+      return;
+    }
+
+    this.isAutoPlaying = true;
+    this.autoPlayTimer = setInterval(() => this.showNext(), this.autoPlayDelay);
+  }
+
+  private stopAutoPlay(): void {
+    if (this.autoPlayTimer) {
+      clearInterval(this.autoPlayTimer);
+      this.autoPlayTimer = null;
+    }
+
+    this.isAutoPlaying = false;
+  }
+
+  private handleUserInteraction(userInitiated: boolean): void {
+    if (userInitiated) {
+      this.stopAutoPlay();
+    }
   }
 }

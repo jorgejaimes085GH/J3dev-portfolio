@@ -55,6 +55,55 @@ a {
   font: inherit;
 }
 
+/* Home hero theme polish lives globally to keep the standalone component lightweight
+   while still supporting the three approved theme experiences. */
+html.theme-dark-tech .hero-slider__image,
+html.theme-premium-3d .hero-slider__image {
+  opacity: 0.78;
+}
+
+html.theme-premium-3d .hero-slider {
+  perspective: 1200px;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(196, 167, 255, 0.2), transparent 24rem),
+    radial-gradient(circle at 84% 22%, rgba(56, 189, 248, 0.14), transparent 24rem),
+    var(--app-background-color);
+}
+
+html.theme-premium-3d .hero-slider__visual {
+  transform: rotateX(3deg) rotateY(-4deg);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.32);
+}
+
+html.theme-premium-3d .hero-slider__image {
+  animation: premiumHeroDepth 12s ease-in-out infinite alternate;
+}
+
+@keyframes premiumHeroDepth {
+  from {
+    transform: scale(1.04) translate3d(-1.4%, -1%, 0);
+  }
+
+  to {
+    transform: scale(1.1) translate3d(1.4%, 1%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider__content,
+  .hero-slider__image,
+  html.theme-premium-3d .hero-slider__image {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 760px) {
+  html.theme-premium-3d .hero-slider__visual {
+    transform: none;
+  }
+}
+
 /* Central responsive typography scale for page, section, and card headings.
    Component styles keep local spacing, while heading size and wrapping live here so
    manual viewport previews stay visually consistent even on wide browser windows. */
