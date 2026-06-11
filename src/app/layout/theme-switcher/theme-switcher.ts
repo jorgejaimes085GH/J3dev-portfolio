@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 
+import { LanguageService } from '../../core/services/language.service';
 import { ThemeService } from '../../core/services/theme.service';
 import { PortfolioTheme } from '../../themes/theme.model';
 
@@ -7,9 +8,9 @@ import { PortfolioTheme } from '../../themes/theme.model';
   selector: 'app-theme-switcher',
   standalone: true,
   template: `
-    <section class="theme-switcher" aria-label="Theme switcher">
-      <span class="theme-switcher__label">Theme:</span>
-      <div class="theme-switcher__options" role="group" aria-label="Available themes">
+    <section class="theme-switcher" [attr.aria-label]="uiText().header.theme">
+      <span class="theme-switcher__label">{{ uiText().header.theme }}:</span>
+      <div class="theme-switcher__options" role="group" [attr.aria-label]="uiText().header.theme">
         @for (theme of themes; track theme.id) {
           <button
             class="theme-switcher__button"
@@ -38,8 +39,11 @@ import { PortfolioTheme } from '../../themes/theme.model';
   styleUrl: './theme-switcher.scss',
 })
 export class ThemeSwitcher {
+  private readonly languageService = inject(LanguageService);
+
   readonly themeService = inject(ThemeService);
   readonly themes = this.themeService.themes;
+  readonly uiText = this.languageService.uiText;
 
   selectTheme(theme: PortfolioTheme): void {
     this.themeService.setTheme(theme);

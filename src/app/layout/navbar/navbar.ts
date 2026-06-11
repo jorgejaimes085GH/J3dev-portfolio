@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
+import { LanguageService } from '../../core/services/language.service';
 import { NavigationService } from '../../core/services/navigation.service';
 import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
 import { ThemeSwitcher } from '../theme-switcher/theme-switcher';
@@ -41,13 +42,16 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
           <span class="site-header__brand-text">J3dev Portfolio</span>
         </a>
 
-        <nav class="site-header__nav site-nav" aria-label="Main navigation">
+        <nav
+          class="site-header__nav site-nav"
+          [attr.aria-label]="uiText().nav.home + ' navigation'"
+        >
           <ul class="site-nav__list">
-            @for (item of navigationItems; track item.path) {
+            @for (item of navigationItems(); track item.path) {
               <li class="site-nav__item">
                 <a
                   class="site-nav__link"
-                  [class.site-nav__link--long]="item.label === 'How I Add Value'"
+                  [class.site-nav__link--long]="item.labelKey === 'value'"
                   [routerLink]="item.path"
                   routerLinkActive="site-nav__link--active"
                   [routerLinkActiveOptions]="{ exact: item.path === '/' }"
@@ -85,7 +89,10 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
           </ul>
         </nav>
 
-        <div class="site-header__tools" aria-label="Display options">
+        <div
+          class="site-header__tools"
+          [attr.aria-label]="uiText().header.theme + ' / ' + uiText().header.preview"
+        >
           <app-theme-switcher />
           <app-viewport-switcher />
           <button
@@ -107,6 +114,15 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
               {{ isHeaderPinned() ? 'U' : 'P' }}
             </span>
           </button>
+          <button
+            class="site-header__language-toggle"
+            type="button"
+            (click)="toggleLanguage()"
+            [attr.aria-label]="languageToggleLabel"
+            [attr.title]="languageToggleLabel"
+          >
+            {{ languageCodeLabel }}
+          </button>
         </div>
       </div>
     </header>
@@ -114,10 +130,13 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  private readonly languageService = inject(LanguageService);
   private readonly navigationService = inject(NavigationService);
   private readonly viewportPreviewService = inject(ViewportPreviewService);
 
-  readonly navigationItems = this.navigationService.getMainNavigation();
+  readonly navigationItems = this.navigationService.mainNavigation;
+  readonly uiText = this.languageService.uiText;
+  readonly currentLanguage = this.languageService.currentLanguage;
   readonly isHeaderPinned = this.navigationService.isHeaderPinned;
   readonly currentViewport = this.viewportPreviewService.currentViewport;
 
@@ -125,13 +144,26 @@ export class Navbar {
   protected readonly pinOffIconUrl = 'assets/images/icons/actions/pin-off.svg';
 
   protected get pinToggleLabel(): string {
-    return this.isHeaderPinned()
-      ? 'Unpin header so it scrolls with the page'
-      : 'Pin header so it remains visible while scrolling';
+    return this.isHeaderPinned() ? this.uiText().header.unpin : this.uiText().header.pin;
+  }
+
+  protected get languageCodeLabel(): string {
+    return this.languageService.getLanguageCodeLabel();
+  }
+
+  protected get languageToggleLabel(): string {
+    const nextLanguage =
+      this.currentLanguage() === 'en' ? this.uiText().header.spanish : this.uiText().header.english;
+
+    return `${this.uiText().header.language}: ${nextLanguage}`;
   }
 
   protected toggleHeaderPinned(): void {
     this.navigationService.toggleHeaderPinned();
+  }
+
+  protected toggleLanguage(): void {
+    this.languageService.toggleLanguage();
   }
 
   protected showIconFallback(event: Event): void {

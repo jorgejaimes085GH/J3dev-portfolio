@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 
+import { LanguageService } from '../../core/services/language.service';
 import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
 import { ViewportPreviewId } from '../../models/viewport-preview.model';
 
@@ -7,9 +8,13 @@ import { ViewportPreviewId } from '../../models/viewport-preview.model';
   selector: 'app-viewport-switcher',
   standalone: true,
   template: `
-    <section class="viewport-switcher" aria-label="Viewport preview selector">
-      <span class="viewport-switcher__label">Preview:</span>
-      <div class="viewport-switcher__options" role="group" aria-label="Available viewport previews">
+    <section class="viewport-switcher" [attr.aria-label]="uiText().header.preview">
+      <span class="viewport-switcher__label">{{ uiText().header.preview }}:</span>
+      <div
+        class="viewport-switcher__options"
+        role="group"
+        [attr.aria-label]="uiText().header.preview"
+      >
         @for (viewport of viewportOptions; track viewport.id) {
           <button
             type="button"
@@ -38,9 +43,11 @@ import { ViewportPreviewId } from '../../models/viewport-preview.model';
   styleUrl: './viewport-switcher.scss',
 })
 export class ViewportSwitcher {
+  private readonly languageService = inject(LanguageService);
   private readonly viewportPreviewService = inject(ViewportPreviewService);
 
   readonly viewportOptions = this.viewportPreviewService.viewportOptions;
+  readonly uiText = this.languageService.uiText;
 
   selectViewport(viewport: ViewportPreviewId): void {
     this.viewportPreviewService.setViewport(viewport);
