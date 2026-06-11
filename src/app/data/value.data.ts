@@ -4,9 +4,9 @@ const VALUE_PAGE_DATA_EN: ValuePageData = {
   introduction: {
     title: 'How I Add Value',
     introduction:
-      'Jorge contributes to teams by connecting practical software delivery with Backend .NET design, SQL Server experience, and a careful approach to evolving existing systems.',
+      'Jorge brings practical experience with real business systems that must keep operating while they evolve. His contribution is strongest where existing software needs careful improvement, clearer structure, and dependable delivery.',
     supportingStatement:
-      'The focus is evidence-based: production systems, legacy modernization, enterprise maintenance, backend-first fullstack collaboration, and steady technical growth without exposing private implementation details.',
+      'He approaches technical decisions through business context, operational continuity, maintainability, and risk reduction, supported by production experience in Backend .NET, SQL Server, modernization, and enterprise maintenance without exposing private implementation details.',
   },
   valuePillars: [
     {
@@ -28,10 +28,10 @@ const VALUE_PAGE_DATA_EN: ValuePageData = {
       categoryLabel: 'Quality',
     },
     {
-      title: 'Continuous Learning',
+      title: 'Useful Technology Adaptation',
       description:
-        'Builds on experience from VB6, Access, WinForms, SQL Server, enterprise .NET systems, REST APIs, Angular, and modern development tools.',
-      categoryLabel: 'Growth',
+        'Adapts to newer tools and patterns when they support business goals, continuity, maintainability, or clearer delivery instead of chasing change for its own sake.',
+      categoryLabel: 'Adaptation',
     },
     {
       title: 'Production Experience',
@@ -40,81 +40,81 @@ const VALUE_PAGE_DATA_EN: ValuePageData = {
       categoryLabel: 'Delivery',
     },
     {
-      title: 'Problem Solving',
+      title: 'Lower-Risk Troubleshooting',
       description:
-        'Breaks issues into understandable parts, traces behavior through data and application layers, and moves toward practical fixes.',
-      categoryLabel: 'Execution',
+        'Breaks issues into understandable parts, traces behavior through data and application layers, and moves toward fixes that reduce regression risk.',
+      categoryLabel: 'Continuity',
     },
   ],
   contributionAreas: [
     {
-      title: 'Legacy System Modernization',
+      title: 'Modernize Without Disrupting Operations',
       description:
-        'Helps move existing systems forward responsibly by preserving useful behavior while improving structure and technology direction.',
+        'Helps existing systems evolve in controlled steps, preserving useful behavior while improving structure, maintainability, and technology direction.',
     },
     {
-      title: 'Backend Development',
+      title: 'Turn Business Rules into Maintainable Services',
       description:
-        'Contributes to Backend .NET application services, SQL-centered data access flows, authentication concepts, and maintainable business logic.',
+        'Uses Backend .NET practices to organize workflows, validation, authentication concepts, and business logic into services the team can understand and extend.',
     },
     {
-      title: 'API Design',
+      title: 'Make Integrations Easier to Understand',
       description:
-        'Supports REST API boundaries that separate frontend needs from backend responsibilities and make integrations easier to understand.',
+        'Supports REST API boundaries that separate frontend needs from backend responsibilities, reducing confusion between systems and consumers.',
     },
     {
-      title: 'Database Design',
+      title: 'Protect the Data Behind Business Workflows',
       description:
-        'Applies SQL Server experience to organize data, stored procedures, and relational workflows around business use cases.',
+        'Applies SQL Server experience to organize relational data, stored procedures, and data access decisions around reliability and business use cases.',
     },
     {
-      title: 'Technical Analysis',
+      title: 'Reduce Uncertainty Before Changing Code',
       description:
-        'Reviews requirements, existing behavior, data movement, and implementation tradeoffs before recommending changes.',
+        'Reviews requirements, existing behavior, data movement, dependencies, and tradeoffs before recommending implementation changes.',
     },
     {
-      title: 'Software Maintenance',
+      title: 'Support Systems That Must Keep Running',
       description:
-        'Works inside established systems with attention to regression risk, continuity, documentation, and future maintainability.',
+        'Works inside established software with attention to regression risk, operational continuity, documentation, and future maintenance needs.',
     },
   ],
   teamContributions: [
     {
-      title: 'Collaboration',
+      title: 'Alignment That Reduces Rework',
       description:
-        'Works with teammates and stakeholders to align technical decisions with delivery needs and system constraints.',
+        'Works with teammates and stakeholders to clarify expectations early, align technical decisions with constraints, and avoid avoidable rework.',
     },
     {
-      title: 'Knowledge Sharing',
+      title: 'Shared Context for Continuity',
       description:
-        'Makes technical context easier to transfer through clear explanations, reusable patterns, and practical examples.',
+        'Makes technical context easier to transfer through clear explanations, reusable patterns, and practical examples that help others continue the work.',
     },
     {
-      title: 'Documentation',
+      title: 'Decisions the Team Can Revisit',
       description:
-        'Records relevant decisions, behavior, and availability notes so project context is easier to preserve over time.',
+        'Records relevant decisions, behaviors, assumptions, and availability notes so project context remains visible after implementation.',
     },
     {
-      title: 'Long-Term Thinking',
+      title: 'More Sustainable Delivery',
       description:
-        'Considers how today’s implementation will affect future maintenance, onboarding, troubleshooting, and modernization.',
+        'Considers how today’s implementation will affect future maintenance, onboarding, troubleshooting, and modernization work.',
     },
   ],
   philosophySummary: {
-    title: 'Engineering Philosophy Summary',
+    title: 'Engineering Choices That Protect Continuity',
     description:
-      'Useful software starts with understanding the problem, choosing a maintainable structure, protecting production context, and improving systems over time.',
+      'Useful software starts with understanding business impact, choosing a maintainable structure, protecting production context, and improving systems in controlled steps.',
     principles: [
-      'Understand problems first',
-      'Design before implementation',
-      'Build maintainable software',
-      'Keep learning',
+      'Reduce uncertainty before delivery',
+      'Design around maintainable boundaries',
+      'Protect production workflows',
+      'Adapt technology when it helps the business',
     ],
   },
   evidenceLinks: [
-    { label: 'View Projects', route: '/projects' },
-    { label: 'Explore Skills', route: '/skills' },
-    { label: 'My Journey', route: '/journey' },
+    { label: 'Review project evidence', route: '/projects' },
+    { label: 'Validate technical foundation', route: '/skills' },
+    { label: 'See professional evolution', route: '/journey' },
   ],
 };
 
@@ -122,9 +122,9 @@ const VALUE_PAGE_DATA_ES: ValuePageData = {
   introduction: {
     title: 'Cómo aporto valor',
     introduction:
-      'Jorge contribuye a los equipos conectando entrega práctica de software con diseño Backend .NET, experiencia en SQL Server y un enfoque cuidadoso para evolucionar sistemas existentes.',
+      'Jorge aporta experiencia práctica con sistemas reales de negocio que deben seguir operando mientras evolucionan. Su contribución es más fuerte cuando el software existente necesita mejora cuidadosa, estructura más clara y entrega confiable.',
     supportingStatement:
-      'El enfoque se basa en evidencia: sistemas en producción, modernización legacy, mantenimiento empresarial, colaboración fullstack con prioridad backend y crecimiento técnico constante sin exponer detalles privados de implementación.',
+      'Aborda las decisiones técnicas desde el contexto del negocio, la continuidad operativa, la mantenibilidad y la reducción de riesgo, con soporte en experiencia de producción en Backend .NET, SQL Server, modernización y mantenimiento empresarial sin exponer detalles privados de implementación.',
   },
   valuePillars: [
     {
@@ -146,10 +146,10 @@ const VALUE_PAGE_DATA_ES: ValuePageData = {
       categoryLabel: 'Calidad',
     },
     {
-      title: 'Aprendizaje continuo',
+      title: 'Adaptación tecnológica útil',
       description:
-        'Construye sobre experiencia en VB6, Access, WinForms, SQL Server, sistemas empresariales .NET, REST APIs, Angular y herramientas modernas de desarrollo.',
-      categoryLabel: 'Crecimiento',
+        'Adopta herramientas y patrones nuevos cuando apoyan objetivos de negocio, continuidad, mantenibilidad o una entrega más clara, no por cambiar sin propósito.',
+      categoryLabel: 'Adaptación',
     },
     {
       title: 'Experiencia en producción',
@@ -158,81 +158,81 @@ const VALUE_PAGE_DATA_ES: ValuePageData = {
       categoryLabel: 'Entrega',
     },
     {
-      title: 'Resolución de problemas',
+      title: 'Diagnóstico con menor riesgo',
       description:
-        'Divide los problemas en partes comprensibles, rastrea el comportamiento entre datos y capas de aplicación, y avanza hacia soluciones prácticas.',
-      categoryLabel: 'Ejecución',
+        'Divide los problemas en partes comprensibles, rastrea el comportamiento entre datos y capas de aplicación, y avanza hacia correcciones que reducen riesgo de regresión.',
+      categoryLabel: 'Continuidad',
     },
   ],
   contributionAreas: [
     {
-      title: 'Modernización de sistemas legacy',
+      title: 'Modernizar sin interrumpir la operación',
       description:
-        'Ayuda a evolucionar sistemas existentes de forma responsable, preservando comportamiento útil mientras mejora la estructura y la dirección tecnológica.',
+        'Ayuda a evolucionar sistemas existentes en pasos controlados, preservando comportamiento útil mientras mejora estructura, mantenibilidad y dirección tecnológica.',
     },
     {
-      title: 'Desarrollo Backend',
+      title: 'Convertir reglas de negocio en servicios mantenibles',
       description:
-        'Contribuye a servicios de aplicación Backend .NET, flujos de acceso a datos centrados en SQL, conceptos de autenticación y lógica de negocio mantenible.',
+        'Usa prácticas Backend .NET para organizar flujos, validaciones, conceptos de autenticación y lógica de negocio en servicios que el equipo pueda entender y extender.',
     },
     {
-      title: 'Diseño de APIs',
+      title: 'Hacer las integraciones más fáciles de entender',
       description:
-        'Apoya límites REST API que separan necesidades frontend de responsabilidades backend y facilitan comprender las integraciones.',
+        'Apoya límites REST API que separan necesidades frontend de responsabilidades backend, reduciendo confusión entre sistemas y consumidores.',
     },
     {
-      title: 'Diseño de bases de datos',
+      title: 'Proteger los datos detrás de los flujos de negocio',
       description:
-        'Aplica experiencia en SQL Server para organizar datos, procedimientos almacenados y flujos relacionales alrededor de casos de uso de negocio.',
+        'Aplica experiencia en SQL Server para organizar datos relacionales, procedimientos almacenados y decisiones de acceso a datos alrededor de confiabilidad y casos de uso de negocio.',
     },
     {
-      title: 'Análisis técnico',
+      title: 'Reducir incertidumbre antes de cambiar código',
       description:
-        'Revisa requisitos, comportamiento existente, movimiento de datos y tradeoffs de implementación antes de recomendar cambios.',
+        'Revisa requisitos, comportamiento existente, movimiento de datos, dependencias y tradeoffs antes de recomendar cambios de implementación.',
     },
     {
-      title: 'Mantenimiento de software',
+      title: 'Apoyar sistemas que deben seguir funcionando',
       description:
-        'Trabaja dentro de sistemas establecidos con atención al riesgo de regresión, continuidad, documentación y mantenibilidad futura.',
+        'Trabaja dentro de software establecido con atención al riesgo de regresión, continuidad operativa, documentación y necesidades futuras de mantenimiento.',
     },
   ],
   teamContributions: [
     {
-      title: 'Colaboración',
+      title: 'Alineación que reduce retrabajo',
       description:
-        'Trabaja con compañeros y stakeholders para alinear decisiones técnicas con necesidades de entrega y restricciones del sistema.',
+        'Trabaja con compañeros y stakeholders para aclarar expectativas temprano, alinear decisiones técnicas con restricciones y evitar retrabajo innecesario.',
     },
     {
-      title: 'Transferencia de conocimiento',
+      title: 'Contexto compartido para la continuidad',
       description:
-        'Facilita compartir contexto técnico mediante explicaciones claras, patrones reutilizables y ejemplos prácticos.',
+        'Facilita transferir contexto técnico mediante explicaciones claras, patrones reutilizables y ejemplos prácticos que ayudan a otros a continuar el trabajo.',
     },
     {
-      title: 'Documentación',
+      title: 'Decisiones que el equipo puede retomar',
       description:
-        'Registra decisiones relevantes, comportamiento y notas de disponibilidad para preservar mejor el contexto del proyecto en el tiempo.',
+        'Registra decisiones relevantes, comportamientos, supuestos y notas de disponibilidad para que el contexto del proyecto siga visible después de implementar.',
     },
     {
-      title: 'Pensamiento de largo plazo',
+      title: 'Entregas más sostenibles',
       description:
-        'Considera cómo la implementación de hoy afectará mantenimiento, onboarding, diagnóstico y modernización futuros.',
+        'Considera cómo la implementación de hoy afectará mantenimiento, onboarding, diagnóstico y trabajo de modernización futuros.',
     },
   ],
   philosophySummary: {
-    title: 'Resumen de filosofía de ingeniería',
+    title: 'Decisiones de ingeniería que protegen la continuidad',
     description:
-      'El software útil empieza por entender el problema, elegir una estructura mantenible, proteger el contexto de producción y mejorar los sistemas con el tiempo.',
+      'El software útil empieza por entender el impacto en el negocio, elegir una estructura mantenible, proteger el contexto de producción y mejorar sistemas en pasos controlados.',
     principles: [
-      'Entender primero el problema',
-      'Diseñar antes de implementar',
-      'Construir software mantenible',
-      'Seguir aprendiendo',
+      'Reducir incertidumbre antes de entregar',
+      'Diseñar alrededor de límites mantenibles',
+      'Proteger flujos de producción',
+      'Adaptar tecnología cuando ayuda al negocio',
     ],
   },
   evidenceLinks: [
-    { label: 'Ver Proyectos', route: '/projects' },
-    { label: 'Explorar Habilidades', route: '/skills' },
-    { label: 'Mi Trayectoria', route: '/journey' },
+    { label: 'Revisar evidencia en proyectos', route: '/projects' },
+    { label: 'Validar base técnica', route: '/skills' },
+    { label: 'Ver evolución profesional', route: '/journey' },
   ],
 };
 

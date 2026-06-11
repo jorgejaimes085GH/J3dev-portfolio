@@ -155,23 +155,23 @@ export const UI_TEXT = {
       value: {
         impactEyebrow: 'Professional Impact',
         pillarsEyebrow: 'Value Pillars',
-        pillarsTitle: 'Practical habits that support delivery',
+        pillarsTitle: 'Practical habits that reduce delivery risk',
         pillarsIntro:
-          'These habits connect technical decisions with production reliability, maintainability, and clear business context.',
-        areasEyebrow: 'Real-World Contribution Areas',
-        areasTitle: 'Areas where technical work becomes team value',
+          'These habits connect technical decisions with production reliability, maintainability, operational continuity, and clear business context.',
+        areasEyebrow: 'Business Outcomes Supported by Technical Work',
+        areasTitle: 'Where engineering work protects business continuity',
         areasIntro:
-          'These contribution areas reflect the types of work Jorge has handled across backend development, databases, modernization, and enterprise systems.',
-        teamEyebrow: 'Team Contribution',
-        teamTitle: 'Value beyond writing code',
+          'These contribution areas show how backend development, SQL Server data work, modernization, and enterprise maintenance become practical outcomes for a team.',
+        teamEyebrow: 'Team Continuity',
+        teamTitle: 'How Jorge helps teams work with less friction',
         teamIntro:
-          'Team value also comes from communication, documentation, knowledge sharing, and decisions that make future maintenance easier.',
-        philosophyEyebrow: 'Engineering Philosophy',
-        philosophyAria: 'Engineering philosophy principles',
+          'Team value also comes from clearer context, useful documentation, shared decisions, and delivery habits that reduce rework and make future maintenance easier.',
+        philosophyEyebrow: 'Maintainable Engineering Decisions',
+        philosophyAria: 'Maintainable engineering decision principles',
         evidenceEyebrow: 'Evidence Navigation',
-        evidenceTitle: 'Continue toward supporting portfolio evidence',
+        evidenceTitle: 'Continue to evidence that supports this value',
         evidenceIntro:
-          'Continue into the supporting sections to review project context, skill evidence, and the technical journey behind the portfolio narrative.',
+          'Continue into the supporting sections to review project context, technical foundations, and the professional evolution behind this portfolio narrative.',
         evidenceAria: 'Evidence navigation links',
       },
       about: {
@@ -438,23 +438,23 @@ export const UI_TEXT = {
       value: {
         impactEyebrow: 'Impacto profesional',
         pillarsEyebrow: 'Pilares de valor',
-        pillarsTitle: 'Hábitos prácticos que apoyan la entrega',
+        pillarsTitle: 'Hábitos prácticos que reducen riesgo en la entrega',
         pillarsIntro:
-          'Estos hábitos conectan las decisiones técnicas con confiabilidad en producción, mantenibilidad y contexto claro de negocio.',
-        areasEyebrow: 'Áreas de contribución real',
-        areasTitle: 'Donde el trabajo técnico se convierte en valor para el equipo',
+          'Estos hábitos conectan las decisiones técnicas con confiabilidad en producción, mantenibilidad, continuidad operativa y contexto claro de negocio.',
+        areasEyebrow: 'Resultados de negocio apoyados por trabajo técnico',
+        areasTitle: 'Donde la ingeniería protege la continuidad del negocio',
         areasIntro:
-          'Estas áreas de contribución reflejan los tipos de trabajo que Jorge ha manejado en desarrollo backend, bases de datos, modernización y sistemas empresariales.',
-        teamEyebrow: 'Contribución al equipo',
-        teamTitle: 'Valor más allá de escribir código',
+          'Estas áreas de contribución muestran cómo el desarrollo backend, el trabajo de datos con SQL Server, la modernización y el mantenimiento empresarial se convierten en resultados prácticos para un equipo.',
+        teamEyebrow: 'Continuidad del equipo',
+        teamTitle: 'Cómo Jorge ayuda a trabajar con menos fricción',
         teamIntro:
-          'El valor para el equipo también viene de comunicación, documentación, transferencia de conocimiento y decisiones que facilitan el mantenimiento futuro.',
-        philosophyEyebrow: 'Filosofía de ingeniería',
-        philosophyAria: 'Principios de filosofía de ingeniería',
+          'El valor para el equipo también viene de contexto más claro, documentación útil, decisiones compartidas y hábitos de entrega que reducen retrabajo y facilitan el mantenimiento futuro.',
+        philosophyEyebrow: 'Decisiones de ingeniería mantenibles',
+        philosophyAria: 'Principios de decisiones de ingeniería mantenibles',
         evidenceEyebrow: 'Navegación de evidencia',
-        evidenceTitle: 'Continúa hacia la evidencia de soporte del portafolio',
+        evidenceTitle: 'Continúa hacia evidencia que respalda este valor',
         evidenceIntro:
-          'Continúa por las secciones de soporte para revisar contexto de proyectos, evidencia de habilidades y la trayectoria técnica detrás de la narrativa del portafolio.',
+          'Continúa por las secciones de soporte para revisar contexto de proyectos, bases técnicas y la evolución profesional detrás de esta narrativa del portafolio.',
         evidenceAria: 'Enlaces de navegación de evidencia',
       },
       about: {
