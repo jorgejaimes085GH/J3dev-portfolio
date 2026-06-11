@@ -4,13 +4,14 @@
 
 .viewport-switcher {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.25rem;
 }
 
 .viewport-switcher__label {
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .viewport-switcher__options {
@@ -30,7 +31,7 @@
   min-height: 2.35rem;
   border: 0;
   border-right: 1px solid var(--app-border-color);
-  background: transparent;
+  background: var(--header-panel, transparent);
   color: inherit;
   cursor: pointer;
   font: inherit;

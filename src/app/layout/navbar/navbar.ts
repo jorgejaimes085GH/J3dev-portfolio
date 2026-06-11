@@ -41,6 +41,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
               <li class="site-nav__item">
                 <a
                   class="site-nav__link"
+                  [class.site-nav__link--long]="item.label === 'How I Add Value'"
                   [routerLink]="item.path"
                   routerLinkActive="site-nav__link--active"
                   [routerLinkActiveOptions]="{ exact: item.path === '/' }"

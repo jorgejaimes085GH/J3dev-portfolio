@@ -4,13 +4,14 @@
 
 .theme-switcher {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.25rem;
 }
 
 .theme-switcher__label {
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .theme-switcher__options {
@@ -24,7 +25,7 @@
 
 .theme-switcher__button {
   color: var(--app-text-color);
-  background: var(--app-background-color);
+  background: var(--header-panel, var(--app-background-color));
   display: inline-flex;
   align-items: center;
   justify-content: center;
