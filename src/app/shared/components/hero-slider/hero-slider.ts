@@ -17,6 +17,21 @@ import { HeroSlide } from '../../../models/hero-slide.model';
       (focusout)="resumeAutoPlay()"
     >
       @if (currentSlide; as slide) {
+        @if (shouldShowBackground(slide)) {
+          <img
+            class="hero-slider__background-image"
+            [src]="slide.backgroundImageUrl"
+            alt=""
+            aria-hidden="true"
+            (error)="hideFailedAsset(slide)"
+          />
+        }
+        <div class="hero-slider__motion-layer" aria-hidden="true">
+          <span class="hero-slider__motion-orb hero-slider__motion-orb--primary"></span>
+          <span class="hero-slider__motion-orb hero-slider__motion-orb--secondary"></span>
+          <span class="hero-slider__motion-line hero-slider__motion-line--one"></span>
+          <span class="hero-slider__motion-line hero-slider__motion-line--two"></span>
+        </div>
         <div class="hero-slider__content" [attr.aria-live]="isAutoPlaying ? 'off' : 'polite'">
           <div class="hero-slider__copy">
             <p class="hero-slider__eyebrow">{{ slide.eyebrow }}</p>
