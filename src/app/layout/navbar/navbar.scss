@@ -20,6 +20,7 @@
 }
 
 .site-header__inner {
+  position: relative;
   width: min(100%, 112rem);
   margin: 0 auto;
   padding: 0.65rem clamp(0.75rem, 1.4vw, 1.1rem);
@@ -406,8 +407,18 @@
 
 :host(.site-header-shell--preview-mobile) .site-header__tools {
   width: 100%;
-  grid-template-columns: minmax(0, max-content) minmax(0, max-content) 2rem;
-  grid-template-areas: 'theme preview pin';
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'theme'
+    'preview';
+  justify-items: center;
+}
+
+:host(.site-header-shell--preview-mobile) .site-header__pin-toggle {
+  grid-area: auto;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.55rem;
 }
 
 :host(.site-header-shell--preview-mobile) .site-header__pin-toggle,
