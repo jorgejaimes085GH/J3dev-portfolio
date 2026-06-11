@@ -36,7 +36,8 @@
 .site-nav__list,
 .site-nav__item,
 .site-nav__link,
-.site-header__pin-toggle {
+.site-header__pin-toggle,
+.site-header__language-toggle {
   display: flex;
   align-items: center;
 }
@@ -64,14 +65,17 @@
 .site-header__brand:focus-visible,
 .site-nav__link:focus-visible,
 .site-header__pin-toggle:hover,
-.site-header__pin-toggle:focus-visible {
+.site-header__pin-toggle:focus-visible,
+.site-header__language-toggle:hover,
+.site-header__language-toggle:focus-visible {
   outline: 3px solid var(--app-link-color);
   outline-offset: 3px;
 }
 
 .site-header__brand:focus-visible,
 .site-nav__link,
-.site-header__pin-toggle {
+.site-header__pin-toggle,
+.site-header__language-toggle {
   border-radius: 999px;
 }
 
@@ -178,7 +182,9 @@
 .site-nav__link:hover,
 .site-nav__link:focus-visible,
 .site-header__pin-toggle:hover,
-.site-header__pin-toggle:focus-visible {
+.site-header__pin-toggle:focus-visible,
+.site-header__language-toggle:hover,
+.site-header__language-toggle:focus-visible {
   border-color: var(--app-link-color);
   background: var(--header-panel);
 }
@@ -192,10 +198,10 @@
 .site-header__tools {
   grid-area: tools;
   display: grid;
-  grid-template-columns: minmax(0, max-content) 2.1rem;
+  grid-template-columns: minmax(0, max-content) 2.6rem;
   grid-template-areas:
     'theme pin'
-    'preview pin';
+    'preview language';
   align-items: center;
   justify-content: end;
   gap: 0.35rem 0.5rem;
@@ -210,9 +216,9 @@
   grid-area: preview;
 }
 
-.site-header__pin-toggle {
+.site-header__pin-toggle,
+.site-header__language-toggle {
   justify-content: center;
-  min-width: 2.1rem;
   min-height: 2.1rem;
   padding: 0.35rem;
   border: 1px solid var(--app-border-color);
@@ -221,6 +227,13 @@
   cursor: pointer;
 }
 
+.site-header__pin-toggle {
+  grid-area: pin;
+}
+
+.site-header__language-toggle {
+  grid-area: language;
+}
 .site-header__pin-icon {
   width: 1.05rem;
   height: 1.05rem;
@@ -407,10 +420,10 @@
 
 :host(.site-header-shell--preview-mobile) .site-header__tools {
   width: 100%;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 2.6rem;
   grid-template-areas:
-    'theme'
-    'preview';
+    'theme language'
+    'preview language';
   justify-items: center;
 }
 
@@ -422,6 +435,7 @@
 }
 
 :host(.site-header-shell--preview-mobile) .site-header__pin-toggle,
+:host(.site-header-shell--preview-mobile) .site-header__language-toggle,
 :host(.site-header-shell--preview-mobile) .site-nav__link {
   min-width: 2rem;
   min-height: 2rem;

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 
+import { LanguageService } from '../../core/services/language.service';
 import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
 
 @Component({
@@ -14,14 +15,16 @@ import { ViewportPreviewService } from '../../core/services/viewport-preview.ser
     <footer class="site-footer">
       <div class="site-footer__inner">
         <p class="site-footer__project">J3dev Portfolio</p>
-        <p class="site-footer__copyright">Copyright information pending final publication.</p>
+        <p class="site-footer__copyright">{{ uiText().footer.copyright }}</p>
       </div>
     </footer>
   `,
   styleUrl: './footer.scss',
 })
 export class Footer {
+  private readonly languageService = inject(LanguageService);
   private readonly viewportPreviewService = inject(ViewportPreviewService);
 
   readonly currentViewport = this.viewportPreviewService.currentViewport;
+  readonly uiText = this.languageService.uiText;
 }

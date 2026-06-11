@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { LanguageService } from '../../../core/services/language.service';
 import { HeroSlide } from '../../../models/hero-slide.model';
 
 @Component({
@@ -78,9 +79,9 @@ import { HeroSlide } from '../../../models/hero-slide.model';
             type="button"
             class="hero-slider__control"
             (click)="showPrevious(true)"
-            aria-label="Show previous hero slide"
+            [attr.aria-label]="uiText().common.previous"
           >
-            Previous
+            {{ uiText().common.previous }}
           </button>
 
           <div class="hero-slider__indicators" aria-label="Hero slide indicators">
@@ -102,9 +103,9 @@ import { HeroSlide } from '../../../models/hero-slide.model';
             type="button"
             class="hero-slider__control"
             (click)="showNext(true)"
-            aria-label="Show next hero slide"
+            [attr.aria-label]="uiText().common.next"
           >
-            Next
+            {{ uiText().common.next }}
           </button>
         </div>
       } @else {
@@ -355,7 +356,11 @@ import { HeroSlide } from '../../../models/hero-slide.model';
   ],
 })
 export class HeroSlider implements OnChanges, OnDestroy {
+  private readonly languageService = inject(LanguageService);
+
   @Input() slides: readonly HeroSlide[] = [];
+
+  readonly uiText = this.languageService.uiText;
 
   currentIndex = 0;
   isAutoPlaying = false;
