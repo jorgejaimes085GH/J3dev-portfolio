@@ -3,7 +3,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../models/document.m
 const spanishRecommendationNote =
   'Original document in Spanish. English summary can be prepared if required.';
 
-export const PROFESSIONAL_DOCUMENTS: ProfessionalDocument[] = [
+const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
   {
     id: 'cv-es',
     title: 'CV Español',
@@ -130,27 +130,96 @@ export const PROFESSIONAL_DOCUMENTS: ProfessionalDocument[] = [
   },
 ];
 
-export const DOCUMENT_GROUPS: DocumentGroupSection[] = [
+const DOCUMENT_GROUPS_EN: DocumentGroupSection[] = [
   {
     id: 'resume-cv',
     title: 'Resume & CV',
     intro: 'Curriculum vitae documents prepared for Spanish and English professional audiences.',
-    documents: PROFESSIONAL_DOCUMENTS.filter((document) => document.group === 'Resume & CV'),
+    documents: PROFESSIONAL_DOCUMENTS_EN.filter((document) => document.group === 'Resume & CV'),
   },
   {
     id: 'cover-letters',
     title: 'Cover Letters',
     intro:
       'Cover letters prepared for role-specific professional introductions; PDF publication is pending.',
-    documents: PROFESSIONAL_DOCUMENTS.filter((document) => document.group === 'Cover Letters'),
+    documents: PROFESSIONAL_DOCUMENTS_EN.filter((document) => document.group === 'Cover Letters'),
   },
   {
     id: 'professional-recommendations',
     title: 'Professional Recommendations',
     intro:
       'Recommendation letters intended to provide professional evidence from prior work contexts; PDF publication is pending.',
-    documents: PROFESSIONAL_DOCUMENTS.filter(
+    documents: PROFESSIONAL_DOCUMENTS_EN.filter(
       (document) => document.group === 'Professional Recommendations',
     ),
   },
 ];
+
+const PROFESSIONAL_DOCUMENTS_ES: ProfessionalDocument[] = PROFESSIONAL_DOCUMENTS_EN.map(
+  (document) => ({
+    ...document,
+    description: document.description
+      .replace(
+        'Spanish curriculum vitae prepared for Backend .NET roles, Colombian recruiters, hiring managers, and technical teams.',
+        'Hoja de vida en español preparada para roles Backend .NET, reclutadores en Colombia, hiring managers y equipos técnicos.',
+      )
+      .replace(
+        'English curriculum vitae prepared for Backend .NET roles, international recruiters, hiring managers, and technical teams.',
+        'Curriculum vitae en inglés preparado para roles Backend .NET, reclutadores internacionales, hiring managers y equipos técnicos.',
+      )
+      .replace(
+        'Spanish cover letter prepared for Backend .NET role introductions and application context; PDF publication is pending.',
+        'Carta de presentación en español preparada para introducciones a roles Backend .NET y contexto de aplicación; la publicación del PDF está pendiente.',
+      )
+      .replace(
+        'English cover letter prepared for Backend .NET role introductions and application context; PDF publication is pending.',
+        'Carta de presentación en inglés preparada para introducciones a roles Backend .NET y contexto de aplicación; la publicación del PDF está pendiente.',
+      )
+      .replace('Professional recommendation letter from', 'Carta de recomendación profesional de')
+      .replace(
+        'provided as verifiable supporting evidence.',
+        'presentada como evidencia de apoyo verificable.',
+      )
+      .replace('provided as supporting evidence.', 'presentada como evidencia de apoyo.'),
+    statusLabel: 'PDF pendiente de publicación',
+    viewLabel: document.viewLabel.replace('View', 'Ver').replace('online', 'en línea'),
+    downloadLabel: document.downloadLabel.replace('Download', 'Descargar'),
+    printLabel: document.printLabel.replace('Print', 'Imprimir'),
+  }),
+);
+
+export const PROFESSIONAL_DOCUMENTS = {
+  en: PROFESSIONAL_DOCUMENTS_EN,
+  es: PROFESSIONAL_DOCUMENTS_ES,
+} as const;
+
+const DOCUMENT_GROUPS_ES: DocumentGroupSection[] = [
+  {
+    id: 'resume-cv',
+    title: 'Resume & CV',
+    intro:
+      'Documentos de hoja de vida y curriculum vitae preparados para audiencias profesionales en español e inglés.',
+    documents: PROFESSIONAL_DOCUMENTS_ES.filter((document) => document.group === 'Resume & CV'),
+  },
+  {
+    id: 'cover-letters',
+    title: 'Cover Letters',
+    intro:
+      'Cartas de presentación preparadas para introducciones profesionales por rol; la publicación de PDFs está pendiente.',
+    documents: PROFESSIONAL_DOCUMENTS_ES.filter((document) => document.group === 'Cover Letters'),
+  },
+  {
+    id: 'professional-recommendations',
+    title: 'Professional Recommendations',
+    intro:
+      'Cartas de recomendación orientadas a aportar evidencia profesional de contextos laborales previos; la publicación de PDFs está pendiente.',
+    documents: PROFESSIONAL_DOCUMENTS_ES.filter(
+      (document) => document.group === 'Professional Recommendations',
+    ),
+  },
+];
+
+export const DOCUMENT_GROUPS = {
+  en: DOCUMENT_GROUPS_EN,
+  es: DOCUMENT_GROUPS_ES,
+} as const;

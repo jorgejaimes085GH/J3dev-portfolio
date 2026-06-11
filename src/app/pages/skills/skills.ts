@@ -1,8 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, computed, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { PROJECTS } from '../../data/projects.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 import { BACKEND_SKILL_GROUPS, SKILL_CATEGORIES, SKILLS } from '../../data/skills.data';
 import { Project } from '../../models/project.model';
 import { BackendSkillGroup, Skill, SkillCategory } from '../../models/skill.model';
@@ -36,7 +38,7 @@ interface SkillGroup {
         </div>
       </section>
 
-      @for (skillGroup of skillGroups; track skillGroup.category) {
+      @for (skillGroup of skillGroups(); track skillGroup.category) {
         <section
           class="skills-section"
           [attr.aria-labelledby]="categoryTitleId(skillGroup.category)"
@@ -411,26 +413,46 @@ interface SkillGroup {
   ],
 })
 export class Skills {
-  readonly skillGroups: SkillGroup[] = SKILL_CATEGORIES.map((category) => {
-    const skills = SKILLS.filter((skill) => skill.category === category);
+  private readonly languageService = inject(LanguageService);
 
-    if (category !== 'Backend') {
-      return { category, skills };
-    }
+  readonly skills = computed(() =>
+    getLocalizedData(SKILLS, this.languageService.currentLanguage()),
+  );
+  readonly skillCategories = computed(() =>
+    getLocalizedData(SKILL_CATEGORIES, this.languageService.currentLanguage()),
+  );
+  readonly backendSkillGroups = computed(() =>
+    getLocalizedData(BACKEND_SKILL_GROUPS, this.languageService.currentLanguage()),
+  );
+  readonly skillGroups = computed<SkillGroup[]>(() =>
+    this.skillCategories().map((category) => {
+      const skills = this.skills().filter((skill) => skill.category === category);
 
-    return {
-      category,
-      skills,
-      backendSections: BACKEND_SKILL_GROUPS.map((group) => ({
-        group,
-        skills: skills.filter((skill) => skill.backendGroup === group),
-      })).filter((section) => section.skills.length > 0),
-    };
-  });
+      if (category !== 'Backend') {
+        return { category, skills };
+      }
+
+      return {
+        category,
+        skills,
+        backendSections: this.backendSkillGroups()
+          .map((group) => ({
+            group,
+            skills: skills.filter((skill) => skill.backendGroup === group),
+          }))
+          .filter((section) => section.skills.length > 0),
+      };
+    }),
+  );
 
   selectedSkill?: Skill;
 
-  private readonly projectsBySlug = new Map(PROJECTS.map((project) => [project.slug, project]));
+  private readonly projects = computed(() =>
+    getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
+  );
+  private readonly projectsBySlug = computed(
+    () => new Map(this.projects().map((project) => [project.slug, project])),
+  );
 
   @HostListener('document:keydown.escape')
   closeOnEscape(): void {
@@ -457,7 +479,7 @@ export class Skills {
 
   getRelatedProjects(skill: Skill): Project[] {
     return skill.relatedProjectSlugs
-      .map((projectSlug) => this.projectsBySlug.get(projectSlug))
+      .map((projectSlug) => this.projectsBySlug().get(projectSlug))
       .filter((project): project is Project => Boolean(project));
   }
 

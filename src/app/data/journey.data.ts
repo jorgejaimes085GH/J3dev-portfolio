@@ -1,6 +1,6 @@
 import { JourneyCtaLink, JourneyInsight, JourneyStage } from '../models/journey.model';
 
-export const JOURNEY_STAGES: JourneyStage[] = [
+const JOURNEY_STAGES_EN: JourneyStage[] = [
   {
     id: 'business-software-foundations',
     title: 'Business Software Foundations',
@@ -30,7 +30,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     summary:
       'Product work expanded into building, maintaining, and adapting a system across changing operational needs over multiple years, showing autonomy without making freelancing the main professional identity.',
     focusAreas: ['Worker', 'VB.NET', 'Access', 'SQL Server', 'Reports', 'Excel export'],
-    keyLearning: 'Building and maintaining software that evolves over years while preserving business continuity.',
+    keyLearning:
+      'Building and maintaining software that evolves over years while preserving business continuity.',
     relatedProjectSlugs: ['worker'],
     evidenceNote:
       'Worker is referenced as public-safe portfolio evidence while proprietary source code and operational details remain private.',
@@ -82,7 +83,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     summary:
       'Current work keeps Backend .NET as the center while adding frontend integration through typed APIs, authentication, data access, and Angular interfaces.',
     focusAreas: ['.NET 8', 'REST APIs', 'JWT', 'Dapper', 'Angular', 'TypeScript', 'SQL Server'],
-    keyLearning: 'Building modern applications with backend depth first and frontend integration as a complement.',
+    keyLearning:
+      'Building modern applications with backend depth first and frontend integration as a complement.',
     relatedProjectSlugs: ['expensux', 'j3dev-portfolio'],
     evidenceNote:
       'Expensux and this portfolio provide safe examples of modern fullstack direction without adding backend logic to the portfolio itself.',
@@ -109,7 +111,7 @@ export const JOURNEY_STAGES: JourneyStage[] = [
   },
 ];
 
-export const JOURNEY_INSIGHTS: JourneyInsight[] = [
+const JOURNEY_INSIGHTS_EN: JourneyInsight[] = [
   {
     title: 'From tools to systems',
     description:
@@ -127,9 +129,79 @@ export const JOURNEY_INSIGHTS: JourneyInsight[] = [
   },
 ];
 
-export const JOURNEY_CTA_LINKS: JourneyCtaLink[] = [
+const JOURNEY_CTA_LINKS_EN: JourneyCtaLink[] = [
   { label: 'View Projects', route: '/projects' },
   { label: 'Explore Skills', route: '/skills' },
   { label: 'How I Add Value', route: '/why-hire-me' },
   { label: 'View Documents', route: '/documents' },
 ];
+
+const JOURNEY_STAGES_ES: JourneyStage[] = JOURNEY_STAGES_EN.map((stage) => ({
+  ...stage,
+  title: stage.title
+    .replace('Early technical foundation', 'Fundamentos técnicos iniciales')
+    .replace('Legacy business systems', 'Sistemas de negocio legacy')
+    .replace('Production software ownership', 'Responsabilidad sobre software en producción')
+    .replace('Enterprise team experience', 'Experiencia en equipo empresarial')
+    .replace('Modern Backend .NET direction', 'Dirección moderna Backend .NET')
+    .replace('Public portfolio and technical evidence', 'Portfolio público y evidencia técnica'),
+  periodLabel: stage.periodLabel
+    .replace('Early stage', 'Etapa inicial')
+    .replace('Professional growth', 'Crecimiento profesional')
+    .replace('Current direction', 'Dirección actual'),
+  summary: stage.summary
+    .replace('Built practical awareness', 'Construyó comprensión práctica')
+    .replace('Focused on', 'Enfocado en')
+    .replace('Continues evolving', 'Continúa evolucionando'),
+  focusAreas: stage.focusAreas.map((area) =>
+    area
+      .replace('Business workflows', 'Flujos de negocio')
+      .replace('Data entry', 'Ingreso de datos')
+      .replace('Reporting', 'Reportes')
+      .replace('Production maintenance', 'Mantenimiento en producción')
+      .replace('Backend architecture', 'Arquitectura backend')
+      .replace('Public presentation', 'Presentación pública'),
+  ),
+  keyLearning: stage.keyLearning
+    .replace(
+      'Software value depends on understanding the business workflow before choosing technology.',
+      'El valor del software depende de entender el flujo de negocio antes de elegir tecnología.',
+    )
+    .replace(
+      'Maintainability matters when systems must keep supporting real operations over time.',
+      'La mantenibilidad importa cuando los sistemas deben seguir soportando operaciones reales en el tiempo.',
+    ),
+}));
+
+export const JOURNEY_STAGES = {
+  en: JOURNEY_STAGES_EN,
+  es: JOURNEY_STAGES_ES,
+} as const;
+
+const JOURNEY_INSIGHTS_ES: JourneyInsight[] = JOURNEY_INSIGHTS_EN.map((insight) => ({
+  ...insight,
+  title: insight.title
+    .replace('Legacy experience still matters', 'La experiencia legacy sigue importando')
+    .replace('Backend direction is intentional', 'La dirección backend es intencional')
+    .replace('Learning supports better judgment', 'El aprendizaje apoya mejores decisiones'),
+  description: insight.description
+    .replace('Understanding older systems', 'Entender sistemas antiguos')
+    .replace('Backend .NET is the core focus', 'Backend .NET es el foco principal')
+    .replace('Continuous learning is used', 'El aprendizaje continuo se usa'),
+}));
+
+export const JOURNEY_INSIGHTS = {
+  en: JOURNEY_INSIGHTS_EN,
+  es: JOURNEY_INSIGHTS_ES,
+} as const;
+
+const JOURNEY_CTA_LINKS_ES: JourneyCtaLink[] = [
+  { label: 'Ver Proyectos', route: '/projects' },
+  { label: 'Explorar Habilidades', route: '/skills' },
+  { label: 'Cómo aporto valor', route: '/why-hire-me' },
+];
+
+export const JOURNEY_CTA_LINKS = {
+  en: JOURNEY_CTA_LINKS_EN,
+  es: JOURNEY_CTA_LINKS_ES,
+} as const;

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { VALUE_PAGE_DATA } from '../../data/value.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-why-hire-me',
@@ -12,9 +14,9 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
       <section class="value-section value-introduction" aria-labelledby="value-page-title">
         <div class="value-section__header value-introduction__content">
           <p class="value-section__eyebrow">Professional Impact</p>
-          <h1 id="value-page-title">{{ valueData.introduction.title }}</h1>
-          <p class="value-introduction__summary">{{ valueData.introduction.introduction }}</p>
-          <p>{{ valueData.introduction.supportingStatement }}</p>
+          <h1 id="value-page-title">{{ valueData().introduction.title }}</h1>
+          <p class="value-introduction__summary">{{ valueData().introduction.introduction }}</p>
+          <p>{{ valueData().introduction.supportingStatement }}</p>
         </div>
       </section>
 
@@ -29,7 +31,7 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         </div>
 
         <div class="value-card-grid value-card-grid--three">
-          @for (pillar of valueData.valuePillars; track pillar.title) {
+          @for (pillar of valueData().valuePillars; track pillar.title) {
             <article class="value-card">
               @if (pillar.categoryLabel) {
                 <p class="value-card__label">{{ pillar.categoryLabel }}</p>
@@ -52,7 +54,7 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         </div>
 
         <div class="value-card-grid value-card-grid--three">
-          @for (area of valueData.contributionAreas; track area.title) {
+          @for (area of valueData().contributionAreas; track area.title) {
             <article class="value-card">
               <h3>{{ area.title }}</h3>
               <p>{{ area.description }}</p>
@@ -72,7 +74,7 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         </div>
 
         <div class="value-card-grid value-card-grid--four">
-          @for (contribution of valueData.teamContributions; track contribution.title) {
+          @for (contribution of valueData().teamContributions; track contribution.title) {
             <article class="value-card">
               <h3>{{ contribution.title }}</h3>
               <p>{{ contribution.description }}</p>
@@ -84,12 +86,12 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
       <section class="value-section value-highlight" aria-labelledby="philosophy-summary-title">
         <div class="value-highlight__content">
           <p class="value-section__eyebrow">Engineering Philosophy</p>
-          <h2 id="philosophy-summary-title">{{ valueData.philosophySummary.title }}</h2>
-          <p>{{ valueData.philosophySummary.description }}</p>
+          <h2 id="philosophy-summary-title">{{ valueData().philosophySummary.title }}</h2>
+          <p>{{ valueData().philosophySummary.description }}</p>
         </div>
 
         <ul class="philosophy-list" aria-label="Engineering philosophy principles">
-          @for (principle of valueData.philosophySummary.principles; track principle) {
+          @for (principle of valueData().philosophySummary.principles; track principle) {
             <li>{{ principle }}</li>
           }
         </ul>
@@ -106,7 +108,7 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
         </div>
 
         <nav class="value-cta__actions" aria-label="Evidence navigation links">
-          @for (link of valueData.evidenceLinks; track link.route) {
+          @for (link of valueData().evidenceLinks; track link.route) {
             <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
             </a>
@@ -291,5 +293,9 @@ import { VALUE_PAGE_DATA } from '../../data/value.data';
   ],
 })
 export class WhyHireMe {
-  protected readonly valueData = VALUE_PAGE_DATA;
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly valueData = computed(() =>
+    getLocalizedData(VALUE_PAGE_DATA, this.languageService.currentLanguage()),
+  );
 }

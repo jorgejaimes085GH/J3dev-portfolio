@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import {
@@ -7,6 +7,8 @@ import {
   EDUCATION_HIGHLIGHTS,
   FORMAL_EDUCATION,
 } from '../../data/education.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 import {
   ContinuousLearningEntry,
   EducationCtaLink,
@@ -43,7 +45,7 @@ import {
         </div>
 
         <div class="formal-education-list" aria-label="Formal education entries">
-          @for (entry of formalEducation; track entry.id) {
+          @for (entry of formalEducation(); track entry.id) {
             <article class="education-card" [attr.aria-labelledby]="entry.id + '-title'">
               <div class="education-card__meta">
                 @if (entry.year) {
@@ -98,7 +100,7 @@ import {
         </div>
 
         <div class="learning-grid" aria-label="Continuous learning areas">
-          @for (learning of continuousLearning; track learning.id) {
+          @for (learning of continuousLearning(); track learning.id) {
             <article class="learning-card" [attr.aria-labelledby]="learning.id + '-title'">
               <h3 [id]="learning.id + '-title'">{{ learning.title }}</h3>
               <p>{{ learning.summary }}</p>
@@ -143,7 +145,7 @@ import {
         </div>
 
         <div class="highlight-grid" aria-label="Education highlights">
-          @for (highlight of highlights; track highlight.title) {
+          @for (highlight of highlights(); track highlight.title) {
             <article class="highlight-card">
               <h3>{{ highlight.title }}</h3>
               <p>{{ highlight.description }}</p>
@@ -163,7 +165,7 @@ import {
         </div>
 
         <nav class="education-cta__actions" aria-label="Education related navigation links">
-          @for (link of ctaLinks; track link.route) {
+          @for (link of ctaLinks(); track link.route) {
             <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
             </a>
@@ -392,8 +394,18 @@ import {
   ],
 })
 export class Education {
-  protected readonly formalEducation: FormalEducationEntry[] = FORMAL_EDUCATION;
-  protected readonly continuousLearning: ContinuousLearningEntry[] = CONTINUOUS_LEARNING;
-  protected readonly highlights: EducationHighlight[] = EDUCATION_HIGHLIGHTS;
-  protected readonly ctaLinks: EducationCtaLink[] = EDUCATION_CTA_LINKS;
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly formalEducation = computed(() =>
+    getLocalizedData(FORMAL_EDUCATION, this.languageService.currentLanguage()),
+  );
+  protected readonly continuousLearning = computed(() =>
+    getLocalizedData(CONTINUOUS_LEARNING, this.languageService.currentLanguage()),
+  );
+  protected readonly highlights = computed(() =>
+    getLocalizedData(EDUCATION_HIGHLIGHTS, this.languageService.currentLanguage()),
+  );
+  protected readonly ctaLinks = computed(() =>
+    getLocalizedData(EDUCATION_CTA_LINKS, this.languageService.currentLanguage()),
+  );
 }

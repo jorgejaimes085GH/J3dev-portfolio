@@ -1,6 +1,6 @@
 import { BackendSkillGroup, Skill, SkillCategory } from '../models/skill.model';
 
-export const SKILL_CATEGORIES: SkillCategory[] = [
+const SKILL_CATEGORIES_EN: SkillCategory[] = [
   'Backend',
   'Database',
   'Frontend',
@@ -11,7 +11,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   'Enterprise Practices',
 ];
 
-export const BACKEND_SKILL_GROUPS: BackendSkillGroup[] = [
+const BACKEND_SKILL_GROUPS_EN: BackendSkillGroup[] = [
   'Platform & Language',
   'Application Frameworks',
   'Data Access & Querying',
@@ -547,7 +547,165 @@ const SKILL_ITEMS: Skill[] = [
       'Team conventions are connected to LeverIT enterprise work, including reusable JavaScript patterns, collaborative delivery, and maintainable handoff practices.',
   },
 ];
-export const SKILLS: Skill[] = SKILL_ITEMS.map((skill) => ({
+const SKILLS_EN: Skill[] = SKILL_ITEMS.map((skill) => ({
   ...skill,
   iconUrl: `assets/images/logos/skills/${skill.id}.svg`,
 }));
+
+const SKILL_CATEGORIES_ES: SkillCategory[] = SKILL_CATEGORIES_EN;
+
+const BACKEND_SKILL_GROUPS_ES: BackendSkillGroup[] = BACKEND_SKILL_GROUPS_EN;
+
+const skillSpanishDescriptions: Record<
+  string,
+  Pick<Skill, 'shortDescription' | 'evidenceSummary'> & { contextNotes?: string[] }
+> = {
+  dotnet: {
+    shortDescription:
+      'Experiencia en plataforma backend para modernización en producción y dirección API.',
+    evidenceSummary:
+      '.NET aparece en la ruta de modernización de Worker y en trabajo empresarial de ItHelpCenter, donde los límites de aplicación y la mantenibilidad importan en contextos de producción.',
+    contextNotes: [
+      'Los detalles públicos se mantienen a alto nivel para evitar exponer lógica propietaria de producción.',
+    ],
+  },
+  csharp: {
+    shortDescription: 'Lenguaje principal para backend moderno y código de aplicación mantenible.',
+    evidenceSummary:
+      'C# apoya la modernización de Worker y trabajo empresarial en LeverIT, incluyendo implementación orientada a backend y responsabilidades REST API.',
+  },
+  'aspnet-core': {
+    shortDescription:
+      'Framework backend enfocado en APIs para servicios de aplicación estructurados.',
+    evidenceSummary:
+      'La experiencia con ASP.NET y ASP.NET Core se representa mediante conceptos de API en Expensux y trabajo de mantenimiento y funcionalidades empresariales en LeverIT.',
+  },
+  'rest-apis': {
+    shortDescription: 'Límites HTTP API para separar responsabilidades frontend y backend.',
+    evidenceSummary:
+      'Los conceptos REST API hacen parte de la modernización de Worker, Expensux y trabajo empresarial en LeverIT que separa responsabilidades backend de flujos frontend.',
+  },
+  jwt: {
+    shortDescription: 'Conceptos de autenticación basada en tokens para flujos protegidos por API.',
+    evidenceSummary:
+      'Expensux incluye autenticación JWT como parte de su flujo de control financiero y diseño de responsabilidades API.',
+  },
+  dapper: {
+    shortDescription: 'Acceso liviano a datos para flujos de aplicación respaldados por SQL.',
+    evidenceSummary:
+      'Dapper se conecta con SQL Server y procedimientos almacenados en la modernización de Worker y conceptos de acceso a datos de Expensux.',
+  },
+  'sql-server': {
+    shortDescription:
+      'Experiencia en base de datos relacional para flujos de negocio, consultas y procedimientos almacenados.',
+    evidenceSummary:
+      'SQL Server aparece en Worker, Expensux y proyectos empresariales de LeverIT, con foco en integridad de datos y necesidades de negocio.',
+  },
+  angular: {
+    shortDescription:
+      'Framework frontend usado como capacidad complementaria para flujos impulsados por backend.',
+    evidenceSummary:
+      'Angular apoya Expensux, Testigo Electoral y este portfolio, conectando interfaces usables con servicios y reglas de negocio backend.',
+  },
+  typescript: {
+    shortDescription: 'Lenguaje tipado para construir interfaces Angular mantenibles.',
+    evidenceSummary:
+      'TypeScript aparece en trabajo Angular y en este portfolio como apoyo a componentes más claros y mantenibles.',
+  },
+  solid: {
+    shortDescription: 'Principios de diseño para código orientado a objetos mantenible.',
+    evidenceSummary:
+      'SOLID guía la modernización y el diseño backend donde la separación de responsabilidades mejora mantenimiento y evolución.',
+  },
+  'layered-architecture': {
+    shortDescription:
+      'Separación de responsabilidades para que las soluciones sean más fáciles de mantener y extender.',
+    evidenceSummary:
+      'La arquitectura por capas se refleja en modernización .NET, APIs y decisiones de diseño orientadas a sistemas de largo plazo.',
+  },
+  git: {
+    shortDescription: 'Control de versiones para seguimiento de cambios y colaboración.',
+    evidenceSummary:
+      'Git apoya el trabajo profesional y este portfolio mediante cambios incrementales, trazabilidad y entrega ordenada.',
+  },
+  github: {
+    shortDescription:
+      'Plataforma para repositorios públicos y evidencia de trabajo cuando puede compartirse.',
+    evidenceSummary:
+      'GitHub se usa para publicar trabajo seguro como este portfolio y enlaces disponibles cuando el contexto lo permite.',
+  },
+  'problem-solving': {
+    shortDescription:
+      'Análisis práctico de problemas entre datos, aplicación y necesidades de negocio.',
+    evidenceSummary:
+      'La resolución de problemas se evidencia en mantenimiento, modernización y soporte de sistemas existentes sin exponer detalles privados.',
+  },
+  'technical-analysis': {
+    shortDescription:
+      'Revisión de requisitos, comportamiento existente y tradeoffs antes de implementar.',
+    evidenceSummary:
+      'El análisis técnico conecta necesidades de negocio, datos y restricciones del sistema antes de proponer cambios.',
+  },
+  documentation: {
+    shortDescription: 'Notas y explicaciones para preservar decisiones y facilitar continuidad.',
+    evidenceSummary:
+      'La documentación apoya handoff, mantenibilidad y claridad en proyectos empresariales y públicos.',
+  },
+  'team-collaboration': {
+    shortDescription:
+      'Trabajo con equipos y stakeholders para alinear decisiones técnicas con la entrega.',
+    evidenceSummary:
+      'La colaboración aparece en proyectos de LeverIT, soporte empresarial y construcción de soluciones con convenciones compartidas.',
+  },
+  'continuous-learning': {
+    shortDescription:
+      'Aprendizaje constante para evolucionar desde tecnologías legacy hacia herramientas modernas.',
+    evidenceSummary:
+      'El aprendizaje continuo conecta experiencia VB6, Access, WinForms y SQL Server con .NET moderno, APIs y Angular.',
+  },
+  'enterprise-maintenance': {
+    shortDescription:
+      'Soporte a sistemas de producción de largo plazo mediante mejoras seguras e incrementales.',
+    evidenceSummary:
+      'El mantenimiento empresarial se demuestra en soporte a proyectos LeverIT y evolución de Worker, con detalles sanitizados para presentación pública.',
+  },
+  'team-conventions': {
+    shortDescription:
+      'Seguir y mejorar prácticas compartidas para que el equipo mantenga software de forma consistente.',
+    evidenceSummary:
+      'Las convenciones de equipo se conectan con trabajo empresarial en LeverIT, patrones reutilizables y entregas mantenibles.',
+  },
+};
+
+const SKILLS_ES: Skill[] = SKILLS_EN.map((skill) => ({
+  ...skill,
+  ...(skillSpanishDescriptions[skill.id] ?? {
+    shortDescription: skill.shortDescription
+      .replace('Backend', 'Backend')
+      .replace('Frontend', 'Frontend')
+      .replace('experience', 'experiencia')
+      .replace('development', 'desarrollo')
+      .replace('maintainable', 'mantenible'),
+    evidenceSummary: skill.evidenceSummary
+      .replace('is represented', 'se representa')
+      .replace('is connected', 'se conecta')
+      .replace('experience', 'experiencia')
+      .replace('production', 'producción')
+      .replace('maintenance', 'mantenimiento'),
+  }),
+}));
+
+export const SKILL_CATEGORIES = {
+  en: SKILL_CATEGORIES_EN,
+  es: SKILL_CATEGORIES_ES,
+} as const;
+
+export const BACKEND_SKILL_GROUPS = {
+  en: BACKEND_SKILL_GROUPS_EN,
+  es: BACKEND_SKILL_GROUPS_ES,
+} as const;
+
+export const SKILLS = {
+  en: SKILLS_EN,
+  es: SKILLS_ES,
+} as const;

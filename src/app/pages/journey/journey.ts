@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { JOURNEY_CTA_LINKS, JOURNEY_INSIGHTS, JOURNEY_STAGES } from '../../data/journey.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 import { PROJECTS } from '../../data/projects.data';
 import { JourneyStage } from '../../models/journey.model';
 import { Project } from '../../models/project.model';
@@ -30,13 +32,13 @@ import { Project } from '../../models/project.model';
           <p class="journey-section__eyebrow">Evolution Timeline</p>
           <h2 id="journey-timeline-title">Learning stages that shaped the engineering profile</h2>
           <p>
-            Each stage focuses on capability growth and practical learning rather than listing roles,
-            employers, or confidential implementation details.
+            Each stage focuses on capability growth and practical learning rather than listing
+            roles, employers, or confidential implementation details.
           </p>
         </div>
 
         <ol class="journey-timeline" aria-label="Technical and professional evolution stages">
-          @for (stage of stages; track stage.id; let stageIndex = $index) {
+          @for (stage of stages(); track stage.id; let stageIndex = $index) {
             <li class="journey-stage">
               <article class="journey-stage__card" [attr.aria-labelledby]="stage.id + '-title'">
                 <div class="journey-stage__meta">
@@ -94,7 +96,7 @@ import { Project } from '../../models/project.model';
         </div>
 
         <div class="journey-insight-grid">
-          @for (insight of insights; track insight.title) {
+          @for (insight of insights(); track insight.title) {
             <article class="journey-insight-card">
               <h3>{{ insight.title }}</h3>
               <p>{{ insight.description }}</p>
@@ -114,7 +116,7 @@ import { Project } from '../../models/project.model';
         </div>
 
         <nav class="journey-cta__actions" aria-label="Journey related navigation links">
-          @for (link of ctaLinks; track link.route) {
+          @for (link of ctaLinks(); track link.route) {
             <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
             </a>
@@ -337,15 +339,27 @@ import { Project } from '../../models/project.model';
   ],
 })
 export class Journey {
-  readonly stages = JOURNEY_STAGES;
-  readonly insights = JOURNEY_INSIGHTS;
-  readonly ctaLinks = JOURNEY_CTA_LINKS;
+  private readonly languageService = inject(LanguageService);
 
-  private readonly projectsBySlug = new Map(PROJECTS.map((project) => [project.slug, project]));
+  readonly stages = computed(() =>
+    getLocalizedData(JOURNEY_STAGES, this.languageService.currentLanguage()),
+  );
+  readonly insights = computed(() =>
+    getLocalizedData(JOURNEY_INSIGHTS, this.languageService.currentLanguage()),
+  );
+  readonly ctaLinks = computed(() =>
+    getLocalizedData(JOURNEY_CTA_LINKS, this.languageService.currentLanguage()),
+  );
+  private readonly projects = computed(() =>
+    getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
+  );
+  private readonly projectsBySlug = computed(
+    () => new Map(this.projects().map((project) => [project.slug, project])),
+  );
 
   getRelatedProjects(stage: JourneyStage): Project[] {
     return (stage.relatedProjectSlugs ?? [])
-      .map((projectSlug) => this.projectsBySlug.get(projectSlug))
+      .map((projectSlug) => this.projectsBySlug().get(projectSlug))
       .filter((project): project is Project => Boolean(project));
   }
 }

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { HERO_SLIDES } from '../../data/hero-slides.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 import {
   HOME_PROJECT_PREVIEWS,
   HOME_SKILL_PREVIEWS,
@@ -14,20 +16,20 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
   standalone: true,
   imports: [HeroSlider, RouterLink],
   template: `
-    <app-hero-slider [slides]="heroSlides" />
+    <app-hero-slider [slides]="heroSlides()" />
 
     <section class="home-section" aria-labelledby="how-i-add-value-title">
       <div class="home-section__header">
         <p class="home-section__eyebrow">How I Add Value</p>
         <h2 id="how-i-add-value-title">Practical engineering habits for long-term teams</h2>
         <p>
-          A recruiter-focused overview of Jorge's approach to software work: understand the
-          problem, keep architecture clear, and build solutions that can keep evolving.
+          A recruiter-focused overview of Jorge's approach to software work: understand the problem,
+          keep architecture clear, and build solutions that can keep evolving.
         </p>
       </div>
 
       <div class="preview-grid preview-grid--three">
-        @for (value of valuePreviews; track value.title) {
+        @for (value of valuePreviews(); track value.title) {
           <article class="preview-card">
             @if (value.label) {
               <p class="preview-card__label">{{ value.label }}</p>
@@ -50,7 +52,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       </div>
 
       <div class="preview-grid preview-grid--three">
-        @for (project of projectPreviews; track project.name) {
+        @for (project of projectPreviews(); track project.name) {
           <article class="preview-card project-preview">
             <div
               class="project-preview__visual"
@@ -94,7 +96,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       </div>
 
       <div class="skill-grid" aria-label="Core skill preview list">
-        @for (skill of skillPreviews; track skill.name) {
+        @for (skill of skillPreviews(); track skill.name) {
           <article class="skill-card">
             <h3>{{ skill.name }}</h3>
             <p>{{ skill.context }}</p>
@@ -315,10 +317,20 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
   ],
 })
 export class Home {
-  protected readonly heroSlides = HERO_SLIDES;
-  protected readonly valuePreviews = HOME_VALUE_PREVIEWS;
-  protected readonly projectPreviews = HOME_PROJECT_PREVIEWS;
-  protected readonly skillPreviews = HOME_SKILL_PREVIEWS;
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly heroSlides = computed(() =>
+    getLocalizedData(HERO_SLIDES, this.languageService.currentLanguage()),
+  );
+  protected readonly valuePreviews = computed(() =>
+    getLocalizedData(HOME_VALUE_PREVIEWS, this.languageService.currentLanguage()),
+  );
+  protected readonly projectPreviews = computed(() =>
+    getLocalizedData(HOME_PROJECT_PREVIEWS, this.languageService.currentLanguage()),
+  );
+  protected readonly skillPreviews = computed(() =>
+    getLocalizedData(HOME_SKILL_PREVIEWS, this.languageService.currentLanguage()),
+  );
 
   protected hideFailedAsset(event: Event): void {
     (event.target as HTMLImageElement).hidden = true;
