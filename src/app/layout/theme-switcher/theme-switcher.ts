@@ -2,7 +2,13 @@ import { Component, inject } from '@angular/core';
 
 import { LanguageService } from '../../core/services/language.service';
 import { ThemeService } from '../../core/services/theme.service';
-import { PortfolioTheme } from '../../themes/theme.model';
+import { PortfolioTheme, ThemeOption } from '../../themes/theme.model';
+
+const SPANISH_THEME_TITLES: Record<PortfolioTheme, string> = {
+  'light-professional': 'Claro',
+  'dark-tech': 'Oscuro',
+  'premium-3d': 'Premium 3D',
+};
 
 @Component({
   selector: 'app-theme-switcher',
@@ -17,8 +23,8 @@ import { PortfolioTheme } from '../../themes/theme.model';
             [class.theme-switcher__button--active]="themeService.isActiveTheme(theme.id)"
             type="button"
             [attr.aria-pressed]="themeService.isActiveTheme(theme.id)"
-            [attr.aria-label]="theme.label + ': ' + theme.description"
-            [attr.title]="theme.description"
+            [attr.aria-label]="getThemeAriaLabel(theme)"
+            [attr.title]="getThemeTitle(theme)"
             (click)="selectTheme(theme.id)"
           >
             @if (theme.iconUrl) {
@@ -47,6 +53,16 @@ export class ThemeSwitcher {
 
   selectTheme(theme: PortfolioTheme): void {
     this.themeService.setTheme(theme);
+  }
+
+  getThemeTitle(theme: ThemeOption): string {
+    return this.languageService.currentLanguage() === 'es'
+      ? SPANISH_THEME_TITLES[theme.id]
+      : theme.label;
+  }
+
+  getThemeAriaLabel(theme: ThemeOption): string {
+    return `${this.getThemeTitle(theme)}: ${theme.description}`;
   }
 
   showIconFallback(event: Event): void {
