@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ABOUT_PAGE_DATA } from '../../data/about.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-about',
@@ -12,9 +14,9 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
       <section class="about-section about-introduction" aria-labelledby="about-page-title">
         <div class="about-introduction__content">
           <p class="about-section__eyebrow">About Me</p>
-          <h1 id="about-page-title">{{ aboutData.introduction.professionalTitle }}</h1>
+          <h1 id="about-page-title">{{ aboutData().introduction.professionalTitle }}</h1>
           <p class="about-introduction__summary">
-            {{ aboutData.introduction.shortIntroduction }}
+            {{ aboutData().introduction.shortIntroduction }}
           </p>
         </div>
 
@@ -22,14 +24,14 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
           <div
             class="about-profile-placeholder__frame"
             role="img"
-            [attr.aria-label]="aboutData.introduction.profileImageAlt"
+            [attr.aria-label]="aboutData().introduction.profileImageAlt"
           >
             <span>Professional Profile Image Pending</span>
-            @if (aboutData.introduction.profileImageUrl) {
+            @if (aboutData().introduction.profileImageUrl) {
               <img
                 class="about-profile-placeholder__image"
-                [src]="aboutData.introduction.profileImageUrl"
-                [alt]="aboutData.introduction.profileImageAlt"
+                [src]="aboutData().introduction.profileImageUrl"
+                [alt]="aboutData().introduction.profileImageAlt"
                 (error)="hideFailedAsset($event)"
               />
             }
@@ -49,7 +51,7 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         </div>
 
         <div class="about-card-grid about-card-grid--four">
-          @for (item of aboutData.professionalMindset; track item.title) {
+          @for (item of aboutData().professionalMindset; track item.title) {
             <article class="about-card">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
@@ -62,11 +64,11 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         <div class="about-section__header">
           <p class="about-section__eyebrow">Adaptability</p>
           <h2 id="adaptability-title">Evolving with real business needs</h2>
-          <p>{{ aboutData.adaptability.summary }}</p>
+          <p>{{ aboutData().adaptability.summary }}</p>
         </div>
 
         <div class="about-card-grid about-card-grid--four">
-          @for (item of aboutData.adaptability.evidence; track item.title) {
+          @for (item of aboutData().adaptability.evidence; track item.title) {
             <article class="about-card">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
@@ -86,7 +88,7 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         </div>
 
         <ol class="journey-timeline">
-          @for (milestone of aboutData.journeyMilestones; track milestone.title) {
+          @for (milestone of aboutData().journeyMilestones; track milestone.title) {
             <li class="journey-timeline__item">
               <article class="about-card about-card--timeline">
                 <h3>{{ milestone.title }}</h3>
@@ -108,7 +110,7 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         </div>
 
         <div class="about-card-grid about-card-grid--four">
-          @for (item of aboutData.engineeringPhilosophy; track item.title) {
+          @for (item of aboutData().engineeringPhilosophy; track item.title) {
             <article class="about-card">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
@@ -128,7 +130,7 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
         </div>
 
         <div class="about-card-grid about-card-grid--values">
-          @for (value of aboutData.professionalValues; track value.title) {
+          @for (value of aboutData().professionalValues; track value.title) {
             <article class="about-card">
               <h3>{{ value.title }}</h3>
               <p>{{ value.description }}</p>
@@ -343,7 +345,11 @@ import { ABOUT_PAGE_DATA } from '../../data/about.data';
   ],
 })
 export class About {
-  protected readonly aboutData = ABOUT_PAGE_DATA;
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly aboutData = computed(() =>
+    getLocalizedData(ABOUT_PAGE_DATA, this.languageService.currentLanguage()),
+  );
 
   protected hideFailedAsset(event: Event): void {
     (event.target as HTMLImageElement).hidden = true;

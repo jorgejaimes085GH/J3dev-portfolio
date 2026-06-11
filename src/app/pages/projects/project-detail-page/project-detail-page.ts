@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { PROJECTS } from '../../../data/projects.data';
+import { getLocalizedData } from '../../../data/localized-data';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-project-detail-page',
@@ -13,7 +15,7 @@ import { PROJECTS } from '../../../data/projects.data';
         <a routerLink="/projects">← Back to Projects</a>
       </nav>
 
-      @if (project; as selectedProject) {
+      @if (project(); as selectedProject) {
         <section class="project-detail-hero" aria-labelledby="project-detail-title">
           <div class="project-detail-hero__content">
             <p class="project-detail-page__eyebrow">Project Detail</p>
@@ -423,10 +425,13 @@ import { PROJECTS } from '../../../data/projects.data';
 })
 export class ProjectDetailPage {
   private readonly route = inject(ActivatedRoute);
+  private readonly languageService = inject(LanguageService);
   private readonly projectId = this.route.snapshot.paramMap.get('projectId');
 
-  protected readonly project = PROJECTS.find(
-    (project) => project.slug === this.projectId || project.id === this.projectId,
+  protected readonly project = computed(() =>
+    getLocalizedData(PROJECTS, this.languageService.currentLanguage()).find(
+      (project) => project.slug === this.projectId || project.id === this.projectId,
+    ),
   );
 
   protected hideFailedAsset(event: Event): void {

@@ -1,6 +1,6 @@
 import { AboutPageData } from '../models/about.model';
 
-export const ABOUT_PAGE_DATA: AboutPageData = {
+const ABOUT_PAGE_DATA_EN: AboutPageData = {
   introduction: {
     professionalTitle: 'Backend .NET Developer',
     shortIntroduction:
@@ -148,3 +148,162 @@ export const ABOUT_PAGE_DATA: AboutPageData = {
     },
   ],
 };
+
+const ABOUT_PAGE_DATA_ES: AboutPageData = {
+  introduction: {
+    professionalTitle: 'Backend .NET Developer',
+    shortIntroduction:
+      'Jorge Jaimes es Backend .NET Developer con experiencia en varias generaciones de software empresarial. Su crecimiento profesional se ha formado manteniendo sistemas reales, entendiendo necesidades operativas y usando el software como una forma práctica de resolver problemas de negocio con confiabilidad y valor a largo plazo.',
+    profileImageAlt: 'Retrato profesional de Jorge Jaimes',
+    profileImageUrl: 'assets/profile/photos/jorge-jaimes-professional-portrait.webp',
+  },
+  professionalMindset: [
+    {
+      title: 'Responsabilidad sobre el trabajo',
+      description:
+        'Aborda cada asignación con disciplina, comunicación clara y respeto por restricciones de producción, estándares del equipo y expectativas de stakeholders.',
+    },
+    {
+      title: 'Valor antes que preferencia',
+      description:
+        'Enfoca las decisiones en el problema de negocio, los usuarios afectados y la mantenibilidad de la solución, más que en preferencias personales de tecnología.',
+    },
+    {
+      title: 'Entrega confiable y mantenible',
+      description:
+        'Prioriza software que pueda entenderse, soportarse y mejorarse después de completar la implementación inicial.',
+    },
+    {
+      title: 'Crecimiento profesional continuo',
+      description:
+        'Trata el aprendizaje como parte permanente de la profesión y usa nuevo conocimiento para mejorar criterio, hábitos de entrega y decisiones técnicas.',
+    },
+  ],
+  adaptability: {
+    summary:
+      'Una parte constante de la carrera de Jorge ha sido adaptarse a las necesidades de sistemas reales: pasar de entornos VB6, Access, WinForms y SQL Server hacia .NET, REST APIs, integración con Angular y prácticas de arquitectura más modernas. Esa evolución no se trata de seguir tendencias; se trata de aprender herramientas y patrones necesarios para mantener el software de negocio útil, mantenible y alineado con necesidades actuales.',
+    evidence: [
+      {
+        title: 'Fundamentos legacy',
+        description:
+          'La experiencia con entornos desktop y orientados a datos construyó una comprensión práctica de flujos de trabajo, reportes, ingreso de datos y continuidad operativa.',
+      },
+      {
+        title: 'Mentalidad de modernización',
+        description:
+          'La modernización se aborda de forma incremental, cuidando comportamiento existente, riesgo de negocio y usuarios que dependen del sistema.',
+      },
+      {
+        title: 'Resolución de problemas sin apego a herramientas',
+        description:
+          'La tecnología se trata como un medio para entregar valor, no como identidad; la prioridad es seleccionar y aprender lo que el problema requiere.',
+      },
+      {
+        title: 'Dirección técnica actual',
+        description:
+          'Backend .NET sigue siendo el foco principal, mientras el conocimiento complementario en frontend y arquitectura apoya entregas end-to-end más claras.',
+      },
+    ],
+  },
+  journeyMilestones: [
+    {
+      title: 'Curiosidad tecnológica inicial',
+      description:
+        'Construyó una base temprana explorando cómo la tecnología puede resolver problemas prácticos para usuarios reales.',
+    },
+    {
+      title: 'VB6 / Access',
+      description:
+        'Trabajó con aplicaciones desktop y orientadas a datos, ganando experiencia directa con flujos de negocio, formularios, reportes y restricciones legacy.',
+    },
+    {
+      title: 'WinForms',
+      description:
+        'Avanzó hacia interfaces desktop estructuradas donde importaban la usabilidad, el ingreso de datos, los reportes y la confiabilidad operativa.',
+    },
+    {
+      title: 'SQL Server',
+      description:
+        'Desarrolló hábitos más sólidos de base de datos relacional alrededor de consultas, procedimientos almacenados, organización de datos e integridad de información de negocio.',
+    },
+    {
+      title: 'Software empresarial',
+      description:
+        'Contribuyó a sistemas orientados a producción donde mantenimiento, entrega incremental, convenciones de equipo y confidencialidad hacían parte del trabajo diario.',
+    },
+    {
+      title: 'Arquitectura',
+      description:
+        'Pasó de implementaciones aisladas hacia límites más claros, capas mantenibles y decisiones de diseño que soportan cambios futuros.',
+    },
+    {
+      title: '.NET moderno',
+      description:
+        'Continuó evolucionando su práctica backend con C#, .NET 8, enfoque REST API, Dapper, SQL Server, arquitectura por capas y principios SOLID.',
+    },
+    {
+      title: 'Angular',
+      description:
+        'Agregó Angular y TypeScript como capacidades fullstack complementarias para conectar interfaces usables con servicios backend y flujos de aplicación.',
+    },
+  ],
+  engineeringPhilosophy: [
+    {
+      title: 'Entender primero el problema',
+      description:
+        'Aclarar necesidades de negocio, restricciones y comportamiento existente del sistema antes de elegir una implementación.',
+    },
+    {
+      title: 'Arquitectura antes de implementar',
+      description:
+        'Definir responsabilidades, límites y flujo de datos desde temprano para que el código sea más fácil de razonar cuando cambian los requisitos.',
+    },
+    {
+      title: 'Software mantenible',
+      description:
+        'Preferir soluciones legibles, estructura práctica y mejora incremental sobre complejidad innecesaria.',
+    },
+    {
+      title: 'Aprendizaje continuo',
+      description:
+        'Tratar cada proyecto como parte de una evolución técnica de largo plazo entre sistemas legacy, entrega empresarial y herramientas modernas.',
+    },
+  ],
+  professionalValues: [
+    {
+      title: 'Responsabilidad',
+      description:
+        'Asumir el trabajo asignado respetando restricciones de producción, prácticas del equipo y confidencialidad.',
+    },
+    {
+      title: 'Mantenibilidad',
+      description:
+        'Reducir complejidad evitable para que los cambios futuros puedan completarse con menor riesgo y mayor claridad técnica.',
+    },
+    {
+      title: 'Claridad',
+      description:
+        'Comunicar decisiones, limitaciones y avances de forma que equipos técnicos y stakeholders puedan entender el contexto.',
+    },
+    {
+      title: 'Pragmatismo',
+      description:
+        'Elegir soluciones que respondan al problema real, el contexto de entrega y la vida útil esperada del software.',
+    },
+    {
+      title: 'Confidencialidad',
+      description:
+        'Proteger código fuente privado, datos de clientes, flujos propietarios y detalles internos mientras se comunica evidencia profesional segura.',
+    },
+    {
+      title: 'Consistencia',
+      description:
+        'Mantener hábitos de trabajo estables que ayuden a sostener calidad, colaboración y continuidad en sistemas de largo plazo.',
+    },
+  ],
+};
+
+export const ABOUT_PAGE_DATA = {
+  en: ABOUT_PAGE_DATA_EN,
+  es: ABOUT_PAGE_DATA_ES,
+} as const;

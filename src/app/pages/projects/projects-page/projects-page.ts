@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { PROJECTS } from '../../../data/projects.data';
+import { getLocalizedData } from '../../../data/localized-data';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-projects-page',
@@ -35,7 +37,7 @@ import { PROJECTS } from '../../../data/projects.data';
         </div>
 
         <div class="project-grid" aria-label="Project list">
-          @for (project of projects; track project.id) {
+          @for (project of projects(); track project.id) {
             <article class="project-card" [attr.aria-labelledby]="project.id + '-title'">
               <div class="project-card__visual" role="img" [attr.aria-label]="project.visualLabel">
                 <span aria-hidden="true">{{ project.title.slice(0, 2).toUpperCase() }}</span>
@@ -278,7 +280,11 @@ import { PROJECTS } from '../../../data/projects.data';
   ],
 })
 export class ProjectsPage {
-  protected readonly projects = PROJECTS;
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly projects = computed(() =>
+    getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
+  );
 
   protected hideFailedAsset(event: Event): void {
     (event.target as HTMLImageElement).hidden = true;

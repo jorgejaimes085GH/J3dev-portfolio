@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
 import { DOCUMENT_GROUPS } from '../../data/documents.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 import { DocumentGroupSection, ProfessionalDocument } from '../../models/document.model';
 
 @Component({
@@ -20,7 +22,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
         </div>
       </section>
 
-      @for (group of documentGroups; track group.id) {
+      @for (group of documentGroups(); track group.id) {
         <section class="documents-section" [attr.aria-labelledby]="group.id + '-title'">
           <div class="documents-section__header">
             <p class="documents-section__eyebrow">{{ group.title }}</p>
@@ -335,7 +337,11 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
   ],
 })
 export class Documents {
-  readonly documentGroups: DocumentGroupSection[] = DOCUMENT_GROUPS;
+  private readonly languageService = inject(LanguageService);
+
+  readonly documentGroups = computed(() =>
+    getLocalizedData(DOCUMENT_GROUPS, this.languageService.currentLanguage()),
+  );
   protected readonly viewActionIconUrl = 'assets/images/icons/actions/open-external.svg';
   protected readonly downloadActionIconUrl = 'assets/images/icons/actions/download.svg';
   protected readonly printActionIconUrl = 'assets/images/icons/actions/print.svg';

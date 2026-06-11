@@ -5,7 +5,7 @@ import {
   FormalEducationEntry,
 } from '../models/education.model';
 
-export const FORMAL_EDUCATION: FormalEducationEntry[] = [
+const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
   {
     id: 'cedefoc-high-school-diploma',
     institution: 'CEDEFOC',
@@ -36,7 +36,7 @@ export const FORMAL_EDUCATION: FormalEducationEntry[] = [
   },
 ];
 
-export const CONTINUOUS_LEARNING: ContinuousLearningEntry[] = [
+const CONTINUOUS_LEARNING_EN: ContinuousLearningEntry[] = [
   {
     id: 'business-software-learning',
     title: 'Business Software Learning',
@@ -113,14 +113,15 @@ export const CONTINUOUS_LEARNING: ContinuousLearningEntry[] = [
   },
 ];
 
-export const EDUCATION_HIGHLIGHTS: EducationHighlight[] = [
+const EDUCATION_HIGHLIGHTS_EN: EducationHighlight[] = [
   {
     title: 'Formal Education',
     description: 'Completed technology degree and advanced engineering studies.',
   },
   {
     title: 'Independent Learning',
-    description: 'Self-directed technical growth from legacy systems toward modern Backend .NET practices.',
+    description:
+      'Self-directed technical growth from legacy systems toward modern Backend .NET practices.',
   },
   {
     title: 'Production Experience',
@@ -132,9 +133,82 @@ export const EDUCATION_HIGHLIGHTS: EducationHighlight[] = [
   },
 ];
 
-export const EDUCATION_CTA_LINKS: EducationCtaLink[] = [
+const EDUCATION_CTA_LINKS_EN: EducationCtaLink[] = [
   { label: 'Explore Skills', route: '/skills' },
   { label: 'View Projects', route: '/projects' },
   { label: 'View Journey', route: '/journey' },
   { label: 'View Documents', route: '/documents' },
 ];
+
+const FORMAL_EDUCATION_ES: FormalEducationEntry[] = FORMAL_EDUCATION_EN.map((entry) => ({
+  ...entry,
+  achievement: entry.achievement
+    ?.replace('Completed', 'Completado')
+    .replace('pending formal degree', 'título formal pendiente'),
+  status: entry.status?.replace('Completed', 'Completado').replace('In Progress', 'En progreso'),
+  summary: entry.summary
+    .replace('Formal education foundation', 'Base de educación formal')
+    .replace('Professional training', 'Formación profesional')
+    .replace('focused on', 'enfocada en')
+    .replace('software development', 'desarrollo de software'),
+}));
+
+export const FORMAL_EDUCATION = {
+  en: FORMAL_EDUCATION_EN,
+  es: FORMAL_EDUCATION_ES,
+} as const;
+
+const CONTINUOUS_LEARNING_ES: ContinuousLearningEntry[] = CONTINUOUS_LEARNING_EN.map((entry) => ({
+  ...entry,
+  title: entry.title
+    .replace('Modern Backend .NET', 'Backend .NET moderno')
+    .replace('Frontend Integration', 'Integración Frontend')
+    .replace('Architecture and Maintainability', 'Arquitectura y mantenibilidad'),
+  focusAreas: entry.focusAreas.map((area) =>
+    area
+      .replace('Application architecture', 'Arquitectura de aplicaciones')
+      .replace('Data access', 'Acceso a datos')
+      .replace('API design', 'Diseño de APIs')
+      .replace('Responsive UI', 'UI responsive')
+      .replace('Maintainability', 'Mantenibilidad'),
+  ),
+  summary: entry.summary
+    .replace('Current learning', 'Aprendizaje actual')
+    .replace('supports', 'apoya')
+    .replace('backend', 'backend')
+    .replace('maintainable', 'mantenible'),
+}));
+
+export const CONTINUOUS_LEARNING = {
+  en: CONTINUOUS_LEARNING_EN,
+  es: CONTINUOUS_LEARNING_ES,
+} as const;
+
+const EDUCATION_HIGHLIGHTS_ES: EducationHighlight[] = EDUCATION_HIGHLIGHTS_EN.map((highlight) => ({
+  ...highlight,
+  title: highlight.title
+    .replace('Practical foundation', 'Base práctica')
+    .replace('Continuous improvement', 'Mejora continua')
+    .replace('Backend specialization', 'Especialización Backend'),
+  description: highlight.description
+    .replace('Learning is connected', 'El aprendizaje está conectado')
+    .replace('production', 'producción')
+    .replace('modernization', 'modernización')
+    .replace('maintainability', 'mantenibilidad'),
+}));
+
+export const EDUCATION_HIGHLIGHTS = {
+  en: EDUCATION_HIGHLIGHTS_EN,
+  es: EDUCATION_HIGHLIGHTS_ES,
+} as const;
+
+const EDUCATION_CTA_LINKS_ES: EducationCtaLink[] = [
+  { label: 'Ver Habilidades', route: '/skills' },
+  { label: 'Ver Proyectos', route: '/projects' },
+  { label: 'Contactar a Jorge', route: '/contact' },
+];
+
+export const EDUCATION_CTA_LINKS = {
+  en: EDUCATION_CTA_LINKS_EN,
+  es: EDUCATION_CTA_LINKS_ES,
+} as const;

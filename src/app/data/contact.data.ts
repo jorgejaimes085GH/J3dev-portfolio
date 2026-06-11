@@ -1,6 +1,6 @@
 import { ContactBadge, ContactMethod } from '../models/contact.model';
 
-export const PROFESSIONAL_CONTACT_METHODS: ContactMethod[] = [
+const PROFESSIONAL_CONTACT_METHODS_EN: ContactMethod[] = [
   {
     id: 'email',
     title: 'Email',
@@ -33,7 +33,7 @@ export const PROFESSIONAL_CONTACT_METHODS: ContactMethod[] = [
   },
 ];
 
-export const PROFESSIONAL_AVAILABILITY: ContactBadge[] = [
+const PROFESSIONAL_AVAILABILITY_EN: ContactBadge[] = [
   { id: 'remote-opportunities', label: 'Remote Opportunities' },
   { id: 'hybrid-opportunities', label: 'Hybrid Opportunities' },
   { id: 'backend-dotnet-roles', label: 'Backend .NET Roles' },
@@ -42,7 +42,7 @@ export const PROFESSIONAL_AVAILABILITY: ContactBadge[] = [
   { id: 'technical-leadership-growth', label: 'Technical Leadership Growth' },
 ];
 
-export const TECHNICAL_INTERESTS: ContactBadge[] = [
+const TECHNICAL_INTERESTS_EN: ContactBadge[] = [
   { id: 'sql-server', label: 'SQL Server' },
   { id: 'dotnet-8', label: '.NET 8' },
   { id: 'rest-apis', label: 'REST APIs' },
@@ -54,3 +54,62 @@ export const TECHNICAL_INTERESTS: ContactBadge[] = [
   { id: 'azure-learning', label: 'Azure Learning' },
   { id: 'ai-assisted-development', label: 'AI-Assisted Development' },
 ];
+
+const PROFESSIONAL_CONTACT_METHODS_ES: ContactMethod[] = [
+  {
+    ...PROFESSIONAL_CONTACT_METHODS_EN[0],
+    description: 'Canal preferido para comunicación profesional y coordinación de entrevistas.',
+    actionLabel: 'Enviar Email',
+    iconPlaceholder: 'Ícono de contacto por email',
+  },
+  {
+    ...PROFESSIONAL_CONTACT_METHODS_EN[1],
+    description:
+      'Disponible para conversaciones profesionales rápidas y programación de entrevistas.',
+    actionLabel: 'Abrir WhatsApp',
+    iconPlaceholder: 'Ícono de contacto por WhatsApp',
+  },
+  {
+    ...PROFESSIONAL_CONTACT_METHODS_EN[2],
+    description: 'Perfil profesional, trayectoria, experiencia y recomendaciones.',
+    actionLabel: 'Ver Perfil de LinkedIn',
+    iconPlaceholder: 'Ícono de contacto de LinkedIn',
+  },
+];
+
+export const PROFESSIONAL_CONTACT_METHODS = {
+  en: PROFESSIONAL_CONTACT_METHODS_EN,
+  es: PROFESSIONAL_CONTACT_METHODS_ES,
+} as const;
+
+const PROFESSIONAL_AVAILABILITY_ES: ContactBadge[] = [
+  { id: 'remote-opportunities', label: 'Oportunidades Remotas' },
+  { id: 'hybrid-opportunities', label: 'Oportunidades Híbridas' },
+  { id: 'backend-dotnet-roles', label: 'Roles Backend .NET' },
+  { id: 'fullstack-dotnet-angular-roles', label: 'Roles .NET + Angular con prioridad Backend' },
+  { id: 'software-architecture-discussions', label: 'Conversaciones de Arquitectura de Software' },
+  { id: 'technical-leadership-growth', label: 'Crecimiento en Liderazgo Técnico' },
+];
+
+export const PROFESSIONAL_AVAILABILITY = {
+  en: PROFESSIONAL_AVAILABILITY_EN,
+  es: PROFESSIONAL_AVAILABILITY_ES,
+} as const;
+
+const TECHNICAL_INTERESTS_ES: ContactBadge[] = [
+  { id: 'sql-server', label: 'SQL Server' },
+  { id: 'dotnet-8', label: '.NET 8' },
+  { id: 'rest-apis', label: 'REST APIs' },
+  { id: 'angular', label: 'Angular' },
+  { id: 'dapper', label: 'Dapper' },
+  { id: 'solid', label: 'SOLID' },
+  { id: 'software-architecture', label: 'Arquitectura de Software' },
+  { id: 'modernization-legacy-systems', label: 'Modernización de Sistemas Legacy' },
+  { id: 'azure-learning', label: 'Aprendizaje de Azure' },
+  { id: 'ai-assisted-development', label: 'Desarrollo Asistido por IA' },
+];
+
+export const TECHNICAL_INTERESTS = {
+  en: TECHNICAL_INTERESTS_EN,
+  es: TECHNICAL_INTERESTS_ES,
+} as const;

@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
 import {
   PROFESSIONAL_AVAILABILITY,
   PROFESSIONAL_CONTACT_METHODS,
   TECHNICAL_INTERESTS,
 } from '../../data/contact.data';
+import { getLocalizedData } from '../../data/localized-data';
+import { LanguageService } from '../../core/services/language.service';
 import { ContactMethod } from '../../models/contact.model';
 
 @Component({
@@ -31,11 +33,13 @@ import { ContactMethod } from '../../models/contact.model';
         <div class="contact-section__header">
           <p class="contact-section__eyebrow">Contact Methods</p>
           <h2 id="contact-methods-title">Professional Contact Methods</h2>
-          <p>Choose the channel that best fits your professional conversation or scheduling need.</p>
+          <p>
+            Choose the channel that best fits your professional conversation or scheduling need.
+          </p>
         </div>
 
         <div class="contact-method-grid" aria-label="Professional contact method cards">
-          @for (method of contactMethods; track method.id) {
+          @for (method of contactMethods(); track method.id) {
             <article class="contact-method-card" [attr.aria-labelledby]="method.id + '-title'">
               <div class="contact-method-card__icon" aria-hidden="true">
                 <span>{{ method.title.charAt(0) }}</span>
@@ -85,7 +89,7 @@ import { ContactMethod } from '../../models/contact.model';
         </div>
 
         <ul class="contact-badge-list" aria-label="Professional availability options">
-          @for (item of professionalAvailability; track item.id) {
+          @for (item of professionalAvailability(); track item.id) {
             <li>{{ item.label }}</li>
           }
         </ul>
@@ -95,11 +99,13 @@ import { ContactMethod } from '../../models/contact.model';
         <div class="contact-section__header">
           <p class="contact-section__eyebrow">Topics I Enjoy Discussing</p>
           <h2 id="technical-interests-title">Technical Interests</h2>
-          <p>Topics frequently explored through projects, professional work, and continuous learning.</p>
+          <p>
+            Topics frequently explored through projects, professional work, and continuous learning.
+          </p>
         </div>
 
         <ul class="contact-badge-list" aria-label="Technical interest topics">
-          @for (topic of technicalInterests; track topic.id) {
+          @for (topic of technicalInterests(); track topic.id) {
             <li>{{ topic.label }}</li>
           }
         </ul>
@@ -109,9 +115,7 @@ import { ContactMethod } from '../../models/contact.model';
         <div class="contact-final-cta__content">
           <p class="contact-section__eyebrow">Next Conversation</p>
           <h2 id="contact-final-cta-title">Open to Professional Conversations?</h2>
-          <p>
-            Feel free to reach out through email, WhatsApp, or LinkedIn.
-          </p>
+          <p>Feel free to reach out through email, WhatsApp, or LinkedIn.</p>
           <p>
             I am open to discussing Backend .NET opportunities, software architecture, modernization
             work, and long-term technology projects.
@@ -119,7 +123,7 @@ import { ContactMethod } from '../../models/contact.model';
         </div>
 
         <nav class="contact-final-cta__actions" aria-label="Contact call to action links">
-          @for (method of contactMethods; track method.id) {
+          @for (method of contactMethods(); track method.id) {
             <a
               class="contact-action"
               [class.contact-action--primary]="$first"
@@ -329,9 +333,17 @@ import { ContactMethod } from '../../models/contact.model';
   ],
 })
 export class Contact {
-  protected readonly contactMethods = PROFESSIONAL_CONTACT_METHODS;
-  protected readonly professionalAvailability = PROFESSIONAL_AVAILABILITY;
-  protected readonly technicalInterests = TECHNICAL_INTERESTS;
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly contactMethods = computed(() =>
+    getLocalizedData(PROFESSIONAL_CONTACT_METHODS, this.languageService.currentLanguage()),
+  );
+  protected readonly professionalAvailability = computed(() =>
+    getLocalizedData(PROFESSIONAL_AVAILABILITY, this.languageService.currentLanguage()),
+  );
+  protected readonly technicalInterests = computed(() =>
+    getLocalizedData(TECHNICAL_INTERESTS, this.languageService.currentLanguage()),
+  );
 
   protected isExternalUrl(method: ContactMethod): boolean {
     return method.actionUrl.startsWith('https://');
