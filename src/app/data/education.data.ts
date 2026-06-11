@@ -140,62 +140,142 @@ const EDUCATION_CTA_LINKS_EN: EducationCtaLink[] = [
   { label: 'View Documents', route: '/documents' },
 ];
 
-const FORMAL_EDUCATION_ES: FormalEducationEntry[] = FORMAL_EDUCATION_EN.map((entry) => ({
-  ...entry,
-  achievement: entry.achievement
-    ?.replace('Completed', 'Completado')
-    .replace('pending formal degree', 'título formal pendiente'),
-  status: entry.status?.replace('Completed', 'Completado').replace('In Progress', 'En progreso'),
-  summary: entry.summary
-    .replace('Formal education foundation', 'Base de educación formal')
-    .replace('Professional training', 'Formación profesional')
-    .replace('focused on', 'enfocada en')
-    .replace('software development', 'desarrollo de software'),
-}));
+const FORMAL_EDUCATION_ES: FormalEducationEntry[] = [
+  {
+    ...FORMAL_EDUCATION_EN[0],
+    achievement: 'Bachiller Académico',
+    summary: 'Educación académica base y desarrollo de habilidades de razonamiento lógico.',
+  },
+  {
+    ...FORMAL_EDUCATION_EN[1],
+    program: 'Tecnología de Sistemas',
+    status: 'Completado',
+    summary:
+      'Educación formal en desarrollo de software, bases de datos, análisis de sistemas y fundamentos de programación.',
+  },
+  {
+    ...FORMAL_EDUCATION_EN[2],
+    program: 'Ingeniería de Sistemas',
+    status: 'Completado hasta noveno semestre',
+    summary:
+      'Estudios adicionales en ingeniería de software, arquitectura, desarrollo de proyectos, bases de datos y diseño de sistemas.',
+  },
+];
 
 export const FORMAL_EDUCATION = {
   en: FORMAL_EDUCATION_EN,
   es: FORMAL_EDUCATION_ES,
 } as const;
 
-const CONTINUOUS_LEARNING_ES: ContinuousLearningEntry[] = CONTINUOUS_LEARNING_EN.map((entry) => ({
-  ...entry,
-  title: entry.title
-    .replace('Modern Backend .NET', 'Backend .NET moderno')
-    .replace('Frontend Integration', 'Integración Frontend')
-    .replace('Architecture and Maintainability', 'Arquitectura y mantenibilidad'),
-  focusAreas: entry.focusAreas.map((area) =>
-    area
-      .replace('Application architecture', 'Arquitectura de aplicaciones')
-      .replace('Data access', 'Acceso a datos')
-      .replace('API design', 'Diseño de APIs')
-      .replace('Responsive UI', 'UI responsive')
-      .replace('Maintainability', 'Mantenibilidad'),
-  ),
-  summary: entry.summary
-    .replace('Current learning', 'Aprendizaje actual')
-    .replace('supports', 'apoya')
-    .replace('backend', 'backend')
-    .replace('maintainable', 'mantenible'),
-}));
+const CONTINUOUS_LEARNING_ES: ContinuousLearningEntry[] = [
+  {
+    ...CONTINUOUS_LEARNING_EN[0],
+    title: 'Aprendizaje en software de negocio',
+    focusAreas: [
+      'Procesos de negocio',
+      'Sistemas contables',
+      'Software médico',
+      'Sistemas de facturación',
+      'Operación de software real',
+    ],
+    summary: 'Comprender cómo el software apoya a las organizaciones y sus operaciones diarias.',
+  },
+  {
+    ...CONTINUOUS_LEARNING_EN[1],
+    title: 'Aprendizaje en desarrollo desktop',
+    focusAreas: [
+      'Visual Basic 6',
+      'VB.NET',
+      'WinForms',
+      'Access',
+      'Reportes',
+      'Automatización de Excel',
+    ],
+    summary: 'Construcción de aplicaciones desktop empresariales completas.',
+  },
+  {
+    ...CONTINUOUS_LEARNING_EN[2],
+    title: 'Aprendizaje en bases de datos',
+    focusAreas: [
+      'SQL Server',
+      'Modelado de datos',
+      'Stored Procedures',
+      'Rendimiento',
+      'Reglas de negocio',
+    ],
+    summary: 'Diseño y mantenimiento de bases de datos de negocio.',
+  },
+  {
+    ...CONTINUOUS_LEARNING_EN[3],
+    title: 'Aprendizaje en desarrollo empresarial',
+    focusAreas: [
+      'C#',
+      'ASP.NET',
+      'REST APIs',
+      'WebSockets',
+      'JavaScript',
+      'Mantenimiento empresarial',
+    ],
+    summary: 'Construcción y evolución de plataformas de software empresarial.',
+  },
+  {
+    ...CONTINUOUS_LEARNING_EN[4],
+    title: 'Aprendizaje en arquitectura de software',
+    focusAreas: [
+      'SOLID',
+      'Layered Architecture',
+      'Componentes reutilizables',
+      'Mantenibilidad',
+      'Clean code',
+    ],
+    summary: 'Diseño de software que puede evolucionar con el tiempo.',
+  },
+  {
+    ...CONTINUOUS_LEARNING_EN[5],
+    title: 'Aprendizaje fullstack moderno',
+    focusAreas: ['Angular', 'TypeScript', 'JWT', 'Dapper', '.NET 8', 'Diseño responsive'],
+    summary:
+      'Integración de prácticas Backend .NET modernas con colaboración frontend cuando se requiere.',
+  },
+  {
+    ...CONTINUOUS_LEARNING_EN[6],
+    title: 'Enfoque actual de aprendizaje',
+    focusAreas: [
+      'Azure',
+      'Conceptos cloud',
+      'Flujos Git',
+      'Docker',
+      'Desarrollo asistido por IA',
+      'Prácticas modernas de ingeniería',
+    ],
+    summary: 'Adaptación continua a nuevas tecnologías y enfoques de desarrollo.',
+  },
+];
 
 export const CONTINUOUS_LEARNING = {
   en: CONTINUOUS_LEARNING_EN,
   es: CONTINUOUS_LEARNING_ES,
 } as const;
 
-const EDUCATION_HIGHLIGHTS_ES: EducationHighlight[] = EDUCATION_HIGHLIGHTS_EN.map((highlight) => ({
-  ...highlight,
-  title: highlight.title
-    .replace('Practical foundation', 'Base práctica')
-    .replace('Continuous improvement', 'Mejora continua')
-    .replace('Backend specialization', 'Especialización Backend'),
-  description: highlight.description
-    .replace('Learning is connected', 'El aprendizaje está conectado')
-    .replace('production', 'producción')
-    .replace('modernization', 'modernización')
-    .replace('maintainability', 'mantenibilidad'),
-}));
+const EDUCATION_HIGHLIGHTS_ES: EducationHighlight[] = [
+  {
+    title: 'Educación formal',
+    description: 'Tecnología completada y estudios avanzados de ingeniería.',
+  },
+  {
+    title: 'Aprendizaje independiente',
+    description:
+      'Crecimiento técnico autodirigido desde sistemas legacy hacia prácticas modernas de Backend .NET.',
+  },
+  {
+    title: 'Experiencia en producción',
+    description: 'Aprendizaje reforzado mediante proyectos de software reales.',
+  },
+  {
+    title: 'Mejora continua',
+    description: 'Mentalidad de aprendizaje activo mantenida durante la trayectoria profesional.',
+  },
+];
 
 export const EDUCATION_HIGHLIGHTS = {
   en: EDUCATION_HIGHLIGHTS_EN,
@@ -203,9 +283,10 @@ export const EDUCATION_HIGHLIGHTS = {
 } as const;
 
 const EDUCATION_CTA_LINKS_ES: EducationCtaLink[] = [
-  { label: 'Ver Habilidades', route: '/skills' },
+  { label: 'Explorar Habilidades', route: '/skills' },
   { label: 'Ver Proyectos', route: '/projects' },
-  { label: 'Contactar a Jorge', route: '/contact' },
+  { label: 'Ver Trayectoria', route: '/journey' },
+  { label: 'Ver Documentos', route: '/documents' },
 ];
 
 export const EDUCATION_CTA_LINKS = {

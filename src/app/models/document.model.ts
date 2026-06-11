@@ -1,8 +1,19 @@
-export type DocumentType = 'CV' | 'Cover Letter' | 'Recommendation Letter';
+export type DocumentType =
+  | 'CV'
+  | 'Cover Letter'
+  | 'Recommendation Letter'
+  | 'Carta de Presentación'
+  | 'Carta de Recomendación';
 
-export type DocumentLanguage = 'Spanish' | 'English';
+export type DocumentLanguage = 'Spanish' | 'English' | 'Español' | 'Inglés';
 
-export type DocumentGroup = 'Resume & CV' | 'Cover Letters' | 'Professional Recommendations';
+export type DocumentGroup =
+  | 'Resume & CV'
+  | 'Cover Letters'
+  | 'Professional Recommendations'
+  | 'Hoja de vida y CV'
+  | 'Cartas de presentación'
+  | 'Recomendaciones profesionales';
 
 export interface ProfessionalDocument {
   id: string;

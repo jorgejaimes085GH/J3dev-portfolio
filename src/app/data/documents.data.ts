@@ -3,6 +3,9 @@ import { DocumentGroupSection, ProfessionalDocument } from '../models/document.m
 const spanishRecommendationNote =
   'Original document in Spanish. English summary can be prepared if required.';
 
+const spanishRecommendationNoteEs =
+  'Documento original en español. Puede prepararse un resumen en inglés si se requiere.';
+
 const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
   {
     id: 'cv-es',
@@ -155,38 +158,82 @@ const DOCUMENT_GROUPS_EN: DocumentGroupSection[] = [
   },
 ];
 
-const PROFESSIONAL_DOCUMENTS_ES: ProfessionalDocument[] = PROFESSIONAL_DOCUMENTS_EN.map(
-  (document) => ({
+const PROFESSIONAL_DOCUMENTS_ES: ProfessionalDocument[] = [
+  {
+    ...PROFESSIONAL_DOCUMENTS_EN[0],
+    description:
+      'Hoja de vida en español preparada para roles Backend .NET, reclutadores hispanohablantes, hiring managers y contactos profesionales.',
+    language: 'Español',
+    group: 'Hoja de vida y CV',
+    statusLabel: 'PDF pendiente de publicación',
+    viewLabel: 'Ver CV Español en línea',
+    downloadLabel: 'Descargar CV Español PDF',
+    printLabel: 'Imprimir CV Español',
+  },
+  {
+    ...PROFESSIONAL_DOCUMENTS_EN[1],
+    title: 'CV Inglés',
+    description:
+      'Curriculum vitae en inglés preparado para roles Backend .NET, reclutadores internacionales, hiring managers y equipos técnicos.',
+    language: 'Inglés',
+    group: 'Hoja de vida y CV',
+    statusLabel: 'PDF pendiente de publicación',
+    viewLabel: 'Ver CV Inglés en línea',
+    downloadLabel: 'Descargar CV Inglés PDF',
+    printLabel: 'Imprimir CV Inglés',
+  },
+  {
+    ...PROFESSIONAL_DOCUMENTS_EN[2],
+    description:
+      'Carta de presentación en español preparada para introducciones a roles Backend .NET y contexto de aplicación; la publicación del PDF está pendiente.',
+    type: 'Carta de Presentación',
+    language: 'Español',
+    group: 'Cartas de presentación',
+    statusLabel: 'PDF pendiente de publicación',
+    viewLabel: 'Ver Carta de Presentación Español en línea',
+    downloadLabel: 'Descargar Carta de Presentación Español PDF',
+    printLabel: 'Imprimir Carta de Presentación Español',
+  },
+  {
+    ...PROFESSIONAL_DOCUMENTS_EN[3],
+    title: 'Carta de Presentación Inglés',
+    description:
+      'Carta de presentación en inglés preparada para introducciones a roles Backend .NET y contexto de aplicación; la publicación del PDF está pendiente.',
+    type: 'Carta de Presentación',
+    language: 'Inglés',
+    group: 'Cartas de presentación',
+    statusLabel: 'PDF pendiente de publicación',
+    viewLabel: 'Ver Carta de Presentación Inglés en línea',
+    downloadLabel: 'Descargar Carta de Presentación Inglés PDF',
+    printLabel: 'Imprimir Carta de Presentación Inglés',
+  },
+  ...PROFESSIONAL_DOCUMENTS_EN.slice(4).map((document) => ({
     ...document,
+    title: document.title.replace('Recommendation', 'Recomendación').replace('Client', 'Cliente'),
     description: document.description
-      .replace(
-        'Spanish curriculum vitae prepared for Backend .NET roles, Colombian recruiters, hiring managers, and technical teams.',
-        'Hoja de vida en español preparada para roles Backend .NET, reclutadores en Colombia, hiring managers y equipos técnicos.',
-      )
-      .replace(
-        'English curriculum vitae prepared for Backend .NET roles, international recruiters, hiring managers, and technical teams.',
-        'Curriculum vitae en inglés preparado para roles Backend .NET, reclutadores internacionales, hiring managers y equipos técnicos.',
-      )
-      .replace(
-        'Spanish cover letter prepared for Backend .NET role introductions and application context; PDF publication is pending.',
-        'Carta de presentación en español preparada para introducciones a roles Backend .NET y contexto de aplicación; la publicación del PDF está pendiente.',
-      )
-      .replace(
-        'English cover letter prepared for Backend .NET role introductions and application context; PDF publication is pending.',
-        'Carta de presentación en inglés preparada para introducciones a roles Backend .NET y contexto de aplicación; la publicación del PDF está pendiente.',
-      )
       .replace('Professional recommendation letter from', 'Carta de recomendación profesional de')
       .replace(
         'provided as verifiable supporting evidence.',
         'presentada como evidencia de apoyo verificable.',
       )
       .replace('provided as supporting evidence.', 'presentada como evidencia de apoyo.'),
+    type: 'Carta de Recomendación' as const,
+    language: 'Español' as const,
+    group: 'Recomendaciones profesionales' as const,
     statusLabel: 'PDF pendiente de publicación',
-    viewLabel: document.viewLabel.replace('View', 'Ver').replace('online', 'en línea'),
-    downloadLabel: document.downloadLabel.replace('Download', 'Descargar'),
-    printLabel: document.printLabel.replace('Print', 'Imprimir'),
-  }),
-);
+    viewLabel: document.viewLabel
+      .replace('View', 'Ver')
+      .replace('Recommendation', 'Recomendación')
+      .replace('online', 'en línea'),
+    downloadLabel: document.downloadLabel
+      .replace('Download', 'Descargar')
+      .replace('Recommendation', 'Recomendación'),
+    printLabel: document.printLabel
+      .replace('Print', 'Imprimir')
+      .replace('Recommendation', 'Recomendación'),
+    note: spanishRecommendationNoteEs,
+  })),
+];
 
 export const PROFESSIONAL_DOCUMENTS = {
   en: PROFESSIONAL_DOCUMENTS_EN,
@@ -196,25 +243,29 @@ export const PROFESSIONAL_DOCUMENTS = {
 const DOCUMENT_GROUPS_ES: DocumentGroupSection[] = [
   {
     id: 'resume-cv',
-    title: 'Resume & CV',
+    title: 'Hoja de vida y CV',
     intro:
       'Documentos de hoja de vida y curriculum vitae preparados para audiencias profesionales en español e inglés.',
-    documents: PROFESSIONAL_DOCUMENTS_ES.filter((document) => document.group === 'Resume & CV'),
+    documents: PROFESSIONAL_DOCUMENTS_ES.filter(
+      (document) => document.group === 'Hoja de vida y CV',
+    ),
   },
   {
     id: 'cover-letters',
-    title: 'Cover Letters',
+    title: 'Cartas de presentación',
     intro:
       'Cartas de presentación preparadas para introducciones profesionales por rol; la publicación de PDFs está pendiente.',
-    documents: PROFESSIONAL_DOCUMENTS_ES.filter((document) => document.group === 'Cover Letters'),
+    documents: PROFESSIONAL_DOCUMENTS_ES.filter(
+      (document) => document.group === 'Cartas de presentación',
+    ),
   },
   {
     id: 'professional-recommendations',
-    title: 'Professional Recommendations',
+    title: 'Recomendaciones profesionales',
     intro:
       'Cartas de recomendación orientadas a aportar evidencia profesional de contextos laborales previos; la publicación de PDFs está pendiente.',
     documents: PROFESSIONAL_DOCUMENTS_ES.filter(
-      (document) => document.group === 'Professional Recommendations',
+      (document) => document.group === 'Recomendaciones profesionales',
     ),
   },
 ];
