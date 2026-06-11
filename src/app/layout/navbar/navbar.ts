@@ -72,7 +72,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
               (error)="showIconFallback($event)"
             />
             <span class="site-header__icon-fallback" aria-hidden="true">
-              {{ isHeaderPinned() ? 'Unpin' : 'Pin' }}
+              {{ isHeaderPinned() ? 'U' : 'P' }}
             </span>
           </button>
         </div>
