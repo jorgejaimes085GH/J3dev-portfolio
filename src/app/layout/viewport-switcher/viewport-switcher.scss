@@ -3,14 +3,16 @@
 }
 
 .viewport-switcher {
-  display: flex;
-  flex-wrap: nowrap;
+  --header-switcher-label-width: max(3.75rem, 8ch);
+
+  display: grid;
+  grid-template-columns: var(--header-switcher-label-width) max-content;
   align-items: center;
-  gap: 0.25rem;
+  column-gap: 0.25rem;
 }
 
 .viewport-switcher__label {
-  min-width: 3.75rem;
+  inline-size: var(--header-switcher-label-width);
   font-weight: 600;
   text-align: end;
   white-space: nowrap;
