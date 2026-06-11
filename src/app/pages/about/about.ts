@@ -13,7 +13,7 @@ import { LanguageService } from '../../core/services/language.service';
     <main class="about-page" aria-labelledby="about-page-title">
       <section class="about-section about-introduction" aria-labelledby="about-page-title">
         <div class="about-introduction__content">
-          <p class="about-section__eyebrow">About Me</p>
+          <p class="about-section__eyebrow">{{ text().eyebrow }}</p>
           <h1 id="about-page-title">{{ aboutData().introduction.professionalTitle }}</h1>
           <p class="about-introduction__summary">
             {{ aboutData().introduction.shortIntroduction }}
@@ -26,7 +26,7 @@ import { LanguageService } from '../../core/services/language.service';
             role="img"
             [attr.aria-label]="aboutData().introduction.profileImageAlt"
           >
-            <span>Professional Profile Image Pending</span>
+            <span>{{ text().imagePending }}</span>
             @if (aboutData().introduction.profileImageUrl) {
               <img
                 class="about-profile-placeholder__image"
@@ -36,18 +36,15 @@ import { LanguageService } from '../../core/services/language.service';
               />
             }
           </div>
-          <figcaption>Professional profile image area</figcaption>
+          <figcaption>{{ text().imageCaption }}</figcaption>
         </figure>
       </section>
 
       <section class="about-section" aria-labelledby="professional-mindset-title">
         <div class="about-section__header">
-          <p class="about-section__eyebrow">Professional Mindset</p>
-          <h2 id="professional-mindset-title">How Jorge approaches professional work</h2>
-          <p>
-            This mindset connects technical decisions with responsibility, consistency, and the
-            practical value expected from business software.
-          </p>
+          <p class="about-section__eyebrow">{{ text().mindsetEyebrow }}</p>
+          <h2 id="professional-mindset-title">{{ text().mindsetTitle }}</h2>
+          <p>{{ text().mindsetIntro }}</p>
         </div>
 
         <div class="about-card-grid about-card-grid--four">
@@ -62,8 +59,8 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="about-section" aria-labelledby="adaptability-title">
         <div class="about-section__header">
-          <p class="about-section__eyebrow">Adaptability</p>
-          <h2 id="adaptability-title">Evolving with real business needs</h2>
+          <p class="about-section__eyebrow">{{ text().adaptabilityEyebrow }}</p>
+          <h2 id="adaptability-title">{{ text().adaptabilityTitle }}</h2>
           <p>{{ aboutData().adaptability.summary }}</p>
         </div>
 
@@ -79,12 +76,9 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="about-section" aria-labelledby="journey-overview-title">
         <div class="about-section__header">
-          <p class="about-section__eyebrow">Professional Journey Overview</p>
-          <h2 id="journey-overview-title">Technical evolution timeline</h2>
-          <p>
-            A concise view of how Jorge’s work evolved from early business software into backend
-            .NET, SQL Server, architecture, and Angular application development.
-          </p>
+          <p class="about-section__eyebrow">{{ text().journeyEyebrow }}</p>
+          <h2 id="journey-overview-title">{{ text().journeyTitle }}</h2>
+          <p>{{ text().journeyIntro }}</p>
         </div>
 
         <ol class="journey-timeline">
@@ -101,12 +95,9 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="about-section" aria-labelledby="engineering-philosophy-title">
         <div class="about-section__header">
-          <p class="about-section__eyebrow">Engineering Philosophy</p>
-          <h2 id="engineering-philosophy-title">Principles behind the work</h2>
-          <p>
-            These principles describe the engineering habits that guide implementation choices,
-            maintenance work, and modernization decisions.
-          </p>
+          <p class="about-section__eyebrow">{{ text().philosophyEyebrow }}</p>
+          <h2 id="engineering-philosophy-title">{{ text().philosophyTitle }}</h2>
+          <p>{{ text().philosophyIntro }}</p>
         </div>
 
         <div class="about-card-grid about-card-grid--four">
@@ -121,12 +112,9 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="about-section" aria-labelledby="professional-values-title">
         <div class="about-section__header">
-          <p class="about-section__eyebrow">Professional Values</p>
-          <h2 id="professional-values-title">Work habits that support teams</h2>
-          <p>
-            These values support dependable team contribution across production systems,
-            documentation, collaboration, and continuous improvement.
-          </p>
+          <p class="about-section__eyebrow">{{ text().valuesEyebrow }}</p>
+          <h2 id="professional-values-title">{{ text().valuesTitle }}</h2>
+          <p>{{ text().valuesIntro }}</p>
         </div>
 
         <div class="about-card-grid about-card-grid--values">
@@ -141,17 +129,16 @@ import { LanguageService } from '../../core/services/language.service';
 
       <section class="about-cta" aria-labelledby="about-cta-title">
         <div>
-          <p class="about-section__eyebrow">Next Steps</p>
-          <h2 id="about-cta-title">Continue exploring the portfolio evidence</h2>
-          <p>
-            Review the value, project, and skills sections for concrete examples of production
-            experience, technical evolution, and maintainable software thinking.
-          </p>
+          <p class="about-section__eyebrow">{{ text().ctaEyebrow }}</p>
+          <h2 id="about-cta-title">{{ text().ctaTitle }}</h2>
+          <p>{{ text().ctaIntro }}</p>
         </div>
 
-        <div class="about-cta__actions" aria-label="About page exploration links">
-          <a class="button-link button-link--primary" routerLink="/why-hire-me">How I Add Value</a>
-          <a class="button-link" routerLink="/projects">Projects</a>
+        <div class="about-cta__actions" [attr.aria-label]="text().ctaAria">
+          <a class="button-link button-link--primary" routerLink="/why-hire-me">{{
+            navText().value
+          }}</a>
+          <a class="button-link" routerLink="/projects">{{ navText().projects }}</a>
         </div>
       </section>
     </main>
@@ -346,6 +333,9 @@ import { LanguageService } from '../../core/services/language.service';
 })
 export class About {
   private readonly languageService = inject(LanguageService);
+
+  protected readonly text = computed(() => this.languageService.uiText().pages.about);
+  protected readonly navText = computed(() => this.languageService.uiText().nav);
 
   protected readonly aboutData = computed(() =>
     getLocalizedData(ABOUT_PAGE_DATA, this.languageService.currentLanguage()),

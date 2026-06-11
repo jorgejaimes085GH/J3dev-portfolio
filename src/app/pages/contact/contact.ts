@@ -16,29 +16,21 @@ import { ContactMethod } from '../../models/contact.model';
     <main class="contact-page" aria-labelledby="contact-page-title">
       <section class="contact-section contact-hero" aria-labelledby="contact-page-title">
         <div class="contact-section__header">
-          <p class="contact-section__eyebrow">Professional Communication</p>
-          <h1 id="contact-page-title">Let's Connect</h1>
-          <p class="contact-hero__subtitle">
-            Interested in discussing Backend .NET development, software architecture, SQL Server,
-            modernization work, or backend-first fullstack solutions?
-          </p>
-          <p class="contact-hero__intro">
-            Professional communication channels for recruiters, hiring managers, technical leaders,
-            and engineering teams.
-          </p>
+          <p class="contact-section__eyebrow">{{ text().eyebrow }}</p>
+          <h1 id="contact-page-title">{{ text().title }}</h1>
+          <p class="contact-hero__subtitle">{{ text().subtitle }}</p>
+          <p class="contact-hero__intro">{{ text().intro }}</p>
         </div>
       </section>
 
       <section class="contact-section" aria-labelledby="contact-methods-title">
         <div class="contact-section__header">
-          <p class="contact-section__eyebrow">Contact Methods</p>
-          <h2 id="contact-methods-title">Professional Contact Methods</h2>
-          <p>
-            Choose the channel that best fits your professional conversation or scheduling need.
-          </p>
+          <p class="contact-section__eyebrow">{{ text().methodsEyebrow }}</p>
+          <h2 id="contact-methods-title">{{ text().methodsTitle }}</h2>
+          <p>{{ text().methodsIntro }}</p>
         </div>
 
-        <div class="contact-method-grid" aria-label="Professional contact method cards">
+        <div class="contact-method-grid" [attr.aria-label]="text().methodsAria">
           @for (method of contactMethods(); track method.id) {
             <article class="contact-method-card" [attr.aria-labelledby]="method.id + '-title'">
               <div class="contact-method-card__icon" aria-hidden="true">
@@ -79,16 +71,12 @@ import { ContactMethod } from '../../models/contact.model';
 
       <section class="contact-section" aria-labelledby="availability-title">
         <div class="contact-section__header">
-          <p class="contact-section__eyebrow">Availability</p>
-          <h2 id="availability-title">Professional Availability</h2>
-          <p>
-            Jorge is interested in long-term professional growth and meaningful software engineering
-            challenges where maintainable systems, practical architecture, and team collaboration
-            matter.
-          </p>
+          <p class="contact-section__eyebrow">{{ text().availabilityEyebrow }}</p>
+          <h2 id="availability-title">{{ text().availabilityTitle }}</h2>
+          <p>{{ text().availabilityIntro }}</p>
         </div>
 
-        <ul class="contact-badge-list" aria-label="Professional availability options">
+        <ul class="contact-badge-list" [attr.aria-label]="text().availabilityAria">
           @for (item of professionalAvailability(); track item.id) {
             <li>{{ item.label }}</li>
           }
@@ -97,14 +85,12 @@ import { ContactMethod } from '../../models/contact.model';
 
       <section class="contact-section" aria-labelledby="technical-interests-title">
         <div class="contact-section__header">
-          <p class="contact-section__eyebrow">Topics I Enjoy Discussing</p>
-          <h2 id="technical-interests-title">Technical Interests</h2>
-          <p>
-            Topics frequently explored through projects, professional work, and continuous learning.
-          </p>
+          <p class="contact-section__eyebrow">{{ text().interestsEyebrow }}</p>
+          <h2 id="technical-interests-title">{{ text().interestsTitle }}</h2>
+          <p>{{ text().interestsIntro }}</p>
         </div>
 
-        <ul class="contact-badge-list" aria-label="Technical interest topics">
+        <ul class="contact-badge-list" [attr.aria-label]="text().interestsAria">
           @for (topic of technicalInterests(); track topic.id) {
             <li>{{ topic.label }}</li>
           }
@@ -113,16 +99,13 @@ import { ContactMethod } from '../../models/contact.model';
 
       <section class="contact-section contact-final-cta" aria-labelledby="contact-final-cta-title">
         <div class="contact-final-cta__content">
-          <p class="contact-section__eyebrow">Next Conversation</p>
-          <h2 id="contact-final-cta-title">Open to Professional Conversations?</h2>
-          <p>Feel free to reach out through email, WhatsApp, or LinkedIn.</p>
-          <p>
-            I am open to discussing Backend .NET opportunities, software architecture, modernization
-            work, and long-term technology projects.
-          </p>
+          <p class="contact-section__eyebrow">{{ text().ctaEyebrow }}</p>
+          <h2 id="contact-final-cta-title">{{ text().ctaTitle }}</h2>
+          <p>{{ text().ctaIntro }}</p>
+          <p>{{ text().ctaDetail }}</p>
         </div>
 
-        <nav class="contact-final-cta__actions" aria-label="Contact call to action links">
+        <nav class="contact-final-cta__actions" [attr.aria-label]="text().ctaAria">
           @for (method of contactMethods(); track method.id) {
             <a
               class="contact-action"
@@ -335,6 +318,8 @@ import { ContactMethod } from '../../models/contact.model';
 export class Contact {
   private readonly languageService = inject(LanguageService);
 
+  protected readonly text = computed(() => this.languageService.uiText().pages.contact);
+
   protected readonly contactMethods = computed(() =>
     getLocalizedData(PROFESSIONAL_CONTACT_METHODS, this.languageService.currentLanguage()),
   );
@@ -351,10 +336,10 @@ export class Contact {
 
   protected getContactActionLabel(method: ContactMethod): string {
     if (this.isExternalUrl(method)) {
-      return `${method.actionLabel} for ${method.title} in a new tab`;
+      return `${method.actionLabel} ${method.title} ${this.text().actionExternalSuffix}`;
     }
 
-    return `${method.actionLabel} to ${method.value}`;
+    return `${method.actionLabel} ${this.text().actionTo} ${method.value}`;
   }
 
   protected hideFailedAsset(event: Event): void {

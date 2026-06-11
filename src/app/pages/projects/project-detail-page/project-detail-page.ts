@@ -11,14 +11,14 @@ import { LanguageService } from '../../../core/services/language.service';
   imports: [RouterLink],
   template: `
     <main class="project-detail-page" aria-labelledby="project-detail-title">
-      <nav class="project-detail-nav" aria-label="Project navigation">
-        <a routerLink="/projects">← Back to Projects</a>
+      <nav class="project-detail-nav" [attr.aria-label]="text().navAria">
+        <a routerLink="/projects">{{ text().back }}</a>
       </nav>
 
       @if (project(); as selectedProject) {
         <section class="project-detail-hero" aria-labelledby="project-detail-title">
           <div class="project-detail-hero__content">
-            <p class="project-detail-page__eyebrow">Project Detail</p>
+            <p class="project-detail-page__eyebrow">{{ text().detailEyebrow }}</p>
             <h1 id="project-detail-title">{{ selectedProject.title }}</h1>
             <p class="project-detail-status">{{ selectedProject.typeStatus }}</p>
             <p class="project-detail-summary">{{ selectedProject.shortDescription }}</p>
@@ -35,7 +35,7 @@ import { LanguageService } from '../../../core/services/language.service';
               <img
                 class="project-detail-visual__image"
                 [src]="selectedProject.overviewImageUrl"
-                [alt]="selectedProject.title + ' project overview visual'"
+                [alt]="selectedProject.title + ' ' + text().visualAltSuffix"
                 (error)="hideFailedAsset($event)"
               />
             }
@@ -43,7 +43,7 @@ import { LanguageService } from '../../../core/services/language.service';
               <img
                 class="project-detail-visual__logo"
                 [src]="selectedProject.logoUrl"
-                [alt]="selectedProject.title + ' project logo'"
+                [alt]="selectedProject.title + ' ' + text().logoAltSuffix"
                 (error)="hideFailedAsset($event)"
               />
             }
@@ -52,8 +52,8 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-context-title">
           <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">Professional Context</p>
-            <h2 id="project-context-title">What this project represents</h2>
+            <p class="project-detail-page__eyebrow">{{ text().contextEyebrow }}</p>
+            <h2 id="project-context-title">{{ text().contextTitle }}</h2>
           </div>
 
           <ul class="project-detail-list">
@@ -65,8 +65,8 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-architecture-title">
           <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">Evolution / Architecture Notes</p>
-            <h2 id="project-architecture-title">Technical direction and maintainability</h2>
+            <p class="project-detail-page__eyebrow">{{ text().architectureEyebrow }}</p>
+            <h2 id="project-architecture-title">{{ text().architectureTitle }}</h2>
           </div>
 
           <ul class="project-detail-list">
@@ -78,11 +78,11 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-technologies-title">
           <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">Technology Stack</p>
-            <h2 id="project-technologies-title">Technologies and concepts</h2>
+            <p class="project-detail-page__eyebrow">{{ text().stackEyebrow }}</p>
+            <h2 id="project-technologies-title">{{ text().stackTitle }}</h2>
           </div>
 
-          <div class="project-detail-badges" aria-label="Project technologies">
+          <div class="project-detail-badges" [attr.aria-label]="text().technologiesAria">
             @for (technology of selectedProject.technologies; track technology) {
               <span class="project-detail-badge">{{ technology }}</span>
             }
@@ -91,13 +91,9 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-time-title">
           <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">Time Investment Detail</p>
-            <h2 id="project-time-title">Implementation work areas</h2>
-            <p>
-              These time blocks summarize the type of work involved while keeping private
-              implementation details protected. Durations can be refined as more public-safe project
-              material becomes available.
-            </p>
+            <p class="project-detail-page__eyebrow">{{ text().timeEyebrow }}</p>
+            <h2 id="project-time-title">{{ text().timeTitle }}</h2>
+            <p>{{ text().timeIntro }}</p>
           </div>
 
           <div class="project-time-grid">
@@ -115,8 +111,8 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-links-title">
           <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">Links and Availability</p>
-            <h2 id="project-links-title">Safe public access points</h2>
+            <p class="project-detail-page__eyebrow">{{ text().linksEyebrow }}</p>
+            <h2 id="project-links-title">{{ text().linksTitle }}</h2>
             <p>{{ selectedProject.sourceCodeNote }}</p>
           </div>
 
@@ -136,43 +132,40 @@ import { LanguageService } from '../../../core/services/language.service';
                       [attr.target]="projectLink.isExternal ? '_blank' : null"
                       [attr.rel]="projectLink.isExternal ? 'noopener noreferrer' : null"
                     >
-                      Open {{ projectLink.type }} link
+                      {{ text().openLinkPrefix }} {{ projectLink.type }} {{ text().openLinkSuffix }}
                     </a>
                   } @else {
                     <p class="project-link-card__placeholder">
-                      {{
-                        projectLink.placeholderMessage ||
-                          'This link will be published when available.'
-                      }}
+                      {{ projectLink.placeholderMessage || text().defaultPlaceholder }}
                     </p>
                   }
                 </article>
               }
             </div>
           } @else {
-            <p class="project-detail-note">No public links are available for this project yet.</p>
+            <p class="project-detail-note">{{ text().noLinks }}</p>
           }
         </section>
 
         @if (selectedProject.referencePlaceholders; as referencePlaceholders) {
           <section class="project-detail-section" aria-labelledby="project-reference-title">
             <div class="project-detail-section__header">
-              <p class="project-detail-page__eyebrow">Reference Availability</p>
-              <h2 id="project-reference-title">Company reference details</h2>
+              <p class="project-detail-page__eyebrow">{{ text().referenceEyebrow }}</p>
+              <h2 id="project-reference-title">{{ text().referenceTitle }}</h2>
               <p>{{ referencePlaceholders.availabilityNote }}</p>
             </div>
 
             <dl class="project-reference-list">
               <div>
-                <dt>Company name</dt>
+                <dt>{{ text().companyName }}</dt>
                 <dd>{{ referencePlaceholders.companyName }}</dd>
               </div>
               <div>
-                <dt>Address</dt>
+                <dt>{{ text().address }}</dt>
                 <dd>{{ referencePlaceholders.companyAddress }}</dd>
               </div>
               <div>
-                <dt>Phone</dt>
+                <dt>{{ text().phone }}</dt>
                 <dd>{{ referencePlaceholders.companyPhone }}</dd>
               </div>
             </dl>
@@ -181,24 +174,27 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-confidentiality-title">
           <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">Confidentiality / Availability Note</p>
-            <h2 id="project-confidentiality-title">Public-safe project information</h2>
+            <p class="project-detail-page__eyebrow">{{ text().confidentialityEyebrow }}</p>
+            <h2 id="project-confidentiality-title">{{ text().confidentialityTitle }}</h2>
           </div>
           <p class="project-detail-note">{{ selectedProject.confidentialityNote }}</p>
         </section>
 
-        <nav class="project-detail-nav project-detail-nav--bottom" aria-label="Project navigation">
-          <a routerLink="/projects">← Back to Projects</a>
+        <nav
+          class="project-detail-nav project-detail-nav--bottom"
+          [attr.aria-label]="text().navAria"
+        >
+          <a routerLink="/projects">{{ text().back }}</a>
         </nav>
       } @else {
         <section
           class="project-detail-section project-not-found"
           aria-labelledby="project-detail-title"
         >
-          <p class="project-detail-page__eyebrow">Project Detail</p>
-          <h1 id="project-detail-title">Project not found</h1>
-          <p>The selected project could not be found in the current project data.</p>
-          <a class="project-not-found__link" routerLink="/projects">Back to Projects</a>
+          <p class="project-detail-page__eyebrow">{{ text().detailEyebrow }}</p>
+          <h1 id="project-detail-title">{{ text().notFoundTitle }}</h1>
+          <p>{{ text().notFoundBody }}</p>
+          <a class="project-not-found__link" routerLink="/projects">{{ text().back }}</a>
         </section>
       }
     </main>
@@ -427,6 +423,8 @@ export class ProjectDetailPage {
   private readonly route = inject(ActivatedRoute);
   private readonly languageService = inject(LanguageService);
   private readonly projectId = this.route.snapshot.paramMap.get('projectId');
+
+  protected readonly text = computed(() => this.languageService.uiText().pages.projectDetail);
 
   protected readonly project = computed(() =>
     getLocalizedData(PROJECTS, this.languageService.currentLanguage()).find(

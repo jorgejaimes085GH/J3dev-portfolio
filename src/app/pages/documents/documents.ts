@@ -12,13 +12,9 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
     <main class="documents-page" aria-labelledby="documents-page-title">
       <section class="documents-section documents-hero" aria-labelledby="documents-page-title">
         <div class="documents-section__header">
-          <p class="documents-section__eyebrow">Professional Evidence</p>
-          <h1 id="documents-page-title">Documents</h1>
-          <p class="documents-hero__summary">
-            This page contains professional evidence that can be viewed online, downloaded as PDFs,
-            or opened for printing. Final PDF files are pending publication; current links use safe
-            document paths so the page structure remains ready without exposing unfinished files.
-          </p>
+          <p class="documents-section__eyebrow">{{ text().eyebrow }}</p>
+          <h1 id="documents-page-title">{{ text().title }}</h1>
+          <p class="documents-hero__summary">{{ text().summary }}</p>
         </div>
       </section>
 
@@ -56,13 +52,13 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
 
                 <p class="document-card__description">{{ document.description }}</p>
 
-                <dl class="document-meta" aria-label="Document details">
+                <dl class="document-meta" [attr.aria-label]="text().detailsAria">
                   <div>
-                    <dt>Language</dt>
+                    <dt>{{ text().language }}</dt>
                     <dd>{{ document.language }}</dd>
                   </div>
                   <div>
-                    <dt>Group</dt>
+                    <dt>{{ text().group }}</dt>
                     <dd>{{ document.group }}</dd>
                   </div>
                 </dl>
@@ -71,13 +67,13 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                   <p class="document-card__note">{{ document.note }}</p>
                 }
 
-                <div class="document-actions" aria-label="Document actions">
+                <div class="document-actions" [attr.aria-label]="text().actionsAria">
                   <a
                     class="document-action document-action--primary"
                     [href]="document.filePath"
                     target="_blank"
                     rel="noopener noreferrer"
-                    [attr.aria-label]="document.viewLabel + ' in a new tab'"
+                    [attr.aria-label]="document.viewLabel + ' ' + uiCommon().inNewTab"
                   >
                     <img
                       class="document-action__icon"
@@ -86,7 +82,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                       aria-hidden="true"
                       (error)="hideFailedAsset($event)"
                     />
-                    View Online
+                    {{ text().viewOnline }}
                   </a>
                   <a
                     class="document-action"
@@ -101,13 +97,13 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                       aria-hidden="true"
                       (error)="hideFailedAsset($event)"
                     />
-                    Download PDF
+                    {{ text().downloadPdf }}
                   </a>
                   <button
                     class="document-action"
                     type="button"
                     (click)="openForPrint(document)"
-                    [attr.aria-label]="document.printLabel + ' in a new tab'"
+                    [attr.aria-label]="document.printLabel + ' ' + uiCommon().inNewTab"
                   >
                     <img
                       class="document-action__icon"
@@ -116,7 +112,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                       aria-hidden="true"
                       (error)="hideFailedAsset($event)"
                     />
-                    Print
+                    {{ text().print }}
                   </button>
                 </div>
               </article>
@@ -126,11 +122,8 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
       }
 
       <section class="documents-section documents-note" aria-labelledby="documents-note-title">
-        <h2 id="documents-note-title">Evidence note</h2>
-        <p>
-          Some professional documents are pending PDF publication. Current document links are kept
-          intentionally simple and may not resolve until the final files are added.
-        </p>
+        <h2 id="documents-note-title">{{ text().noteTitle }}</h2>
+        <p>{{ text().noteBody }}</p>
       </section>
     </main>
   `,
@@ -338,6 +331,9 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
 })
 export class Documents {
   private readonly languageService = inject(LanguageService);
+
+  protected readonly text = computed(() => this.languageService.uiText().pages.documents);
+  protected readonly uiCommon = computed(() => this.languageService.uiText().common);
 
   readonly documentGroups = computed(() =>
     getLocalizedData(DOCUMENT_GROUPS, this.languageService.currentLanguage()),

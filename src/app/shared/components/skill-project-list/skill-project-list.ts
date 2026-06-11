@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-skill-project-list',
   standalone: true,
-  template: '<section><p>Skill project list content pending final implementation</p></section>',
+  template: `<section>
+    <p>{{ sharedText().skillProjectListPending }}</p>
+  </section>`,
 })
-export class SkillProjectList {}
+export class SkillProjectList {
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly sharedText = computed(() => this.languageService.uiText().pages.shared);
+}

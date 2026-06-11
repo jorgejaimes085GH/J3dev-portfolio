@@ -1,4 +1,12 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+  computed,
+  inject,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { LanguageService } from '../../../core/services/language.service';
@@ -11,7 +19,7 @@ import { HeroSlide } from '../../../models/hero-slide.model';
   template: `
     <section
       class="hero-slider"
-      aria-label="Professional overview"
+      [attr.aria-label]="heroText().overviewAria"
       (mouseenter)="pauseAutoPlay()"
       (mouseleave)="resumeAutoPlay()"
       (focusin)="pauseAutoPlay()"
@@ -40,7 +48,7 @@ import { HeroSlide } from '../../../models/hero-slide.model';
             <p class="hero-slider__subtitle">{{ slide.subtitle }}</p>
             <p class="hero-slider__description">{{ slide.description }}</p>
 
-            <div class="hero-slider__actions" aria-label="Hero actions">
+            <div class="hero-slider__actions" [attr.aria-label]="heroText().actionsAria">
               <a
                 class="hero-slider__cta hero-slider__cta--primary"
                 [routerLink]="slide.primaryActionRoute"
@@ -56,9 +64,9 @@ import { HeroSlide } from '../../../models/hero-slide.model';
             </div>
           </div>
 
-          <div class="hero-slider__visual" aria-label="Slide visual reference">
+          <div class="hero-slider__visual" [attr.aria-label]="heroText().visualAria">
             <div class="hero-slider__placeholder" aria-hidden="true">
-              <span>{{ slide.visualLabel || 'Hero visual reference pending final asset' }}</span>
+              <span>{{ slide.visualLabel || heroText().placeholder }}</span>
             </div>
             @if (shouldShowBackground(slide)) {
               <img
@@ -69,12 +77,12 @@ import { HeroSlide } from '../../../models/hero-slide.model';
               />
             }
             <div class="hero-slider__visual-caption">
-              <span>{{ slide.visualLabel || 'Professional visual reference' }}</span>
+              <span>{{ slide.visualLabel || heroText().caption }}</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-slider__navigation" aria-label="Slide navigation">
+        <div class="hero-slider__navigation" [attr.aria-label]="heroText().navigationAria">
           <button
             type="button"
             class="hero-slider__control"
@@ -84,13 +92,13 @@ import { HeroSlide } from '../../../models/hero-slide.model';
             {{ uiText().common.previous }}
           </button>
 
-          <div class="hero-slider__indicators" aria-label="Hero slide indicators">
+          <div class="hero-slider__indicators" [attr.aria-label]="heroText().indicatorsAria">
             @for (heroSlide of slides; track heroSlide.id; let index = $index) {
               <button
                 type="button"
                 class="hero-slider__indicator"
                 [class.hero-slider__indicator--active]="index === currentIndex"
-                [attr.aria-label]="'Show hero slide ' + (index + 1)"
+                [attr.aria-label]="heroText().showSlidePrefix + ' ' + (index + 1)"
                 [attr.aria-current]="index === currentIndex ? 'true' : null"
                 (click)="showSlide(index, true)"
               >
@@ -109,7 +117,7 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           </button>
         </div>
       } @else {
-        <div class="hero-slider__empty" role="status">Hero content is being prepared.</div>
+        <div class="hero-slider__empty" role="status">{{ heroText().empty }}</div>
       }
     </section>
   `,
@@ -361,6 +369,7 @@ export class HeroSlider implements OnChanges, OnDestroy {
   @Input() slides: readonly HeroSlide[] = [];
 
   readonly uiText = this.languageService.uiText;
+  protected readonly heroText = computed(() => this.languageService.uiText().pages.hero);
 
   currentIndex = 0;
   isAutoPlaying = false;

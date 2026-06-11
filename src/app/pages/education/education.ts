@@ -24,27 +24,20 @@ import {
     <main class="education-page" aria-labelledby="education-page-title">
       <section class="education-section education-hero" aria-labelledby="education-page-title">
         <div class="education-section__header">
-          <p class="education-section__eyebrow">Education and Growth</p>
-          <h1 id="education-page-title">Education</h1>
-          <p class="education-hero__summary">
-            Jorge's professional growth combines formal academic foundations with continuous
-            self-directed learning, production experience, technical reading, online training,
-            experimentation, and long-term skill development.
-          </p>
+          <p class="education-section__eyebrow">{{ text().eyebrow }}</p>
+          <h1 id="education-page-title">{{ text().title }}</h1>
+          <p class="education-hero__summary">{{ text().summary }}</p>
         </div>
       </section>
 
       <section class="education-section" aria-labelledby="formal-education-title">
         <div class="education-section__header">
-          <p class="education-section__eyebrow">Formal Education</p>
-          <h2 id="formal-education-title">Academic foundations</h2>
-          <p>
-            Formal studies provided the foundations for logical reasoning, programming fundamentals,
-            systems analysis, databases, software engineering, and systems design.
-          </p>
+          <p class="education-section__eyebrow">{{ text().formalEyebrow }}</p>
+          <h2 id="formal-education-title">{{ text().formalTitle }}</h2>
+          <p>{{ text().formalIntro }}</p>
         </div>
 
-        <div class="formal-education-list" aria-label="Formal education entries">
+        <div class="formal-education-list" [attr.aria-label]="text().formalAria">
           @for (entry of formalEducation(); track entry.id) {
             <article class="education-card" [attr.aria-labelledby]="entry.id + '-title'">
               <div class="education-card__meta">
@@ -62,21 +55,21 @@ import {
               <dl class="education-details">
                 @if (entry.achievement) {
                   <div>
-                    <dt>Achievement</dt>
+                    <dt>{{ text().achievement }}</dt>
                     <dd>{{ entry.achievement }}</dd>
                   </div>
                 }
 
                 @if (entry.program) {
                   <div>
-                    <dt>Program</dt>
+                    <dt>{{ text().program }}</dt>
                     <dd>{{ entry.program }}</dd>
                   </div>
                 }
 
                 @if (entry.status) {
                   <div>
-                    <dt>Status</dt>
+                    <dt>{{ text().status }}</dt>
                     <dd>{{ entry.status }}</dd>
                   </div>
                 }
@@ -90,23 +83,19 @@ import {
 
       <section class="education-section" aria-labelledby="continuous-learning-title">
         <div class="education-section__header">
-          <p class="education-section__eyebrow">Continuous Learning</p>
-          <h2 id="continuous-learning-title">Growth beyond formal education</h2>
-          <p>
-            Most professional growth has come from combining academic foundations with independent
-            study, books, research, online training, experimentation, and lessons learned while
-            supporting real software in production environments.
-          </p>
+          <p class="education-section__eyebrow">{{ text().learningEyebrow }}</p>
+          <h2 id="continuous-learning-title">{{ text().learningTitle }}</h2>
+          <p>{{ text().learningIntro }}</p>
         </div>
 
-        <div class="learning-grid" aria-label="Continuous learning areas">
+        <div class="learning-grid" [attr.aria-label]="text().learningAria">
           @for (learning of continuousLearning(); track learning.id) {
             <article class="learning-card" [attr.aria-labelledby]="learning.id + '-title'">
               <h3 [id]="learning.id + '-title'">{{ learning.title }}</h3>
               <p>{{ learning.summary }}</p>
 
-              <div class="learning-card__focus" aria-label="Learning focus areas">
-                <h4>Focus</h4>
+              <div class="learning-card__focus" [attr.aria-label]="text().focusAria">
+                <h4>{{ text().focus }}</h4>
                 <ul class="tag-list">
                   @for (focusArea of learning.focusAreas; track focusArea) {
                     <li>{{ focusArea }}</li>
@@ -120,31 +109,23 @@ import {
 
       <section class="education-section" aria-labelledby="learning-philosophy-title">
         <div class="education-section__header">
-          <p class="education-section__eyebrow">Learning Philosophy</p>
-          <h2 id="learning-philosophy-title">Learning Never Stops</h2>
+          <p class="education-section__eyebrow">{{ text().philosophyEyebrow }}</p>
+          <h2 id="learning-philosophy-title">{{ text().philosophyTitle }}</h2>
         </div>
 
         <div class="philosophy-card">
-          <p>
-            Technology changes constantly, so professional development cannot depend on formal
-            education alone. Academic study provides durable foundations, professional experience
-            provides context, and independent learning creates the growth needed to keep improving.
-          </p>
-          <p>
-            Jorge treats continuous learning as part of his professional identity: reading,
-            researching, practicing, reviewing decisions, and adapting new approaches while keeping
-            maintainability, business value, and usability in focus.
-          </p>
+          <p>{{ text().philosophyBodyOne }}</p>
+          <p>{{ text().philosophyBodyTwo }}</p>
         </div>
       </section>
 
       <section class="education-section" aria-labelledby="education-highlights-title">
         <div class="education-section__header">
-          <p class="education-section__eyebrow">Education Highlights</p>
-          <h2 id="education-highlights-title">Evidence of long-term development</h2>
+          <p class="education-section__eyebrow">{{ text().highlightsEyebrow }}</p>
+          <h2 id="education-highlights-title">{{ text().highlightsTitle }}</h2>
         </div>
 
-        <div class="highlight-grid" aria-label="Education highlights">
+        <div class="highlight-grid" [attr.aria-label]="text().highlightsAria">
           @for (highlight of highlights(); track highlight.title) {
             <article class="highlight-card">
               <h3>{{ highlight.title }}</h3>
@@ -156,15 +137,12 @@ import {
 
       <section class="education-cta" aria-labelledby="education-next-title">
         <div>
-          <p class="education-section__eyebrow">Continue Exploring</p>
-          <h2 id="education-next-title">Connect learning to skills, projects, and documents</h2>
-          <p>
-            Use these links to review practical capabilities, public-safe project evidence,
-            professional evolution, and supporting documents.
-          </p>
+          <p class="education-section__eyebrow">{{ text().ctaEyebrow }}</p>
+          <h2 id="education-next-title">{{ text().ctaTitle }}</h2>
+          <p>{{ text().ctaBody }}</p>
         </div>
 
-        <nav class="education-cta__actions" aria-label="Education related navigation links">
+        <nav class="education-cta__actions" [attr.aria-label]="text().ctaAria">
           @for (link of ctaLinks(); track link.route) {
             <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
@@ -395,6 +373,8 @@ import {
 })
 export class Education {
   private readonly languageService = inject(LanguageService);
+
+  protected readonly text = computed(() => this.languageService.uiText().pages.education);
 
   protected readonly formalEducation = computed(() =>
     getLocalizedData(FORMAL_EDUCATION, this.languageService.currentLanguage()),

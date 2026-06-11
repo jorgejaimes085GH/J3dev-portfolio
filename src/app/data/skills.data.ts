@@ -590,6 +590,27 @@ const BACKEND_SKILL_GROUPS_ES: BackendSkillGroup[] = BACKEND_SKILL_GROUPS_EN.map
   (group) => backendSkillGroupEsMap[group],
 );
 
+const skillNameEsMap: Record<string, string> = {
+  'responsive-design': 'Diseño responsive',
+  'layered-architecture': 'Arquitectura por capas',
+  'clean-code': 'Clean code',
+  'api-design': 'Diseño de API',
+  'azure-learning': 'Aprendizaje de Azure',
+  'docker-learning': 'Aprendizaje de Docker',
+  'problem-solving': 'Resolución de problemas',
+  'technical-analysis': 'Análisis técnico',
+  documentation: 'Documentación',
+  'team-collaboration': 'Colaboración en equipo',
+  'continuous-learning': 'Aprendizaje continuo',
+  'maintainability-mindset': 'Mentalidad de mantenibilidad',
+  'search-ux': 'UX de búsqueda',
+  'spa-like-architecture': 'Arquitectura tipo SPA',
+  'lazy-loading': 'Lazy loading',
+  'ai-assisted-ux': 'UX asistida por IA',
+  'enterprise-maintenance': 'Mantenimiento empresarial',
+  'team-conventions': 'Convenciones de equipo',
+};
+
 const skillSpanishDescriptions: Record<
   string,
   Pick<Skill, 'shortDescription' | 'evidenceSummary'> & { contextNotes?: string[] }
@@ -876,6 +897,7 @@ const skillSpanishDescriptions: Record<
 
 const SKILLS_ES: Skill[] = SKILLS_EN.map((skill) => ({
   ...skill,
+  name: skillNameEsMap[skill.id] ?? skill.name,
   category: skillCategoryEsMap[skill.category],
   backendGroup: skill.backendGroup ? backendSkillGroupEsMap[skill.backendGroup] : undefined,
   ...(skillSpanishDescriptions[skill.id] ?? {

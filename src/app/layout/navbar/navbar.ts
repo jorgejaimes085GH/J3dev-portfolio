@@ -28,7 +28,11 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
       [class.site-header--preview-mobile]="currentViewport() === 'mobile'"
     >
       <div class="site-header__inner">
-        <a class="site-header__brand" routerLink="/" aria-label="J3dev Portfolio home">
+        <a
+          class="site-header__brand"
+          routerLink="/"
+          [attr.aria-label]="uiText().header.portfolioHome"
+        >
           <span class="site-header__logo-frame" aria-hidden="true">
             <img
               class="site-header__logo"
@@ -44,7 +48,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
 
         <nav
           class="site-header__nav site-nav"
-          [attr.aria-label]="uiText().nav.home + ' navigation'"
+          [attr.aria-label]="uiText().nav.home + ' ' + uiText().header.navigation"
         >
           <ul class="site-nav__list">
             @for (item of navigationItems(); track item.path) {
