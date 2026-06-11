@@ -4,55 +4,33 @@ const ABOUT_PAGE_DATA_EN: AboutPageData = {
   introduction: {
     professionalTitle: 'Backend .NET Developer',
     shortIntroduction:
-      'Jorge Jaimes is a Backend .NET Developer with experience across several generations of business software. His professional growth has been shaped by maintaining real systems, understanding operational needs, and using software as a practical way to solve business problems with reliability and long-term value.',
+      'Jorge Jaimes is a Backend .NET Developer with experience across several generations of business software. His professional growth has been shaped by supporting production systems, understanding operational needs, and using software as a practical way to solve business problems with reliability and long-term value.',
     profileImageAlt: 'Professional portrait of Jorge Jaimes',
     profileImageUrl: 'assets/profile/photos/jorge-jaimes-professional-portrait.webp',
   },
-  professionalMindset: [
-    {
-      title: 'Responsible ownership',
-      description:
-        'Approach each assignment with discipline, clear communication, and respect for production constraints, team standards, and stakeholder expectations.',
-    },
-    {
-      title: 'Value before preference',
-      description:
-        'Focus decisions on the business problem, the users affected, and the maintainability of the solution rather than on personal technology preferences.',
-    },
-    {
-      title: 'Reliable, maintainable delivery',
-      description:
-        'Prioritize software that can be understood, supported, and improved after the initial implementation is complete.',
-    },
-    {
-      title: 'Continuous professional growth',
-      description:
-        'Treat learning as a permanent part of the profession, using new knowledge to improve judgment, delivery habits, and technical decisions.',
-    },
-  ],
   adaptability: {
     summary:
-      'A consistent part of Jorge’s career has been adapting to the needs of real systems: moving from VB6, Access, WinForms, and SQL Server environments into .NET, REST APIs, Angular integration, and more modern architecture practices. That evolution is not about following trends; it is about learning the tools and patterns required to keep business software useful, maintainable, and aligned with current needs.',
+      'A consistent part of Jorge’s career has been adapting to the needs of real systems: moving from VB6, Access, WinForms, and SQL Server environments into backend .NET, REST APIs, Angular integration, and clearer architecture practices. That evolution is not about chasing trends; it is about learning the tools and patterns required to keep business software useful through change.',
     evidence: [
       {
         title: 'Legacy foundations',
         description:
-          'Experience with earlier desktop and data-driven environments built practical awareness of workflows, reporting, data entry, and operational continuity.',
+          'Experience with desktop and data-driven environments built practical awareness of workflows, reporting, data entry, and operational continuity.',
       },
       {
-        title: 'Modernization mindset',
+        title: 'Incremental modernization',
         description:
-          'Modernization is approached incrementally, with attention to existing behavior, business risk, and the users who depend on the system.',
+          'Modernization is approached step by step, with attention to existing behavior, business risk, and the users who depend on the system.',
       },
       {
-        title: 'Tool-agnostic problem solving',
+        title: 'Backend and data focus',
         description:
-          'Technology is treated as a means to deliver value, not as an identity; the priority is selecting and learning what the problem requires.',
+          'Backend .NET and SQL Server remain the technical center, supported by habits around APIs, queries, stored procedures, and data integrity.',
       },
       {
-        title: 'Current technical direction',
+        title: 'End-to-end support',
         description:
-          'Backend .NET remains the core focus while complementary frontend and architecture knowledge support clearer end-to-end delivery.',
+          'Angular and TypeScript provide complementary context for connecting usable interfaces to backend services without losing the backend-first focus.',
       },
     ],
   },
@@ -85,7 +63,7 @@ const ABOUT_PAGE_DATA_EN: AboutPageData = {
     {
       title: 'Architecture',
       description:
-        'Moved from isolated implementation toward clearer boundaries, maintainable layers, and design decisions that support future change.',
+        'Moved from isolated implementation toward clearer boundaries, layered responsibilities, and design decisions that support future change.',
     },
     {
       title: 'Modern .NET',
@@ -95,56 +73,56 @@ const ABOUT_PAGE_DATA_EN: AboutPageData = {
     {
       title: 'Angular',
       description:
-        'Added Angular and TypeScript as complementary fullstack capabilities for connecting usable interfaces to backend services and application workflows.',
+        'Added Angular and TypeScript as complementary capabilities for connecting application workflows to backend services.',
     },
   ],
-  engineeringPhilosophy: [
+  howJorgeWorks: [
     {
-      title: 'Understand the problem first',
+      title: 'Understand the business problem',
       description:
-        'Clarify business needs, constraints, and existing system behavior before choosing an implementation approach.',
+        'Clarify the workflow, users, constraints, and expected outcome before committing to an implementation path.',
     },
     {
-      title: 'Architecture before implementation',
+      title: 'Design maintainable backend boundaries',
       description:
-        'Define responsibilities, boundaries, and data flow early so code remains easier to reason about as requirements change.',
+        'Define responsibilities across APIs, services, data access, and SQL Server so changes remain easier to reason about.',
     },
     {
-      title: 'Maintainable software',
+      title: 'Modernize incrementally',
       description:
-        'Favor readable solutions, practical structure, and incremental improvement over unnecessary complexity.',
+        'Improve legacy areas through controlled steps that protect current behavior while moving the system toward cleaner structure.',
     },
     {
-      title: 'Continuous learning',
+      title: 'Deliver with production responsibility',
       description:
-        'Treat each project as part of a long-term technical evolution across legacy systems, enterprise delivery, and modern tooling.',
+        'Work with attention to reliability, confidentiality, handoff context, and the operational impact of each change.',
     },
   ],
   professionalValues: [
     {
-      title: 'Responsibility',
+      title: 'Practical judgment',
       description:
-        'Take ownership of assigned work while respecting production constraints, team practices, and confidentiality.',
+        'Choose solutions that fit the real problem, delivery context, and expected life of the software.',
     },
     {
-      title: 'Maintainability',
+      title: 'Clear communication',
       description:
-        'Reduce avoidable complexity so future changes can be completed with less risk and clearer technical context.',
+        'Explain decisions, limitations, and progress in a way that helps technical teams and stakeholders share context.',
     },
     {
-      title: 'Teamwork',
+      title: 'Team collaboration',
       description:
-        'Contribute through clear communication, shared standards, and practical support for teammates and stakeholders.',
+        'Contribute through shared standards, respectful handoffs, and support for teammates working in the same codebase.',
     },
     {
-      title: 'Documentation',
+      title: 'Confidentiality',
       description:
-        'Preserve useful context around decisions, behavior, and handoff needs so systems are easier to maintain.',
+        'Protect private source code, customer data, proprietary workflows, and internal implementation details.',
     },
     {
-      title: 'Continuous improvement',
+      title: 'Consistency',
       description:
-        'Use each iteration to refine technical judgment, improve delivery habits, and keep the work aligned with business needs.',
+        'Maintain steady work habits that help support quality, continuity, and trust in long-running systems.',
     },
   ],
 };
@@ -153,35 +131,13 @@ const ABOUT_PAGE_DATA_ES: AboutPageData = {
   introduction: {
     professionalTitle: 'Backend .NET Developer',
     shortIntroduction:
-      'Jorge Jaimes es Backend .NET Developer con experiencia en varias generaciones de software empresarial. Su crecimiento profesional se ha formado manteniendo sistemas reales, entendiendo necesidades operativas y usando el software como una forma práctica de resolver problemas de negocio con confiabilidad y valor a largo plazo.',
+      'Jorge Jaimes es Backend .NET Developer con experiencia en varias generaciones de software empresarial. Su crecimiento profesional se ha formado soportando sistemas en producción, entendiendo necesidades operativas y usando el software como una forma práctica de resolver problemas de negocio con confiabilidad y valor a largo plazo.',
     profileImageAlt: 'Retrato profesional de Jorge Jaimes',
     profileImageUrl: 'assets/profile/photos/jorge-jaimes-professional-portrait.webp',
   },
-  professionalMindset: [
-    {
-      title: 'Responsabilidad sobre el trabajo',
-      description:
-        'Aborda cada asignación con disciplina, comunicación clara y respeto por restricciones de producción, estándares del equipo y expectativas de stakeholders.',
-    },
-    {
-      title: 'Valor antes que preferencia',
-      description:
-        'Enfoca las decisiones en el problema de negocio, los usuarios afectados y la mantenibilidad de la solución, más que en preferencias personales de tecnología.',
-    },
-    {
-      title: 'Entrega confiable y mantenible',
-      description:
-        'Prioriza software que pueda entenderse, soportarse y mejorarse después de completar la implementación inicial.',
-    },
-    {
-      title: 'Crecimiento profesional continuo',
-      description:
-        'Trata el aprendizaje como parte permanente de la profesión y usa nuevo conocimiento para mejorar criterio, hábitos de entrega y decisiones técnicas.',
-    },
-  ],
   adaptability: {
     summary:
-      'Una parte constante de la carrera de Jorge ha sido adaptarse a las necesidades de sistemas reales: pasar de entornos VB6, Access, WinForms y SQL Server hacia .NET, REST APIs, integración con Angular y prácticas de arquitectura más modernas. Esa evolución no se trata de seguir tendencias; se trata de aprender herramientas y patrones necesarios para mantener el software de negocio útil, mantenible y alineado con necesidades actuales.',
+      'Una parte constante de la carrera de Jorge ha sido adaptarse a las necesidades de sistemas reales: pasar de entornos VB6, Access, WinForms y SQL Server hacia backend .NET, REST APIs, integración con Angular y prácticas de arquitectura más claras. Esa evolución no se trata de perseguir tendencias; se trata de aprender herramientas y patrones necesarios para mantener útil el software de negocio durante el cambio.',
     evidence: [
       {
         title: 'Fundamentos legacy',
@@ -189,19 +145,19 @@ const ABOUT_PAGE_DATA_ES: AboutPageData = {
           'La experiencia con entornos desktop y orientados a datos construyó una comprensión práctica de flujos de trabajo, reportes, ingreso de datos y continuidad operativa.',
       },
       {
-        title: 'Mentalidad de modernización',
+        title: 'Modernización incremental',
         description:
-          'La modernización se aborda de forma incremental, cuidando comportamiento existente, riesgo de negocio y usuarios que dependen del sistema.',
+          'La modernización se aborda paso a paso, cuidando comportamiento existente, riesgo de negocio y usuarios que dependen del sistema.',
       },
       {
-        title: 'Resolución de problemas sin apego a herramientas',
+        title: 'Foco backend y datos',
         description:
-          'La tecnología se trata como un medio para entregar valor, no como identidad; la prioridad es seleccionar y aprender lo que el problema requiere.',
+          'Backend .NET y SQL Server siguen siendo el centro técnico, apoyados por hábitos alrededor de APIs, consultas, procedimientos almacenados e integridad de datos.',
       },
       {
-        title: 'Dirección técnica actual',
+        title: 'Soporte end-to-end',
         description:
-          'Backend .NET sigue siendo el foco principal, mientras el conocimiento complementario en frontend y arquitectura apoya entregas end-to-end más claras.',
+          'Angular y TypeScript aportan contexto complementario para conectar interfaces usables con servicios backend sin perder el foco backend-first.',
       },
     ],
   },
@@ -234,7 +190,7 @@ const ABOUT_PAGE_DATA_ES: AboutPageData = {
     {
       title: 'Arquitectura',
       description:
-        'Pasó de implementaciones aisladas hacia límites más claros, capas mantenibles y decisiones de diseño que soportan cambios futuros.',
+        'Pasó de implementaciones aisladas hacia límites más claros, responsabilidades por capas y decisiones de diseño que soportan cambios futuros.',
     },
     {
       title: '.NET moderno',
@@ -244,61 +200,56 @@ const ABOUT_PAGE_DATA_ES: AboutPageData = {
     {
       title: 'Angular',
       description:
-        'Agregó Angular y TypeScript como capacidades fullstack complementarias para conectar interfaces usables con servicios backend y flujos de aplicación.',
+        'Agregó Angular y TypeScript como capacidades complementarias para conectar flujos de aplicación con servicios backend.',
     },
   ],
-  engineeringPhilosophy: [
+  howJorgeWorks: [
     {
-      title: 'Entender primero el problema',
+      title: 'Entender el problema de negocio',
       description:
-        'Aclarar necesidades de negocio, restricciones y comportamiento existente del sistema antes de elegir una implementación.',
+        'Aclarar el flujo de trabajo, los usuarios, las restricciones y el resultado esperado antes de definir una implementación.',
     },
     {
-      title: 'Arquitectura antes de implementar',
+      title: 'Diseñar límites backend mantenibles',
       description:
-        'Definir responsabilidades, límites y flujo de datos desde temprano para que el código sea más fácil de razonar cuando cambian los requisitos.',
+        'Definir responsabilidades entre APIs, servicios, acceso a datos y SQL Server para que los cambios sean más fáciles de razonar.',
     },
     {
-      title: 'Software mantenible',
+      title: 'Modernizar incrementalmente',
       description:
-        'Preferir soluciones legibles, estructura práctica y mejora incremental sobre complejidad innecesaria.',
+        'Mejorar áreas legacy mediante pasos controlados que protegen el comportamiento actual mientras el sistema avanza hacia una estructura más clara.',
     },
     {
-      title: 'Aprendizaje continuo',
+      title: 'Entregar con responsabilidad en producción',
       description:
-        'Tratar cada proyecto como parte de una evolución técnica de largo plazo entre sistemas legacy, entrega empresarial y herramientas modernas.',
+        'Trabajar con atención a confiabilidad, confidencialidad, contexto de entrega y el impacto operativo de cada cambio.',
     },
   ],
   professionalValues: [
     {
-      title: 'Responsabilidad',
-      description:
-        'Asumir el trabajo asignado respetando restricciones de producción, prácticas del equipo y confidencialidad.',
-    },
-    {
-      title: 'Mantenibilidad',
-      description:
-        'Reducir complejidad evitable para que los cambios futuros puedan completarse con menor riesgo y mayor claridad técnica.',
-    },
-    {
-      title: 'Claridad',
-      description:
-        'Comunicar decisiones, limitaciones y avances de forma que equipos técnicos y stakeholders puedan entender el contexto.',
-    },
-    {
-      title: 'Pragmatismo',
+      title: 'Criterio práctico',
       description:
         'Elegir soluciones que respondan al problema real, el contexto de entrega y la vida útil esperada del software.',
     },
     {
+      title: 'Comunicación clara',
+      description:
+        'Explicar decisiones, limitaciones y avances de forma que equipos técnicos y stakeholders compartan contexto.',
+    },
+    {
+      title: 'Colaboración en equipo',
+      description:
+        'Contribuir mediante estándares compartidos, entregas respetuosas y apoyo a compañeros que trabajan en la misma base de código.',
+    },
+    {
       title: 'Confidencialidad',
       description:
-        'Proteger código fuente privado, datos de clientes, flujos propietarios y detalles internos mientras se comunica evidencia profesional segura.',
+        'Proteger código fuente privado, datos de clientes, flujos propietarios y detalles internos de implementación.',
     },
     {
       title: 'Consistencia',
       description:
-        'Mantener hábitos de trabajo estables que ayuden a sostener calidad, colaboración y continuidad en sistemas de largo plazo.',
+        'Mantener hábitos de trabajo estables que ayuden a sostener calidad, continuidad y confianza en sistemas de largo plazo.',
     },
   ],
 };

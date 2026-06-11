@@ -178,24 +178,20 @@ export const UI_TEXT = {
         eyebrow: 'About Me',
         imagePending: 'Professional Profile Image Pending',
         imageCaption: 'Professional profile image area',
-        mindsetEyebrow: 'Professional Mindset',
-        mindsetTitle: 'How Jorge approaches professional work',
+        mindsetEyebrow: 'How Jorge Works',
+        mindsetTitle: 'Practical engineering habits behind the work',
         mindsetIntro:
-          'This mindset connects technical decisions with responsibility, maintainability, business context, and practical delivery.',
+          'This section combines professional mindset and engineering philosophy into a concise view of how Jorge moves from business context to production-aware delivery.',
         adaptabilityEyebrow: 'Adaptability',
         adaptabilityTitle: 'Evolving with real business needs',
         journeyEyebrow: 'Professional Journey Overview',
         journeyTitle: 'Technical evolution timeline',
         journeyIntro:
           'A concise view of how Jorge’s work evolved from early business software into backend .NET, SQL Server, architecture, and Angular application development.',
-        philosophyEyebrow: 'Engineering Philosophy',
-        philosophyTitle: 'Principles behind the work',
-        philosophyIntro:
-          'These principles describe the engineering habits that guide implementation choices, maintenance work, and modernization decisions.',
         valuesEyebrow: 'Professional Values',
         valuesTitle: 'Work habits that support teams',
         valuesIntro:
-          'These values support dependable team contribution across production systems, documentation, collaboration, and continuous improvement.',
+          'These values describe the day-to-day habits that support clear collaboration and dependable contribution in business software teams.',
         ctaEyebrow: 'Next Steps',
         ctaTitle: 'Continue exploring the portfolio evidence',
         ctaIntro:
@@ -465,24 +461,20 @@ export const UI_TEXT = {
         eyebrow: 'Acerca de mí',
         imagePending: 'Imagen de perfil profesional pendiente',
         imageCaption: 'Área de imagen de perfil profesional',
-        mindsetEyebrow: 'Mentalidad profesional',
-        mindsetTitle: 'Cómo Jorge aborda el trabajo profesional',
+        mindsetEyebrow: 'Cómo trabaja Jorge',
+        mindsetTitle: 'Hábitos prácticos de ingeniería detrás del trabajo',
         mindsetIntro:
-          'Esta mentalidad conecta las decisiones técnicas con responsabilidad, mantenibilidad, contexto de negocio y entrega práctica.',
+          'Esta sección combina mentalidad profesional y filosofía de ingeniería en una vista clara de cómo Jorge pasa del contexto de negocio a una entrega consciente de producción.',
         adaptabilityEyebrow: 'Adaptabilidad',
         adaptabilityTitle: 'Evolucionar con necesidades reales de negocio',
         journeyEyebrow: 'Resumen de trayectoria profesional',
         journeyTitle: 'Línea de evolución técnica',
         journeyIntro:
           'Una vista breve de cómo el trabajo de Jorge evolucionó desde software de negocio inicial hacia backend .NET, SQL Server, arquitectura y desarrollo de aplicaciones Angular.',
-        philosophyEyebrow: 'Filosofía de ingeniería',
-        philosophyTitle: 'Principios detrás del trabajo',
-        philosophyIntro:
-          'Estos principios describen los hábitos de ingeniería que guían decisiones de implementación, mantenimiento y modernización.',
         valuesEyebrow: 'Valores profesionales',
         valuesTitle: 'Hábitos de trabajo que apoyan a los equipos',
         valuesIntro:
-          'Estos valores apoyan una contribución confiable al equipo en sistemas de producción, documentación, colaboración y mejora continua.',
+          'Estos valores describen los hábitos diarios que apoyan una colaboración clara y una contribución confiable en equipos de software de negocio.',
         ctaEyebrow: 'Siguientes pasos',
         ctaTitle: 'Continúa explorando la evidencia del portafolio',
         ctaIntro:
