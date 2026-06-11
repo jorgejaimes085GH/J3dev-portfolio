@@ -944,3 +944,146 @@ html.viewport-preview--mobile,
 .viewport-preview.viewport-preview--tablet .app-shell__content h3 {
   font-size: clamp(1.1rem, 3vw, 1.35rem);
 }
+
+/* Premium 3D keeps the standard header controls but presents them as separate
+   floating dashboard modules to showcase UI craft without changing navigation. */
+html.theme-premium-3d app-navbar .site-header {
+  --premium-header-panel: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--app-background-color) 58%, #ffffff 14%),
+    color-mix(in srgb, var(--app-background-color) 70%, #7c3aed 18%)
+  );
+  --premium-header-border: color-mix(in srgb, var(--app-link-color) 36%, transparent);
+
+  border-bottom: 0;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(196, 167, 255, 0.2), transparent 28rem),
+    color-mix(in srgb, var(--app-background-color) 72%, transparent);
+  box-shadow: 0 1.25rem 2.75rem rgba(6, 4, 18, 0.28);
+}
+
+html.theme-premium-3d app-navbar .site-header__inner {
+  grid-template-columns: minmax(10.5rem, max-content) minmax(0, 1fr) max-content;
+  gap: 0.7rem clamp(0.7rem, 1.35vw, 1.25rem);
+  padding-block: 0.75rem;
+}
+
+html.theme-premium-3d app-navbar .site-header__brand,
+html.theme-premium-3d app-navbar .site-header__nav,
+html.theme-premium-3d app-navbar .site-header__tools {
+  border: 1px solid var(--premium-header-border);
+  background: var(--premium-header-panel);
+  backdrop-filter: blur(18px) saturate(145%);
+  box-shadow:
+    0 1rem 2.5rem rgba(6, 4, 18, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+html.theme-premium-3d app-navbar .site-header__brand {
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: none;
+  padding: 0.45rem 0.7rem;
+  border-radius: 1.35rem;
+}
+
+html.theme-premium-3d app-navbar .site-header__logo-frame {
+  border-color: color-mix(in srgb, var(--app-link-color) 46%, transparent);
+  background: color-mix(in srgb, var(--app-link-color) 14%, transparent);
+  box-shadow: inset 0 0 1rem rgba(196, 167, 255, 0.2);
+}
+
+html.theme-premium-3d app-navbar .site-header__brand-text {
+  font-size: 0.84rem;
+  text-align: left;
+}
+
+html.theme-premium-3d app-navbar .site-header__nav {
+  padding: 0.28rem;
+  border-radius: 1.5rem;
+}
+
+html.theme-premium-3d app-navbar .site-nav__list {
+  gap: 0.12rem;
+}
+
+html.theme-premium-3d app-navbar .site-nav__item + .site-nav__item {
+  border-left-color: color-mix(in srgb, var(--app-link-color) 22%, transparent);
+}
+
+html.theme-premium-3d app-navbar .site-nav__link {
+  min-height: 2.45rem;
+  border-radius: 1.05rem;
+}
+
+html.theme-premium-3d app-navbar .site-nav__link:hover,
+html.theme-premium-3d app-navbar .site-nav__link:focus-visible,
+html.theme-premium-3d app-navbar .site-nav__link--active {
+  background: color-mix(in srgb, var(--app-link-color) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--app-link-color) 26%, transparent);
+}
+
+html.theme-premium-3d app-navbar .site-header__tools {
+  padding: 0.5rem 0.6rem;
+  border-radius: 1.35rem;
+}
+
+html.theme-premium-3d app-navbar .theme-switcher__options,
+html.theme-premium-3d app-navbar .viewport-switcher__options,
+html.theme-premium-3d app-navbar .site-header__pin-toggle,
+html.theme-premium-3d app-navbar .site-header__language-toggle {
+  border-color: color-mix(in srgb, var(--app-link-color) 30%, transparent);
+  background: color-mix(in srgb, var(--app-background-color) 54%, transparent);
+}
+
+html.theme-premium-3d app-navbar .theme-switcher__button,
+html.theme-premium-3d app-navbar .viewport-switcher__button {
+  background: color-mix(in srgb, var(--app-background-color) 42%, transparent);
+}
+
+html.theme-premium-3d app-navbar .theme-switcher__button--active,
+html.theme-premium-3d app-navbar .viewport-switcher__button--active {
+  color: #18122b;
+  background: var(--app-link-color);
+}
+
+@media (max-width: 1240px) {
+  html.theme-premium-3d app-navbar .site-header__inner {
+    grid-template-columns: minmax(10.5rem, 1fr) auto;
+  }
+
+  html.theme-premium-3d app-navbar .site-header__nav {
+    width: 100%;
+  }
+
+  html.theme-premium-3d app-navbar .site-nav__item + .site-nav__item {
+    border-left: 0;
+  }
+}
+
+@media (max-width: 820px) {
+  html.theme-premium-3d app-navbar .site-header__brand,
+  html.theme-premium-3d app-navbar .site-header__nav,
+  html.theme-premium-3d app-navbar .site-header__tools {
+    justify-self: center;
+    width: min(100%, 42rem);
+  }
+
+  html.theme-premium-3d app-navbar .site-header__brand {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  html.theme-premium-3d app-navbar .site-header {
+    background: color-mix(in srgb, var(--app-background-color) 86%, transparent);
+    box-shadow: 0 0.75rem 1.5rem rgba(6, 4, 18, 0.22);
+  }
+
+  html.theme-premium-3d app-navbar .site-header__brand,
+  html.theme-premium-3d app-navbar .site-header__nav,
+  html.theme-premium-3d app-navbar .site-header__tools {
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.1rem rgba(6, 4, 18, 0.18);
+  }
+}
