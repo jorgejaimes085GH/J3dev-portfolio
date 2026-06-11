@@ -55,6 +55,52 @@ a {
   font: inherit;
 }
 
+
+/* The home hero intentionally breaks out of the shared page rail on desktop so
+   the slide background reads as a full-width cover while inner copy stays capped. */
+.viewport-preview--desktop app-hero-slider {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+.viewport-preview--desktop app-hero-slider .hero-slider {
+  padding-inline: clamp(1.5rem, 4vw, 4rem);
+}
+
+.viewport-preview--desktop app-hero-slider .hero-slider__content {
+  grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.95fr);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  max-width: 90rem;
+}
+
+.viewport-preview--desktop app-hero-slider .hero-slider__visual {
+  min-height: clamp(20rem, 34vw, 31rem);
+}
+
+.viewport-preview--desktop app-hero-slider .hero-slider__navigation {
+  max-width: 90rem;
+}
+
+@media (max-width: 760px) {
+  .viewport-preview--desktop app-hero-slider {
+    width: auto;
+    margin-inline: 0;
+  }
+
+  .viewport-preview--desktop app-hero-slider .hero-slider {
+    padding: 3rem 1rem;
+  }
+
+  .viewport-preview--desktop app-hero-slider .hero-slider__content {
+    grid-template-columns: 1fr;
+    max-width: 1120px;
+  }
+
+  .viewport-preview--desktop app-hero-slider .hero-slider__visual {
+    min-height: 14rem;
+  }
+}
+
 /* Home hero theme polish lives globally to keep the standalone component lightweight
    while still supporting the three approved theme experiences. */
 html.theme-dark-tech .hero-slider__image,
