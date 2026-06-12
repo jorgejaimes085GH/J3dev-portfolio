@@ -41,7 +41,20 @@ import {
 
         <div class="formal-education-list" [attr.aria-label]="text().formalAria">
           @for (entry of formalEducation(); track entry.id) {
-            <article class="education-card" [attr.aria-labelledby]="entry.id + '-title'">
+            <article
+              class="education-card"
+              [class.education-card--cedefoc]="isCedefocInstitution(entry)"
+              [class.education-card--unad]="isUnadInstitution(entry)"
+              [attr.aria-labelledby]="entry.id + '-title'"
+            >
+              <span class="education-card__watermark" aria-hidden="true">
+                @if (entry.institutionLogoSrc && !hasLogoFailed(entry.id)) {
+                  <img [src]="entry.institutionLogoSrc" [alt]="" />
+                } @else {
+                  <span>{{ getInstitutionInitials(entry.institution) }}</span>
+                }
+              </span>
+
               <div class="education-card__meta">
                 @if (entry.year) {
                   <span>{{ entry.year }}</span>
@@ -449,6 +462,10 @@ import {
         justify-content: flex-end;
       }
 
+      .education-card__watermark {
+        display: none;
+      }
+
       .button-link {
         display: inline-flex;
         align-items: center;
@@ -527,6 +544,14 @@ export class Education {
 
   protected hasLogoFailed(entryId: string): boolean {
     return this.failedInstitutionLogoIds().has(entryId);
+  }
+
+  protected isUnadInstitution(entry: FormalEducationEntry): boolean {
+    return entry.institution.toLowerCase().includes('unad');
+  }
+
+  protected isCedefocInstitution(entry: FormalEducationEntry): boolean {
+    return entry.institution.toLowerCase().includes('cedefoc');
   }
 
   protected markLogoFailed(entryId: string): void {
