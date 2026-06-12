@@ -10,6 +10,15 @@ export interface FormalEducationEntry {
   summary: string;
 }
 
+export interface SelfTaughtEducationEntry {
+  id: string;
+  period: string;
+  title: string;
+  description: string;
+  focusAreas: string[];
+  keyLearning: string;
+}
+
 export interface ContinuousLearningEntry {
   id: string;
   title: string;

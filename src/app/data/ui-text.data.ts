@@ -90,6 +90,12 @@ export const UI_TEXT = {
         achievement: 'Achievement',
         program: 'Program',
         status: 'Status',
+        selfTaughtEyebrow: 'Self-Taught Education',
+        selfTaughtTitle: 'Self-Taught Education',
+        selfTaughtIntro:
+          "Many of the skills used throughout Jorge's professional career were developed through independent study, experimentation, practical projects, and adapting to new technologies as business needs evolved.",
+        selfTaughtAria: 'Self-taught education entries',
+        keyLearning: 'Key Learning',
         learningEyebrow: 'Continuous Learning',
         learningTitle: 'Growth beyond formal education',
         learningIntro:
@@ -107,7 +113,8 @@ export const UI_TEXT = {
         highlightsTitle: 'Evidence of long-term development',
         highlightsAria: 'Education highlights',
         ctaEyebrow: 'Continue Exploring',
-        ctaTitle: 'Explore how learning connects to skills, real projects, and professional growth.',
+        ctaTitle:
+          'Explore how learning connects to skills, real projects, and professional growth.',
         ctaBody: '',
         ctaAria: 'Education related navigation links',
       },
@@ -372,6 +379,12 @@ export const UI_TEXT = {
         achievement: 'Logro',
         program: 'Programa',
         status: 'Estado',
+        selfTaughtEyebrow: 'Educación autodidacta',
+        selfTaughtTitle: 'Educación Autodidacta',
+        selfTaughtIntro:
+          'Gran parte de las habilidades utilizadas durante la trayectoria profesional de Jorge fueron desarrolladas mediante estudio independiente, experimentación, proyectos prácticos y adaptación constante a nuevas tecnologías según las necesidades del negocio.',
+        selfTaughtAria: 'Entradas de educación autodidacta',
+        keyLearning: 'Aprendizaje clave',
         learningEyebrow: 'Aprendizaje continuo',
         learningTitle: 'Crecimiento más allá de la educación formal',
         learningIntro:
