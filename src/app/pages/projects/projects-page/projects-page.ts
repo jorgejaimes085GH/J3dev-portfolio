@@ -112,6 +112,7 @@ import { LanguageService } from '../../../core/services/language.service';
 
       .project-card__status {
         font-size: 0.8rem;
+        line-height: 1.4;
       }
 
       .projects-section h1,
@@ -183,6 +184,10 @@ import { LanguageService } from '../../../core/services/language.service';
         margin: 0;
       }
 
+      .project-card h3 {
+        line-height: 1.25;
+      }
+
       .project-card__description {
         line-height: 1.55;
       }
@@ -224,7 +229,6 @@ import { LanguageService } from '../../../core/services/language.service';
         align-items: center;
         justify-content: center;
         min-height: 2.75rem;
-        margin-top: 0.25rem;
         padding: 0.7rem 1rem;
         border: 1px solid var(--app-link-color);
         border-radius: 0.5rem;
@@ -258,12 +262,34 @@ import { LanguageService } from '../../../core/services/language.service';
       }
 
       @media (min-width: 641px) {
+        .project-card__status {
+          min-height: 3.4rem;
+        }
+
+        .project-card h3 {
+          min-height: 3rem;
+        }
+
         .project-card__description {
-          min-height: 8.75rem;
+          min-height: 9.75rem;
+        }
+
+        .project-card__time-preview {
+          min-height: 14.75rem;
         }
 
         .project-card__time-preview li {
           min-height: 5.75rem;
+        }
+      }
+
+      @media (min-width: 1001px) {
+        .project-card__description {
+          min-height: 11rem;
+        }
+
+        .project-card__time-preview {
+          min-height: 15.5rem;
         }
       }
 
