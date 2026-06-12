@@ -133,9 +133,18 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Database',
     shortDescription: 'Relational database work for production and demo application workflows.',
     iconLabel: 'SQL',
-    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'discovery', 'testigo-electoral'],
+    relatedProjectSlugs: [
+      'worker',
+      'expensux',
+      'ithelpcenter',
+      'discovery',
+      'testigo-electoral',
+      'manager-plus',
+      'manager-clinic',
+      'odontology',
+    ],
     evidenceSummary:
-      'SQL Server supports Worker, Expensux, and LeverIT enterprise projects through public-safe database, maintenance, and application workflow evidence.',
+      'SQL Server supports 8 project contexts across Worker, Expensux, LeverIT enterprise projects, and Avances Software products, including production maintenance, migrations, business workflows, and clinical systems.',
   },
   {
     id: 'stored-procedures',
@@ -155,9 +164,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Designing normalized relational models that support maintainable business workflows and long-term growth.',
     iconLabel: 'DBD',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'Database design is connected to Worker and Expensux through normalized SQL Server models planned around maintainable operational and financial workflows.',
+      'Database design is connected to 5 project contexts: Worker, Expensux, Manager Plus, Manager Clinic, and Odontology through normalized SQL Server models planned around maintainable operational, financial, ERP, and healthcare workflows.',
   },
   {
     id: 'database-migration',
@@ -166,12 +175,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Migrating legacy systems from Access and FoxPro-based environments to SQL Server while preserving business continuity.',
     iconLabel: 'MIG',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'Database migration is represented by Worker modernization from Access toward SQL Server and Avances Software experience with FoxPro-based products migrated toward SQL Server, without linking Avances to a public project card.',
-    contextNotes: [
-      'Avances Software context is mentioned as professional experience only because it is not a public Projects card.',
-    ],
+      'Database migration is represented by Worker modernization from Access toward SQL Server plus Avances Software products migrated from FoxPro-oriented environments toward SQL Server.',
   },
   {
     id: 'microsoft-access',
@@ -273,9 +279,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Translating business needs and operational workflows into technical plans before implementation begins.',
     iconLabel: 'REQ',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'Requirements analysis is represented by Worker and Expensux planning work where business workflows, operational constraints, and technical implementation choices must align before coding.',
+      'Requirements analysis is represented by Worker, Expensux, Manager Plus, Manager Clinic, and Odontology planning work where business workflows, operational constraints, and technical implementation choices must align before coding.',
   },
   {
     id: 'uml-modeling',
@@ -284,9 +290,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Use cases, flow diagrams, process analysis, and solution modeling used to plan software before coding.',
     iconLabel: 'UML',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'UML and modeling are connected to Worker and Expensux through use cases, flow diagrams, process analysis, and solution planning before implementation.',
+      'UML and modeling are connected to Worker, Expensux, Manager Plus, Manager Clinic, and Odontology through use cases, flow diagrams, process analysis, and solution planning before implementation.',
   },
   {
     id: 'vb-net',
@@ -330,15 +336,25 @@ const SKILL_ITEMS: Skill[] = [
       'Crystal Reports is connected to Worker through production reporting needs for operational and business workflows in a desktop software context.',
   },
   {
+    id: 'reporting',
+    name: 'Reporting',
+    category: 'Database',
+    shortDescription:
+      'Operational reporting workflows connected to production, ERP, clinical, and dental business systems.',
+    iconLabel: 'REP',
+    relatedProjectSlugs: ['worker', 'manager-plus', 'manager-clinic', 'odontology'],
+    evidenceSummary:
+      'Reporting is connected to Worker and Avances Software enterprise products through operational, ERP, clinical, and dental workflows that required public-safe reporting support and data review.',
+  },
+  {
     id: 'foxpro',
     name: 'FoxPro',
     category: 'Legacy & Desktop',
     shortDescription: 'Legacy technology awareness for understanding older business systems.',
     iconLabel: 'FP',
-    relatedProjectSlugs: [],
+    relatedProjectSlugs: ['manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'FoxPro is currently listed as legacy-system familiarity and will be connected to public-safe project evidence when available.',
-    contextNotes: ['No public project detail is linked yet.'],
+      'FoxPro is connected to Avances Software enterprise products where legacy business systems, database migration support, and SQL Server adoption were part of the professional context.',
   },
   {
     id: 'visual-basic-6',
@@ -617,9 +633,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Evolving production systems toward modern architectures without disrupting business operations.',
     iconLabel: 'LM',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'Legacy modernization is connected to Worker and Expensux through incremental evolution toward modern architectures while preserving business workflow continuity.',
+      'Legacy modernization is connected to Worker, Expensux, Manager Plus, Manager Clinic, and Odontology through incremental evolution toward modern architectures and SQL Server-backed workflows while preserving business continuity.',
   },
   {
     id: 'enterprise-maintenance',
@@ -628,9 +644,16 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Supporting long-running production systems through safe, incremental improvements.',
     iconLabel: 'ENT',
-    relatedProjectSlugs: ['ithelpcenter', 'discovery', 'worker'],
+    relatedProjectSlugs: [
+      'ithelpcenter',
+      'discovery',
+      'worker',
+      'manager-plus',
+      'manager-clinic',
+      'odontology',
+    ],
     evidenceSummary:
-      'Enterprise maintenance is demonstrated through LeverIT project support and Worker production evolution, with details sanitized for public presentation.',
+      'Enterprise maintenance is demonstrated through LeverIT project support, Worker production evolution, and Avances Software ERP, clinical, and dental products, with details sanitized for public presentation.',
   },
   {
     id: 'team-conventions',
@@ -711,6 +734,7 @@ const skillNameEsMap: Record<string, string> = {
   'ai-assisted-ux': 'UX asistida por IA',
   'enterprise-maintenance': 'Mantenimiento empresarial',
   'team-conventions': 'Convenciones de equipo',
+  reporting: 'Reportes',
 };
 
 const skillSpanishDescriptions: Record<
@@ -756,22 +780,19 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Experiencia en base de datos relacional para flujos de negocio, consultas y procedimientos almacenados.',
     evidenceSummary:
-      'SQL Server aparece en Worker, Expensux y proyectos empresariales de LeverIT, con foco en integridad de datos y necesidades de negocio.',
+      'SQL Server aparece en 8 contextos de proyecto: Worker, Expensux, proyectos empresariales LeverIT y productos de Avances Software, con foco en integridad de datos, migraciones, flujos de negocio y sistemas clínicos.',
   },
   'database-design': {
     shortDescription:
       'Diseño de modelos relacionales normalizados que soportan flujos de negocio mantenibles y crecimiento a largo plazo.',
     evidenceSummary:
-      'Database Design se conecta con Worker y Expensux mediante modelos SQL Server normalizados planeados alrededor de flujos operativos y financieros mantenibles.',
+      'Database Design se conecta con 5 contextos de proyecto: Worker, Expensux, Manager Plus, Manager Clinic y Odontology mediante modelos SQL Server normalizados alrededor de flujos operativos, financieros, ERP y de salud mantenibles.',
   },
   'database-migration': {
     shortDescription:
       'Migración de sistemas legacy desde Access y entornos basados en FoxPro hacia SQL Server preservando continuidad operativa.',
     evidenceSummary:
-      'Database Migration se representa en la modernización de Worker desde Access hacia SQL Server y en experiencia de Avances Software con productos basados en FoxPro migrados hacia SQL Server, sin vincular Avances a una card pública de Projects.',
-    contextNotes: [
-      'El contexto de Avances Software se menciona como experiencia profesional únicamente porque no existe como card pública dentro de Projects.',
-    ],
+      'Database Migration se representa en la modernización de Worker desde Access hacia SQL Server y en productos de Avances Software migrados desde entornos orientados a FoxPro hacia SQL Server.',
   },
   angular: {
     shortDescription:
@@ -839,13 +860,13 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Evolución de sistemas en producción hacia arquitecturas modernas sin interrumpir la operación del negocio.',
     evidenceSummary:
-      'Legacy Modernization se conecta con Worker y Expensux mediante evolución incremental hacia arquitecturas modernas mientras se preserva la continuidad de los flujos de negocio.',
+      'Legacy Modernization se conecta con Worker, Expensux, Manager Plus, Manager Clinic y Odontology mediante evolución incremental hacia arquitecturas modernas y flujos basados en SQL Server mientras se preserva la continuidad del negocio.',
   },
   'enterprise-maintenance': {
     shortDescription:
       'Soporte a sistemas de producción de largo plazo mediante mejoras seguras e incrementales.',
     evidenceSummary:
-      'El mantenimiento empresarial se demuestra en soporte a proyectos LeverIT y evolución de Worker, con detalles sanitizados para presentación pública.',
+      'El mantenimiento empresarial se demuestra en soporte a proyectos LeverIT, evolución de Worker y productos ERP, clínicos y odontológicos de Avances Software, con detalles sanitizados para presentación pública.',
   },
   'team-conventions': {
     shortDescription:
@@ -911,13 +932,13 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Traducción de necesidades de negocio y flujos operativos en planes técnicos antes de iniciar la implementación.',
     evidenceSummary:
-      'Requirements Analysis se representa en Worker y Expensux mediante planeación que alinea flujos de negocio, restricciones operativas y decisiones técnicas antes de codificar.',
+      'Requirements Analysis se representa en Worker, Expensux, Manager Plus, Manager Clinic y Odontology mediante planeación que alinea flujos de negocio, restricciones operativas y decisiones técnicas antes de codificar.',
   },
   'uml-modeling': {
     shortDescription:
       'Casos de uso, diagramas de flujo, análisis de procesos y modelado de soluciones usados para planear software antes de codificar.',
     evidenceSummary:
-      'UML & Modeling se conecta con Worker y Expensux mediante casos de uso, diagramas de flujo, análisis de procesos y modelado de soluciones previo a la implementación.',
+      'UML & Modeling se conecta con Worker, Expensux, Manager Plus, Manager Clinic y Odontology mediante casos de uso, diagramas de flujo, análisis de procesos y modelado de soluciones previo a la implementación.',
   },
   'vb-net': {
     shortDescription: 'Experiencia en aplicaciones desktop y legacy en producción.',
@@ -940,12 +961,17 @@ const skillSpanishDescriptions: Record<
     evidenceSummary:
       'Crystal Reports se conecta con Worker mediante necesidades de reportes de producción para flujos operativos y de negocio en contexto de software desktop.',
   },
+  reporting: {
+    shortDescription:
+      'Flujos de reportes operativos conectados con sistemas de producción, ERP, clínicos y odontológicos.',
+    evidenceSummary:
+      'Reporting se conecta con Worker y productos empresariales de Avances Software mediante flujos operativos, ERP, clínicos y odontológicos que requirieron soporte de reportes y revisión de datos segura para publicación.',
+  },
   foxpro: {
     shortDescription:
-      'Conocimiento de tecnología legacy útil para entender sistemas de negocio antiguos.',
+      'Tecnología legacy conectada con sistemas empresariales antiguos y migraciones hacia SQL Server.',
     evidenceSummary:
-      'FoxPro se presenta actualmente como familiaridad con sistemas legacy y se conectará con evidencia pública segura cuando esté disponible.',
-    contextNotes: ['Aún no hay detalle público de proyecto vinculado.'],
+      'FoxPro se conecta con productos empresariales de Avances Software donde sistemas de negocio legacy, soporte de migración y adopción de SQL Server hicieron parte del contexto profesional.',
   },
   'visual-basic-6': {
     shortDescription: 'Contexto desktop legacy útil para conversaciones de modernización.',
