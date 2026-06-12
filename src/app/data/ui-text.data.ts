@@ -107,9 +107,8 @@ export const UI_TEXT = {
         highlightsTitle: 'Evidence of long-term development',
         highlightsAria: 'Education highlights',
         ctaEyebrow: 'Continue Exploring',
-        ctaTitle: 'Connect learning to skills, projects, and documents',
-        ctaBody:
-          'Use these links to review practical capabilities, public-safe project evidence, professional evolution, and supporting documents.',
+        ctaTitle: 'Explore how learning connects to skills, real projects, and professional growth.',
+        ctaBody: '',
         ctaAria: 'Education related navigation links',
       },
       projects: {
@@ -390,9 +389,9 @@ export const UI_TEXT = {
         highlightsTitle: 'Evidencia de desarrollo a largo plazo',
         highlightsAria: 'Aspectos destacados de educación',
         ctaEyebrow: 'Continuar explorando',
-        ctaTitle: 'Conecta el aprendizaje con habilidades, proyectos y documentos',
-        ctaBody:
-          'Usa estos enlaces para revisar capacidades prácticas, evidencia de proyectos segura para publicación, evolución profesional y documentos de soporte.',
+        ctaTitle:
+          'Explora cómo el aprendizaje se conecta con habilidades, proyectos reales y evolución profesional.',
+        ctaBody: '',
         ctaAria: 'Enlaces relacionados con educación',
       },
       projects: {

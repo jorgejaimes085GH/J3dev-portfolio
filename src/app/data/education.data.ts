@@ -29,10 +29,20 @@ const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
     institution: 'UNAD',
     location: 'Bucaramanga, Santander, Colombia',
     program: 'Systems Engineering',
-    period: '2015 – Present',
-    status: 'Final stage – degree completion process underway.',
+    period: '2015 - 2019',
+    status: 'Studies completed through semester 9.',
     summary:
-      'Currently in homologation process to complete the professional engineering degree in 2026. Advanced studies focused on software engineering, systems analysis, databases, software architecture, and enterprise application development.',
+      'Advanced studies in software engineering, systems analysis, databases, software architecture, and enterprise application development.',
+  },
+  {
+    id: 'unad-systems-engineering-completion',
+    institution: 'UNAD',
+    location: 'Bucaramanga, Santander, Colombia',
+    program: 'Systems Engineering',
+    period: '2026',
+    status: 'Degree completion process resumed.',
+    summary:
+      'Homologation process currently underway to complete the professional engineering degree.',
   },
 ];
 
@@ -136,10 +146,10 @@ const EDUCATION_HIGHLIGHTS_EN: EducationHighlight[] = [
 ];
 
 const EDUCATION_CTA_LINKS_EN: EducationCtaLink[] = [
-  { label: 'Explore technical foundation', route: '/skills' },
-  { label: 'Review project evidence', route: '/projects' },
-  { label: 'See technical evolution', route: '/journey' },
-  { label: 'Review supporting documents', route: '/documents' },
+  { label: 'Skills', route: '/skills' },
+  { label: 'Projects', route: '/projects' },
+  { label: 'Journey', route: '/journey' },
+  { label: 'Documents', route: '/documents' },
 ];
 
 const FORMAL_EDUCATION_ES: FormalEducationEntry[] = [
@@ -158,10 +168,16 @@ const FORMAL_EDUCATION_ES: FormalEducationEntry[] = [
   {
     ...FORMAL_EDUCATION_EN[2],
     program: 'Ingeniería de Sistemas',
-    period: '2015 – Actualidad',
-    status: 'Etapa final – proceso de finalización de grado en curso.',
+    status: 'Estudios completados hasta noveno semestre.',
     summary:
-      'Actualmente en proceso de homologación para completar el título profesional de ingeniería en 2026. Estudios avanzados enfocados en ingeniería de software, análisis de sistemas, bases de datos, arquitectura de software y desarrollo de aplicaciones empresariales.',
+      'Estudios avanzados enfocados en ingeniería de software, análisis de sistemas, bases de datos, arquitectura de software y desarrollo de aplicaciones empresariales.',
+  },
+  {
+    ...FORMAL_EDUCATION_EN[3],
+    program: 'Ingeniería de Sistemas',
+    status: 'Proceso de finalización reactivado.',
+    summary:
+      'Actualmente en proceso de homologación para completar el título profesional de Ingeniería de Sistemas.',
   },
 ];
 
@@ -289,10 +305,10 @@ export const EDUCATION_HIGHLIGHTS = {
 } as const;
 
 const EDUCATION_CTA_LINKS_ES: EducationCtaLink[] = [
-  { label: 'Explorar base técnica', route: '/skills' },
-  { label: 'Revisar evidencia en proyectos', route: '/projects' },
-  { label: 'Ver evolución técnica', route: '/journey' },
-  { label: 'Revisar documentos de soporte', route: '/documents' },
+  { label: 'Habilidades', route: '/skills' },
+  { label: 'Proyectos', route: '/projects' },
+  { label: 'Trayectoria', route: '/journey' },
+  { label: 'Documentos', route: '/documents' },
 ];
 
 export const EDUCATION_CTA_LINKS = {
