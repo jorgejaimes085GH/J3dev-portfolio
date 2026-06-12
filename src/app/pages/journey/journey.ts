@@ -34,8 +34,9 @@ import { Project } from '../../models/project.model';
             <li class="journey-stage">
               <article class="journey-stage__card" [attr.aria-labelledby]="stage.id + '-title'">
                 <div class="journey-stage__meta">
+                  <span class="journey-stage__year">{{ stage.yearLabel }}</span>
                   <span class="journey-stage__number"
-                    >{{ text().stagePrefix }} {{ stageIndex + 1 }}</span
+                    >{{ text().stagePrefix }} {{ stageIndex }}</span
                   >
                   <span class="journey-stage__period">{{ stage.periodLabel }}</span>
                 </div>
@@ -167,11 +168,38 @@ import { Project } from '../../models/project.model';
       }
 
       .journey-timeline {
+        position: relative;
         display: grid;
         gap: 1rem;
         margin: 0;
-        padding: 0;
+        padding: 0 0 0 1.5rem;
         list-style: none;
+      }
+
+      .journey-timeline::before {
+        position: absolute;
+        top: 0.75rem;
+        bottom: 0.75rem;
+        left: 0.35rem;
+        width: 1px;
+        background: var(--app-border-color);
+        content: '';
+      }
+
+      .journey-stage {
+        position: relative;
+      }
+
+      .journey-stage::before {
+        position: absolute;
+        top: 1.75rem;
+        left: -1.35rem;
+        width: 0.7rem;
+        height: 0.7rem;
+        border: 2px solid var(--app-link-color);
+        border-radius: 999px;
+        background: var(--app-background-color);
+        content: '';
       }
 
       .journey-stage__card {
@@ -192,8 +220,17 @@ import { Project } from '../../models/project.model';
       }
 
       .journey-stage__number,
-      .journey-stage__period {
+      .journey-stage__period,
+      .journey-stage__year {
         display: block;
+      }
+
+      .journey-stage__year {
+        color: var(--app-text-color);
+        font-size: clamp(1.35rem, 3vw, 2rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1;
       }
 
       .journey-stage__period,
@@ -297,6 +334,14 @@ import { Project } from '../../models/project.model';
 
         .journey-stage__card {
           display: grid;
+        }
+
+        .journey-timeline {
+          padding-left: 1.1rem;
+        }
+
+        .journey-stage::before {
+          left: -0.95rem;
         }
 
         .journey-insight-grid {

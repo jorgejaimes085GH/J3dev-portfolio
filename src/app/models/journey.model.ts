@@ -1,5 +1,6 @@
 export interface JourneyStage {
   id: string;
+  yearLabel: string;
   title: string;
   periodLabel: string;
   summary: string;

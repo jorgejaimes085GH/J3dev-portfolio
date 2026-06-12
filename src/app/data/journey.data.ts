@@ -2,112 +2,171 @@ import { JourneyCtaLink, JourneyInsight, JourneyStage } from '../models/journey.
 
 const JOURNEY_STAGES_EN: JourneyStage[] = [
   {
-    id: 'business-software-foundations',
-    title: 'Business Software Foundations',
-    periodLabel: 'Early foundation stage',
+    id: 'self-taught-discovery',
+    yearLabel: '2008',
+    title: 'Self-taught discovery',
+    periodLabel: 'Before university studies',
     summary:
-      'Initial experience centered on practical business applications where software had to support day-to-day operations and real users.',
-    focusAreas: ['FoxPro', 'SQL', 'Accounting systems', 'Medical software', 'Gas billing systems'],
-    keyLearning: 'Understanding real business processes before focusing on implementation details.',
-    evidenceNote:
-      'This stage is summarized by domains and technologies only, without exposing private business data or proprietary workflows.',
-  },
-  {
-    id: 'legacy-modernization',
-    title: 'Legacy Modernization',
-    periodLabel: 'Modernization stage',
-    summary:
-      'Work shifted toward extending existing systems and moving legacy tools forward while keeping operational continuity in mind.',
-    focusAreas: ['VB6', 'Access', 'VB.NET', 'SQL Server'],
-    keyLearning: 'Modernizing existing systems without losing operational continuity.',
-    evidenceNote:
-      'The emphasis is on the engineering challenge of safe modernization rather than a company-by-company timeline.',
-  },
-  {
-    id: 'independent-product-development',
-    title: 'Independent Product Development',
-    periodLabel: 'Long-term product stage',
-    summary:
-      'Product work expanded into building, maintaining, and adapting a system across changing operational needs over multiple years, showing autonomy without making freelancing the main professional identity.',
-    focusAreas: ['Worker', 'VB.NET', 'Access', 'SQL Server', 'Reports', 'Excel export'],
+      'Before starting university studies, Jorge began exploring software creation from home using Windows XP, Access, Visual Basic 6, books, and printed material gathered from internet cafés to practice algorithms and small applications.',
+    focusAreas: ['DFD', 'Flow diagrams', 'VB6', 'Access', 'Algorithms'],
     keyLearning:
-      'Building and maintaining software that evolves over years while preserving business continuity.',
+      'Before learning frameworks, he started by learning logic, databases, and problem solving.',
+  },
+  {
+    id: 'academic-foundations',
+    yearLabel: '2010',
+    title: 'Academic foundations and engineering fundamentals',
+    periodLabel: 'Formal foundations stage',
+    summary:
+      'With the start of university studies, the learning path expanded into analysis, modeling, relational databases, basic web development, and formal software construction foundations.',
+    focusAreas: ['UML', 'MySQL', 'PHP', 'HTML', 'CSS', 'Relational databases'],
+    keyLearning: 'Understanding that software should be analyzed and modeled before implementation.',
+  },
+  {
+    id: 'first-enterprise-software-experience',
+    yearLabel: '2012',
+    title: 'First enterprise software experience',
+    periodLabel: 'Real business users stage',
+    summary:
+      'The first professional experience moved learning into real users, business processes, SQL Server, VB.NET Framework 3.5, Crystal Reports, DataReader, DataTable, UML, and database normalization.',
+    focusAreas: [
+      'SQL Server',
+      'VB.NET',
+      '.NET Framework 3.5',
+      'Crystal Reports',
+      'DataReader',
+      'DataTable',
+      'UML',
+      'Normalization',
+    ],
+    keyLearning:
+      'Software exists to support real business operations, not only to execute code correctly.',
+    evidenceNote:
+      'This stage is intentionally described without exposing product names, internal implementation details, or private operational context.',
+  },
+  {
+    id: 'complex-enterprise-systems',
+    yearLabel: '2013',
+    title: 'Complex enterprise systems',
+    periodLabel: 'Production adaptation stage',
+    summary:
+      'At this stage Jorge worked with commercial products in FoxPro and SQL Server, including clinical, dental, and ERP systems. Although FoxPro does not represent his current stack, this experience strengthened business analysis, data migration, normalization, reporting, bug fixing, and fast adaptation to unfamiliar technologies.',
+    focusAreas: [
+      'FoxPro',
+      'SQL Server',
+      'ERP',
+      'Clinical systems',
+      'Dental systems',
+      'Data migration',
+      'Reporting',
+    ],
+    keyLearning:
+      'Quickly adapting to unfamiliar technologies while maintaining enterprise products in production.',
+    evidenceNote:
+      'The FoxPro context is included as learning history only; Jorge learned the basics in about a week to begin productive maintenance without presenting it as his current stack.',
+  },
+  {
+    id: 'building-a-product-from-scratch',
+    yearLabel: '2014–2015',
+    title: 'Building a product from scratch',
+    periodLabel: 'Independent product stage',
+    summary:
+      'Freelance work gave rise to Worker, an enterprise system built from requirements, use cases, UML design, architecture, database design, coding, testing, and production release. The project started in September 2014 and entered production in November 2015.',
+    focusAreas: [
+      'Worker',
+      'UML',
+      'SQL Server',
+      'VB.NET',
+      'Access',
+      'Reporting',
+      'Excel export',
+      'Production',
+    ],
+    keyLearning:
+      'Building complete software requires understanding the business, designing carefully, and supporting evolution after the first delivery.',
     relatedProjectSlugs: ['worker'],
     evidenceNote:
       'Worker is referenced as public-safe portfolio evidence while proprietary source code and operational details remain private.',
   },
   {
-    id: 'enterprise-software-development',
-    title: 'Enterprise Software Development',
-    periodLabel: 'Enterprise collaboration stage',
+    id: 'remote-engineering-enterprise-software',
+    yearLabel: '2016',
+    title: 'Remote engineering and enterprise software',
+    periodLabel: 'Long-lived software stage',
     summary:
-      'Experience grew through enterprise systems where maintenance, improvements, integration points, and team conventions became central to delivery.',
+      'Joining LeverIT enabled remote work on long-lived enterprise software involving maintenance, improvements, SQL Server, ASP.NET, JavaScript, HTML, CSS, team conventions, and functional evolution.',
     focusAreas: [
       'ItHelpCenter',
       'Discovery',
-      'Testigo Electoral',
       'SQL Server',
-      'C#',
-      'APIs',
+      'ASP.NET',
       'JavaScript',
-      'Angular',
-      'WebSockets',
+      'HTML',
+      'CSS',
+      'Remote work',
+      'Team conventions',
     ],
     keyLearning:
-      'Working with enterprise systems, maintenance, improvements, and team development conventions.',
+      'Working on enterprise software requires continuity, communication, conventions, and sustainable decisions.',
     evidenceNote:
       'Project names are used as high-level context only; implementation and organizational details are intentionally not disclosed.',
   },
   {
-    id: 'architecture-mindset',
-    title: 'Architecture Mindset',
-    periodLabel: 'Architecture growth stage',
+    id: 'api-first-architecture',
+    yearLabel: '2020',
+    title: 'API-first architecture',
+    periodLabel: 'Service boundaries stage',
     summary:
-      'The focus matured from completing isolated tasks toward organizing code, boundaries, and standards so systems can remain understandable.',
-    focusAreas: [
-      'SOLID',
-      'Layered architecture',
-      'Reusable patterns',
-      'Development standards',
-      'Maintainability',
-    ],
-    keyLearning: 'Thinking beyond isolated features and designing software that can evolve.',
-    relatedProjectSlugs: ['worker', 'expensux'],
-    evidenceNote:
-      'Related projects show architectural direction through sanitized summaries and public-safe implementation context.',
-  },
-  {
-    id: 'modern-fullstack-development',
-    title: 'Modern Fullstack Development',
-    periodLabel: 'Modern application stage',
-    summary:
-      'Current work keeps Backend .NET as the center while adding frontend integration through typed APIs, authentication, data access, and Angular interfaces.',
-    focusAreas: ['.NET 8', 'REST APIs', 'JWT', 'Dapper', 'Angular', 'TypeScript', 'SQL Server'],
+      'Backend evolution moved toward REST APIs, clearer frontend/backend separation, authentication, SQL Server, and modern data access. This stage marked the shift from more monolithic approaches toward more maintainable services.',
+    focusAreas: ['REST APIs', 'JWT', 'SQL Server', 'Dapper', 'Backend architecture', 'Service boundaries'],
     keyLearning:
-      'Building modern applications with backend depth first and frontend integration as a complement.',
-    relatedProjectSlugs: ['expensux', 'j3dev-portfolio'],
-    evidenceNote:
-      'Expensux and this portfolio provide safe examples of modern fullstack direction without adding backend logic to the portfolio itself.',
+      'Separating responsibilities improves maintainability, integration, and software evolution.',
+    relatedProjectSlugs: ['expensux'],
   },
   {
-    id: 'continuous-evolution',
-    title: 'Continuous Evolution',
-    periodLabel: 'Ongoing evolution stage',
+    id: 'angular-modern-fullstack-integration',
+    yearLabel: '2023',
+    title: 'Angular and modern fullstack integration',
+    periodLabel: 'Frontend integration stage',
     summary:
-      'The current stage emphasizes disciplined use of modern development tools while keeping maintainability, architecture, and professional judgment first.',
+      'Through Testigo Electoral and modern practice projects, Jorge strengthened Angular and TypeScript as a complement to his Backend .NET focus, connecting interfaces with REST APIs, SQL Server, and client-specific business rules.',
     focusAreas: [
+      'Angular',
+      'TypeScript',
+      'REST APIs',
+      'SQL Server',
+      'Testigo Electoral',
+      'Expensux',
+      'J3dev Portfolio',
+    ],
+    keyLearning:
+      'Modern frontend work becomes more valuable when connected to clear business rules and well-defined backend services.',
+    relatedProjectSlugs: ['expensux', 'j3dev-portfolio'],
+  },
+  {
+    id: 'modern-architecture-devops-ai',
+    yearLabel: '2025–2026',
+    title: 'Modern architecture, DevOps, and AI-assisted development',
+    periodLabel: 'Current evolution stage',
+    summary:
+      'The current stage integrates .NET 8, modern Angular, Git, GitHub, Azure, Docker, Entity Framework Core strengthening, clean architecture, automation, documentation, and AI-assisted development. Coding speed increases, but analysis, context, and review remain essential.',
+    focusAreas: [
+      '.NET 8',
+      'Angular 18',
       'Git',
       'GitHub',
-      'Azure learning',
+      'Azure',
+      'Docker',
+      'Entity Framework Core',
+      'Clean Architecture',
       'AI-assisted development',
       'Codex',
-      'Cloud mindset',
     ],
     keyLearning:
-      'Using modern tools responsibly while keeping architecture and maintainability first.',
+      'AI accelerates code generation, but it does not replace analysis, architecture, or quality control.',
     relatedProjectSlugs: ['j3dev-portfolio'],
     evidenceNote:
-      'This portfolio is part of the ongoing learning loop: incremental delivery, reviewable changes, and clear public presentation.',
+      'This portfolio is part of the ongoing learning loop: incremental delivery, reviewable changes, documentation, and clear public presentation.',
   },
 ];
 
@@ -118,136 +177,182 @@ const JOURNEY_INSIGHTS_EN: JourneyInsight[] = [
       'The progression moved from learning individual tools toward understanding how applications, databases, workflows, and users fit together inside complete business systems.',
   },
   {
-    title: 'From coding to architecture',
+    title: 'From code to architecture',
     description:
-      'Experience shifted from completing isolated features toward defining boundaries, layers, standards, and conventions that make future work easier to maintain.',
+      'Experience shifted from making code work toward defining boundaries, models, standards, and maintainable structures that support future change.',
   },
   {
     title: 'From execution to evolution',
     description:
-      'Long-term project work reinforced that useful software continues to evolve through maintenance, modernization, documentation, and careful incremental decisions.',
+      'Long-term product and enterprise work reinforced that useful software continues to evolve through maintenance, modernization, documentation, and careful incremental decisions.',
+  },
+  {
+    title: 'From coding speed to context quality',
+    description:
+      'Experience shows that writing code is only one part of the work; the real value is understanding the problem, designing the solution, and keeping software useful over time.',
   },
 ];
 
 const JOURNEY_CTA_LINKS_EN: JourneyCtaLink[] = [
-  { label: 'View Projects', route: '/projects' },
-  { label: 'Explore Skills', route: '/skills' },
-  { label: 'How I Add Value', route: '/why-hire-me' },
-  { label: 'View Documents', route: '/documents' },
+  { label: 'Review project evidence', route: '/projects' },
+  { label: 'Explore technical foundation', route: '/skills' },
+  { label: 'How I add value', route: '/why-hire-me' },
 ];
 
 const JOURNEY_STAGES_ES: JourneyStage[] = [
   {
     ...JOURNEY_STAGES_EN[0],
-    title: 'Bases en software de negocio',
-    periodLabel: 'Etapa de fundamentos iniciales',
+    title: 'Descubrimiento autodidacta',
+    periodLabel: 'Antes de iniciar estudios universitarios',
     summary:
-      'La experiencia inicial se centró en aplicaciones prácticas de negocio donde el software debía apoyar operaciones diarias y usuarios reales.',
-    focusAreas: [
-      'FoxPro',
-      'SQL',
-      'Sistemas contables',
-      'Software médico',
-      'Sistemas de facturación de gas',
-    ],
+      'Antes de iniciar estudios universitarios, Jorge comenzó a interesarse por la creación de software desde casa, usando Windows XP, Access, Visual Basic 6, libros e información descargada desde cafés internet para practicar algoritmos y pequeñas aplicaciones.',
+    focusAreas: ['DFD', 'Diagramas de flujo', 'VB6', 'Access', 'Algoritmos'],
     keyLearning:
-      'Entender procesos reales de negocio antes de enfocarse en detalles de implementación.',
-    evidenceNote:
-      'Esta etapa se resume solo por dominios y tecnologías, sin exponer datos privados de negocio ni flujos propietarios.',
+      'Antes de aprender frameworks, empezó aprendiendo lógica, bases de datos y resolución de problemas.',
   },
   {
     ...JOURNEY_STAGES_EN[1],
-    title: 'Modernización legacy',
-    periodLabel: 'Etapa de modernización',
+    title: 'Formación académica y fundamentos de ingeniería',
+    periodLabel: 'Etapa de fundamentos formales',
     summary:
-      'El trabajo avanzó hacia extender sistemas existentes y llevar herramientas legacy hacia adelante, manteniendo presente la continuidad operativa.',
-    focusAreas: ['VB6', 'Access', 'VB.NET', 'SQL Server'],
-    keyLearning: 'Modernizar sistemas existentes sin perder continuidad operativa.',
-    evidenceNote:
-      'El énfasis está en el reto de ingeniería de una modernización segura, no en una línea de tiempo empresa por empresa.',
+      'Con el inicio de la universidad, el aprendizaje se amplió hacia análisis, modelado, bases de datos relacionales, programación web básica y fundamentos formales de construcción de software.',
+    focusAreas: ['UML', 'MySQL', 'PHP', 'HTML', 'CSS', 'Bases de datos relacionales'],
+    keyLearning: 'Comprender que el software debe analizarse y modelarse antes de programarse.',
   },
   {
     ...JOURNEY_STAGES_EN[2],
-    title: 'Desarrollo independiente de producto',
-    periodLabel: 'Etapa de producto a largo plazo',
+    title: 'Primer software empresarial',
+    periodLabel: 'Etapa con usuarios reales de negocio',
     summary:
-      'El trabajo de producto se amplió hacia construir, mantener y adaptar un sistema durante varios años ante necesidades operativas cambiantes, mostrando autonomía sin convertir el freelance en la identidad profesional principal.',
-    focusAreas: ['Worker', 'VB.NET', 'Access', 'SQL Server', 'Reportes', 'Exportación a Excel'],
+      'La primera experiencia laboral llevó el aprendizaje a usuarios reales, procesos de negocio, SQL Server, VB.NET Framework 3.5, Crystal Reports, DataReader, DataTable, UML y normalización de bases de datos.',
+    focusAreas: [
+      'SQL Server',
+      'VB.NET',
+      '.NET Framework 3.5',
+      'Crystal Reports',
+      'DataReader',
+      'DataTable',
+      'UML',
+      'Normalización',
+    ],
     keyLearning:
-      'Construir y mantener software que evoluciona durante años preservando continuidad de negocio.',
+      'El software existe para soportar operaciones reales de negocio, no solo para ejecutar código correctamente.',
+    evidenceNote:
+      'Esta etapa se describe sin exponer nombres de producto, detalles internos de implementación ni contexto operativo privado.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[3],
+    title: 'Sistemas empresariales complejos',
+    periodLabel: 'Etapa de adaptación en producción',
+    summary:
+      'En esta etapa Jorge trabajó con productos comerciales en FoxPro y SQL Server, incluyendo sistemas clínicos, odontológicos y ERP. Aunque FoxPro no representa su stack actual, esta experiencia fortaleció análisis de negocio, migración de datos, normalización, reportes, corrección de bugs y adaptación rápida a tecnologías desconocidas.',
+    focusAreas: [
+      'FoxPro',
+      'SQL Server',
+      'ERP',
+      'Sistemas clínicos',
+      'Sistemas odontológicos',
+      'Migración de datos',
+      'Reporting',
+    ],
+    keyLearning:
+      'Adaptarse rápidamente a tecnologías desconocidas y mantener productos empresariales en producción.',
+    evidenceNote:
+      'El contexto de FoxPro se incluye solo como historia de aprendizaje; Jorge aprendió lo básico en aproximadamente una semana para iniciar mantenimiento productivo, sin presentarlo como su stack actual.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[4],
+    title: 'Construcción de producto propio',
+    periodLabel: 'Etapa de producto independiente',
+    summary:
+      'La experiencia freelance dio origen a Worker, un sistema empresarial construido desde requerimientos, casos de uso, diseño UML, arquitectura, base de datos, codificación, pruebas y salida a producción. El producto inició en septiembre de 2014 y entró en producción en noviembre de 2015.',
+    focusAreas: [
+      'Worker',
+      'UML',
+      'SQL Server',
+      'VB.NET',
+      'Access',
+      'Reporting',
+      'Excel export',
+      'Producción',
+    ],
+    keyLearning:
+      'Construir software completo exige entender negocio, diseñar con cuidado y sostener la evolución después de la primera entrega.',
     evidenceNote:
       'Worker se referencia como evidencia del portafolio segura para publicación, mientras el código fuente propietario y los detalles operativos permanecen privados.',
   },
   {
-    ...JOURNEY_STAGES_EN[3],
-    title: 'Desarrollo de software empresarial',
-    periodLabel: 'Etapa de colaboración empresarial',
+    ...JOURNEY_STAGES_EN[5],
+    title: 'Ingeniería remota y software empresarial',
+    periodLabel: 'Etapa de software de larga vida útil',
     summary:
-      'La experiencia creció en sistemas empresariales donde mantenimiento, mejoras, puntos de integración y convenciones de equipo se volvieron centrales para la entrega.',
+      'La entrada a LeverIT permitió trabajar de forma remota en software empresarial de larga vida útil, con mantenimiento, mejoras, SQL Server, ASP.NET, JavaScript, HTML, CSS, convenciones de equipo y evolución funcional.',
     focusAreas: [
       'ItHelpCenter',
       'Discovery',
-      'Testigo Electoral',
       'SQL Server',
-      'C#',
-      'APIs',
+      'ASP.NET',
       'JavaScript',
-      'Angular',
-      'WebSockets',
+      'HTML',
+      'CSS',
+      'Trabajo remoto',
+      'Convenciones de equipo',
     ],
     keyLearning:
-      'Trabajar con sistemas empresariales, mantenimiento, mejoras y convenciones de desarrollo en equipo.',
+      'Trabajar en software empresarial requiere continuidad, comunicación, convenciones y decisiones sostenibles.',
     evidenceNote:
       'Los nombres de proyectos se usan solo como contexto de alto nivel; los detalles de implementación y organización no se divulgan intencionalmente.',
   },
   {
-    ...JOURNEY_STAGES_EN[4],
-    title: 'Mentalidad de arquitectura',
-    periodLabel: 'Etapa de crecimiento en arquitectura',
+    ...JOURNEY_STAGES_EN[6],
+    title: 'Arquitectura API First',
+    periodLabel: 'Etapa de límites de servicio',
     summary:
-      'El enfoque maduró desde completar tareas aisladas hacia organizar código, límites y estándares para que los sistemas sigan siendo comprensibles.',
+      'La evolución del backend avanzó hacia APIs REST, separación más clara entre frontend y backend, autenticación, SQL Server y acceso a datos moderno. Esta etapa marcó el paso desde enfoques más monolíticos hacia servicios más mantenibles.',
+    focusAreas: ['REST APIs', 'JWT', 'SQL Server', 'Dapper', 'Arquitectura backend', 'Límites de servicio'],
+    keyLearning:
+      'Separar responsabilidades mejora la mantenibilidad, la integración y la evolución del software.',
+  },
+  {
+    ...JOURNEY_STAGES_EN[7],
+    title: 'Angular y fullstack moderno',
+    periodLabel: 'Etapa de integración frontend',
+    summary:
+      'Con Testigo Electoral y otros ejercicios modernos, Jorge fortaleció Angular y TypeScript como complemento a su foco Backend .NET, conectando interfaces con APIs REST, SQL Server y reglas de negocio específicas de clientes reales.',
     focusAreas: [
-      'SOLID',
-      'Arquitectura por capas',
-      'Patrones reutilizables',
-      'Estándares de desarrollo',
-      'Mantenibilidad',
+      'Angular',
+      'TypeScript',
+      'REST APIs',
+      'SQL Server',
+      'Testigo Electoral',
+      'Expensux',
+      'J3dev Portfolio',
     ],
     keyLearning:
-      'Pensar más allá de funcionalidades aisladas y diseñar software que pueda evolucionar.',
-    evidenceNote:
-      'Los proyectos relacionados muestran dirección arquitectónica mediante resúmenes sanitizados y contexto de implementación seguro para publicación.',
+      'El frontend moderno aumenta su valor cuando se conecta con reglas de negocio claras y servicios backend bien definidos.',
   },
   {
-    ...JOURNEY_STAGES_EN[5],
-    title: 'Desarrollo fullstack moderno',
-    periodLabel: 'Etapa de aplicación moderna',
+    ...JOURNEY_STAGES_EN[8],
+    title: 'Arquitectura moderna, DevOps e IA',
+    periodLabel: 'Etapa actual de evolución',
     summary:
-      'El trabajo actual mantiene Backend .NET como centro y suma integración frontend mediante APIs tipadas, autenticación, acceso a datos e interfaces Angular.',
-    focusAreas: ['.NET 8', 'REST APIs', 'JWT', 'Dapper', 'Angular', 'TypeScript', 'SQL Server'],
-    keyLearning:
-      'Construir aplicaciones modernas con profundidad backend primero e integración frontend como complemento.',
-    evidenceNote:
-      'Expensux y este portafolio aportan ejemplos seguros de dirección fullstack moderna sin agregar lógica backend al portafolio en sí.',
-  },
-  {
-    ...JOURNEY_STAGES_EN[6],
-    title: 'Evolución continua',
-    periodLabel: 'Etapa de evolución en curso',
-    summary:
-      'La etapa actual enfatiza el uso disciplinado de herramientas modernas de desarrollo, manteniendo primero la mantenibilidad, la arquitectura y el criterio profesional.',
+      'La etapa actual integra .NET 8, Angular moderno, Git, GitHub, Azure, Docker, Entity Framework Core en fortalecimiento, arquitectura limpia, automatización, documentación y desarrollo asistido por IA. La velocidad de codificación aumenta, pero el análisis, el contexto y la revisión siguen siendo fundamentales.',
     focusAreas: [
+      '.NET 8',
+      'Angular 18',
       'Git',
       'GitHub',
-      'Aprendizaje de Azure',
+      'Azure',
+      'Docker',
+      'Entity Framework Core',
+      'Clean Architecture',
       'Desarrollo asistido por IA',
       'Codex',
-      'Mentalidad cloud',
     ],
     keyLearning:
-      'Usar herramientas modernas con responsabilidad, manteniendo arquitectura y mantenibilidad como prioridad.',
+      'La IA acelera la generación de código, pero no reemplaza el análisis, la arquitectura ni el control de calidad.',
     evidenceNote:
-      'Este portafolio hace parte del ciclo de aprendizaje continuo: entrega incremental, cambios revisables y presentación pública clara.',
+      'Este portafolio hace parte del ciclo de aprendizaje continuo: entrega incremental, cambios revisables, documentación y presentación pública clara.',
   },
 ];
 
@@ -263,14 +368,19 @@ const JOURNEY_INSIGHTS_ES: JourneyInsight[] = [
       'La progresión pasó de aprender herramientas individuales a entender cómo aplicaciones, bases de datos, flujos de trabajo y usuarios encajan dentro de sistemas completos de negocio.',
   },
   {
-    title: 'De codificar a pensar en arquitectura',
+    title: 'De código a arquitectura',
     description:
-      'La experiencia cambió de completar funcionalidades aisladas a definir límites, capas, estándares y convenciones que facilitan el mantenimiento futuro.',
+      'La experiencia cambió de hacer que el código funcione a definir límites, modelos, estándares y estructuras mantenibles que soporten cambios futuros.',
   },
   {
-    title: 'De ejecutar a evolucionar',
+    title: 'De ejecución a evolución',
     description:
-      'El trabajo de proyectos a largo plazo reforzó que el software útil sigue evolucionando mediante mantenimiento, modernización, documentación y decisiones incrementales cuidadosas.',
+      'El trabajo de producto y software empresarial a largo plazo reforzó que el software útil sigue evolucionando mediante mantenimiento, modernización, documentación y decisiones incrementales cuidadosas.',
+  },
+  {
+    title: 'De velocidad de codificación a calidad de contexto',
+    description:
+      'La experiencia muestra que escribir código es solo una parte del trabajo; el valor real está en entender el problema, diseñar la solución y mantener el software útil con el paso del tiempo.',
   },
 ];
 
@@ -280,8 +390,8 @@ export const JOURNEY_INSIGHTS = {
 } as const;
 
 const JOURNEY_CTA_LINKS_ES: JourneyCtaLink[] = [
-  { label: 'Ver Proyectos', route: '/projects' },
-  { label: 'Explorar Habilidades', route: '/skills' },
+  { label: 'Ver evidencia en proyectos', route: '/projects' },
+  { label: 'Explorar base técnica', route: '/skills' },
   { label: 'Cómo aporto valor', route: '/why-hire-me' },
 ];
 

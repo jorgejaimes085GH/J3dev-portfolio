@@ -202,11 +202,11 @@ export const UI_TEXT = {
         eyebrow: 'Technical Evolution',
         title: 'Journey',
         summary:
-          'A practical timeline of how Jorge moved from business software support and legacy desktop systems toward Backend .NET development, SQL Server, architecture, modernization, and fullstack collaboration.',
+          'A practical timeline of how Jorge evolved from self-taught logic, databases, and early business software toward Backend .NET, Angular, architecture, DevOps practices, and AI-assisted development.',
         timelineEyebrow: 'Evolution Timeline',
-        timelineTitle: 'Learning stages that shaped the engineering profile',
+        timelineTitle: 'Learning stages that shaped technical judgment',
         timelineIntro:
-          'Each stage focuses on capability growth and practical learning rather than listing roles, employers, or confidential implementation details.',
+          'Each stage explains how Jorge evolved as a developer, focusing on learning, judgment, and maintainable software instead of roles, employers, or confidential implementation details.',
         timelineAria: 'Technical and professional evolution stages',
         focus: 'Focus',
         focusAria: 'Focus technologies and areas',
@@ -216,11 +216,11 @@ export const UI_TEXT = {
         viewProjectDetailsPrefix: 'View',
         viewProjectDetailsSuffix: 'project details',
         insightsEyebrow: 'Journey Insights',
-        insightsTitle: 'How the mindset has changed',
+        insightsTitle: 'How the developer mindset evolved',
         ctaEyebrow: 'Continue Exploring',
-        ctaTitle: 'Connect the journey to evidence and documents',
+        ctaTitle: 'Connect the journey to practical evidence',
         ctaIntro:
-          'Continue through the portfolio sections that provide project context, skill evidence, education, and supporting documents.',
+          'Continue through the portfolio sections that connect this evolution with project evidence, technical foundations, and practical team value.',
         ctaAria: 'Journey related navigation links',
       },
       shared: {
@@ -485,11 +485,11 @@ export const UI_TEXT = {
         eyebrow: 'Evolución técnica',
         title: 'Trayectoria',
         summary:
-          'Una línea de tiempo práctica sobre cómo Jorge avanzó desde soporte de software de negocio y sistemas desktop legacy hacia desarrollo Backend .NET, SQL Server, arquitectura, modernización y colaboración fullstack.',
+          'Una línea de tiempo práctica sobre cómo Jorge evolucionó desde lógica autodidacta, bases de datos y software de negocio inicial hacia Backend .NET, Angular, arquitectura, prácticas DevOps y desarrollo asistido por IA.',
         timelineEyebrow: 'Línea de evolución',
-        timelineTitle: 'Etapas de aprendizaje que formaron el perfil de ingeniería',
+        timelineTitle: 'Etapas de aprendizaje que formaron el criterio técnico',
         timelineIntro:
-          'Cada etapa se enfoca en crecimiento de capacidades y aprendizaje práctico, no en listar cargos, empleadores o detalles confidenciales de implementación.',
+          'Cada etapa explica cómo Jorge evolucionó como desarrollador, enfocándose en aprendizaje, criterio y software mantenible en lugar de cargos, empleadores o detalles confidenciales de implementación.',
         timelineAria: 'Etapas de evolución técnica y profesional',
         focus: 'Enfoque',
         focusAria: 'Tecnologías y áreas de enfoque',
@@ -499,11 +499,11 @@ export const UI_TEXT = {
         viewProjectDetailsPrefix: 'Ver detalles del proyecto',
         viewProjectDetailsSuffix: '',
         insightsEyebrow: 'Aprendizajes de la trayectoria',
-        insightsTitle: 'Cómo ha cambiado la mentalidad',
+        insightsTitle: 'Cómo evolucionó la mentalidad de desarrollo',
         ctaEyebrow: 'Continuar explorando',
-        ctaTitle: 'Conecta la trayectoria con evidencia y documentos',
+        ctaTitle: 'Conecta la trayectoria con evidencia práctica',
         ctaIntro:
-          'Continúa por las secciones del portafolio que aportan contexto de proyectos, evidencia de habilidades, educación y documentos de soporte.',
+          'Continúa por las secciones del portafolio que conectan esta evolución con evidencia de proyectos, base técnica y valor práctico para equipos.',
         ctaAria: 'Enlaces relacionados con la trayectoria',
       },
       shared: {
