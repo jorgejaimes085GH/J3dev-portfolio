@@ -219,7 +219,7 @@
   list-style: none;
 }
 
-.site-nav__item--has-children:not(:hover):not(:focus-within) > .site-nav__submenu {
+.site-nav__item--has-children:not(.site-nav__item--submenu-open) > .site-nav__submenu {
   display: none;
 }
 
