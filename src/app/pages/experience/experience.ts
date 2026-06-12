@@ -32,11 +32,6 @@ import { Project } from '../../models/project.model';
         <ol class="experience-timeline" [attr.aria-label]="text().timelineAria">
           @for (entry of entries(); track entry.id) {
             <li class="experience-timeline__item">
-              <div class="experience-timeline__station" aria-hidden="true">
-                <span class="experience-timeline__node"></span>
-                <span class="experience-timeline__year">{{ entry.startYear }}</span>
-              </div>
-
               <article class="experience-card" [attr.aria-labelledby]="entry.id + '-title'">
                 <div class="experience-card__header">
                   <div class="experience-card__identity">
@@ -73,60 +68,62 @@ import { Project } from '../../models/project.model';
                   </div>
                 </div>
 
-                <div class="experience-card__grid">
-                  <section class="experience-card__block experience-card__block--context">
-                    <h4>{{ text().context }}</h4>
-                    <p>{{ entry.context }}</p>
-                  </section>
+                <div class="experience-card__body">
+                  <div class="experience-card__grid">
+                    <section class="experience-card__block experience-card__block--context">
+                      <h4>{{ text().context }}</h4>
+                      <p>{{ entry.context }}</p>
+                    </section>
 
-                  <section class="experience-card__block">
-                    <h4>{{ text().learned }}</h4>
-                    <ul class="experience-card__learned-list">
-                      @for (learning of entry.learned; track learning) {
-                        <li>{{ learning }}</li>
-                      }
-                    </ul>
-                  </section>
-
-                  <section class="experience-card__block experience-card__block--key">
-                    <h4>{{ text().keyLearning }}</h4>
-                    <p>{{ entry.keyLearning }}</p>
-                  </section>
-
-                  <section class="experience-card__block experience-card__block--projects">
-                    <h4>{{ text().relatedProjects }}</h4>
-                    @if (getRelatedProjects(entry).length) {
-                      <div class="experience-project-list">
-                        @for (project of getRelatedProjects(entry); track project.id) {
-                          <a
-                            class="experience-project-link"
-                            [routerLink]="['/projects', project.slug]"
-                            [attr.aria-label]="text().viewProjectPrefix + ': ' + project.title"
-                          >
-                            <span class="experience-project-link__initials" aria-hidden="true">
-                              {{ getProjectInitials(project.title) }}
-                            </span>
-                            <span>
-                              <strong>{{ project.title }}</strong>
-                              <small>{{ project.typeStatus }}</small>
-                            </span>
-                          </a>
+                    <section class="experience-card__block">
+                      <h4>{{ text().learned }}</h4>
+                      <ul class="experience-card__learned-list">
+                        @for (learning of entry.learned; track learning) {
+                          <li>{{ learning }}</li>
                         }
-                      </div>
-                    } @else {
-                      <p class="experience-card__empty-project">{{ text().noProject }}</p>
-                    }
-                  </section>
-                </div>
+                      </ul>
+                    </section>
 
-                <div class="experience-card__evidence">
-                  <a
-                    class="experience-recommendation-link"
-                    routerLink="/documents"
-                    [fragment]="entry.recommendationAnchor"
-                  >
-                    {{ entry.recommendationLabel }}
-                  </a>
+                    <section class="experience-card__block experience-card__block--key">
+                      <h4>{{ text().keyLearning }}</h4>
+                      <p>{{ entry.keyLearning }}</p>
+                    </section>
+
+                    <section class="experience-card__block experience-card__block--projects">
+                      <h4>{{ text().relatedProjects }}</h4>
+                      @if (getRelatedProjects(entry).length) {
+                        <div class="experience-project-list">
+                          @for (project of getRelatedProjects(entry); track project.id) {
+                            <a
+                              class="experience-project-link"
+                              [routerLink]="['/projects', project.slug]"
+                              [attr.aria-label]="text().viewProjectPrefix + ': ' + project.title"
+                            >
+                              <span class="experience-project-link__initials" aria-hidden="true">
+                                {{ getProjectInitials(project.title) }}
+                              </span>
+                              <span>
+                                <strong>{{ project.title }}</strong>
+                                <small>{{ project.typeStatus }}</small>
+                              </span>
+                            </a>
+                          }
+                        </div>
+                      } @else {
+                        <p class="experience-card__empty-project">{{ text().noProject }}</p>
+                      }
+                    </section>
+                  </div>
+
+                  <div class="experience-card__evidence">
+                    <a
+                      class="experience-recommendation-link"
+                      routerLink="/documents"
+                      [fragment]="entry.recommendationAnchor"
+                    >
+                      {{ entry.recommendationLabel }}
+                    </a>
+                  </div>
                 </div>
               </article>
             </li>
@@ -198,79 +195,56 @@ import { Project } from '../../models/project.model';
       .experience-timeline {
         position: relative;
         display: grid;
-        gap: 1.25rem;
+        gap: 1rem;
         margin: 0;
-        padding: 0;
+        padding: 0 0 0 1.5rem;
         list-style: none;
       }
 
       .experience-timeline::before {
-        content: '';
         position: absolute;
-        top: 1.45rem;
-        bottom: 1.45rem;
-        left: 1rem;
-        width: 2px;
-        background: linear-gradient(
-          180deg,
-          color-mix(in srgb, var(--app-link-color) 52%, var(--app-border-color)),
-          color-mix(in srgb, var(--app-border-color) 88%, transparent)
-        );
+        top: 0.75rem;
+        bottom: 0.75rem;
+        left: 0.35rem;
+        width: 1px;
+        background: var(--app-border-color);
+        content: '';
       }
 
       .experience-timeline__item {
         position: relative;
-        padding-left: 4.75rem;
       }
 
-      .experience-timeline__station {
+      .experience-timeline__item::before {
         position: absolute;
-        top: 1.35rem;
-        left: 0;
-        z-index: 1;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-      }
-
-      .experience-timeline__node {
-        width: 1.05rem;
-        height: 1.05rem;
-        border: 3px solid var(--app-background-color);
-        border-radius: 999px;
-        background: var(--app-link-color);
-        box-shadow: 0 0 0 1px var(--app-link-color);
-      }
-
-      .experience-timeline__year {
-        padding: 0.18rem 0.48rem;
-        border: 1px solid color-mix(in srgb, var(--app-link-color) 42%, var(--app-border-color));
+        top: 1.75rem;
+        left: -1.35rem;
+        width: 0.7rem;
+        height: 0.7rem;
+        border: 2px solid var(--app-link-color);
         border-radius: 999px;
         background: var(--app-background-color);
-        color: var(--app-link-color);
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.04em;
+        content: '';
       }
 
       .experience-card {
         position: relative;
-        overflow: hidden;
+        display: grid;
+        grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+        gap: 1.25rem;
+        padding: 1.25rem;
         border: 1px solid var(--app-border-color);
-        border-radius: 1.1rem;
-        background: color-mix(in srgb, var(--app-background-color) 92%, transparent);
+        border-radius: 0.875rem;
+        background: var(--app-background-color);
       }
 
       .experience-card__header {
-        padding: 1.25rem 1.35rem;
-        border-bottom: 1px solid var(--app-border-color);
-        background: color-mix(in srgb, var(--app-link-color) 8%, transparent);
+        min-width: 0;
       }
 
       .experience-card__identity {
-        display: flex;
-        align-items: center;
-        gap: 0.95rem;
+        display: grid;
+        gap: 0.75rem;
       }
 
       .experience-card__logo {
@@ -315,7 +289,13 @@ import { Project } from '../../models/project.model';
       }
 
       .experience-card__period {
-        font-size: 0.82rem;
+        display: block;
+        color: var(--app-text-color);
+        font-size: clamp(1.35rem, 3vw, 2rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        text-transform: none;
       }
 
       .experience-card__role {
@@ -323,11 +303,16 @@ import { Project } from '../../models/project.model';
         font-weight: 700;
       }
 
+      .experience-card__body {
+        display: grid;
+        gap: 1rem;
+        min-width: 0;
+      }
+
       .experience-card__grid {
         display: grid;
         grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
         gap: 1rem;
-        padding: 1.25rem;
       }
 
       .experience-card__block {
@@ -440,7 +425,6 @@ import { Project } from '../../models/project.model';
       .experience-card__evidence {
         display: flex;
         justify-content: flex-end;
-        padding: 0 1.25rem 1.25rem;
       }
 
       .experience-recommendation-link {
@@ -490,10 +474,19 @@ import { Project } from '../../models/project.model';
         filter: brightness(0.95);
       }
 
-      @media (max-width: 820px) {
+      @media (max-width: 900px) {
+        .experience-card,
         .experience-card__grid,
         .experience-cta {
           grid-template-columns: 1fr;
+        }
+
+        .experience-timeline {
+          padding-left: 1.1rem;
+        }
+
+        .experience-timeline__item::before {
+          left: -0.95rem;
         }
 
         .experience-card__block--context,
@@ -516,34 +509,17 @@ import { Project } from '../../models/project.model';
           padding-inline: 1rem;
         }
 
-        .experience-timeline::before {
-          left: 0.55rem;
+        .experience-timeline {
+          padding-left: 1rem;
         }
 
-        .experience-timeline__item {
-          padding-left: 1.8rem;
-        }
-
-        .experience-timeline__station {
-          left: 0.05rem;
-        }
-
-        .experience-timeline__year {
-          display: none;
-        }
-
-        .experience-timeline__node {
-          width: 0.95rem;
-          height: 0.95rem;
-        }
-
-        .experience-card__grid,
-        .experience-card__header {
+        .experience-card {
+          gap: 1rem;
           padding: 1rem;
         }
 
         .experience-card__identity {
-          align-items: flex-start;
+          gap: 0.65rem;
         }
 
         .experience-card__logo {
@@ -554,7 +530,6 @@ import { Project } from '../../models/project.model';
 
         .experience-card__evidence {
           justify-content: flex-start;
-          padding: 0 1rem 1rem;
         }
       }
     `,
