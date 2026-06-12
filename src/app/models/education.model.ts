@@ -1,6 +1,9 @@
 export interface FormalEducationEntry {
   id: string;
   institution: string;
+  institutionUrl?: string;
+  institutionLogoSrc?: string;
+  institutionLogoAlt?: string;
   location: string;
   achievement?: string;
   program?: string;

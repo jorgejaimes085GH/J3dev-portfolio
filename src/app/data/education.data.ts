@@ -6,10 +6,24 @@ import {
   SelfTaughtEducationEntry,
 } from '../models/education.model';
 
+const CEDEFOC_INSTITUTION = {
+  institution: 'Corporación Técnica CEDEFOC',
+  institutionUrl: 'https://cedefoc.edu.co/',
+  institutionLogoSrc: 'assets/images/logos/institutions/cedefoc-logo.webp',
+  institutionLogoAlt: 'CEDEFOC logo',
+} as const;
+
+const UNAD_INSTITUTION = {
+  institution: 'Universidad Nacional Abierta y a Distancia (UNAD)',
+  institutionUrl: 'https://www.unad.edu.co/',
+  institutionLogoSrc: 'assets/images/logos/institutions/unad-logo.webp',
+  institutionLogoAlt: 'UNAD logo',
+} as const;
+
 const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
   {
     id: 'cedefoc-high-school-diploma',
-    institution: 'CEDEFOC',
+    ...CEDEFOC_INSTITUTION,
     location: 'Floridablanca, Santander, Colombia',
     achievement: 'Academic High School Diploma',
     year: '2004',
@@ -17,7 +31,7 @@ const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
   },
   {
     id: 'unad-systems-technology',
-    institution: 'UNAD',
+    ...UNAD_INSTITUTION,
     location: 'Bucaramanga, Santander, Colombia',
     program: 'Systems Technology',
     period: '2010 - 2014',
@@ -27,7 +41,7 @@ const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
   },
   {
     id: 'unad-systems-engineering',
-    institution: 'UNAD',
+    ...UNAD_INSTITUTION,
     location: 'Bucaramanga, Santander, Colombia',
     program: 'Systems Engineering',
     period: '2015 - 2019',
@@ -37,7 +51,7 @@ const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
   },
   {
     id: 'unad-systems-engineering-completion',
-    institution: 'UNAD',
+    ...UNAD_INSTITUTION,
     location: 'Bucaramanga, Santander, Colombia',
     program: 'Systems Engineering',
     period: '2026',
