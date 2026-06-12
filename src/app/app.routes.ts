@@ -5,6 +5,7 @@ import { About } from './pages/about/about';
 import { Contact } from './pages/contact/contact';
 import { Documents } from './pages/documents/documents';
 import { Education } from './pages/education/education';
+import { Experience } from './pages/experience/experience';
 import { Home } from './pages/home/home';
 import { Journey } from './pages/journey/journey';
 import { ProjectDetailPage } from './pages/projects/project-detail-page/project-detail-page';
@@ -22,6 +23,7 @@ export const routes: Routes = [
       { path: 'why-hire-me', component: WhyHireMe, title: 'How I Add Value | J3dev Portfolio' },
       { path: 'skills', component: Skills, title: 'Skills | J3dev Portfolio' },
       { path: 'projects', component: ProjectsPage, title: 'Projects | J3dev Portfolio' },
+      { path: 'experience', component: Experience, title: 'Experience | J3dev Portfolio' },
       {
         path: 'projects/:projectId',
         component: ProjectDetailPage,
