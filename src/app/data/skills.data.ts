@@ -42,9 +42,9 @@ const SKILL_ITEMS: Skill[] = [
     backendGroup: 'Platform & Language',
     shortDescription: 'Primary language for modern backend and maintainable application code.',
     iconLabel: 'C#',
-    relatedProjectSlugs: ['worker', 'ithelpcenter', 'discovery', 'testigo-electoral'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'discovery', 'testigo-electoral'],
     evidenceSummary:
-      'C# supports Worker modernization and LeverIT enterprise work, including maintainable backend-oriented implementation and REST API responsibilities.',
+      'C# supports Worker modernization, Expensux, and LeverIT enterprise projects through direct backend, API, and business logic implementation responsibilities.',
   },
   {
     id: 'aspnet-core',
@@ -66,7 +66,7 @@ const SKILL_ITEMS: Skill[] = [
     iconLabel: '↔',
     relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'testigo-electoral'],
     evidenceSummary:
-      'REST API concepts are part of Worker modernization, Expensux, and LeverIT enterprise work that separated backend responsibilities from frontend workflows.',
+      'REST API concepts are represented in Worker, Expensux, ItHelpCenter, and Testigo Electoral through HTTP boundaries that separated backend responsibilities from frontend workflows.',
   },
   {
     id: 'jwt',
@@ -86,9 +86,9 @@ const SKILL_ITEMS: Skill[] = [
     backendGroup: 'Data Access & Querying',
     shortDescription: 'Lightweight data access for SQL-backed application flows.',
     iconLabel: 'DP',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'discovery'],
     evidenceSummary:
-      'Dapper is connected to SQL Server and stored procedure usage in Worker modernization and Expensux API data access concepts.',
+      'Dapper is connected to SQL Server-oriented data access in Worker, Expensux, ItHelpCenter, and Discovery enterprise workflows.',
   },
   {
     id: 'ado-net',
@@ -97,9 +97,9 @@ const SKILL_ITEMS: Skill[] = [
     backendGroup: 'Data Access & Querying',
     shortDescription: 'Legacy data access experience from production desktop systems.',
     iconLabel: 'ADO',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'testigo-electoral'],
     evidenceSummary:
-      'Worker began as an Access and VB.NET application using ADO.NET, providing practical experience maintaining and evolving legacy data access code.',
+      'ADO.NET is represented by Worker legacy data access and Testigo Electoral direct SQL Server data access, providing practical experience with lower-level data operations.',
   },
   {
     id: 'linq',
@@ -144,7 +144,7 @@ const SKILL_ITEMS: Skill[] = [
       'odontology',
     ],
     evidenceSummary:
-      'SQL Server supports 8 project contexts across Worker, Expensux, LeverIT enterprise projects, and Avances Software products, including production maintenance, migrations, business workflows, and clinical systems.',
+      'SQL Server supports 8 project contexts: Worker, Expensux, ItHelpCenter, Discovery, Testigo Electoral, Manager Plus, Manager Clinic, and Odontology, including production maintenance, migrations, business workflows, and clinical systems.',
   },
   {
     id: 'stored-procedures',
@@ -247,14 +247,14 @@ const SKILL_ITEMS: Skill[] = [
   },
   {
     id: 'layered-architecture',
-    name: 'Layered Architecture',
+    name: 'Backend Architecture',
     category: 'Architecture',
     shortDescription:
       'Organizing applications so UI, API, business logic, and data concerns stay clear.',
     iconLabel: 'LAY',
-    relatedProjectSlugs: ['worker', 'expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter'],
     evidenceSummary:
-      'Layered architecture is central to the Worker modernization path and Expensux API/frontend separation.',
+      'Backend architecture evidence is represented by Worker modernization, Expensux API/backend organization, and ItHelpCenter enterprise technical structure where maintainable boundaries mattered.',
   },
   {
     id: 'clean-code',
@@ -480,7 +480,14 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Soft Skills',
     shortDescription: 'Understanding existing systems before proposing technical changes.',
     iconLabel: 'TA',
-    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'manager-plus', 'manager-clinic', 'odontology'],
+    relatedProjectSlugs: [
+      'worker',
+      'expensux',
+      'ithelpcenter',
+      'manager-plus',
+      'manager-clinic',
+      'odontology',
+    ],
     evidenceSummary:
       'Technical analysis is represented by Worker, Expensux, ItHelpCenter, Manager Plus, Manager Clinic, and Odontology, where existing behavior, requirements, data constraints, and business workflows must be understood before safe implementation or modernization.',
   },
@@ -732,7 +739,7 @@ const BACKEND_SKILL_GROUPS_ES: BackendSkillGroup[] = BACKEND_SKILL_GROUPS_EN.map
 
 const skillNameEsMap: Record<string, string> = {
   'responsive-design': 'Diseño responsive',
-  'layered-architecture': 'Arquitectura por capas',
+  'layered-architecture': 'Arquitectura backend',
   'clean-code': 'Clean code',
   'api-design': 'Diseño de API',
   'azure-learning': 'Aprendizaje de Azure',
@@ -773,7 +780,7 @@ const skillSpanishDescriptions: Record<
   csharp: {
     shortDescription: 'Lenguaje principal para backend moderno y código de aplicación mantenible.',
     evidenceSummary:
-      'C# apoya la modernización de Worker y trabajo empresarial en LeverIT, incluyendo implementación orientada a backend y responsabilidades REST API.',
+      'C# apoya Worker, Expensux, ItHelpCenter, Discovery y Testigo Electoral mediante implementación directa de backend, APIs y lógica de negocio.',
   },
   'aspnet-core': {
     shortDescription:
@@ -784,7 +791,7 @@ const skillSpanishDescriptions: Record<
   'rest-apis': {
     shortDescription: 'Límites HTTP API para separar responsabilidades frontend y backend.',
     evidenceSummary:
-      'Los conceptos REST API hacen parte de la modernización de Worker, Expensux y trabajo empresarial en LeverIT que separa responsabilidades backend de flujos frontend.',
+      'Los conceptos REST API se representan en Worker, Expensux, ItHelpCenter y Testigo Electoral mediante límites HTTP que separan responsabilidades backend de flujos frontend.',
   },
   jwt: {
     shortDescription: 'Conceptos de autenticación basada en tokens para flujos protegidos por API.',
@@ -794,13 +801,13 @@ const skillSpanishDescriptions: Record<
   dapper: {
     shortDescription: 'Acceso liviano a datos para flujos de aplicación respaldados por SQL.',
     evidenceSummary:
-      'Dapper se conecta con SQL Server y procedimientos almacenados en la modernización de Worker y conceptos de acceso a datos de Expensux.',
+      'Dapper se conecta con acceso a datos orientado a SQL Server en Worker, Expensux, ItHelpCenter y Discovery dentro de flujos empresariales.',
   },
   'sql-server': {
     shortDescription:
       'Experiencia en base de datos relacional para flujos de negocio, consultas y procedimientos almacenados.',
     evidenceSummary:
-      'SQL Server aparece en 8 contextos de proyecto: Worker, Expensux, proyectos empresariales LeverIT y productos de Avances Software, con foco en integridad de datos, migraciones, flujos de negocio y sistemas clínicos.',
+      'SQL Server aparece en 8 contextos de proyecto: Worker, Expensux, ItHelpCenter, Discovery, Testigo Electoral, Manager Plus, Manager Clinic y Odontology, con foco en integridad de datos, migraciones, flujos de negocio y sistemas clínicos.',
   },
   'database-design': {
     shortDescription:
@@ -834,7 +841,7 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Separación de responsabilidades para que las soluciones sean más fáciles de mantener y extender.',
     evidenceSummary:
-      'La arquitectura por capas se refleja en modernización .NET, APIs y decisiones de diseño orientadas a sistemas de largo plazo.',
+      'La arquitectura backend se refleja en Worker, Expensux e ItHelpCenter mediante organización técnica, separación de responsabilidades y decisiones orientadas a mantenimiento.',
   },
   git: {
     shortDescription: 'Control de versiones para seguimiento de cambios y colaboración.',
@@ -898,7 +905,7 @@ const skillSpanishDescriptions: Record<
   'ado-net': {
     shortDescription: 'Experiencia de acceso a datos legacy desde sistemas desktop en producción.',
     evidenceSummary:
-      'Worker inició como aplicación Access y VB.NET usando ADO.NET, aportando experiencia práctica en mantenimiento y evolución de acceso a datos legacy.',
+      'ADO.NET se representa en Worker y Testigo Electoral mediante acceso directo a datos y operaciones SQL Server descritas a nivel público seguro.',
   },
   linq: {
     shortDescription: 'Patrones de consulta y transformación para lógica C# legible.',
