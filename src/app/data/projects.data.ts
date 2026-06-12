@@ -1,74 +1,119 @@
 import { Project, ProjectTimeBlock } from '../models/project.model';
 
-const ESTIMATED_TIME_BLOCKS: ProjectTimeBlock[] = [
+const WORKER_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
   {
-    label: 'Database architecture',
-    duration: 'Estimated planning range: 2-4 weeks',
-    note: 'Data modeling and storage decisions are summarized without exposing private schema details.',
+    label: 'Professional Investment Context',
+    duration: 'Initial build from September 2014 to production release in November 2015',
+    note: 'Participated in use cases, requirements gathering, UML design, architecture, database design, implementation, testing, and production rollout.',
   },
   {
-    label: 'API implementation',
-    duration: 'Estimated implementation range: 3-6 weeks',
-    note: 'Backend implementation scope is described at a high level only.',
-  },
-  { label: 'Swagger/API testing', duration: 'Estimated review range: 1-2 weeks' },
-  { label: 'Frontend implementation', duration: 'Estimated implementation range: 4-8 weeks' },
-  { label: 'Frontend testing', duration: 'Estimated validation range: 1-3 weeks' },
-  {
-    label: 'Documentation / review',
-    duration: 'Estimated review range: 1-2 weeks',
-    note: 'Review time includes notes for maintainability and future handoff.',
+    label: 'Long-term evolution',
+    duration: 'More than one year of initial construction followed by a decade of functional and technological evolution',
+    note: 'Progressive modernization from Access and VB.NET toward SQL Server, layered architecture, WPF, and modern .NET technologies.',
   },
 ];
 
-const LEVERIT_ESTIMATED_TIME_BLOCKS: ProjectTimeBlock[] = [
+const EXPENSUX_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
   {
-    label: 'Production maintenance and support',
-    duration: 'Multi-year professional involvement',
+    label: 'Professional Investment Context',
+    duration: 'Approximate initial build: 4 to 6 weeks',
+    note: 'Participated in functional design, architecture, database design, backend API, Angular frontend, and testing.',
+  },
+  {
+    label: 'Project summary',
+    duration: 'Personal project built from scratch',
+    note: 'Demonstrates modern .NET architecture, REST APIs, JWT, Dapper, SQL Server, and Angular.',
+  },
+];
+
+const ITHELPCENTER_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
+  {
+    label: 'Professional Investment Context',
+    duration: 'Professional participation for more than 10 years',
+    note: 'Contributions included backend, frontend, SQL Server, query optimization, functional evolution, new modules, smart searches, and UX improvements.',
+  },
+  {
+    label: 'Project summary',
+    duration: 'Continuous work on a real production enterprise platform',
     note: 'Scope is summarized without exposing client workflows, source code, or internal operational details.',
   },
+];
+
+const DISCOVERY_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
   {
-    label: 'Feature improvements',
-    duration: 'Iterative enterprise release work',
-    note: 'Enhancements are described by capability area rather than proprietary implementation details.',
+    label: 'Professional Investment Context',
+    duration: 'Professional participation for more than 5 years',
+    note: 'Contributions included SQL Server, ASP.NET, WebSockets, continuous inventory, functional evolution, and production support.',
   },
   {
-    label: 'Database and backend work',
-    duration: 'Ongoing enterprise delivery cycles',
-    note: 'SQL Server, API, and server-side responsibilities are represented at a public-safe level.',
-  },
-  {
-    label: 'Frontend and user experience work',
-    duration: 'Incremental improvement work',
-    note: 'UI behavior, search, and workflow updates are generalized for confidentiality.',
-  },
-  {
-    label: 'Team coordination and conventions',
-    duration: 'Recurring team collaboration',
-    note: 'Includes alignment with team practices, maintainability expectations, and handoff-friendly changes.',
+    label: 'Project summary',
+    duration: 'Continuous work across enterprise releases',
+    note: 'Supported inventory improvements and functionality evolution while keeping proprietary implementation details private.',
   },
 ];
 
-const AVANCES_ESTIMATED_TIME_BLOCKS: ProjectTimeBlock[] = [
+const TESTIGO_ELECTORAL_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
   {
-    label: 'Legacy product maintenance',
-    duration: 'Professional enterprise systems experience',
+    label: 'Professional Investment Context',
+    duration: 'Approximate build: one month',
+    note: 'Participated in Angular, REST APIs, SQL Server, business rules, and information validation.',
+  },
+  {
+    label: 'Project summary',
+    duration: 'Enterprise project built for a real client',
+    note: 'Delivered around specific electoral auditing requirements while keeping private client details protected.',
+  },
+];
+
+const J3DEV_PORTFOLIO_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
+  {
+    label: 'Professional Investment Context',
+    duration: 'Active personal project',
+    note: 'Participated in data-driven architecture, Angular implementation, internationalization, multi-theme UX, and responsive design.',
+  },
+  {
+    label: 'Project summary',
+    duration: 'Professional lab for modern frontend architecture',
+    note: 'Demonstrates portfolio engineering discipline, full stack communication context, and maintainable Angular implementation.',
+  },
+];
+
+const MANAGER_PLUS_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
+  {
+    label: 'Professional Investment Context',
+    duration: 'Approximately one year of professional participation inside Avances Software',
+    note: 'Contributions included FoxPro to SQL Server migration, database normalization, incident correction, new functionality, reports, and Excel integrations.',
+  },
+  {
+    label: 'Project summary',
+    duration: 'Evolution of an enterprise ERP used by multiple organizations',
     note: 'Historical production context is summarized without exposing proprietary source code or client data.',
   },
+];
+
+const MANAGER_CLINIC_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
   {
-    label: 'Database migration support',
-    duration: 'FoxPro to SQL Server transition work',
-    note: 'Migration responsibilities are described by capability area, including normalization, query improvement, and operational continuity.',
+    label: 'Professional Investment Context',
+    duration: 'Approximately one year of professional participation inside Avances Software',
+    note: 'Contributions included FoxPro to SQL Server migration, query optimization, maintenance, functional improvements, and production support.',
   },
   {
-    label: 'Functional enhancements',
-    duration: 'Iterative business workflow improvements',
-    note: 'Feature and reporting work is generalized to protect implementation details.',
+    label: 'Project summary',
+    duration: 'Clinical platform for patients, appointments, and medical history management',
+    note: 'Historical production context is summarized without exposing proprietary source code or client data.',
+  },
+];
+
+const ODONTOLOGY_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
+  {
+    label: 'Professional Investment Context',
+    duration: 'Approximately one year of professional participation inside Avances Software',
+    note: 'Contributions included FoxPro to SQL Server migration, maintenance, optimization, reporting, and functional improvements.',
   },
   {
-    label: 'Production support',
-    duration: 'Bug fixing and operational follow-up',
-    note: 'Support experience is presented as public-safe enterprise evidence.',
+    label: 'Project summary',
+    duration: 'Specialized platform for dental practice management',
+    note: 'Historical production context is summarized without exposing proprietary source code or client data.',
   },
 ];
 
@@ -112,7 +157,7 @@ const PROJECT_ITEMS: Project[] = [
       'Excel Export',
       'Reporting',
     ],
-    timeBlocks: ESTIMATED_TIME_BLOCKS,
+    timeBlocks: WORKER_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'Paso Television company reference',
@@ -179,7 +224,7 @@ const PROJECT_ITEMS: Project[] = [
       'Clean Architecture',
       'SOLID',
     ],
-    timeBlocks: ESTIMATED_TIME_BLOCKS,
+    timeBlocks: EXPENSUX_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'Demo availability note',
@@ -232,7 +277,7 @@ const PROJECT_ITEMS: Project[] = [
       'Search UX',
       'AI-assisted UX',
     ],
-    timeBlocks: LEVERIT_ESTIMATED_TIME_BLOCKS,
+    timeBlocks: ITHELPCENTER_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'Official ItHelpCenter reference',
@@ -281,7 +326,7 @@ const PROJECT_ITEMS: Project[] = [
       'Enterprise Software',
       'Business Rules',
     ],
-    timeBlocks: LEVERIT_ESTIMATED_TIME_BLOCKS,
+    timeBlocks: TESTIGO_ELECTORAL_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'LeverIT company reference',
@@ -329,7 +374,7 @@ const PROJECT_ITEMS: Project[] = [
       'Enterprise Software',
       'Continuous Inventory',
     ],
-    timeBlocks: LEVERIT_ESTIMATED_TIME_BLOCKS,
+    timeBlocks: DISCOVERY_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'Official Discovery reference',
@@ -378,7 +423,7 @@ const PROJECT_ITEMS: Project[] = [
       'Static Data',
       'Multi-language',
     ],
-    timeBlocks: ESTIMATED_TIME_BLOCKS,
+    timeBlocks: J3DEV_PORTFOLIO_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'GitHub repository',
@@ -416,7 +461,7 @@ const PROJECT_ITEMS: Project[] = [
       'Experience is positioned as historical enterprise systems evidence and does not visually compete with Tier 1 featured projects.',
     ],
     technologies: ['FoxPro', 'SQL Server', 'Reporting', 'Database Design', 'Database Migration'],
-    timeBlocks: AVANCES_ESTIMATED_TIME_BLOCKS,
+    timeBlocks: MANAGER_PLUS_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'Official Manager Plus reference',
@@ -456,7 +501,7 @@ const PROJECT_ITEMS: Project[] = [
       'Experience is positioned as historical enterprise systems evidence and does not visually compete with Tier 1 featured projects.',
     ],
     technologies: ['FoxPro', 'SQL Server', 'Reporting', 'Database Design', 'Database Migration'],
-    timeBlocks: AVANCES_ESTIMATED_TIME_BLOCKS,
+    timeBlocks: MANAGER_CLINIC_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'Official Manager Clinic reference',
@@ -496,7 +541,7 @@ const PROJECT_ITEMS: Project[] = [
       'Experience is positioned as historical enterprise systems evidence and does not visually compete with Tier 1 featured projects.',
     ],
     technologies: ['FoxPro', 'SQL Server', 'Reporting', 'Database Design', 'Database Migration'],
-    timeBlocks: AVANCES_ESTIMATED_TIME_BLOCKS,
+    timeBlocks: ODONTOLOGY_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
         label: 'Official Avances products reference',
@@ -628,77 +673,116 @@ const projectSpanishText: Record<string, Partial<Project>> = {
   },
 };
 
-const projectTimeBlocksEs: ProjectTimeBlock[] = [
-  {
-    label: 'Arquitectura de base de datos',
-    duration: 'Rango estimado de planeación: 2-4 semanas',
-    note: 'Las decisiones de modelado y almacenamiento se resumen sin exponer detalles privados de esquema.',
-  },
-  {
-    label: 'Implementación de API',
-    duration: 'Rango estimado de implementación: 3-6 semanas',
-    note: 'El alcance de implementación backend se describe solo a alto nivel.',
-  },
-  { label: 'Swagger / pruebas de API', duration: 'Rango estimado de revisión: 1-2 semanas' },
-  { label: 'Implementación frontend', duration: 'Rango estimado de implementación: 4-8 semanas' },
-  { label: 'Pruebas frontend', duration: 'Rango estimado de validación: 1-3 semanas' },
-  {
-    label: 'Documentación / revisión',
-    duration: 'Rango estimado de revisión: 1-2 semanas',
-    note: 'La revisión incluye notas de mantenibilidad y transferencia futura.',
-  },
-];
-
-const leveritEstimatedTimeBlocksEs: ProjectTimeBlock[] = [
-  {
-    label: 'Mantenimiento y soporte en producción',
-    duration: 'Participación profesional de varios años',
-    note: 'El alcance se resume sin exponer flujos de clientes, código fuente ni detalles operativos internos.',
-  },
-  {
-    label: 'Mejoras funcionales',
-    duration: 'Trabajo iterativo de releases empresariales',
-    note: 'Las mejoras se describen por área de capacidad, no por detalles propietarios de implementación.',
-  },
-  {
-    label: 'Trabajo de base de datos y backend',
-    duration: 'Ciclos continuos de entrega empresarial',
-    note: 'SQL Server, API y responsabilidades server-side se representan a un nivel seguro para publicación.',
-  },
-  {
-    label: 'Trabajo frontend y experiencia de usuario',
-    duration: 'Trabajo incremental de mejora',
-    note: 'El comportamiento UI, búsqueda y actualizaciones de flujos se generalizan por confidencialidad.',
-  },
-  {
-    label: 'Coordinación de equipo y convenciones',
-    duration: 'Colaboración recurrente con el equipo',
-    note: 'Incluye alineación con prácticas del equipo, expectativas de mantenibilidad y cambios fáciles de transferir.',
-  },
-];
-
-const avancesEstimatedTimeBlocksEs: ProjectTimeBlock[] = [
-  {
-    label: 'Mantenimiento de producto legacy',
-    duration: 'Experiencia profesional en sistemas empresariales',
-    note: 'El contexto histórico de producción se resume sin exponer código fuente propietario ni datos de clientes.',
-  },
-  {
-    label: 'Soporte de migración de base de datos',
-    duration: 'Trabajo de transición de FoxPro a SQL Server',
-    note: 'Las responsabilidades de migración se describen por área de capacidad, incluyendo normalización, mejora de consultas y continuidad operativa.',
-  },
-  {
-    label: 'Mejoras funcionales',
-    duration: 'Mejoras iterativas de flujos de negocio',
-    note: 'El trabajo funcional y de reportes se generaliza para proteger detalles de implementación.',
-  },
-  {
-    label: 'Soporte en producción',
-    duration: 'Corrección de bugs y seguimiento operativo',
-    note: 'La experiencia de soporte se presenta como evidencia empresarial segura para publicación.',
-  },
-];
+const projectTimeBlocksEsById: Record<string, ProjectTimeBlock[]> = {
+  worker: [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Construcción inicial desde septiembre de 2014 hasta salida a producción en noviembre de 2015',
+      note: 'Participación en casos de uso, levantamiento de requerimientos, diseño UML, arquitectura, diseño de base de datos, implementación, pruebas y producción.',
+    },
+    {
+      label: 'Evolución de largo plazo',
+      duration: 'Más de un año de construcción inicial seguido por una década de evolución funcional y tecnológica',
+      note: 'Modernización progresiva desde Access y VB.NET hacia SQL Server, arquitectura en capas, WPF y tecnologías .NET modernas.',
+    },
+  ],
+  expensux: [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Construcción inicial aproximada: 4 a 6 semanas',
+      note: 'Participación en diseño funcional, arquitectura, diseño de base de datos, backend API, frontend Angular y pruebas.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Proyecto personal construido desde cero',
+      note: 'Demuestra arquitectura moderna .NET, APIs REST, JWT, Dapper, SQL Server y Angular.',
+    },
+  ],
+  ithelpcenter: [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Participación profesional durante más de 10 años',
+      note: 'Contribuciones en backend, frontend, SQL Server, optimización de consultas, evolución funcional, nuevos módulos, búsquedas inteligentes y mejoras UX.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Trabajo continuo en una plataforma empresarial utilizada en producción real',
+      note: 'El alcance se resume sin exponer flujos de clientes, código fuente ni detalles operativos internos.',
+    },
+  ],
+  discovery: [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Participación profesional durante más de 5 años',
+      note: 'Contribuciones en SQL Server, ASP.NET, WebSockets, inventario continuo, evolución funcional y soporte de producción.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Trabajo continuo en releases empresariales',
+      note: 'Apoyó mejoras de inventario y evolución de funcionalidades manteniendo privados los detalles propietarios de implementación.',
+    },
+  ],
+  'testigo-electoral': [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Construcción aproximada: un mes',
+      note: 'Participación en Angular, APIs REST, SQL Server, reglas de negocio y validación de información.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Proyecto empresarial construido para un cliente real',
+      note: 'Entregado alrededor de requerimientos específicos de auditoría electoral protegiendo detalles privados del cliente.',
+    },
+  ],
+  'j3dev-portfolio': [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Proyecto personal activo',
+      note: 'Participación en arquitectura data driven, Angular, internacionalización, multi-theme y responsive design.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Laboratorio profesional para arquitectura frontend moderna',
+      note: 'Demuestra disciplina de ingeniería de portfolio, contexto Full Stack y mantenibilidad en Angular.',
+    },
+  ],
+  'manager-plus': [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Participación profesional durante aproximadamente un año dentro de Avances Software',
+      note: 'Contribuciones en migración FoxPro a SQL Server, normalización de base de datos, corrección de incidencias, nuevas funcionalidades, reportes e integraciones con Excel.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Evolución de ERP empresarial utilizado por múltiples organizaciones',
+      note: 'El contexto histórico de producción se resume sin exponer código fuente propietario ni datos de clientes.',
+    },
+  ],
+  'manager-clinic': [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Participación profesional durante aproximadamente un año dentro de Avances Software',
+      note: 'Contribuciones en migración FoxPro a SQL Server, optimización de consultas, mantenimiento, mejoras funcionales y soporte de producción.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Plataforma clínica para gestión de pacientes, citas e historia médica',
+      note: 'El contexto histórico de producción se resume sin exponer código fuente propietario ni datos de clientes.',
+    },
+  ],
+  odontology: [
+    {
+      label: 'Contexto de inversión profesional',
+      duration: 'Participación profesional durante aproximadamente un año dentro de Avances Software',
+      note: 'Contribuciones en migración FoxPro a SQL Server, mantenimiento, optimización, reportería y mejoras funcionales.',
+    },
+    {
+      label: 'Resumen del proyecto',
+      duration: 'Plataforma especializada para gestión odontológica',
+      note: 'El contexto histórico de producción se resume sin exponer código fuente propietario ni datos de clientes.',
+    },
+  ],
+};
 
 const projectSpanishDetails: Record<
   string,
@@ -965,23 +1049,14 @@ const projectSpanishDetails: Record<
   },
 };
 
-const getSpanishTimeBlocks = (timeBlocks: ProjectTimeBlock[]): ProjectTimeBlock[] => {
-  if (timeBlocks === ESTIMATED_TIME_BLOCKS) {
-    return projectTimeBlocksEs;
-  }
-
-  if (timeBlocks === AVANCES_ESTIMATED_TIME_BLOCKS) {
-    return avancesEstimatedTimeBlocksEs;
-  }
-
-  return leveritEstimatedTimeBlocksEs;
-};
+const getSpanishTimeBlocks = (projectId: string): ProjectTimeBlock[] =>
+  projectTimeBlocksEsById[projectId];
 
 const PROJECTS_ES: Project[] = PROJECTS_EN.map((project) => ({
   ...project,
   ...projectSpanishText[project.id],
   ...projectSpanishDetails[project.id],
-  timeBlocks: getSpanishTimeBlocks(project.timeBlocks),
+  timeBlocks: getSpanishTimeBlocks(project.id),
 }));
 
 export const PROJECTS = {
