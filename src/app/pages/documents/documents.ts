@@ -28,7 +28,11 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
 
           <div class="document-grid" [attr.aria-label]="group.title + ' document cards'">
             @for (document of group.documents; track document.id) {
-              <article class="document-card" [attr.aria-labelledby]="document.id + '-title'">
+              <article
+                class="document-card"
+                [id]="document.id"
+                [attr.aria-labelledby]="document.id + '-title'"
+              >
                 <div class="document-card__header">
                   <div class="document-card__title-group">
                     <span class="document-card__icon" aria-hidden="true">

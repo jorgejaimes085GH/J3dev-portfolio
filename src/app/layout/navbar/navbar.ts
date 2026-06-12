@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, ElementRef, HostListener, inject, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { LanguageService } from '../../core/services/language.service';
 import { NavigationService } from '../../core/services/navigation.service';
@@ -31,6 +31,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
         <a
           class="site-header__brand"
           routerLink="/"
+          (click)="closeDropdown()"
           [attr.aria-label]="uiText().header.portfolioHome"
         >
           <span class="site-header__logo-frame" aria-hidden="true">
@@ -52,7 +53,15 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
         >
           <ul class="site-nav__list">
             @for (item of navigationItems(); track item.path) {
-              <li class="site-nav__item" [class.site-nav__item--has-children]="item.children?.length">
+              <li
+                class="site-nav__item"
+                [class.site-nav__item--has-children]="item.children?.length"
+                [class.site-nav__item--submenu-open]="isDropdownOpen(item.path)"
+                (mouseenter)="openDropdown(item.path, !!item.children?.length)"
+                (mouseleave)="closeDropdown(item.path)"
+                (focusin)="openDropdown(item.path, !!item.children?.length)"
+                (focusout)="handleDropdownFocusOut($event, item.path)"
+              >
                 <a
                   class="site-nav__link"
                   [class.site-nav__link--long]="item.labelKey === 'value'"
@@ -62,6 +71,10 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                   [attr.aria-label]="item.label"
                   [attr.title]="item.label"
                   [attr.aria-haspopup]="item.children?.length ? 'true' : null"
+                  [attr.aria-expanded]="item.children?.length ? isDropdownOpen(item.path) : null"
+                  [attr.aria-controls]="item.children?.length ? submenuId(item.path) : null"
+                  (click)="handleNavigationClick(item.path, !!item.children?.length)"
+                  (keydown.escape)="closeDropdown(item.path)"
                 >
                   <span class="site-nav__icon-frame" aria-hidden="true">
                     @if (item.iconUrl) {
@@ -94,7 +107,11 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                 </a>
 
                 @if (item.children?.length) {
-                  <ul class="site-nav__submenu" [attr.aria-label]="item.label">
+                  <ul
+                    class="site-nav__submenu"
+                    [id]="submenuId(item.path)"
+                    [attr.aria-label]="item.label"
+                  >
                     @for (child of item.children; track child.path) {
                       <li class="site-nav__submenu-item">
                         <a
@@ -105,6 +122,8 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                           [routerLinkActiveOptions]="{ exact: true }"
                           [attr.aria-label]="child.label"
                           [attr.title]="child.label"
+                          (click)="closeDropdown(item.path)"
+                          (keydown.escape)="closeDropdown(item.path)"
                         >
                           {{ child.label }}
                         </a>
@@ -158,9 +177,11 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly languageService = inject(LanguageService);
   private readonly navigationService = inject(NavigationService);
   private readonly viewportPreviewService = inject(ViewportPreviewService);
+  private readonly router = inject(Router);
 
   readonly navigationItems = this.navigationService.mainNavigation;
   readonly uiText = this.languageService.uiText;
@@ -170,6 +191,15 @@ export class Navbar {
 
   protected readonly pinIconUrl = 'assets/images/icons/actions/pin.svg';
   protected readonly pinOffIconUrl = 'assets/images/icons/actions/pin-off.svg';
+  protected readonly openDropdownPath = signal<string | null>(null);
+
+  constructor() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.closeDropdown();
+      }
+    });
+  }
 
   protected get pinToggleLabel(): string {
     return this.isHeaderPinned() ? this.uiText().header.unpin : this.uiText().header.pin;
@@ -184,6 +214,53 @@ export class Navbar {
       this.currentLanguage() === 'en' ? this.uiText().header.spanish : this.uiText().header.english;
 
     return `${this.uiText().header.language}: ${nextLanguage}`;
+  }
+
+  protected submenuId(path: string): string {
+    return `site-nav-submenu-${path.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'home'}`;
+  }
+
+  protected isDropdownOpen(path: string): boolean {
+    return this.openDropdownPath() === path;
+  }
+
+  protected openDropdown(path: string, hasChildren: boolean): void {
+    if (!hasChildren) {
+      return;
+    }
+
+    this.openDropdownPath.set(path);
+  }
+
+  protected closeDropdown(path?: string): void {
+    if (!path || this.openDropdownPath() === path) {
+      this.openDropdownPath.set(null);
+    }
+  }
+
+  protected handleNavigationClick(path: string, hasChildren: boolean): void {
+    if (!hasChildren) {
+      this.closeDropdown();
+      return;
+    }
+
+    this.openDropdown(path, true);
+  }
+
+  protected handleDropdownFocusOut(event: FocusEvent, path: string): void {
+    const nextFocusedElement = event.relatedTarget as Node | null;
+    const currentItem = event.currentTarget as HTMLElement;
+
+    if (!nextFocusedElement || !currentItem.contains(nextFocusedElement)) {
+      this.closeDropdown(path);
+    }
+  }
+
+  @HostListener('document:pointerdown', ['$event'])
+  protected closeDropdownOnOutsidePointer(event: PointerEvent): void {
+    if (!this.elementRef.nativeElement.contains(event.target as Node)) {
+      this.closeDropdown();
+    }
   }
 
   protected toggleHeaderPinned(): void {
