@@ -1,5 +1,8 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, ElementRef, HostListener, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+
+import type { NavigationItem } from '../../core/constants/navigation.constants';
 
 import { LanguageService } from '../../core/services/language.service';
 import { NavigationService } from '../../core/services/navigation.service';
@@ -10,7 +13,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ThemeSwitcher, ViewportSwitcher],
+  imports: [NgTemplateOutlet, RouterLink, RouterLinkActive, ThemeSwitcher, ViewportSwitcher],
   host: {
     '[class.site-header-shell--sticky]': 'isHeaderPinned()',
     '[class.site-header-shell--static]': '!isHeaderPinned()',
@@ -58,53 +61,48 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                 [class.site-nav__item--has-children]="item.children?.length"
                 [class.site-nav__item--submenu-open]="isDropdownOpen(item.path)"
                 (mouseenter)="openDropdown(item.path, !!item.children?.length)"
-                (mouseleave)="closeDropdown(item.path)"
-                (focusin)="openDropdown(item.path, !!item.children?.length)"
+                (mouseleave)="closeDropdown(item.path, 'hover')"
                 (focusout)="handleDropdownFocusOut($event, item.path)"
               >
-                <a
-                  class="site-nav__link"
-                  [class.site-nav__link--long]="item.labelKey === 'value'"
-                  [routerLink]="item.path"
-                  routerLinkActive="site-nav__link--active"
-                  [routerLinkActiveOptions]="{ exact: item.path === '/' || item.path === '/about' }"
-                  [attr.aria-label]="item.label"
-                  [attr.title]="item.label"
-                  [attr.aria-haspopup]="item.children?.length ? 'true' : null"
-                  [attr.aria-expanded]="item.children?.length ? isDropdownOpen(item.path) : null"
-                  [attr.aria-controls]="item.children?.length ? submenuId(item.path) : null"
-                  (click)="handleNavigationClick(item.path, !!item.children?.length)"
-                  (keydown.escape)="closeDropdown(item.path)"
-                >
-                  <span class="site-nav__icon-frame" aria-hidden="true">
-                    @if (item.iconUrl) {
-                      <img
-                        class="site-nav__icon"
-                        [src]="item.iconUrl"
-                        [alt]="''"
-                        aria-hidden="true"
-                        (error)="showIconFallback($event)"
-                      />
-                      <span
-                        class="site-nav__icon-fallback site-header__icon-fallback"
-                        aria-hidden="true"
-                      >
-                        {{ item.iconFallback }}
-                      </span>
-                    } @else {
-                      <span
-                        class="site-nav__icon-fallback site-header__icon-fallback site-header__icon-fallback--visible"
-                        aria-hidden="true"
-                      >
-                        {{ item.iconFallback }}
-                      </span>
-                    }
-                  </span>
-                  <span class="site-nav__label">{{ item.label }}</span>
-                  @if (item.children?.length) {
-                    <span class="site-nav__chevron" aria-hidden="true">▾</span>
-                  }
-                </a>
+                @if (item.children?.length) {
+                  <button
+                    class="site-nav__link"
+                    type="button"
+                    [class.site-nav__link--long]="item.labelKey === 'value'"
+                    [class.site-nav__link--active]="isNavigationItemActive(item)"
+                    [attr.aria-label]="item.label"
+                    [attr.title]="item.label"
+                    aria-haspopup="true"
+                    [attr.aria-expanded]="isDropdownOpen(item.path)"
+                    [attr.aria-controls]="submenuId(item.path)"
+                    (click)="toggleDropdown(item.path)"
+                    (keydown.escape)="closeDropdown(item.path)"
+                  >
+                    <ng-container
+                      [ngTemplateOutlet]="navigationLinkContent"
+                      [ngTemplateOutletContext]="{ $implicit: item, hasChildren: true }"
+                    />
+                  </button>
+                } @else {
+                  <a
+                    class="site-nav__link"
+                    [class.site-nav__link--long]="item.labelKey === 'value'"
+                    [routerLink]="item.path"
+                    routerLinkActive="site-nav__link--active"
+                    [routerLinkActiveOptions]="{
+                      exact: item.path === '/' || item.path === '/about',
+                    }"
+                    [attr.aria-label]="item.label"
+                    [attr.title]="item.label"
+                    (click)="handleNavigationClick()"
+                    (keydown.escape)="closeDropdown()"
+                  >
+                    <ng-container
+                      [ngTemplateOutlet]="navigationLinkContent"
+                      [ngTemplateOutletContext]="{ $implicit: item, hasChildren: false }"
+                    />
+                  </a>
+                }
 
                 @if (item.children?.length) {
                   <ul
@@ -134,6 +132,34 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
               </li>
             }
           </ul>
+
+          <ng-template #navigationLinkContent let-item let-hasChildren="hasChildren">
+            <span class="site-nav__icon-frame" aria-hidden="true">
+              @if (item.iconUrl) {
+                <img
+                  class="site-nav__icon"
+                  [src]="item.iconUrl"
+                  [alt]="''"
+                  aria-hidden="true"
+                  (error)="showIconFallback($event)"
+                />
+                <span class="site-nav__icon-fallback site-header__icon-fallback" aria-hidden="true">
+                  {{ item.iconFallback }}
+                </span>
+              } @else {
+                <span
+                  class="site-nav__icon-fallback site-header__icon-fallback site-header__icon-fallback--visible"
+                  aria-hidden="true"
+                >
+                  {{ item.iconFallback }}
+                </span>
+              }
+            </span>
+            <span class="site-nav__label">{{ item.label }}</span>
+            @if (hasChildren) {
+              <span class="site-nav__chevron" aria-hidden="true">▾</span>
+            }
+          </ng-template>
         </nav>
 
         <div
@@ -192,10 +218,13 @@ export class Navbar {
   protected readonly pinIconUrl = 'assets/images/icons/actions/pin.svg';
   protected readonly pinOffIconUrl = 'assets/images/icons/actions/pin-off.svg';
   protected readonly openDropdownPath = signal<string | null>(null);
+  private readonly openDropdownSource = signal<'click' | 'hover' | null>(null);
+  private readonly currentPath = signal(this.router.url.split(/[?#]/)[0]);
 
   constructor() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.currentPath.set(event.urlAfterRedirects.split(/[?#]/)[0]);
         this.closeDropdown();
       }
     });
@@ -224,27 +253,55 @@ export class Navbar {
     return this.openDropdownPath() === path;
   }
 
-  protected openDropdown(path: string, hasChildren: boolean): void {
+  protected openDropdown(
+    path: string,
+    hasChildren: boolean,
+    source: 'click' | 'hover' = 'hover',
+  ): void {
     if (!hasChildren) {
+      return;
+    }
+
+    if (this.isDropdownOpen(path) && this.openDropdownSource() === 'click' && source === 'hover') {
       return;
     }
 
     this.openDropdownPath.set(path);
+    this.openDropdownSource.set(source);
   }
 
-  protected closeDropdown(path?: string): void {
-    if (!path || this.openDropdownPath() === path) {
-      this.openDropdownPath.set(null);
-    }
-  }
-
-  protected handleNavigationClick(path: string, hasChildren: boolean): void {
-    if (!hasChildren) {
-      this.closeDropdown();
+  protected closeDropdown(path?: string, source?: 'click' | 'hover'): void {
+    if (source && this.openDropdownSource() !== source) {
       return;
     }
 
-    this.openDropdown(path, true);
+    if (!path || this.openDropdownPath() === path) {
+      this.openDropdownPath.set(null);
+      this.openDropdownSource.set(null);
+    }
+  }
+
+  protected toggleDropdown(path: string): void {
+    if (this.isDropdownOpen(path) && this.openDropdownSource() === 'click') {
+      this.closeDropdown(path);
+      return;
+    }
+
+    this.openDropdown(path, true, 'click');
+  }
+
+  protected handleNavigationClick(): void {
+    this.closeDropdown();
+  }
+
+  protected isNavigationItemActive(item: NavigationItem): boolean {
+    const currentPath = this.currentPath();
+
+    if (item.children?.some((child) => child.path === currentPath)) {
+      return true;
+    }
+
+    return item.path === currentPath;
   }
 
   protected handleDropdownFocusOut(event: FocusEvent, path: string): void {

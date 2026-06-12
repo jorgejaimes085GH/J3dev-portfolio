@@ -176,6 +176,8 @@
   padding: 0.4rem clamp(0.35rem, 0.5vw, 0.62rem);
   border: 1px solid transparent;
   color: var(--app-text-color);
+  background: transparent;
+  cursor: pointer;
   font-size: clamp(0.78rem, 0.72vw, 0.88rem);
   font-weight: 650;
   line-height: 1.05;
@@ -228,6 +230,8 @@
   padding: 0.55rem 0.7rem;
   border: 1px solid transparent;
   color: var(--app-text-color);
+  background: transparent;
+  cursor: pointer;
   font-size: 0.88rem;
   font-weight: 650;
   text-decoration: none;
@@ -379,10 +383,6 @@
     position: static;
     min-width: 0;
     margin-top: 0.35rem;
-  }
-
-  .site-nav__item--has-children:not(:hover):not(:focus-within) > .site-nav__submenu {
-    display: block;
   }
 }
 
