@@ -87,6 +87,7 @@ export const UI_TEXT = {
         formalIntro:
           'Formal studies provided the foundations for logical reasoning, programming fundamentals, systems analysis, databases, software engineering, and systems design.',
         formalAria: 'Formal education entries',
+        externalWebsiteAria: 'external website',
         achievement: 'Achievement',
         program: 'Program',
         status: 'Status',
@@ -376,6 +377,7 @@ export const UI_TEXT = {
         formalIntro:
           'Los estudios formales aportaron bases para razonamiento lógico, fundamentos de programación, análisis de sistemas, bases de datos, ingeniería de software y diseño de sistemas.',
         formalAria: 'Entradas de educación formal',
+        externalWebsiteAria: 'sitio web externo',
         achievement: 'Logro',
         program: 'Programa',
         status: 'Estado',

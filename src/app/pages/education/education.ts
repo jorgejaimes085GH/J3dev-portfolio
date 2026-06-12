@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import {
@@ -51,7 +51,48 @@ import {
                 }
               </div>
 
-              <h3 [id]="entry.id + '-title'">{{ entry.institution }}</h3>
+              <div class="education-card__institution">
+                @if (entry.institutionUrl) {
+                  <a
+                    class="institution-link"
+                    [href]="entry.institutionUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    [attr.aria-label]="entry.institution + ' - ' + text().externalWebsiteAria"
+                  >
+                    <span class="institution-logo">
+                      @if (entry.institutionLogoSrc && !hasLogoFailed(entry.id)) {
+                        <img
+                          [src]="entry.institutionLogoSrc"
+                          [alt]="entry.institutionLogoAlt ?? entry.institution"
+                          (error)="markLogoFailed(entry.id)"
+                        />
+                      } @else {
+                        <span aria-hidden="true">{{ getInstitutionInitials(entry.institution) }}</span>
+                      }
+                    </span>
+
+                    <h3 [id]="entry.id + '-title'">{{ entry.institution }}</h3>
+                  </a>
+                } @else {
+                  <div class="institution-link institution-link--static">
+                    <span class="institution-logo">
+                      @if (entry.institutionLogoSrc && !hasLogoFailed(entry.id)) {
+                        <img
+                          [src]="entry.institutionLogoSrc"
+                          [alt]="entry.institutionLogoAlt ?? entry.institution"
+                          (error)="markLogoFailed(entry.id)"
+                        />
+                      } @else {
+                        <span aria-hidden="true">{{ getInstitutionInitials(entry.institution) }}</span>
+                      }
+                    </span>
+
+                    <h3 [id]="entry.id + '-title'">{{ entry.institution }}</h3>
+                  </div>
+                }
+              </div>
+
               <p class="education-card__location">{{ entry.location }}</p>
 
               <dl class="education-details">
@@ -237,7 +278,10 @@ import {
         gap: 1rem;
       }
 
-      .formal-education-list,
+      .formal-education-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .self-taught-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
@@ -274,6 +318,56 @@ import {
         gap: 0.5rem;
         margin: 0;
         font-size: 0.8rem;
+      }
+
+      .education-card__institution {
+        min-width: 0;
+      }
+
+      .institution-link {
+        display: inline-grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.85rem;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .institution-link:not(.institution-link--static):hover h3,
+      .institution-link:not(.institution-link--static):focus-visible h3 {
+        color: var(--app-link-color);
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+      }
+
+      .institution-link:focus-visible {
+        border-radius: 0.5rem;
+        outline: 2px solid var(--app-link-color);
+        outline-offset: 0.25rem;
+      }
+
+      .institution-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        overflow: hidden;
+        border: 1px solid var(--app-border-color);
+        border-radius: 0.75rem;
+        background: color-mix(in srgb, var(--app-background-color) 84%, var(--app-link-color));
+        color: var(--app-link-color);
+        flex: 0 0 auto;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .institution-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 0.35rem;
       }
 
       .education-card__location {
@@ -411,6 +505,7 @@ import {
 })
 export class Education {
   private readonly languageService = inject(LanguageService);
+  private readonly failedInstitutionLogoIds = signal<ReadonlySet<string>>(new Set());
 
   protected readonly text = computed(() => this.languageService.uiText().pages.education);
 
@@ -429,4 +524,32 @@ export class Education {
   protected readonly ctaLinks = computed(() =>
     getLocalizedData(EDUCATION_CTA_LINKS, this.languageService.currentLanguage()),
   );
+
+  protected hasLogoFailed(entryId: string): boolean {
+    return this.failedInstitutionLogoIds().has(entryId);
+  }
+
+  protected markLogoFailed(entryId: string): void {
+    this.failedInstitutionLogoIds.update((failedIds) => {
+      const nextFailedIds = new Set(failedIds);
+      nextFailedIds.add(entryId);
+      return nextFailedIds;
+    });
+  }
+
+  protected getInstitutionInitials(institution: string): string {
+    const abbreviationMatch = institution.match(/\(([^)]+)\)/);
+
+    if (abbreviationMatch?.[1]) {
+      return abbreviationMatch[1].slice(0, 5).toUpperCase();
+    }
+
+    return institution
+      .split(/\s+/)
+      .filter((word) => /^[A-ZÁÉÍÓÚÑ]/.test(word))
+      .map((word) => word[0])
+      .join('')
+      .slice(0, 5)
+      .toUpperCase();
+  }
 }
