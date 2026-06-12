@@ -454,6 +454,7 @@ html.viewport-preview--mobile,
     .projects-section,
     .project-detail-hero,
     .project-detail-section,
+    .experience-section,
     .journey-section,
     .education-section,
     .documents-section,
@@ -483,6 +484,8 @@ html.viewport-preview--mobile,
     .skill-panel,
     .projects-section,
     .project-detail-section,
+    .experience-section,
+    .experience-cta,
     .journey-section,
     .journey-cta,
     .education-section,
@@ -505,6 +508,7 @@ html.viewport-preview--mobile,
     .project-card,
     .project-time-card,
     .project-link-card,
+    .experience-card,
     .journey-stage,
     .journey-insight-card,
     .education-section,
@@ -710,11 +714,11 @@ html.viewport-preview--mobile,
     justify-content: flex-start;
   }
 
-  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
+  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .experience-section h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
     line-height: 1.1;
   }
 
-  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
+  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .experience-section h2, .experience-cta h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
     line-height: 1.15;
   }
 
@@ -813,11 +817,11 @@ html.viewport-preview--mobile,
     grid-template-columns: minmax(0, 1fr);
   }
 
-  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
+  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .experience-section h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
     line-height: 1.1;
   }
 
-  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
+  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .experience-section h2, .experience-cta h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
     line-height: 1.15;
   }
 }
