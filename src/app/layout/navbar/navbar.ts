@@ -52,15 +52,16 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
         >
           <ul class="site-nav__list">
             @for (item of navigationItems(); track item.path) {
-              <li class="site-nav__item">
+              <li class="site-nav__item" [class.site-nav__item--has-children]="item.children?.length">
                 <a
                   class="site-nav__link"
                   [class.site-nav__link--long]="item.labelKey === 'value'"
                   [routerLink]="item.path"
                   routerLinkActive="site-nav__link--active"
-                  [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+                  [routerLinkActiveOptions]="{ exact: item.path === '/' || item.path === '/about' }"
                   [attr.aria-label]="item.label"
                   [attr.title]="item.label"
+                  [attr.aria-haspopup]="item.children?.length ? 'true' : null"
                 >
                   <span class="site-nav__icon-frame" aria-hidden="true">
                     @if (item.iconUrl) {
@@ -87,7 +88,30 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                     }
                   </span>
                   <span class="site-nav__label">{{ item.label }}</span>
+                  @if (item.children?.length) {
+                    <span class="site-nav__chevron" aria-hidden="true">▾</span>
+                  }
                 </a>
+
+                @if (item.children?.length) {
+                  <ul class="site-nav__submenu" [attr.aria-label]="item.label">
+                    @for (child of item.children; track child.path) {
+                      <li class="site-nav__submenu-item">
+                        <a
+                          class="site-nav__submenu-link"
+                          [class.site-nav__submenu-link--long]="child.labelKey === 'value'"
+                          [routerLink]="child.path"
+                          routerLinkActive="site-nav__submenu-link--active"
+                          [routerLinkActiveOptions]="{ exact: true }"
+                          [attr.aria-label]="child.label"
+                          [attr.title]="child.label"
+                        >
+                          {{ child.label }}
+                        </a>
+                      </li>
+                    }
+                  </ul>
+                }
               </li>
             }
           </ul>

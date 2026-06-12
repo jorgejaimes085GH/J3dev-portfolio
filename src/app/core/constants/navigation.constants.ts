@@ -6,6 +6,7 @@ export interface NavigationItem {
   path: string;
   iconUrl?: string;
   iconFallback: string;
+  children?: NavigationItem[];
 }
 
 export const MAIN_NAVIGATION: NavigationItem[] = [
@@ -22,13 +23,22 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     path: '/about',
     iconUrl: 'assets/images/icons/navigation/about.svg',
     iconFallback: 'A',
-  },
-  {
-    labelKey: 'value',
-    label: 'How I Add Value',
-    path: '/why-hire-me',
-    iconUrl: 'assets/images/icons/navigation/value.svg',
-    iconFallback: 'V',
+    children: [
+      {
+        labelKey: 'profile',
+        label: 'Profile',
+        path: '/about',
+        iconUrl: 'assets/images/icons/navigation/about.svg',
+        iconFallback: 'P',
+      },
+      {
+        labelKey: 'value',
+        label: 'How I Add Value',
+        path: '/why-hire-me',
+        iconUrl: 'assets/images/icons/navigation/value.svg',
+        iconFallback: 'V',
+      },
+    ],
   },
   {
     labelKey: 'skills',
@@ -43,6 +53,13 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     path: '/projects',
     iconUrl: 'assets/images/icons/navigation/projects.svg',
     iconFallback: 'P',
+  },
+  {
+    labelKey: 'experience',
+    label: 'Experience',
+    path: '/experience',
+    iconUrl: 'assets/images/icons/navigation/experience.svg',
+    iconFallback: 'X',
   },
   {
     labelKey: 'journey',

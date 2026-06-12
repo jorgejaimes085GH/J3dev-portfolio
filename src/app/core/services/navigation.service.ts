@@ -17,10 +17,13 @@ export class NavigationService {
   readonly mainNavigation = computed<NavigationItem[]>(() => {
     const navText = this.languageService.uiText().nav;
 
-    return MAIN_NAVIGATION.map((item) => ({
+    const localizeItem = (item: NavigationItem): NavigationItem => ({
       ...item,
       label: navText[item.labelKey],
-    }));
+      children: item.children?.map(localizeItem),
+    });
+
+    return MAIN_NAVIGATION.map(localizeItem);
   });
 
   constructor() {

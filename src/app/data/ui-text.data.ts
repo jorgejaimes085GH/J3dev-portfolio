@@ -3,9 +3,11 @@ export const UI_TEXT = {
     nav: {
       home: 'Home',
       about: 'About',
+      profile: 'Profile',
       value: 'How I Add Value',
       skills: 'Skills',
       projects: 'Projects',
+      experience: 'Experience',
       journey: 'Journey',
       education: 'Education',
       documents: 'Documents',
@@ -230,6 +232,28 @@ export const UI_TEXT = {
           'Continue through the portfolio sections that connect this evolution with project evidence, technical foundations, and practical team value.',
         ctaAria: 'Journey related navigation links',
       },
+      experience: {
+        eyebrow: 'Professional Experience',
+        title: 'Experience',
+        summary:
+          'A recruiter-friendly view of how Jorge evolved through real business environments, production systems, client needs, and long-term software maintenance.',
+        timelineEyebrow: 'Work Timeline',
+        timelineTitle: 'Professional evolution in real business contexts',
+        timelineIntro:
+          'This timeline focuses on workplace context, responsibilities, professional lessons, and related project evidence rather than repeating a CV or listing every technology.',
+        timelineAria: 'Professional work experience timeline',
+        context: 'Context',
+        learned: 'What I learned',
+        keyLearning: 'Key learning',
+        relatedProjects: 'Related projects',
+        noProject: 'No public project available',
+        viewProjectPrefix: 'View project',
+        ctaEyebrow: 'Experience Evidence',
+        ctaTitle: 'Connect experience with portfolio evidence',
+        ctaIntro:
+          'Continue into projects, skills, or the technical journey to see how this professional history connects with practical evidence.',
+        ctaAria: 'Experience related navigation links',
+      },
       shared: {
         projectModalPending: 'Project modal content pending final implementation',
         sectionTitlePending: 'Section title content pending final implementation',
@@ -293,9 +317,11 @@ export const UI_TEXT = {
     nav: {
       home: 'Inicio',
       about: 'Acerca de',
+      profile: 'Perfil',
       value: 'Cómo aporto valor',
       skills: 'Habilidades',
       projects: 'Proyectos',
+      experience: 'Experiencia',
       journey: 'Trayectoria',
       education: 'Educación',
       documents: 'Documentos',
@@ -519,6 +545,28 @@ export const UI_TEXT = {
         ctaIntro:
           'Continúa por las secciones del portafolio que conectan esta evolución con evidencia de proyectos, base técnica y valor práctico para equipos.',
         ctaAria: 'Enlaces relacionados con la trayectoria',
+      },
+      experience: {
+        eyebrow: 'Experiencia profesional',
+        title: 'Experiencia',
+        summary:
+          'Una vista pensada para recruiters sobre cómo Jorge evolucionó en entornos reales de negocio, sistemas en producción, necesidades de clientes y mantenimiento de software a largo plazo.',
+        timelineEyebrow: 'Línea laboral',
+        timelineTitle: 'Evolución profesional en contextos reales de negocio',
+        timelineIntro:
+          'Esta línea se enfoca en contexto laboral, responsabilidades, aprendizajes profesionales y evidencia de proyectos relacionados, sin repetir el CV ni listar cada tecnología.',
+        timelineAria: 'Línea de experiencia laboral profesional',
+        context: 'Contexto',
+        learned: 'Lo que aprendí',
+        keyLearning: 'Aprendizaje clave',
+        relatedProjects: 'Proyectos relacionados',
+        noProject: 'No hay proyecto público disponible',
+        viewProjectPrefix: 'Ver proyecto',
+        ctaEyebrow: 'Evidencia de experiencia',
+        ctaTitle: 'Conecta la experiencia con evidencia del portafolio',
+        ctaIntro:
+          'Continúa hacia proyectos, habilidades o la trayectoria técnica para ver cómo esta historia profesional se conecta con evidencia práctica.',
+        ctaAria: 'Enlaces relacionados con experiencia',
       },
       shared: {
         projectModalPending: 'Contenido del modal de proyecto pendiente de implementación final',
