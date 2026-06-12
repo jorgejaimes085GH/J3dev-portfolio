@@ -100,9 +100,9 @@ export const UI_TEXT = {
         philosophyEyebrow: 'Learning Philosophy',
         philosophyTitle: 'Learning Never Stops',
         philosophyBodyOne:
-          'Technology changes constantly, so professional development cannot depend on formal education alone. Academic study provides durable foundations, professional experience provides context, and independent learning creates the growth needed to keep improving.',
+          'Technology changes constantly, so professional development cannot depend on formal education alone. Academic study provides durable foundations, production experience provides context, and continuous learning creates the growth needed to keep improving.',
         philosophyBodyTwo:
-          'Jorge treats continuous learning as part of his professional identity: reading, researching, practicing, reviewing decisions, and adapting new approaches while keeping maintainability, business value, and usability in focus.',
+          'For Jorge, continuous learning is not only about adopting new technologies. It is also about improving software design decisions, maintainability, scalability, security, and business impact through real-world experience.',
         highlightsEyebrow: 'Education Highlights',
         highlightsTitle: 'Evidence of long-term development',
         highlightsAria: 'Education highlights',
@@ -383,9 +383,9 @@ export const UI_TEXT = {
         philosophyEyebrow: 'Filosofía de aprendizaje',
         philosophyTitle: 'El aprendizaje nunca se detiene',
         philosophyBodyOne:
-          'La tecnología cambia constantemente, por eso el desarrollo profesional no puede depender solo de la educación formal. El estudio académico aporta bases duraderas, la experiencia profesional aporta contexto y el aprendizaje independiente crea el crecimiento necesario para seguir mejorando.',
+          'La tecnología cambia constantemente, por eso el desarrollo profesional no puede depender únicamente de la educación formal. El estudio académico aporta bases duraderas, la experiencia en producción aporta contexto y el aprendizaje continuo crea el crecimiento necesario para seguir mejorando.',
         philosophyBodyTwo:
-          'Jorge trata el aprendizaje continuo como parte de su identidad profesional: leer, investigar, practicar, revisar decisiones y adaptar nuevos enfoques manteniendo en foco la mantenibilidad, el valor de negocio y la usabilidad.',
+          'Para Jorge, el aprendizaje continuo no se trata solo de adoptar nuevas tecnologías. También se trata de mejorar decisiones de diseño de software, mantenibilidad, escalabilidad, seguridad e impacto de negocio mediante experiencia real.',
         highlightsEyebrow: 'Aspectos destacados de educación',
         highlightsTitle: 'Evidencia de desarrollo a largo plazo',
         highlightsAria: 'Aspectos destacados de educación',
