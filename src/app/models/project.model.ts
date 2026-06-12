@@ -40,6 +40,7 @@ export interface Project {
   typeStatus: string;
   shortDescription: string;
   visualLabel: string;
+  ctaLabel: string;
   overviewImageUrl?: string;
   thumbnailUrl?: string;
   logoUrl?: string;

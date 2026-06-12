@@ -62,9 +62,9 @@ import { LanguageService } from '../../../core/services/language.service';
                 <a
                   class="project-card__link"
                   [routerLink]="['/projects', project.slug]"
-                  [attr.aria-label]="text().viewMoreAriaPrefix + ' ' + project.title"
+                  [attr.aria-label]="project.ctaLabel + ': ' + project.title"
                 >
-                  {{ text().viewMore }}
+                  {{ project.ctaLabel }}
                 </a>
               </div>
 
