@@ -32,13 +32,45 @@ import { Project } from '../../models/project.model';
         <ol class="experience-timeline" [attr.aria-label]="text().timelineAria">
           @for (entry of entries(); track entry.id) {
             <li class="experience-timeline__item">
-              <article class="experience-card" [attr.aria-labelledby]="entry.id + '-title'">
-                <div class="experience-card__marker" aria-hidden="true"></div>
+              <div class="experience-timeline__station" aria-hidden="true">
+                <span class="experience-timeline__node"></span>
+                <span class="experience-timeline__year">{{ entry.startYear }}</span>
+              </div>
 
+              <article class="experience-card" [attr.aria-labelledby]="entry.id + '-title'">
                 <div class="experience-card__header">
-                  <p class="experience-card__period">{{ entry.period }}</p>
-                  <h3 [id]="entry.id + '-title'">{{ entry.company }}</h3>
-                  <p class="experience-card__role">{{ entry.role }}</p>
+                  <div class="experience-card__identity">
+                    <span class="experience-card__logo" aria-hidden="true">
+                      <span>{{ entry.companyInitials || getCompanyInitials(entry.company) }}</span>
+                      @if (entry.companyLogoSrc) {
+                        <img
+                          class="experience-card__logo-image"
+                          [src]="entry.companyLogoSrc"
+                          [alt]="entry.companyLogoAlt || ''"
+                          (error)="hideFailedAsset($event)"
+                        />
+                      }
+                    </span>
+                    <div>
+                      <p class="experience-card__period">{{ entry.period }}</p>
+                      <h3 [id]="entry.id + '-title'">
+                        @if (entry.companyUrl) {
+                          <a
+                            class="experience-card__company-link"
+                            [href]="entry.companyUrl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {{ entry.company }}
+                            <span aria-hidden="true">↗</span>
+                          </a>
+                        } @else {
+                          {{ entry.company }}
+                        }
+                      </h3>
+                      <p class="experience-card__role">{{ entry.role }}</p>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="experience-card__grid">
@@ -85,6 +117,16 @@ import { Project } from '../../models/project.model';
                       <p class="experience-card__empty-project">{{ text().noProject }}</p>
                     }
                   </section>
+                </div>
+
+                <div class="experience-card__evidence">
+                  <a
+                    class="experience-recommendation-link"
+                    routerLink="/documents"
+                    [fragment]="entry.recommendationAnchor"
+                  >
+                    {{ entry.recommendationLabel }}
+                  </a>
                 </div>
               </article>
             </li>
@@ -165,16 +207,50 @@ import { Project } from '../../models/project.model';
       .experience-timeline::before {
         content: '';
         position: absolute;
-        top: 1.2rem;
-        bottom: 1.2rem;
-        left: 1.05rem;
+        top: 1.45rem;
+        bottom: 1.45rem;
+        left: 1rem;
         width: 2px;
-        background: color-mix(in srgb, var(--app-link-color) 45%, var(--app-border-color));
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--app-link-color) 52%, var(--app-border-color)),
+          color-mix(in srgb, var(--app-border-color) 88%, transparent)
+        );
       }
 
       .experience-timeline__item {
         position: relative;
-        padding-left: 3rem;
+        padding-left: 4.75rem;
+      }
+
+      .experience-timeline__station {
+        position: absolute;
+        top: 1.35rem;
+        left: 0;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+
+      .experience-timeline__node {
+        width: 1.05rem;
+        height: 1.05rem;
+        border: 3px solid var(--app-background-color);
+        border-radius: 999px;
+        background: var(--app-link-color);
+        box-shadow: 0 0 0 1px var(--app-link-color);
+      }
+
+      .experience-timeline__year {
+        padding: 0.18rem 0.48rem;
+        border: 1px solid color-mix(in srgb, var(--app-link-color) 42%, var(--app-border-color));
+        border-radius: 999px;
+        background: var(--app-background-color);
+        color: var(--app-link-color);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
       }
 
       .experience-card {
@@ -185,22 +261,57 @@ import { Project } from '../../models/project.model';
         background: color-mix(in srgb, var(--app-background-color) 92%, transparent);
       }
 
-      .experience-card__marker {
-        position: absolute;
-        top: 1.2rem;
-        left: -2.45rem;
-        width: 1rem;
-        height: 1rem;
-        border: 3px solid var(--app-background-color);
-        border-radius: 999px;
-        background: var(--app-link-color);
-        box-shadow: 0 0 0 1px var(--app-link-color);
-      }
-
       .experience-card__header {
         padding: 1.25rem 1.35rem;
         border-bottom: 1px solid var(--app-border-color);
         background: color-mix(in srgb, var(--app-link-color) 8%, transparent);
+      }
+
+      .experience-card__identity {
+        display: flex;
+        align-items: center;
+        gap: 0.95rem;
+      }
+
+      .experience-card__logo {
+        position: relative;
+        display: inline-grid;
+        width: 3.15rem;
+        height: 3.15rem;
+        flex: 0 0 3.15rem;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--app-link-color) 36%, var(--app-border-color));
+        border-radius: 0.9rem;
+        background:
+          linear-gradient(135deg, color-mix(in srgb, var(--app-link-color) 14%, transparent), transparent),
+          var(--app-background-color);
+        color: var(--app-link-color);
+        font-weight: 900;
+        letter-spacing: 0.04em;
+      }
+
+      .experience-card__logo-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 0.45rem;
+        background: var(--app-background-color);
+      }
+
+      .experience-card__company-link {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .experience-card__company-link:hover,
+      .experience-card__company-link:focus-visible {
+        color: var(--app-link-color);
+        outline: none;
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
       }
 
       .experience-card__period {
@@ -270,6 +381,7 @@ import { Project } from '../../models/project.model';
       }
 
       .experience-project-link,
+      .experience-recommendation-link,
       .button-link {
         border: 1px solid var(--app-border-color);
         color: var(--app-text-color);
@@ -287,6 +399,8 @@ import { Project } from '../../models/project.model';
 
       .experience-project-link:hover,
       .experience-project-link:focus-visible,
+      .experience-recommendation-link:hover,
+      .experience-recommendation-link:focus-visible,
       .button-link:hover,
       .button-link:focus-visible {
         border-color: var(--app-link-color);
@@ -321,6 +435,23 @@ import { Project } from '../../models/project.model';
       .experience-card__empty-project {
         color: color-mix(in srgb, var(--app-text-color) 72%, transparent);
         font-style: italic;
+      }
+
+      .experience-card__evidence {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 1.25rem 1.25rem;
+      }
+
+      .experience-recommendation-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.45rem;
+        padding: 0.58rem 0.9rem;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--app-link-color) 8%, transparent);
+        font-weight: 800;
       }
 
       .experience-cta {
@@ -393,13 +524,37 @@ import { Project } from '../../models/project.model';
           padding-left: 1.8rem;
         }
 
-        .experience-card__marker {
-          left: -1.73rem;
+        .experience-timeline__station {
+          left: 0.05rem;
+        }
+
+        .experience-timeline__year {
+          display: none;
+        }
+
+        .experience-timeline__node {
+          width: 0.95rem;
+          height: 0.95rem;
         }
 
         .experience-card__grid,
         .experience-card__header {
           padding: 1rem;
+        }
+
+        .experience-card__identity {
+          align-items: flex-start;
+        }
+
+        .experience-card__logo {
+          width: 2.7rem;
+          height: 2.7rem;
+          flex-basis: 2.7rem;
+        }
+
+        .experience-card__evidence {
+          justify-content: flex-start;
+          padding: 0 1rem 1rem;
         }
       }
     `,
@@ -425,6 +580,24 @@ export class Experience {
     return entry.relatedProjectSlugs
       .map((slug) => projectsBySlug.get(slug))
       .filter((project): project is Project => Boolean(project));
+  }
+
+  protected getCompanyInitials(company: string): string {
+    return company
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((word) => word[0])
+      .join('')
+      .toUpperCase();
+  }
+
+  protected hideFailedAsset(event: Event): void {
+    const image = event.target as HTMLImageElement | null;
+
+    if (image) {
+      image.style.display = 'none';
+    }
   }
 
   protected getProjectInitials(title: string): string {

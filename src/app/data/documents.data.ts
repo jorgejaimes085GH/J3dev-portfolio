@@ -116,7 +116,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     note: spanishRecommendationNote,
   },
   {
-    id: 'recommendation-myssas-worker',
+    id: 'recommendation-worker',
     title: 'Myssas / Worker Client Recommendation',
     description:
       'Professional recommendation letter from the Myssas / Worker client context, provided as supporting evidence.',
