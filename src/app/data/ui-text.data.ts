@@ -134,7 +134,7 @@ export const UI_TEXT = {
         eyebrow: 'Evidence-Based Capabilities',
         title: 'Skills',
         summary:
-          'Skills are presented through project evidence and practical context, not percentages, progress bars, or vague labels. Each item connects to work where the capability is used or clearly marks where evidence will be added later.',
+          'Skills are presented through project evidence and practical context. Each item connects to real experience or current strengthening, with a primary focus on Backend .NET, SQL Server, architecture, and enterprise software.',
         categoryEyebrow: 'Skill Category',
         backendLayersAria: 'Backend skill layers',
         skillsSuffix: 'skills',
@@ -150,7 +150,7 @@ export const UI_TEXT = {
         viewEvidencePrefix: 'View evidence for',
         evidencePrefix: 'Related project',
         evidencePluralPrefix: 'Related projects',
-        evidenceMissing: 'Evidence pending',
+        evidenceMissing: 'Evidence to be expanded',
       },
       value: {
         impactEyebrow: 'Professional Impact',
@@ -417,7 +417,7 @@ export const UI_TEXT = {
         eyebrow: 'Capacidades basadas en evidencia',
         title: 'Habilidades',
         summary:
-          'Las habilidades se presentan mediante evidencia de proyectos y contexto práctico, no con porcentajes, barras de progreso ni etiquetas ambiguas. Cada elemento se conecta con trabajo donde la capacidad se usa o indica claramente dónde se agregará evidencia más adelante.',
+          'Las habilidades se presentan mediante evidencia de proyectos y contexto práctico. Cada elemento se conecta con experiencia real o aprendizaje actualmente en fortalecimiento, con foco principal en Backend .NET, SQL Server, arquitectura y software empresarial.',
         categoryEyebrow: 'Categoría de habilidad',
         backendLayersAria: 'Capas de habilidades Backend',
         skillsSuffix: 'habilidades',
@@ -433,7 +433,7 @@ export const UI_TEXT = {
         viewEvidencePrefix: 'Ver evidencia de',
         evidencePrefix: 'Proyecto relacionado',
         evidencePluralPrefix: 'Proyectos relacionados',
-        evidenceMissing: 'Evidencia pendiente',
+        evidenceMissing: 'Evidencia por ampliar',
       },
       value: {
         impactEyebrow: 'Impacto profesional',

@@ -149,6 +149,31 @@ const SKILL_ITEMS: Skill[] = [
       'Stored procedures appear in Worker and Expensux as part of SQL Server-centered data operation design.',
   },
   {
+    id: 'database-design',
+    name: 'Database Design',
+    category: 'Database',
+    shortDescription:
+      'Designing normalized relational models that support maintainable business workflows and long-term growth.',
+    iconLabel: 'DBD',
+    relatedProjectSlugs: ['worker', 'expensux'],
+    evidenceSummary:
+      'Database design is connected to Worker and Expensux through normalized SQL Server models planned around maintainable operational and financial workflows.',
+  },
+  {
+    id: 'database-migration',
+    name: 'Database Migration',
+    category: 'Database',
+    shortDescription:
+      'Migrating legacy systems from Access and FoxPro-based environments to SQL Server while preserving business continuity.',
+    iconLabel: 'MIG',
+    relatedProjectSlugs: ['worker'],
+    evidenceSummary:
+      'Database migration is represented by Worker modernization from Access toward SQL Server and Avances Software experience with FoxPro-based products migrated toward SQL Server, without linking Avances to a public project card.',
+    contextNotes: [
+      'Avances Software context is mentioned as professional experience only because it is not a public Projects card.',
+    ],
+  },
+  {
     id: 'microsoft-access',
     name: 'Microsoft Access',
     category: 'Database',
@@ -242,6 +267,28 @@ const SKILL_ITEMS: Skill[] = [
       'API design appears in Worker modernization, Expensux workflows, and LeverIT enterprise work that required backend boundaries around practical business needs.',
   },
   {
+    id: 'requirements-analysis',
+    name: 'Requirements Analysis',
+    category: 'Architecture',
+    shortDescription:
+      'Translating business needs and operational workflows into technical plans before implementation begins.',
+    iconLabel: 'REQ',
+    relatedProjectSlugs: ['worker', 'expensux'],
+    evidenceSummary:
+      'Requirements analysis is represented by Worker and Expensux planning work where business workflows, operational constraints, and technical implementation choices must align before coding.',
+  },
+  {
+    id: 'uml-modeling',
+    name: 'UML & Modeling',
+    category: 'Architecture',
+    shortDescription:
+      'Use cases, flow diagrams, process analysis, and solution modeling used to plan software before coding.',
+    iconLabel: 'UML',
+    relatedProjectSlugs: ['worker', 'expensux'],
+    evidenceSummary:
+      'UML and modeling are connected to Worker and Expensux through use cases, flow diagrams, process analysis, and solution planning before implementation.',
+  },
+  {
     id: 'vb-net',
     name: 'VB.NET',
     category: 'Legacy & Desktop',
@@ -270,6 +317,17 @@ const SKILL_ITEMS: Skill[] = [
     relatedProjectSlugs: ['worker'],
     evidenceSummary:
       'WPF is part of the Worker modernization direction for desktop forms while preserving business workflow continuity.',
+  },
+  {
+    id: 'crystal-reports',
+    name: 'Crystal Reports',
+    category: 'Legacy & Desktop',
+    shortDescription:
+      'Production reporting experience for operational and business workflows in desktop environments.',
+    iconLabel: 'CR',
+    relatedProjectSlugs: ['worker'],
+    evidenceSummary:
+      'Crystal Reports is connected to Worker through production reporting needs for operational and business workflows in a desktop software context.',
   },
   {
     id: 'foxpro',
@@ -333,6 +391,33 @@ const SKILL_ITEMS: Skill[] = [
     relatedProjectSlugs: ['worker'],
     evidenceSummary:
       'Swagger/API testing appears in the project implementation blocks and supports clearer API validation workflows.',
+  },
+  {
+    id: 'postman',
+    name: 'Postman',
+    category: 'Backend',
+    backendGroup: 'Backend Tooling',
+    shortDescription:
+      'API testing and endpoint validation used during enterprise backend work before Swagger became the primary workflow.',
+    iconLabel: 'PM',
+    relatedProjectSlugs: ['ithelpcenter', 'discovery'],
+    evidenceSummary:
+      'Postman is connected to ItHelpCenter and Discovery as API testing and endpoint validation support during enterprise backend work before Swagger became the primary workflow.',
+  },
+  {
+    id: 'unit-testing',
+    name: 'Unit Testing',
+    category: 'Backend',
+    backendGroup: 'Backend Tooling',
+    shortDescription:
+      'Focused validation of business logic through automated test scenarios using modern .NET testing frameworks.',
+    iconLabel: 'UT',
+    relatedProjectSlugs: ['expensux'],
+    evidenceSummary:
+      'Unit Testing is connected to Expensux as an active strengthening area for validating business logic with focused automated test scenarios in modern .NET.',
+    contextNotes: [
+      'This skill is presented as currently being strengthened while remaining tied to practical backend validation needs.',
+    ],
   },
   {
     id: 'azure-learning',
@@ -399,24 +484,25 @@ const SKILL_ITEMS: Skill[] = [
   },
   {
     id: 'continuous-learning',
-    name: 'Continuous Learning',
+    name: 'Technology Adaptability',
     category: 'Soft Skills',
-    shortDescription: 'Evolving from legacy systems toward modern frameworks and practices.',
-    iconLabel: 'CL',
+    shortDescription:
+      'Learning and applying the tools required by the problem, from legacy environments to modern .NET and frontend integration.',
+    iconLabel: 'TA',
     relatedProjectSlugs: ['worker', 'j3dev-portfolio'],
     evidenceSummary:
-      'Continuous learning is shown by the transition from legacy desktop technologies toward modern .NET, Angular, typed data, and maintainable architecture.',
+      'Technology adaptability is shown by the transition from legacy desktop technologies toward modern .NET, Angular, typed data, and maintainable architecture.',
   },
   {
     id: 'maintainability-mindset',
-    name: 'Maintainability Mindset',
+    name: 'Long-Term Thinking',
     category: 'Soft Skills',
     shortDescription:
-      'Prioritizing readable, sustainable software decisions over short-term complexity.',
-    iconLabel: 'MM',
+      'Prioritizing software decisions that remain understandable, maintainable, and useful beyond the first delivery.',
+    iconLabel: 'LT',
     relatedProjectSlugs: ['worker', 'expensux', 'j3dev-portfolio', 'ithelpcenter', 'discovery'],
     evidenceSummary:
-      'Maintainability is a repeated theme across Worker modernization, Expensux API organization, the portfolio static data architecture, and LeverIT enterprise maintenance work.',
+      'Long-term thinking is a repeated theme across Worker modernization, Expensux API organization, the portfolio static data architecture, and LeverIT enterprise maintenance work.',
   },
 
   {
@@ -525,6 +611,17 @@ const SKILL_ITEMS: Skill[] = [
       'AI-assisted UX is represented by later ItHelpCenter category discovery and user guidance concepts, kept at a high level for confidentiality.',
   },
   {
+    id: 'legacy-modernization',
+    name: 'Legacy Modernization',
+    category: 'Enterprise Practices',
+    shortDescription:
+      'Evolving production systems toward modern architectures without disrupting business operations.',
+    iconLabel: 'LM',
+    relatedProjectSlugs: ['worker', 'expensux'],
+    evidenceSummary:
+      'Legacy modernization is connected to Worker and Expensux through incremental evolution toward modern architectures while preserving business workflow continuity.',
+  },
+  {
     id: 'enterprise-maintenance',
     name: 'Enterprise Maintenance',
     category: 'Enterprise Practices',
@@ -601,8 +698,13 @@ const skillNameEsMap: Record<string, string> = {
   'technical-analysis': 'Análisis técnico',
   documentation: 'Documentación',
   'team-collaboration': 'Colaboración en equipo',
-  'continuous-learning': 'Aprendizaje continuo',
-  'maintainability-mindset': 'Mentalidad de mantenibilidad',
+  'continuous-learning': 'Adaptabilidad tecnológica',
+  'maintainability-mindset': 'Pensamiento de largo plazo',
+  'database-design': 'Diseño de base de datos',
+  'database-migration': 'Migración de base de datos',
+  'requirements-analysis': 'Análisis de requerimientos',
+  'uml-modeling': 'UML y modelado',
+  'legacy-modernization': 'Modernización legacy',
   'search-ux': 'UX de búsqueda',
   'spa-like-architecture': 'Arquitectura tipo SPA',
   'lazy-loading': 'Lazy loading',
@@ -655,6 +757,21 @@ const skillSpanishDescriptions: Record<
       'Experiencia en base de datos relacional para flujos de negocio, consultas y procedimientos almacenados.',
     evidenceSummary:
       'SQL Server aparece en Worker, Expensux y proyectos empresariales de LeverIT, con foco en integridad de datos y necesidades de negocio.',
+  },
+  'database-design': {
+    shortDescription:
+      'Diseño de modelos relacionales normalizados que soportan flujos de negocio mantenibles y crecimiento a largo plazo.',
+    evidenceSummary:
+      'Database Design se conecta con Worker y Expensux mediante modelos SQL Server normalizados planeados alrededor de flujos operativos y financieros mantenibles.',
+  },
+  'database-migration': {
+    shortDescription:
+      'Migración de sistemas legacy desde Access y entornos basados en FoxPro hacia SQL Server preservando continuidad operativa.',
+    evidenceSummary:
+      'Database Migration se representa en la modernización de Worker desde Access hacia SQL Server y en experiencia de Avances Software con productos basados en FoxPro migrados hacia SQL Server, sin vincular Avances a una card pública de Projects.',
+    contextNotes: [
+      'El contexto de Avances Software se menciona como experiencia profesional únicamente porque no existe como card pública dentro de Projects.',
+    ],
   },
   angular: {
     shortDescription:
@@ -714,9 +831,15 @@ const skillSpanishDescriptions: Record<
   },
   'continuous-learning': {
     shortDescription:
-      'Aprendizaje constante para evolucionar desde tecnologías legacy hacia herramientas modernas.',
+      'Aprendizaje y aplicación de las herramientas que exige el problema, desde entornos legacy hasta .NET moderno e integración frontend.',
     evidenceSummary:
-      'El aprendizaje continuo conecta experiencia VB6, Access, WinForms y SQL Server con .NET moderno, APIs y Angular.',
+      'La adaptabilidad tecnológica conecta experiencia VB6, Access, WinForms y SQL Server con .NET moderno, APIs, Angular e integración frontend.',
+  },
+  'legacy-modernization': {
+    shortDescription:
+      'Evolución de sistemas en producción hacia arquitecturas modernas sin interrumpir la operación del negocio.',
+    evidenceSummary:
+      'Legacy Modernization se conecta con Worker y Expensux mediante evolución incremental hacia arquitecturas modernas mientras se preserva la continuidad de los flujos de negocio.',
   },
   'enterprise-maintenance': {
     shortDescription:
@@ -784,6 +907,18 @@ const skillSpanishDescriptions: Record<
     evidenceSummary:
       'API Design aparece en la modernización de Worker, flujos de Expensux y trabajo empresarial LeverIT que requirió límites backend alrededor de necesidades reales de negocio.',
   },
+  'requirements-analysis': {
+    shortDescription:
+      'Traducción de necesidades de negocio y flujos operativos en planes técnicos antes de iniciar la implementación.',
+    evidenceSummary:
+      'Requirements Analysis se representa en Worker y Expensux mediante planeación que alinea flujos de negocio, restricciones operativas y decisiones técnicas antes de codificar.',
+  },
+  'uml-modeling': {
+    shortDescription:
+      'Casos de uso, diagramas de flujo, análisis de procesos y modelado de soluciones usados para planear software antes de codificar.',
+    evidenceSummary:
+      'UML & Modeling se conecta con Worker y Expensux mediante casos de uso, diagramas de flujo, análisis de procesos y modelado de soluciones previo a la implementación.',
+  },
   'vb-net': {
     shortDescription: 'Experiencia en aplicaciones desktop y legacy en producción.',
     evidenceSummary:
@@ -798,6 +933,12 @@ const skillSpanishDescriptions: Record<
     shortDescription: 'Dirección UI desktop para formularios modernizados en aplicaciones .NET.',
     evidenceSummary:
       'WPF hace parte de la dirección de modernización de Worker para formularios desktop mientras preserva continuidad de flujos de negocio.',
+  },
+  'crystal-reports': {
+    shortDescription:
+      'Experiencia en reportes de producción para flujos operativos y de negocio en entornos desktop.',
+    evidenceSummary:
+      'Crystal Reports se conecta con Worker mediante necesidades de reportes de producción para flujos operativos y de negocio en contexto de software desktop.',
   },
   foxpro: {
     shortDescription:
@@ -822,6 +963,21 @@ const skillSpanishDescriptions: Record<
     evidenceSummary:
       'Swagger / pruebas de API aparecen en los bloques de implementación de proyectos y apoyan una validación API más clara.',
   },
+  postman: {
+    shortDescription:
+      'Pruebas de APIs y validación de endpoints usadas en trabajo backend empresarial antes de adoptar Swagger como flujo principal.',
+    evidenceSummary:
+      'Postman se conecta con ItHelpCenter y Discovery como apoyo para pruebas de APIs y validación de endpoints durante trabajo backend empresarial antes de adoptar Swagger como flujo principal.',
+  },
+  'unit-testing': {
+    shortDescription:
+      'Validación enfocada de lógica de negocio mediante escenarios de prueba automatizados con frameworks modernos de .NET.',
+    evidenceSummary:
+      'Unit Testing se conecta con Expensux como área actualmente en fortalecimiento para validar lógica de negocio mediante escenarios automatizados enfocados en .NET moderno.',
+    contextNotes: [
+      'Esta habilidad se presenta como actualmente en fortalecimiento y conectada con necesidades prácticas de validación backend.',
+    ],
+  },
   'azure-learning': {
     shortDescription: 'Tema cloud reservado para evidencia futura verificada.',
     evidenceSummary:
@@ -838,9 +994,9 @@ const skillSpanishDescriptions: Record<
   },
   'maintainability-mindset': {
     shortDescription:
-      'Pensamiento orientado a que el software siga siendo comprensible y modificable.',
+      'Priorización de decisiones de software que sigan siendo comprensibles, mantenibles y útiles después de la primera entrega.',
     evidenceSummary:
-      'La mentalidad de mantenibilidad se refleja en modernización, arquitectura por capas, documentación y cambios incrementales.',
+      'El pensamiento de largo plazo se refleja en modernización, arquitectura por capas, documentación y cambios incrementales.',
   },
   javascript: {
     shortDescription:
