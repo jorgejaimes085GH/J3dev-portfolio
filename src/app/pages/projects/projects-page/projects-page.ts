@@ -45,7 +45,7 @@ import { LanguageService } from '../../../core/services/language.service';
               <div class="project-card__body">
                 <p class="project-card__status">{{ project.typeStatus }}</p>
                 <h3 [id]="project.id + '-title'">{{ project.title }}</h3>
-                <p>{{ project.shortDescription }}</p>
+                <p class="project-card__description">{{ project.shortDescription }}</p>
 
                 <div class="project-card__time-preview" [attr.aria-label]="text().timeContext">
                   <h4>{{ text().timeContext }}</h4>
@@ -66,12 +66,12 @@ import { LanguageService } from '../../../core/services/language.service';
                 >
                   {{ project.ctaLabel }}
                 </a>
-              </div>
 
-              <div class="project-card__technologies" [attr.aria-label]="text().technologiesAria">
-                @for (technology of project.technologies; track technology) {
-                  <span class="technology-badge">{{ technology }}</span>
-                }
+                <div class="project-card__technologies" [attr.aria-label]="text().technologiesAria">
+                  @for (technology of project.technologies; track technology) {
+                    <span class="technology-badge">{{ technology }}</span>
+                  }
+                </div>
               </div>
             </article>
           }
@@ -183,10 +183,13 @@ import { LanguageService } from '../../../core/services/language.service';
         margin: 0;
       }
 
+      .project-card__description {
+        line-height: 1.55;
+      }
+
       .project-card__time-preview {
         display: grid;
         gap: 0.65rem;
-        margin-top: auto;
         padding-top: 0.25rem;
       }
 
@@ -205,6 +208,7 @@ import { LanguageService } from '../../../core/services/language.service';
       .project-card__time-preview li {
         display: grid;
         gap: 0.15rem;
+        align-content: start;
         padding: 0.6rem 0.7rem;
         border: 1px solid var(--app-border-color);
         border-radius: 0.55rem;
@@ -233,7 +237,8 @@ import { LanguageService } from '../../../core/services/language.service';
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-        padding: 0 1.25rem 1.25rem;
+        margin-bottom: auto;
+        padding-top: 0.1rem;
       }
 
       .technology-badge {
@@ -250,6 +255,16 @@ import { LanguageService } from '../../../core/services/language.service';
       .projects-section__header p:last-child,
       .project-card__body p:last-child {
         margin-bottom: 0;
+      }
+
+      @media (min-width: 641px) {
+        .project-card__description {
+          min-height: 8.75rem;
+        }
+
+        .project-card__time-preview li {
+          min-height: 5.75rem;
+        }
       }
 
       @media (max-width: 1000px) {
