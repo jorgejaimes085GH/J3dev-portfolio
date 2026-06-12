@@ -6,6 +6,7 @@ import {
   EDUCATION_CTA_LINKS,
   EDUCATION_HIGHLIGHTS,
   FORMAL_EDUCATION,
+  SELF_TAUGHT_EDUCATION,
 } from '../../data/education.data';
 import { getLocalizedData } from '../../data/localized-data';
 import { LanguageService } from '../../core/services/language.service';
@@ -14,6 +15,7 @@ import {
   EducationCtaLink,
   EducationHighlight,
   FormalEducationEntry,
+  SelfTaughtEducationEntry,
 } from '../../models/education.model';
 
 @Component({
@@ -76,6 +78,38 @@ import {
               </dl>
 
               <p>{{ entry.summary }}</p>
+            </article>
+          }
+        </div>
+      </section>
+
+      <section class="education-section" aria-labelledby="self-taught-education-title">
+        <div class="education-section__header">
+          <p class="education-section__eyebrow">{{ text().selfTaughtEyebrow }}</p>
+          <h2 id="self-taught-education-title">{{ text().selfTaughtTitle }}</h2>
+          <p>{{ text().selfTaughtIntro }}</p>
+        </div>
+
+        <div class="self-taught-grid" [attr.aria-label]="text().selfTaughtAria">
+          @for (entry of selfTaughtEducation(); track entry.id) {
+            <article class="learning-card" [attr.aria-labelledby]="entry.id + '-title'">
+              <p class="education-card__meta">{{ entry.period }}</p>
+              <h3 [id]="entry.id + '-title'">{{ entry.title }}</h3>
+              <p>{{ entry.description }}</p>
+
+              <div class="learning-card__focus" [attr.aria-label]="text().focusAria">
+                <h4>{{ text().focus }}</h4>
+                <ul class="tag-list">
+                  @for (focusArea of entry.focusAreas; track focusArea) {
+                    <li>{{ focusArea }}</li>
+                  }
+                </ul>
+              </div>
+
+              <div class="learning-card__focus">
+                <h4>{{ text().keyLearning }}</h4>
+                <p>{{ entry.keyLearning }}</p>
+              </div>
             </article>
           }
         </div>
@@ -196,13 +230,15 @@ import {
       }
 
       .formal-education-list,
+      .self-taught-grid,
       .learning-grid,
       .highlight-grid {
         display: grid;
         gap: 1rem;
       }
 
-      .formal-education-list {
+      .formal-education-list,
+      .self-taught-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
@@ -343,6 +379,7 @@ import {
 
       @media (max-width: 900px) {
         .formal-education-list,
+        .self-taught-grid,
         .highlight-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -363,6 +400,7 @@ import {
         }
 
         .formal-education-list,
+        .self-taught-grid,
         .learning-grid,
         .highlight-grid {
           grid-template-columns: 1fr;
@@ -378,6 +416,9 @@ export class Education {
 
   protected readonly formalEducation = computed(() =>
     getLocalizedData(FORMAL_EDUCATION, this.languageService.currentLanguage()),
+  );
+  protected readonly selfTaughtEducation = computed(() =>
+    getLocalizedData(SELF_TAUGHT_EDUCATION, this.languageService.currentLanguage()),
   );
   protected readonly continuousLearning = computed(() =>
     getLocalizedData(CONTINUOUS_LEARNING, this.languageService.currentLanguage()),

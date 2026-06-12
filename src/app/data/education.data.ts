@@ -3,6 +3,7 @@ import {
   EducationCtaLink,
   EducationHighlight,
   FormalEducationEntry,
+  SelfTaughtEducationEntry,
 } from '../models/education.model';
 
 const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
@@ -43,6 +44,57 @@ const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
     status: 'Degree completion process resumed.',
     summary:
       'Homologation process currently underway to complete the professional engineering degree.',
+  },
+];
+
+const SELF_TAUGHT_EDUCATION_EN: SelfTaughtEducationEntry[] = [
+  {
+    id: 'early-technology-foundations',
+    period: '2004 – 2007',
+    title: 'Early Technology Foundations',
+    description:
+      'Before formal software studies, Jorge independently explored computing, telematics, digital tools, and technology-related problem solving. This stage sparked a long-term interest in technology and digital systems.',
+    focusAreas: [
+      'Computing',
+      'Telematics',
+      'Photoshop',
+      'Dreamweaver',
+      'Digital tools',
+      'Self-learning',
+    ],
+    keyLearning: 'Technology could be used to solve real-world problems in a structured way.',
+  },
+  {
+    id: 'software-development-discovery',
+    period: '2008 – 2010',
+    title: 'Software Development Discovery',
+    description:
+      'This period marked the transition from using software to understanding how software is built. Independent learning focused on algorithms, databases, logic, and application development fundamentals.',
+    focusAreas: ['DFD', 'Algorithms', 'Visual Basic 6', 'Access', 'Logic', 'Databases'],
+    keyLearning: 'Software development combines logic, analysis, and structured problem solving.',
+  },
+  {
+    id: 'continuous-independent-learning',
+    period: '2010 – Present',
+    title: 'Continuous Independent Learning',
+    description:
+      "Throughout his career, many technologies were learned independently to meet project requirements and business challenges. This ability to learn quickly became one of Jorge's strongest professional skills.",
+    focusAreas: [
+      'FoxPro',
+      'VB.NET',
+      'SQL Server',
+      'ASP.NET',
+      'REST APIs',
+      'Dapper',
+      'Angular',
+      'Git',
+      'Azure',
+      'Docker',
+      'Entity Framework',
+      'AI-assisted development',
+    ],
+    keyLearning:
+      'Long-term growth depends on continuous adaptation, not on formal education alone.',
   },
 ];
 
@@ -184,6 +236,61 @@ const FORMAL_EDUCATION_ES: FormalEducationEntry[] = [
 export const FORMAL_EDUCATION = {
   en: FORMAL_EDUCATION_EN,
   es: FORMAL_EDUCATION_ES,
+} as const;
+
+const SELF_TAUGHT_EDUCATION_ES: SelfTaughtEducationEntry[] = [
+  {
+    ...SELF_TAUGHT_EDUCATION_EN[0],
+    title: 'Primeras bases tecnológicas',
+    description:
+      'Antes de iniciar estudios formales en software, Jorge exploró de manera independiente conceptos de informática, telemática, herramientas digitales y resolución de problemas mediante tecnología. Esta etapa despertó un interés permanente por los sistemas y la tecnología aplicada.',
+    focusAreas: [
+      'Informática',
+      'Telemática',
+      'Photoshop',
+      'Dreamweaver',
+      'Herramientas digitales',
+      'Aprendizaje independiente',
+    ],
+    keyLearning:
+      'Comprender que la tecnología podía utilizarse para resolver problemas reales de manera estructurada.',
+  },
+  {
+    ...SELF_TAUGHT_EDUCATION_EN[1],
+    title: 'Descubrimiento del desarrollo de software',
+    description:
+      'Durante esta etapa ocurrió el cambio más importante: pasar de utilizar software a comprender cómo construirlo. El aprendizaje autodidacta se enfocó en algoritmos, bases de datos, lógica y fundamentos de programación.',
+    focusAreas: ['DFD', 'Algoritmos', 'Visual Basic 6', 'Access', 'Lógica', 'Bases de datos'],
+    keyLearning:
+      'El desarrollo de software combina lógica, análisis y resolución estructurada de problemas.',
+  },
+  {
+    ...SELF_TAUGHT_EDUCATION_EN[2],
+    title: 'Aprendizaje independiente continuo',
+    description:
+      'A lo largo de su carrera profesional, muchas tecnologías fueron aprendidas de forma independiente para responder a nuevos proyectos, retos de negocio y necesidades de modernización. La capacidad de aprender rápidamente se convirtió en una de sus fortalezas más importantes.',
+    focusAreas: [
+      'FoxPro',
+      'VB.NET',
+      'SQL Server',
+      'ASP.NET',
+      'REST APIs',
+      'Dapper',
+      'Angular',
+      'Git',
+      'Azure',
+      'Docker',
+      'Entity Framework',
+      'Desarrollo asistido por IA',
+    ],
+    keyLearning:
+      'El crecimiento profesional a largo plazo depende de la adaptación continua, no únicamente de la educación formal.',
+  },
+];
+
+export const SELF_TAUGHT_EDUCATION = {
+  en: SELF_TAUGHT_EDUCATION_EN,
+  es: SELF_TAUGHT_EDUCATION_ES,
 } as const;
 
 const CONTINUOUS_LEARNING_ES: ContinuousLearningEntry[] = [
