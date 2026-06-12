@@ -29,10 +29,10 @@ const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [
     institution: 'UNAD',
     location: 'Bucaramanga, Santander, Colombia',
     program: 'Systems Engineering',
-    period: '2015 - 2019',
-    status: 'Completed through semester 9',
+    period: '2015 – Present',
+    status: 'Final stage – degree completion process underway.',
     summary:
-      'Further studies in software engineering, architecture, project development, databases, and systems design.',
+      'Currently in homologation process to complete the professional engineering degree in 2026. Advanced studies focused on software engineering, systems analysis, databases, software architecture, and enterprise application development.',
   },
 ];
 
@@ -68,76 +68,78 @@ const CONTINUOUS_LEARNING_EN: ContinuousLearningEntry[] = [
     summary: 'Designing and maintaining business databases.',
   },
   {
-    id: 'enterprise-development-learning',
-    title: 'Enterprise Development Learning',
+    id: 'modern-backend-engineering',
+    title: 'Modern Backend Engineering',
     focusAreas: [
+      '.NET 8',
       'C#',
-      'ASP.NET',
+      'Clean Architecture',
       'REST APIs',
-      'WebSockets',
-      'JavaScript',
-      'Enterprise maintenance',
-    ],
-    summary: 'Building and evolving enterprise software platforms.',
-  },
-  {
-    id: 'software-architecture-learning',
-    title: 'Software Architecture Learning',
-    focusAreas: [
+      'JWT',
+      'Dependency Injection',
       'SOLID',
-      'Layered Architecture',
-      'Reusable components',
-      'Maintainability',
-      'Clean code',
+      'Testing',
     ],
-    summary: 'Designing software that can evolve over time.',
+    summary: 'Building maintainable backend systems using modern .NET practices.',
   },
   {
-    id: 'modern-fullstack-learning',
-    title: 'Modern Fullstack Learning',
-    focusAreas: ['Angular', 'TypeScript', 'JWT', 'Dapper', '.NET 8', 'Responsive Design'],
-    summary: 'Integrating modern Backend .NET practices with frontend collaboration where needed.',
-  },
-  {
-    id: 'current-learning-focus',
-    title: 'Current Learning Focus',
+    id: 'cloud-platform-architecture',
+    title: 'Cloud & Platform Architecture',
     focusAreas: [
       'Azure',
-      'Cloud concepts',
-      'Git workflows',
       'Docker',
+      'CI/CD',
+      'Git workflows',
+      'API First Design',
+      'Distributed Systems',
       'AI-assisted development',
-      'Modern engineering practices',
     ],
-    summary: 'Continuous adaptation to new technologies and development approaches.',
+    summary: 'Expanding backend solutions toward cloud-ready, secure, and scalable platforms.',
+  },
+  {
+    id: 'product-evolution-architecture',
+    title: 'Product Evolution & Architecture',
+    focusAreas: [
+      'Legacy modernization',
+      'WPF',
+      'SQL Server',
+      'Backend APIs',
+      'Angular',
+      'Multi-client architecture',
+      'Business software evolution',
+    ],
+    summary: 'Modernizing legacy desktop systems into scalable multi-client business platforms.',
   },
 ];
 
 const EDUCATION_HIGHLIGHTS_EN: EducationHighlight[] = [
   {
     title: 'Formal Education',
-    description: 'Completed technology degree and advanced engineering studies.',
+    description:
+      'Completed technology studies and resumed the systems engineering degree completion process.',
   },
   {
     title: 'Independent Learning',
     description:
-      'Self-directed technical growth from legacy systems toward modern Backend .NET practices.',
+      'Self-directed growth from legacy desktop systems toward modern Backend .NET, APIs, architecture, and cloud-ready practices.',
   },
   {
     title: 'Production Experience',
-    description: 'Learning reinforced through real-world software projects.',
+    description:
+      'Learning reinforced through long-term real-world software projects used in business operations.',
   },
   {
     title: 'Continuous Improvement',
-    description: 'Active learning mindset maintained throughout career.',
+    description:
+      'Active learning mindset focused on better architecture, maintainability, scalability, and product evolution.',
   },
 ];
 
 const EDUCATION_CTA_LINKS_EN: EducationCtaLink[] = [
-  { label: 'Explore Skills', route: '/skills' },
-  { label: 'View Projects', route: '/projects' },
-  { label: 'View Journey', route: '/journey' },
-  { label: 'View Documents', route: '/documents' },
+  { label: 'Explore technical foundation', route: '/skills' },
+  { label: 'Review project evidence', route: '/projects' },
+  { label: 'See technical evolution', route: '/journey' },
+  { label: 'Review supporting documents', route: '/documents' },
 ];
 
 const FORMAL_EDUCATION_ES: FormalEducationEntry[] = [
@@ -156,9 +158,10 @@ const FORMAL_EDUCATION_ES: FormalEducationEntry[] = [
   {
     ...FORMAL_EDUCATION_EN[2],
     program: 'Ingeniería de Sistemas',
-    status: 'Completado hasta noveno semestre',
+    period: '2015 – Actualidad',
+    status: 'Etapa final – proceso de finalización de grado en curso.',
     summary:
-      'Estudios adicionales en ingeniería de software, arquitectura, desarrollo de proyectos, bases de datos y diseño de sistemas.',
+      'Actualmente en proceso de homologación para completar el título profesional de ingeniería en 2026. Estudios avanzados enfocados en ingeniería de software, análisis de sistemas, bases de datos, arquitectura de software y desarrollo de aplicaciones empresariales.',
   },
 ];
 
@@ -207,48 +210,48 @@ const CONTINUOUS_LEARNING_ES: ContinuousLearningEntry[] = [
   },
   {
     ...CONTINUOUS_LEARNING_EN[3],
-    title: 'Aprendizaje en desarrollo empresarial',
+    title: 'Ingeniería Backend Moderna',
     focusAreas: [
+      '.NET 8',
       'C#',
-      'ASP.NET',
+      'Clean Architecture',
       'REST APIs',
-      'WebSockets',
-      'JavaScript',
-      'Mantenimiento empresarial',
+      'JWT',
+      'Dependency Injection',
+      'SOLID',
+      'Testing',
     ],
-    summary: 'Construcción y evolución de plataformas de software empresarial.',
+    summary: 'Construcción de sistemas backend mantenibles usando prácticas modernas de .NET.',
   },
   {
     ...CONTINUOUS_LEARNING_EN[4],
-    title: 'Aprendizaje en arquitectura de software',
+    title: 'Arquitectura Cloud y Plataforma',
     focusAreas: [
-      'SOLID',
-      'Layered Architecture',
-      'Componentes reutilizables',
-      'Mantenibilidad',
-      'Clean code',
+      'Azure',
+      'Docker',
+      'CI/CD',
+      'Git workflows',
+      'API First Design',
+      'Distributed Systems',
+      'AI-assisted development',
     ],
-    summary: 'Diseño de software que puede evolucionar con el tiempo.',
+    summary:
+      'Evolución de soluciones backend hacia plataformas preparadas para cloud, seguridad y escalabilidad.',
   },
   {
     ...CONTINUOUS_LEARNING_EN[5],
-    title: 'Aprendizaje fullstack moderno',
-    focusAreas: ['Angular', 'TypeScript', 'JWT', 'Dapper', '.NET 8', 'Diseño responsive'],
-    summary:
-      'Integración de prácticas Backend .NET modernas con colaboración frontend cuando se requiere.',
-  },
-  {
-    ...CONTINUOUS_LEARNING_EN[6],
-    title: 'Enfoque actual de aprendizaje',
+    title: 'Evolución de Producto y Arquitectura',
     focusAreas: [
-      'Azure',
-      'Conceptos cloud',
-      'Flujos Git',
-      'Docker',
-      'Desarrollo asistido por IA',
-      'Prácticas modernas de ingeniería',
+      'Legacy modernization',
+      'WPF',
+      'SQL Server',
+      'Backend APIs',
+      'Angular',
+      'Multi-client architecture',
+      'Business software evolution',
     ],
-    summary: 'Adaptación continua a nuevas tecnologías y enfoques de desarrollo.',
+    summary:
+      'Modernización de sistemas desktop legacy hacia plataformas empresariales escalables y multi-cliente.',
   },
 ];
 
@@ -259,21 +262,24 @@ export const CONTINUOUS_LEARNING = {
 
 const EDUCATION_HIGHLIGHTS_ES: EducationHighlight[] = [
   {
-    title: 'Educación formal',
-    description: 'Tecnología completada y estudios avanzados de ingeniería.',
-  },
-  {
-    title: 'Aprendizaje independiente',
+    title: 'Educación Formal',
     description:
-      'Crecimiento técnico autodirigido desde sistemas legacy hacia prácticas modernas de Backend .NET.',
+      'Estudios tecnológicos completados y proceso de finalización de Ingeniería de Sistemas retomado.',
   },
   {
-    title: 'Experiencia en producción',
-    description: 'Aprendizaje reforzado mediante proyectos de software reales.',
+    title: 'Aprendizaje Independiente',
+    description:
+      'Crecimiento autodirigido desde sistemas desktop legacy hacia Backend .NET moderno, APIs, arquitectura y prácticas preparadas para cloud.',
   },
   {
-    title: 'Mejora continua',
-    description: 'Mentalidad de aprendizaje activo mantenida durante la trayectoria profesional.',
+    title: 'Experiencia en Producción',
+    description:
+      'Aprendizaje reforzado mediante proyectos reales de software usados en operaciones de negocio.',
+  },
+  {
+    title: 'Mejora Continua',
+    description:
+      'Mentalidad activa de aprendizaje enfocada en mejor arquitectura, mantenibilidad, escalabilidad y evolución de producto.',
   },
 ];
 
@@ -283,10 +289,10 @@ export const EDUCATION_HIGHLIGHTS = {
 } as const;
 
 const EDUCATION_CTA_LINKS_ES: EducationCtaLink[] = [
-  { label: 'Explorar Habilidades', route: '/skills' },
-  { label: 'Ver Proyectos', route: '/projects' },
-  { label: 'Ver Trayectoria', route: '/journey' },
-  { label: 'Ver Documentos', route: '/documents' },
+  { label: 'Explorar base técnica', route: '/skills' },
+  { label: 'Revisar evidencia en proyectos', route: '/projects' },
+  { label: 'Ver evolución técnica', route: '/journey' },
+  { label: 'Revisar documentos de soporte', route: '/documents' },
 ];
 
 export const EDUCATION_CTA_LINKS = {
