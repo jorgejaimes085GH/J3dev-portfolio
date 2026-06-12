@@ -75,9 +75,9 @@ const SKILL_ITEMS: Skill[] = [
     backendGroup: 'API & Communication',
     shortDescription: 'Token-based authentication concepts for API-protected workflows.',
     iconLabel: 'JWT',
-    relatedProjectSlugs: ['expensux'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter'],
     evidenceSummary:
-      'Expensux includes JWT authentication as part of its financial control workflow and API responsibility design.',
+      'JWT is connected to Worker modernization, Expensux authentication, and ItHelpCenter enterprise API-protected workflows where token-based access patterns support secure application behavior.',
   },
   {
     id: 'dapper',
@@ -225,9 +225,15 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Frontend',
     shortDescription: 'Layouts that remain usable across desktop, tablet, and mobile contexts.',
     iconLabel: '↕',
-    relatedProjectSlugs: ['j3dev-portfolio'],
+    relatedProjectSlugs: [
+      'expensux',
+      'ithelpcenter',
+      'discovery',
+      'testigo-electoral',
+      'j3dev-portfolio',
+    ],
     evidenceSummary:
-      'The portfolio includes responsive page layouts and a viewport preview feature to keep recruiter-facing content readable across screen sizes.',
+      'Responsive Design is represented across Expensux, ItHelpCenter, Discovery, Testigo Electoral, and the J3dev Portfolio through UI work that keeps business and professional workflows usable across screen sizes.',
   },
   {
     id: 'solid',
@@ -310,9 +316,9 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Legacy & Desktop',
     shortDescription: 'Desktop UI experience connected to operational business workflows.',
     iconLabel: 'WF',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'WinForms represents desktop application experience gained through production workflow software and legacy system evolution.',
+      'WinForms and desktop application experience is represented by Worker and Avances Software enterprise products. Although Manager Plus, Manager Clinic, and Odontology were built on FoxPro, they provide real desktop enterprise application experience.',
   },
   {
     id: 'wpf',
@@ -373,9 +379,9 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Dev Tools / Cloud',
     shortDescription: 'Version control habits for incremental, reviewable change.',
     iconLabel: 'Git',
-    relatedProjectSlugs: ['j3dev-portfolio'],
+    relatedProjectSlugs: ['worker', 'expensux', 'j3dev-portfolio'],
     evidenceSummary:
-      'Git supports the incremental development workflow used for this portfolio and public project evolution.',
+      'Git supports incremental, traceable work across Worker, Expensux, and the J3dev Portfolio. Public repositories are not required for the skill evidence when professional usage is private.',
   },
   {
     id: 'github',
@@ -404,9 +410,9 @@ const SKILL_ITEMS: Skill[] = [
     backendGroup: 'Backend Tooling',
     shortDescription: 'API documentation and testing support for backend workflows.',
     iconLabel: 'SWG',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'expensux'],
     evidenceSummary:
-      'Swagger/API testing appears in the project implementation blocks and supports clearer API validation workflows.',
+      'Swagger is connected to Worker modernization and Expensux API work as documentation and endpoint validation support for clearer backend workflows.',
   },
   {
     id: 'postman',
@@ -474,9 +480,9 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Soft Skills',
     shortDescription: 'Understanding existing systems before proposing technical changes.',
     iconLabel: 'TA',
-    relatedProjectSlugs: ['worker'],
+    relatedProjectSlugs: ['worker', 'expensux', 'ithelpcenter', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'Technical analysis is represented by Worker modernization, where existing Access/VB.NET behavior must be understood before safe evolution.',
+      'Technical analysis is represented by Worker, Expensux, ItHelpCenter, Manager Plus, Manager Clinic, and Odontology, where existing behavior, requirements, data constraints, and business workflows must be understood before safe implementation or modernization.',
   },
   {
     id: 'documentation',
@@ -484,9 +490,9 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Soft Skills',
     shortDescription: 'Capturing decisions and context for maintainability and handoff.',
     iconLabel: 'DOC',
-    relatedProjectSlugs: ['worker', 'j3dev-portfolio'],
+    relatedProjectSlugs: ['expensux', 'ithelpcenter', 'j3dev-portfolio'],
     evidenceSummary:
-      'Documentation appears through safe public project summaries, availability notes, and review-oriented implementation blocks.',
+      'Documentation is connected to Expensux, ItHelpCenter, and the J3dev Portfolio through API/context notes, maintainability-oriented summaries, and public-safe project explanations that support handoff and review.',
   },
   {
     id: 'team-collaboration',
@@ -494,9 +500,17 @@ const SKILL_ITEMS: Skill[] = [
     category: 'Soft Skills',
     shortDescription: 'Communicating technical tradeoffs in a practical, team-oriented way.',
     iconLabel: 'TC',
-    relatedProjectSlugs: ['worker', 'ithelpcenter', 'discovery', 'testigo-electoral'],
+    relatedProjectSlugs: [
+      'worker',
+      'ithelpcenter',
+      'discovery',
+      'testigo-electoral',
+      'manager-plus',
+      'manager-clinic',
+      'odontology',
+    ],
     evidenceSummary:
-      'Team collaboration is connected to long-term production software work and LeverIT projects, including a custom client project built with two teammates.',
+      'Team collaboration is connected to long-term production software work, LeverIT delivery, and Avances Software products including Manager Plus, Manager Clinic, and Odontology.',
   },
   {
     id: 'continuous-learning',
@@ -528,9 +542,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Frontend behavior and reusable client-side patterns for enterprise workflows.',
     iconLabel: 'JS',
-    relatedProjectSlugs: ['ithelpcenter'],
+    relatedProjectSlugs: ['ithelpcenter', 'discovery'],
     evidenceSummary:
-      'JavaScript is connected to ItHelpCenter through SPA-like navigation, reusable class patterns, controlled lazy loading, and search experience improvements described at a public-safe level.',
+      'JavaScript is connected to ItHelpCenter and Discovery through enterprise frontend behavior, SPA-like navigation patterns, reusable client-side code, loading optimizations, and search or workflow improvements described at a public-safe level.',
     contextNotes: [
       'Implementation details remain generalized to protect proprietary LeverIT project information.',
     ],
@@ -542,9 +556,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Semantic page structure for maintainable enterprise and portfolio interfaces.',
     iconLabel: 'HTML',
-    relatedProjectSlugs: ['ithelpcenter', 'j3dev-portfolio'],
+    relatedProjectSlugs: ['ithelpcenter', 'discovery', 'j3dev-portfolio'],
     evidenceSummary:
-      'HTML is represented through ItHelpCenter frontend feature work and the portfolio’s accessible static page structure.',
+      'HTML is represented through ItHelpCenter and Discovery enterprise frontend work plus the portfolio’s accessible static page structure.',
   },
   {
     id: 'css',
@@ -553,9 +567,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Readable styling foundations for enterprise interfaces and professional presentation.',
     iconLabel: 'CSS',
-    relatedProjectSlugs: ['ithelpcenter', 'j3dev-portfolio'],
+    relatedProjectSlugs: ['ithelpcenter', 'discovery', 'testigo-electoral', 'j3dev-portfolio'],
     evidenceSummary:
-      'CSS is connected to ItHelpCenter frontend improvements and the portfolio’s theme-friendly, readable styling approach.',
+      'CSS is connected to ItHelpCenter, Discovery, Testigo Electoral, and the portfolio through enterprise UI improvements, Angular styling, and theme-friendly readable presentation.',
   },
   {
     id: 'aspnet',
@@ -600,9 +614,12 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Client-side navigation patterns that improve continuity without replacing accessible navigation.',
     iconLabel: 'SPA',
-    relatedProjectSlugs: ['ithelpcenter'],
+    relatedProjectSlugs: ['expensux', 'testigo-electoral', 'j3dev-portfolio', 'ithelpcenter'],
     evidenceSummary:
-      'SPA-like architecture is represented by ItHelpCenter navigation patterns over a single main index, summarized without exposing internal code.',
+      'SPA architecture is represented by Expensux, Testigo Electoral, and the J3dev Portfolio. ItHelpCenter implemented equivalent concepts through modular JavaScript and optimized internal navigation before adopting Angular.',
+    contextNotes: [
+      'ItHelpCenter is included as equivalent SPA-pattern evidence rather than a direct Angular SPA claim.',
+    ],
   },
   {
     id: 'lazy-loading',
@@ -611,9 +628,12 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Controlled loading patterns used to support maintainable and responsive interfaces.',
     iconLabel: 'LOAD',
-    relatedProjectSlugs: ['ithelpcenter'],
+    relatedProjectSlugs: ['expensux', 'testigo-electoral', 'j3dev-portfolio', 'ithelpcenter'],
     evidenceSummary:
-      'Lazy loading is connected to ItHelpCenter controlled loading patterns used as part of maintainable frontend architecture improvements.',
+      'Lazy loading is connected to Expensux, Testigo Electoral, and the J3dev Portfolio. ItHelpCenter implemented equivalent internal loading optimization strategies as part of maintainable frontend architecture improvements.',
+    contextNotes: [
+      'ItHelpCenter is included as equivalent loading-optimization evidence while keeping proprietary implementation details private.',
+    ],
   },
   {
     id: 'ai-assisted-ux',
@@ -633,9 +653,9 @@ const SKILL_ITEMS: Skill[] = [
     shortDescription:
       'Evolving production systems toward modern architectures without disrupting business operations.',
     iconLabel: 'LM',
-    relatedProjectSlugs: ['worker', 'expensux', 'manager-plus', 'manager-clinic', 'odontology'],
+    relatedProjectSlugs: ['worker', 'manager-plus', 'manager-clinic', 'odontology'],
     evidenceSummary:
-      'Legacy modernization is connected to Worker, Expensux, Manager Plus, Manager Clinic, and Odontology through incremental evolution toward modern architectures and SQL Server-backed workflows while preserving business continuity.',
+      'Legacy modernization is connected to Worker, Manager Plus, Manager Clinic, and Odontology through incremental evolution from Access or FoxPro-oriented environments toward SQL Server-backed workflows and maintainable architecture while preserving business continuity.',
   },
   {
     id: 'enterprise-maintenance',
@@ -769,7 +789,7 @@ const skillSpanishDescriptions: Record<
   jwt: {
     shortDescription: 'Conceptos de autenticación basada en tokens para flujos protegidos por API.',
     evidenceSummary:
-      'Expensux incluye autenticación JWT como parte de su flujo de control financiero y diseño de responsabilidades API.',
+      'JWT se conecta con la modernización de Worker, la autenticación de Expensux e ItHelpCenter en flujos empresariales protegidos por API donde los patrones basados en tokens apoyan comportamiento seguro.',
   },
   dapper: {
     shortDescription: 'Acceso liviano a datos para flujos de aplicación respaldados por SQL.',
@@ -819,7 +839,7 @@ const skillSpanishDescriptions: Record<
   git: {
     shortDescription: 'Control de versiones para seguimiento de cambios y colaboración.',
     evidenceSummary:
-      'Git apoya el trabajo profesional y este portfolio mediante cambios incrementales, trazabilidad y entrega ordenada.',
+      'Git apoya trabajo incremental y trazable en Worker, Expensux y J3dev Portfolio. La evidencia no requiere repositorios públicos cuando el uso profesional es privado.',
   },
   github: {
     shortDescription:
@@ -837,18 +857,18 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Revisión de requisitos, comportamiento existente y tradeoffs antes de implementar.',
     evidenceSummary:
-      'El análisis técnico conecta necesidades de negocio, datos y restricciones del sistema antes de proponer cambios.',
+      'El análisis técnico se representa en Worker, Expensux, ItHelpCenter, Manager Plus, Manager Clinic y Odontology, donde comportamiento existente, requerimientos, restricciones de datos y flujos de negocio deben entenderse antes de implementar o modernizar.',
   },
   documentation: {
     shortDescription: 'Notas y explicaciones para preservar decisiones y facilitar continuidad.',
     evidenceSummary:
-      'La documentación apoya handoff, mantenibilidad y claridad en proyectos empresariales y públicos.',
+      'La documentación se conecta con Expensux, ItHelpCenter y J3dev Portfolio mediante notas de API/contexto, resúmenes orientados a mantenibilidad y explicaciones públicas seguras que apoyan handoff y revisión.',
   },
   'team-collaboration': {
     shortDescription:
       'Trabajo con equipos y stakeholders para alinear decisiones técnicas con la entrega.',
     evidenceSummary:
-      'La colaboración aparece en proyectos de LeverIT, soporte empresarial y construcción de soluciones con convenciones compartidas.',
+      'La colaboración aparece en trabajo de producción de largo plazo, entregas LeverIT y productos de Avances Software como Manager Plus, Manager Clinic y Odontology.',
   },
   'continuous-learning': {
     shortDescription:
@@ -860,7 +880,7 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Evolución de sistemas en producción hacia arquitecturas modernas sin interrumpir la operación del negocio.',
     evidenceSummary:
-      'Legacy Modernization se conecta con Worker, Expensux, Manager Plus, Manager Clinic y Odontology mediante evolución incremental hacia arquitecturas modernas y flujos basados en SQL Server mientras se preserva la continuidad del negocio.',
+      'Legacy Modernization se conecta con Worker, Manager Plus, Manager Clinic y Odontology mediante evolución incremental desde entornos Access o FoxPro hacia flujos respaldados por SQL Server y arquitectura mantenible mientras se preserva la continuidad del negocio.',
   },
   'enterprise-maintenance': {
     shortDescription:
@@ -915,7 +935,7 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Diseño adaptable para que las interfaces funcionen en diferentes tamaños de pantalla.',
     evidenceSummary:
-      'Responsive Design se evidencia en este portfolio y en el enfoque de UI que mantiene acceso claro al contenido.',
+      'Responsive Design se evidencia en Expensux, ItHelpCenter, Discovery, Testigo Electoral y J3dev Portfolio mediante trabajo UI que mantiene flujos empresariales y profesionales usables en diferentes tamaños de pantalla.',
   },
   'clean-code': {
     shortDescription: 'Hábitos de código legible orientados a mantenimiento y transferencia.',
@@ -948,7 +968,7 @@ const skillSpanishDescriptions: Record<
   winforms: {
     shortDescription: 'Experiencia UI desktop conectada con flujos operativos de negocio.',
     evidenceSummary:
-      'WinForms representa experiencia de aplicaciones desktop obtenida mediante software de flujos en producción y evolución de sistemas legacy.',
+      'WinForms y la experiencia en aplicaciones desktop se representan en Worker y productos empresariales de Avances Software. Aunque Manager Plus, Manager Clinic y Odontology fueron construidos sobre FoxPro, aportan experiencia real en aplicaciones desktop empresariales.',
   },
   wpf: {
     shortDescription: 'Dirección UI desktop para formularios modernizados en aplicaciones .NET.',
@@ -987,7 +1007,7 @@ const skillSpanishDescriptions: Record<
   swagger: {
     shortDescription: 'Soporte de documentación y pruebas de API para flujos backend.',
     evidenceSummary:
-      'Swagger / pruebas de API aparecen en los bloques de implementación de proyectos y apoyan una validación API más clara.',
+      'Swagger se conecta con la modernización de Worker y el trabajo API de Expensux como soporte de documentación y validación de endpoints para flujos backend más claros.',
   },
   postman: {
     shortDescription:
@@ -1028,17 +1048,17 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Lenguaje frontend usado en proyectos empresariales y mejoras de comportamiento UI.',
     evidenceSummary:
-      'JavaScript aparece en trabajo empresarial LeverIT, incluyendo patrones reutilizables y mantenimiento frontend.',
+      'JavaScript aparece en ItHelpCenter y Discovery mediante comportamiento frontend empresarial, navegación tipo SPA, código cliente reutilizable, optimizaciones de carga y mejoras de búsqueda o flujo descritas a nivel público seguro.',
   },
   html: {
     shortDescription: 'Estructura de contenido web para interfaces claras y accesibles.',
     evidenceSummary:
-      'HTML apoya interfaces Angular y empresariales donde la estructura clara facilita usabilidad y mantenimiento.',
+      'HTML se representa en trabajo frontend empresarial de ItHelpCenter y Discovery, además de la estructura estática accesible del portfolio.',
   },
   css: {
     shortDescription: 'Estilos web para interfaces mantenibles y legibles.',
     evidenceSummary:
-      'CSS se conecta con trabajo frontend complementario y presentación profesional del portfolio.',
+      'CSS se conecta con ItHelpCenter, Discovery, Testigo Electoral y el portfolio mediante mejoras UI empresariales, estilos Angular y presentación legible orientada a temas.',
   },
   aspnet: {
     shortDescription: 'Experiencia ASP.NET en funcionalidades empresariales y mantenimiento.',
@@ -1061,13 +1081,13 @@ const skillSpanishDescriptions: Record<
     shortDescription:
       'Patrones de navegación tipo SPA resumidos sin exponer implementación interna.',
     evidenceSummary:
-      'SPA-like architecture se representa mediante patrones de navegación de ItHelpCenter sobre un índice principal único, resumidos sin exponer código interno.',
+      'La arquitectura SPA se representa en Expensux, Testigo Electoral y J3dev Portfolio. ItHelpCenter implementó conceptos equivalentes mediante JavaScript modular y navegación interna optimizada antes de adoptar Angular.',
   },
   'lazy-loading': {
     shortDescription:
       'Patrones de carga controlada usados para interfaces mantenibles y responsivas.',
     evidenceSummary:
-      'Lazy Loading se conecta con patrones controlados de ItHelpCenter usados como parte de mejoras mantenibles de arquitectura frontend.',
+      'Lazy Loading se conecta con Expensux, Testigo Electoral y J3dev Portfolio. ItHelpCenter implementó estrategias internas equivalentes de optimización de carga como parte de mejoras mantenibles de arquitectura frontend.',
   },
   'ai-assisted-ux': {
     shortDescription:
