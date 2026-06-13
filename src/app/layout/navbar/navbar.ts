@@ -237,6 +237,7 @@ export class Navbar {
   protected readonly mobileMenuId = 'site-nav-mobile-menu';
   private readonly openDropdownSource = signal<'click' | 'hover' | null>(null);
   private readonly currentPath = signal(this.router.url.split(/[?#]/)[0]);
+  private readonly mobileNavigationMediaQuery = globalThis.matchMedia?.('(max-width: 480px)');
 
   constructor() {
     this.router.events.subscribe((event) => {
@@ -279,7 +280,7 @@ export class Navbar {
     hasChildren: boolean,
     source: 'click' | 'hover' = 'hover',
   ): void {
-    if (!hasChildren) {
+    if (!hasChildren || (source === 'hover' && this.isMobileNavigationMode())) {
       return;
     }
 
@@ -292,6 +293,10 @@ export class Navbar {
   }
 
   protected closeDropdown(path?: string, source?: 'click' | 'hover'): void {
+    if (source === 'hover' && this.isMobileNavigationMode()) {
+      return;
+    }
+
     if (source && this.openDropdownSource() !== source) {
       return;
     }
@@ -349,9 +354,17 @@ export class Navbar {
     const nextFocusedElement = event.relatedTarget as Node | null;
     const currentItem = event.currentTarget as HTMLElement;
 
+    if (this.isMobileNavigationMode()) {
+      return;
+    }
+
     if (!nextFocusedElement || !currentItem.contains(nextFocusedElement)) {
       this.closeDropdown(path);
     }
+  }
+
+  private isMobileNavigationMode(): boolean {
+    return this.currentViewport() === 'mobile' || this.mobileNavigationMediaQuery?.matches === true;
   }
 
   @HostListener('document:pointerdown', ['$event'])
