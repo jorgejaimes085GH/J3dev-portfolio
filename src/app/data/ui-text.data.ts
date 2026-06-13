@@ -12,6 +12,7 @@ export const UI_TEXT = {
       education: 'Education',
       documents: 'Documents',
       contact: 'Contact',
+      menu: 'Menu',
     },
     header: {
       theme: 'Theme',
@@ -325,6 +326,7 @@ export const UI_TEXT = {
       education: 'Educación',
       documents: 'Documentos',
       contact: 'Contacto',
+      menu: 'Menú',
     },
     header: {
       theme: 'Tema',

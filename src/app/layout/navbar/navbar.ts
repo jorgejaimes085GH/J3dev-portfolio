@@ -34,7 +34,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
         <a
           class="site-header__brand"
           routerLink="/"
-          (click)="closeDropdown()"
+          (click)="closeAllMenus()"
           [attr.aria-label]="uiText().header.portfolioHome"
         >
           <span class="site-header__logo-frame" aria-hidden="true">
@@ -52,9 +52,24 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
 
         <nav
           class="site-header__nav site-nav"
+          [class.site-nav--mobile-open]="isMobileMenuOpen()"
+          [class.site-nav--preview-mobile]="currentViewport() === 'mobile'"
           [attr.aria-label]="uiText().nav.home + ' ' + uiText().header.navigation"
         >
-          <ul class="site-nav__list">
+          <button
+            class="site-nav__menu-toggle"
+            type="button"
+            [attr.aria-expanded]="isMobileMenuOpen()"
+            [attr.aria-controls]="mobileMenuId"
+            [attr.aria-label]="mobileMenuAriaLabel"
+            (click)="toggleMobileMenu()"
+            (keydown.escape)="closeMobileMenu()"
+          >
+            <span class="site-nav__menu-icon" aria-hidden="true">☰</span>
+            <span>{{ uiText().nav.menu }}</span>
+          </button>
+
+          <ul class="site-nav__list" [id]="mobileMenuId">
             @for (item of navigationItems(); track item.path) {
               <li
                 class="site-nav__item"
@@ -76,7 +91,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                     [attr.aria-expanded]="isDropdownOpen(item.path)"
                     [attr.aria-controls]="submenuId(item.path)"
                     (click)="toggleDropdown(item.path)"
-                    (keydown.escape)="closeDropdown(item.path)"
+                    (keydown.escape)="closeAllMenus()"
                   >
                     <ng-container
                       [ngTemplateOutlet]="navigationLinkContent"
@@ -95,7 +110,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                     [attr.aria-label]="item.label"
                     [attr.title]="item.label"
                     (click)="handleNavigationClick()"
-                    (keydown.escape)="closeDropdown()"
+                    (keydown.escape)="closeAllMenus()"
                   >
                     <ng-container
                       [ngTemplateOutlet]="navigationLinkContent"
@@ -120,8 +135,8 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                           [routerLinkActiveOptions]="{ exact: true }"
                           [attr.aria-label]="child.label"
                           [attr.title]="child.label"
-                          (click)="closeDropdown(item.path)"
-                          (keydown.escape)="closeDropdown(item.path)"
+                          (click)="handleNavigationClick()"
+                          (keydown.escape)="closeAllMenus()"
                         >
                           {{ child.label }}
                         </a>
@@ -218,6 +233,8 @@ export class Navbar {
   protected readonly pinIconUrl = 'assets/images/icons/actions/pin.svg';
   protected readonly pinOffIconUrl = 'assets/images/icons/actions/pin-off.svg';
   protected readonly openDropdownPath = signal<string | null>(null);
+  protected readonly isMobileMenuOpen = signal(false);
+  protected readonly mobileMenuId = 'site-nav-mobile-menu';
   private readonly openDropdownSource = signal<'click' | 'hover' | null>(null);
   private readonly currentPath = signal(this.router.url.split(/[?#]/)[0]);
 
@@ -225,7 +242,7 @@ export class Navbar {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentPath.set(event.urlAfterRedirects.split(/[?#]/)[0]);
-        this.closeDropdown();
+        this.closeAllMenus();
       }
     });
   }
@@ -243,6 +260,10 @@ export class Navbar {
       this.currentLanguage() === 'en' ? this.uiText().header.spanish : this.uiText().header.english;
 
     return `${this.uiText().header.language}: ${nextLanguage}`;
+  }
+
+  protected get mobileMenuAriaLabel(): string {
+    return `${this.uiText().nav.menu} ${this.uiText().header.navigation}`;
   }
 
   protected submenuId(path: string): string {
@@ -290,8 +311,21 @@ export class Navbar {
     this.openDropdown(path, true, 'click');
   }
 
-  protected handleNavigationClick(): void {
+  protected toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update((isOpen) => !isOpen);
+  }
+
+  protected closeMobileMenu(): void {
+    this.isMobileMenuOpen.set(false);
+  }
+
+  protected closeAllMenus(): void {
     this.closeDropdown();
+    this.closeMobileMenu();
+  }
+
+  protected handleNavigationClick(): void {
+    this.closeAllMenus();
   }
 
   protected isNavigationItemActive(item: NavigationItem): boolean {
@@ -316,7 +350,7 @@ export class Navbar {
   @HostListener('document:pointerdown', ['$event'])
   protected closeDropdownOnOutsidePointer(event: PointerEvent): void {
     if (!this.elementRef.nativeElement.contains(event.target as Node)) {
-      this.closeDropdown();
+      this.closeAllMenus();
     }
   }
 
