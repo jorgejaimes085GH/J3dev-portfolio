@@ -360,14 +360,15 @@
   }
 
   :is(.site-nav__link, .site-nav__submenu-link):is(:hover, :focus-visible) {
-    border-color: color-mix(in srgb, var(--app-accent-color) 35%, var(--app-border-color));
-    background: color-mix(in srgb, var(--app-accent-color) 10%, transparent);
+    border-color: color-mix(in srgb, var(--app-link-color) 45%, var(--app-border-color));
+    background: color-mix(in srgb, var(--app-link-color) 18%, var(--app-background-color));
   }
 
   :is(.site-nav__link--active, .site-nav__submenu-link--active) {
-    border-color: var(--app-accent-color);
-    background: color-mix(in srgb, var(--app-accent-color) 18%, transparent);
-    color: var(--app-accent-color);
+    border-color: var(--app-link-color);
+    background: color-mix(in srgb, var(--app-link-color) 28%, var(--app-background-color));
+    color: var(--app-link-color);
+    font-weight: 700;
   }
 
   .site-nav__submenu {

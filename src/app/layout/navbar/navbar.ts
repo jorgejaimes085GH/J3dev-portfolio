@@ -343,11 +343,15 @@ export class Navbar {
   protected isNavigationItemActive(item: NavigationItem): boolean {
     const currentPath = this.currentPath();
 
-    if (item.children?.some((child) => child.path === currentPath)) {
+    if (item.children?.some((child) => this.isNavigationPathActive(child.path, currentPath))) {
       return true;
     }
 
-    return item.path === currentPath;
+    return this.isNavigationPathActive(item.path, currentPath);
+  }
+
+  private isNavigationPathActive(itemPath: string, currentPath: string): boolean {
+    return itemPath === currentPath || (itemPath === '/why-hire-me' && currentPath === '/value');
   }
 
   protected handleDropdownFocusOut(event: FocusEvent, path: string): void {

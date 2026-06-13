@@ -1447,15 +1447,15 @@ app-navbar .site-nav__menu-toggle:focus-visible {
   app-navbar .site-nav.site-nav .site-nav__link:focus-visible,
   app-navbar .site-nav.site-nav .site-nav__submenu-link:hover,
   app-navbar .site-nav.site-nav .site-nav__submenu-link:focus-visible {
-    border-color: color-mix(in srgb, var(--app-accent-color) 45%, var(--app-border-color));
-    background: color-mix(in srgb, var(--app-accent-color) 12%, transparent);
+    border-color: color-mix(in srgb, var(--app-link-color) 45%, var(--app-border-color));
+    background: color-mix(in srgb, var(--app-link-color) 18%, var(--app-background-color));
   }
 
   app-navbar .site-nav.site-nav .site-nav__link.site-nav__link--active,
   app-navbar .site-nav.site-nav .site-nav__submenu-link.site-nav__submenu-link--active {
-    border-color: var(--app-accent-color);
-    background: color-mix(in srgb, var(--app-accent-color) 22%, transparent);
-    color: var(--app-accent-color);
+    border-color: var(--app-link-color);
+    background: color-mix(in srgb, var(--app-link-color) 28%, var(--app-background-color));
+    color: var(--app-link-color);
     font-weight: 700;
   }
 }
@@ -1561,14 +1561,14 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__link:hover,
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__link:focus-visible,
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link:hover,
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link:focus-visible {
-  border-color: color-mix(in srgb, var(--app-accent-color) 45%, var(--app-border-color));
-  background: color-mix(in srgb, var(--app-accent-color) 12%, transparent);
+  border-color: color-mix(in srgb, var(--app-link-color) 45%, var(--app-border-color));
+  background: color-mix(in srgb, var(--app-link-color) 18%, var(--app-background-color));
 }
 
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__link.site-nav__link--active,
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link.site-nav__submenu-link--active {
-  border-color: var(--app-accent-color);
-  background: color-mix(in srgb, var(--app-accent-color) 22%, transparent);
-  color: var(--app-accent-color);
+  border-color: var(--app-link-color);
+  background: color-mix(in srgb, var(--app-link-color) 28%, var(--app-background-color));
+  color: var(--app-link-color);
   font-weight: 700;
 }
