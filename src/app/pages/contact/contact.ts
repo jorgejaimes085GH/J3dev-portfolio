@@ -56,7 +56,7 @@ import { ContactMethod } from '../../models/contact.model';
               </div>
 
               <a
-                class="contact-action contact-action--primary"
+                class="contact-action contact-action--primary contact-method-card__action"
                 [href]="method.actionUrl"
                 [attr.target]="isExternalUrl(method) ? '_blank' : null"
                 [attr.rel]="isExternalUrl(method) ? 'noopener noreferrer' : null"
@@ -220,6 +220,12 @@ import { ContactMethod } from '../../models/contact.model';
 
       .contact-method-card__note {
         font-size: 0.95rem;
+      }
+
+      .contact-method-card .contact-method-card__action {
+        align-self: center;
+        width: 75%;
+        max-width: 320px;
       }
 
       .contact-action {
