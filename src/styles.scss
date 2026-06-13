@@ -1443,12 +1443,16 @@ app-navbar .site-nav__menu-toggle:focus-visible {
     background: color-mix(in srgb, var(--app-background-color) 76%, transparent);
   }
 
-  app-navbar .site-nav.site-nav :is(.site-nav__link, .site-nav__submenu-link):is(:hover, :focus-visible) {
+  app-navbar .site-nav.site-nav .site-nav__link:hover,
+  app-navbar .site-nav.site-nav .site-nav__link:focus-visible,
+  app-navbar .site-nav.site-nav .site-nav__submenu-link:hover,
+  app-navbar .site-nav.site-nav .site-nav__submenu-link:focus-visible {
     border-color: color-mix(in srgb, var(--app-accent-color) 45%, var(--app-border-color));
     background: color-mix(in srgb, var(--app-accent-color) 12%, transparent);
   }
 
-  app-navbar .site-nav.site-nav :is(.site-nav__link--active, .site-nav__submenu-link--active) {
+  app-navbar .site-nav.site-nav .site-nav__link.site-nav__link--active,
+  app-navbar .site-nav.site-nav .site-nav__submenu-link.site-nav__submenu-link--active {
     border-color: var(--app-accent-color);
     background: color-mix(in srgb, var(--app-accent-color) 22%, transparent);
     color: var(--app-accent-color);
@@ -1553,12 +1557,16 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link {
   background: color-mix(in srgb, var(--app-background-color) 76%, transparent);
 }
 
-app-navbar .site-nav--preview-mobile.site-nav :is(.site-nav__link, .site-nav__submenu-link):is(:hover, :focus-visible) {
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__link:hover,
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__link:focus-visible,
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link:hover,
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link:focus-visible {
   border-color: color-mix(in srgb, var(--app-accent-color) 45%, var(--app-border-color));
   background: color-mix(in srgb, var(--app-accent-color) 12%, transparent);
 }
 
-app-navbar .site-nav--preview-mobile.site-nav :is(.site-nav__link--active, .site-nav__submenu-link--active) {
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__link.site-nav__link--active,
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link.site-nav__submenu-link--active {
   border-color: var(--app-accent-color);
   background: color-mix(in srgb, var(--app-accent-color) 22%, transparent);
   color: var(--app-accent-color);
