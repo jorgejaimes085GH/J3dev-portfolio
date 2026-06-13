@@ -1348,6 +1348,19 @@ app-navbar .site-nav__menu-toggle:focus-visible {
 @media (max-width: 480px) {
   app-navbar .site-nav.site-nav .site-nav__menu-toggle {
     display: inline-flex;
+    width: 75%;
+    max-width: 320px;
+    min-height: 48px;
+  }
+
+  app-navbar .site-header__pin-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  app-navbar .site-header__language-toggle {
+    min-width: 52px;
+    min-height: 44px;
   }
 
   app-navbar .site-nav.site-nav .site-nav__list {
@@ -1389,8 +1402,25 @@ app-navbar .site-nav__menu-toggle:focus-visible {
   }
 }
 
+app-navbar.site-header-shell--preview-mobile .site-header__tools {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+app-navbar.site-header-shell--preview-mobile .site-header__pin-toggle {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+app-navbar.site-header-shell--preview-mobile .site-header__language-toggle {
+  min-width: 52px;
+  min-height: 44px;
+}
+
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__menu-toggle {
   display: inline-flex;
+  width: 75%;
+  max-width: 320px;
+  min-height: 48px;
 }
 
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__list {
