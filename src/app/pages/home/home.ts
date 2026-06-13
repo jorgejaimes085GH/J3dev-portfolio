@@ -301,7 +301,36 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       @media (max-width: 600px) {
         .home-section,
         .home-cta {
+          width: 100%;
+          min-width: 0;
           padding: 2.5rem 1rem;
+        }
+
+        .home-cta {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .home-cta > div:first-child,
+        .home-cta__actions {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+
+        .home-cta__actions {
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: flex-start;
+        }
+
+        .home-cta .button-link {
+          width: 100%;
+          max-width: 22rem;
+          overflow-wrap: anywhere;
+          text-align: center;
         }
 
         .preview-grid--three,
