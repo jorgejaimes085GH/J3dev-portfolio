@@ -1604,6 +1604,50 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link.site-nav__
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .home-cta,
+  .experience-page .experience-cta,
+  .experience-page .experience-cta__actions {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-cta > div:first-child,
+  .home-cta__actions,
+  .experience-page .experience-cta,
+  .experience-page .experience-project-list,
+  .experience-page .experience-cta > div:first-child,
+  .experience-page .experience-cta__actions {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-cta .button-link,
+  .experience-page .experience-cta .button-link {
+    width: 100%;
+    max-width: 22rem;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .experience-page .experience-card__block,
+  .experience-page .experience-card__block p,
+  .experience-page .experience-card__learned-list {
+    overflow-wrap: anywhere;
+  }
+
+  .experience-page .experience-card__learned-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .experience-page .experience-card__learned-list li {
+    width: auto;
+    max-width: 100%;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
   .experience-page .experience-card__block--context,
   .experience-page .experience-card__block--projects {
     grid-column: auto;
