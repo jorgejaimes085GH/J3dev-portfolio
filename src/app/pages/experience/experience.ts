@@ -190,11 +190,7 @@ import { Project } from '../../models/project.model';
         text-transform: uppercase;
       }
 
-      .experience-section h1,
-      .experience-section h2,
-      .experience-card h3,
-      .experience-card h4,
-      .experience-cta h2 {
+      :is(.experience-section, .experience-card, .experience-cta) :is(h1, h2, h3, h4) {
         margin: 0;
       }
 
@@ -438,9 +434,7 @@ import { Project } from '../../models/project.model';
         gap: 0.75rem;
       }
 
-      .experience-project-link,
-      .experience-recommendation-link,
-      .button-link {
+      :is(.experience-project-link, .experience-recommendation-link, .button-link) {
         border: 1px solid var(--app-border-color);
         color: var(--app-text-color);
         text-decoration: none;
@@ -455,12 +449,7 @@ import { Project } from '../../models/project.model';
         border-radius: 0.85rem;
       }
 
-      .experience-project-link:hover,
-      .experience-project-link:focus-visible,
-      .experience-recommendation-link:hover,
-      .experience-recommendation-link:focus-visible,
-      .button-link:hover,
-      .button-link:focus-visible {
+      :is(.experience-project-link, .experience-recommendation-link, .button-link):is(:hover, :focus-visible) {
         border-color: var(--app-link-color);
         color: var(--app-link-color);
         outline: none;
@@ -541,10 +530,9 @@ import { Project } from '../../models/project.model';
         color: var(--app-background-color);
       }
 
-      .button-link--primary:hover,
-      .button-link--primary:focus-visible {
+      .button-link--primary:is(:hover, :focus-visible) {
         color: var(--app-background-color);
-        filter: brightness(0.95);
+        filter: brightness(.95);
       }
 
       @media (max-width: 900px) {
@@ -578,7 +566,7 @@ import { Project } from '../../models/project.model';
         .experience-page--premium .experience-card__header::after {
           right: 1rem;
           font-size: clamp(4rem, 18vw, 6.4rem);
-          opacity: 0.08;
+          opacity: .08;
         }
       }
 
@@ -592,9 +580,19 @@ import { Project } from '../../models/project.model';
           padding-left: 1rem;
         }
 
+        .experience-card__grid,
+        .experience-project-list {
+          display: flex;
+          flex-direction: column;
+        }
+
         .experience-card {
           gap: 1rem;
           padding: 1rem;
+        }
+
+        :is(.experience-card__learned-list, .experience-recommendation-link) {
+          width: 100%;
         }
 
         .experience-card__identity {
@@ -618,7 +616,7 @@ import { Project } from '../../models/project.model';
         .experience-page--premium .experience-card__header::after {
           right: 0.75rem;
           font-size: 4.5rem;
-          opacity: 0.045;
+          opacity: .045;
         }
       }
     `,
