@@ -67,9 +67,9 @@ export const UI_TEXT = {
         eyebrow: 'Professional Evidence',
         title: 'Documents',
         summary:
-          'Public-safe professional documents prepared to support recruiting conversations, technical evaluation, and professional verification.',
+          'This section brings together documents that complement the experience presented throughout the portfolio. Here you will find resumes, cover letters, and professional recommendations that help validate experience, career trajectory, and work context.',
         language: 'Language',
-        group: 'Group',
+        group: 'Category',
         detailsAria: 'Document details',
         actionsAria: 'Document actions',
         viewOnline: 'View Online',
@@ -77,7 +77,7 @@ export const UI_TEXT = {
         print: 'Print',
         noteTitle: 'Evidence note',
         noteBody:
-          'Some professional documents are pending PDF publication. Current document links are kept intentionally simple and may not resolve until the final files are added.',
+          'The documents in this section complement the portfolio with professional evidence, employment references, and supporting material for selection processes.',
       },
       education: {
         eyebrow: 'Education and Growth',
@@ -381,9 +381,9 @@ export const UI_TEXT = {
         eyebrow: 'Evidencia profesional',
         title: 'Documentos',
         summary:
-          'Documentos profesionales seguros para publicación, preparados para apoyar conversaciones de reclutamiento, evaluación técnica y verificación profesional.',
+          'Esta sección reúne documentos que complementan la experiencia presentada en el portafolio. Aquí encontrarás hojas de vida, cartas de presentación y recomendaciones profesionales utilizadas para validar experiencia, trayectoria y contexto laboral.',
         language: 'Idioma',
-        group: 'Grupo',
+        group: 'Categoría',
         detailsAria: 'Detalles del documento',
         actionsAria: 'Acciones del documento',
         viewOnline: 'Ver en línea',
@@ -391,7 +391,7 @@ export const UI_TEXT = {
         print: 'Imprimir',
         noteTitle: 'Nota de evidencia',
         noteBody:
-          'Algunos documentos profesionales tienen pendiente la publicación del PDF. Los enlaces actuales se mantienen intencionalmente simples y podrían no resolver hasta que se agreguen los archivos finales.',
+          'Los documentos publicados en esta sección complementan la información presentada en el portafolio mediante evidencia profesional verificable, referencias laborales y material de apoyo para procesos de selección.',
       },
       education: {
         eyebrow: 'Educación y crecimiento',
