@@ -84,3 +84,15 @@
   background: var(--app-link-color);
   border-color: var(--app-link-color);
 }
+
+@media (max-width: 480px) {
+  .theme-switcher__button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+:host-context(.site-header-shell--preview-mobile) .theme-switcher__button {
+  min-width: 44px;
+  min-height: 44px;
+}

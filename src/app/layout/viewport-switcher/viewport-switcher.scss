@@ -80,3 +80,15 @@
   background: var(--app-link-color);
   font-weight: 700;
 }
+
+@media (max-width: 480px) {
+  .viewport-switcher__button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+:host-context(.site-header-shell--preview-mobile) .viewport-switcher__button {
+  min-width: 44px;
+  min-height: 44px;
+}
