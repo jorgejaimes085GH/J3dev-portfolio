@@ -108,8 +108,7 @@ import { ContactMethod } from '../../models/contact.model';
         <nav class="contact-final-cta__actions" [attr.aria-label]="text().ctaAria">
           @for (method of contactMethods(); track method.id) {
             <a
-              class="contact-action"
-              [class.contact-action--primary]="$first"
+              class="contact-action contact-action--primary"
               [href]="method.actionUrl"
               [attr.target]="isExternalUrl(method) ? '_blank' : null"
               [attr.rel]="isExternalUrl(method) ? 'noopener noreferrer' : null"
@@ -239,7 +238,8 @@ import { ContactMethod } from '../../models/contact.model';
 
       .contact-action--primary {
         border-color: var(--app-link-color);
-        color: var(--app-link-color);
+        color: var(--app-background-color);
+        background: var(--app-link-color);
       }
 
       .contact-action:focus-visible {
