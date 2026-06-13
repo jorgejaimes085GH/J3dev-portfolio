@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { LanguageService } from '../../core/services/language.service';
+import { ThemeService } from '../../core/services/theme.service';
 import { EXPERIENCE_CTA_LINKS, EXPERIENCE_ENTRIES } from '../../data/experience.data';
 import { getLocalizedData } from '../../data/localized-data';
 import { PROJECTS } from '../../data/projects.data';
@@ -13,7 +14,11 @@ import { Project } from '../../models/project.model';
   standalone: true,
   imports: [RouterLink],
   template: `
-    <main class="experience-page" aria-labelledby="experience-page-title">
+    <main
+      class="experience-page"
+      [class.experience-page--premium]="isPremiumTheme()"
+      aria-labelledby="experience-page-title"
+    >
       <section class="experience-section experience-hero" aria-labelledby="experience-page-title">
         <div class="experience-section__header experience-hero__content">
           <p class="experience-section__eyebrow">{{ text().eyebrow }}</p>
@@ -33,7 +38,12 @@ import { Project } from '../../models/project.model';
           @for (entry of entries(); track entry.id) {
             <li class="experience-timeline__item">
               <article class="experience-card" [attr.aria-labelledby]="entry.id + '-title'">
-                <div class="experience-card__header">
+                <div
+                  class="experience-card__header"
+                  [attr.data-company-watermark]="
+                    entry.companyInitials || getCompanyInitials(entry.company)
+                  "
+                >
                   <div class="experience-card__identity">
                     <span class="experience-card__logo" aria-hidden="true">
                       <span>{{ entry.companyInitials || getCompanyInitials(entry.company) }}</span>
@@ -258,7 +268,11 @@ import { Project } from '../../models/project.model';
         border: 1px solid color-mix(in srgb, var(--app-link-color) 36%, var(--app-border-color));
         border-radius: 0.9rem;
         background:
-          linear-gradient(135deg, color-mix(in srgb, var(--app-link-color) 14%, transparent), transparent),
+          linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--app-link-color) 14%, transparent),
+            transparent
+          ),
           var(--app-background-color);
         color: var(--app-link-color);
         font-weight: 900;
@@ -301,6 +315,65 @@ import { Project } from '../../models/project.model';
       .experience-card__role {
         margin: 0.35rem 0 0;
         font-weight: 700;
+      }
+
+      .experience-page--premium .experience-card {
+        overflow: hidden;
+        gap: 1rem;
+        border-color: color-mix(in srgb, var(--app-link-color) 26%, var(--app-border-color));
+      }
+
+      .experience-page--premium .experience-card__header,
+      .experience-page--premium .experience-card__body {
+        grid-column: 1 / -1;
+      }
+
+      .experience-page--premium .experience-card__header {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding: clamp(1rem, 2.6vw, 1.45rem);
+        border: 1px solid color-mix(in srgb, var(--app-link-color) 22%, rgba(255, 255, 255, 0.16));
+        border-radius: 0.875rem;
+        background:
+          linear-gradient(
+            165deg,
+            color-mix(in srgb, var(--app-link-color) 22%, transparent),
+            rgba(255, 255, 255, 0.08) 45%,
+            transparent
+          ),
+          color-mix(in srgb, var(--app-background-color) 86%, rgba(255, 255, 255, 0.12));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.14),
+          0 0.9rem 2.1rem rgba(0, 0, 0, 0.18);
+      }
+
+      .experience-page--premium .experience-card__header::after {
+        position: absolute;
+        top: 50%;
+        right: clamp(1rem, 4vw, 2.6rem);
+        z-index: -1;
+        color: color-mix(in srgb, var(--app-link-color) 72%, white);
+        content: attr(data-company-watermark);
+        font-size: clamp(4.75rem, 13vw, 9rem);
+        font-weight: 900;
+        letter-spacing: -0.08em;
+        opacity: 0.1;
+        text-transform: uppercase;
+        transform: translateY(-50%);
+      }
+
+      .experience-page--premium .experience-card__identity {
+        position: relative;
+        z-index: 1;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        max-width: min(100%, 38rem);
+      }
+
+      .experience-page--premium .experience-card__logo {
+        border-color: color-mix(in srgb, var(--app-link-color) 46%, rgba(255, 255, 255, 0.2));
+        background: color-mix(in srgb, var(--app-link-color) 16%, var(--app-background-color));
       }
 
       .experience-card__body {
@@ -501,6 +574,12 @@ import { Project } from '../../models/project.model';
         .experience-cta__actions {
           justify-content: flex-start;
         }
+
+        .experience-page--premium .experience-card__header::after {
+          right: 1rem;
+          font-size: clamp(4rem, 18vw, 6.4rem);
+          opacity: 0.08;
+        }
       }
 
       @media (max-width: 560px) {
@@ -531,14 +610,28 @@ import { Project } from '../../models/project.model';
         .experience-card__evidence {
           justify-content: flex-start;
         }
+
+        .experience-page--premium .experience-card__header {
+          padding: 1rem;
+        }
+
+        .experience-page--premium .experience-card__header::after {
+          right: 0.75rem;
+          font-size: 4.5rem;
+          opacity: 0.045;
+        }
       }
     `,
   ],
 })
 export class Experience {
   private readonly languageService = inject(LanguageService);
+  private readonly themeService = inject(ThemeService);
 
   protected readonly text = computed(() => this.languageService.uiText().pages.experience);
+  protected readonly isPremiumTheme = computed(
+    () => this.themeService.currentTheme() === 'premium-3d',
+  );
   protected readonly entries = computed(() =>
     getLocalizedData(EXPERIENCE_ENTRIES, this.languageService.currentLanguage()),
   );
