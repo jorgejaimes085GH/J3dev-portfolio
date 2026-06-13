@@ -1572,3 +1572,101 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link.site-nav__
   color: var(--app-link-color);
   font-weight: 700;
 }
+
+@media (max-width: 560px) {
+  .experience-page .experience-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .experience-page .experience-card__header,
+  .experience-page .experience-card__body,
+  .experience-page .experience-card__grid,
+  .experience-page .experience-card__block,
+  .experience-page .experience-card__evidence,
+  .experience-page .experience-project-link,
+  .experience-page .experience-recommendation-link,
+  .experience-page .experience-cta__actions,
+  .experience-page .button-link {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .experience-page .experience-card__identity {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .experience-page .experience-card__grid,
+  .experience-page .experience-project-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .experience-page .experience-card__block--context,
+  .experience-page .experience-card__block--projects {
+    grid-column: auto;
+  }
+
+  .experience-page .experience-project-link {
+    align-items: flex-start;
+    overflow-wrap: anywhere;
+  }
+
+  .experience-page .experience-project-link > span:last-child {
+    min-width: 0;
+  }
+
+  .experience-page .experience-recommendation-link {
+    padding-inline: 1rem;
+    text-align: center;
+  }
+
+  .experience-page--premium .experience-card__identity {
+    grid-template-columns: none;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .education-page .formal-education-list,
+  .education-page .self-taught-grid,
+  .education-page .learning-grid,
+  .education-page .highlight-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .education-page .education-card,
+  .education-page .learning-card,
+  .education-page .highlight-card,
+  .education-page .philosophy-card,
+  .education-page .education-card__institution,
+  .education-page .institution-link,
+  .education-page .learning-card__focus {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .education-page .education-card,
+  .education-page .learning-card,
+  .education-page .highlight-card {
+    align-content: stretch;
+  }
+
+  .education-page .institution-link {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .education-page .institution-link h3,
+  .education-page .education-card p,
+  .education-page .learning-card p,
+  .education-page .highlight-card p {
+    overflow-wrap: anywhere;
+  }
+
+  .education-page .education-cta__actions,
+  .education-page .button-link {
+    width: 100%;
+  }
+}
