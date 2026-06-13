@@ -36,23 +36,21 @@ const PROFESSIONAL_CONTACT_METHODS_EN: ContactMethod[] = [
 const PROFESSIONAL_AVAILABILITY_EN: ContactBadge[] = [
   { id: 'remote-opportunities', label: 'Remote Opportunities' },
   { id: 'hybrid-opportunities', label: 'Hybrid Opportunities' },
-  { id: 'backend-dotnet-roles', label: 'Backend .NET Roles' },
-  { id: 'fullstack-dotnet-angular-roles', label: 'Backend-first .NET + Angular Roles' },
-  { id: 'software-architecture-discussions', label: 'Software Architecture Discussions' },
-  { id: 'technical-leadership-growth', label: 'Technical Leadership Growth' },
+  { id: 'full-time-roles', label: 'Full-Time Roles' },
+  { id: 'product-oriented-teams', label: 'Product-Oriented Teams' },
+  { id: 'engineering-team-collaboration', label: 'Engineering Team Collaboration' },
+  { id: 'long-term-growth', label: 'Long-Term Growth' },
 ];
 
 const TECHNICAL_INTERESTS_EN: ContactBadge[] = [
-  { id: 'sql-server', label: 'SQL Server' },
-  { id: 'dotnet-8', label: '.NET 8' },
-  { id: 'rest-apis', label: 'REST APIs' },
-  { id: 'angular', label: 'Angular' },
-  { id: 'dapper', label: 'Dapper' },
-  { id: 'solid', label: 'SOLID' },
-  { id: 'software-architecture', label: 'Software Architecture' },
-  { id: 'modernization-legacy-systems', label: 'Modernization of Legacy Systems' },
-  { id: 'azure-learning', label: 'Azure Learning' },
-  { id: 'ai-assisted-development', label: 'AI-Assisted Development' },
+  { id: 'team-collaboration', label: 'Team Collaboration' },
+  { id: 'maintainable-software', label: 'Maintainable Software' },
+  { id: 'product-oriented-delivery', label: 'Product-Oriented Delivery' },
+  { id: 'business-context', label: 'Business Context' },
+  { id: 'continuous-learning', label: 'Continuous Learning' },
+  { id: 'clear-communication', label: 'Clear Communication' },
+  { id: 'production-support', label: 'Production Support' },
+  { id: 'long-term-ownership', label: 'Long-Term Ownership' },
 ];
 
 const PROFESSIONAL_CONTACT_METHODS_ES: ContactMethod[] = [
@@ -83,12 +81,12 @@ export const PROFESSIONAL_CONTACT_METHODS = {
 } as const;
 
 const PROFESSIONAL_AVAILABILITY_ES: ContactBadge[] = [
-  { id: 'remote-opportunities', label: 'Oportunidades Remotas' },
-  { id: 'hybrid-opportunities', label: 'Oportunidades Híbridas' },
-  { id: 'backend-dotnet-roles', label: 'Roles Backend .NET' },
-  { id: 'fullstack-dotnet-angular-roles', label: 'Roles .NET + Angular con prioridad Backend' },
-  { id: 'software-architecture-discussions', label: 'Conversaciones de Arquitectura de Software' },
-  { id: 'technical-leadership-growth', label: 'Crecimiento en Liderazgo Técnico' },
+  { id: 'remote-opportunities', label: 'Oportunidades remotas' },
+  { id: 'hybrid-opportunities', label: 'Oportunidades híbridas' },
+  { id: 'full-time-roles', label: 'Roles de tiempo completo' },
+  { id: 'product-oriented-teams', label: 'Equipos orientados a producto' },
+  { id: 'engineering-team-collaboration', label: 'Colaboración con equipos de ingeniería' },
+  { id: 'long-term-growth', label: 'Crecimiento de largo plazo' },
 ];
 
 export const PROFESSIONAL_AVAILABILITY = {
@@ -97,16 +95,14 @@ export const PROFESSIONAL_AVAILABILITY = {
 } as const;
 
 const TECHNICAL_INTERESTS_ES: ContactBadge[] = [
-  { id: 'sql-server', label: 'SQL Server' },
-  { id: 'dotnet-8', label: '.NET 8' },
-  { id: 'rest-apis', label: 'REST APIs' },
-  { id: 'angular', label: 'Angular' },
-  { id: 'dapper', label: 'Dapper' },
-  { id: 'solid', label: 'SOLID' },
-  { id: 'software-architecture', label: 'Arquitectura de Software' },
-  { id: 'modernization-legacy-systems', label: 'Modernización de Sistemas Legacy' },
-  { id: 'azure-learning', label: 'Aprendizaje de Azure' },
-  { id: 'ai-assisted-development', label: 'Desarrollo Asistido por IA' },
+  { id: 'team-collaboration', label: 'Colaboración en equipo' },
+  { id: 'maintainable-software', label: 'Software mantenible' },
+  { id: 'product-oriented-delivery', label: 'Entrega orientada a producto' },
+  { id: 'business-context', label: 'Contexto de negocio' },
+  { id: 'continuous-learning', label: 'Aprendizaje continuo' },
+  { id: 'clear-communication', label: 'Comunicación clara' },
+  { id: 'production-support', label: 'Soporte a producción' },
+  { id: 'long-term-ownership', label: 'Responsabilidad de largo plazo' },
 ];
 
 export const TECHNICAL_INTERESTS = {
