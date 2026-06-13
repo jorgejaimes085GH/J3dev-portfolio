@@ -445,3 +445,17 @@
 :host(.site-header-shell--preview-mobile) .site-header__tools {
   width: 100%;
 }
+
+:host(.site-header-shell--preview-mobile) .site-nav__item,
+:host(.site-header-shell--preview-mobile) .site-nav__item + .site-nav__item {
+  border-left: 0;
+}
+
+:host(.site-header-shell--preview-mobile) .site-nav__submenu {
+  position: static;
+  display: none;
+}
+
+:host(.site-header-shell--preview-mobile) .site-nav__item--submenu-open > .site-nav__submenu {
+  display: flex;
+}
