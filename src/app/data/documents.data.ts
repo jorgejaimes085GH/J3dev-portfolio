@@ -1,10 +1,8 @@
 import { DocumentGroupSection, ProfessionalDocument } from '../models/document.model';
 
-const spanishRecommendationNote =
-  'Original document in Spanish. English summary available upon request for international evaluation contexts.';
+const spanishRecommendationNote = 'Original document in Spanish.';
 
-const spanishRecommendationNoteEs =
-  'Documento original en español. Puede acompañarse con un resumen en inglés para procesos internacionales.';
+const spanishRecommendationNoteEs = 'Documento original en español.';
 
 const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
   {
@@ -71,7 +69,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     id: 'recommendation-leverit',
     title: 'LeverIT Recommendation',
     description:
-      'Recommendation from a nearly decade-long professional context involving enterprise software, production systems, product evolution, and sustained contribution to business-critical applications.',
+      'Recommendation issued by LeverIT recognizing nearly 10 years of contribution to enterprise products and systems used in production.',
     type: 'Recommendation Letter',
     language: 'Spanish',
     group: 'Professional Recommendations',
@@ -87,7 +85,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     id: 'recommendation-netcom',
     title: 'Netcom Recommendation',
     description:
-      'Recommendation from Jorge’s first professional software experience, reflecting early exposure to enterprise systems, teamwork, applied engineering practices, and the foundations of his development path.',
+      'Recommendation from Jorge’s first professional experience in enterprise software development.',
     type: 'Recommendation Letter',
     language: 'Spanish',
     group: 'Professional Recommendations',
@@ -103,7 +101,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     id: 'recommendation-avances',
     title: 'Avances Software Recommendation',
     description:
-      'Recommendation tied to medical and administrative software work, including product evolution, database migration, and support for multiple clients in real business operating environments.',
+      'Recommendation associated with work on medical, administrative, and accounting solutions for multiple clients.',
     type: 'Recommendation Letter',
     language: 'Spanish',
     group: 'Professional Recommendations',
@@ -119,7 +117,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     id: 'recommendation-worker',
     title: 'Myssas / Worker Client Recommendation',
     description:
-      'Client-side recommendation for Worker, documenting a supplier-client relationship around a product built from the ground up, kept in production for more than a decade, and continuously improved over time.',
+      'Recommendation issued from the client-supplier context of the Worker project, an enterprise system developed and maintained for more than a decade.',
     type: 'Recommendation Letter',
     language: 'Spanish',
     group: 'Professional Recommendations',
@@ -212,7 +210,7 @@ const PROFESSIONAL_DOCUMENTS_ES: ProfessionalDocument[] = [
     ...PROFESSIONAL_DOCUMENTS_EN[4],
     title: 'Recomendación LeverIT',
     description:
-      'Recomendación de un contexto profesional de casi 10 años, asociada a software empresarial, sistemas en producción, evolución de productos y contribución sostenida a aplicaciones críticas para el negocio.',
+      'Recomendación expedida por LeverIT en reconocimiento a casi 10 años de participación en productos empresariales y sistemas utilizados en producción.',
     type: 'Carta de Recomendación',
     language: 'Español',
     group: 'Recomendaciones profesionales',
@@ -226,7 +224,7 @@ const PROFESSIONAL_DOCUMENTS_ES: ProfessionalDocument[] = [
     ...PROFESSIONAL_DOCUMENTS_EN[5],
     title: 'Recomendación Netcom',
     description:
-      'Recomendación de la primera experiencia profesional de Jorge en software, reflejando contacto temprano con sistemas empresariales, trabajo en equipo, ingeniería aplicada y bases de su trayectoria como desarrollador.',
+      'Recomendación correspondiente a la primera experiencia profesional de Jorge en desarrollo de software empresarial.',
     type: 'Carta de Recomendación',
     language: 'Español',
     group: 'Recomendaciones profesionales',
@@ -240,7 +238,7 @@ const PROFESSIONAL_DOCUMENTS_ES: ProfessionalDocument[] = [
     ...PROFESSIONAL_DOCUMENTS_EN[6],
     title: 'Recomendación Avances Software',
     description:
-      'Recomendación vinculada a software médico y administrativo, evolución de productos, migración de bases de datos y soporte a múltiples clientes en entornos reales de operación empresarial.',
+      'Recomendación asociada al trabajo realizado en soluciones médicas, administrativas y contables para múltiples clientes.',
     type: 'Carta de Recomendación',
     language: 'Español',
     group: 'Recomendaciones profesionales',
@@ -254,7 +252,7 @@ const PROFESSIONAL_DOCUMENTS_ES: ProfessionalDocument[] = [
     ...PROFESSIONAL_DOCUMENTS_EN[7],
     title: 'Recomendación Cliente Myssas / Worker',
     description:
-      'Recomendación desde una relación cliente-proveedor en Worker, un producto desarrollado desde cero, mantenido por más de una década en producción y mejorado continuamente según necesidades reales del negocio.',
+      'Recomendación emitida desde el contexto cliente-proveedor del proyecto Worker, sistema empresarial desarrollado y mantenido durante más de una década.',
     type: 'Carta de Recomendación',
     language: 'Español',
     group: 'Recomendaciones profesionales',

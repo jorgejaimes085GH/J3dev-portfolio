@@ -54,21 +54,29 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                   <span class="document-card__status">{{ document.statusLabel }}</span>
                 </div>
 
-                <p class="document-card__description">{{ document.description }}</p>
+                @if (isRecommendationDocument(document)) {
+                  @if (document.note) {
+                    <p class="document-card__note">{{ document.note }}</p>
+                  }
 
-                <dl class="document-meta" [attr.aria-label]="text().detailsAria">
-                  <div>
-                    <dt>{{ text().language }}</dt>
-                    <dd>{{ document.language }}</dd>
-                  </div>
-                  <div>
-                    <dt>{{ text().group }}</dt>
-                    <dd>{{ document.group }}</dd>
-                  </div>
-                </dl>
+                  <p class="document-card__description">{{ document.description }}</p>
+                } @else {
+                  <p class="document-card__description">{{ document.description }}</p>
 
-                @if (document.note) {
-                  <p class="document-card__note">{{ document.note }}</p>
+                  <dl class="document-meta" [attr.aria-label]="text().detailsAria">
+                    <div>
+                      <dt>{{ text().language }}</dt>
+                      <dd>{{ document.language }}</dd>
+                    </div>
+                    <div>
+                      <dt>{{ text().group }}</dt>
+                      <dd>{{ document.group }}</dd>
+                    </div>
+                  </dl>
+
+                  @if (document.note) {
+                    <p class="document-card__note">{{ document.note }}</p>
+                  }
                 }
 
                 <div class="document-actions" [attr.aria-label]="text().actionsAria">
@@ -353,6 +361,10 @@ export class Documents {
 
   openForPrint(document: ProfessionalDocument): void {
     window.open(document.filePath, '_blank', 'noopener,noreferrer');
+  }
+
+  protected isRecommendationDocument(document: ProfessionalDocument): boolean {
+    return document.id.startsWith('recommendation-');
   }
 
   protected hideFailedAsset(event: Event): void {
