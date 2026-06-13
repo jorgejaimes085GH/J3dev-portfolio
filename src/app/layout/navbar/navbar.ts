@@ -312,11 +312,18 @@ export class Navbar {
   }
 
   protected toggleMobileMenu(): void {
-    this.isMobileMenuOpen.update((isOpen) => !isOpen);
+    const willOpen = !this.isMobileMenuOpen();
+
+    this.isMobileMenuOpen.set(willOpen);
+
+    if (!willOpen) {
+      this.closeDropdown();
+    }
   }
 
   protected closeMobileMenu(): void {
     this.isMobileMenuOpen.set(false);
+    this.closeDropdown();
   }
 
   protected closeAllMenus(): void {

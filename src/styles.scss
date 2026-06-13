@@ -1326,9 +1326,9 @@ app-navbar .site-nav__menu-toggle {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  min-height: 2.35rem;
+  min-height: 2.7rem;
   margin: 0 auto;
-  padding: 0.45rem 0.85rem;
+  padding: 0.55rem 0.9rem;
   border: 1px solid var(--app-border-color);
   border-radius: 999px;
   color: var(--app-text-color);
@@ -1387,7 +1387,17 @@ app-navbar .site-nav__menu-toggle:focus-visible {
   app-navbar .site-nav.site-nav .site-nav__link {
     justify-content: flex-start;
     min-width: 0;
+    min-height: 2.85rem;
+    padding: 0.7rem 0.85rem;
+    border-color: var(--app-border-color);
+    border-radius: 0.95rem;
+    background: color-mix(in srgb, var(--app-background-color) 76%, transparent);
     text-align: start;
+    white-space: normal;
+  }
+
+  app-navbar .site-nav.site-nav .site-nav__chevron {
+    margin-left: auto;
   }
 
   app-navbar .site-nav.site-nav .site-nav__item--has-children {
@@ -1396,9 +1406,23 @@ app-navbar .site-nav__menu-toggle:focus-visible {
 
   app-navbar .site-nav.site-nav .site-nav__submenu {
     position: static;
+    display: flex;
+    width: calc(100% - 1rem);
     min-width: 0;
-    margin-top: 0.35rem;
-    margin-left: 1.5rem;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.45rem 0 0 1rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  app-navbar .site-nav.site-nav .site-nav__submenu-link {
+    min-height: 2.7rem;
+    padding: 0.68rem 0.8rem;
+    border-color: var(--app-border-color);
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, var(--app-background-color) 76%, transparent);
   }
 }
 
@@ -1447,12 +1471,36 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__item {
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__link {
   justify-content: flex-start;
   min-width: 0;
+  min-height: 2.85rem;
+  padding: 0.7rem 0.85rem;
+  border-color: var(--app-border-color);
+  border-radius: 0.95rem;
+  background: color-mix(in srgb, var(--app-background-color) 76%, transparent);
   text-align: start;
+  white-space: normal;
+}
+
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__chevron {
+  margin-left: auto;
 }
 
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu {
   position: static;
+  display: flex;
+  width: calc(100% - 1rem);
   min-width: 0;
-  margin-top: 0.35rem;
-  margin-left: 1.5rem;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.45rem 0 0 1rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link {
+  min-height: 2.7rem;
+  padding: 0.68rem 0.8rem;
+  border-color: var(--app-border-color);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--app-background-color) 76%, transparent);
 }
