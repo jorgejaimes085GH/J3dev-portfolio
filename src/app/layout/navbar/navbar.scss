@@ -352,6 +352,30 @@
   }
 }
 
+@media (max-width: 560px) {
+  .site-nav__menu-toggle {
+    width: min(94%, 380px);
+    max-width: 380px;
+    margin-inline: auto;
+  }
+
+  :is(.site-nav__link, .site-nav__submenu-link):is(:hover, :focus-visible) {
+    border-color: color-mix(in srgb, var(--app-accent-color) 35%, var(--app-border-color));
+    background: color-mix(in srgb, var(--app-accent-color) 10%, transparent);
+  }
+
+  :is(.site-nav__link--active, .site-nav__submenu-link--active) {
+    border-color: var(--app-accent-color);
+    background: color-mix(in srgb, var(--app-accent-color) 18%, transparent);
+    color: var(--app-accent-color);
+  }
+
+  .site-nav__submenu {
+    margin: 0.3rem 0 0.55rem;
+    gap: 0.25rem;
+  }
+}
+
 @media (max-width: 480px) {
   .site-header__inner {
     padding-inline: 0.75rem;
@@ -430,32 +454,4 @@
   min-height: 2.15rem;
   padding: 0.35rem 0.5rem;
   font-size: 0.78rem;
-}
-
-:host(.site-header-shell--preview-mobile) .site-header__brand,
-:host(.site-header-shell--preview-mobile) .site-header__tools {
-  justify-content: center;
-}
-
-:host(.site-header-shell--preview-mobile) .site-header__brand {
-  flex-direction: row;
-  max-width: none;
-}
-
-:host(.site-header-shell--preview-mobile) .site-header__tools {
-  width: 100%;
-}
-
-:host(.site-header-shell--preview-mobile) .site-nav__item,
-:host(.site-header-shell--preview-mobile) .site-nav__item + .site-nav__item {
-  border-left: 0;
-}
-
-:host(.site-header-shell--preview-mobile) .site-nav__submenu {
-  position: static;
-  display: none;
-}
-
-:host(.site-header-shell--preview-mobile) .site-nav__item--submenu-open > .site-nav__submenu {
-  display: flex;
 }
