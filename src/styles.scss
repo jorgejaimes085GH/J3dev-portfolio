@@ -1772,6 +1772,12 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link.site-nav__
     flex-direction: column;
   }
 
+  .home-cta {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    width: 100%;
+  }
+
   .home-cta > div:first-child,
   .home-cta__actions,
   .experience-page .experience-cta,
@@ -1788,6 +1794,10 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link.site-nav__
     max-width: 22rem;
     text-align: center;
     overflow-wrap: anywhere;
+  }
+
+  .home-cta .button-link {
+    max-width: none;
   }
 
   .experience-page .experience-card__block,
