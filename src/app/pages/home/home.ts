@@ -308,29 +308,28 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
         .home-cta {
           display: flex;
-          grid-template-columns: 1fr;
           flex-direction: column;
           align-items: stretch;
-          gap: 1rem;
+          gap: 1.5rem;
         }
 
-        .home-cta > div:first-child,
-        .home-cta__actions {
+        .home-cta > div {
           width: 100%;
           max-width: 100%;
-          min-width: 0;
         }
 
         .home-cta__actions {
+          width: 100%;
+          display: flex;
           flex-direction: column;
           align-items: stretch;
-          justify-content: flex-start;
+          gap: 0.75rem;
         }
 
-        .home-cta .button-link {
+        .home-cta__actions .button-link {
           width: 100%;
           max-width: none;
-          overflow-wrap: anywhere;
+          justify-content: center;
           text-align: center;
         }
 
