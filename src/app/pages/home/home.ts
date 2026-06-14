@@ -308,8 +308,9 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
         .home-cta {
           display: flex;
+          grid-template-columns: 1fr;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: stretch;
           gap: 1rem;
         }
 
@@ -328,7 +329,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
         .home-cta .button-link {
           width: 100%;
-          max-width: 22rem;
+          max-width: none;
           overflow-wrap: anywhere;
           text-align: center;
         }
