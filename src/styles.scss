@@ -92,7 +92,7 @@ a {
   }
 
   .viewport-preview--desktop app-hero-slider .hero-slider__content {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     max-width: 1120px;
   }
 
@@ -621,6 +621,8 @@ html.viewport-preview--mobile,
       .project-detail-nav,
       .project-detail-hero,
       .project-detail-section,
+      .experience-section,
+      .experience-cta,
       .journey-section,
       .journey-cta,
       .education-section,
@@ -651,6 +653,11 @@ html.viewport-preview--mobile,
       .project-time-grid,
       .project-link-list,
       .project-reference-list,
+      .experience-card,
+      .experience-card__body,
+      .experience-card__grid,
+      .experience-project-list,
+      .experience-cta,
       .journey-stage__card,
       .journey-insight-grid,
       .formal-education-list,
@@ -669,6 +676,13 @@ html.viewport-preview--mobile,
       .about-introduction,
       .about-cta,
       .value-cta,
+      .experience-card,
+      .experience-card__body,
+      .experience-card__grid,
+      .experience-card__block,
+      .experience-project-list,
+      .experience-cta,
+      .experience-cta__actions,
       .journey-cta,
       .contact-final-cta
     ) {
@@ -690,6 +704,22 @@ html.viewport-preview--mobile,
       .project-detail-hero__content,
       .project-detail-visual,
       .project-detail-section__header,
+      .experience-section__header,
+      .experience-hero__content,
+      .experience-card,
+      .experience-card__header,
+      .experience-card__body,
+      .experience-card__grid,
+      .experience-card__block,
+      .experience-card__block--context,
+      .experience-card__block--key,
+      .experience-card__block--projects,
+      .experience-card__learned-list,
+      .experience-project-list,
+      .experience-project-link,
+      .experience-cta,
+      .experience-cta > div:first-child,
+      .experience-cta__actions,
       .journey-section__header,
       .journey-hero__content,
       .education-section__header,
@@ -706,6 +736,7 @@ html.viewport-preview--mobile,
       .home-cta__actions,
       .about-cta__actions,
       .value-cta__actions,
+      .experience-cta__actions,
       .journey-cta__actions,
       .education-cta__actions,
       .contact-final-cta__actions
@@ -753,6 +784,135 @@ html.viewport-preview--mobile,
 
   :is(.document-card__header, .skill-panel__header) {
     flex-direction: column;
+  }
+
+  /* Experience preview mobile hardening.
+     Root cause: the viewport preview uses this wrapper class while the real
+     browser viewport can remain desktop-sized, so component @media rules do
+     not fire and the desktop grids keep winning in preview mode. */
+  .experience-page {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+
+    :is(
+        .experience-timeline,
+        .experience-timeline__item,
+        .experience-card,
+        .experience-card__header,
+        .experience-card__body,
+        .experience-card__grid,
+        .experience-card__block,
+        .experience-card__block--context,
+        .experience-card__block--key,
+        .experience-card__block--projects,
+        .experience-card__evidence,
+        .experience-project-list,
+        .experience-project-link,
+        .experience-recommendation-link,
+        .experience-cta,
+        .experience-cta > div:first-child,
+        .experience-cta__actions,
+        .button-link
+      ) {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    :is(
+        .experience-timeline,
+        .experience-timeline__item,
+        .experience-card,
+        .experience-card__body,
+        .experience-card__grid,
+        .experience-card__block,
+        .experience-card__block--context,
+        .experience-card__block--key,
+        .experience-card__block--projects,
+        .experience-project-list,
+        .experience-cta,
+        .experience-cta__actions
+      ) {
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: 1fr;
+    }
+
+    .experience-timeline {
+      padding-left: 0.75rem;
+    }
+
+    .experience-card {
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    :is(
+        .experience-card__header,
+        .experience-card__body,
+        .experience-card__block--context,
+        .experience-card__block--key,
+        .experience-card__block--projects
+      ) {
+      grid-column: auto;
+    }
+
+    .experience-card__identity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .experience-card__learned-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .experience-card__learned-list li {
+      width: auto;
+      max-width: 100%;
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+
+    .experience-project-list {
+      gap: 0.65rem;
+    }
+
+    .experience-project-link {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .experience-card__evidence {
+      justify-content: flex-start;
+    }
+
+    :is(.experience-recommendation-link, .button-link) {
+      justify-content: center;
+      text-align: center;
+      white-space: normal;
+    }
+
+    .experience-cta {
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .experience-cta__actions {
+      align-items: stretch;
+      justify-content: flex-start;
+    }
   }
 }
 
