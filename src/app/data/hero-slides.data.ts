@@ -13,7 +13,6 @@ const HERO_SLIDES_EN: readonly HeroSlide[] = [
     primaryActionRoute: '/projects',
     secondaryActionLabel: 'Explore Skills',
     secondaryActionRoute: '/skills',
-    visualLabel: 'Backend systems visual reference pending final asset',
     backgroundImageUrl: 'assets/images/backgrounds/hero/hero-backend-systems.webp',
   },
   {
@@ -27,7 +26,6 @@ const HERO_SLIDES_EN: readonly HeroSlide[] = [
     primaryActionRoute: '/why-hire-me',
     secondaryActionLabel: 'See Journey',
     secondaryActionRoute: '/journey',
-    visualLabel: 'Architecture planning visual reference pending final asset',
     backgroundImageUrl: 'assets/images/backgrounds/hero/hero-architecture-planning.webp',
   },
   {
@@ -41,7 +39,6 @@ const HERO_SLIDES_EN: readonly HeroSlide[] = [
     primaryActionRoute: '/skills',
     secondaryActionLabel: 'Contact Jorge',
     secondaryActionRoute: '/contact',
-    visualLabel: 'Frontend integration visual reference pending final asset',
     backgroundImageUrl: 'assets/images/backgrounds/hero/hero-frontend-integration.webp',
   },
 ];
@@ -59,7 +56,6 @@ const HERO_SLIDES_ES: readonly HeroSlide[] = [
     primaryActionRoute: '/projects',
     secondaryActionLabel: 'Explorar Habilidades',
     secondaryActionRoute: '/skills',
-    visualLabel: 'Referencia visual de sistemas backend pendiente de arte final',
     backgroundImageUrl: 'assets/images/backgrounds/hero/hero-backend-systems.webp',
   },
   {
@@ -73,7 +69,6 @@ const HERO_SLIDES_ES: readonly HeroSlide[] = [
     primaryActionRoute: '/why-hire-me',
     secondaryActionLabel: 'Ver Trayectoria',
     secondaryActionRoute: '/journey',
-    visualLabel: 'Referencia visual de planeación de arquitectura pendiente de arte final',
     backgroundImageUrl: 'assets/images/backgrounds/hero/hero-architecture-planning.webp',
   },
   {
@@ -87,7 +82,6 @@ const HERO_SLIDES_ES: readonly HeroSlide[] = [
     primaryActionRoute: '/skills',
     secondaryActionLabel: 'Contactar a Jorge',
     secondaryActionRoute: '/contact',
-    visualLabel: 'Referencia visual de integración frontend pendiente de arte final',
     backgroundImageUrl: 'assets/images/backgrounds/hero/hero-frontend-integration.webp',
   },
 ];

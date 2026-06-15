@@ -65,9 +65,6 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           </div>
 
           <div class="hero-slider__visual" [attr.aria-label]="heroText().visualAria">
-            <div class="hero-slider__placeholder" aria-hidden="true">
-              <span>{{ slide.visualLabel || heroText().placeholder }}</span>
-            </div>
             @if (shouldShowBackground(slide)) {
               <img
                 class="hero-slider__image"
@@ -75,10 +72,14 @@ import { HeroSlide } from '../../../models/hero-slide.model';
                 [alt]="slide.visualLabel || slide.title"
                 (error)="hideFailedAsset(slide)"
               />
+            } @else {
+              <div class="hero-slider__placeholder" aria-hidden="true">
+                <span>{{ slide.visualLabel || heroText().placeholder }}</span>
+              </div>
+              <div class="hero-slider__visual-caption">
+                <span>{{ slide.visualLabel || heroText().caption }}</span>
+              </div>
             }
-            <div class="hero-slider__visual-caption">
-              <span>{{ slide.visualLabel || heroText().caption }}</span>
-            </div>
           </div>
         </div>
 
