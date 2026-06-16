@@ -2,6 +2,7 @@ export interface FormalEducationEntry {
   id: string;
   institution: string;
   institutionUrl?: string;
+  logoUrl?: string;
   institutionLogoSrc?: string;
   institutionLogoAlt?: string;
   location: string;

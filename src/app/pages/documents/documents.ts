@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 
 import { DOCUMENT_GROUPS } from '../../data/documents.data';
 import { getLocalizedData } from '../../data/localized-data';
@@ -36,14 +36,15 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                 <div class="document-card__header">
                   <div class="document-card__title-group">
                     <span class="document-card__icon" aria-hidden="true">
-                      <span>{{ document.type.slice(0, 2).toUpperCase() }}</span>
-                      @if (document.iconUrl) {
+                      @if (document.iconUrl && !hasIconFailed(document.id)) {
                         <img
                           class="document-card__icon-image"
                           [src]="document.iconUrl"
                           [alt]="''"
-                          (error)="hideFailedAsset($event)"
+                          (error)="markIconFailed(document.id)"
                         />
+                      } @else {
+                        <span>{{ document.type.slice(0, 2).toUpperCase() }}</span>
                       }
                     </span>
                     <div>
@@ -346,7 +347,16 @@ export class Documents {
   private readonly languageService = inject(LanguageService);
 
   protected readonly text = computed(() => this.languageService.uiText().pages.documents);
+  private readonly failedIconIds = signal<ReadonlySet<string>>(new Set());
   protected readonly uiCommon = computed(() => this.languageService.uiText().common);
+
+  protected hasIconFailed(documentId: string): boolean {
+    return this.failedIconIds().has(documentId);
+  }
+
+  protected markIconFailed(documentId: string): void {
+    this.failedIconIds.update((failedIds) => new Set(failedIds).add(documentId));
+  }
 
   readonly documentGroups = computed(() =>
     getLocalizedData(DOCUMENT_GROUPS, this.languageService.currentLanguage()),

@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 
 import {
   PROFESSIONAL_AVAILABILITY,
@@ -34,14 +34,15 @@ import { ContactMethod } from '../../models/contact.model';
           @for (method of contactMethods(); track method.id) {
             <article class="contact-method-card" [attr.aria-labelledby]="method.id + '-title'">
               <div class="contact-method-card__icon" aria-hidden="true">
-                <span>{{ method.title.charAt(0) }}</span>
-                @if (method.iconUrl) {
+                @if (method.iconUrl && !hasIconFailed(method.id)) {
                   <img
                     class="contact-method-card__icon-image"
                     [src]="method.iconUrl"
                     [alt]="''"
-                    (error)="hideFailedAsset($event)"
+                    (error)="markIconFailed(method.id)"
                   />
+                } @else {
+                  <span>{{ method.title.charAt(0) }}</span>
                 }
               </div>
 
@@ -325,6 +326,15 @@ export class Contact {
   private readonly languageService = inject(LanguageService);
 
   protected readonly text = computed(() => this.languageService.uiText().pages.contact);
+  private readonly failedIconIds = signal<ReadonlySet<string>>(new Set());
+
+  protected hasIconFailed(methodId: string): boolean {
+    return this.failedIconIds().has(methodId);
+  }
+
+  protected markIconFailed(methodId: string): void {
+    this.failedIconIds.update((failedIds) => new Set(failedIds).add(methodId));
+  }
 
   protected readonly contactMethods = computed(() =>
     getLocalizedData(PROFESSIONAL_CONTACT_METHODS, this.languageService.currentLanguage()),

@@ -48,8 +48,12 @@ import {
               [attr.aria-labelledby]="entry.id + '-title'"
             >
               <span class="education-card__watermark" aria-hidden="true">
-                @if (entry.institutionLogoSrc && !hasLogoFailed(entry.id)) {
-                  <img [src]="entry.institutionLogoSrc" [alt]="" />
+                @if (getInstitutionLogoUrl(entry) && !hasLogoFailed(entry.id)) {
+                  <img
+                    [src]="getInstitutionLogoUrl(entry)"
+                    [alt]=""
+                    (error)="markLogoFailed(entry.id)"
+                  />
                 } @else {
                   <span>{{ getInstitutionInitials(entry.institution) }}</span>
                 }
@@ -74,10 +78,10 @@ import {
                     [attr.aria-label]="entry.institution + ' - ' + text().externalWebsiteAria"
                   >
                     <span class="institution-logo">
-                      @if (entry.institutionLogoSrc && !hasLogoFailed(entry.id)) {
+                      @if (getInstitutionLogoUrl(entry) && !hasLogoFailed(entry.id)) {
                         <img
-                          [src]="entry.institutionLogoSrc"
-                          [alt]="entry.institutionLogoAlt ?? entry.institution"
+                          [src]="getInstitutionLogoUrl(entry)"
+                          [alt]="getInstitutionLogoAlt(entry)"
                           (error)="markLogoFailed(entry.id)"
                         />
                       } @else {
@@ -90,10 +94,10 @@ import {
                 } @else {
                   <div class="institution-link institution-link--static">
                     <span class="institution-logo">
-                      @if (entry.institutionLogoSrc && !hasLogoFailed(entry.id)) {
+                      @if (getInstitutionLogoUrl(entry) && !hasLogoFailed(entry.id)) {
                         <img
-                          [src]="entry.institutionLogoSrc"
-                          [alt]="entry.institutionLogoAlt ?? entry.institution"
+                          [src]="getInstitutionLogoUrl(entry)"
+                          [alt]="getInstitutionLogoAlt(entry)"
                           (error)="markLogoFailed(entry.id)"
                         />
                       } @else {
@@ -552,6 +556,14 @@ export class Education {
   protected readonly ctaLinks = computed(() =>
     getLocalizedData(EDUCATION_CTA_LINKS, this.languageService.currentLanguage()),
   );
+
+  protected getInstitutionLogoUrl(entry: FormalEducationEntry): string | undefined {
+    return entry.logoUrl || entry.institutionLogoSrc;
+  }
+
+  protected getInstitutionLogoAlt(entry: FormalEducationEntry): string {
+    return entry.institutionLogoAlt || `${entry.institution} logo`;
+  }
 
   protected hasLogoFailed(entryId: string): boolean {
     return this.failedInstitutionLogoIds().has(entryId);
