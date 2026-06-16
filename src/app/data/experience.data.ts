@@ -4,6 +4,7 @@ const EXPERIENCE_ENTRIES_EN: ExperienceEntry[] = [
   {
     id: 'netcom-sa',
     company: 'Netcom SA',
+    logoUrl: 'assets/images/logos/companies/netcom.webp',
     companyInitials: 'NS',
     period: '2012 – 2013',
     startYear: '2012',
@@ -28,6 +29,7 @@ const EXPERIENCE_ENTRIES_EN: ExperienceEntry[] = [
     id: 'avances',
     company: 'Avances',
     companyUrl: 'https://avances.com.co/',
+    logoUrl: 'assets/images/logos/companies/avances.webp',
     companyInitials: 'AV',
     period: '2013 – 2014',
     startYear: '2013',
@@ -51,6 +53,7 @@ const EXPERIENCE_ENTRIES_EN: ExperienceEntry[] = [
   {
     id: 'worker-freelance',
     company: 'Worker Freelance',
+    logoUrl: 'assets/images/logos/companies/worker.webp',
     companyInitials: 'WF',
     period: '2014 – 2016',
     startYear: '2014',
@@ -75,6 +78,7 @@ const EXPERIENCE_ENTRIES_EN: ExperienceEntry[] = [
     id: 'leverit',
     company: 'LeverIT',
     companyUrl: 'https://www.leverit.us/',
+    logoUrl: 'assets/images/logos/companies/leverit.webp',
     companyInitials: 'LI',
     period: '2016 – 2026',
     startYear: '2016',
@@ -104,6 +108,7 @@ const EXPERIENCE_ENTRIES_ES: ExperienceEntry[] = [
   {
     id: 'netcom-sa',
     company: 'Netcom SA',
+    logoUrl: 'assets/images/logos/companies/netcom.webp',
     companyInitials: 'NS',
     period: '2012 – 2013',
     startYear: '2012',
@@ -128,6 +133,7 @@ const EXPERIENCE_ENTRIES_ES: ExperienceEntry[] = [
     id: 'avances',
     company: 'Avances',
     companyUrl: 'https://avances.com.co/',
+    logoUrl: 'assets/images/logos/companies/avances.webp',
     companyInitials: 'AV',
     period: '2013 – 2014',
     startYear: '2013',
@@ -151,6 +157,7 @@ const EXPERIENCE_ENTRIES_ES: ExperienceEntry[] = [
   {
     id: 'worker-freelance',
     company: 'Worker Freelance',
+    logoUrl: 'assets/images/logos/companies/worker.webp',
     companyInitials: 'WF',
     period: '2014 – 2016',
     startYear: '2014',
@@ -175,6 +182,7 @@ const EXPERIENCE_ENTRIES_ES: ExperienceEntry[] = [
     id: 'leverit',
     company: 'LeverIT',
     companyUrl: 'https://www.leverit.us/',
+    logoUrl: 'assets/images/logos/companies/leverit.webp',
     companyInitials: 'LI',
     period: '2016 – 2026',
     startYear: '2016',
