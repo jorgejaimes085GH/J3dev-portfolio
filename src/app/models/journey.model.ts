@@ -19,3 +19,15 @@ export interface JourneyCtaLink {
   label: string;
   route: string;
 }
+
+export interface JourneyEvolutionMetric {
+  label: string;
+  level: number;
+}
+
+export interface JourneyEvolutionPhase {
+  id: string;
+  years: string;
+  title: string;
+  metrics: JourneyEvolutionMetric[];
+}

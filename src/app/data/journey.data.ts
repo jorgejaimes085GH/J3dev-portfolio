@@ -1,4 +1,9 @@
-import { JourneyCtaLink, JourneyInsight, JourneyStage } from '../models/journey.model';
+import {
+  JourneyCtaLink,
+  JourneyEvolutionPhase,
+  JourneyInsight,
+  JourneyStage,
+} from '../models/journey.model';
 
 const JOURNEY_STAGES_EN: JourneyStage[] = [
   {
@@ -20,7 +25,8 @@ const JOURNEY_STAGES_EN: JourneyStage[] = [
     summary:
       'With the start of university studies, the learning path expanded into analysis, modeling, relational databases, basic web development, and formal software construction foundations.',
     focusAreas: ['UML', 'MySQL', 'PHP', 'HTML', 'CSS', 'Relational databases'],
-    keyLearning: 'Understanding that software should be analyzed and modeled before implementation.',
+    keyLearning:
+      'Understanding that software should be analyzed and modeled before implementation.',
   },
   {
     id: 'first-enterprise-software-experience',
@@ -118,7 +124,14 @@ const JOURNEY_STAGES_EN: JourneyStage[] = [
     periodLabel: 'Service boundaries stage',
     summary:
       'Backend evolution moved toward REST APIs, clearer frontend/backend separation, authentication, SQL Server, and modern data access. This stage marked the shift from more monolithic approaches toward more maintainable services.',
-    focusAreas: ['REST APIs', 'JWT', 'SQL Server', 'Dapper', 'Backend architecture', 'Service boundaries'],
+    focusAreas: [
+      'REST APIs',
+      'JWT',
+      'SQL Server',
+      'Dapper',
+      'Backend architecture',
+      'Service boundaries',
+    ],
     keyLearning:
       'Separating responsibilities improves maintainability, integration, and software evolution.',
     relatedProjectSlugs: ['expensux'],
@@ -309,7 +322,14 @@ const JOURNEY_STAGES_ES: JourneyStage[] = [
     periodLabel: 'Etapa de límites de servicio',
     summary:
       'La evolución del backend avanzó hacia APIs REST, separación más clara entre frontend y backend, autenticación, SQL Server y acceso a datos moderno. Esta etapa marcó el paso desde enfoques más monolíticos hacia servicios más mantenibles.',
-    focusAreas: ['REST APIs', 'JWT', 'SQL Server', 'Dapper', 'Arquitectura backend', 'Límites de servicio'],
+    focusAreas: [
+      'REST APIs',
+      'JWT',
+      'SQL Server',
+      'Dapper',
+      'Arquitectura backend',
+      'Límites de servicio',
+    ],
     keyLearning:
       'Separar responsabilidades mejora la mantenibilidad, la integración y la evolución del software.',
   },
@@ -353,6 +373,49 @@ const JOURNEY_STAGES_ES: JourneyStage[] = [
       'La IA acelera la generación de código, pero no reemplaza el análisis, la arquitectura ni el control de calidad.',
     evidenceNote:
       'Este portafolio hace parte del ciclo de aprendizaje continuo: entrega incremental, cambios revisables, documentación y presentación pública clara.',
+  },
+];
+
+export const JOURNEY_EVOLUTION_PHASES: readonly JourneyEvolutionPhase[] = [
+  {
+    id: 'initial-foundations',
+    years: '2008–2010',
+    title: 'Initial foundations',
+    metrics: [
+      { label: 'Analysis & Architecture', level: 30 },
+      { label: 'Technical Stack', level: 40 },
+      { label: 'Product Experience', level: 15 },
+    ],
+  },
+  {
+    id: 'first-enterprise-software',
+    years: '2012–2015',
+    title: 'First enterprise software',
+    metrics: [
+      { label: 'Analysis & Architecture', level: 65 },
+      { label: 'Technical Stack', level: 60 },
+      { label: 'Product Experience', level: 70 },
+    ],
+  },
+  {
+    id: 'long-lived-enterprise-software',
+    years: '2016–2023',
+    title: 'Long-lived enterprise software',
+    metrics: [
+      { label: 'Analysis & Architecture', level: 85 },
+      { label: 'Technical Stack', level: 85 },
+      { label: 'Product Experience', level: 90 },
+    ],
+  },
+  {
+    id: 'modern-architecture-ai',
+    years: '2025–2026',
+    title: 'Modern architecture and AI',
+    metrics: [
+      { label: 'Analysis & Architecture', level: 95 },
+      { label: 'Technical Stack', level: 95 },
+      { label: 'Product Experience', level: 95 },
+    ],
   },
 ];
 
