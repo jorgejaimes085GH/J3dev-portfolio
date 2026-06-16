@@ -546,12 +546,12 @@ const PROJECT_ITEMS: Project[] = [
       {
         label: 'Official Avances products reference',
         type: 'Reference',
-        url: 'https://avances.com.co/productos.php#',
+        url: 'https://avances.com.co/software-odontologico.php',
         isExternal: true,
       },
     ],
     placeholders: {
-      officialWebsiteUrl: 'https://avances.com.co/productos.php#',
+      officialWebsiteUrl: 'https://avances.com.co/software-odontologico.php',
       logoLabel: 'Avances Software logo pending approved public asset',
     },
     sourceCodeNote:
@@ -1053,12 +1053,12 @@ const projectSpanishDetails: Record<
       {
         label: 'Referencia oficial de productos Avances',
         type: 'Reference',
-        url: 'https://avances.com.co/productos.php#',
+        url: 'https://avances.com.co/software-odontologico.php',
         isExternal: true,
       },
     ],
     placeholders: {
-      officialWebsiteUrl: 'https://avances.com.co/productos.php#',
+      officialWebsiteUrl: 'https://avances.com.co/software-odontologico.php',
       logoLabel: 'Logo de Avances Software pendiente de activo público aprobado',
     },
     referencePlaceholders: undefined as never,
