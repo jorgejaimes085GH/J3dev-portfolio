@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { LanguageService } from '../../core/services/language.service';
@@ -46,16 +46,17 @@ import { Project } from '../../models/project.model';
                 >
                   <div class="experience-card__identity">
                     <span class="experience-card__logo" aria-hidden="true">
-                      <span>{{ entry.companyInitials || getCompanyInitials(entry.company) }}</span>
-                      @if (getCompanyLogoUrl(entry)) {
+                      @if (getCompanyLogoUrl(entry) && !hasAssetFailed(getCompanyAssetId(entry))) {
                         <img
                           class="experience-card__logo-image"
                           [src]="getCompanyLogoUrl(entry)"
-                          [alt]="entry.companyLogoAlt || ''"
+                          [alt]="getCompanyLogoAlt(entry)"
                           loading="lazy"
                           decoding="async"
-                          (error)="hideFailedAsset($event)"
+                          (error)="markAssetFailed(getCompanyAssetId(entry))"
                         />
+                      } @else {
+                        <span>{{ entry.companyInitials || getCompanyInitials(entry.company) }}</span>
                       }
                     </span>
                     <div>
@@ -112,17 +113,18 @@ import { Project } from '../../models/project.model';
                               [attr.aria-label]="text().viewProjectPrefix + ': ' + project.title"
                             >
                               <span class="experience-project-link__initials" aria-hidden="true">
-                                {{ getProjectInitials(project.title) }}
-                                @if (getProjectThumbnailUrl(project)) {
+                                @if (getProjectThumbnailUrl(project) && !hasAssetFailed(getProjectAssetId(project))) {
                                   <img
                                     class="experience-project-link__thumbnail"
-                                    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"
+                                    style="width:80%;height:80%;object-fit:contain"
                                     [src]="getProjectThumbnailUrl(project)"
                                     [alt]="''"
                                     loading="lazy"
                                     decoding="async"
-                                    (error)="hideFailedAsset($event)"
+                                    (error)="markAssetFailed(getProjectAssetId(project))"
                                   />
+                                } @else {
+                                  {{ getProjectInitials(project.title) }}
                                 }
                               </span>
                               <span>
@@ -682,6 +684,7 @@ export class Experience {
   private readonly projects = computed(() =>
     getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
   );
+  private readonly failedAssetIds = signal<ReadonlySet<string>>(new Set());
 
   protected getRelatedProjects(entry: ExperienceEntry): Project[] {
     const projectsBySlug = new Map(this.projects().map((project) => [project.slug, project]));
@@ -695,6 +698,26 @@ export class Experience {
     return entry.logoUrl || entry.companyLogoSrc;
   }
 
+  protected getCompanyLogoAlt(entry: ExperienceEntry): string {
+    return entry.companyLogoAlt || `${entry.company} logo`;
+  }
+
+  protected getCompanyAssetId(entry: ExperienceEntry): string {
+    return `experience-company-${entry.id}`;
+  }
+
+  protected getProjectAssetId(project: Project): string {
+    return `experience-project-${project.id}`;
+  }
+
+  protected hasAssetFailed(assetId: string): boolean {
+    return this.failedAssetIds().has(assetId);
+  }
+
+  protected markAssetFailed(assetId: string): void {
+    this.failedAssetIds.update((failedIds) => new Set(failedIds).add(assetId));
+  }
+
   protected getCompanyInitials(company: string): string {
     return company
       .split(/\s+/)
@@ -703,14 +726,6 @@ export class Experience {
       .map((word) => word[0])
       .join('')
       .toUpperCase();
-  }
-
-  protected hideFailedAsset(event: Event): void {
-    const image = event.target as HTMLImageElement | null;
-
-    if (image) {
-      image.style.display = 'none';
-    }
   }
 
   protected getProjectThumbnailUrl(project: Project): string | undefined {
