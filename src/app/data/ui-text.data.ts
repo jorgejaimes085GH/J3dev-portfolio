@@ -224,6 +224,12 @@ export const UI_TEXT = {
         viewProjectDetailsSuffix: 'project details',
         insightsEyebrow: 'Journey Insights',
         insightsTitle: 'How the developer mindset evolved',
+        evolutionEyebrow: 'Growth Pattern',
+        evolutionTitle: 'Professional Evolution',
+        evolutionIntro:
+          'Visual representation of how architecture thinking, technical capabilities and product experience evolved across major stages of the career.',
+        evolutionAria: 'Relative professional evolution by career stage',
+        evolutionMetricAriaConnector: 'relative growth during',
         ctaEyebrow: 'Continue Exploring',
         ctaTitle: 'Connect the journey to practical evidence',
         ctaIntro:
@@ -536,6 +542,12 @@ export const UI_TEXT = {
         viewProjectDetailsSuffix: '',
         insightsEyebrow: 'Aprendizajes de la trayectoria',
         insightsTitle: 'Cómo evolucionó la mentalidad de desarrollo',
+        evolutionEyebrow: 'Patrón de crecimiento',
+        evolutionTitle: 'Evolución Profesional',
+        evolutionIntro:
+          'Representación visual de cómo evolucionaron el análisis arquitectónico, las capacidades técnicas y la experiencia de producto a través de las principales etapas de la trayectoria profesional.',
+        evolutionAria: 'Evolución profesional relativa por etapa de carrera',
+        evolutionMetricAriaConnector: 'crecimiento relativo durante',
         ctaEyebrow: 'Continuar explorando',
         ctaTitle: 'Conecta la trayectoria con evidencia práctica',
         ctaIntro:

@@ -376,7 +376,7 @@ const JOURNEY_STAGES_ES: JourneyStage[] = [
   },
 ];
 
-export const JOURNEY_EVOLUTION_PHASES: readonly JourneyEvolutionPhase[] = [
+const JOURNEY_EVOLUTION_PHASES_EN: JourneyEvolutionPhase[] = [
   {
     id: 'initial-foundations',
     years: '2008–2010',
@@ -422,6 +422,50 @@ export const JOURNEY_EVOLUTION_PHASES: readonly JourneyEvolutionPhase[] = [
 export const JOURNEY_STAGES = {
   en: JOURNEY_STAGES_EN,
   es: JOURNEY_STAGES_ES,
+} as const;
+
+const JOURNEY_EVOLUTION_PHASES_ES: JourneyEvolutionPhase[] = [
+  {
+    ...JOURNEY_EVOLUTION_PHASES_EN[0],
+    title: 'Fundamentos iniciales',
+    metrics: [
+      { label: 'Análisis y Arquitectura', level: 30 },
+      { label: 'Stack Técnico', level: 40 },
+      { label: 'Experiencia de Producto', level: 15 },
+    ],
+  },
+  {
+    ...JOURNEY_EVOLUTION_PHASES_EN[1],
+    title: 'Primer software empresarial',
+    metrics: [
+      { label: 'Análisis y Arquitectura', level: 65 },
+      { label: 'Stack Técnico', level: 60 },
+      { label: 'Experiencia de Producto', level: 70 },
+    ],
+  },
+  {
+    ...JOURNEY_EVOLUTION_PHASES_EN[2],
+    title: 'Software empresarial de larga vida',
+    metrics: [
+      { label: 'Análisis y Arquitectura', level: 85 },
+      { label: 'Stack Técnico', level: 85 },
+      { label: 'Experiencia de Producto', level: 90 },
+    ],
+  },
+  {
+    ...JOURNEY_EVOLUTION_PHASES_EN[3],
+    title: 'Arquitectura moderna e IA',
+    metrics: [
+      { label: 'Análisis y Arquitectura', level: 95 },
+      { label: 'Stack Técnico', level: 95 },
+      { label: 'Experiencia de Producto', level: 95 },
+    ],
+  },
+];
+
+export const JOURNEY_EVOLUTION_PHASES = {
+  en: JOURNEY_EVOLUTION_PHASES_EN,
+  es: JOURNEY_EVOLUTION_PHASES_ES,
 } as const;
 
 const JOURNEY_INSIGHTS_ES: JourneyInsight[] = [
