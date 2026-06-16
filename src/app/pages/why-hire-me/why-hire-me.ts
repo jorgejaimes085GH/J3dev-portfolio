@@ -18,6 +18,22 @@ import { LanguageService } from '../../core/services/language.service';
           <p class="value-introduction__summary">{{ valueData().introduction.introduction }}</p>
           <p>{{ valueData().introduction.supportingStatement }}</p>
         </div>
+
+        <figure
+          class="value-introduction__visual"
+          [attr.aria-label]="valueData().introduction.visualImageAlt"
+        >
+          <div class="value-introduction__visual-frame">
+            @if (valueData().introduction.visualImageUrl) {
+              <img
+                class="value-introduction__visual-image"
+                [src]="valueData().introduction.visualImageUrl"
+                [alt]="valueData().introduction.visualImageAlt"
+                (error)="hideFailedAsset($event)"
+              />
+            }
+          </div>
+        </figure>
       </section>
 
       <section class="value-section" aria-labelledby="value-pillars-title">
@@ -120,6 +136,10 @@ import { LanguageService } from '../../core/services/language.service';
       }
 
       .value-introduction {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        justify-content: space-between;
         padding-top: 4rem;
       }
 
@@ -130,6 +150,39 @@ import { LanguageService } from '../../core/services/language.service';
 
       .value-introduction__content {
         margin-bottom: 0;
+      }
+
+      .value-introduction__visual {
+        flex: 0 0 min(34vw, 20rem);
+        width: min(100%, 20rem);
+        margin: 0;
+      }
+
+      .value-introduction__visual-frame {
+        display: grid;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        max-height: 30rem;
+        overflow: hidden;
+        place-items: center;
+        border: 1px solid var(--app-border-color);
+        border-radius: 1rem;
+        background:
+          linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--app-link-color) 10%, transparent),
+            transparent 48%
+          ),
+          color-mix(in srgb, var(--app-surface-color) 92%, var(--app-link-color) 8%);
+        box-shadow: 0 1rem 2.5rem color-mix(in srgb, var(--app-text-color) 12%, transparent);
+      }
+
+      .value-introduction__visual-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
       }
 
       .value-section__eyebrow,
@@ -249,6 +302,21 @@ import { LanguageService } from '../../core/services/language.service';
       }
 
       @media (max-width: 900px) {
+        .value-introduction {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .value-introduction__visual {
+          flex-basis: auto;
+          width: 100%;
+          max-width: 22rem;
+        }
+
+        .value-introduction__visual-frame {
+          max-height: none;
+        }
+
         .value-card-grid--three,
         .value-card-grid--four,
         .value-highlight {
@@ -288,4 +356,8 @@ export class WhyHireMe {
   protected readonly valueData = computed(() =>
     getLocalizedData(VALUE_PAGE_DATA, this.languageService.currentLanguage()),
   );
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
+  }
 }

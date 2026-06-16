@@ -55,7 +55,6 @@ a {
   font: inherit;
 }
 
-
 /* The home hero intentionally breaks out of the shared page rail on desktop so
    the slide background reads as a full-width cover while inner copy stays capped. */
 .viewport-preview--desktop app-hero-slider {
@@ -459,7 +458,8 @@ html.viewport-preview--mobile,
     .education-section,
     .documents-section,
     .contact-section
-  ) h1,
+  )
+  h1,
 .hero-slider h1 {
   font-size: var(--portfolio-h1-size);
   line-height: 1.1;
@@ -492,7 +492,8 @@ html.viewport-preview--mobile,
     .education-cta,
     .documents-section,
     .contact-section
-  ) h2 {
+  )
+  h2 {
   font-size: var(--portfolio-h2-size);
   line-height: 1.15;
   overflow-wrap: normal;
@@ -515,7 +516,8 @@ html.viewport-preview--mobile,
     .document-card,
     .contact-method-card,
     .skill-panel
-  ) h3,
+  )
+  h3,
 .skill-card__name {
   font-size: var(--portfolio-h3-size);
   line-height: 1.15;
@@ -549,7 +551,8 @@ html.viewport-preview--mobile,
 }
 
 :is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet)
-  .hero-slider h1 {
+  .hero-slider
+  h1 {
   font-size: var(--portfolio-hero-h1-size);
 }
 
@@ -609,27 +612,27 @@ html.viewport-preview--mobile,
   }
 
   :is(
-      .hero-slider,
-      .home-section,
-      .home-cta,
-      .about-section,
-      .about-cta,
-      .value-section,
-      .value-cta,
-      .skills-section,
-      .projects-section,
-      .project-detail-nav,
-      .project-detail-hero,
-      .project-detail-section,
-      .experience-section,
-      .experience-cta,
-      .journey-section,
-      .journey-cta,
-      .education-section,
-      .education-cta,
-      .documents-section,
-      .contact-section
-    ) {
+    .hero-slider,
+    .home-section,
+    .home-cta,
+    .about-section,
+    .about-cta,
+    .value-section,
+    .value-cta,
+    .skills-section,
+    .projects-section,
+    .project-detail-nav,
+    .project-detail-hero,
+    .project-detail-section,
+    .experience-section,
+    .experience-cta,
+    .journey-section,
+    .journey-cta,
+    .education-section,
+    .education-cta,
+    .documents-section,
+    .contact-section
+  ) {
     width: 100%;
     max-width: 100%;
     padding-right: 1rem;
@@ -637,119 +640,150 @@ html.viewport-preview--mobile,
   }
 
   :is(
-      .hero-slider__content,
-      .preview-grid,
-      .preview-grid--three,
-      .skill-grid,
-      .about-card-grid,
-      .about-card-grid--four,
-      .about-card-grid--values,
-      .value-card-grid,
-      .value-card-grid--three,
-      .value-card-grid--four,
-      .value-highlight,
-      .project-grid,
-      .project-detail-hero,
-      .project-time-grid,
-      .project-link-list,
-      .project-reference-list,
-      .experience-card,
-      .experience-card__body,
-      .experience-card__grid,
-      .experience-project-list,
-      .experience-cta,
-      .journey-stage__card,
-      .journey-insight-grid,
-      .formal-education-list,
-      .learning-grid,
-      .highlight-grid,
-      .education-cta,
-      .document-grid,
-      .document-meta,
-      .contact-method-grid
-    ) {
+    .hero-slider__content,
+    .preview-grid,
+    .preview-grid--three,
+    .skill-grid,
+    .about-card-grid,
+    .about-card-grid--four,
+    .about-card-grid--values,
+    .value-card-grid,
+    .value-card-grid--three,
+    .value-card-grid--four,
+    .value-highlight,
+    .project-grid,
+    .project-detail-hero,
+    .project-time-grid,
+    .project-link-list,
+    .project-reference-list,
+    .experience-card,
+    .experience-card__body,
+    .experience-card__grid,
+    .experience-project-list,
+    .experience-cta,
+    .journey-stage__card,
+    .journey-insight-grid,
+    .formal-education-list,
+    .learning-grid,
+    .highlight-grid,
+    .education-cta,
+    .document-grid,
+    .document-meta,
+    .contact-method-grid
+  ) {
     grid-template-columns: minmax(0, 1fr);
   }
 
   :is(
-      .hero-slider__content,
-      .about-introduction,
-      .about-cta,
-      .value-cta,
-      .experience-card,
-      .experience-card__body,
-      .experience-card__grid,
-      .experience-card__block,
-      .experience-project-list,
-      .experience-cta,
-      .experience-cta__actions,
-      .journey-cta,
-      .contact-final-cta
-    ) {
+    .hero-slider__content,
+    .about-introduction,
+    .about-cta,
+    .value-cta,
+    .experience-card,
+    .experience-card__body,
+    .experience-card__grid,
+    .experience-card__block,
+    .experience-project-list,
+    .experience-cta,
+    .experience-cta__actions,
+    .journey-cta,
+    .contact-final-cta
+  ) {
     align-items: flex-start;
     flex-direction: column;
   }
 
   :is(
-      .hero-slider__copy,
-      .hero-slider__visual,
-      .home-section__header,
-      .about-introduction__content,
-      .about-profile-placeholder,
-      .about-section__header,
-      .value-section__header,
-      .value-introduction__content,
-      .skills-section__header,
-      .projects-section__header,
-      .project-detail-hero__content,
-      .project-detail-visual,
-      .project-detail-section__header,
-      .experience-section__header,
-      .experience-hero__content,
-      .experience-card,
-      .experience-card__header,
-      .experience-card__body,
-      .experience-card__grid,
-      .experience-card__block,
-      .experience-card__block--context,
-      .experience-card__block--key,
-      .experience-card__block--projects,
-      .experience-card__learned-list,
-      .experience-project-list,
-      .experience-project-link,
-      .experience-cta,
-      .experience-cta > div:first-child,
-      .experience-cta__actions,
-      .journey-section__header,
-      .journey-hero__content,
-      .education-section__header,
-      .documents-section__header,
-      .contact-section__header,
-      .contact-final-cta__content
-    ) {
+    .hero-slider__copy,
+    .hero-slider__visual,
+    .home-section__header,
+    .about-introduction__content,
+    .about-profile-visual,
+    .about-section__header,
+    .value-section__header,
+    .value-introduction__content,
+    .skills-section__header,
+    .projects-section__header,
+    .project-detail-hero__content,
+    .project-detail-visual,
+    .project-detail-section__header,
+    .experience-section__header,
+    .experience-hero__content,
+    .experience-card,
+    .experience-card__header,
+    .experience-card__body,
+    .experience-card__grid,
+    .experience-card__block,
+    .experience-card__block--context,
+    .experience-card__block--key,
+    .experience-card__block--projects,
+    .experience-card__learned-list,
+    .experience-project-list,
+    .experience-project-link,
+    .experience-cta,
+    .experience-cta > div:first-child,
+    .experience-cta__actions,
+    .journey-section__header,
+    .journey-hero__content,
+    .education-section__header,
+    .documents-section__header,
+    .contact-section__header,
+    .contact-final-cta__content
+  ) {
     max-width: 100%;
     min-width: 0;
     width: 100%;
   }
 
   :is(
-      .home-cta__actions,
-      .about-cta__actions,
-      .value-cta__actions,
-      .experience-cta__actions,
-      .journey-cta__actions,
-      .education-cta__actions,
-      .contact-final-cta__actions
-    ) {
+    .home-cta__actions,
+    .about-cta__actions,
+    .value-cta__actions,
+    .experience-cta__actions,
+    .journey-cta__actions,
+    .education-cta__actions,
+    .contact-final-cta__actions
+  ) {
     width: 100%;
     justify-content: flex-start;
   }
 
-  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .experience-section h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
+  :is(
+    .hero-slider h1,
+    .about-section h1,
+    .value-section h1,
+    .skills-section h1,
+    .projects-section h1,
+    .project-detail-hero h1,
+    .experience-section h1,
+    .journey-section h1,
+    .education-section h1,
+    .documents-section h1,
+    .contact-section h1
+  ) {
     line-height: 1.1;
   }
 
-  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .experience-section h2, .experience-cta h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
+  :is(
+    .home-section h2,
+    .home-cta h2,
+    .about-section h2,
+    .about-cta h2,
+    .value-section h2,
+    .value-cta h2,
+    .skills-section h2,
+    .skill-panel h2,
+    .projects-section h2,
+    .project-detail-section h2,
+    .experience-section h2,
+    .experience-cta h2,
+    .journey-section h2,
+    .journey-cta h2,
+    .education-section h2,
+    .education-cta h2,
+    .documents-section h2,
+    .contact-section h2
+  ) {
     line-height: 1.15;
   }
 
@@ -838,44 +872,44 @@ html.viewport-preview--mobile,
     overflow-x: clip;
 
     :is(
-        .experience-timeline,
-        .experience-timeline__item,
-        .experience-card,
-        .experience-card__header,
-        .experience-card__body,
-        .experience-card__grid,
-        .experience-card__block,
-        .experience-card__block--context,
-        .experience-card__block--key,
-        .experience-card__block--projects,
-        .experience-card__evidence,
-        .experience-project-list,
-        .experience-project-link,
-        .experience-recommendation-link,
-        .experience-cta,
-        .experience-cta > div:first-child,
-        .experience-cta__actions,
-        .button-link
-      ) {
+      .experience-timeline,
+      .experience-timeline__item,
+      .experience-card,
+      .experience-card__header,
+      .experience-card__body,
+      .experience-card__grid,
+      .experience-card__block,
+      .experience-card__block--context,
+      .experience-card__block--key,
+      .experience-card__block--projects,
+      .experience-card__evidence,
+      .experience-project-list,
+      .experience-project-link,
+      .experience-recommendation-link,
+      .experience-cta,
+      .experience-cta > div:first-child,
+      .experience-cta__actions,
+      .button-link
+    ) {
       width: 100%;
       max-width: 100%;
       min-width: 0;
     }
 
     :is(
-        .experience-timeline,
-        .experience-timeline__item,
-        .experience-card,
-        .experience-card__body,
-        .experience-card__grid,
-        .experience-card__block,
-        .experience-card__block--context,
-        .experience-card__block--key,
-        .experience-card__block--projects,
-        .experience-project-list,
-        .experience-cta,
-        .experience-cta__actions
-      ) {
+      .experience-timeline,
+      .experience-timeline__item,
+      .experience-card,
+      .experience-card__body,
+      .experience-card__grid,
+      .experience-card__block,
+      .experience-card__block--context,
+      .experience-card__block--key,
+      .experience-card__block--projects,
+      .experience-project-list,
+      .experience-cta,
+      .experience-cta__actions
+    ) {
       display: flex;
       flex-direction: column;
       grid-template-columns: 1fr;
@@ -891,12 +925,12 @@ html.viewport-preview--mobile,
     }
 
     :is(
-        .experience-card__header,
-        .experience-card__body,
-        .experience-card__block--context,
-        .experience-card__block--key,
-        .experience-card__block--projects
-      ) {
+      .experience-card__header,
+      .experience-card__body,
+      .experience-card__block--context,
+      .experience-card__block--key,
+      .experience-card__block--projects
+    ) {
       grid-column: auto;
     }
 
@@ -967,50 +1001,50 @@ html.viewport-preview--mobile,
   }
 
   :is(
-      .hero-slider,
-      .home-section,
-      .home-cta,
-      .about-section,
-      .about-cta,
-      .value-section,
-      .value-cta,
-      .skills-section,
-      .projects-section,
-      .project-detail-nav,
-      .project-detail-hero,
-      .project-detail-section,
-      .journey-section,
-      .journey-cta,
-      .education-section,
-      .education-cta,
-      .documents-section,
-      .contact-section
-    ) {
+    .hero-slider,
+    .home-section,
+    .home-cta,
+    .about-section,
+    .about-cta,
+    .value-section,
+    .value-cta,
+    .skills-section,
+    .projects-section,
+    .project-detail-nav,
+    .project-detail-hero,
+    .project-detail-section,
+    .journey-section,
+    .journey-cta,
+    .education-section,
+    .education-cta,
+    .documents-section,
+    .contact-section
+  ) {
     max-width: 100%;
   }
 
   :is(
-      .preview-grid,
-      .preview-grid--three,
-      .skill-grid,
-      .about-card-grid,
-      .about-card-grid--four,
-      .about-card-grid--values,
-      .value-card-grid,
-      .value-card-grid--three,
-      .value-card-grid--four,
-      .project-grid,
-      .project-time-grid,
-      .project-link-list,
-      .project-reference-list,
-      .journey-insight-grid,
-      .formal-education-list,
-      .learning-grid,
-      .highlight-grid,
-      .document-grid,
-      .document-meta,
-      .contact-method-grid
-    ) {
+    .preview-grid,
+    .preview-grid--three,
+    .skill-grid,
+    .about-card-grid,
+    .about-card-grid--four,
+    .about-card-grid--values,
+    .value-card-grid,
+    .value-card-grid--three,
+    .value-card-grid--four,
+    .project-grid,
+    .project-time-grid,
+    .project-link-list,
+    .project-reference-list,
+    .journey-insight-grid,
+    .formal-education-list,
+    .learning-grid,
+    .highlight-grid,
+    .document-grid,
+    .document-meta,
+    .contact-method-grid
+  ) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1018,67 +1052,98 @@ html.viewport-preview--mobile,
     grid-template-columns: minmax(0, 1fr);
   }
 
-  :is(.hero-slider h1, .about-section h1, .value-section h1, .skills-section h1, .projects-section h1, .project-detail-hero h1, .experience-section h1, .journey-section h1, .education-section h1, .documents-section h1, .contact-section h1) {
+  :is(
+    .hero-slider h1,
+    .about-section h1,
+    .value-section h1,
+    .skills-section h1,
+    .projects-section h1,
+    .project-detail-hero h1,
+    .experience-section h1,
+    .journey-section h1,
+    .education-section h1,
+    .documents-section h1,
+    .contact-section h1
+  ) {
     line-height: 1.1;
   }
 
-  :is(.home-section h2, .home-cta h2, .about-section h2, .about-cta h2, .value-section h2, .value-cta h2, .skills-section h2, .skill-panel h2, .projects-section h2, .project-detail-section h2, .experience-section h2, .experience-cta h2, .journey-section h2, .journey-cta h2, .education-section h2, .education-cta h2, .documents-section h2, .contact-section h2) {
+  :is(
+    .home-section h2,
+    .home-cta h2,
+    .about-section h2,
+    .about-cta h2,
+    .value-section h2,
+    .value-cta h2,
+    .skills-section h2,
+    .skill-panel h2,
+    .projects-section h2,
+    .project-detail-section h2,
+    .experience-section h2,
+    .experience-cta h2,
+    .journey-section h2,
+    .journey-cta h2,
+    .education-section h2,
+    .education-cta h2,
+    .documents-section h2,
+    .contact-section h2
+  ) {
     line-height: 1.15;
   }
 }
 
 :is(.viewport-preview.viewport-preview--mobile, .viewport-preview.viewport-preview--tablet) {
   :is(
-      .hero-slider__content,
-      .hero-slider__copy,
-      .hero-slider__visual,
-      .preview-grid,
-      .skill-grid,
-      .about-introduction,
-      .about-card-grid,
-      .value-card-grid,
-      .value-highlight,
-      .project-grid,
-      .project-card__body,
-      .project-card__technologies,
-      .project-detail-hero,
-      .project-detail-hero__content,
-      .project-detail-visual,
-      .project-time-grid,
-      .project-link-list,
-      .project-reference-list,
-      .journey-stage__card,
-      .journey-stage__body,
-      .journey-insight-grid,
-      .formal-education-list,
-      .learning-grid,
-      .highlight-grid,
-      .education-cta,
-      .document-grid,
-      .document-meta,
-      .contact-method-grid
-    ) {
+    .hero-slider__content,
+    .hero-slider__copy,
+    .hero-slider__visual,
+    .preview-grid,
+    .skill-grid,
+    .about-introduction,
+    .about-card-grid,
+    .value-card-grid,
+    .value-highlight,
+    .project-grid,
+    .project-card__body,
+    .project-card__technologies,
+    .project-detail-hero,
+    .project-detail-hero__content,
+    .project-detail-visual,
+    .project-time-grid,
+    .project-link-list,
+    .project-reference-list,
+    .journey-stage__card,
+    .journey-stage__body,
+    .journey-insight-grid,
+    .formal-education-list,
+    .learning-grid,
+    .highlight-grid,
+    .education-cta,
+    .document-grid,
+    .document-meta,
+    .contact-method-grid
+  ) {
     min-width: 0;
   }
 
   :is(
-      .preview-card,
-      .skill-card,
-      .about-card,
-      .value-card,
-      .project-card,
-      .project-time-card,
-      .project-link-card,
-      .project-reference-list div,
-      .journey-stage__card,
-      .journey-insight-card,
-      .education-card,
-      .learning-card,
-      .highlight-card,
-      .philosophy-card,
-      .document-card,
-      .contact-method-card
-    ) {
+    .preview-card,
+    .skill-card,
+    .about-card,
+    .value-card,
+    .project-card,
+    .project-time-card,
+    .project-link-card,
+    .project-reference-list div,
+    .journey-stage__card,
+    .journey-insight-card,
+    .education-card,
+    .learning-card,
+    .highlight-card,
+    .philosophy-card,
+    .document-card,
+    .contact-method-card
+  ) {
     min-width: 0;
     width: 100%;
     overflow-wrap: anywhere;
@@ -1090,15 +1155,16 @@ html.viewport-preview--mobile,
       .project-detail-badges,
       .project-card__technologies,
       .contact-badge-list
-    ) li,
+    )
+    li,
   :is(
-      .technology-badge,
-      .project-detail-badge,
-      .hero-slider__description,
-      .hero-slider__subtitle,
-      .project-detail-summary,
-      .contact-method-card__value
-    ) {
+    .technology-badge,
+    .project-detail-badge,
+    .hero-slider__description,
+    .hero-slider__subtitle,
+    .project-detail-summary,
+    .contact-method-card__value
+  ) {
     overflow-wrap: anywhere;
   }
 }
@@ -1109,7 +1175,6 @@ html.viewport-preview--mobile,
   word-break: normal;
   hyphens: manual;
 }
-
 
 /* Force manual viewport preview heading typography above Angular component-scoped rules.
    These selectors target the active preview frame directly so the preview width,
@@ -1340,7 +1405,10 @@ html.theme-premium-3d app-education .formal-education-list .education-card {
     inset 0 1px 0 rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(18px) saturate(135%);
   transform: translateY(0) scale(1);
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 html.theme-premium-3d app-education .formal-education-list .education-card--unad {
@@ -1348,7 +1416,12 @@ html.theme-premium-3d app-education .formal-education-list .education-card--unad
 }
 
 html.theme-premium-3d app-education .formal-education-list .education-card--cedefoc {
-  --education-institution-glow: color-mix(in srgb, #1b8f7a 32%, var(--app-link-color) 20%, transparent);
+  --education-institution-glow: color-mix(
+    in srgb,
+    #1b8f7a 32%,
+    var(--app-link-color) 20%,
+    transparent
+  );
 }
 
 html.theme-premium-3d app-education .formal-education-list .education-card::before {
@@ -1447,7 +1520,9 @@ html.theme-premium-3d app-education .formal-education-list .institution-logo {
   border-radius: 1.15rem;
   border-color: color-mix(in srgb, var(--app-link-color) 34%, transparent);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.74));
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.22), 0 0 1.25rem var(--education-institution-glow);
+  box-shadow:
+    0 1rem 2rem rgba(0, 0, 0, 0.22),
+    0 0 1.25rem var(--education-institution-glow);
   color: color-mix(in srgb, var(--app-link-color) 88%, #0f172a);
   font-size: 1.15rem;
 }
@@ -1767,7 +1842,9 @@ app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link:focus-visi
 }
 
 app-navbar .site-nav--preview-mobile.site-nav .site-nav__link.site-nav__link--active,
-app-navbar .site-nav--preview-mobile.site-nav .site-nav__submenu-link.site-nav__submenu-link--active {
+app-navbar
+  .site-nav--preview-mobile.site-nav
+  .site-nav__submenu-link.site-nav__submenu-link--active {
   border-color: var(--app-link-color);
   background: color-mix(in srgb, var(--app-link-color) 28%, var(--app-background-color));
   color: var(--app-link-color);
