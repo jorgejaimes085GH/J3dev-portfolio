@@ -82,7 +82,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
 
                 <div class="document-actions" [attr.aria-label]="text().actionsAria">
                   <a
-                    class="document-action document-action--primary"
+                    class="button-link document-action document-action--primary"
                     [href]="document.filePath"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -98,7 +98,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                     {{ text().viewOnline }}
                   </a>
                   <a
-                    class="document-action"
+                    class="button-link document-action"
                     [href]="document.filePath"
                     [attr.download]="downloadFileName(document)"
                     [attr.aria-label]="document.downloadLabel"
@@ -113,7 +113,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                     {{ text().downloadPdf }}
                   </a>
                   <button
-                    class="document-action"
+                    class="button-link document-action"
                     type="button"
                     (click)="openForPrint(document)"
                     [attr.aria-label]="document.printLabel + ' ' + uiCommon().inNewTab"

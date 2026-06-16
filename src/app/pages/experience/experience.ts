@@ -142,7 +142,7 @@ import { Project } from '../../models/project.model';
 
                   <div class="experience-card__evidence">
                     <a
-                      class="experience-recommendation-link"
+                      class="button-link experience-recommendation-link"
                       routerLink="/documents"
                       [fragment]="entry.recommendationAnchor"
                     >
