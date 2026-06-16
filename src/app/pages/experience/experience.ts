@@ -47,11 +47,13 @@ import { Project } from '../../models/project.model';
                   <div class="experience-card__identity">
                     <span class="experience-card__logo" aria-hidden="true">
                       <span>{{ entry.companyInitials || getCompanyInitials(entry.company) }}</span>
-                      @if (entry.companyLogoSrc) {
+                      @if (getCompanyLogoUrl(entry)) {
                         <img
                           class="experience-card__logo-image"
-                          [src]="entry.companyLogoSrc"
+                          [src]="getCompanyLogoUrl(entry)"
                           [alt]="entry.companyLogoAlt || ''"
+                          loading="lazy"
+                          decoding="async"
                           (error)="hideFailedAsset($event)"
                         />
                       }
@@ -111,6 +113,17 @@ import { Project } from '../../models/project.model';
                             >
                               <span class="experience-project-link__initials" aria-hidden="true">
                                 {{ getProjectInitials(project.title) }}
+                                @if (getProjectThumbnailUrl(project)) {
+                                  <img
+                                    class="experience-project-link__thumbnail"
+                                    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"
+                                    [src]="getProjectThumbnailUrl(project)"
+                                    [alt]="''"
+                                    loading="lazy"
+                                    decoding="async"
+                                    (error)="hideFailedAsset($event)"
+                                  />
+                                }
                               </span>
                               <span>
                                 <strong>{{ project.title }}</strong>
@@ -416,21 +429,25 @@ import { Project } from '../../models/project.model';
         border-radius: 0.85rem;
       }
 
-      :is(.experience-project-link, .experience-recommendation-link, .button-link):is(:hover, :focus-visible) {
+      :is(.experience-project-link, .experience-recommendation-link, .button-link):is(
+        :hover,
+        :focus-visible
+      ) {
         border-color: var(--app-link-color);
         color: var(--app-link-color);
         outline: none;
       }
 
       .experience-project-link__initials {
+        position: relative;
         display: inline-grid;
         width: 2.4rem;
         height: 2.4rem;
         flex: 0 0 2.4rem;
         place-items: center;
-        border-radius: 999px;
+        overflow: hidden;
+        border-radius: 0.72rem;
         background: color-mix(in srgb, var(--app-link-color) 12%, transparent);
-        color: var(--app-link-color);
         font-weight: 800;
       }
 
@@ -494,7 +511,7 @@ import { Project } from '../../models/project.model';
 
       .button-link--primary:is(:hover, :focus-visible) {
         color: var(--app-background-color);
-        filter: brightness(.95);
+        filter: brightness(0.95);
       }
 
       @media (max-width: 640px) {
@@ -543,7 +560,15 @@ import { Project } from '../../models/project.model';
           height: 0.55rem;
         }
 
-        :is(.experience-card, .experience-card__body, .experience-card__grid, .experience-card__block, .experience-project-list, .experience-cta, .experience-cta__actions) {
+        :is(
+          .experience-card,
+          .experience-card__body,
+          .experience-card__grid,
+          .experience-card__block,
+          .experience-project-list,
+          .experience-cta,
+          .experience-cta__actions
+        ) {
           display: flex;
           flex-direction: column;
           width: 100%;
@@ -555,7 +580,15 @@ import { Project } from '../../models/project.model';
           padding: 1rem;
         }
 
-        :is(.experience-card__header, .experience-card__body, .experience-card__block--context, .experience-card__block--key, .experience-card__block--projects, .experience-page--premium .experience-card__header, .experience-page--premium .experience-card__body) {
+        :is(
+          .experience-card__header,
+          .experience-card__body,
+          .experience-card__block--context,
+          .experience-card__block--key,
+          .experience-card__block--projects,
+          .experience-page--premium .experience-card__header,
+          .experience-page--premium .experience-card__body
+        ) {
           grid-column: auto;
           width: 100%;
         }
@@ -628,7 +661,6 @@ import { Project } from '../../models/project.model';
         .experience-page--premium .experience-card__header {
           padding: 1rem;
         }
-
       }
     `,
   ],
@@ -659,6 +691,10 @@ export class Experience {
       .filter((project): project is Project => Boolean(project));
   }
 
+  protected getCompanyLogoUrl(entry: ExperienceEntry): string | undefined {
+    return entry.logoUrl || entry.companyLogoSrc;
+  }
+
   protected getCompanyInitials(company: string): string {
     return company
       .split(/\s+/)
@@ -675,6 +711,10 @@ export class Experience {
     if (image) {
       image.style.display = 'none';
     }
+  }
+
+  protected getProjectThumbnailUrl(project: Project): string | undefined {
+    return project.thumbnailUrl || project.logoUrl || project.overviewImageUrl;
   }
 
   protected getProjectInitials(title: string): string {
