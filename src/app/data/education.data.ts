@@ -9,11 +9,13 @@ import {
 const CEDEFOC_INSTITUTION = {
   institution: 'Corporación Técnica CEDEFOC',
   institutionUrl: 'https://cedefoc.edu.co/',
+  logoUrl: 'assets/images/logos/education/cedefoc.webp',
 } as const;
 
 const UNAD_INSTITUTION = {
   institution: 'Universidad Nacional Abierta y a Distancia (UNAD)',
   institutionUrl: 'https://www.unad.edu.co/',
+  logoUrl: 'assets/images/logos/education/unad.webp',
 } as const;
 
 const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [

@@ -44,7 +44,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
                           (error)="markIconFailed(document.id)"
                         />
                       } @else {
-                        <span>{{ document.type.slice(0, 2).toUpperCase() }}</span>
+                        <span>{{ getDocumentIconFallback(document) }}</span>
                       }
                     </span>
                     <div>
@@ -375,6 +375,18 @@ export class Documents {
 
   protected isRecommendationDocument(document: ProfessionalDocument): boolean {
     return document.id.startsWith('recommendation-');
+  }
+
+  protected getDocumentIconFallback(document: ProfessionalDocument): string {
+    if (document.id.startsWith('cover-letter-')) {
+      return 'CL';
+    }
+
+    if (document.id.startsWith('recommendation-')) {
+      return 'RL';
+    }
+
+    return document.type.slice(0, 2).toUpperCase();
   }
 
   protected hideFailedAsset(event: Event): void {

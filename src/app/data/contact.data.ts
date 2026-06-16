@@ -8,6 +8,7 @@ const PROFESSIONAL_CONTACT_METHODS_EN: ContactMethod[] = [
     value: 'jorge.jaimes.085@gmail.com',
     actionLabel: 'Send Email',
     actionUrl: 'mailto:jorge.jaimes.085@gmail.com',
+    iconUrl: 'assets/images/icons/actions/email.svg',
     iconPlaceholder: 'Email contact icon',
   },
   {
@@ -17,6 +18,7 @@ const PROFESSIONAL_CONTACT_METHODS_EN: ContactMethod[] = [
     value: '+57 316 759 1878',
     actionLabel: 'Open WhatsApp',
     actionUrl: 'https://wa.me/573167591878',
+    iconUrl: 'assets/images/icons/actions/whatsapp.svg',
     iconPlaceholder: 'WhatsApp contact icon',
   },
   {
@@ -26,6 +28,7 @@ const PROFESSIONAL_CONTACT_METHODS_EN: ContactMethod[] = [
     value: 'Jorge Jaimes Jerez',
     actionLabel: 'View LinkedIn Profile',
     actionUrl: 'https://www.linkedin.com/in/jorge-jaimes-jerez-b472902b5/',
+    iconUrl: 'assets/images/icons/actions/linkedin.svg',
     iconPlaceholder: 'LinkedIn contact icon',
   },
 ];
