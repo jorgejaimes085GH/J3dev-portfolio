@@ -108,19 +108,13 @@ import { Project } from '../../models/project.model';
 
       <section class="journey-section journey-evolution" aria-labelledby="journey-evolution-title">
         <div class="journey-section__header">
-          <p class="journey-section__eyebrow">Growth Pattern</p>
-          <h2 id="journey-evolution-title">Professional Evolution</h2>
-          <p>
-            Visual representation of how architecture thinking, technical capabilities and product
-            experience evolved across major stages of the career.
-          </p>
+          <p class="journey-section__eyebrow">{{ text().evolutionEyebrow }}</p>
+          <h2 id="journey-evolution-title">{{ text().evolutionTitle }}</h2>
+          <p>{{ text().evolutionIntro }}</p>
         </div>
 
-        <div
-          class="journey-evolution__grid"
-          aria-label="Relative professional evolution by career stage"
-        >
-          @for (phase of evolutionPhases; track phase.id) {
+        <div class="journey-evolution__grid" [attr.aria-label]="text().evolutionAria">
+          @for (phase of evolutionPhases(); track phase.id) {
             <article class="journey-evolution-card" [attr.aria-labelledby]="phase.id + '-title'">
               <div class="journey-evolution-card__header">
                 <p class="journey-evolution-card__years">{{ phase.years }}</p>
@@ -134,7 +128,9 @@ import { Project } from '../../models/project.model';
                     <span
                       class="journey-evolution-metric__track"
                       role="img"
-                      [attr.aria-label]="metric.label + ' relative growth during ' + phase.title"
+                      [attr.aria-label]="
+                        metric.label + ' ' + text().evolutionMetricAriaConnector + ' ' + phase.title
+                      "
                     >
                       <span
                         class="journey-evolution-metric__fill"
@@ -516,7 +512,9 @@ export class Journey {
 
   protected readonly text = computed(() => this.languageService.uiText().pages.journey);
 
-  readonly evolutionPhases = JOURNEY_EVOLUTION_PHASES;
+  readonly evolutionPhases = computed(() =>
+    getLocalizedData(JOURNEY_EVOLUTION_PHASES, this.languageService.currentLanguage()),
+  );
 
   readonly stages = computed(() =>
     getLocalizedData(JOURNEY_STAGES, this.languageService.currentLanguage()),
