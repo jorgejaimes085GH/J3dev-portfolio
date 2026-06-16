@@ -2,6 +2,7 @@ export interface ExperienceEntry {
   id: string;
   company: string;
   companyUrl?: string;
+  logoUrl?: string;
   companyLogoSrc?: string;
   companyLogoAlt?: string;
   companyInitials?: string;
@@ -15,7 +16,6 @@ export interface ExperienceEntry {
   recommendationLabel: string;
   recommendationAnchor: string;
 }
-
 
 export interface ExperienceCtaLink {
   label: string;
