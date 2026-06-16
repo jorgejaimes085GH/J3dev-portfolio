@@ -70,7 +70,7 @@ import { Project } from '../../models/project.model';
                       <ul class="journey-stage__links">
                         @for (project of getRelatedProjects(stage); track project.id) {
                           <li>
-                            <a [routerLink]="['/projects', project.slug]">
+                            <a class="button-link" [routerLink]="['/projects', project.slug]">
                               {{ text().viewProjectDetailsPrefix }} {{ project.title }}
                               {{ text().viewProjectDetailsSuffix }}
                             </a>
