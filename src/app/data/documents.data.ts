@@ -18,7 +18,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View CV Español online',
     downloadLabel: 'Download CV Español PDF',
     printLabel: 'Print CV Español',
-    iconUrl: 'assets/images/logos/documents/document-resume.svg',
   },
   {
     id: 'cv-en',
@@ -33,7 +32,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View CV English online',
     downloadLabel: 'Download CV English PDF',
     printLabel: 'Print CV English',
-    iconUrl: 'assets/images/logos/documents/document-resume.svg',
   },
   {
     id: 'cover-letter-es',
@@ -48,7 +46,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View Carta de Presentación Español online',
     downloadLabel: 'Download Carta de Presentación Español PDF',
     printLabel: 'Print Carta de Presentación Español',
-    iconUrl: 'assets/images/logos/documents/document-cover-letter.svg',
   },
   {
     id: 'cover-letter-en',
@@ -63,7 +60,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View Cover Letter English online',
     downloadLabel: 'Download Cover Letter English PDF',
     printLabel: 'Print Cover Letter English',
-    iconUrl: 'assets/images/logos/documents/document-cover-letter.svg',
   },
   {
     id: 'recommendation-leverit',
@@ -78,7 +74,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View LeverIT Recommendation online',
     downloadLabel: 'Download LeverIT Recommendation PDF',
     printLabel: 'Print LeverIT Recommendation',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
     note: spanishRecommendationNote,
   },
   {
@@ -94,7 +89,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View Netcom Recommendation online',
     downloadLabel: 'Download Netcom Recommendation PDF',
     printLabel: 'Print Netcom Recommendation',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
     note: spanishRecommendationNote,
   },
   {
@@ -110,7 +104,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View Avances Software Recommendation online',
     downloadLabel: 'Download Avances Software Recommendation PDF',
     printLabel: 'Print Avances Software Recommendation',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
     note: spanishRecommendationNote,
   },
   {
@@ -126,7 +119,6 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     viewLabel: 'View Myssas / Worker Client Recommendation online',
     downloadLabel: 'Download Myssas / Worker Client Recommendation PDF',
     printLabel: 'Print Myssas / Worker Client Recommendation',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
     note: spanishRecommendationNote,
   },
 ];

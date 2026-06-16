@@ -561,11 +561,27 @@ const PROJECT_ITEMS: Project[] = [
   },
 ];
 
+const PROJECT_THUMBNAIL_URLS: Record<string, string> = {
+  worker: 'assets/project-media/worker/worker-thumbnail.webp',
+  expensux: 'assets/project-media/expensux/expensux-thumbnail.webp',
+  ithelpcenter: 'assets/project-media/ithelpcenter/ithelpcenter-thumbnail.webp',
+  discovery: 'assets/project-media/discovery/discovery-thumbnail.webp',
+  'testigo-electoral':
+    'assets/project-media/testigo-electoral/testigo-electoral-thumbnail.webp',
+  'manager-clinic': 'assets/project-media/manager-clinic/manager-clinic-thumbnail.webp',
+  'manager-plus': 'assets/project-media/manager-plus/manager-plus-thumbnail.webp',
+  odontology: 'assets/project-media/odontology/odontology-thumbnail.webp',
+  'j3dev-portfolio': 'assets/project-media/j3dev-portfolio/j3dev-portfolio-thumbnail.webp',
+};
+
+const PROJECT_LOGO_URLS: Record<string, string> = {
+  'j3dev-portfolio': 'assets/images/logos/projects/j3dev-portfolio-logo.svg',
+};
+
 const PROJECTS_EN: Project[] = PROJECT_ITEMS.map((project) => ({
   ...project,
-  overviewImageUrl: `assets/project-media/${project.slug}/${project.slug}-overview.webp`,
-  thumbnailUrl: `assets/project-media/${project.slug}/${project.slug}-thumbnail.webp`,
-  logoUrl: `assets/images/logos/projects/${project.slug}-logo.svg`,
+  thumbnailUrl: PROJECT_THUMBNAIL_URLS[project.slug],
+  logoUrl: PROJECT_LOGO_URLS[project.slug],
 }));
 
 const projectSpanishText: Record<string, Partial<Project>> = {
