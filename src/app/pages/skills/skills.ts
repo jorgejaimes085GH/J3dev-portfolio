@@ -135,7 +135,11 @@ interface SkillGroup {
                 <ul class="related-project-list">
                   @for (project of getRelatedProjects(skill); track project.id) {
                     <li>
-                      <a [routerLink]="['/projects', project.slug]" (click)="closeSkill()">
+                      <a
+                        class="button-link button-link--compact"
+                        [routerLink]="['/projects', project.slug]"
+                        (click)="closeSkill()"
+                      >
                         {{ text().viewProjectDetailsPrefix }} {{ project.title }}
                         {{ text().viewProjectDetailsSuffix }}
                       </a>
@@ -383,8 +387,26 @@ interface SkillGroup {
         padding-left: 1.25rem;
       }
 
-      .related-project-list a {
+      .button-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.75rem;
+        padding: 0.7rem 1rem;
+        border: 1px solid var(--app-border-color);
+        border-radius: 0.5rem;
+        color: var(--app-link-color);
+        background: transparent;
         font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button-link--compact {
+        min-height: 2.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.92rem;
+        line-height: 1.2;
       }
 
       .related-project-list p {
