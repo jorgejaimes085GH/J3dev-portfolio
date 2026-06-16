@@ -12,7 +12,7 @@ import { LanguageService } from '../../../core/services/language.service';
   template: `
     <main class="project-detail-page" aria-labelledby="project-detail-title">
       <nav class="project-detail-nav" [attr.aria-label]="text().navAria">
-        <a routerLink="/projects">{{ text().back }}</a>
+        <a class="button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
       </nav>
 
       @if (project(); as selectedProject) {
@@ -128,6 +128,7 @@ import { LanguageService } from '../../../core/services/language.service';
 
                   @if (projectLink.url && !projectLink.isPlaceholder) {
                     <a
+                      class="button-link button-link--compact"
                       [href]="projectLink.url"
                       [attr.target]="projectLink.isExternal ? '_blank' : null"
                       [attr.rel]="projectLink.isExternal ? 'noopener noreferrer' : null"
@@ -184,7 +185,7 @@ import { LanguageService } from '../../../core/services/language.service';
           class="project-detail-nav project-detail-nav--bottom"
           [attr.aria-label]="text().navAria"
         >
-          <a routerLink="/projects">{{ text().back }}</a>
+          <a class="button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
         </nav>
       } @else {
         <section
@@ -194,7 +195,11 @@ import { LanguageService } from '../../../core/services/language.service';
           <p class="project-detail-page__eyebrow">{{ text().detailEyebrow }}</p>
           <h1 id="project-detail-title">{{ text().notFoundTitle }}</h1>
           <p>{{ text().notFoundBody }}</p>
-          <a class="project-not-found__link" routerLink="/projects">{{ text().back }}</a>
+          <a
+            class="button-link button-link--compact project-not-found__link"
+            routerLink="/projects"
+            >{{ text().back }}</a
+          >
         </section>
       }
     </main>
@@ -229,12 +234,26 @@ import { LanguageService } from '../../../core/services/language.service';
         padding-bottom: 3rem;
       }
 
-      .project-detail-nav a,
-      .project-not-found__link {
+      .button-link {
         display: inline-flex;
         align-items: center;
-        min-height: 2.5rem;
+        justify-content: center;
+        min-height: 2.75rem;
+        padding: 0.7rem 1rem;
+        border: 1px solid var(--app-border-color);
+        border-radius: 0.5rem;
+        color: var(--app-link-color);
+        background: transparent;
         font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button-link--compact {
+        min-height: 2.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.92rem;
+        line-height: 1.2;
       }
 
       .project-detail-hero {

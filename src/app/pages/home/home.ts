@@ -77,7 +77,10 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
               }
             </ul>
 
-            <a class="text-link" [routerLink]="project.route">
+            <a
+              class="button-link button-link--secondary button-link--compact project-preview__action"
+              [routerLink]="project.route"
+            >
               {{ getProjectContextLabel(project.name) }}
             </a>
           </article>
@@ -242,9 +245,9 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
         font-size: 0.9rem;
       }
 
-      .text-link {
+      .project-preview__action {
+        align-self: flex-start;
         margin-top: auto;
-        font-weight: 700;
       }
 
       .home-cta {
@@ -280,6 +283,19 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
         color: var(--app-background-color);
         background: var(--app-link-color);
         border-color: var(--app-link-color);
+      }
+
+      .button-link--secondary {
+        color: var(--app-link-color);
+        background: transparent;
+        border-color: var(--app-link-color);
+      }
+
+      .button-link--compact {
+        min-height: 2.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.92rem;
+        line-height: 1.2;
       }
 
       @media (max-width: 900px) {
