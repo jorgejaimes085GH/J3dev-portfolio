@@ -1,4 +1,4 @@
-import { Component, HostListener, computed, inject } from '@angular/core';
+import { Component, HostListener, computed, inject, signal } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -160,15 +160,20 @@ interface SkillGroup {
           (click)="openSkill(skill)"
           [attr.aria-label]="text().viewEvidencePrefix + ' ' + skill.name"
         >
-          <span class="skill-card__icon" aria-hidden="true">
-            <span>{{ skill.iconLabel }}</span>
-            @if (skill.iconUrl) {
+          <span
+            class="skill-card__icon"
+            [class.skill-card__icon--has-logo]="isLogoAvailable(skill)"
+            aria-hidden="true"
+          >
+            @if (isLogoAvailable(skill)) {
               <img
                 class="skill-card__logo"
                 [src]="skill.iconUrl"
                 [alt]="''"
-                (error)="hideFailedAsset($event)"
+                (error)="markFailedLogo(skill.id)"
               />
+            } @else {
+              <span class="skill-card__fallback">{{ skill.iconLabel }}</span>
             }
           </span>
           <span class="skill-card__body">
@@ -277,11 +282,18 @@ interface SkillGroup {
         font-weight: 700;
       }
 
+      .skill-card__icon--has-logo {
+        padding: 0;
+      }
+
+      .skill-card__fallback {
+        display: block;
+      }
+
       .skill-card__logo {
-        position: absolute;
-        inset: 0.55rem;
-        width: calc(100% - 1.1rem);
-        height: calc(100% - 1.1rem);
+        display: block;
+        width: 85%;
+        height: 85%;
         object-fit: contain;
       }
 
@@ -453,6 +465,8 @@ export class Skills {
 
   selectedSkill?: Skill;
 
+  private readonly failedLogoIds = signal<ReadonlySet<string>>(new Set());
+
   private readonly projects = computed(() =>
     getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
   );
@@ -499,8 +513,12 @@ export class Skills {
     this.selectedSkill = undefined;
   }
 
-  hideFailedAsset(event: Event): void {
-    (event.target as HTMLImageElement).hidden = true;
+  isLogoAvailable(skill: Skill): boolean {
+    return Boolean(skill.iconUrl && !this.failedLogoIds().has(skill.id));
+  }
+
+  markFailedLogo(skillId: string): void {
+    this.failedLogoIds.update((failedLogoIds) => new Set(failedLogoIds).add(skillId));
   }
 
   private slugify(value: string): string {
