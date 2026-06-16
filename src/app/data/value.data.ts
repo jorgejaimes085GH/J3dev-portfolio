@@ -7,6 +7,8 @@ const VALUE_PAGE_DATA_EN: ValuePageData = {
       'Jorge brings practical experience with real business systems that must keep operating while they evolve. His contribution is strongest where existing software needs careful improvement, clearer structure, and dependable delivery.',
     supportingStatement:
       'He approaches technical decisions through business context, operational continuity, maintainability, and risk reduction, supported by production experience in Backend .NET, SQL Server, modernization, and enterprise maintenance without exposing private implementation details.',
+    visualImageAlt: 'Visual representation of practical software team value',
+    visualImageUrl: 'assets/profile/value/how-i-add-value-visual.webp',
   },
   valuePillars: [
     {
@@ -125,6 +127,8 @@ const VALUE_PAGE_DATA_ES: ValuePageData = {
       'Jorge aporta experiencia práctica con sistemas reales de negocio que deben seguir operando mientras evolucionan. Su contribución es más fuerte cuando el software existente necesita mejora cuidadosa, estructura más clara y entrega confiable.',
     supportingStatement:
       'Aborda las decisiones técnicas desde el contexto del negocio, la continuidad operativa, la mantenibilidad y la reducción de riesgo, con soporte en experiencia de producción en Backend .NET, SQL Server, modernización y mantenimiento empresarial sin exponer detalles privados de implementación.',
+    visualImageAlt: 'Representación visual del valor práctico en equipos de software',
+    visualImageUrl: 'assets/profile/value/how-i-add-value-visual.webp',
   },
   valuePillars: [
     {

@@ -185,8 +185,6 @@ export const UI_TEXT = {
       },
       about: {
         eyebrow: 'About Me',
-        imagePending: 'Professional Profile Image Pending',
-        imageCaption: 'Professional profile image area',
         mindsetEyebrow: 'How Jorge Works',
         mindsetTitle: 'Practical engineering habits behind the work',
         mindsetIntro:
@@ -499,8 +497,6 @@ export const UI_TEXT = {
       },
       about: {
         eyebrow: 'Acerca de mí',
-        imagePending: 'Imagen de perfil profesional pendiente',
-        imageCaption: 'Área de imagen de perfil profesional',
         mindsetEyebrow: 'Cómo trabaja Jorge',
         mindsetTitle: 'Hábitos prácticos de ingeniería detrás del trabajo',
         mindsetIntro:

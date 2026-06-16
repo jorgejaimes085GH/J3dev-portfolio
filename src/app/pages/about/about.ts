@@ -20,23 +20,20 @@ import { LanguageService } from '../../core/services/language.service';
           </p>
         </div>
 
-        <figure class="about-profile-placeholder">
-          <div
-            class="about-profile-placeholder__frame"
-            role="img"
-            [attr.aria-label]="aboutData().introduction.profileImageAlt"
-          >
-            <span>{{ text().imagePending }}</span>
+        <figure
+          class="about-profile-visual"
+          [attr.aria-label]="aboutData().introduction.profileImageAlt"
+        >
+          <div class="about-profile-visual__frame">
             @if (aboutData().introduction.profileImageUrl) {
               <img
-                class="about-profile-placeholder__image"
+                class="about-profile-visual__image"
                 [src]="aboutData().introduction.profileImageUrl"
                 [alt]="aboutData().introduction.profileImageAlt"
                 (error)="hideFailedAsset($event)"
               />
             }
           </div>
-          <figcaption>{{ text().imageCaption }}</figcaption>
         </figure>
       </section>
 
@@ -180,25 +177,37 @@ import { LanguageService } from '../../core/services/language.service';
         font-size: 1.15rem;
       }
 
-      .about-profile-placeholder {
+      .about-profile-visual {
+        flex: 0 0 min(34vw, 20rem);
         width: min(100%, 20rem);
         margin: 0;
       }
 
-      .about-profile-placeholder__frame {
+      .about-profile-visual__frame {
         display: grid;
-        min-height: 20rem;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        max-height: 30rem;
+        overflow: hidden;
         place-items: center;
-        padding: 1rem;
-        border: 1px dashed var(--app-border-color);
+        border: 1px solid var(--app-border-color);
         border-radius: 1rem;
-        text-align: center;
+        background:
+          linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--app-link-color) 10%, transparent),
+            transparent 48%
+          ),
+          color-mix(in srgb, var(--app-surface-color) 92%, var(--app-link-color) 8%);
+        box-shadow: 0 1rem 2.5rem color-mix(in srgb, var(--app-text-color) 12%, transparent);
       }
 
-      .about-profile-placeholder figcaption {
-        margin-top: 0.75rem;
-        font-size: 0.9rem;
-        text-align: center;
+      .about-profile-visual__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
       }
 
       .journey-timeline {
@@ -307,8 +316,14 @@ import { LanguageService } from '../../core/services/language.service';
           grid-template-columns: 1fr;
         }
 
-        .about-profile-placeholder {
+        .about-profile-visual {
+          flex-basis: auto;
           width: 100%;
+          max-width: 22rem;
+        }
+
+        .about-profile-visual__frame {
+          max-height: none;
         }
       }
     `,

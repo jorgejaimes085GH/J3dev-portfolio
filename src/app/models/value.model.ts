@@ -2,6 +2,8 @@ export interface ValueIntroduction {
   title: string;
   introduction: string;
   supportingStatement: string;
+  visualImageAlt: string;
+  visualImageUrl?: string;
 }
 
 export interface ValueCard {
