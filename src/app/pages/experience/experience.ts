@@ -736,9 +736,10 @@ export class Experience {
   }
 
   protected getProjectCompactImageUrl(project: Project): string | undefined {
-    return [project.compactLogoUrl, project.relatedLogoUrl, project.logoUrl, project.thumbnailUrl]
-      .filter((imageUrl): imageUrl is string => Boolean(imageUrl))
-      .find((imageUrl) => !this.hasAssetFailed(this.getProjectAssetId(project, imageUrl)));
+    return project.compactLogoUrl &&
+      !this.hasAssetFailed(this.getProjectAssetId(project, project.compactLogoUrl))
+      ? project.compactLogoUrl
+      : undefined;
   }
 
   protected getProjectInitials(title: string): string {
