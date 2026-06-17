@@ -5,6 +5,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PROJECTS } from '../../../data/projects.data';
 import { getLocalizedData } from '../../../data/localized-data';
 import { LanguageService } from '../../../core/services/language.service';
+import { Project } from '../../../models/project.model';
+import { getProjectStatusDisplay } from '../project-status.util';
 
 @Component({
   selector: 'app-project-detail-page',
@@ -25,7 +27,16 @@ import { LanguageService } from '../../../core/services/language.service';
           <div class="project-detail-hero__content">
             <p class="project-detail-page__eyebrow">{{ text().detailEyebrow }}</p>
             <h1 id="project-detail-title">{{ selectedProject.title }}</h1>
-            <p class="project-detail-status">{{ selectedProject.typeStatus }}</p>
+            <div class="project-detail-status" [attr.aria-label]="selectedProject.typeStatus">
+              <p class="project-detail-status__category">
+                {{ projectStatus(selectedProject).category }}
+              </p>
+              <div class="project-detail-status__lines">
+                @for (line of projectStatus(selectedProject).lines; track line) {
+                  <span>{{ line }}</span>
+                }
+              </div>
+            </div>
             <p class="project-detail-summary">{{ selectedProject.shortDescription }}</p>
           </div>
 
@@ -328,6 +339,26 @@ import { LanguageService } from '../../../core/services/language.service';
         font-size: 0.85rem;
       }
 
+      .project-detail-status {
+        display: grid;
+        gap: 0.25rem;
+      }
+
+      .project-detail-status__category {
+        margin: 0;
+      }
+
+      .project-detail-status__lines {
+        display: grid;
+        gap: 0.1rem;
+        color: var(--app-muted-color);
+        font-size: 0.95rem;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 1.35;
+        text-transform: none;
+      }
+
       .project-detail-hero h1,
       .project-detail-section h1,
       .project-detail-section h2,
@@ -551,6 +582,10 @@ export class ProjectDetailPage {
 
   protected markFailedVideo(videoSrc: string): void {
     this.failedVideoSources.add(videoSrc);
+  }
+
+  protected projectStatus(project: Project): { category: string; lines: string[] } {
+    return getProjectStatusDisplay(project, this.languageService.currentLanguage());
   }
 
   protected hideFailedAsset(event: Event): void {

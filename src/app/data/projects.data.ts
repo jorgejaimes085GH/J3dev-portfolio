@@ -123,7 +123,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'worker',
     slug: 'worker',
     title: 'Worker',
-    typeStatus: 'Tier 1 Featured Project / Production software / Enterprise internal system',
+    typeStatus: 'Featured Project ⭐ / Production software / Enterprise internal system',
     shortDescription:
       'Long-running enterprise workflow system used in production since 2015, evolved across more than a decade from Access and VB.NET toward SQL Server, modern .NET architecture, and adaptable business workflows.',
     visualLabel: 'Enterprise workflow system visual reference pending final asset',
@@ -199,7 +199,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'expensux',
     slug: 'expensux',
     title: 'Expensux',
-    typeStatus: 'Tier 1 Featured Project / Own product / Financial control application',
+    typeStatus: 'Featured Project ⭐ / Own product / Financial control application / Web demo available',
     shortDescription:
       'Own financial control product designed from scratch with Clean Architecture direction, REST APIs, JWT authentication, Dapper data access, SQL Server workflows, and an Angular frontend while preparing a public demo.',
     visualLabel: 'Financial control application visual reference pending final asset',
@@ -256,7 +256,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'ithelpcenter',
     slug: 'ithelpcenter',
     title: 'ItHelpCenter',
-    typeStatus: 'Tier 1 Featured Project / LeverIT enterprise project / Help desk platform',
+    typeStatus: 'Featured Project / LeverIT enterprise product / Help desk platform / In production',
     shortDescription:
       'Enterprise help desk platform supported in production for years through backend and frontend maintenance, SQL Server work, search optimization, new business flows, and functional evolution.',
     visualLabel: 'LeverIT help desk platform visual reference pending approved asset',
@@ -320,7 +320,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'testigo-electoral',
     slug: 'testigo-electoral',
     title: 'Testigo Electoral',
-    typeStatus: 'Tier 2 Enterprise Project / LeverIT custom client project / Built from scratch',
+    typeStatus: 'Enterprise Project / Custom client project / Electoral system / Built from scratch',
     shortDescription:
       'Custom electoral auditing platform developed for a real client to collect, validate, and review voting-station evidence through a centralized solution built with SQL Server, REST APIs, and Angular.',
     visualLabel: 'LeverIT custom client project visual reference pending approved asset',
@@ -369,7 +369,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'discovery',
     slug: 'discovery',
     title: 'Discovery',
-    typeStatus: 'Tier 2 Enterprise Project / LeverIT enterprise platform / Production evolution',
+    typeStatus: 'Enterprise Project / LeverIT enterprise platform / IT asset management / Production evolution',
     shortDescription:
       'Enterprise Discovery platform supported through production evolution, continuous inventory capabilities, SQL Server work, ASP.NET features, WebSockets, and maintainable improvements.',
     visualLabel: 'LeverIT enterprise discovery platform visual reference pending approved asset',
@@ -417,7 +417,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'j3dev-portfolio',
     slug: 'j3dev-portfolio',
     title: 'J3dev Portfolio',
-    typeStatus: 'Tier 2 Enterprise Project / Public portfolio / Open source showcase',
+    typeStatus: 'Enterprise Project / Public portfolio / Professional showcase / Open Source',
     shortDescription:
       'Modern Angular portfolio engineered as a data-driven, multi-language, multi-theme, responsive professional showcase for Backend .NET specialization and portfolio engineering evidence.',
     visualLabel: 'Portfolio application visual reference pending final asset',
@@ -465,7 +465,7 @@ const PROJECT_ITEMS: Project[] = [
     slug: 'manager-plus',
     title: 'Manager Plus',
     typeStatus:
-      'Tier 3 Enterprise Systems Experience / Avances Software / ERP business management system',
+      'Enterprise Project / Enterprise ERP / Enterprise product / In production',
     shortDescription:
       'Commercial business management platform covering billing, inventory, purchasing, sales, accounts receivable, supplier management, and operational workflows.',
     visualLabel: 'Avances Software ERP enterprise system visual reference pending approved asset',
@@ -506,7 +506,7 @@ const PROJECT_ITEMS: Project[] = [
     slug: 'manager-clinic',
     title: 'Manager Clinic',
     typeStatus:
-      'Tier 3 Enterprise Systems Experience / Avances Software / Healthcare management platform',
+      'Enterprise Project / Clinical system / Enterprise product / In production',
     shortDescription:
       'Clinical management platform supporting appointments, patient records, admissions, authorizations, prescriptions, medical history tracking, and doctor scheduling.',
     visualLabel: 'Avances Software healthcare platform visual reference pending approved asset',
@@ -547,7 +547,7 @@ const PROJECT_ITEMS: Project[] = [
     slug: 'odontology',
     title: 'Odontology',
     typeStatus:
-      'Tier 3 Enterprise Systems Experience / Avances Software / Dental practice management system',
+      'Enterprise Project / Dental system / Enterprise product / In production',
     shortDescription:
       'Dental management platform focused on clinical records, patient tracking, appointment scheduling, and dental-specific treatment workflows.',
     visualLabel:
@@ -623,7 +623,7 @@ const PROJECTS_EN: Project[] = PROJECT_ITEMS.map((project) => ({
 
 const projectSpanishText: Record<string, Partial<Project>> = {
   worker: {
-    typeStatus: 'Proyecto destacado Tier 1 / Software en producción / Sistema interno empresarial',
+    typeStatus: 'Proyecto destacado ⭐ / Software en producción / Sistema interno empresarial',
     shortDescription:
       'Sistema empresarial de flujo de trabajo usado en producción desde 2015, evolucionado durante más de una década desde Access y VB.NET hacia SQL Server, arquitectura .NET moderna y flujos de negocio adaptables.',
     visualLabel: 'Referencia visual de sistema de flujo empresarial pendiente de arte final',
@@ -633,7 +633,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Este proyecto en producción se describe solo con contexto sanitizado. No se exponen código fuente, flujos propietarios, detalles de clientes ni datos operativos.',
   },
   expensux: {
-    typeStatus: 'Proyecto destacado Tier 1 / Producto propio / Aplicación de control financiero',
+    typeStatus: 'Proyecto destacado ⭐ / Producto propio / Aplicación de control financiero / Demo disponible en la web',
     shortDescription:
       'Producto propio de control financiero diseñado desde cero con dirección Clean Architecture, REST APIs, autenticación JWT, acceso a datos con Dapper, flujos SQL Server y frontend Angular mientras se prepara una demo pública.',
     visualLabel: 'Referencia visual de aplicación de control financiero pendiente de arte final',
@@ -643,7 +643,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Los ejemplos financieros y detalles de implementación se presentan de forma segura. El código fuente permanece privado por ahora mientras se prepara la demo.',
   },
   ithelpcenter: {
-    typeStatus: 'Proyecto destacado Tier 1 / Proyecto empresarial LeverIT / Plataforma help desk',
+    typeStatus: 'Proyecto destacado / Producto empresarial LeverIT / Plataforma Help Desk / En producción',
     shortDescription:
       'Plataforma empresarial de mesa de ayuda apoyada en producción durante años mediante mantenimiento backend y frontend, trabajo con SQL Server, optimización de búsquedas, nuevos flujos de negocio y evolución funcional.',
     visualLabel:
@@ -655,7 +655,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
   },
   'testigo-electoral': {
     typeStatus:
-      'Proyecto empresarial Tier 2 / Proyecto cliente personalizado LeverIT / Construido desde cero',
+      'Proyecto empresarial / Proyecto cliente personalizado / Sistema electoral / Construido desde cero',
     shortDescription:
       'Plataforma personalizada de auditoría electoral desarrollada para un cliente real, permitiendo recopilar, validar y revisar evidencia de mesas de votación mediante una solución centralizada construida con SQL Server, REST APIs y Angular.',
     visualLabel:
@@ -668,7 +668,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
   },
   discovery: {
     typeStatus:
-      'Proyecto empresarial Tier 2 / Plataforma empresarial LeverIT / Evolución en producción',
+      'Proyecto empresarial / Plataforma empresarial LeverIT / Gestión de activos TI / Evolución en producción',
     shortDescription:
       'Plataforma empresarial Discovery apoyada mediante evolución en producción, capacidades de inventario continuo, trabajo con SQL Server, funcionalidades ASP.NET, WebSockets y mejoras mantenibles.',
     visualLabel:
@@ -680,7 +680,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Este proyecto de LeverIT se representa solo con descripciones generalizadas y seguras para publicación. No se exponen código fuente, información privada de clientes, flujos propietarios, arquitectura interna ni datos operativos sensibles.',
   },
   'j3dev-portfolio': {
-    typeStatus: 'Proyecto empresarial Tier 2 / Portfolio público / Showcase open source',
+    typeStatus: 'Proyecto empresarial / Portafolio público / Showcase profesional / Open Source',
     shortDescription:
       'Portfolio moderno en Angular construido como showcase profesional data-driven, multi-idioma, multi-tema y responsive para presentar especialización Backend .NET y evidencia de portfolio engineering.',
     visualLabel: 'Referencia visual de aplicación portfolio pendiente de arte final',
@@ -692,7 +692,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
   },
   'manager-plus': {
     typeStatus:
-      'Experiencia en sistemas empresariales Tier 3 / Avances Software / Sistema ERP de gestión empresarial',
+      'Proyecto empresarial / ERP empresarial / Producto empresarial / En producción',
     shortDescription:
       'Plataforma comercial de gestión empresarial que cubre facturación, inventario, compras, ventas, cuentas por cobrar, gestión de proveedores y flujos operativos.',
     visualLabel:
@@ -705,7 +705,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
   },
   'manager-clinic': {
     typeStatus:
-      'Experiencia en sistemas empresariales Tier 3 / Avances Software / Plataforma de gestión clínica',
+      'Proyecto empresarial / Sistema clínico / Producto empresarial / En producción',
     shortDescription:
       'Plataforma de gestión clínica que soporta citas, registros de pacientes, ingresos, autorizaciones, fórmulas, seguimiento de historia médica y agenda de doctores.',
     visualLabel:
@@ -718,7 +718,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
   },
   odontology: {
     typeStatus:
-      'Experiencia en sistemas empresariales Tier 3 / Avances Software / Sistema de gestión odontológica',
+      'Proyecto empresarial / Sistema odontológico / Producto empresarial / En producción',
     shortDescription:
       'Plataforma de gestión odontológica enfocada en registros clínicos, seguimiento de pacientes, programación de citas y flujos de tratamientos dentales específicos.',
     visualLabel:
