@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { PROJECTS } from '../../../data/projects.data';
 import { getLocalizedData } from '../../../data/localized-data';
 import { LanguageService } from '../../../core/services/language.service';
+import { Project } from '../../../models/project.model';
 
 @Component({
   selector: 'app-projects-page',
@@ -47,7 +48,14 @@ import { LanguageService } from '../../../core/services/language.service';
               </a>
 
               <div class="project-card__body">
-                <p class="project-card__status">{{ project.typeStatus }}</p>
+                <div class="project-card__status" [attr.aria-label]="project.typeStatus">
+                  <p class="project-card__status-category">{{ projectStatus(project).category }}</p>
+                  <div class="project-card__status-lines">
+                    @for (line of projectStatus(project).lines; track line) {
+                      <span>{{ line }}</span>
+                    }
+                  </div>
+                </div>
                 <h3 [id]="project.id + '-title'">{{ project.title }}</h3>
                 <p class="project-card__description">{{ project.shortDescription }}</p>
 
@@ -106,7 +114,7 @@ import { LanguageService } from '../../../core/services/language.service';
       }
 
       .projects-section__eyebrow,
-      .project-card__status {
+      .project-card__status-category {
         margin: 0 0 0.5rem;
         color: var(--app-link-color);
         font-weight: 700;
@@ -115,8 +123,25 @@ import { LanguageService } from '../../../core/services/language.service';
       }
 
       .project-card__status {
+        display: grid;
+        gap: 0.25rem;
+      }
+
+      .project-card__status-category {
+        margin-bottom: 0;
         font-size: 0.8rem;
         line-height: 1.4;
+      }
+
+      .project-card__status-lines {
+        display: grid;
+        gap: 0.1rem;
+        color: var(--app-muted-color);
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 1.35;
+        text-transform: none;
       }
 
       .projects-section h1,
@@ -337,6 +362,49 @@ export class ProjectsPage {
   protected readonly projects = computed(() =>
     getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
   );
+
+  protected projectStatus(project: Project): { category: string; lines: string[] } {
+    const [rawCategory = project.typeStatus, ...rawLines] = project.typeStatus
+      .split('/')
+      .map((segment) => segment.trim())
+      .filter(Boolean);
+
+    return {
+      category: this.formatStatusCategory(rawCategory),
+      lines: rawLines.slice(0, 3).map((line) => this.formatStatusLine(line)),
+    };
+  }
+
+  private formatStatusCategory(category: string): string {
+    const lowerCategory = category.toLocaleLowerCase();
+
+    if (lowerCategory.includes('featured project') || lowerCategory.includes('proyecto destacado')) {
+      return this.languageService.currentLanguage() === 'es'
+        ? 'PROYECTO DESTACADO ⭐'
+        : 'FEATURED PROJECT ⭐';
+    }
+
+    if (
+      lowerCategory.includes('enterprise systems experience') ||
+      lowerCategory.includes('experiencia en sistemas empresariales')
+    ) {
+      return this.languageService.currentLanguage() === 'es'
+        ? 'EXPERIENCIA EN SISTEMAS EMPRESARIALES'
+        : 'ENTERPRISE SYSTEMS EXPERIENCE';
+    }
+
+    if (lowerCategory.includes('enterprise project') || lowerCategory.includes('proyecto empresarial')) {
+      return this.languageService.currentLanguage() === 'es'
+        ? 'PROYECTO EMPRESARIAL'
+        : 'ENTERPRISE PROJECT';
+    }
+
+    return category.replace(/\s+Tier\s+\d+/i, '').toLocaleUpperCase();
+  }
+
+  private formatStatusLine(line: string): string {
+    return line.replace(/\s+Tier\s+\d+/i, '').trim();
+  }
 
   protected hideFailedAsset(event: Event): void {
     (event.target as HTMLImageElement).hidden = true;
