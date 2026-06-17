@@ -161,7 +161,7 @@ const PROJECT_ITEMS: Project[] = [
     timeBlocks: WORKER_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
-        label: 'Client currently using the project',
+        label: 'Company that uses the product for the administration, billing, and management of its services.',
         type: 'Reference',
         typeLabel: 'PASO TV',
         actionLabel: 'Open reference',
@@ -854,7 +854,7 @@ const projectSpanishDetails: Record<
     ],
     links: [
       {
-        label: 'Cliente que está usando el proyecto',
+        label: 'Empresa que utiliza el producto para la administración, facturación y gestión de sus servicios.',
         type: 'Reference',
         typeLabel: 'PASO TV',
         actionLabel: 'Abrir referencia',
