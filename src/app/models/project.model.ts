@@ -43,6 +43,8 @@ export interface Project {
   ctaLabel: string;
   overviewImageUrl?: string;
   thumbnailUrl?: string;
+  compactLogoUrl?: string;
+  relatedLogoUrl?: string;
   logoUrl?: string;
   context: string[];
   architectureNotes: string[];

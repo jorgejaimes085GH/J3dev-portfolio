@@ -140,8 +140,28 @@ interface SkillGroup {
                         [routerLink]="['/projects', project.slug]"
                         (click)="closeSkill()"
                       >
-                        {{ text().viewProjectDetailsPrefix }} {{ project.title }}
-                        {{ text().viewProjectDetailsSuffix }}
+                        <span class="button-link__project-mark" aria-hidden="true">
+                          @if (getProjectCompactImageUrl(project)) {
+                            <img
+                              class="button-link__project-logo"
+                              [src]="getProjectCompactImageUrl(project)"
+                              [alt]="''"
+                              loading="lazy"
+                              decoding="async"
+                              (error)="
+                                markProjectAssetFailed(
+                                  getProjectAssetId(project, getProjectCompactImageUrl(project))
+                                )
+                              "
+                            />
+                          } @else {
+                            {{ getProjectInitials(project.title) }}
+                          }
+                        </span>
+                        <span>
+                          {{ text().viewProjectDetailsPrefix }} {{ project.title }}
+                          {{ text().viewProjectDetailsSuffix }}
+                        </span>
                       </a>
                       <p>{{ project.shortDescription }}</p>
                     </li>
@@ -404,9 +424,33 @@ interface SkillGroup {
 
       .button-link--compact {
         min-height: 2.25rem;
+        justify-content: flex-start;
+        gap: 0.65rem;
         padding: 0.5rem 0.75rem;
         font-size: 0.92rem;
         line-height: 1.2;
+      }
+
+      .button-link__project-mark {
+        display: inline-grid;
+        width: 2.4rem;
+        height: 2.4rem;
+        flex: 0 0 2.4rem;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 0.72rem;
+        background: color-mix(in srgb, var(--app-link-color) 12%, transparent);
+        color: var(--app-text-color);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      .button-link__project-logo {
+        display: block;
+        width: 86%;
+        height: 86%;
+        object-fit: contain;
+        object-position: center;
       }
 
       .related-project-list p {
@@ -488,6 +532,7 @@ export class Skills {
   selectedSkill?: Skill;
 
   private readonly failedLogoIds = signal<ReadonlySet<string>>(new Set());
+  private readonly failedProjectAssetIds = signal<ReadonlySet<string>>(new Set());
 
   private readonly projects = computed(() =>
     getLocalizedData(PROJECTS, this.languageService.currentLanguage()),
@@ -541,6 +586,32 @@ export class Skills {
 
   markFailedLogo(skillId: string): void {
     this.failedLogoIds.update((failedLogoIds) => new Set(failedLogoIds).add(skillId));
+  }
+
+  getProjectCompactImageUrl(project: Project): string | undefined {
+    return [project.compactLogoUrl, project.relatedLogoUrl, project.logoUrl, project.thumbnailUrl]
+      .filter((imageUrl): imageUrl is string => Boolean(imageUrl))
+      .find(
+        (imageUrl) => !this.failedProjectAssetIds().has(this.getProjectAssetId(project, imageUrl)),
+      );
+  }
+
+  getProjectAssetId(project: Project, imageUrl?: string): string {
+    return `skills-project-${project.id}-${imageUrl || 'default'}`;
+  }
+
+  markProjectAssetFailed(assetId: string): void {
+    this.failedProjectAssetIds.update((failedIds) => new Set(failedIds).add(assetId));
+  }
+
+  getProjectInitials(title: string): string {
+    return title
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((word) => word[0])
+      .join('')
+      .toUpperCase();
   }
 
   private slugify(value: string): string {
