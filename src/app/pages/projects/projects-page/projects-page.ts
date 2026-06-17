@@ -30,17 +30,21 @@ import { LanguageService } from '../../../core/services/language.service';
         <div class="project-grid" [attr.aria-label]="text().listAria">
           @for (project of projects(); track project.id) {
             <article class="project-card" [attr.aria-labelledby]="project.id + '-title'">
-              <div class="project-card__visual" role="img" [attr.aria-label]="project.visualLabel">
+              <a
+                class="project-card__visual"
+                [routerLink]="['/projects', project.slug]"
+                [attr.aria-label]="project.ctaLabel + ': ' + project.title"
+              >
                 <span aria-hidden="true">{{ project.title.slice(0, 2).toUpperCase() }}</span>
                 @if (project.thumbnailUrl) {
                   <img
                     class="project-card__image"
                     [src]="project.thumbnailUrl"
-                    [alt]="project.title + ' ' + text().thumbnailAltSuffix"
+                    alt=""
                     (error)="hideFailedAsset($event)"
                   />
                 }
-              </div>
+              </a>
 
               <div class="project-card__body">
                 <p class="project-card__status">{{ project.typeStatus }}</p>
@@ -148,6 +152,20 @@ import { LanguageService } from '../../../core/services/language.service';
         place-items: center;
         overflow: hidden;
         border-bottom: 1px dashed var(--app-border-color);
+        color: inherit;
+        cursor: pointer;
+        text-decoration: none;
+        transition: filter 180ms ease, opacity 180ms ease;
+      }
+
+      .project-card__visual:hover {
+        filter: brightness(1.04);
+        opacity: 0.94;
+      }
+
+      .project-card__visual:focus-visible {
+        outline: 3px solid var(--app-link-color);
+        outline-offset: -3px;
       }
 
       .project-card__visual span {
