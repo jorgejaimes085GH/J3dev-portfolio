@@ -111,9 +111,13 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-links-title">
           <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">{{ text().linksEyebrow }}</p>
-            <h2 id="project-links-title">{{ text().linksTitle }}</h2>
-            <p>{{ selectedProject.sourceCodeNote }}</p>
+            @if (!isWorkerProject(selectedProject.id)) {
+              <p class="project-detail-page__eyebrow">{{ text().linksEyebrow }}</p>
+            }
+            <h2 id="project-links-title">{{ projectLinksTitle(selectedProject.id) }}</h2>
+            @if (!isWorkerProject(selectedProject.id)) {
+              <p>{{ selectedProject.sourceCodeNote }}</p>
+            }
           </div>
 
           @if (selectedProject.links?.length) {
@@ -123,7 +127,7 @@ import { LanguageService } from '../../../core/services/language.service';
                 track projectLink.type + projectLink.label
               ) {
                 <article class="project-link-card">
-                  <p class="project-link-card__type">{{ projectLink.type }}</p>
+                  <p class="project-link-card__type">{{ projectLink.typeLabel || projectLink.type }}</p>
                   <h3>{{ projectLink.label }}</h3>
 
                   @if (projectLink.url && !projectLink.isPlaceholder) {
@@ -133,8 +137,25 @@ import { LanguageService } from '../../../core/services/language.service';
                       [attr.target]="projectLink.isExternal ? '_blank' : null"
                       [attr.rel]="projectLink.isExternal ? 'noopener noreferrer' : null"
                     >
-                      {{ text().openLinkPrefix }} {{ projectLink.type }} {{ text().openLinkSuffix }}
+                      {{ projectLink.actionLabel || defaultActionLabel(projectLink.type) }}
                     </a>
+                  } @else if (projectLink.videoSrc) {
+                    @if (!isFailedVideo(projectLink.videoSrc)) {
+                      <video
+                        class="project-link-card__video"
+                        controls
+                        preload="metadata"
+                        [attr.aria-label]="projectLink.label"
+                        (error)="markFailedVideo(projectLink.videoSrc)"
+                      >
+                        <source [src]="projectLink.videoSrc" type="video/mp4" />
+                      </video>
+                    }
+                    @if (isFailedVideo(projectLink.videoSrc)) {
+                      <p class="project-link-card__placeholder project-link-card__placeholder--video">
+                        {{ projectLink.placeholderMessage || text().defaultPlaceholder }}
+                      </p>
+                    }
                   } @else {
                     <p class="project-link-card__placeholder">
                       {{ projectLink.placeholderMessage || text().defaultPlaceholder }}
@@ -153,7 +174,9 @@ import { LanguageService } from '../../../core/services/language.service';
             <div class="project-detail-section__header">
               <p class="project-detail-page__eyebrow">{{ text().referenceEyebrow }}</p>
               <h2 id="project-reference-title">{{ text().referenceTitle }}</h2>
-              <p>{{ referencePlaceholders.availabilityNote }}</p>
+              @if (referencePlaceholders.availabilityNote) {
+                <p>{{ referencePlaceholders.availabilityNote }}</p>
+              }
             </div>
 
             <dl class="project-reference-list">
@@ -254,6 +277,14 @@ import { LanguageService } from '../../../core/services/language.service';
         padding: 0.5rem 0.75rem;
         font-size: 0.92rem;
         line-height: 1.2;
+      }
+
+      .project-link-card .button-link--compact {
+        align-self: center;
+        min-height: 40px;
+        margin-top: 1.25rem;
+        padding-right: 1.25rem;
+        padding-left: 1.25rem;
       }
 
       .project-detail-hero {
@@ -396,9 +427,32 @@ import { LanguageService } from '../../../core/services/language.service';
         border-radius: 0.75rem;
       }
 
+      .project-link-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-link-card__video {
+        width: 100%;
+        margin-top: 1.25rem;
+        border-radius: 0.75rem;
+        background: var(--app-surface-muted);
+        aspect-ratio: 16 / 9;
+      }
+
       .project-time-card__duration,
       .project-link-card__placeholder {
         font-weight: 700;
+      }
+
+      .project-link-card__placeholder--video {
+        display: grid;
+        min-height: 9rem;
+        margin-top: 1.25rem;
+        place-items: center;
+        border: 1px dashed var(--app-border-color);
+        border-radius: 0.75rem;
+        text-align: center;
       }
 
       .project-reference-list {
@@ -442,6 +496,7 @@ export class ProjectDetailPage {
   private readonly route = inject(ActivatedRoute);
   private readonly languageService = inject(LanguageService);
   private readonly projectId = this.route.snapshot.paramMap.get('projectId');
+  private readonly failedVideoSources = new Set<string>();
 
   protected readonly text = computed(() => this.languageService.uiText().pages.projectDetail);
 
@@ -450,6 +505,28 @@ export class ProjectDetailPage {
       (project) => project.slug === this.projectId || project.id === this.projectId,
     ),
   );
+
+  protected isWorkerProject(projectId: string): boolean {
+    return projectId === 'worker';
+  }
+
+  protected projectLinksTitle(projectId: string): string {
+    return this.isWorkerProject(projectId) ? 'Referencias del proyecto' : this.text().linksTitle;
+  }
+
+  protected defaultActionLabel(type: string): string {
+    return [this.text().openLinkPrefix, type, this.text().openLinkSuffix]
+      .filter(Boolean)
+      .join(' ');
+  }
+
+  protected isFailedVideo(videoSrc: string): boolean {
+    return this.failedVideoSources.has(videoSrc);
+  }
+
+  protected markFailedVideo(videoSrc: string): void {
+    this.failedVideoSources.add(videoSrc);
+  }
 
   protected hideFailedAsset(event: Event): void {
     (event.target as HTMLImageElement).hidden = true;
