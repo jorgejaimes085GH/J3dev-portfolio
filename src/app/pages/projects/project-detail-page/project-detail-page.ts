@@ -1,4 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { PROJECTS } from '../../../data/projects.data';
@@ -12,7 +13,11 @@ import { LanguageService } from '../../../core/services/language.service';
   template: `
     <main class="project-detail-page" aria-labelledby="project-detail-title">
       <nav class="project-detail-nav" [attr.aria-label]="text().navAria">
-        <a class="btn btn--secondary btn--compact button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
+        <a
+          class="btn btn--secondary btn--compact button-link button-link--compact"
+          routerLink="/projects"
+          >{{ text().back }}</a
+        >
       </nav>
 
       @if (project(); as selectedProject) {
@@ -127,8 +132,13 @@ import { LanguageService } from '../../../core/services/language.service';
                 track projectLink.type + projectLink.label
               ) {
                 <article class="project-link-card">
-                  <p class="project-link-card__type">{{ projectLink.typeLabel || projectLink.type }}</p>
+                  <p class="project-link-card__type">
+                    {{ projectLink.typeLabel || projectLink.type }}
+                  </p>
                   <h3>{{ projectLink.label }}</h3>
+                  @if (projectLink.description) {
+                    <p class="project-link-card__description">{{ projectLink.description }}</p>
+                  }
 
                   @if (projectLink.url && !projectLink.isPlaceholder) {
                     <a
@@ -139,6 +149,19 @@ import { LanguageService } from '../../../core/services/language.service';
                     >
                       {{ projectLink.actionLabel || defaultActionLabel(projectLink.type) }}
                     </a>
+                  } @else if (projectLink.embedUrl) {
+                    <div class="project-link-card__embed" [attr.aria-label]="projectLink.label">
+                      <iframe
+                        [src]="safeEmbedUrl(projectLink.embedUrl)"
+                        [title]="projectLink.label"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    @if (projectLink.supportText) {
+                      <p class="project-link-card__support-text">{{ projectLink.supportText }}</p>
+                    }
                   } @else if (projectLink.videoSrc) {
                     @if (!isFailedVideo(projectLink.videoSrc)) {
                       <video
@@ -152,7 +175,9 @@ import { LanguageService } from '../../../core/services/language.service';
                       </video>
                     }
                     @if (isFailedVideo(projectLink.videoSrc)) {
-                      <p class="project-link-card__placeholder project-link-card__placeholder--video">
+                      <p
+                        class="project-link-card__placeholder project-link-card__placeholder--video"
+                      >
                         {{ projectLink.placeholderMessage || text().defaultPlaceholder }}
                       </p>
                     }
@@ -208,7 +233,11 @@ import { LanguageService } from '../../../core/services/language.service';
           class="project-detail-nav project-detail-nav--bottom"
           [attr.aria-label]="text().navAria"
         >
-          <a class="btn btn--secondary btn--compact button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
+          <a
+            class="btn btn--secondary btn--compact button-link button-link--compact"
+            routerLink="/projects"
+            >{{ text().back }}</a
+          >
         </nav>
       } @else {
         <section
@@ -432,12 +461,29 @@ import { LanguageService } from '../../../core/services/language.service';
         flex-direction: column;
       }
 
-      .project-link-card__video {
+      .project-link-card__description,
+      .project-link-card__support-text {
+        margin: 0.75rem 0 0;
+      }
+
+      .project-link-card__video,
+      .project-link-card__embed {
         width: 100%;
         margin-top: 1.25rem;
         border-radius: 0.75rem;
         background: var(--app-surface-muted);
         aspect-ratio: 16 / 9;
+      }
+
+      .project-link-card__embed {
+        overflow: hidden;
+      }
+
+      .project-link-card__embed iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
 
       .project-time-card__duration,
@@ -495,6 +541,7 @@ import { LanguageService } from '../../../core/services/language.service';
 export class ProjectDetailPage {
   private readonly route = inject(ActivatedRoute);
   private readonly languageService = inject(LanguageService);
+  private readonly sanitizer = inject(DomSanitizer);
   private readonly projectId = this.route.snapshot.paramMap.get('projectId');
   private readonly failedVideoSources = new Set<string>();
 
@@ -511,13 +558,25 @@ export class ProjectDetailPage {
   }
 
   protected projectLinksTitle(projectId: string): string {
-    return this.isWorkerProject(projectId) ? 'Referencias del proyecto' : this.text().linksTitle;
+    if (this.isWorkerProject(projectId)) {
+      return 'Referencias del proyecto';
+    }
+
+    if (projectId === 'ithelpcenter') {
+      return this.languageService.currentLanguage() === 'es'
+        ? 'Link de acceso al producto'
+        : 'Product access link';
+    }
+
+    return this.text().linksTitle;
+  }
+
+  protected safeEmbedUrl(embedUrl: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 
   protected defaultActionLabel(type: string): string {
-    return [this.text().openLinkPrefix, type, this.text().openLinkSuffix]
-      .filter(Boolean)
-      .join(' ');
+    return [this.text().openLinkPrefix, type, this.text().openLinkSuffix].filter(Boolean).join(' ');
   }
 
   protected isFailedVideo(videoSrc: string): boolean {
