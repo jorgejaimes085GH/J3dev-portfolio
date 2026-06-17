@@ -13,6 +13,9 @@ export interface ProjectLink {
   isExternal: boolean;
   isPlaceholder?: boolean;
   placeholderMessage?: string;
+  typeLabel?: string;
+  actionLabel?: string;
+  videoSrc?: string;
 }
 
 export interface ProjectPlaceholders {
@@ -30,7 +33,7 @@ export interface ProjectReferencePlaceholders {
   companyName: string;
   companyAddress: string;
   companyPhone: string;
-  availabilityNote: string;
+  availabilityNote?: string;
 }
 
 export interface Project {

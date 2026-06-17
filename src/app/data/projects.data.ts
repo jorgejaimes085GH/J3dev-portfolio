@@ -161,35 +161,36 @@ const PROJECT_ITEMS: Project[] = [
     timeBlocks: WORKER_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
-        label: 'Paso Television company reference',
+        label: 'Client currently using the project',
         type: 'Reference',
+        typeLabel: 'PASO TV',
+        actionLabel: 'Open reference',
         url: 'https://www.pasotelevision.net/',
         isExternal: true,
       },
       {
-        label: 'Video availability note',
+        label: 'Video producto en servicio',
         type: 'Video',
+        typeLabel: 'Video producto en servicio',
+        videoSrc: 'assets/project-media/worker/worker-product-demo.mp4',
         isExternal: false,
         isPlaceholder: true,
-        placeholderMessage:
-          'A safe overview video may be published in a future update without exposing source code.',
+        placeholderMessage: 'Video del producto en servicio pendiente de publicación.',
       },
     ],
     placeholders: {
       companyName: 'Paso Television',
-      companyAddress: 'Company address pending approval',
-      companyPhone: 'Company phone pending approval',
+      companyAddress: 'Carrera 15 # 18-21, Socorro, Santander, Colombia',
+      companyPhone: '+57 318 5176823',
       officialWebsiteUrl: 'https://www.pasotelevision.net/',
       videoUrl: 'Video URL pending publication',
     },
     referencePlaceholders: {
       companyName: 'Paso Television',
-      companyAddress: 'Address pending approval',
-      companyPhone: 'Phone pending approval',
-      availabilityNote:
-        'Public company website is linked; private operational details remain protected.',
+      companyAddress: 'Carrera 15 # 18-21, Socorro, Santander, Colombia',
+      companyPhone: '+57 318 5176823',
     },
-    sourceCodeNote: 'Private production source code is not publicly available.',
+    sourceCodeNote: '',
     confidentialityNote:
       'This production project is described with sanitized context only. Source code, proprietary workflows, customer details, and operational data are not exposed.',
   },
@@ -609,7 +610,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Sistema empresarial de flujo de trabajo usado en producción desde 2015, evolucionado durante más de una década desde Access y VB.NET hacia SQL Server, arquitectura .NET moderna y flujos de negocio adaptables.',
     visualLabel: 'Referencia visual de sistema de flujo empresarial pendiente de arte final',
     ctaLabel: 'Ver evolución técnica',
-    sourceCodeNote: 'El código fuente privado de producción no está disponible públicamente.',
+    sourceCodeNote: '',
     confidentialityNote:
       'Este proyecto en producción se describe solo con contexto sanitizado. No se exponen código fuente, flujos propietarios, detalles de clientes ni datos operativos.',
   },
@@ -853,33 +854,34 @@ const projectSpanishDetails: Record<
     ],
     links: [
       {
-        label: 'Referencia de empresa Paso Television',
+        label: 'Cliente que está usando el proyecto',
         type: 'Reference',
+        typeLabel: 'PASO TV',
+        actionLabel: 'Abrir referencia',
         url: 'https://www.pasotelevision.net/',
         isExternal: true,
       },
       {
-        label: 'Nota de disponibilidad de video',
+        label: 'Video producto en servicio',
         type: 'Video',
+        typeLabel: 'Video producto en servicio',
+        videoSrc: 'assets/project-media/worker/worker-product-demo.mp4',
         isExternal: false,
         isPlaceholder: true,
-        placeholderMessage:
-          'Un video general seguro puede publicarse en una actualización futura sin exponer código fuente.',
+        placeholderMessage: 'Video del producto en servicio pendiente de publicación.',
       },
     ],
     placeholders: {
       companyName: 'Paso Television',
-      companyAddress: 'Dirección de empresa pendiente de aprobación',
-      companyPhone: 'Teléfono de empresa pendiente de aprobación',
+      companyAddress: 'Carrera 15 # 18-21, Socorro, Santander, Colombia',
+      companyPhone: '+57 318 5176823',
       officialWebsiteUrl: 'https://www.pasotelevision.net/',
       videoUrl: 'URL de video pendiente de publicación',
     },
     referencePlaceholders: {
       companyName: 'Paso Television',
-      companyAddress: 'Dirección pendiente de aprobación',
-      companyPhone: 'Teléfono pendiente de aprobación',
-      availabilityNote:
-        'El sitio público de la empresa está enlazado; los detalles operativos privados permanecen protegidos.',
+      companyAddress: 'Carrera 15 # 18-21, Socorro, Santander, Colombia',
+      companyPhone: '+57 318 5176823',
     },
   },
   expensux: {
