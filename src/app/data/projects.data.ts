@@ -207,13 +207,10 @@ const PROJECT_ITEMS: Project[] = [
     context: [
       'Own product initiative designed from zero to organize practical financial workflows.',
       'Backend-oriented project that demonstrates product thinking, API boundaries, authentication, and data modeling decisions.',
-      'Public demo link is pending publication while the demo experience is prepared.',
-      'Source code remains private for now.',
     ],
     architectureNotes: [
       'Uses Clean Architecture direction and layered .NET API concepts with SQL Server data access and an Angular frontend.',
       'Designed around profiles, accounts, debts, payments, categories, movements, JWT authentication, REST API responsibilities, and Dapper-based data access.',
-      'Current public detail remains intentionally high-level while the demo experience is prepared.',
     ],
     technologies: [
       'SQL Server',
@@ -231,17 +228,27 @@ const PROJECT_ITEMS: Project[] = [
     timeBlocks: EXPENSUX_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
-        label: 'Demo availability note',
+        label: 'Demo del producto',
         type: 'Demo',
+        typeLabel: 'DEMO',
+        actionLabel: 'Abrir demo',
+        url: '#',
         isExternal: true,
+      },
+      {
+        label: 'Video producto en servicio',
+        type: 'Video',
+        typeLabel: 'VIDEO PRODUCTO EN SERVICIO',
+        videoSrc: 'assets/project-media/expensux/expensux-product-demo.mp4',
+        isExternal: false,
         isPlaceholder: true,
-        placeholderMessage: 'Public demo link will be published when the demo is ready for review.',
+        placeholderMessage: 'Video producto en servicio preparado para publicación.',
       },
     ],
     placeholders: {
-      demoUrl: 'Demo URL pending publication',
+      demoUrl: '#',
     },
-    sourceCodeNote: 'Source code is private while the demo is being prepared.',
+    sourceCodeNote: '',
     confidentialityNote:
       'Financial examples and implementation details are presented safely. Source code remains private for now while the demo is prepared.',
   },
@@ -631,7 +638,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Producto propio de control financiero diseñado desde cero con dirección Clean Architecture, REST APIs, autenticación JWT, acceso a datos con Dapper, flujos SQL Server y frontend Angular mientras se prepara una demo pública.',
     visualLabel: 'Referencia visual de aplicación de control financiero pendiente de arte final',
     ctaLabel: 'Explorar arquitectura',
-    sourceCodeNote: 'El código fuente es privado mientras se prepara la demo.',
+    sourceCodeNote: '',
     confidentialityNote:
       'Los ejemplos financieros y detalles de implementación se presentan de forma segura. El código fuente permanece privado por ahora mientras se prepara la demo.',
   },
@@ -899,25 +906,31 @@ const projectSpanishDetails: Record<
     context: [
       'Iniciativa de producto propio diseñada desde cero para organizar flujos financieros prácticos.',
       'Proyecto con enfoque backend que demuestra pensamiento de producto, límites API, autenticación y decisiones de modelado de datos.',
-      'El enlace de demo pública está pendiente de publicación mientras se prepara la experiencia de demo.',
-      'El código fuente permanece privado por ahora.',
     ],
     architectureNotes: [
       'Usa dirección Clean Architecture y conceptos de API .NET por capas con acceso a datos en SQL Server y frontend Angular.',
       'Diseñada alrededor de perfiles, cuentas, deudas, pagos, categorías, movimientos, autenticación JWT, responsabilidades REST API y acceso a datos basado en Dapper.',
-      'El detalle público actual se mantiene intencionalmente a alto nivel mientras se prepara la experiencia de demo.',
     ],
     links: [
       {
-        label: 'Nota de disponibilidad de demo',
+        label: 'Demo del producto',
         type: 'Demo',
+        typeLabel: 'DEMO',
+        actionLabel: 'Abrir demo',
+        url: '#',
         isExternal: true,
+      },
+      {
+        label: 'Video producto en servicio',
+        type: 'Video',
+        typeLabel: 'VIDEO PRODUCTO EN SERVICIO',
+        videoSrc: 'assets/project-media/expensux/expensux-product-demo.mp4',
+        isExternal: false,
         isPlaceholder: true,
-        placeholderMessage:
-          'El enlace de demo pública se publicará cuando la demo esté lista para revisión.',
+        placeholderMessage: 'Video producto en servicio preparado para publicación.',
       },
     ],
-    placeholders: { demoUrl: 'URL de demo pendiente de publicación' },
+    placeholders: { demoUrl: '#' },
     referencePlaceholders: undefined as never,
   },
   ithelpcenter: {

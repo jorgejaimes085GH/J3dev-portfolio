@@ -120,7 +120,7 @@ import { LanguageService } from '../../../core/services/language.service';
               <p class="project-detail-page__eyebrow">{{ text().linksEyebrow }}</p>
             }
             <h2 id="project-links-title">{{ projectLinksTitle(selectedProject.id) }}</h2>
-            @if (!isWorkerProject(selectedProject.id)) {
+            @if (!isWorkerProject(selectedProject.id) && selectedProject.sourceCodeNote) {
               <p>{{ selectedProject.sourceCodeNote }}</p>
             }
           </div>
@@ -558,7 +558,7 @@ export class ProjectDetailPage {
   }
 
   protected projectLinksTitle(projectId: string): string {
-    if (this.isWorkerProject(projectId)) {
+    if (this.isWorkerProject(projectId) || projectId === 'expensux') {
       return 'Referencias del proyecto';
     }
 
