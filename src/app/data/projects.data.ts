@@ -8,7 +8,8 @@ const WORKER_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
   },
   {
     label: 'Long-term evolution',
-    duration: 'More than one year of initial construction followed by a decade of functional and technological evolution',
+    duration:
+      'More than one year of initial construction followed by a decade of functional and technological evolution',
     note: 'Progressive modernization from Access and VB.NET toward SQL Server, layered architecture, WPF, and modern .NET technologies.',
   },
 ];
@@ -185,7 +186,8 @@ const PROJECT_ITEMS: Project[] = [
       companyName: 'Paso Television',
       companyAddress: 'Address pending approval',
       companyPhone: 'Phone pending approval',
-      availabilityNote: 'Public company website is linked; private operational details remain protected.',
+      availabilityNote:
+        'Public company website is linked; private operational details remain protected.',
     },
     sourceCodeNote: 'Private production source code is not publicly available.',
     confidentialityNote:
@@ -443,7 +445,8 @@ const PROJECT_ITEMS: Project[] = [
     id: 'manager-plus',
     slug: 'manager-plus',
     title: 'Manager Plus',
-    typeStatus: 'Tier 3 Enterprise Systems Experience / Avances Software / ERP business management system',
+    typeStatus:
+      'Tier 3 Enterprise Systems Experience / Avances Software / ERP business management system',
     shortDescription:
       'Commercial business management platform covering billing, inventory, purchasing, sales, accounts receivable, supplier management, and operational workflows.',
     visualLabel: 'Avances Software ERP enterprise system visual reference pending approved asset',
@@ -483,7 +486,8 @@ const PROJECT_ITEMS: Project[] = [
     id: 'manager-clinic',
     slug: 'manager-clinic',
     title: 'Manager Clinic',
-    typeStatus: 'Tier 3 Enterprise Systems Experience / Avances Software / Healthcare management platform',
+    typeStatus:
+      'Tier 3 Enterprise Systems Experience / Avances Software / Healthcare management platform',
     shortDescription:
       'Clinical management platform supporting appointments, patient records, admissions, authorizations, prescriptions, medical history tracking, and doctor scheduling.',
     visualLabel: 'Avances Software healthcare platform visual reference pending approved asset',
@@ -523,10 +527,12 @@ const PROJECT_ITEMS: Project[] = [
     id: 'odontology',
     slug: 'odontology',
     title: 'Odontology',
-    typeStatus: 'Tier 3 Enterprise Systems Experience / Avances Software / Dental practice management system',
+    typeStatus:
+      'Tier 3 Enterprise Systems Experience / Avances Software / Dental practice management system',
     shortDescription:
       'Dental management platform focused on clinical records, patient tracking, appointment scheduling, and dental-specific treatment workflows.',
-    visualLabel: 'Avances Software dental management platform visual reference pending approved asset',
+    visualLabel:
+      'Avances Software dental management platform visual reference pending approved asset',
     ctaLabel: 'View Dental Workflow Context',
     context: [
       'Earlier enterprise product experience from Avances Software.',
@@ -566,12 +572,23 @@ const PROJECT_THUMBNAIL_URLS: Record<string, string> = {
   expensux: 'assets/project-media/expensux/expensux-thumbnail.webp',
   ithelpcenter: 'assets/project-media/ithelpcenter/ithelpcenter-thumbnail.webp',
   discovery: 'assets/project-media/discovery/discovery-thumbnail.webp',
-  'testigo-electoral':
-    'assets/project-media/testigo-electoral/testigo-electoral-thumbnail.webp',
+  'testigo-electoral': 'assets/project-media/testigo-electoral/testigo-electoral-thumbnail.webp',
   'manager-clinic': 'assets/project-media/manager-clinic/manager-clinic-thumbnail.webp',
   'manager-plus': 'assets/project-media/manager-plus/manager-plus-thumbnail.webp',
   odontology: 'assets/project-media/odontology/odontology-thumbnail.webp',
   'j3dev-portfolio': 'assets/project-media/j3dev-portfolio/j3dev-portfolio-thumbnail.webp',
+};
+
+const PROJECT_COMPACT_LOGO_URLS: Record<string, string> = {
+  worker: 'assets/images/logos/projects/worker-related.webp',
+  expensux: 'assets/images/logos/projects/expensux-related.webp',
+  ithelpcenter: 'assets/images/logos/projects/ithelpcenter-related.webp',
+  discovery: 'assets/images/logos/projects/discovery-related.webp',
+  'testigo-electoral': 'assets/images/logos/projects/testigo-electoral-related.webp',
+  'manager-clinic': 'assets/images/logos/projects/manager-clinic-related.webp',
+  'manager-plus': 'assets/images/logos/projects/manager-plus-related.webp',
+  odontology: 'assets/images/logos/projects/odontology-related.webp',
+  'j3dev-portfolio': 'assets/images/logos/projects/j3dev-portfolio-related.webp',
 };
 
 const PROJECT_LOGO_URLS: Record<string, string> = {
@@ -581,6 +598,7 @@ const PROJECT_LOGO_URLS: Record<string, string> = {
 const PROJECTS_EN: Project[] = PROJECT_ITEMS.map((project) => ({
   ...project,
   thumbnailUrl: PROJECT_THUMBNAIL_URLS[project.slug],
+  compactLogoUrl: PROJECT_COMPACT_LOGO_URLS[project.slug],
   logoUrl: PROJECT_LOGO_URLS[project.slug],
 }));
 
@@ -618,7 +636,8 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Este proyecto de LeverIT se representa solo con descripciones generalizadas y seguras para publicación. No se exponen código fuente, información privada de clientes, flujos propietarios, arquitectura interna ni datos operativos sensibles.',
   },
   'testigo-electoral': {
-    typeStatus: 'Proyecto empresarial Tier 2 / Proyecto cliente personalizado LeverIT / Construido desde cero',
+    typeStatus:
+      'Proyecto empresarial Tier 2 / Proyecto cliente personalizado LeverIT / Construido desde cero',
     shortDescription:
       'Plataforma personalizada de auditoría electoral desarrollada para un cliente real, permitiendo recopilar, validar y revisar evidencia de mesas de votación mediante una solución centralizada construida con SQL Server, REST APIs y Angular.',
     visualLabel:
@@ -630,7 +649,8 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Este proyecto de LeverIT se representa solo con descripciones generalizadas y seguras para publicación. No se exponen código fuente, información privada de clientes, flujos propietarios, arquitectura interna ni datos operativos sensibles.',
   },
   discovery: {
-    typeStatus: 'Proyecto empresarial Tier 2 / Plataforma empresarial LeverIT / Evolución en producción',
+    typeStatus:
+      'Proyecto empresarial Tier 2 / Plataforma empresarial LeverIT / Evolución en producción',
     shortDescription:
       'Plataforma empresarial Discovery apoyada mediante evolución en producción, capacidades de inventario continuo, trabajo con SQL Server, funcionalidades ASP.NET, WebSockets y mejoras mantenibles.',
     visualLabel:
@@ -647,7 +667,8 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Portfolio moderno en Angular construido como showcase profesional data-driven, multi-idioma, multi-tema y responsive para presentar especialización Backend .NET y evidencia de portfolio engineering.',
     visualLabel: 'Referencia visual de aplicación portfolio pendiente de arte final',
     ctaLabel: 'Ver implementación',
-    sourceCodeNote: 'El enlace al repositorio público está disponible para revisar la implementación.',
+    sourceCodeNote:
+      'El enlace al repositorio público está disponible para revisar la implementación.',
     confidentialityNote:
       'Este portfolio está pensado como showcase público. Usa contenido estático y comportamiento client-side únicamente, sin backend privado ni acceso a base de datos.',
   },
@@ -656,7 +677,8 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Experiencia en sistemas empresariales Tier 3 / Avances Software / Sistema ERP de gestión empresarial',
     shortDescription:
       'Plataforma comercial de gestión empresarial que cubre facturación, inventario, compras, ventas, cuentas por cobrar, gestión de proveedores y flujos operativos.',
-    visualLabel: 'Referencia visual de sistema ERP empresarial de Avances Software pendiente de activo aprobado',
+    visualLabel:
+      'Referencia visual de sistema ERP empresarial de Avances Software pendiente de activo aprobado',
     ctaLabel: 'Ver contexto empresarial',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto empresarial de Avances Software.',
@@ -668,7 +690,8 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Experiencia en sistemas empresariales Tier 3 / Avances Software / Plataforma de gestión clínica',
     shortDescription:
       'Plataforma de gestión clínica que soporta citas, registros de pacientes, ingresos, autorizaciones, fórmulas, seguimiento de historia médica y agenda de doctores.',
-    visualLabel: 'Referencia visual de plataforma clínica de Avances Software pendiente de activo aprobado',
+    visualLabel:
+      'Referencia visual de plataforma clínica de Avances Software pendiente de activo aprobado',
     ctaLabel: 'Ver contexto clínico',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto clínico de Avances Software.',
@@ -680,7 +703,8 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Experiencia en sistemas empresariales Tier 3 / Avances Software / Sistema de gestión odontológica',
     shortDescription:
       'Plataforma de gestión odontológica enfocada en registros clínicos, seguimiento de pacientes, programación de citas y flujos de tratamientos dentales específicos.',
-    visualLabel: 'Referencia visual de plataforma odontológica de Avances Software pendiente de activo aprobado',
+    visualLabel:
+      'Referencia visual de plataforma odontológica de Avances Software pendiente de activo aprobado',
     ctaLabel: 'Ver contexto de flujo dental',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto odontológico de Avances Software.',
@@ -693,12 +717,14 @@ const projectTimeBlocksEsById: Record<string, ProjectTimeBlock[]> = {
   worker: [
     {
       label: 'Contexto de inversión profesional',
-      duration: 'Construcción inicial desde septiembre de 2014 hasta salida a producción en noviembre de 2015',
+      duration:
+        'Construcción inicial desde septiembre de 2014 hasta salida a producción en noviembre de 2015',
       note: 'Participación en casos de uso, levantamiento de requerimientos, diseño UML, arquitectura, diseño de base de datos, implementación, pruebas y producción.',
     },
     {
       label: 'Evolución de largo plazo',
-      duration: 'Más de un año de construcción inicial seguido por una década de evolución funcional y tecnológica',
+      duration:
+        'Más de un año de construcción inicial seguido por una década de evolución funcional y tecnológica',
       note: 'Modernización progresiva desde Access y VB.NET hacia SQL Server, arquitectura en capas, WPF y tecnologías .NET modernas.',
     },
   ],
@@ -765,7 +791,8 @@ const projectTimeBlocksEsById: Record<string, ProjectTimeBlock[]> = {
   'manager-plus': [
     {
       label: 'Contexto de inversión profesional',
-      duration: 'Participación profesional durante aproximadamente un año dentro de Avances Software',
+      duration:
+        'Participación profesional durante aproximadamente un año dentro de Avances Software',
       note: 'Contribuciones en migración FoxPro a SQL Server, normalización de base de datos, corrección de incidencias, nuevas funcionalidades, reportes e integraciones con Excel.',
     },
     {
@@ -777,7 +804,8 @@ const projectTimeBlocksEsById: Record<string, ProjectTimeBlock[]> = {
   'manager-clinic': [
     {
       label: 'Contexto de inversión profesional',
-      duration: 'Participación profesional durante aproximadamente un año dentro de Avances Software',
+      duration:
+        'Participación profesional durante aproximadamente un año dentro de Avances Software',
       note: 'Contribuciones en migración FoxPro a SQL Server, optimización de consultas, mantenimiento, mejoras funcionales y soporte de producción.',
     },
     {
@@ -789,7 +817,8 @@ const projectTimeBlocksEsById: Record<string, ProjectTimeBlock[]> = {
   odontology: [
     {
       label: 'Contexto de inversión profesional',
-      duration: 'Participación profesional durante aproximadamente un año dentro de Avances Software',
+      duration:
+        'Participación profesional durante aproximadamente un año dentro de Avances Software',
       note: 'Contribuciones en migración FoxPro a SQL Server, mantenimiento, optimización, reportería y mejoras funcionales.',
     },
     {

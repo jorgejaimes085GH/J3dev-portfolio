@@ -56,7 +56,9 @@ import { Project } from '../../models/project.model';
                           (error)="markAssetFailed(getCompanyAssetId(entry))"
                         />
                       } @else {
-                        <span>{{ entry.companyInitials || getCompanyInitials(entry.company) }}</span>
+                        <span>{{
+                          entry.companyInitials || getCompanyInitials(entry.company)
+                        }}</span>
                       }
                     </span>
                     <div>
@@ -113,15 +115,21 @@ import { Project } from '../../models/project.model';
                               [attr.aria-label]="text().viewProjectPrefix + ': ' + project.title"
                             >
                               <span class="experience-project-link__initials" aria-hidden="true">
-                                @if (getProjectThumbnailUrl(project) && !hasAssetFailed(getProjectAssetId(project))) {
+                                @if (getProjectCompactImageUrl(project)) {
                                   <img
-                                    class="experience-project-link__thumbnail"
-                                    style="width:80%;height:80%;object-fit:contain"
-                                    [src]="getProjectThumbnailUrl(project)"
+                                    style="width: 86%; height: 86%; object-fit: contain"
+                                    [src]="getProjectCompactImageUrl(project)"
                                     [alt]="''"
                                     loading="lazy"
                                     decoding="async"
-                                    (error)="markAssetFailed(getProjectAssetId(project))"
+                                    (error)="
+                                      markAssetFailed(
+                                        getProjectAssetId(
+                                          project,
+                                          getProjectCompactImageUrl(project)
+                                        )
+                                      )
+                                    "
                                   />
                                 } @else {
                                   {{ getProjectInitials(project.title) }}
@@ -441,7 +449,6 @@ import { Project } from '../../models/project.model';
       }
 
       .experience-project-link__initials {
-        position: relative;
         display: inline-grid;
         width: 2.4rem;
         height: 2.4rem;
@@ -706,8 +713,8 @@ export class Experience {
     return `experience-company-${entry.id}`;
   }
 
-  protected getProjectAssetId(project: Project): string {
-    return `experience-project-${project.id}`;
+  protected getProjectAssetId(project: Project, imageUrl?: string): string {
+    return `experience-project-${project.id}-${imageUrl || 'default'}`;
   }
 
   protected hasAssetFailed(assetId: string): boolean {
@@ -728,8 +735,10 @@ export class Experience {
       .toUpperCase();
   }
 
-  protected getProjectThumbnailUrl(project: Project): string | undefined {
-    return project.thumbnailUrl || project.logoUrl || project.overviewImageUrl;
+  protected getProjectCompactImageUrl(project: Project): string | undefined {
+    return [project.compactLogoUrl, project.relatedLogoUrl, project.logoUrl, project.thumbnailUrl]
+      .filter((imageUrl): imageUrl is string => Boolean(imageUrl))
+      .find((imageUrl) => !this.hasAssetFailed(this.getProjectAssetId(project, imageUrl)));
   }
 
   protected getProjectInitials(title: string): string {
