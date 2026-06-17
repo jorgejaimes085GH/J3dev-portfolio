@@ -15,7 +15,10 @@ export interface ProjectLink {
   placeholderMessage?: string;
   typeLabel?: string;
   actionLabel?: string;
+  description?: string;
   videoSrc?: string;
+  embedUrl?: string;
+  supportText?: string;
 }
 
 export interface ProjectPlaceholders {

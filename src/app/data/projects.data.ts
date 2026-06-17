@@ -161,7 +161,8 @@ const PROJECT_ITEMS: Project[] = [
     timeBlocks: WORKER_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
-        label: 'Company that uses the product for the administration, billing, and management of its services.',
+        label:
+          'Company that uses the product for the administration, billing, and management of its services.',
         type: 'Reference',
         typeLabel: 'PASO TV',
         actionLabel: 'Open reference',
@@ -283,9 +284,20 @@ const PROJECT_ITEMS: Project[] = [
     timeBlocks: ITHELPCENTER_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
-        label: 'Official ItHelpCenter reference',
+        label: 'Company that owns the product',
+        description: 'Enterprise product used for years within LeverIT’s solution ecosystem.',
         type: 'Reference',
+        typeLabel: 'LEVERIT',
+        actionLabel: 'Open reference',
         url: 'https://www.leverit.us/ithc-mesa-de-ayuda',
+        isExternal: true,
+      },
+      {
+        label: 'Public product demonstration',
+        type: 'Video',
+        typeLabel: 'OFFICIAL VIDEO',
+        embedUrl: 'https://www.youtube.com/embed/z7OTZIXesco',
+        supportText: 'Official source published by LeverIT.',
         isExternal: true,
       },
     ],
@@ -293,8 +305,7 @@ const PROJECT_ITEMS: Project[] = [
       officialWebsiteUrl: 'https://www.leverit.us/ithc-mesa-de-ayuda',
       logoLabel: 'LeverIT logo pending approved public asset',
     },
-    sourceCodeNote:
-      'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this LeverIT enterprise project.',
+    sourceCodeNote: 'Private product owned by LeverIT.',
     confidentialityNote:
       'This LeverIT project is represented with public-safe, generalized descriptions only. Source code, private client information, proprietary workflows, internal architecture details, and sensitive operational data are not exposed.',
   },
@@ -631,8 +642,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     visualLabel:
       'Referencia visual de plataforma help desk de LeverIT pendiente de activo aprobado',
     ctaLabel: 'Ver evidencia profesional',
-    sourceCodeNote:
-      'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este proyecto empresarial de LeverIT.',
+    sourceCodeNote: 'Producto privado de la empresa LeverIT.',
     confidentialityNote:
       'Este proyecto de LeverIT se representa solo con descripciones generalizadas y seguras para publicación. No se exponen código fuente, información privada de clientes, flujos propietarios, arquitectura interna ni datos operativos sensibles.',
   },
@@ -854,7 +864,8 @@ const projectSpanishDetails: Record<
     ],
     links: [
       {
-        label: 'Empresa que utiliza el producto para la administración, facturación y gestión de sus servicios.',
+        label:
+          'Empresa que utiliza el producto para la administración, facturación y gestión de sus servicios.',
         type: 'Reference',
         typeLabel: 'PASO TV',
         actionLabel: 'Abrir referencia',
@@ -925,9 +936,21 @@ const projectSpanishDetails: Record<
     ],
     links: [
       {
-        label: 'Referencia oficial de ItHelpCenter',
+        label: 'Empresa propietaria del producto',
+        description:
+          'Producto empresarial utilizado durante años dentro del ecosistema de soluciones de LeverIT.',
         type: 'Reference',
+        typeLabel: 'LEVERIT',
+        actionLabel: 'Abrir referencia',
         url: 'https://www.leverit.us/ithc-mesa-de-ayuda',
+        isExternal: true,
+      },
+      {
+        label: 'Demostración pública del producto',
+        type: 'Video',
+        typeLabel: 'VIDEO OFICIAL',
+        embedUrl: 'https://www.youtube.com/embed/z7OTZIXesco',
+        supportText: 'Fuente oficial publicada por LeverIT.',
         isExternal: true,
       },
     ],
