@@ -120,9 +120,6 @@ import { LanguageService } from '../../../core/services/language.service';
               <p class="project-detail-page__eyebrow">{{ text().linksEyebrow }}</p>
             }
             <h2 id="project-links-title">{{ projectLinksTitle(selectedProject.id) }}</h2>
-            @if (!isWorkerProject(selectedProject.id) && selectedProject.sourceCodeNote) {
-              <p>{{ selectedProject.sourceCodeNote }}</p>
-            }
           </div>
 
           @if (selectedProject.links?.length) {
@@ -199,9 +196,6 @@ import { LanguageService } from '../../../core/services/language.service';
             <div class="project-detail-section__header">
               <p class="project-detail-page__eyebrow">{{ text().referenceEyebrow }}</p>
               <h2 id="project-reference-title">{{ text().referenceTitle }}</h2>
-              @if (referencePlaceholders.availabilityNote) {
-                <p>{{ referencePlaceholders.availabilityNote }}</p>
-              }
             </div>
 
             <dl class="project-reference-list">
@@ -220,14 +214,6 @@ import { LanguageService } from '../../../core/services/language.service';
             </dl>
           </section>
         }
-
-        <section class="project-detail-section" aria-labelledby="project-confidentiality-title">
-          <div class="project-detail-section__header">
-            <p class="project-detail-page__eyebrow">{{ text().confidentialityEyebrow }}</p>
-            <h2 id="project-confidentiality-title">{{ text().confidentialityTitle }}</h2>
-          </div>
-          <p class="project-detail-note">{{ selectedProject.confidentialityNote }}</p>
-        </section>
 
         <nav
           class="project-detail-nav project-detail-nav--bottom"
