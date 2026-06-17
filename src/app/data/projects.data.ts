@@ -580,15 +580,15 @@ const PROJECT_THUMBNAIL_URLS: Record<string, string> = {
 };
 
 const PROJECT_COMPACT_LOGO_URLS: Record<string, string> = {
-  worker: 'assets/images/logos/projects/worker-related.webp',
-  expensux: 'assets/images/logos/projects/expensux-related.webp',
-  ithelpcenter: 'assets/images/logos/projects/ithelpcenter-related.webp',
-  discovery: 'assets/images/logos/projects/discovery-related.webp',
-  'testigo-electoral': 'assets/images/logos/projects/testigo-electoral-related.webp',
-  'manager-clinic': 'assets/images/logos/projects/manager-clinic-related.webp',
-  'manager-plus': 'assets/images/logos/projects/manager-plus-related.webp',
-  odontology: 'assets/images/logos/projects/odontology-related.webp',
-  'j3dev-portfolio': 'assets/images/logos/projects/j3dev-portfolio-related.webp',
+  worker: 'assets/images/logos/projects/worker-compact.webp',
+  expensux: 'assets/images/logos/projects/expensux-compact.webp',
+  ithelpcenter: 'assets/images/logos/projects/ithelpcenter-compact.webp',
+  discovery: 'assets/images/logos/projects/discovery-compact.webp',
+  'testigo-electoral': 'assets/images/logos/projects/testigo-electoral-compact.webp',
+  'manager-clinic': 'assets/images/logos/projects/manager-clinic-compact.webp',
+  'manager-plus': 'assets/images/logos/projects/manager-plus-compact.webp',
+  odontology: 'assets/images/logos/projects/odontology-compact.webp',
+  'j3dev-portfolio': 'assets/images/logos/projects/j3dev-portfolio-compact.webp',
 };
 
 const PROJECT_LOGO_URLS: Record<string, string> = {

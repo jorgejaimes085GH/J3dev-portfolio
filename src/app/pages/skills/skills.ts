@@ -589,11 +589,10 @@ export class Skills {
   }
 
   getProjectCompactImageUrl(project: Project): string | undefined {
-    return [project.compactLogoUrl, project.relatedLogoUrl, project.logoUrl, project.thumbnailUrl]
-      .filter((imageUrl): imageUrl is string => Boolean(imageUrl))
-      .find(
-        (imageUrl) => !this.failedProjectAssetIds().has(this.getProjectAssetId(project, imageUrl)),
-      );
+    return project.compactLogoUrl &&
+      !this.failedProjectAssetIds().has(this.getProjectAssetId(project, project.compactLogoUrl))
+      ? project.compactLogoUrl
+      : undefined;
   }
 
   getProjectAssetId(project: Project, imageUrl?: string): string {
