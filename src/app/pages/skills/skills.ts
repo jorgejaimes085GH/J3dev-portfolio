@@ -136,7 +136,7 @@ interface SkillGroup {
                   @for (project of getRelatedProjects(skill); track project.id) {
                     <li>
                       <a
-                        class="button-link button-link--compact"
+                        class="btn btn--secondary btn--compact button-link button-link--compact"
                         [routerLink]="['/projects', project.slug]"
                         (click)="closeSkill()"
                       >

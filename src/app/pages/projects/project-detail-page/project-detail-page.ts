@@ -12,7 +12,7 @@ import { LanguageService } from '../../../core/services/language.service';
   template: `
     <main class="project-detail-page" aria-labelledby="project-detail-title">
       <nav class="project-detail-nav" [attr.aria-label]="text().navAria">
-        <a class="button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
+        <a class="btn btn--secondary btn--compact button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
       </nav>
 
       @if (project(); as selectedProject) {
@@ -128,7 +128,7 @@ import { LanguageService } from '../../../core/services/language.service';
 
                   @if (projectLink.url && !projectLink.isPlaceholder) {
                     <a
-                      class="button-link button-link--compact"
+                      class="btn btn--secondary btn--compact button-link button-link--compact"
                       [href]="projectLink.url"
                       [attr.target]="projectLink.isExternal ? '_blank' : null"
                       [attr.rel]="projectLink.isExternal ? 'noopener noreferrer' : null"
@@ -185,7 +185,7 @@ import { LanguageService } from '../../../core/services/language.service';
           class="project-detail-nav project-detail-nav--bottom"
           [attr.aria-label]="text().navAria"
         >
-          <a class="button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
+          <a class="btn btn--secondary btn--compact button-link button-link--compact" routerLink="/projects">{{ text().back }}</a>
         </nav>
       } @else {
         <section
@@ -196,7 +196,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <h1 id="project-detail-title">{{ text().notFoundTitle }}</h1>
           <p>{{ text().notFoundBody }}</p>
           <a
-            class="button-link button-link--compact project-not-found__link"
+            class="btn btn--secondary btn--compact button-link button-link--compact project-not-found__link"
             routerLink="/projects"
             >{{ text().back }}</a
           >

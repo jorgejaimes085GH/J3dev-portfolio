@@ -78,7 +78,7 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
             </ul>
 
             <a
-              class="button-link button-link--secondary button-link--compact project-preview__action"
+              class="btn btn--secondary btn--compact button-link button-link--secondary button-link--compact project-preview__action"
               [routerLink]="project.route"
             >
               {{ getProjectContextLabel(project.name) }}
@@ -113,10 +113,10 @@ import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
       </div>
 
       <div class="home-cta__actions" [attr.aria-label]="homeCopy().cta.actionsAriaLabel">
-        <a class="button-link button-link--primary" routerLink="/projects">{{
+        <a class="btn btn--primary button-link button-link--primary" routerLink="/projects">{{
           homeCopy().cta.projectsLabel
         }}</a>
-        <a class="button-link" routerLink="/skills">{{ homeCopy().cta.skillsLabel }}</a>
+        <a class="btn btn--secondary button-link" routerLink="/skills">{{ homeCopy().cta.skillsLabel }}</a>
       </div>
     </section>
   `,

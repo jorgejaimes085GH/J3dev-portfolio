@@ -236,7 +236,7 @@ import {
 
         <nav class="education-cta__actions" [attr.aria-label]="text().ctaAria">
           @for (link of ctaLinks(); track link.route) {
-            <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
+            <a class="btn button-link" [class.btn--primary]="$first" [class.btn--secondary]="!$first" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
             </a>
           }
