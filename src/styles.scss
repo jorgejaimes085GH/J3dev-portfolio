@@ -32,6 +32,87 @@ html.theme-premium-3d {
   color-scheme: dark;
 }
 
+
+:root {
+  --app-accent-color: var(--app-link-color);
+}
+
+.btn,
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  max-width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--app-border-color);
+  border-radius: 0.5rem;
+  color: var(--app-link-color);
+  background: transparent;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.btn:hover,
+.button-link:hover {
+  text-decoration: none;
+}
+
+.btn:focus-visible,
+.button-link:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--app-link-color) 42%, transparent);
+  outline-offset: 3px;
+}
+
+.btn--primary,
+.button-link--primary {
+  border-color: var(--app-accent-color);
+  color: var(--app-background-color);
+  background: var(--app-accent-color);
+}
+
+.btn--primary:is(:hover, :focus-visible),
+.button-link--primary:is(:hover, :focus-visible) {
+  border-color: color-mix(in srgb, var(--app-accent-color) 88%, var(--app-text-color));
+  color: var(--app-background-color);
+  background: color-mix(in srgb, var(--app-accent-color) 88%, var(--app-text-color));
+}
+
+.btn--secondary,
+.button-link--secondary {
+  border-color: color-mix(in srgb, var(--app-link-color) 72%, var(--app-border-color));
+  color: var(--app-link-color);
+  background: color-mix(in srgb, var(--app-link-color) 4%, transparent);
+}
+
+.btn--secondary:is(:hover, :focus-visible),
+.button-link--secondary:is(:hover, :focus-visible),
+.button-link:not(.button-link--primary):is(:hover, :focus-visible) {
+  border-color: var(--app-link-color);
+  color: var(--app-link-color);
+  background: color-mix(in srgb, var(--app-link-color) 12%, var(--app-background-color));
+}
+
+.btn--compact,
+.button-link--compact {
+  min-height: 2.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.92rem;
+}
+
+.btn--full {
+  width: 100%;
+}
+
 *,
 *::before,
 *::after {
@@ -2028,4 +2109,52 @@ app-navbar
   .education-page .button-link {
     width: 100%;
   }
+}
+
+/* Button system enforcement for component-scoped legacy selectors. */
+.btn.btn,
+.btn.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  max-width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--app-border-color);
+  border-radius: 0.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.btn.btn--primary {
+  border-color: var(--app-accent-color);
+  color: var(--app-background-color);
+  background: var(--app-accent-color);
+}
+
+.btn.btn.btn--primary:is(:hover, :focus-visible) {
+  border-color: color-mix(in srgb, var(--app-accent-color) 88%, var(--app-text-color));
+  color: var(--app-background-color);
+  background: color-mix(in srgb, var(--app-accent-color) 88%, var(--app-text-color));
+}
+
+.btn.btn.btn--secondary {
+  border-color: color-mix(in srgb, var(--app-link-color) 72%, var(--app-border-color));
+  color: var(--app-link-color);
+  background: color-mix(in srgb, var(--app-link-color) 4%, transparent);
+}
+
+.btn.btn.btn--secondary:is(:hover, :focus-visible) {
+  border-color: var(--app-link-color);
+  color: var(--app-link-color);
+  background: color-mix(in srgb, var(--app-link-color) 12%, var(--app-background-color));
+}
+
+.btn.btn.btn--compact {
+  min-height: 2.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.92rem;
 }

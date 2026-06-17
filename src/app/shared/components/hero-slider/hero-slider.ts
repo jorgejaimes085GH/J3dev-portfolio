@@ -50,13 +50,13 @@ import { HeroSlide } from '../../../models/hero-slide.model';
 
             <div class="hero-slider__actions" [attr.aria-label]="heroText().actionsAria">
               <a
-                class="hero-slider__cta hero-slider__cta--primary"
+                class="btn btn--primary hero-slider__cta hero-slider__cta--primary"
                 [routerLink]="slide.primaryActionRoute"
               >
                 {{ slide.primaryActionLabel }}
               </a>
               <a
-                class="hero-slider__cta hero-slider__cta--secondary"
+                class="btn btn--secondary hero-slider__cta hero-slider__cta--secondary"
                 [routerLink]="slide.secondaryActionRoute"
               >
                 {{ slide.secondaryActionLabel }}

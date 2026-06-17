@@ -60,7 +60,7 @@ import { LanguageService } from '../../../core/services/language.service';
                 </div>
 
                 <a
-                  class="project-card__link"
+                  class="btn btn--secondary btn--compact project-card__link"
                   [routerLink]="['/projects', project.slug]"
                   [attr.aria-label]="project.ctaLabel + ': ' + project.title"
                 >

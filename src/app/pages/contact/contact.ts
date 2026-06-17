@@ -57,7 +57,7 @@ import { ContactMethod } from '../../models/contact.model';
               </div>
 
               <a
-                class="button-link contact-action contact-action--primary contact-method-card__action"
+                class="btn btn--primary button-link contact-action contact-action--primary contact-method-card__action"
                 [href]="method.actionUrl"
                 [attr.target]="isExternalUrl(method) ? '_blank' : null"
                 [attr.rel]="isExternalUrl(method) ? 'noopener noreferrer' : null"
@@ -109,7 +109,7 @@ import { ContactMethod } from '../../models/contact.model';
         <nav class="contact-final-cta__actions" [attr.aria-label]="text().ctaAria">
           @for (method of contactMethods(); track method.id) {
             <a
-              class="button-link contact-action contact-action--primary"
+              class="btn btn--primary button-link contact-action contact-action--primary"
               [href]="method.actionUrl"
               [attr.target]="isExternalUrl(method) ? '_blank' : null"
               [attr.rel]="isExternalUrl(method) ? 'noopener noreferrer' : null"

@@ -115,10 +115,10 @@ import { LanguageService } from '../../core/services/language.service';
         </div>
 
         <div class="about-cta__actions" [attr.aria-label]="text().ctaAria">
-          <a class="button-link button-link--primary" routerLink="/why-hire-me">{{
+          <a class="btn btn--primary button-link button-link--primary" routerLink="/why-hire-me">{{
             navText().value
           }}</a>
-          <a class="button-link" routerLink="/projects">{{ navText().projects }}</a>
+          <a class="btn btn--secondary button-link" routerLink="/projects">{{ navText().projects }}</a>
         </div>
       </section>
     </main>

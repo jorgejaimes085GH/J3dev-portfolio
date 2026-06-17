@@ -70,7 +70,7 @@ import { Project } from '../../models/project.model';
                       <ul class="journey-stage__links">
                         @for (project of getRelatedProjects(stage); track project.id) {
                           <li>
-                            <a class="button-link" [routerLink]="['/projects', project.slug]">
+                            <a class="btn btn--secondary btn--compact button-link" [routerLink]="['/projects', project.slug]">
                               {{ text().viewProjectDetailsPrefix }} {{ project.title }}
                               {{ text().viewProjectDetailsSuffix }}
                             </a>
@@ -154,7 +154,7 @@ import { Project } from '../../models/project.model';
 
         <nav class="journey-cta__actions" [attr.aria-label]="text().ctaAria">
           @for (link of ctaLinks(); track link.route) {
-            <a class="button-link" [class.button-link--primary]="$first" [routerLink]="link.route">
+            <a class="btn button-link" [class.btn--primary]="$first" [class.btn--secondary]="!$first" [class.button-link--primary]="$first" [routerLink]="link.route">
               {{ link.label }}
             </a>
           }
