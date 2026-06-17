@@ -296,8 +296,8 @@ export const UI_TEXT = {
         timeTitle: 'Implementation work areas',
         timeIntro:
           'These time blocks summarize the type of work involved while keeping private implementation details protected. Durations can be refined as more public-safe project material becomes available.',
-        linksEyebrow: 'Links and Availability',
-        linksTitle: 'Safe public access points',
+        linksEyebrow: 'References',
+        linksTitle: 'Project references',
         openLinkPrefix: 'Open',
         openLinkSuffix: 'link',
         defaultPlaceholder: 'This link will be published when available.',
@@ -616,8 +616,8 @@ export const UI_TEXT = {
         timeTitle: 'Áreas de trabajo de implementación',
         timeIntro:
           'Estos bloques resumen el tipo de trabajo involucrado mientras se protegen detalles privados de implementación. Las duraciones pueden ajustarse cuando haya más material del proyecto seguro para publicación.',
-        linksEyebrow: 'Enlaces y disponibilidad',
-        linksTitle: 'Puntos de acceso públicos seguros',
+        linksEyebrow: 'Referencias',
+        linksTitle: 'Referencias del proyecto',
         openLinkPrefix: 'Abrir enlace',
         openLinkSuffix: '',
         defaultPlaceholder: 'Este enlace se publicará cuando esté disponible.',

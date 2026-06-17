@@ -116,10 +116,8 @@ import { LanguageService } from '../../../core/services/language.service';
 
         <section class="project-detail-section" aria-labelledby="project-links-title">
           <div class="project-detail-section__header">
-            @if (!isWorkerProject(selectedProject.id)) {
-              <p class="project-detail-page__eyebrow">{{ text().linksEyebrow }}</p>
-            }
-            <h2 id="project-links-title">{{ projectLinksTitle(selectedProject.id) }}</h2>
+            <p class="project-detail-page__eyebrow">{{ text().linksEyebrow }}</p>
+            <h2 id="project-links-title">{{ text().linksTitle }}</h2>
           </div>
 
           @if (selectedProject.links?.length) {
@@ -538,24 +536,6 @@ export class ProjectDetailPage {
       (project) => project.slug === this.projectId || project.id === this.projectId,
     ),
   );
-
-  protected isWorkerProject(projectId: string): boolean {
-    return projectId === 'worker';
-  }
-
-  protected projectLinksTitle(projectId: string): string {
-    if (this.isWorkerProject(projectId) || projectId === 'expensux') {
-      return 'Referencias del proyecto';
-    }
-
-    if (projectId === 'ithelpcenter') {
-      return this.languageService.currentLanguage() === 'es'
-        ? 'Link de acceso al producto'
-        : 'Product access link';
-    }
-
-    return this.text().linksTitle;
-  }
 
   protected safeEmbedUrl(embedUrl: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
