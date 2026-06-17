@@ -2158,3 +2158,47 @@ app-navbar
   padding: 0.5rem 0.75rem;
   font-size: 0.92rem;
 }
+
+/* Sprint 31K.1: global button height and hover polish. */
+:is(
+  .btn,
+  .button-link,
+  .hero-slider__cta,
+  .project-card__link,
+  .document-action,
+  .contact-action
+) {
+  height: 40px !important;
+  min-height: 40px !important;
+}
+
+:is(.btn--compact, .button-link--compact) {
+  height: 40px !important;
+  min-height: 40px !important;
+}
+
+:is(
+  .btn--primary,
+  .button-link--primary,
+  .hero-slider__cta--primary,
+  .project-card__link,
+  .document-action--primary,
+  .contact-action--primary
+):is(:hover, :focus-visible) {
+  border-color: color-mix(in srgb, var(--app-accent-color) 78%, var(--app-text-color)) !important;
+  color: var(--app-background-color) !important;
+  background-color: color-mix(in srgb, var(--app-accent-color) 78%, var(--app-text-color)) !important;
+}
+
+:is(
+  .btn--secondary,
+  .button-link--secondary,
+  .hero-slider__cta--secondary,
+  .button-link:not(.button-link--primary)
+):is(:hover, :focus-visible),
+.document-action:not(.document-action--primary):is(:hover, :focus-visible),
+.contact-action:not(.contact-action--primary):is(:hover, :focus-visible) {
+  border-color: color-mix(in srgb, var(--app-link-color) 84%, var(--app-border-color)) !important;
+  color: var(--app-link-color) !important;
+  background-color: color-mix(in srgb, var(--app-link-color) 16%, var(--app-background-color)) !important;
+}
