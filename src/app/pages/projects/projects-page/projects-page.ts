@@ -5,6 +5,7 @@ import { PROJECTS } from '../../../data/projects.data';
 import { getLocalizedData } from '../../../data/localized-data';
 import { LanguageService } from '../../../core/services/language.service';
 import { Project } from '../../../models/project.model';
+import { getProjectStatusDisplay } from '../project-status.util';
 
 @Component({
   selector: 'app-projects-page',
@@ -364,46 +365,7 @@ export class ProjectsPage {
   );
 
   protected projectStatus(project: Project): { category: string; lines: string[] } {
-    const [rawCategory = project.typeStatus, ...rawLines] = project.typeStatus
-      .split('/')
-      .map((segment) => segment.trim())
-      .filter(Boolean);
-
-    return {
-      category: this.formatStatusCategory(rawCategory),
-      lines: rawLines.slice(0, 3).map((line) => this.formatStatusLine(line)),
-    };
-  }
-
-  private formatStatusCategory(category: string): string {
-    const lowerCategory = category.toLocaleLowerCase();
-
-    if (lowerCategory.includes('featured project') || lowerCategory.includes('proyecto destacado')) {
-      return this.languageService.currentLanguage() === 'es'
-        ? 'PROYECTO DESTACADO ⭐'
-        : 'FEATURED PROJECT ⭐';
-    }
-
-    if (
-      lowerCategory.includes('enterprise systems experience') ||
-      lowerCategory.includes('experiencia en sistemas empresariales')
-    ) {
-      return this.languageService.currentLanguage() === 'es'
-        ? 'EXPERIENCIA EN SISTEMAS EMPRESARIALES'
-        : 'ENTERPRISE SYSTEMS EXPERIENCE';
-    }
-
-    if (lowerCategory.includes('enterprise project') || lowerCategory.includes('proyecto empresarial')) {
-      return this.languageService.currentLanguage() === 'es'
-        ? 'PROYECTO EMPRESARIAL'
-        : 'ENTERPRISE PROJECT';
-    }
-
-    return category.replace(/\s+Tier\s+\d+/i, '').toLocaleUpperCase();
-  }
-
-  private formatStatusLine(line: string): string {
-    return line.replace(/\s+Tier\s+\d+/i, '').trim();
+    return getProjectStatusDisplay(project, this.languageService.currentLanguage());
   }
 
   protected hideFailedAsset(event: Event): void {
