@@ -1,0 +1,130 @@
+<main class="documents-page" aria-labelledby="documents-page-title">
+  <section class="documents-section documents-hero" aria-labelledby="documents-page-title">
+    <div class="documents-section__header">
+      <p class="documents-section__eyebrow">{{ text().eyebrow }}</p>
+      <h1 id="documents-page-title">{{ text().title }}</h1>
+      <p class="documents-hero__summary">{{ text().summary }}</p>
+    </div>
+  </section>
+
+  @for (group of documentGroups(); track group.id) {
+    <section class="documents-section" [attr.aria-labelledby]="group.id + '-title'">
+      <div class="documents-section__header">
+        <p class="documents-section__eyebrow">{{ group.title }}</p>
+        <h2 [id]="group.id + '-title'">{{ group.title }}</h2>
+        <p>{{ group.intro }}</p>
+      </div>
+
+      <div class="document-grid" [attr.aria-label]="group.title + ' document cards'">
+        @for (document of group.documents; track document.id) {
+          <article
+            class="document-card"
+            [id]="document.id"
+            [attr.aria-labelledby]="document.id + '-title'"
+          >
+            <div class="document-card__header">
+              <div class="document-card__title-group">
+                <span class="document-card__icon" aria-hidden="true">
+                  @if (document.iconUrl && !hasIconFailed(document.id)) {
+                    <img
+                      class="document-card__icon-image"
+                      [src]="document.iconUrl"
+                      [alt]="''"
+                      (error)="markIconFailed(document.id)"
+                    />
+                  } @else {
+                    <span>{{ getDocumentIconFallback(document) }}</span>
+                  }
+                </span>
+                <div>
+                  <p class="document-card__type">{{ document.type }}</p>
+                  <h3 [id]="document.id + '-title'">{{ document.title }}</h3>
+                </div>
+              </div>
+              <span class="document-card__status">{{ document.statusLabel }}</span>
+            </div>
+
+            @if (isRecommendationDocument(document)) {
+              @if (document.note) {
+                <p class="document-card__note">{{ document.note }}</p>
+              }
+
+              <p class="document-card__description">{{ document.description }}</p>
+            } @else {
+              <p class="document-card__description">{{ document.description }}</p>
+
+              <dl class="document-meta" [attr.aria-label]="text().detailsAria">
+                <div>
+                  <dt>{{ text().language }}</dt>
+                  <dd>{{ document.language }}</dd>
+                </div>
+                <div>
+                  <dt>{{ text().group }}</dt>
+                  <dd>{{ document.group }}</dd>
+                </div>
+              </dl>
+
+              @if (document.note) {
+                <p class="document-card__note">{{ document.note }}</p>
+              }
+            }
+
+            <div class="document-actions" [attr.aria-label]="text().actionsAria">
+              <a
+                class="btn btn--primary button-link document-action document-action--primary"
+                [href]="document.filePath"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="document.viewLabel + ' ' + uiCommon().inNewTab"
+              >
+                <img
+                  class="document-action__icon"
+                  [src]="viewActionIconUrl"
+                  [alt]="''"
+                  aria-hidden="true"
+                  (error)="hideFailedAsset($event)"
+                />
+                {{ text().viewOnline }}
+              </a>
+              <a
+                class="btn btn--secondary button-link document-action"
+                [href]="document.filePath"
+                [attr.download]="downloadFileName(document)"
+                [attr.aria-label]="document.downloadLabel"
+              >
+                <img
+                  class="document-action__icon"
+                  [src]="downloadActionIconUrl"
+                  [alt]="''"
+                  aria-hidden="true"
+                  (error)="hideFailedAsset($event)"
+                />
+                {{ text().downloadPdf }}
+              </a>
+              <button
+                class="btn btn--secondary button-link document-action"
+                type="button"
+                (click)="openForPrint(document)"
+                [attr.aria-label]="document.printLabel + ' ' + uiCommon().inNewTab"
+              >
+                <img
+                  class="document-action__icon"
+                  [src]="printActionIconUrl"
+                  [alt]="''"
+                  aria-hidden="true"
+                  (error)="hideFailedAsset($event)"
+                />
+                {{ text().print }}
+              </button>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+  }
+
+  <section class="documents-section documents-note" aria-labelledby="documents-note-title">
+    <h2 id="documents-note-title">{{ text().noteTitle }}</h2>
+    <p>{{ text().noteBody }}</p>
+  </section>
+</main>
