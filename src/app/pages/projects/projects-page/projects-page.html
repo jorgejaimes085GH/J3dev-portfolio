@@ -1,0 +1,79 @@
+<main class="projects-page" aria-labelledby="projects-page-title">
+  <section class="projects-section projects-introduction" aria-labelledby="projects-page-title">
+    <div class="projects-section__header">
+      <p class="projects-section__eyebrow">{{ text().eyebrow }}</p>
+      <h1 id="projects-page-title">{{ text().title }}</h1>
+      <p class="projects-introduction__summary">{{ text().summary }}</p>
+      <p>{{ text().intro }}</p>
+    </div>
+  </section>
+
+  <section class="projects-section" aria-labelledby="project-list-title">
+    <div class="projects-section__header">
+      <p class="projects-section__eyebrow">{{ text().cardsEyebrow }}</p>
+      <h2 id="project-list-title">{{ text().cardsTitle }}</h2>
+      <p>{{ text().cardsIntro }}</p>
+    </div>
+
+    <div class="project-grid" [attr.aria-label]="text().listAria">
+      @for (project of projects(); track project.id) {
+        <article class="project-card" [attr.aria-labelledby]="project.id + '-title'">
+          <a
+            class="project-card__visual"
+            [routerLink]="['/projects', project.slug]"
+            [attr.aria-label]="project.ctaLabel + ': ' + project.title"
+          >
+            <span aria-hidden="true">{{ project.title.slice(0, 2).toUpperCase() }}</span>
+            @if (project.thumbnailUrl) {
+              <img
+                class="project-card__image"
+                [src]="project.thumbnailUrl"
+                alt=""
+                (error)="hideFailedAsset($event)"
+              />
+            }
+          </a>
+
+          <div class="project-card__body">
+            <div class="project-card__status" [attr.aria-label]="project.typeStatus">
+              <p class="project-card__status-category">{{ projectStatus(project).category }}</p>
+              <div class="project-card__status-lines">
+                @for (line of projectStatus(project).lines; track line) {
+                  <span>{{ line }}</span>
+                }
+              </div>
+            </div>
+            <h3 [id]="project.id + '-title'">{{ project.title }}</h3>
+            <p class="project-card__description">{{ project.shortDescription }}</p>
+
+            <div class="project-card__time-preview" [attr.aria-label]="text().timeContext">
+              <h4>{{ text().timeContext }}</h4>
+              <ul>
+                @for (timeBlock of project.timeBlocks.slice(0, 3); track timeBlock.label) {
+                  <li>
+                    <span>{{ timeBlock.label }}</span>
+                    <strong>{{ timeBlock.duration }}</strong>
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <a
+              class="btn btn--secondary btn--compact project-card__link"
+              [routerLink]="['/projects', project.slug]"
+              [attr.aria-label]="project.ctaLabel + ': ' + project.title"
+            >
+              {{ project.ctaLabel }}
+            </a>
+
+            <div class="project-card__technologies" [attr.aria-label]="text().technologiesAria">
+              @for (technology of project.technologies; track technology) {
+                <span class="technology-badge">{{ technology }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</main>
