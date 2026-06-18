@@ -1,5 +1,17 @@
 import { DocumentGroupSection, ProfessionalDocument } from '../models/document.model';
 
+export const DOCUMENT_ICON_URLS = {
+  resume: 'assets/images/logos/documents/document-resume.svg',
+  coverLetter: 'assets/images/logos/documents/document-cover-letter.svg',
+  recommendation: 'assets/images/logos/documents/document-recommendation.svg',
+} as const;
+
+export const DOCUMENT_ACTION_ICON_URLS = {
+  view: 'assets/images/icons/actions/open-external.svg',
+  download: 'assets/images/icons/actions/download.svg',
+  print: 'assets/images/icons/actions/print.svg',
+} as const;
+
 const spanishRecommendationNote = 'Original document in Spanish.';
 
 const spanishRecommendationNoteEs = 'Documento original en español.';
@@ -15,7 +27,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Resume & CV',
     statusLabel: 'PDF',
     filePath: 'assets/documents/resumes/cv-es.pdf',
-    iconUrl: 'assets/images/logos/documents/document-resume.svg',
+    iconUrl: DOCUMENT_ICON_URLS.resume,
     viewLabel: 'View Spanish CV online',
     downloadLabel: 'Download Spanish CV PDF',
     printLabel: 'Print Spanish CV',
@@ -30,7 +42,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Resume & CV',
     statusLabel: 'PDF',
     filePath: 'assets/documents/resumes/cv-en.pdf',
-    iconUrl: 'assets/images/logos/documents/document-resume.svg',
+    iconUrl: DOCUMENT_ICON_URLS.resume,
     viewLabel: 'View CV English online',
     downloadLabel: 'Download CV English PDF',
     printLabel: 'Print CV English',
@@ -45,7 +57,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Cover Letters',
     statusLabel: 'PDF',
     filePath: 'assets/documents/cover-letters/cover-letter-es.pdf',
-    iconUrl: 'assets/images/logos/documents/document-cover-letter.svg',
+    iconUrl: DOCUMENT_ICON_URLS.coverLetter,
     viewLabel: 'View Spanish Cover Letter online',
     downloadLabel: 'Download Spanish Cover Letter PDF',
     printLabel: 'Print Spanish Cover Letter',
@@ -60,7 +72,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Cover Letters',
     statusLabel: 'PDF',
     filePath: 'assets/documents/cover-letters/cover-letter-en.pdf',
-    iconUrl: 'assets/images/logos/documents/document-cover-letter.svg',
+    iconUrl: DOCUMENT_ICON_URLS.coverLetter,
     viewLabel: 'View Cover Letter English online',
     downloadLabel: 'Download Cover Letter English PDF',
     printLabel: 'Print Cover Letter English',
@@ -75,7 +87,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Professional Recommendations',
     statusLabel: 'PDF',
     filePath: 'assets/documents/recommendations/recommendation-leverit.pdf',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
+    iconUrl: DOCUMENT_ICON_URLS.recommendation,
     viewLabel: 'View LeverIT Recommendation online',
     downloadLabel: 'Download LeverIT Recommendation PDF',
     printLabel: 'Print LeverIT Recommendation',
@@ -91,7 +103,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Professional Recommendations',
     statusLabel: 'PDF',
     filePath: 'assets/documents/recommendations/recommendation-netcom.pdf',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
+    iconUrl: DOCUMENT_ICON_URLS.recommendation,
     viewLabel: 'View Netcom Recommendation online',
     downloadLabel: 'Download Netcom Recommendation PDF',
     printLabel: 'Print Netcom Recommendation',
@@ -107,7 +119,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Professional Recommendations',
     statusLabel: 'PDF',
     filePath: 'assets/documents/recommendations/recommendation-avances.pdf',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
+    iconUrl: DOCUMENT_ICON_URLS.recommendation,
     viewLabel: 'View Avances Software Recommendation online',
     downloadLabel: 'Download Avances Software Recommendation PDF',
     printLabel: 'Print Avances Software Recommendation',
@@ -123,7 +135,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     group: 'Professional Recommendations',
     statusLabel: 'PDF',
     filePath: 'assets/documents/recommendations/recommendation-myssas-worker.pdf',
-    iconUrl: 'assets/images/logos/documents/document-recommendation.svg',
+    iconUrl: DOCUMENT_ICON_URLS.recommendation,
     viewLabel: 'View Myssas / Worker Client Recommendation online',
     downloadLabel: 'Download Myssas / Worker Client Recommendation PDF',
     printLabel: 'Print Myssas / Worker Client Recommendation',
