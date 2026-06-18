@@ -119,7 +119,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 0.45rem;
+  /*padding: 0.45rem;*/
   background: var(--app-background-color);
 }
 
