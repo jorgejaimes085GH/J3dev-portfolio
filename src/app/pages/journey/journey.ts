@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, HostListener, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import {
@@ -122,9 +122,32 @@ import { Project } from '../../models/project.model';
               </div>
 
               <div class="journey-evolution-card__metrics">
-                @for (metric of phase.metrics; track metric.label) {
+                @for (metric of phase.metrics; track metric.label; let metricIndex = $index) {
                   <div class="journey-evolution-metric">
-                    <span class="journey-evolution-metric__label">{{ metric.label }}</span>
+                    <div class="journey-evolution-metric__label-row">
+                      <span class="journey-evolution-metric__label">{{ metric.label }}</span>
+                      <button
+                        type="button"
+                        class="journey-evolution-metric__help"
+                        [attr.aria-label]="text().metricHelpAriaPrefix + ' ' + metric.label"
+                        [attr.aria-expanded]="isMetricHelpOpen(phase.id, metricIndex)"
+                        [attr.aria-controls]="getMetricHelpId(phase.id, metricIndex)"
+                        (click)="toggleMetricHelp(phase.id, metricIndex, $event)"
+                      >
+                        ?
+                      </button>
+
+                      @if (isMetricHelpOpen(phase.id, metricIndex)) {
+                        <p
+                          class="journey-evolution-metric__popover"
+                          [id]="getMetricHelpId(phase.id, metricIndex)"
+                          role="status"
+                          (click)="$event.stopPropagation()"
+                        >
+                          {{ getMetricExplanation(metric.label) }}
+                        </p>
+                      }
+                    </div>
                     <span
                       class="journey-evolution-metric__track"
                       role="img"
@@ -376,8 +399,58 @@ import { Project } from '../../models/project.model';
         gap: 0.45rem;
       }
 
+      .journey-evolution-metric__label-row {
+        position: relative;
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        width: fit-content;
+        max-width: 100%;
+      }
+
       .journey-evolution-metric__label {
         font-weight: 700;
+      }
+
+      .journey-evolution-metric__help {
+        display: inline-grid;
+        width: 1.25rem;
+        height: 1.25rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border: 1px solid color-mix(in srgb, var(--app-link-color) 50%, var(--app-border-color));
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--app-background-color) 88%, var(--app-link-color));
+        color: var(--app-link-color);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .journey-evolution-metric__help:hover,
+      .journey-evolution-metric__help:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--app-link-color) 70%, transparent);
+        outline-offset: 2px;
+      }
+
+      .journey-evolution-metric__popover {
+        position: absolute;
+        z-index: 2;
+        top: calc(100% + 0.45rem);
+        left: 0;
+        width: min(18rem, calc(100vw - 3rem));
+        margin: 0;
+        padding: 0.7rem 0.8rem;
+        border: 1px solid color-mix(in srgb, var(--app-link-color) 38%, var(--app-border-color));
+        border-radius: 0.65rem;
+        background: color-mix(in srgb, var(--app-background-color) 96%, var(--app-link-color));
+        box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.18);
+        color: var(--app-text-color);
+        font-size: 0.86rem;
+        font-weight: 500;
+        line-height: 1.45;
       }
 
       .journey-evolution-metric__track {
@@ -511,6 +584,7 @@ export class Journey {
   private readonly languageService = inject(LanguageService);
 
   protected readonly text = computed(() => this.languageService.uiText().pages.journey);
+  protected readonly openMetricHelpId = signal<string | null>(null);
 
   readonly evolutionPhases = computed(() =>
     getLocalizedData(JOURNEY_EVOLUTION_PHASES, this.languageService.currentLanguage()),
@@ -531,6 +605,39 @@ export class Journey {
   private readonly projectsBySlug = computed(
     () => new Map(this.projects().map((project) => [project.slug, project])),
   );
+
+  @HostListener('document:click')
+  closeMetricHelp(): void {
+    this.openMetricHelpId.set(null);
+  }
+
+  getMetricHelpId(phaseId: string, metricIndex: number): string {
+    return `journey-evolution-help-${phaseId}-${metricIndex}`;
+  }
+
+  isMetricHelpOpen(phaseId: string, metricIndex: number): boolean {
+    return this.openMetricHelpId() === this.getMetricHelpId(phaseId, metricIndex);
+  }
+
+  toggleMetricHelp(phaseId: string, metricIndex: number, event: MouseEvent): void {
+    event.stopPropagation();
+    const helpId = this.getMetricHelpId(phaseId, metricIndex);
+    this.openMetricHelpId.update((currentHelpId) => (currentHelpId === helpId ? null : helpId));
+  }
+
+  getMetricExplanation(metricLabel: string): string {
+    const explanations = this.text().evolutionMetricExplanations;
+
+    if (metricLabel === 'Analysis & Architecture' || metricLabel === 'Análisis y Arquitectura') {
+      return explanations.analysisArchitecture;
+    }
+
+    if (metricLabel === 'Technical Stack' || metricLabel === 'Stack Técnico') {
+      return explanations.technicalStack;
+    }
+
+    return explanations.productExperience;
+  }
 
   getRelatedProjects(stage: JourneyStage): Project[] {
     return (stage.relatedProjectSlugs ?? [])
