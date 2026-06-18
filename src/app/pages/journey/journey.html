@@ -1,0 +1,170 @@
+<main class="journey-page" aria-labelledby="journey-page-title">
+  <section class="journey-section journey-hero" aria-labelledby="journey-page-title">
+    <div class="journey-section__header journey-hero__content">
+      <p class="journey-section__eyebrow">{{ text().eyebrow }}</p>
+      <h1 id="journey-page-title">{{ text().title }}</h1>
+      <p class="journey-hero__summary">{{ text().summary }}</p>
+    </div>
+  </section>
+
+  <section class="journey-section" aria-labelledby="journey-timeline-title">
+    <div class="journey-section__header">
+      <p class="journey-section__eyebrow">{{ text().timelineEyebrow }}</p>
+      <h2 id="journey-timeline-title">{{ text().timelineTitle }}</h2>
+      <p>{{ text().timelineIntro }}</p>
+    </div>
+
+    <ol class="journey-timeline" [attr.aria-label]="text().timelineAria">
+      @for (stage of stages(); track stage.id; let stageIndex = $index) {
+        <li class="journey-stage">
+          <article class="journey-stage__card" [attr.aria-labelledby]="stage.id + '-title'">
+            <div class="journey-stage__meta">
+              <span class="journey-stage__year">{{ stage.yearLabel }}</span>
+              <span class="journey-stage__number">{{ text().stagePrefix }} {{ stageIndex }}</span>
+              <span class="journey-stage__period">{{ stage.periodLabel }}</span>
+            </div>
+
+            <div class="journey-stage__body">
+              <h3 [id]="stage.id + '-title'">{{ stage.title }}</h3>
+              <p>{{ stage.summary }}</p>
+
+              <div class="journey-stage__group" [attr.aria-label]="text().focusAria">
+                <h4>{{ text().focus }}</h4>
+                <ul class="tag-list">
+                  @for (focusArea of stage.focusAreas; track focusArea) {
+                    <li>{{ focusArea }}</li>
+                  }
+                </ul>
+              </div>
+
+              <div class="journey-stage__learning">
+                <h4>{{ text().keyLearning }}</h4>
+                <p>{{ stage.keyLearning }}</p>
+              </div>
+
+              @if (getRelatedProjects(stage).length) {
+                <div class="journey-stage__group">
+                  <h4>{{ text().relatedEvidence }}</h4>
+                  <ul class="journey-stage__links">
+                    @for (project of getRelatedProjects(stage); track project.id) {
+                      <li>
+                        <a
+                          class="btn btn--secondary btn--compact button-link"
+                          [routerLink]="['/projects', project.slug]"
+                        >
+                          {{ text().viewProjectDetailsPrefix }} {{ project.title }}
+                          {{ text().viewProjectDetailsSuffix }}
+                        </a>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              }
+
+              @if (stage.evidenceNote) {
+                <p class="journey-stage__evidence">{{ stage.evidenceNote }}</p>
+              }
+            </div>
+          </article>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <section class="journey-section" aria-labelledby="journey-insights-title">
+    <div class="journey-section__header">
+      <p class="journey-section__eyebrow">{{ text().insightsEyebrow }}</p>
+      <h2 id="journey-insights-title">{{ text().insightsTitle }}</h2>
+    </div>
+
+    <div class="journey-insight-grid">
+      @for (insight of insights(); track insight.title) {
+        <article class="journey-insight-card">
+          <h3>{{ insight.title }}</h3>
+          <p>{{ insight.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="journey-section journey-evolution" aria-labelledby="journey-evolution-title">
+    <div class="journey-section__header">
+      <p class="journey-section__eyebrow">{{ text().evolutionEyebrow }}</p>
+      <h2 id="journey-evolution-title">{{ text().evolutionTitle }}</h2>
+      <p>{{ text().evolutionIntro }}</p>
+    </div>
+
+    <div class="journey-evolution__grid" [attr.aria-label]="text().evolutionAria">
+      @for (phase of evolutionPhases(); track phase.id) {
+        <article class="journey-evolution-card" [attr.aria-labelledby]="phase.id + '-title'">
+          <div class="journey-evolution-card__header">
+            <p class="journey-evolution-card__years">{{ phase.years }}</p>
+            <h3 [id]="phase.id + '-title'">{{ phase.title }}</h3>
+          </div>
+
+          <div class="journey-evolution-card__metrics">
+            @for (metric of phase.metrics; track metric.label; let metricIndex = $index) {
+              <div class="journey-evolution-metric">
+                <div class="journey-evolution-metric__label-row">
+                  <span class="journey-evolution-metric__label">{{ metric.label }}</span>
+                  <button
+                    type="button"
+                    class="journey-evolution-metric__help"
+                    [attr.aria-label]="text().metricHelpAriaPrefix + ' ' + metric.label"
+                    [attr.aria-expanded]="isMetricHelpOpen(phase.id, metricIndex)"
+                    [attr.aria-controls]="getMetricHelpId(phase.id, metricIndex)"
+                    (click)="toggleMetricHelp(phase.id, metricIndex, $event)"
+                  >
+                    ?
+                  </button>
+
+                  @if (isMetricHelpOpen(phase.id, metricIndex)) {
+                    <p
+                      class="journey-evolution-metric__popover"
+                      [id]="getMetricHelpId(phase.id, metricIndex)"
+                      role="status"
+                      (click)="$event.stopPropagation()"
+                    >
+                      {{ getMetricExplanation(metricIndex) }}
+                    </p>
+                  }
+                </div>
+                <span
+                  class="journey-evolution-metric__track"
+                  role="img"
+                  [attr.aria-label]="
+                    metric.label + ' ' + text().evolutionMetricAriaConnector + ' ' + phase.title
+                  "
+                >
+                  <span [class]="getMetricFillClasses(metric.level)"></span>
+                </span>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="journey-cta" aria-labelledby="journey-next-title">
+    <div>
+      <p class="journey-section__eyebrow">{{ text().ctaEyebrow }}</p>
+      <h2 id="journey-next-title">{{ text().ctaTitle }}</h2>
+      <p>{{ text().ctaIntro }}</p>
+    </div>
+
+    <nav class="journey-cta__actions" [attr.aria-label]="text().ctaAria">
+      @for (link of ctaLinks(); track link.route) {
+        <a
+          class="btn button-link"
+          [class.btn--primary]="$first"
+          [class.btn--secondary]="!$first"
+          [class.button-link--primary]="$first"
+          [routerLink]="link.route"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+  </section>
+</main>
