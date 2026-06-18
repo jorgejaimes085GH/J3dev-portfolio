@@ -1,0 +1,102 @@
+<app-hero-slider [slides]="heroSlides()" />
+
+<section class="home-section" aria-labelledby="how-i-add-value-title">
+  <div class="home-section__header">
+    <p class="home-section__eyebrow">{{ homeCopy().value.eyebrow }}</p>
+    <h2 id="how-i-add-value-title">{{ homeCopy().value.title }}</h2>
+    <p>{{ homeCopy().value.description }}</p>
+  </div>
+
+  <div class="preview-grid preview-grid--three">
+    @for (value of valuePreviews(); track value.title) {
+      <article class="preview-card">
+        @if (value.label) {
+          <p class="preview-card__label">{{ value.label }}</p>
+        }
+        <h3>{{ value.title }}</h3>
+        <p>{{ value.description }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="home-section" aria-labelledby="featured-projects-title">
+  <div class="home-section__header">
+    <p class="home-section__eyebrow">{{ homeCopy().projects.eyebrow }}</p>
+    <h2 id="featured-projects-title">{{ homeCopy().projects.title }}</h2>
+    <p>{{ homeCopy().projects.description }}</p>
+  </div>
+
+  <div class="preview-grid preview-grid--three">
+    @for (project of projectPreviews(); track project.name) {
+      <article class="preview-card project-preview">
+        <div
+          class="project-preview__visual"
+          [attr.aria-label]="project.name + ' ' + homeCopy().projects.thumbnailAriaSuffix"
+          role="img"
+        >
+          <span aria-hidden="true">{{ project.name.slice(0, 2).toUpperCase() }}</span>
+          @if (project.thumbnailUrl) {
+            <img
+              class="project-preview__image"
+              [src]="project.thumbnailUrl"
+              [alt]="project.name + ' ' + homeCopy().projects.thumbnailAltSuffix"
+              (error)="hideFailedAsset($event)"
+            />
+          }
+        </div>
+        <p class="preview-card__label">{{ project.statusLabel }}</p>
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.description }}</p>
+
+        <ul
+          class="badge-list"
+          [attr.aria-label]="project.name + ' ' + homeCopy().projects.technologyListSuffix"
+        >
+          @for (technology of project.technologies; track technology) {
+            <li>{{ technology }}</li>
+          }
+        </ul>
+
+        <a
+          class="btn btn--secondary btn--compact button-link button-link--secondary button-link--compact project-preview__action"
+          [routerLink]="project.route"
+        >
+          {{ getProjectContextLabel(project.name) }}
+        </a>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="home-section" aria-labelledby="core-skills-title">
+  <div class="home-section__header">
+    <p class="home-section__eyebrow">{{ homeCopy().skills.eyebrow }}</p>
+    <h2 id="core-skills-title">{{ homeCopy().skills.title }}</h2>
+    <p>{{ homeCopy().skills.description }}</p>
+  </div>
+
+  <div class="skill-grid" [attr.aria-label]="homeCopy().skills.listAriaLabel">
+    @for (skill of skillPreviews(); track skill.name) {
+      <article class="skill-card">
+        <h3>{{ skill.name }}</h3>
+        <p>{{ skill.context }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="home-cta" aria-labelledby="home-cta-title">
+  <div>
+    <p class="home-section__eyebrow">{{ homeCopy().cta.eyebrow }}</p>
+    <h2 id="home-cta-title">{{ homeCopy().cta.title }}</h2>
+    <p>{{ homeCopy().cta.description }}</p>
+  </div>
+
+  <div class="home-cta__actions" [attr.aria-label]="homeCopy().cta.actionsAriaLabel">
+    <a class="btn btn--primary button-link button-link--primary" routerLink="/projects">{{
+      homeCopy().cta.projectsLabel
+    }}</a>
+    <a class="btn btn--secondary button-link" routerLink="/skills">{{ homeCopy().cta.skillsLabel }}</a>
+  </div>
+</section>
