@@ -1,0 +1,166 @@
+<main
+  class="experience-page"
+  [class.experience-page--premium]="isPremiumTheme()"
+  aria-labelledby="experience-page-title"
+>
+  <section class="experience-section experience-hero" aria-labelledby="experience-page-title">
+    <div class="experience-section__header experience-hero__content">
+      <p class="experience-section__eyebrow">{{ text().eyebrow }}</p>
+      <h1 id="experience-page-title">{{ text().title }}</h1>
+      <p class="experience-hero__summary">{{ text().summary }}</p>
+    </div>
+  </section>
+
+  <section class="experience-section" aria-labelledby="experience-timeline-title">
+    <div class="experience-section__header">
+      <p class="experience-section__eyebrow">{{ text().timelineEyebrow }}</p>
+      <h2 id="experience-timeline-title">{{ text().timelineTitle }}</h2>
+      <p>{{ text().timelineIntro }}</p>
+    </div>
+
+    <ol class="experience-timeline" [attr.aria-label]="text().timelineAria">
+      @for (entry of entries(); track entry.id) {
+        <li class="experience-timeline__item">
+          <article class="experience-card" [attr.aria-labelledby]="entry.id + '-title'">
+            <div
+              class="experience-card__header"
+              [attr.data-company-watermark]="
+                entry.companyInitials || getCompanyInitials(entry.company)
+              "
+            >
+              <div class="experience-card__identity">
+                <span class="experience-card__logo" aria-hidden="true">
+                  @if (getCompanyLogoUrl(entry) && !hasAssetFailed(getCompanyAssetId(entry))) {
+                    <img
+                      class="experience-card__logo-image"
+                      [src]="getCompanyLogoUrl(entry)"
+                      [alt]="getCompanyLogoAlt(entry)"
+                      loading="lazy"
+                      decoding="async"
+                      (error)="markAssetFailed(getCompanyAssetId(entry))"
+                    />
+                  } @else {
+                    <span>{{
+                      entry.companyInitials || getCompanyInitials(entry.company)
+                    }}</span>
+                  }
+                </span>
+                <div>
+                  <p class="experience-card__period">{{ entry.period }}</p>
+                  <h3 [id]="entry.id + '-title'">
+                    @if (entry.companyUrl) {
+                      <a
+                        class="experience-card__company-link"
+                        [href]="entry.companyUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {{ entry.company }}
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    } @else {
+                      {{ entry.company }}
+                    }
+                  </h3>
+                  <p class="experience-card__role">{{ entry.role }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="experience-card__body">
+              <div class="experience-card__grid">
+                <section class="experience-card__block experience-card__block--context">
+                  <h4>{{ text().context }}</h4>
+                  <p>{{ entry.context }}</p>
+                </section>
+
+                <section class="experience-card__block">
+                  <h4>{{ text().learned }}</h4>
+                  <ul class="experience-card__learned-list">
+                    @for (learning of entry.learned; track learning) {
+                      <li>{{ learning }}</li>
+                    }
+                  </ul>
+                </section>
+
+                <section class="experience-card__block experience-card__block--key">
+                  <h4>{{ text().keyLearning }}</h4>
+                  <p>{{ entry.keyLearning }}</p>
+                </section>
+
+                <section class="experience-card__block experience-card__block--projects">
+                  <h4>{{ text().relatedProjects }}</h4>
+                  @if (getRelatedProjects(entry).length) {
+                    <div class="experience-project-list">
+                      @for (project of getRelatedProjects(entry); track project.id) {
+                        <a
+                          class="experience-project-link"
+                          [routerLink]="['/projects', project.slug]"
+                          [attr.aria-label]="text().viewProjectPrefix + ': ' + project.title"
+                        >
+                          <span class="experience-project-link__initials" aria-hidden="true">
+                            @if (getProjectCompactImageUrl(project)) {
+                              <img
+                                class="experience-project-link__image"
+                                [src]="getProjectCompactImageUrl(project)"
+                                [alt]="''"
+                                loading="lazy"
+                                decoding="async"
+                                (error)="
+                                  markAssetFailed(
+                                    getProjectAssetId(
+                                      project,
+                                      getProjectCompactImageUrl(project)
+                                    )
+                                  )
+                                "
+                              />
+                            } @else {
+                              {{ getProjectInitials(project.title) }}
+                            }
+                          </span>
+                          <span>
+                            <strong>{{ project.title }}</strong>
+                            <small>{{ project.typeStatus }}</small>
+                          </span>
+                        </a>
+                      }
+                    </div>
+                  } @else {
+                    <p class="experience-card__empty-project">{{ text().noProject }}</p>
+                  }
+                </section>
+              </div>
+
+              <div class="experience-card__evidence">
+                <a
+                  class="btn btn--secondary button-link experience-recommendation-link"
+                  routerLink="/documents"
+                  [fragment]="entry.recommendationAnchor"
+                >
+                  {{ entry.recommendationLabel }}
+                </a>
+              </div>
+            </div>
+          </article>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <section class="experience-cta" aria-labelledby="experience-next-title">
+    <div>
+      <p class="experience-section__eyebrow">{{ text().ctaEyebrow }}</p>
+      <h2 id="experience-next-title">{{ text().ctaTitle }}</h2>
+      <p>{{ text().ctaIntro }}</p>
+    </div>
+
+    <nav class="experience-cta__actions" [attr.aria-label]="text().ctaAria">
+      @for (link of ctaLinks(); track link.route) {
+        <a class="btn button-link" [class.btn--primary]="$first" [class.btn--secondary]="!$first" [class.button-link--primary]="$first" [routerLink]="link.route">
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+  </section>
+</main>
