@@ -1,0 +1,108 @@
+<main class="contact-page" aria-labelledby="contact-page-title">
+  <section class="contact-section contact-hero" aria-labelledby="contact-page-title">
+    <div class="contact-section__header">
+      <p class="contact-section__eyebrow">{{ text().eyebrow }}</p>
+      <h1 id="contact-page-title">{{ text().title }}</h1>
+      <p class="contact-hero__subtitle">{{ text().subtitle }}</p>
+      <p class="contact-hero__intro">{{ text().intro }}</p>
+    </div>
+  </section>
+
+  <section class="contact-section" aria-labelledby="contact-methods-title">
+    <div class="contact-section__header">
+      <p class="contact-section__eyebrow">{{ text().methodsEyebrow }}</p>
+      <h2 id="contact-methods-title">{{ text().methodsTitle }}</h2>
+      <p>{{ text().methodsIntro }}</p>
+    </div>
+
+    <div class="contact-method-grid" [attr.aria-label]="text().methodsAria">
+      @for (method of contactMethods(); track method.id) {
+        <article class="contact-method-card" [attr.aria-labelledby]="method.id + '-title'">
+          <div class="contact-method-card__icon" aria-hidden="true">
+            @if (method.iconUrl && !hasIconFailed(method.id)) {
+              <img
+                class="contact-method-card__icon-image"
+                [src]="method.iconUrl"
+                [alt]="''"
+                (error)="markIconFailed(method.id)"
+              />
+            } @else {
+              <span>{{ method.title.charAt(0) }}</span>
+            }
+          </div>
+
+          <div class="contact-method-card__content">
+            <h3 [id]="method.id + '-title'">{{ method.title }}</h3>
+            <p>{{ method.description }}</p>
+            <p class="contact-method-card__value">{{ method.value }}</p>
+
+            @if (method.note) {
+              <p class="contact-method-card__note">{{ method.note }}</p>
+            }
+          </div>
+
+          <a
+            class="btn btn--primary button-link contact-action contact-action--primary contact-method-card__action"
+            [href]="method.actionUrl"
+            [attr.target]="isExternalUrl(method) ? '_blank' : null"
+            [attr.rel]="isExternalUrl(method) ? 'noopener noreferrer' : null"
+            [attr.aria-label]="getContactActionLabel(method)"
+          >
+            {{ method.actionLabel }}
+          </a>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="contact-section" aria-labelledby="availability-title">
+    <div class="contact-section__header">
+      <p class="contact-section__eyebrow">{{ text().availabilityEyebrow }}</p>
+      <h2 id="availability-title">{{ text().availabilityTitle }}</h2>
+      <p>{{ text().availabilityIntro }}</p>
+    </div>
+
+    <ul class="contact-badge-list" [attr.aria-label]="text().availabilityAria">
+      @for (item of professionalAvailability(); track item.id) {
+        <li>{{ item.label }}</li>
+      }
+    </ul>
+  </section>
+
+  <section class="contact-section" aria-labelledby="technical-interests-title">
+    <div class="contact-section__header">
+      <p class="contact-section__eyebrow">{{ text().interestsEyebrow }}</p>
+      <h2 id="technical-interests-title">{{ text().interestsTitle }}</h2>
+      <p>{{ text().interestsIntro }}</p>
+    </div>
+
+    <ul class="contact-badge-list" [attr.aria-label]="text().interestsAria">
+      @for (topic of technicalInterests(); track topic.id) {
+        <li>{{ topic.label }}</li>
+      }
+    </ul>
+  </section>
+
+  <section class="contact-section contact-final-cta" aria-labelledby="contact-final-cta-title">
+    <div class="contact-final-cta__content">
+      <p class="contact-section__eyebrow">{{ text().ctaEyebrow }}</p>
+      <h2 id="contact-final-cta-title">{{ text().ctaTitle }}</h2>
+      <p>{{ text().ctaIntro }}</p>
+      <p>{{ text().ctaDetail }}</p>
+    </div>
+
+    <nav class="contact-final-cta__actions" [attr.aria-label]="text().ctaAria">
+      @for (method of contactMethods(); track method.id) {
+        <a
+          class="btn btn--primary button-link contact-action contact-action--primary"
+          [href]="method.actionUrl"
+          [attr.target]="isExternalUrl(method) ? '_blank' : null"
+          [attr.rel]="isExternalUrl(method) ? 'noopener noreferrer' : null"
+          [attr.aria-label]="getContactActionLabel(method)"
+        >
+          {{ method.actionLabel }}
+        </a>
+      }
+    </nav>
+  </section>
+</main>
