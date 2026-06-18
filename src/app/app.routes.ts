@@ -8,7 +8,7 @@ import { Education } from './pages/education/education';
 import { Experience } from './pages/experience/experience';
 import { Home } from './pages/home/home';
 import { Journey } from './pages/journey/journey';
-import { ProjectDetailPage } from './pages/projects/project-detail-page/project-detail-page';
+import { ProjectDetailPage } from './pages/projects/project-detail-page/project-detail';
 import { ProjectsPage } from './pages/projects/projects-page/projects-page';
 import { Skills } from './pages/skills/skills';
 import { WhyHireMe } from './pages/why-hire-me/why-hire-me';
