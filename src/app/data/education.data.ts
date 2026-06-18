@@ -6,16 +6,22 @@ import {
   SelfTaughtEducationEntry,
 } from '../models/education.model';
 
+export const EDUCATION_LOGO_URLS = {
+  cedefoc: 'assets/images/logos/education/cedefoc.webp',
+  unad: 'assets/images/logos/education/unad.webp',
+  uts: 'assets/images/logos/education/uts.webp',
+} as const;
+
 const CEDEFOC_INSTITUTION = {
   institution: 'Corporación Técnica CEDEFOC',
   institutionUrl: 'https://cedefoc.edu.co/',
-  logoUrl: 'assets/images/logos/education/cedefoc.webp',
+  logoUrl: EDUCATION_LOGO_URLS.cedefoc,
 } as const;
 
 const UNAD_INSTITUTION = {
   institution: 'Universidad Nacional Abierta y a Distancia (UNAD)',
   institutionUrl: 'https://www.unad.edu.co/',
-  logoUrl: 'assets/images/logos/education/unad.webp',
+  logoUrl: EDUCATION_LOGO_URLS.unad,
 } as const;
 
 const FORMAL_EDUCATION_EN: FormalEducationEntry[] = [

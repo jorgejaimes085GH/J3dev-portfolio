@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 
-import { DOCUMENT_GROUPS } from '../../data/documents.data';
+import { DOCUMENT_ACTION_ICON_URLS, DOCUMENT_GROUPS } from '../../data/documents.data';
 import { getLocalizedData } from '../../data/localized-data';
 import { LanguageService } from '../../core/services/language.service';
 import { DocumentGroupSection, ProfessionalDocument } from '../../models/document.model';
@@ -29,9 +29,9 @@ export class Documents {
   readonly documentGroups = computed(() =>
     getLocalizedData(DOCUMENT_GROUPS, this.languageService.currentLanguage()),
   );
-  protected readonly viewActionIconUrl = 'assets/images/icons/actions/open-external.svg';
-  protected readonly downloadActionIconUrl = 'assets/images/icons/actions/download.svg';
-  protected readonly printActionIconUrl = 'assets/images/icons/actions/print.svg';
+  protected readonly viewActionIconUrl = DOCUMENT_ACTION_ICON_URLS.view;
+  protected readonly downloadActionIconUrl = DOCUMENT_ACTION_ICON_URLS.download;
+  protected readonly printActionIconUrl = DOCUMENT_ACTION_ICON_URLS.print;
 
   downloadFileName(document: ProfessionalDocument): string {
     return document.filePath.split('/').pop() ?? `${document.id}.pdf`;

@@ -4,6 +4,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 
 import type { NavigationItem } from '../../core/constants/navigation.constants';
 
+import { NAVBAR_ASSET_URLS } from '../../data/layout-assets.data';
 import { LanguageService } from '../../core/services/language.service';
 import { NavigationService } from '../../core/services/navigation.service';
 import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
@@ -40,7 +41,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
           <span class="site-header__logo-frame" aria-hidden="true">
             <img
               class="site-header__logo"
-              src="assets/images/logos/projects/j3dev-portfolio-logo.svg"
+              [src]="brandLogoUrl"
               alt=""
               aria-hidden="true"
               (error)="showBrandLogoFallback($event)"
@@ -230,8 +231,9 @@ export class Navbar {
   readonly isHeaderPinned = this.navigationService.isHeaderPinned;
   readonly currentViewport = this.viewportPreviewService.currentViewport;
 
-  protected readonly pinIconUrl = 'assets/images/icons/actions/pin.svg';
-  protected readonly pinOffIconUrl = 'assets/images/icons/actions/pin-off.svg';
+  protected readonly brandLogoUrl = NAVBAR_ASSET_URLS.brandLogo;
+  protected readonly pinIconUrl = NAVBAR_ASSET_URLS.pin;
+  protected readonly pinOffIconUrl = NAVBAR_ASSET_URLS.pinOff;
   protected readonly openDropdownPath = signal<string | null>(null);
   protected readonly isMobileMenuOpen = signal(false);
   protected readonly mobileMenuId = 'site-nav-mobile-menu';
