@@ -230,6 +230,15 @@ export const UI_TEXT = {
           'Visual representation of how architecture thinking, technical capabilities and product experience evolved across major stages of the career.',
         evolutionAria: 'Relative professional evolution by career stage',
         evolutionMetricAriaConnector: 'relative growth during',
+        metricHelpAriaPrefix: 'Show explanation for',
+        evolutionMetricExplanations: {
+          analysisArchitecture:
+            'Includes requirements analysis, UML, modeling, design before coding, software architecture, SOLID, Clean Code, and maintainable technical decisions.',
+          technicalStack:
+            'Includes languages, frameworks, databases, APIs, frontend, backend, development tools, cloud, DevOps, and technologies learned across the career path.',
+          productExperience:
+            'Includes work with real users, production systems, maintenance, product evolution, post-production support, business context, and accumulated learning from enterprise projects.',
+        },
         ctaEyebrow: 'Continue Exploring',
         ctaTitle: 'Connect the journey to practical evidence',
         ctaIntro:
@@ -548,6 +557,15 @@ export const UI_TEXT = {
           'Representación visual de cómo evolucionaron el análisis arquitectónico, las capacidades técnicas y la experiencia de producto a través de las principales etapas de la trayectoria profesional.',
         evolutionAria: 'Evolución profesional relativa por etapa de carrera',
         evolutionMetricAriaConnector: 'crecimiento relativo durante',
+        metricHelpAriaPrefix: 'Mostrar explicación de',
+        evolutionMetricExplanations: {
+          analysisArchitecture:
+            'Incluye análisis de requerimientos, UML, modelado, diseño previo a codificar, arquitectura de software, SOLID, Clean Code y decisiones técnicas mantenibles.',
+          technicalStack:
+            'Incluye lenguajes, frameworks, bases de datos, APIs, frontend, backend, herramientas de desarrollo, cloud, DevOps y tecnologías aprendidas durante la trayectoria.',
+          productExperience:
+            'Incluye trabajo con usuarios reales, sistemas en producción, mantenimiento, evolución de productos, soporte postproducción, contexto de negocio y aprendizaje acumulado en proyectos empresariales.',
+        },
         ctaEyebrow: 'Continuar explorando',
         ctaTitle: 'Conecta la trayectoria con evidencia práctica',
         ctaIntro:
