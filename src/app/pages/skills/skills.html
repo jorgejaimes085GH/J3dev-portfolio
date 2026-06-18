@@ -1,0 +1,183 @@
+<main class="skills-page" aria-labelledby="skills-page-title">
+      <section class="skills-section skills-hero" aria-labelledby="skills-page-title">
+        <div class="skills-section__header">
+          <p class="skills-section__eyebrow">{{ text().eyebrow }}</p>
+          <h1 id="skills-page-title">{{ text().title }}</h1>
+          <p class="skills-hero__summary">{{ text().summary }}</p>
+        </div>
+      </section>
+
+      @for (skillGroup of skillGroups(); track skillGroup.category) {
+        <section
+          class="skills-section"
+          [attr.aria-labelledby]="categoryTitleId(skillGroup.category)"
+        >
+          <div class="skills-section__header">
+            <p class="skills-section__eyebrow">{{ text().categoryEyebrow }}</p>
+            <h2 [id]="categoryTitleId(skillGroup.category)">{{ skillGroup.category }}</h2>
+          </div>
+
+          @if (skillGroup.backendSections?.length) {
+            <div class="backend-taxonomy" [attr.aria-label]="text().backendLayersAria">
+              @for (backendSection of skillGroup.backendSections; track backendSection.group) {
+                <section
+                  class="backend-taxonomy__section"
+                  [attr.aria-labelledby]="backendGroupTitleId(backendSection.group)"
+                >
+                  <h3 [id]="backendGroupTitleId(backendSection.group)">
+                    {{ backendSection.group }}
+                  </h3>
+
+                  <div
+                    class="skill-grid"
+                    [attr.aria-label]="backendSection.group + ' ' + text().skillsSuffix"
+                  >
+                    @for (skill of backendSection.skills; track skill.id) {
+                      <ng-container
+                        [ngTemplateOutlet]="skillCardTemplate"
+                        [ngTemplateOutletContext]="{ $implicit: skill }"
+                      />
+                    }
+                  </div>
+                </section>
+              }
+            </div>
+          } @else {
+            <div
+              class="skill-grid"
+              [attr.aria-label]="skillGroup.category + ' ' + text().skillsSuffix"
+            >
+              @for (skill of skillGroup.skills; track skill.id) {
+                <ng-container
+                  [ngTemplateOutlet]="skillCardTemplate"
+                  [ngTemplateOutletContext]="{ $implicit: skill }"
+                />
+              }
+            </div>
+          }
+        </section>
+      }
+
+      @if (selectedSkill; as skill) {
+        <div class="skill-panel-backdrop" role="presentation" (click)="closeSkill()">
+          <aside
+            class="skill-panel"
+            role="dialog"
+            aria-modal="true"
+            [attr.aria-labelledby]="'skill-panel-title-' + skill.id"
+            (click)="$event.stopPropagation()"
+          >
+            <div class="skill-panel__header">
+              <div>
+                <p class="skills-section__eyebrow">{{ skill.category }}</p>
+                <h2 [id]="'skill-panel-title-' + skill.id">{{ skill.name }}</h2>
+              </div>
+
+              <button
+                class="skill-panel__close"
+                type="button"
+                (click)="closeSkill()"
+                [attr.aria-label]="
+                  text().closeDetailsPrefix + ' ' + skill.name + ' ' + text().closeDetailsSuffix
+                "
+              >
+                {{ uiCommon().close }}
+              </button>
+            </div>
+
+            <section class="skill-panel__section" aria-labelledby="skill-evidence-title">
+              <h3 id="skill-evidence-title">{{ text().evidenceSummary }}</h3>
+              <p>{{ skill.evidenceSummary }}</p>
+            </section>
+
+            @if (skill.contextNotes?.length) {
+              <section class="skill-panel__section" aria-labelledby="skill-context-title">
+                <h3 id="skill-context-title">{{ text().contextNotes }}</h3>
+                <ul>
+                  @for (contextNote of skill.contextNotes; track contextNote) {
+                    <li>{{ contextNote }}</li>
+                  }
+                </ul>
+              </section>
+            }
+
+            <section class="skill-panel__section" aria-labelledby="skill-projects-title">
+              <h3 id="skill-projects-title">{{ text().relatedProjects }}</h3>
+
+              @if (getRelatedProjects(skill).length) {
+                <ul class="related-project-list">
+                  @for (project of getRelatedProjects(skill); track project.id) {
+                    <li>
+                      <a
+                        class="btn btn--secondary btn--compact button-link button-link--compact"
+                        [routerLink]="['/projects', project.slug]"
+                        (click)="closeSkill()"
+                      >
+                        <span class="button-link__project-mark" aria-hidden="true">
+                          @if (getProjectCompactImageUrl(project)) {
+                            <img
+                              class="button-link__project-logo"
+                              [src]="getProjectCompactImageUrl(project)"
+                              [alt]="''"
+                              loading="lazy"
+                              decoding="async"
+                              (error)="
+                                markProjectAssetFailed(
+                                  getProjectAssetId(project, getProjectCompactImageUrl(project))
+                                )
+                              "
+                            />
+                          } @else {
+                            {{ getProjectInitials(project.title) }}
+                          }
+                        </span>
+                        <span>
+                          {{ text().viewProjectDetailsPrefix }} {{ project.title }}
+                          {{ text().viewProjectDetailsSuffix }}
+                        </span>
+                      </a>
+                      <p>{{ project.shortDescription }}</p>
+                    </li>
+                  }
+                </ul>
+              } @else {
+                <p class="skill-panel__placeholder">
+                  {{ text().evidencePending }}
+                </p>
+              }
+            </section>
+          </aside>
+        </div>
+      }
+
+      <ng-template #skillCardTemplate let-skill>
+        <button
+          class="skill-card"
+          type="button"
+          (click)="openSkill(skill)"
+          [attr.aria-label]="text().viewEvidencePrefix + ' ' + skill.name"
+        >
+          <span
+            class="skill-card__icon"
+            [class.skill-card__icon--has-logo]="isLogoAvailable(skill)"
+            aria-hidden="true"
+          >
+            @if (isLogoAvailable(skill)) {
+              <img
+                class="skill-card__logo"
+                [src]="skill.iconUrl"
+                [alt]="''"
+                (error)="markFailedLogo(skill.id)"
+              />
+            } @else {
+              <span class="skill-card__fallback">{{ skill.iconLabel }}</span>
+            }
+          </span>
+          <span class="skill-card__body">
+            <span class="skill-card__name">{{ skill.name }}</span>
+            <span class="skill-card__description">{{ skill.shortDescription }}</span>
+            <span class="skill-card__evidence">{{ evidenceLabel(skill) }}</span>
+          </span>
+        </button>
+      </ng-template>
+    </main>
