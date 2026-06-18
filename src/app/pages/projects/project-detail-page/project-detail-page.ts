@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PROJECTS } from '../../../data/projects.data';
 import { getLocalizedData } from '../../../data/localized-data';
 import { LanguageService } from '../../../core/services/language.service';
-import { Project } from '../../../models/project.model';
+import { Project, ProjectLink } from '../../../models/project.model';
 import { getProjectStatusDisplay } from '../project-status.util';
 
 @Component({
@@ -180,16 +180,16 @@ import { getProjectStatusDisplay } from '../project-status.util';
                         <source [src]="projectLink.videoSrc" type="video/mp4" />
                       </video>
                     }
-                    @if (isFailedVideo(projectLink.videoSrc)) {
+                    @if (isFailedVideo(projectLink.videoSrc) && placeholderText(projectLink)) {
                       <p
                         class="project-link-card__placeholder project-link-card__placeholder--video"
                       >
-                        {{ projectLink.placeholderMessage || text().defaultPlaceholder }}
+                        {{ placeholderText(projectLink) }}
                       </p>
                     }
-                  } @else {
+                  } @else if (placeholderText(projectLink)) {
                     <p class="project-link-card__placeholder">
-                      {{ projectLink.placeholderMessage || text().defaultPlaceholder }}
+                      {{ placeholderText(projectLink) }}
                     </p>
                   }
                 </article>
@@ -212,14 +212,18 @@ import { getProjectStatusDisplay } from '../project-status.util';
                 <dt>{{ text().companyName }}</dt>
                 <dd>{{ referencePlaceholders.companyName }}</dd>
               </div>
-              <div>
-                <dt>{{ text().address }}</dt>
-                <dd>{{ referencePlaceholders.companyAddress }}</dd>
-              </div>
-              <div>
-                <dt>{{ text().phone }}</dt>
-                <dd>{{ referencePlaceholders.companyPhone }}</dd>
-              </div>
+              @if (referencePlaceholders.companyAddress) {
+                <div>
+                  <dt>{{ text().address }}</dt>
+                  <dd>{{ referencePlaceholders.companyAddress }}</dd>
+                </div>
+              }
+              @if (referencePlaceholders.companyPhone) {
+                <div>
+                  <dt>{{ text().phone }}</dt>
+                  <dd>{{ referencePlaceholders.companyPhone }}</dd>
+                </div>
+              }
             </dl>
           </section>
         }
@@ -574,6 +578,10 @@ export class ProjectDetailPage {
 
   protected defaultActionLabel(type: string): string {
     return [this.text().openLinkPrefix, type, this.text().openLinkSuffix].filter(Boolean).join(' ');
+  }
+
+  protected placeholderText(projectLink: ProjectLink): string {
+    return projectLink.placeholderMessage || this.text().defaultPlaceholder;
   }
 
   protected isFailedVideo(videoSrc: string): boolean {

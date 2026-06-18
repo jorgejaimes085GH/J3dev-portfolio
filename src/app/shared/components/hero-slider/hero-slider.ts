@@ -74,11 +74,15 @@ import { HeroSlide } from '../../../models/hero-slide.model';
               />
             } @else {
               <div class="hero-slider__placeholder" aria-hidden="true">
-                <span>{{ slide.visualLabel || heroText().placeholder }}</span>
+                @if (slide.visualLabel || heroText().placeholder) {
+                  <span>{{ slide.visualLabel || heroText().placeholder }}</span>
+                }
               </div>
-              <div class="hero-slider__visual-caption">
-                <span>{{ slide.visualLabel || heroText().caption }}</span>
-              </div>
+              @if (slide.visualLabel || heroText().caption) {
+                <div class="hero-slider__visual-caption">
+                  <span>{{ slide.visualLabel || heroText().caption }}</span>
+                </div>
+              }
             }
           </div>
         </div>

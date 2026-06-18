@@ -126,7 +126,7 @@ const PROJECT_ITEMS: Project[] = [
     typeStatus: 'Featured Project ⭐ / Production software / Enterprise internal system',
     shortDescription:
       'Long-running enterprise workflow system used in production since 2015, evolved across more than a decade from Access and VB.NET toward SQL Server, modern .NET architecture, and adaptable business workflows.',
-    visualLabel: 'Enterprise workflow system visual reference pending final asset',
+    visualLabel: 'Enterprise workflow system visual',
     ctaLabel: 'View Technical Evolution',
     context: [
       'Real enterprise system with more than a decade of evolution across production business needs.',
@@ -176,7 +176,7 @@ const PROJECT_ITEMS: Project[] = [
         videoSrc: 'assets/project-media/worker/worker-product-demo.mp4',
         isExternal: false,
         isPlaceholder: true,
-        placeholderMessage: 'Video del producto en servicio pendiente de publicación.',
+        placeholderMessage: '',
       },
     ],
     placeholders: {
@@ -184,7 +184,7 @@ const PROJECT_ITEMS: Project[] = [
       companyAddress: 'Carrera 15 # 18-21, Socorro, Santander, Colombia',
       companyPhone: '+57 318 5176823',
       officialWebsiteUrl: 'https://www.pasotelevision.net/',
-      videoUrl: 'Video URL pending publication',
+      videoUrl: '',
     },
     referencePlaceholders: {
       companyName: 'Paso Television',
@@ -202,7 +202,7 @@ const PROJECT_ITEMS: Project[] = [
     typeStatus: 'Featured Project ⭐ / Own product / Financial control application / Web demo available',
     shortDescription:
       'Own financial control product designed from scratch with Clean Architecture direction, REST APIs, JWT authentication, Dapper data access, SQL Server workflows, and an Angular frontend while preparing a public demo.',
-    visualLabel: 'Financial control application visual reference pending final asset',
+    visualLabel: 'Financial control application visual',
     ctaLabel: 'Explore Architecture',
     context: [
       'Own product initiative designed from zero to organize practical financial workflows.',
@@ -242,7 +242,7 @@ const PROJECT_ITEMS: Project[] = [
         videoSrc: 'assets/project-media/expensux/expensux-product-demo.mp4',
         isExternal: false,
         isPlaceholder: true,
-        placeholderMessage: 'Video producto en servicio preparado para publicación.',
+        placeholderMessage: '',
       },
     ],
     placeholders: {
@@ -259,7 +259,7 @@ const PROJECT_ITEMS: Project[] = [
     typeStatus: 'Featured Project / LeverIT enterprise product / Help desk platform / In production',
     shortDescription:
       'Enterprise help desk platform supported in production for years through backend and frontend maintenance, SQL Server work, search optimization, new business flows, and functional evolution.',
-    visualLabel: 'LeverIT help desk platform visual reference pending approved asset',
+    visualLabel: 'LeverIT help desk platform visual',
     ctaLabel: 'View Professional Evidence',
     context: [
       'Professional enterprise project worked on during Jorge’s LeverIT experience.',
@@ -310,7 +310,7 @@ const PROJECT_ITEMS: Project[] = [
     ],
     placeholders: {
       officialWebsiteUrl: 'https://www.leverit.us/ithc-mesa-de-ayuda',
-      logoLabel: 'LeverIT logo pending approved public asset',
+      logoLabel: '',
     },
     sourceCodeNote: 'Private product owned by LeverIT.',
     confidentialityNote:
@@ -323,7 +323,7 @@ const PROJECT_ITEMS: Project[] = [
     typeStatus: 'Enterprise Project / Custom client project / Electoral system / Built from scratch',
     shortDescription:
       'Custom electoral auditing platform developed for a real client to collect, validate, and review voting-station evidence through a centralized solution built with SQL Server, REST APIs, and Angular.',
-    visualLabel: 'LeverIT custom client project visual reference pending approved asset',
+    visualLabel: 'LeverIT custom client project visual',
     ctaLabel: 'View Project Scope',
     context: [
       'Professional custom client project worked on during Jorge’s LeverIT experience.',
@@ -358,7 +358,7 @@ const PROJECT_ITEMS: Project[] = [
     ],
     placeholders: {
       officialWebsiteUrl: 'https://www.leverit.us/',
-      logoLabel: 'LeverIT logo pending approved public asset',
+      logoLabel: '',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this LeverIT custom client project.',
@@ -372,7 +372,7 @@ const PROJECT_ITEMS: Project[] = [
     typeStatus: 'Enterprise Project / LeverIT enterprise platform / IT asset management / Production evolution',
     shortDescription:
       'Enterprise Discovery platform supported through production evolution, continuous inventory capabilities, SQL Server work, ASP.NET features, WebSockets, and maintainable improvements.',
-    visualLabel: 'LeverIT enterprise discovery platform visual reference pending approved asset',
+    visualLabel: 'LeverIT enterprise discovery platform visual',
     ctaLabel: 'View Contributions',
     context: [
       'Professional enterprise platform worked on during Jorge’s LeverIT experience.',
@@ -406,7 +406,7 @@ const PROJECT_ITEMS: Project[] = [
     ],
     placeholders: {
       officialWebsiteUrl: 'https://www.leverit.us/solucion-discovery',
-      logoLabel: 'LeverIT logo pending approved public asset',
+      logoLabel: '',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this LeverIT enterprise project.',
@@ -420,7 +420,7 @@ const PROJECT_ITEMS: Project[] = [
     typeStatus: 'Enterprise Project / Public portfolio / Professional showcase / Open Source',
     shortDescription:
       'Modern Angular portfolio engineered as a data-driven, multi-language, multi-theme, responsive professional showcase for Backend .NET specialization and portfolio engineering evidence.',
-    visualLabel: 'Portfolio application visual reference pending final asset',
+    visualLabel: 'Portfolio application visual',
     ctaLabel: 'View Implementation',
     context: [
       'Presents Backend .NET specialization, supporting fullstack capability, technical evolution, and recruiter-focused navigation.',
@@ -468,7 +468,7 @@ const PROJECT_ITEMS: Project[] = [
       'Enterprise Project / Enterprise ERP / Enterprise product / In production',
     shortDescription:
       'Commercial business management platform covering billing, inventory, purchasing, sales, accounts receivable, supplier management, and operational workflows.',
-    visualLabel: 'Avances Software ERP enterprise system visual reference pending approved asset',
+    visualLabel: 'Avances Software ERP enterprise system visual',
     ctaLabel: 'View Enterprise Context',
     context: [
       'Earlier enterprise product experience from Avances Software.',
@@ -494,7 +494,7 @@ const PROJECT_ITEMS: Project[] = [
     ],
     placeholders: {
       officialWebsiteUrl: 'https://avances.com.co/software-contable-y-facturacion.php',
-      logoLabel: 'Avances Software logo pending approved public asset',
+      logoLabel: '',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this Avances Software enterprise product.',
@@ -509,7 +509,7 @@ const PROJECT_ITEMS: Project[] = [
       'Enterprise Project / Clinical system / Enterprise product / In production',
     shortDescription:
       'Clinical management platform supporting appointments, patient records, admissions, authorizations, prescriptions, medical history tracking, and doctor scheduling.',
-    visualLabel: 'Avances Software healthcare platform visual reference pending approved asset',
+    visualLabel: 'Avances Software healthcare platform visual',
     ctaLabel: 'View Healthcare Context',
     context: [
       'Earlier enterprise product experience from Avances Software.',
@@ -535,7 +535,7 @@ const PROJECT_ITEMS: Project[] = [
     ],
     placeholders: {
       officialWebsiteUrl: 'https://avances.com.co/software-clinico-para-ips.php',
-      logoLabel: 'Avances Software logo pending approved public asset',
+      logoLabel: '',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this Avances Software healthcare product.',
@@ -551,7 +551,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Dental management platform focused on clinical records, patient tracking, appointment scheduling, and dental-specific treatment workflows.',
     visualLabel:
-      'Avances Software dental management platform visual reference pending approved asset',
+      'Avances Software dental management platform visual',
     ctaLabel: 'View Dental Workflow Context',
     context: [
       'Earlier enterprise product experience from Avances Software.',
@@ -577,7 +577,7 @@ const PROJECT_ITEMS: Project[] = [
     ],
     placeholders: {
       officialWebsiteUrl: 'https://avances.com.co/software-odontologico.php',
-      logoLabel: 'Avances Software logo pending approved public asset',
+      logoLabel: '',
     },
     sourceCodeNote:
       'No GitHub link, private demo, source code, client data, or proprietary implementation access is available for this Avances Software dental product.',
@@ -626,7 +626,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     typeStatus: 'Proyecto destacado ⭐ / Software en producción / Sistema interno empresarial',
     shortDescription:
       'Sistema empresarial de flujo de trabajo usado en producción desde 2015, evolucionado durante más de una década desde Access y VB.NET hacia SQL Server, arquitectura .NET moderna y flujos de negocio adaptables.',
-    visualLabel: 'Referencia visual de sistema de flujo empresarial pendiente de arte final',
+    visualLabel: 'Visual del sistema de flujo empresarial',
     ctaLabel: 'Ver evolución técnica',
     sourceCodeNote: '',
     confidentialityNote:
@@ -636,7 +636,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     typeStatus: 'Proyecto destacado ⭐ / Producto propio / Aplicación de control financiero / Demo disponible en la web',
     shortDescription:
       'Producto propio de control financiero diseñado desde cero con dirección Clean Architecture, REST APIs, autenticación JWT, acceso a datos con Dapper, flujos SQL Server y frontend Angular mientras se prepara una demo pública.',
-    visualLabel: 'Referencia visual de aplicación de control financiero pendiente de arte final',
+    visualLabel: 'Visual de aplicación de control financiero',
     ctaLabel: 'Explorar arquitectura',
     sourceCodeNote: '',
     confidentialityNote:
@@ -647,7 +647,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma empresarial de mesa de ayuda apoyada en producción durante años mediante mantenimiento backend y frontend, trabajo con SQL Server, optimización de búsquedas, nuevos flujos de negocio y evolución funcional.',
     visualLabel:
-      'Referencia visual de plataforma help desk de LeverIT pendiente de activo aprobado',
+      'Visual de plataforma help desk de LeverIT',
     ctaLabel: 'Ver evidencia profesional',
     sourceCodeNote: 'Producto privado de la empresa LeverIT.',
     confidentialityNote:
@@ -659,7 +659,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma personalizada de auditoría electoral desarrollada para un cliente real, permitiendo recopilar, validar y revisar evidencia de mesas de votación mediante una solución centralizada construida con SQL Server, REST APIs y Angular.',
     visualLabel:
-      'Referencia visual de proyecto cliente personalizado LeverIT pendiente de activo aprobado',
+      'Visual de proyecto cliente personalizado LeverIT',
     ctaLabel: 'Ver alcance del proyecto',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este proyecto cliente de LeverIT.',
@@ -672,7 +672,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma empresarial Discovery apoyada mediante evolución en producción, capacidades de inventario continuo, trabajo con SQL Server, funcionalidades ASP.NET, WebSockets y mejoras mantenibles.',
     visualLabel:
-      'Referencia visual de plataforma Discovery empresarial LeverIT pendiente de activo aprobado',
+      'Visual de plataforma Discovery empresarial LeverIT',
     ctaLabel: 'Ver contribuciones',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este proyecto empresarial de LeverIT.',
@@ -683,7 +683,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     typeStatus: 'Proyecto empresarial / Portafolio público / Showcase profesional / Open Source',
     shortDescription:
       'Portfolio moderno en Angular construido como showcase profesional data-driven, multi-idioma, multi-tema y responsive para presentar especialización Backend .NET y evidencia de portfolio engineering.',
-    visualLabel: 'Referencia visual de aplicación portfolio pendiente de arte final',
+    visualLabel: 'Visual de aplicación portfolio',
     ctaLabel: 'Ver implementación',
     sourceCodeNote:
       'El enlace al repositorio público está disponible para revisar la implementación.',
@@ -696,7 +696,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma comercial de gestión empresarial que cubre facturación, inventario, compras, ventas, cuentas por cobrar, gestión de proveedores y flujos operativos.',
     visualLabel:
-      'Referencia visual de sistema ERP empresarial de Avances Software pendiente de activo aprobado',
+      'Visual de sistema ERP empresarial de Avances Software',
     ctaLabel: 'Ver contexto empresarial',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto empresarial de Avances Software.',
@@ -709,7 +709,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma de gestión clínica que soporta citas, registros de pacientes, ingresos, autorizaciones, fórmulas, seguimiento de historia médica y agenda de doctores.',
     visualLabel:
-      'Referencia visual de plataforma clínica de Avances Software pendiente de activo aprobado',
+      'Visual de plataforma clínica de Avances Software',
     ctaLabel: 'Ver contexto clínico',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto clínico de Avances Software.',
@@ -722,7 +722,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma de gestión odontológica enfocada en registros clínicos, seguimiento de pacientes, programación de citas y flujos de tratamientos dentales específicos.',
     visualLabel:
-      'Referencia visual de plataforma odontológica de Avances Software pendiente de activo aprobado',
+      'Visual de plataforma odontológica de Avances Software',
     ctaLabel: 'Ver contexto de flujo dental',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto odontológico de Avances Software.',
@@ -886,7 +886,7 @@ const projectSpanishDetails: Record<
         videoSrc: 'assets/project-media/worker/worker-product-demo.mp4',
         isExternal: false,
         isPlaceholder: true,
-        placeholderMessage: 'Video del producto en servicio pendiente de publicación.',
+        placeholderMessage: '',
       },
     ],
     placeholders: {
@@ -894,7 +894,7 @@ const projectSpanishDetails: Record<
       companyAddress: 'Carrera 15 # 18-21, Socorro, Santander, Colombia',
       companyPhone: '+57 318 5176823',
       officialWebsiteUrl: 'https://www.pasotelevision.net/',
-      videoUrl: 'URL de video pendiente de publicación',
+      videoUrl: '',
     },
     referencePlaceholders: {
       companyName: 'Paso Television',
@@ -927,7 +927,7 @@ const projectSpanishDetails: Record<
         videoSrc: 'assets/project-media/expensux/expensux-product-demo.mp4',
         isExternal: false,
         isPlaceholder: true,
-        placeholderMessage: 'Video producto en servicio preparado para publicación.',
+        placeholderMessage: '',
       },
     ],
     placeholders: { demoUrl: '#' },
@@ -969,7 +969,7 @@ const projectSpanishDetails: Record<
     ],
     placeholders: {
       officialWebsiteUrl: 'https://www.leverit.us/ithc-mesa-de-ayuda',
-      logoLabel: 'Logo de LeverIT pendiente de activo público aprobado',
+      logoLabel: '',
     },
     referencePlaceholders: undefined as never,
   },
@@ -996,7 +996,7 @@ const projectSpanishDetails: Record<
     ],
     placeholders: {
       officialWebsiteUrl: 'https://www.leverit.us/',
-      logoLabel: 'Logo de LeverIT pendiente de activo público aprobado',
+      logoLabel: '',
     },
     referencePlaceholders: undefined as never,
   },
@@ -1023,7 +1023,7 @@ const projectSpanishDetails: Record<
     ],
     placeholders: {
       officialWebsiteUrl: 'https://www.leverit.us/solucion-discovery',
-      logoLabel: 'Logo de LeverIT pendiente de activo público aprobado',
+      logoLabel: '',
     },
     referencePlaceholders: undefined as never,
   },
@@ -1072,7 +1072,7 @@ const projectSpanishDetails: Record<
     ],
     placeholders: {
       officialWebsiteUrl: 'https://avances.com.co/software-contable-y-facturacion.php',
-      logoLabel: 'Logo de Avances Software pendiente de activo público aprobado',
+      logoLabel: '',
     },
     referencePlaceholders: undefined as never,
   },
@@ -1099,7 +1099,7 @@ const projectSpanishDetails: Record<
     ],
     placeholders: {
       officialWebsiteUrl: 'https://avances.com.co/software-clinico-para-ips.php',
-      logoLabel: 'Logo de Avances Software pendiente de activo público aprobado',
+      logoLabel: '',
     },
     referencePlaceholders: undefined as never,
   },
@@ -1126,7 +1126,7 @@ const projectSpanishDetails: Record<
     ],
     placeholders: {
       officialWebsiteUrl: 'https://avances.com.co/software-odontologico.php',
-      logoLabel: 'Logo de Avances Software pendiente de activo público aprobado',
+      logoLabel: '',
     },
     referencePlaceholders: undefined as never,
   },
