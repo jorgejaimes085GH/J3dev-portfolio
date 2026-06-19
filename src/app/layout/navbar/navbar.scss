@@ -240,7 +240,7 @@
 .site-header__tools {
   grid-area: tools;
   display: grid;
-  grid-template-columns: minmax(0, max-content) 3.1rem;
+  grid-template-columns: minmax(0, max-content) 4.1rem;
   grid-template-areas:
     'theme pin'
     'preview language';
@@ -261,8 +261,8 @@
 .site-header__pin-toggle,
 .site-header__language-toggle {
   justify-content: center;
-  width: 3.1rem;
-  min-width: 3.1rem;
+  width: 4.1rem;
+  min-width: 4.1rem;
   min-height: 2.1rem;
   padding: 0.35rem;
   border: 1px solid var(--app-border-color);
