@@ -1717,11 +1717,13 @@ app-navbar .site-nav__menu-toggle:focus-visible {
   }
 
   app-navbar .site-header__pin-toggle {
-    min-width: 44px;
+    width: 52px;
+    min-width: 52px;
     min-height: 44px;
   }
 
   app-navbar .site-header__language-toggle {
+    width: 52px;
     min-width: 52px;
     min-height: 44px;
   }
@@ -1827,11 +1829,13 @@ app-navbar.site-header-shell--preview-mobile .site-header__tools {
 }
 
 app-navbar.site-header-shell--preview-mobile .site-header__pin-toggle {
-  min-width: 44px;
+  width: 52px;
+  min-width: 52px;
   min-height: 44px;
 }
 
 app-navbar.site-header-shell--preview-mobile .site-header__language-toggle {
+  width: 52px;
   min-width: 52px;
   min-height: 44px;
 }
