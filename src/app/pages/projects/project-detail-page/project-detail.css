@@ -58,7 +58,7 @@
 
 .project-detail-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   gap: 2rem;
   align-items: stretch;
   padding-top: 2rem;
@@ -120,7 +120,9 @@
 .project-detail-visual {
   position: relative;
   display: grid;
+  width: 100%;
   min-height: 18rem;
+  aspect-ratio: 16 / 9;
   align-content: center;
   justify-items: center;
   gap: 1rem;
@@ -152,10 +154,13 @@
 .project-detail-visual__image {
   z-index: 2;
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transform: translateY(-50%);
 }
 
 .project-detail-visual__logo {
