@@ -77,11 +77,8 @@ export class Experience {
       .toUpperCase();
   }
 
-  protected getProjectCompactImageUrl(project: Project): string | undefined {
-    return project.compactLogoUrl &&
-      !this.hasAssetFailed(this.getProjectAssetId(project, project.compactLogoUrl))
-      ? project.compactLogoUrl
-      : undefined;
+  protected getProjectExperienceImageUrl(project: Project): string | undefined {
+    return project.experienceLogoUrl;
   }
 
   protected getProjectInitials(title: string): string {

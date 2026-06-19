@@ -98,22 +98,14 @@
                           [routerLink]="['/projects', project.slug]"
                           [attr.aria-label]="text().viewProjectPrefix + ': ' + project.title"
                         >
-                          <span class="experience-project-link__initials" aria-hidden="true">
-                            @if (getProjectCompactImageUrl(project)) {
+                          <span class="experience-project-link__initials">
+                            @if (getProjectExperienceImageUrl(project)) {
                               <img
                                 class="experience-project-link__image"
-                                [src]="getProjectCompactImageUrl(project)"
-                                [alt]="''"
+                                [src]="getProjectExperienceImageUrl(project)"
+                                [alt]="project.title"
                                 loading="lazy"
                                 decoding="async"
-                                (error)="
-                                  markAssetFailed(
-                                    getProjectAssetId(
-                                      project,
-                                      getProjectCompactImageUrl(project)
-                                    )
-                                  )
-                                "
                               />
                             } @else {
                               {{ getProjectInitials(project.title) }}

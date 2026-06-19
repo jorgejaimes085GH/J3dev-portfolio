@@ -50,6 +50,7 @@ export interface Project {
   overviewImageUrl?: string;
   thumbnailUrl?: string;
   compactLogoUrl?: string;
+  experienceLogoUrl?: string;
   relatedLogoUrl?: string;
   logoUrl?: string;
   context: string[];
