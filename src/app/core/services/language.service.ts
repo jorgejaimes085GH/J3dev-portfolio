@@ -5,6 +5,7 @@ import { UI_TEXT } from '../../data/ui-text.data';
 import {
   DEFAULT_PORTFOLIO_LANGUAGE,
   PortfolioLanguage,
+  PORTFOLIO_LANGUAGE_CODE_LABELS,
   SUPPORTED_PORTFOLIO_LANGUAGES,
 } from '../../models/language.model';
 
@@ -37,8 +38,8 @@ export class LanguageService {
     this.setLanguage(this.currentLanguage() === 'en' ? 'es' : 'en');
   }
 
-  getLanguageCodeLabel(language: PortfolioLanguage = this.currentLanguage()): 'ENG' | 'ESP' {
-    return language === 'en' ? 'ENG' : 'ESP';
+  getLanguageCodeLabel(language: PortfolioLanguage = this.currentLanguage()): string {
+    return PORTFOLIO_LANGUAGE_CODE_LABELS[language];
   }
 
   private getStoredLanguage(): PortfolioLanguage | null {
