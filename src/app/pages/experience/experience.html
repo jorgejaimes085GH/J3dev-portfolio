@@ -3,12 +3,31 @@
   [class.experience-page--premium]="isPremiumTheme()"
   aria-labelledby="experience-page-title"
 >
-  <section class="experience-section experience-hero" aria-labelledby="experience-page-title">
+  <section
+    class="experience-section experience-hero portfolio-visual-hero"
+    aria-labelledby="experience-page-title"
+  >
     <div class="experience-section__header experience-hero__content">
       <p class="experience-section__eyebrow">{{ text().eyebrow }}</p>
       <h1 id="experience-page-title">{{ text().title }}</h1>
       <p class="experience-hero__summary">{{ text().summary }}</p>
     </div>
+
+    <figure
+      class="experience-hero__visual portfolio-visual-hero__visual"
+      [attr.aria-label]="text().title"
+    >
+      <div class="portfolio-visual-hero__frame">
+        @if (heroImageUrl) {
+          <img
+            class="portfolio-visual-hero__image"
+            [src]="heroImageUrl"
+            [alt]="text().title"
+            (error)="hideFailedAsset($event)"
+          />
+        }
+      </div>
+    </figure>
   </section>
 
   <section class="experience-section" aria-labelledby="experience-timeline-title">
@@ -40,9 +59,7 @@
                       (error)="markAssetFailed(getCompanyAssetId(entry))"
                     />
                   } @else {
-                    <span>{{
-                      entry.companyInitials || getCompanyInitials(entry.company)
-                    }}</span>
+                    <span>{{ entry.companyInitials || getCompanyInitials(entry.company) }}</span>
                   }
                 </span>
                 <div>
@@ -149,7 +166,13 @@
 
     <nav class="experience-cta__actions" [attr.aria-label]="text().ctaAria">
       @for (link of ctaLinks(); track link.route) {
-        <a class="btn button-link" [class.btn--primary]="$first" [class.btn--secondary]="!$first" [class.button-link--primary]="$first" [routerLink]="link.route">
+        <a
+          class="btn button-link"
+          [class.btn--primary]="$first"
+          [class.btn--secondary]="!$first"
+          [class.button-link--primary]="$first"
+          [routerLink]="link.route"
+        >
           {{ link.label }}
         </a>
       }

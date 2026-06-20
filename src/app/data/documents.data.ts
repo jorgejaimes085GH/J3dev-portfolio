@@ -1,5 +1,7 @@
 import { DocumentGroupSection, ProfessionalDocument } from '../models/document.model';
 
+export const DOCUMENTS_HERO_IMAGE_URL = 'assets/profile/documents/documents-hero.webp';
+
 export const DOCUMENT_ICON_URLS = {
   resume: 'assets/images/logos/documents/document-resume.svg',
   coverLetter: 'assets/images/logos/documents/document-cover-letter.svg',

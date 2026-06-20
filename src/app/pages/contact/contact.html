@@ -1,11 +1,30 @@
 <main class="contact-page" aria-labelledby="contact-page-title">
-  <section class="contact-section contact-hero" aria-labelledby="contact-page-title">
+  <section
+    class="contact-section contact-hero portfolio-visual-hero"
+    aria-labelledby="contact-page-title"
+  >
     <div class="contact-section__header">
       <p class="contact-section__eyebrow">{{ text().eyebrow }}</p>
       <h1 id="contact-page-title">{{ text().title }}</h1>
       <p class="contact-hero__subtitle">{{ text().subtitle }}</p>
       <p class="contact-hero__intro">{{ text().intro }}</p>
     </div>
+
+    <figure
+      class="contact-hero__visual portfolio-visual-hero__visual"
+      [attr.aria-label]="text().title"
+    >
+      <div class="portfolio-visual-hero__frame">
+        @if (heroImageUrl) {
+          <img
+            class="portfolio-visual-hero__image"
+            [src]="heroImageUrl"
+            [alt]="text().title"
+            (error)="hideFailedAsset($event)"
+          />
+        }
+      </div>
+    </figure>
   </section>
 
   <section class="contact-section" aria-labelledby="contact-methods-title">

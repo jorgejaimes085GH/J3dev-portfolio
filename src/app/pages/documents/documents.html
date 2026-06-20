@@ -1,10 +1,29 @@
 <main class="documents-page" aria-labelledby="documents-page-title">
-  <section class="documents-section documents-hero" aria-labelledby="documents-page-title">
+  <section
+    class="documents-section documents-hero portfolio-visual-hero"
+    aria-labelledby="documents-page-title"
+  >
     <div class="documents-section__header">
       <p class="documents-section__eyebrow">{{ text().eyebrow }}</p>
       <h1 id="documents-page-title">{{ text().title }}</h1>
       <p class="documents-hero__summary">{{ text().summary }}</p>
     </div>
+
+    <figure
+      class="documents-hero__visual portfolio-visual-hero__visual"
+      [attr.aria-label]="text().title"
+    >
+      <div class="portfolio-visual-hero__frame">
+        @if (heroImageUrl) {
+          <img
+            class="portfolio-visual-hero__image"
+            [src]="heroImageUrl"
+            [alt]="text().title"
+            (error)="hideFailedAsset($event)"
+          />
+        }
+      </div>
+    </figure>
   </section>
 
   @for (group of documentGroups(); track group.id) {

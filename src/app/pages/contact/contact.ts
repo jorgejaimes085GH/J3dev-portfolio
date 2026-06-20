@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 
 import {
+  CONTACT_HERO_IMAGE_URL,
   PROFESSIONAL_AVAILABILITY,
   PROFESSIONAL_CONTACT_METHODS,
   TECHNICAL_INTERESTS,
@@ -18,6 +19,7 @@ import { ContactMethod } from '../../models/contact.model';
 export class Contact {
   private readonly languageService = inject(LanguageService);
 
+  protected readonly heroImageUrl = CONTACT_HERO_IMAGE_URL;
   protected readonly text = computed(() => this.languageService.uiText().pages.contact);
   private readonly failedIconIds = signal<ReadonlySet<string>>(new Set());
 

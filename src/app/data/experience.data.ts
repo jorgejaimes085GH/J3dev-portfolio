@@ -1,5 +1,7 @@
 import { ExperienceCtaLink, ExperienceEntry } from '../models/experience.model';
 
+export const EXPERIENCE_HERO_IMAGE_URL = 'assets/profile/experience/experience-hero.webp';
+
 const EXPERIENCE_ENTRIES_EN: ExperienceEntry[] = [
   {
     id: 'netcom-sa',

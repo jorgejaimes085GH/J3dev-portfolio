@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import {
   CONTINUOUS_LEARNING,
   EDUCATION_CTA_LINKS,
+  EDUCATION_HERO_IMAGE_URL,
   EDUCATION_HIGHLIGHTS,
   FORMAL_EDUCATION,
   SELF_TAUGHT_EDUCATION,
@@ -23,6 +24,7 @@ export class Education {
   private readonly languageService = inject(LanguageService);
   private readonly failedInstitutionLogoIds = signal<ReadonlySet<string>>(new Set());
 
+  protected readonly heroImageUrl = EDUCATION_HERO_IMAGE_URL;
   protected readonly text = computed(() => this.languageService.uiText().pages.education);
 
   protected readonly formalEducation = computed(() =>
@@ -83,5 +85,9 @@ export class Education {
       .join('')
       .slice(0, 5)
       .toUpperCase();
+  }
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }

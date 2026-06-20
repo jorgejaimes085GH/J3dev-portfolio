@@ -5,6 +5,8 @@ import {
   JourneyStage,
 } from '../models/journey.model';
 
+export const JOURNEY_HERO_IMAGE_URL = 'assets/profile/journey/journey-hero.webp';
+
 const JOURNEY_STAGES_EN: JourneyStage[] = [
   {
     id: 'self-taught-discovery',

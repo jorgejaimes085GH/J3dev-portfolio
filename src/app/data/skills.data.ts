@@ -1,5 +1,7 @@
 import { BackendSkillGroup, Skill, SkillCategory } from '../models/skill.model';
 
+export const SKILLS_HERO_IMAGE_URL = 'assets/profile/skills/skills-hero.webp';
+
 const SKILL_CATEGORIES_EN: SkillCategory[] = [
   'Backend',
   'Database',

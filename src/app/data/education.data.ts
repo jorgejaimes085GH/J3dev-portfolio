@@ -6,6 +6,8 @@ import {
   SelfTaughtEducationEntry,
 } from '../models/education.model';
 
+export const EDUCATION_HERO_IMAGE_URL = 'assets/profile/education/education-hero.webp';
+
 export const EDUCATION_LOGO_URLS = {
   cedefoc: 'assets/images/logos/education/cedefoc.webp',
   unad: 'assets/images/logos/education/unad.webp',

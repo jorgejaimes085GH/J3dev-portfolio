@@ -32,7 +32,6 @@ html.theme-premium-3d {
   color-scheme: dark;
 }
 
-
 :root {
   --app-accent-color: var(--app-link-color);
 }
@@ -1535,28 +1534,28 @@ html.theme-premium-3d app-education .formal-education-list .education-card:focus
 }
 
 html.theme-premium-3d app-education .formal-education-list .education-card__watermark {
-    position: absolute;
-    right: -1.9rem;
-    bottom: -1.9rem;
-    z-index: -1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: min(13rem, 42%);
-    aspect-ratio: 1;
-    color: var(--app-text-color);
-    font-size: clamp(2rem, 7vw, 5rem);
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    opacity: 0.03;
-    filter: grayscale(0.25) saturate(1.1);
-    pointer-events: none;
-    -webkit-user-select: none;
-    user-select: none;
-    border-radius: 60px 60px;
-    overflow: hidden;
-    transform: rotate(-30deg);
-    transform-origin: center;
+  position: absolute;
+  right: -1.9rem;
+  bottom: -1.9rem;
+  z-index: -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(13rem, 42%);
+  aspect-ratio: 1;
+  color: var(--app-text-color);
+  font-size: clamp(2rem, 7vw, 5rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  opacity: 0.03;
+  filter: grayscale(0.25) saturate(1.1);
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 60px 60px;
+  overflow: hidden;
+  transform: rotate(-30deg);
+  transform-origin: center;
 }
 
 html.theme-premium-3d app-education .formal-education-list .education-card__watermark img {
@@ -2169,14 +2168,7 @@ app-navbar
 }
 
 /* Sprint 31K.1: global button height and hover polish. */
-:is(
-  .btn,
-  .button-link,
-  .hero-slider__cta,
-  .project-card__link,
-  .document-action,
-  .contact-action
-) {
+:is(.btn, .button-link, .hero-slider__cta, .project-card__link, .document-action, .contact-action) {
   height: 40px !important;
   min-height: 40px !important;
 }
@@ -2196,7 +2188,11 @@ app-navbar
 ):is(:hover, :focus-visible) {
   border-color: color-mix(in srgb, var(--app-accent-color) 78%, var(--app-text-color)) !important;
   color: var(--app-background-color) !important;
-  background-color: color-mix(in srgb, var(--app-accent-color) 78%, var(--app-text-color)) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--app-accent-color) 78%,
+    var(--app-text-color)
+  ) !important;
 }
 
 :is(
@@ -2209,5 +2205,66 @@ app-navbar
 .contact-action:not(.contact-action--primary):is(:hover, :focus-visible) {
   border-color: color-mix(in srgb, var(--app-link-color) 84%, var(--app-border-color)) !important;
   color: var(--app-link-color) !important;
-  background-color: color-mix(in srgb, var(--app-link-color) 16%, var(--app-background-color)) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--app-link-color) 16%,
+    var(--app-background-color)
+  ) !important;
+}
+
+.portfolio-visual-hero {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portfolio-visual-hero__visual {
+  flex: 0 0 min(34vw, 20rem);
+  width: min(100%, 20rem);
+  margin: 0;
+}
+
+.portfolio-visual-hero__frame {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 30rem;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid var(--app-border-color);
+  border-radius: 1rem;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--app-link-color) 10%, transparent),
+      transparent 48%
+    ),
+    color-mix(in srgb, var(--app-surface-color) 92%, var(--app-link-color) 8%);
+  box-shadow: 0 1rem 2.5rem color-mix(in srgb, var(--app-text-color) 12%, transparent);
+}
+
+.portfolio-visual-hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 700px) {
+  .portfolio-visual-hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .portfolio-visual-hero__visual {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .portfolio-visual-hero__frame {
+    max-height: none;
+  }
 }
