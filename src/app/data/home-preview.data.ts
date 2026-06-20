@@ -4,6 +4,7 @@ import {
   HomeSkillPreview,
   HomeValuePreview,
 } from '../models/home-preview.model';
+import { SKILLS } from './skills.data';
 
 const HOME_PAGE_COPY_EN: HomePageCopy = {
   value: {
@@ -205,7 +206,16 @@ export const HOME_PROJECT_PREVIEWS = {
   es: HOME_PROJECT_PREVIEWS_ES,
 } as const;
 
-const HOME_SKILL_PREVIEWS_ES: readonly HomeSkillPreview[] = [
+const homeSkillIconByName = new Map(
+  SKILLS.en.map((skill) => [skill.name, { iconUrl: skill.iconUrl, iconLabel: skill.iconLabel }]),
+);
+
+const withSkillIcon = (skill: HomeSkillPreview): HomeSkillPreview => ({
+  ...skill,
+  ...homeSkillIconByName.get(skill.name),
+});
+
+const HOME_SKILL_PREVIEWS_ES_BASE: readonly HomeSkillPreview[] = [
   { name: '.NET', context: 'Desarrollo backend y aplicaciones empresariales' },
   {
     name: 'SQL Server',
@@ -219,7 +229,10 @@ const HOME_SKILL_PREVIEWS_ES: readonly HomeSkillPreview[] = [
   { name: 'SOLID', context: 'Principios de diseño orientado a objetos mantenible' },
 ];
 
+const HOME_SKILL_PREVIEWS_ES: readonly HomeSkillPreview[] =
+  HOME_SKILL_PREVIEWS_ES_BASE.map(withSkillIcon);
+
 export const HOME_SKILL_PREVIEWS = {
-  en: HOME_SKILL_PREVIEWS_EN,
+  en: HOME_SKILL_PREVIEWS_EN.map(withSkillIcon),
   es: HOME_SKILL_PREVIEWS_ES,
 } as const;

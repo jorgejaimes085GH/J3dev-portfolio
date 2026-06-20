@@ -199,7 +199,8 @@ const PROJECT_ITEMS: Project[] = [
     id: 'expensux',
     slug: 'expensux',
     title: 'Expensux',
-    typeStatus: 'Featured Project ⭐ / Own product / Financial control application / Web demo available',
+    typeStatus:
+      'Featured Project ⭐ / Own product / Financial control application / Web demo available',
     shortDescription:
       'Own financial control product designed from scratch with Clean Architecture direction, REST APIs, JWT authentication, Dapper data access, SQL Server workflows, and an Angular frontend while preparing a public demo.',
     visualLabel: 'Financial control application visual',
@@ -256,7 +257,8 @@ const PROJECT_ITEMS: Project[] = [
     id: 'ithelpcenter',
     slug: 'ithelpcenter',
     title: 'ItHelpCenter',
-    typeStatus: 'Featured Project / LeverIT enterprise product / Help desk platform / In production',
+    typeStatus:
+      'Featured Project ⭐ / LeverIT enterprise product / Help desk platform / In production',
     shortDescription:
       'Enterprise help desk platform supported in production for years through backend and frontend maintenance, SQL Server work, search optimization, new business flows, and functional evolution.',
     visualLabel: 'LeverIT help desk platform visual',
@@ -320,7 +322,8 @@ const PROJECT_ITEMS: Project[] = [
     id: 'testigo-electoral',
     slug: 'testigo-electoral',
     title: 'Testigo Electoral',
-    typeStatus: 'Enterprise Project / Custom client project / Electoral system / Built from scratch',
+    typeStatus:
+      'Enterprise Project / Custom client project / Electoral system / Built from scratch',
     shortDescription:
       'Custom electoral auditing platform developed for a real client to collect, validate, and review voting-station evidence through a centralized solution built with SQL Server, REST APIs, and Angular.',
     visualLabel: 'LeverIT custom client project visual',
@@ -369,7 +372,8 @@ const PROJECT_ITEMS: Project[] = [
     id: 'discovery',
     slug: 'discovery',
     title: 'Discovery',
-    typeStatus: 'Enterprise Project / LeverIT enterprise platform / IT asset management / Production evolution',
+    typeStatus:
+      'Enterprise Project / LeverIT enterprise platform / IT asset management / Production evolution',
     shortDescription:
       'Enterprise Discovery platform supported through production evolution, continuous inventory capabilities, SQL Server work, ASP.NET features, WebSockets, and maintainable improvements.',
     visualLabel: 'LeverIT enterprise discovery platform visual',
@@ -464,8 +468,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'manager-plus',
     slug: 'manager-plus',
     title: 'Manager Plus',
-    typeStatus:
-      'Enterprise Project / Enterprise ERP / Enterprise product / In production',
+    typeStatus: 'Enterprise Project / Enterprise ERP / Enterprise product / In production',
     shortDescription:
       'Commercial business management platform covering billing, inventory, purchasing, sales, accounts receivable, supplier management, and operational workflows.',
     visualLabel: 'Avances Software ERP enterprise system visual',
@@ -505,8 +508,7 @@ const PROJECT_ITEMS: Project[] = [
     id: 'manager-clinic',
     slug: 'manager-clinic',
     title: 'Manager Clinic',
-    typeStatus:
-      'Enterprise Project / Clinical system / Enterprise product / In production',
+    typeStatus: 'Enterprise Project / Clinical system / Enterprise product / In production',
     shortDescription:
       'Clinical management platform supporting appointments, patient records, admissions, authorizations, prescriptions, medical history tracking, and doctor scheduling.',
     visualLabel: 'Avances Software healthcare platform visual',
@@ -546,12 +548,10 @@ const PROJECT_ITEMS: Project[] = [
     id: 'odontology',
     slug: 'odontology',
     title: 'Odontology',
-    typeStatus:
-      'Enterprise Project / Dental system / Enterprise product / In production',
+    typeStatus: 'Enterprise Project / Dental system / Enterprise product / In production',
     shortDescription:
       'Dental management platform focused on clinical records, patient tracking, appointment scheduling, and dental-specific treatment workflows.',
-    visualLabel:
-      'Avances Software dental management platform visual',
+    visualLabel: 'Avances Software dental management platform visual',
     ctaLabel: 'View Dental Workflow Context',
     context: [
       'Earlier enterprise product experience from Avances Software.',
@@ -659,7 +659,8 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Este proyecto en producción se describe solo con contexto sanitizado. No se exponen código fuente, flujos propietarios, detalles de clientes ni datos operativos.',
   },
   expensux: {
-    typeStatus: 'Proyecto destacado ⭐ / Producto propio / Aplicación de control financiero / Demo disponible en la web',
+    typeStatus:
+      'Proyecto destacado ⭐ / Producto propio / Aplicación de control financiero / Demo disponible en la web',
     shortDescription:
       'Producto propio de control financiero diseñado desde cero con dirección Clean Architecture, REST APIs, autenticación JWT, acceso a datos con Dapper, flujos SQL Server y frontend Angular mientras se prepara una demo pública.',
     visualLabel: 'Visual de aplicación de control financiero',
@@ -669,11 +670,11 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Los ejemplos financieros y detalles de implementación se presentan de forma segura. El código fuente permanece privado por ahora mientras se prepara la demo.',
   },
   ithelpcenter: {
-    typeStatus: 'Proyecto destacado / Producto empresarial LeverIT / Plataforma Help Desk / En producción',
+    typeStatus:
+      'Proyecto destacado / Producto empresarial LeverIT / Plataforma Help Desk / En producción',
     shortDescription:
       'Plataforma empresarial de mesa de ayuda apoyada en producción durante años mediante mantenimiento backend y frontend, trabajo con SQL Server, optimización de búsquedas, nuevos flujos de negocio y evolución funcional.',
-    visualLabel:
-      'Visual de plataforma help desk de LeverIT',
+    visualLabel: 'Visual de plataforma help desk de LeverIT',
     ctaLabel: 'Ver evidencia profesional',
     sourceCodeNote: 'Producto privado de la empresa LeverIT.',
     confidentialityNote:
@@ -684,8 +685,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Proyecto empresarial / Proyecto cliente personalizado / Sistema electoral / Construido desde cero',
     shortDescription:
       'Plataforma personalizada de auditoría electoral desarrollada para un cliente real, permitiendo recopilar, validar y revisar evidencia de mesas de votación mediante una solución centralizada construida con SQL Server, REST APIs y Angular.',
-    visualLabel:
-      'Visual de proyecto cliente personalizado LeverIT',
+    visualLabel: 'Visual de proyecto cliente personalizado LeverIT',
     ctaLabel: 'Ver alcance del proyecto',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este proyecto cliente de LeverIT.',
@@ -697,8 +697,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Proyecto empresarial / Plataforma empresarial LeverIT / Gestión de activos TI / Evolución en producción',
     shortDescription:
       'Plataforma empresarial Discovery apoyada mediante evolución en producción, capacidades de inventario continuo, trabajo con SQL Server, funcionalidades ASP.NET, WebSockets y mejoras mantenibles.',
-    visualLabel:
-      'Visual de plataforma Discovery empresarial LeverIT',
+    visualLabel: 'Visual de plataforma Discovery empresarial LeverIT',
     ctaLabel: 'Ver contribuciones',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este proyecto empresarial de LeverIT.',
@@ -717,12 +716,10 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Este portfolio está pensado como showcase público. Usa contenido estático y comportamiento client-side únicamente, sin backend privado ni acceso a base de datos.',
   },
   'manager-plus': {
-    typeStatus:
-      'Proyecto empresarial / ERP empresarial / Producto empresarial / En producción',
+    typeStatus: 'Proyecto empresarial / ERP empresarial / Producto empresarial / En producción',
     shortDescription:
       'Plataforma comercial de gestión empresarial que cubre facturación, inventario, compras, ventas, cuentas por cobrar, gestión de proveedores y flujos operativos.',
-    visualLabel:
-      'Visual de sistema ERP empresarial de Avances Software',
+    visualLabel: 'Visual de sistema ERP empresarial de Avances Software',
     ctaLabel: 'Ver contexto empresarial',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto empresarial de Avances Software.',
@@ -730,12 +727,10 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Esta experiencia de Avances Software se representa solo con descripciones seguras para publicación. No se exponen código fuente, información privada de clientes, flujos propietarios ni datos operativos sensibles.',
   },
   'manager-clinic': {
-    typeStatus:
-      'Proyecto empresarial / Sistema clínico / Producto empresarial / En producción',
+    typeStatus: 'Proyecto empresarial / Sistema clínico / Producto empresarial / En producción',
     shortDescription:
       'Plataforma de gestión clínica que soporta citas, registros de pacientes, ingresos, autorizaciones, fórmulas, seguimiento de historia médica y agenda de doctores.',
-    visualLabel:
-      'Visual de plataforma clínica de Avances Software',
+    visualLabel: 'Visual de plataforma clínica de Avances Software',
     ctaLabel: 'Ver contexto clínico',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto clínico de Avances Software.',
@@ -747,8 +742,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
       'Proyecto empresarial / Sistema odontológico / Producto empresarial / En producción',
     shortDescription:
       'Plataforma de gestión odontológica enfocada en registros clínicos, seguimiento de pacientes, programación de citas y flujos de tratamientos dentales específicos.',
-    visualLabel:
-      'Visual de plataforma odontológica de Avances Software',
+    visualLabel: 'Visual de plataforma odontológica de Avances Software',
     ctaLabel: 'Ver contexto de flujo dental',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto odontológico de Avances Software.',
