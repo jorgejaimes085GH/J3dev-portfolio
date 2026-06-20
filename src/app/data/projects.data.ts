@@ -671,7 +671,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
   },
   ithelpcenter: {
     typeStatus:
-      'Proyecto destacado / Producto empresarial LeverIT / Plataforma Help Desk / En producción',
+      'Proyecto destacado ⭐ / Producto empresarial LeverIT / Plataforma Help Desk / En producción',
     shortDescription:
       'Plataforma empresarial de mesa de ayuda apoyada en producción durante años mediante mantenimiento backend y frontend, trabajo con SQL Server, optimización de búsquedas, nuevos flujos de negocio y evolución funcional.',
     visualLabel: 'Visual de plataforma help desk de LeverIT',
