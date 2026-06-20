@@ -100,6 +100,34 @@
   margin: 0;
 }
 
+.skill-card__title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.skill-card__icon,
+.skill-card__fallback {
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.skill-card__icon {
+  object-fit: contain;
+}
+
+.skill-card__fallback {
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--app-border-color);
+  border-radius: 0.35rem;
+  color: var(--app-link-color);
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .project-preview {
   display: flex;
   flex-direction: column;

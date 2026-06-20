@@ -79,7 +79,20 @@
   <div class="skill-grid" [attr.aria-label]="homeCopy().skills.listAriaLabel">
     @for (skill of skillPreviews(); track skill.name) {
       <article class="skill-card">
-        <h3>{{ skill.name }}</h3>
+        <h3 class="skill-card__title">
+          @if (skill.iconUrl) {
+            <img
+              class="skill-card__icon"
+              [src]="skill.iconUrl"
+              [alt]="''"
+              aria-hidden="true"
+              (error)="hideFailedAsset($event)"
+            />
+          } @else if (skill.iconLabel) {
+            <span class="skill-card__fallback" aria-hidden="true">{{ skill.iconLabel }}</span>
+          }
+          <span>{{ skill.name }}</span>
+        </h3>
         <p>{{ skill.context }}</p>
       </article>
     }
@@ -97,6 +110,8 @@
     <a class="btn btn--primary button-link button-link--primary" routerLink="/projects">{{
       homeCopy().cta.projectsLabel
     }}</a>
-    <a class="btn btn--secondary button-link" routerLink="/skills">{{ homeCopy().cta.skillsLabel }}</a>
+    <a class="btn btn--secondary button-link" routerLink="/skills">{{
+      homeCopy().cta.skillsLabel
+    }}</a>
   </div>
 </section>

@@ -16,6 +16,8 @@ export interface HomeProjectPreview {
 export interface HomeSkillPreview {
   name: string;
   context: string;
+  iconUrl?: string;
+  iconLabel?: string;
 }
 
 export interface HomeSectionCopy {
