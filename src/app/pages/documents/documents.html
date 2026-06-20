@@ -15,7 +15,7 @@
         <p>{{ group.intro }}</p>
       </div>
 
-      <div class="document-grid" [attr.aria-label]="group.title + ' document cards'">
+      <div class="document-grid" [attr.aria-label]="group.title + ' ' + text().cardsAriaSuffix">
         @for (document of group.documents; track document.id) {
           <article
             class="document-card"

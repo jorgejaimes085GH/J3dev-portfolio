@@ -21,8 +21,8 @@ import { ViewportPreviewId } from '../../models/viewport-preview.model';
             class="viewport-switcher__button"
             [class.viewport-switcher__button--active]="isActiveViewport(viewport.id)"
             [attr.aria-pressed]="isActiveViewport(viewport.id)"
-            [attr.aria-label]="viewport.label + ' viewport preview'"
-            [attr.title]="viewport.label + ' preview'"
+            [attr.aria-label]="viewportLabel(viewport.id) + ' ' + uiText().header.viewportPreviewSuffix"
+            [attr.title]="viewportLabel(viewport.id) + ' ' + uiText().header.previewTitleSuffix"
             (click)="selectViewport(viewport.id)"
           >
             @if (viewport.iconUrl) {
@@ -51,6 +51,10 @@ export class ViewportSwitcher {
 
   selectViewport(viewport: ViewportPreviewId): void {
     this.viewportPreviewService.setViewport(viewport);
+  }
+
+  viewportLabel(viewport: ViewportPreviewId): string {
+    return this.uiText().header[viewport];
   }
 
   isActiveViewport(viewport: ViewportPreviewId): boolean {

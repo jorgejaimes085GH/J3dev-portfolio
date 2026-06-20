@@ -1010,6 +1010,8 @@ const projectSpanishDetails: Record<
       {
         label: 'Referencia de empresa LeverIT',
         type: 'Reference',
+        typeLabel: 'REFERENCIA',
+        actionLabel: 'Abrir referencia',
         url: 'https://www.leverit.us/',
         isExternal: true,
       },
@@ -1037,6 +1039,8 @@ const projectSpanishDetails: Record<
       {
         label: 'Referencia oficial de Discovery',
         type: 'Reference',
+        typeLabel: 'REFERENCIA',
+        actionLabel: 'Abrir referencia',
         url: 'https://www.leverit.us/solucion-discovery',
         isExternal: true,
       },
@@ -1086,6 +1090,8 @@ const projectSpanishDetails: Record<
       {
         label: 'Referencia oficial de Manager Plus',
         type: 'Reference',
+        typeLabel: 'REFERENCIA',
+        actionLabel: 'Abrir referencia',
         url: 'https://avances.com.co/software-contable-y-facturacion.php',
         isExternal: true,
       },
@@ -1113,6 +1119,8 @@ const projectSpanishDetails: Record<
       {
         label: 'Referencia oficial de Manager Clinic',
         type: 'Reference',
+        typeLabel: 'REFERENCIA',
+        actionLabel: 'Abrir referencia',
         url: 'https://avances.com.co/software-clinico-para-ips.php',
         isExternal: true,
       },
@@ -1140,6 +1148,8 @@ const projectSpanishDetails: Record<
       {
         label: 'Referencia oficial de productos Avances',
         type: 'Reference',
+        typeLabel: 'REFERENCIA',
+        actionLabel: 'Abrir referencia',
         url: 'https://avances.com.co/software-odontologico.php',
         isExternal: true,
       },
