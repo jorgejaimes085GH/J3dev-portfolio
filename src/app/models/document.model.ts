@@ -2,8 +2,8 @@ export type DocumentType =
   | 'CV'
   | 'Cover Letter'
   | 'Recommendation Letter'
-  | 'Carta de Presentación'
-  | 'Carta de Recomendación';
+  | 'Carta de presentación'
+  | 'Carta de recomendación';
 
 export type DocumentLanguage = 'Spanish' | 'English' | 'Español' | 'Inglés';
 
