@@ -1,10 +1,29 @@
 <main class="journey-page" aria-labelledby="journey-page-title">
-  <section class="journey-section journey-hero" aria-labelledby="journey-page-title">
+  <section
+    class="journey-section journey-hero portfolio-visual-hero"
+    aria-labelledby="journey-page-title"
+  >
     <div class="journey-section__header journey-hero__content">
       <p class="journey-section__eyebrow">{{ text().eyebrow }}</p>
       <h1 id="journey-page-title">{{ text().title }}</h1>
       <p class="journey-hero__summary">{{ text().summary }}</p>
     </div>
+
+    <figure
+      class="journey-hero__visual portfolio-visual-hero__visual"
+      [attr.aria-label]="text().title"
+    >
+      <div class="portfolio-visual-hero__frame">
+        @if (heroImageUrl) {
+          <img
+            class="portfolio-visual-hero__image"
+            [src]="heroImageUrl"
+            [alt]="text().title"
+            (error)="hideFailedAsset($event)"
+          />
+        }
+      </div>
+    </figure>
   </section>
 
   <section class="journey-section" aria-labelledby="journey-timeline-title">

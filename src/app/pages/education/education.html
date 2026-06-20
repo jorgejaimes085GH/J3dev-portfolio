@@ -1,10 +1,29 @@
 <main class="education-page" aria-labelledby="education-page-title">
-  <section class="education-section education-hero" aria-labelledby="education-page-title">
+  <section
+    class="education-section education-hero portfolio-visual-hero"
+    aria-labelledby="education-page-title"
+  >
     <div class="education-section__header">
       <p class="education-section__eyebrow">{{ text().eyebrow }}</p>
       <h1 id="education-page-title">{{ text().title }}</h1>
       <p class="education-hero__summary">{{ text().summary }}</p>
     </div>
+
+    <figure
+      class="education-hero__visual portfolio-visual-hero__visual"
+      [attr.aria-label]="text().title"
+    >
+      <div class="portfolio-visual-hero__frame">
+        @if (heroImageUrl) {
+          <img
+            class="portfolio-visual-hero__image"
+            [src]="heroImageUrl"
+            [alt]="text().title"
+            (error)="hideFailedAsset($event)"
+          />
+        }
+      </div>
+    </figure>
   </section>
 
   <section class="education-section" aria-labelledby="formal-education-title">
@@ -211,7 +230,13 @@
 
     <nav class="education-cta__actions" [attr.aria-label]="text().ctaAria">
       @for (link of ctaLinks(); track link.route) {
-        <a class="btn button-link" [class.btn--primary]="$first" [class.btn--secondary]="!$first" [class.button-link--primary]="$first" [routerLink]="link.route">
+        <a
+          class="btn button-link"
+          [class.btn--primary]="$first"
+          [class.btn--secondary]="!$first"
+          [class.button-link--primary]="$first"
+          [routerLink]="link.route"
+        >
           {{ link.label }}
         </a>
       }

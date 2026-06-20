@@ -1,5 +1,7 @@
 import { Project, ProjectTimeBlock } from '../models/project.model';
 
+export const PROJECTS_HERO_IMAGE_URL = 'assets/profile/projects/projects-hero.webp';
+
 const WORKER_PROFESSIONAL_INVESTMENT_BLOCKS: ProjectTimeBlock[] = [
   {
     label: 'Professional Investment Context',

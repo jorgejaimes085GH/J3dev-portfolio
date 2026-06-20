@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import {
   JOURNEY_CTA_LINKS,
   JOURNEY_EVOLUTION_PHASES,
+  JOURNEY_HERO_IMAGE_URL,
   JOURNEY_INSIGHTS,
   JOURNEY_STAGES,
 } from '../../data/journey.data';
@@ -23,6 +24,7 @@ import { Project } from '../../models/project.model';
 export class Journey {
   private readonly languageService = inject(LanguageService);
 
+  protected readonly heroImageUrl = JOURNEY_HERO_IMAGE_URL;
   protected readonly text = computed(() => this.languageService.uiText().pages.journey);
   protected readonly openMetricHelpId = signal<string | null>(null);
 
@@ -84,5 +86,9 @@ export class Journey {
     return (stage.relatedProjectSlugs ?? [])
       .map((projectSlug) => this.projectsBySlug().get(projectSlug))
       .filter((project): project is Project => Boolean(project));
+  }
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }

@@ -1,5 +1,7 @@
 import { ContactBadge, ContactMethod } from '../models/contact.model';
 
+export const CONTACT_HERO_IMAGE_URL = 'assets/profile/contact/contact-hero.webp';
+
 export const CONTACT_ICON_URLS = {
   email: 'assets/images/icons/actions/email.svg',
   whatsapp: 'assets/images/icons/actions/whatsapp.svg',

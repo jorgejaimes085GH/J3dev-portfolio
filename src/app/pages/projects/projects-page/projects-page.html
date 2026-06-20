@@ -1,11 +1,30 @@
 <main class="projects-page" aria-labelledby="projects-page-title">
-  <section class="projects-section projects-introduction" aria-labelledby="projects-page-title">
+  <section
+    class="projects-section projects-introduction portfolio-visual-hero"
+    aria-labelledby="projects-page-title"
+  >
     <div class="projects-section__header">
       <p class="projects-section__eyebrow">{{ text().eyebrow }}</p>
       <h1 id="projects-page-title">{{ text().title }}</h1>
       <p class="projects-introduction__summary">{{ text().summary }}</p>
       <p>{{ text().intro }}</p>
     </div>
+
+    <figure
+      class="projects-introduction__visual portfolio-visual-hero__visual"
+      [attr.aria-label]="text().title"
+    >
+      <div class="portfolio-visual-hero__frame">
+        @if (heroImageUrl) {
+          <img
+            class="portfolio-visual-hero__image"
+            [src]="heroImageUrl"
+            [alt]="text().title"
+            (error)="hideFailedAsset($event)"
+          />
+        }
+      </div>
+    </figure>
   </section>
 
   <section class="projects-section" aria-labelledby="project-list-title">

@@ -1,6 +1,10 @@
 import { Component, computed, inject, signal } from '@angular/core';
 
-import { DOCUMENT_ACTION_ICON_URLS, DOCUMENT_GROUPS } from '../../data/documents.data';
+import {
+  DOCUMENTS_HERO_IMAGE_URL,
+  DOCUMENT_ACTION_ICON_URLS,
+  DOCUMENT_GROUPS,
+} from '../../data/documents.data';
 import { getLocalizedData } from '../../data/localized-data';
 import { LanguageService } from '../../core/services/language.service';
 import { DocumentGroupSection, ProfessionalDocument } from '../../models/document.model';
@@ -14,6 +18,7 @@ import { DocumentGroupSection, ProfessionalDocument } from '../../models/documen
 export class Documents {
   private readonly languageService = inject(LanguageService);
 
+  protected readonly heroImageUrl = DOCUMENTS_HERO_IMAGE_URL;
   protected readonly text = computed(() => this.languageService.uiText().pages.documents);
   private readonly failedIconIds = signal<ReadonlySet<string>>(new Set());
   protected readonly uiCommon = computed(() => this.languageService.uiText().common);

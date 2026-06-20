@@ -5,7 +5,12 @@ import { RouterLink } from '@angular/router';
 import { PROJECTS } from '../../data/projects.data';
 import { getLocalizedData } from '../../data/localized-data';
 import { LanguageService } from '../../core/services/language.service';
-import { BACKEND_SKILL_GROUPS, SKILL_CATEGORIES, SKILLS } from '../../data/skills.data';
+import {
+  SKILLS_HERO_IMAGE_URL,
+  BACKEND_SKILL_GROUPS,
+  SKILL_CATEGORIES,
+  SKILLS,
+} from '../../data/skills.data';
 import { Project } from '../../models/project.model';
 import { BackendSkillGroup, Skill, SkillCategory } from '../../models/skill.model';
 
@@ -30,6 +35,7 @@ interface SkillGroup {
 export class Skills {
   private readonly languageService = inject(LanguageService);
 
+  protected readonly heroImageUrl = SKILLS_HERO_IMAGE_URL;
   protected readonly text = computed(() => this.languageService.uiText().pages.skills);
   protected readonly uiCommon = computed(() => this.languageService.uiText().common);
 
@@ -149,5 +155,9 @@ export class Skills {
 
   private slugify(value: string): string {
     return value.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-');
+  }
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }

@@ -3,7 +3,11 @@ import { RouterLink } from '@angular/router';
 
 import { LanguageService } from '../../core/services/language.service';
 import { ThemeService } from '../../core/services/theme.service';
-import { EXPERIENCE_CTA_LINKS, EXPERIENCE_ENTRIES } from '../../data/experience.data';
+import {
+  EXPERIENCE_HERO_IMAGE_URL,
+  EXPERIENCE_CTA_LINKS,
+  EXPERIENCE_ENTRIES,
+} from '../../data/experience.data';
 import { getLocalizedData } from '../../data/localized-data';
 import { PROJECTS } from '../../data/projects.data';
 import { ExperienceEntry } from '../../models/experience.model';
@@ -20,6 +24,7 @@ export class Experience {
   private readonly languageService = inject(LanguageService);
   private readonly themeService = inject(ThemeService);
 
+  protected readonly heroImageUrl = EXPERIENCE_HERO_IMAGE_URL;
   protected readonly text = computed(() => this.languageService.uiText().pages.experience);
   protected readonly isPremiumTheme = computed(
     () => this.themeService.currentTheme() === 'premium-3d',
@@ -89,5 +94,9 @@ export class Experience {
       .map((word) => word[0])
       .join('')
       .toUpperCase();
+  }
+
+  protected hideFailedAsset(event: Event): void {
+    (event.target as HTMLImageElement).hidden = true;
   }
 }
