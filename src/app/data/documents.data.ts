@@ -36,7 +36,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
   },
   {
     id: 'cv-en',
-    title: 'CV English',
+    title: 'English CV',
     description:
       'English resume for international recruiters, remote opportunities, and technical interviews, highlighting production experience, backend capabilities, project evidence, and long-term professional growth.',
     type: 'CV',
@@ -45,9 +45,9 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     statusLabel: 'PDF',
     filePath: 'assets/documents/resumes/cv-en.pdf',
     iconUrl: DOCUMENT_ICON_URLS.resume,
-    viewLabel: 'View CV English online',
-    downloadLabel: 'Download CV English PDF',
-    printLabel: 'Print CV English',
+    viewLabel: 'View English CV online',
+    downloadLabel: 'Download English CV PDF',
+    printLabel: 'Print English CV',
   },
   {
     id: 'cover-letter-es',
@@ -66,7 +66,7 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
   },
   {
     id: 'cover-letter-en',
-    title: 'Cover Letter English',
+    title: 'English Cover Letter',
     description:
       'Role-oriented introduction for international opportunities, framing Backend .NET experience, software modernization, maintainable engineering practices, and motivation for remote technical collaboration.',
     type: 'Cover Letter',
@@ -75,9 +75,9 @@ const PROFESSIONAL_DOCUMENTS_EN: ProfessionalDocument[] = [
     statusLabel: 'PDF',
     filePath: 'assets/documents/cover-letters/cover-letter-en.pdf',
     iconUrl: DOCUMENT_ICON_URLS.coverLetter,
-    viewLabel: 'View Cover Letter English online',
-    downloadLabel: 'Download Cover Letter English PDF',
-    printLabel: 'Print Cover Letter English',
+    viewLabel: 'View English Cover Letter online',
+    downloadLabel: 'Download English Cover Letter PDF',
+    printLabel: 'Print English Cover Letter',
   },
   {
     id: 'recommendation-leverit',
