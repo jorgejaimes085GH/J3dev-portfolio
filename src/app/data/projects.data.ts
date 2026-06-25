@@ -231,11 +231,11 @@ const PROJECT_ITEMS: Project[] = [
     timeBlocks: EXPENSUX_PROFESSIONAL_INVESTMENT_BLOCKS,
     links: [
       {
-        label: 'Demo del producto',
+        label: 'Product demo',
         type: 'Demo',
         typeLabel: 'DEMO',
-        actionLabel: 'Abrir demo',
-        url: '#',
+        actionLabel: 'Open demo',
+        url: 'https://expensux.pages.dev',
         isExternal: true,
       },
       {
@@ -249,7 +249,7 @@ const PROJECT_ITEMS: Project[] = [
       },
     ],
     placeholders: {
-      demoUrl: '#',
+      demoUrl: 'https://expensux.pages.dev',
     },
     sourceCodeNote: '',
     confidentialityNote:
@@ -939,7 +939,7 @@ const projectSpanishDetails: Record<
         type: 'Demo',
         typeLabel: 'DEMO',
         actionLabel: 'Abrir demo',
-        url: '#',
+        url: 'https://expensux.pages.dev',
         isExternal: true,
       },
       {
@@ -952,7 +952,7 @@ const projectSpanishDetails: Record<
         placeholderMessage: '',
       },
     ],
-    placeholders: { demoUrl: '#' },
+    placeholders: { demoUrl: 'https://expensux.pages.dev' },
     referencePlaceholders: undefined as never,
   },
   ithelpcenter: {
