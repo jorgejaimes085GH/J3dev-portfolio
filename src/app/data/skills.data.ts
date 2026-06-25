@@ -447,12 +447,14 @@ const SKILL_ITEMS: Skill[] = [
     id: 'azure-learning',
     name: 'Azure Learning',
     category: 'Dev Tools / Cloud',
-    shortDescription: 'Cloud deployment topic reserved for future verified evidence.',
+    shortDescription: 'Practical cloud deployment evidence connected to Expensux.',
     iconLabel: 'AZ',
-    relatedProjectSlugs: [],
+    relatedProjectSlugs: ['expensux'],
     evidenceSummary:
-      'Azure is listed as a current learning area until public-safe project evidence or deployment context is available.',
-    contextNotes: ['This avoids overstating cloud experience before evidence is added.'],
+      'Practical deployment of a fullstack application with frontend hosted on Cloudflare Pages, ASP.NET Core 8 API hosted on Azure App Service, and database on Azure SQL.',
+    contextNotes: [
+      'This keeps Azure evidence tied to a verified public project without exposing implementation details on the Skills page.',
+    ],
   },
   {
     id: 'docker-learning',
@@ -1034,10 +1036,12 @@ const skillSpanishDescriptions: Record<
     ],
   },
   'azure-learning': {
-    shortDescription: 'Tema cloud reservado para evidencia futura verificada.',
+    shortDescription: 'Evidencia práctica de despliegue cloud conectada con Expensux.',
     evidenceSummary:
-      'Azure se lista como área actual de aprendizaje hasta que exista evidencia pública segura de proyecto o contexto de despliegue.',
-    contextNotes: ['Esto evita exagerar experiencia cloud antes de agregar evidencia.'],
+      'Despliegue práctico de una aplicación fullstack con frontend en Cloudflare Pages, API ASP.NET Core 8 en Azure App Service y base de datos en Azure SQL.',
+    contextNotes: [
+      'Esto mantiene la evidencia de Azure conectada con un proyecto público verificado sin exponer detalles de implementación en la página Skills.',
+    ],
   },
   'docker-learning': {
     shortDescription: 'Tema de flujos con contenedores reservado para evidencia futura verificada.',
