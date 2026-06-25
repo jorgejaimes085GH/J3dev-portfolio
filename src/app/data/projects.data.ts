@@ -129,7 +129,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Long-running enterprise workflow system used in production since 2015, evolved across more than a decade from Access and VB.NET toward SQL Server, modern .NET architecture, and adaptable business workflows.',
     visualLabel: 'Enterprise workflow system visual',
-    ctaLabel: 'View Technical Evolution',
+    ctaLabel: 'View project details',
     context: [
       'Real enterprise system with more than a decade of evolution across production business needs.',
       'Initially created as a monolithic Access + VB.NET application using ADO.NET.',
@@ -206,7 +206,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Own financial control product designed from scratch with Clean Architecture direction, REST APIs, JWT authentication, Dapper data access, SQL Server workflows, and an Angular frontend while preparing a public demo.',
     visualLabel: 'Financial control application visual',
-    ctaLabel: 'Explore Architecture',
+    ctaLabel: 'View project details',
     context: [
       'Own product initiative designed from zero to organize practical financial workflows.',
       'Backend-oriented project that demonstrates product thinking, API boundaries, authentication, and data modeling decisions.',
@@ -264,7 +264,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Enterprise help desk platform supported in production for years through backend and frontend maintenance, SQL Server work, search optimization, new business flows, and functional evolution.',
     visualLabel: 'LeverIT help desk platform visual',
-    ctaLabel: 'View Professional Evidence',
+    ctaLabel: 'View project details',
     context: [
       'Professional enterprise project worked on during Jorge’s LeverIT experience.',
       'Contributions are described without exposing source code, private demos, client names, or proprietary implementation details.',
@@ -329,7 +329,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Custom electoral auditing platform developed for a real client to collect, validate, and review voting-station evidence through a centralized solution built with SQL Server, REST APIs, and Angular.',
     visualLabel: 'LeverIT custom client project visual',
-    ctaLabel: 'View Project Scope',
+    ctaLabel: 'View project details',
     context: [
       'Professional custom client project worked on during Jorge’s LeverIT experience.',
       'Built collaboratively from scratch with two teammates using SQL Server, REST APIs, and Angular for the presentation layer.',
@@ -379,7 +379,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Enterprise Discovery platform supported through production evolution, continuous inventory capabilities, SQL Server work, ASP.NET features, WebSockets, and maintainable improvements.',
     visualLabel: 'LeverIT enterprise discovery platform visual',
-    ctaLabel: 'View Contributions',
+    ctaLabel: 'View project details',
     context: [
       'Professional enterprise platform worked on during Jorge’s LeverIT experience.',
       'Supported production evolution, continuous inventory capabilities, SQL Server work, ASP.NET features, and WebSocket-related functionality.',
@@ -427,7 +427,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Modern Angular portfolio engineered as a data-driven, multi-language, multi-theme, responsive professional showcase for Backend .NET specialization and portfolio engineering evidence.',
     visualLabel: 'Portfolio application visual',
-    ctaLabel: 'View Implementation',
+    ctaLabel: 'View project details',
     context: [
       'Presents Backend .NET specialization, supporting fullstack capability, technical evolution, and recruiter-focused navigation.',
       'Public portfolio and open-source showcase for professional presentation.',
@@ -474,7 +474,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Commercial business management platform covering billing, inventory, purchasing, sales, accounts receivable, supplier management, and operational workflows.',
     visualLabel: 'Avances Software ERP enterprise system visual',
-    ctaLabel: 'View Enterprise Context',
+    ctaLabel: 'View project details',
     context: [
       'Earlier enterprise product experience from Avances Software.',
       'Represents historical production exposure to commercial ERP and business management workflows.',
@@ -514,7 +514,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Clinical management platform supporting appointments, patient records, admissions, authorizations, prescriptions, medical history tracking, and doctor scheduling.',
     visualLabel: 'Avances Software healthcare platform visual',
-    ctaLabel: 'View Healthcare Context',
+    ctaLabel: 'View project details',
     context: [
       'Earlier enterprise product experience from Avances Software.',
       'Represents historical production exposure to healthcare management workflows.',
@@ -554,7 +554,7 @@ const PROJECT_ITEMS: Project[] = [
     shortDescription:
       'Dental management platform focused on clinical records, patient tracking, appointment scheduling, and dental-specific treatment workflows.',
     visualLabel: 'Avances Software dental management platform visual',
-    ctaLabel: 'View Dental Workflow Context',
+    ctaLabel: 'View project details',
     context: [
       'Earlier enterprise product experience from Avances Software.',
       'Represents historical production exposure to dental practice and patient workflow management.',
@@ -655,7 +655,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Sistema empresarial de flujo de trabajo usado en producción desde 2015, evolucionado durante más de una década desde Access y VB.NET hacia SQL Server, arquitectura .NET moderna y flujos de negocio adaptables.',
     visualLabel: 'Visual del sistema de flujo empresarial',
-    ctaLabel: 'Ver evolución técnica',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote: '',
     confidentialityNote:
       'Este proyecto en producción se describe solo con contexto sanitizado. No se exponen código fuente, flujos propietarios, detalles de clientes ni datos operativos.',
@@ -666,7 +666,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Producto propio de control financiero diseñado desde cero con dirección Clean Architecture, REST APIs, autenticación JWT, acceso a datos con Dapper, flujos SQL Server y frontend Angular mientras se prepara una demo pública.',
     visualLabel: 'Visual de aplicación de control financiero',
-    ctaLabel: 'Explorar arquitectura',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote: '',
     confidentialityNote:
       'Los ejemplos financieros y detalles de implementación se presentan de forma segura. El código fuente permanece privado por ahora mientras se prepara la demo.',
@@ -677,7 +677,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma empresarial de mesa de ayuda apoyada en producción durante años mediante mantenimiento backend y frontend, trabajo con SQL Server, optimización de búsquedas, nuevos flujos de negocio y evolución funcional.',
     visualLabel: 'Visual de plataforma help desk de LeverIT',
-    ctaLabel: 'Ver evidencia profesional',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote: 'Producto privado de la empresa LeverIT.',
     confidentialityNote:
       'Este proyecto de LeverIT se representa solo con descripciones generalizadas y seguras para publicación. No se exponen código fuente, información privada de clientes, flujos propietarios, arquitectura interna ni datos operativos sensibles.',
@@ -688,7 +688,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma personalizada de auditoría electoral desarrollada para un cliente real, permitiendo recopilar, validar y revisar evidencia de mesas de votación mediante una solución centralizada construida con SQL Server, REST APIs y Angular.',
     visualLabel: 'Visual de proyecto cliente personalizado LeverIT',
-    ctaLabel: 'Ver alcance del proyecto',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este proyecto cliente de LeverIT.',
     confidentialityNote:
@@ -700,7 +700,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma empresarial Discovery apoyada mediante evolución en producción, capacidades de inventario continuo, trabajo con SQL Server, funcionalidades ASP.NET, WebSockets y mejoras mantenibles.',
     visualLabel: 'Visual de plataforma Discovery empresarial LeverIT',
-    ctaLabel: 'Ver contribuciones',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este proyecto empresarial de LeverIT.',
     confidentialityNote:
@@ -711,7 +711,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Portfolio moderno en Angular construido como showcase profesional data-driven, multi-idioma, multi-tema y responsive para presentar especialización Backend .NET y evidencia de portfolio engineering.',
     visualLabel: 'Visual de aplicación portfolio',
-    ctaLabel: 'Ver implementación',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote:
       'El enlace al repositorio público está disponible para revisar la implementación.',
     confidentialityNote:
@@ -722,7 +722,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma comercial de gestión empresarial que cubre facturación, inventario, compras, ventas, cuentas por cobrar, gestión de proveedores y flujos operativos.',
     visualLabel: 'Visual de sistema ERP empresarial de Avances Software',
-    ctaLabel: 'Ver contexto empresarial',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto empresarial de Avances Software.',
     confidentialityNote:
@@ -733,7 +733,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma de gestión clínica que soporta citas, registros de pacientes, ingresos, autorizaciones, fórmulas, seguimiento de historia médica y agenda de doctores.',
     visualLabel: 'Visual de plataforma clínica de Avances Software',
-    ctaLabel: 'Ver contexto clínico',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto clínico de Avances Software.',
     confidentialityNote:
@@ -745,7 +745,7 @@ const projectSpanishText: Record<string, Partial<Project>> = {
     shortDescription:
       'Plataforma de gestión odontológica enfocada en registros clínicos, seguimiento de pacientes, programación de citas y flujos de tratamientos dentales específicos.',
     visualLabel: 'Visual de plataforma odontológica de Avances Software',
-    ctaLabel: 'Ver contexto de flujo dental',
+    ctaLabel: 'Ver detalles del proyecto',
     sourceCodeNote:
       'No hay enlace GitHub, demo privada, código fuente, datos de cliente ni acceso a implementación propietaria para este producto odontológico de Avances Software.',
     confidentialityNote:
