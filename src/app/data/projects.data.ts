@@ -256,10 +256,10 @@ const PROJECT_ITEMS: Project[] = [
             { label: 'Service', value: 'Azure App Service' },
             { label: 'Application', value: 'ASP.NET Core 8 Web API' },
             {
-              label: 'API URL',
+              label: 'REST Documentation',
               value:
-                'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
-              url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+                'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/swagger/index.html',
+              url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/swagger/index.html',
             },
           ],
           diagramTitle: 'Azure App Service',
@@ -279,17 +279,10 @@ const PROJECT_ITEMS: Project[] = [
       ],
       actions: [
         {
-          label: 'Frontend demo',
-          type: 'Demo',
-          actionLabel: 'Open frontend demo',
-          url: 'https://expensux.pages.dev',
-          isExternal: true,
-        },
-        {
           label: 'API',
           type: 'Reference',
-          actionLabel: 'Open API',
-          url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+          actionLabel: 'View API documentation',
+          url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/swagger/index.html',
           isExternal: true,
         },
       ],
@@ -1025,10 +1018,10 @@ const projectSpanishDetails: Record<
             { label: 'Servicio', value: 'Azure App Service' },
             { label: 'Aplicación', value: 'ASP.NET Core 8 Web API' },
             {
-              label: 'URL API',
+              label: 'Documentación REST',
               value:
-                'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
-              url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+                'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/swagger/index.html',
+              url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/swagger/index.html',
             },
           ],
           diagramTitle: 'Azure App Service',
@@ -1048,17 +1041,10 @@ const projectSpanishDetails: Record<
       ],
       actions: [
         {
-          label: 'Demo frontend',
-          type: 'Demo',
-          actionLabel: 'Abrir demo frontend',
-          url: 'https://expensux.pages.dev',
-          isExternal: true,
-        },
-        {
           label: 'API',
           type: 'Reference',
-          actionLabel: 'Abrir API',
-          url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+          actionLabel: 'Ver documentación API',
+          url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/swagger/index.html',
           isExternal: true,
         },
       ],
