@@ -229,6 +229,71 @@ const PROJECT_ITEMS: Project[] = [
       'SOLID',
     ],
     timeBlocks: EXPENSUX_PROFESSIONAL_INVESTMENT_BLOCKS,
+    deploymentEvidence: {
+      eyebrow: 'Deployment evidence',
+      title: 'Deployment infrastructure',
+      description:
+        'Expensux was deployed as a decoupled fullstack application. The Angular frontend is hosted on Cloudflare Pages, the ASP.NET Core 8 API runs on Azure App Service, and the database uses Azure SQL Database. This implementation demonstrates web publishing, CORS configuration, HTTPS consumption, API deployment, and secure connection to a cloud database.',
+      nodes: [
+        {
+          title: 'Frontend',
+          details: [
+            { label: 'Service', value: 'Cloudflare Pages' },
+            { label: 'Application', value: 'Angular' },
+            {
+              label: 'Public URL',
+              value: 'https://expensux.pages.dev',
+              url: 'https://expensux.pages.dev',
+            },
+          ],
+          diagramTitle: 'Cloudflare Pages',
+          diagramSubtitle: 'Frontend Angular',
+          connectorLabel: 'HTTPS REST',
+        },
+        {
+          title: 'Backend API',
+          details: [
+            { label: 'Service', value: 'Azure App Service' },
+            { label: 'Application', value: 'ASP.NET Core 8 Web API' },
+            {
+              label: 'API URL',
+              value:
+                'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+              url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+            },
+          ],
+          diagramTitle: 'Azure App Service',
+          diagramSubtitle: 'ASP.NET Core 8 API',
+          connectorLabel: 'Dapper / SQL Connection',
+        },
+        {
+          title: 'Database',
+          details: [
+            { label: 'Service', value: 'Azure SQL Database' },
+            { label: 'Engine', value: 'SQL Server' },
+            { label: 'Access', value: 'secure connection from the deployed API' },
+          ],
+          diagramTitle: 'Azure SQL Database',
+          diagramSubtitle: 'SQL Server',
+        },
+      ],
+      actions: [
+        {
+          label: 'Frontend demo',
+          type: 'Demo',
+          actionLabel: 'Open frontend demo',
+          url: 'https://expensux.pages.dev',
+          isExternal: true,
+        },
+        {
+          label: 'API',
+          type: 'Reference',
+          actionLabel: 'Open API',
+          url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+          isExternal: true,
+        },
+      ],
+    },
     links: [
       {
         label: 'Product Demo',
@@ -873,7 +938,7 @@ const projectSpanishDetails: Record<
   string,
   Pick<
     Project,
-    'context' | 'architectureNotes' | 'links' | 'placeholders' | 'referencePlaceholders'
+    'context' | 'architectureNotes' | 'links' | 'deploymentEvidence' | 'placeholders' | 'referencePlaceholders'
   >
 > = {
   worker: {
@@ -933,6 +998,71 @@ const projectSpanishDetails: Record<
       'Usa dirección Clean Architecture y conceptos de API .NET por capas con acceso a datos en SQL Server y frontend Angular.',
       'Diseñada alrededor de perfiles, cuentas, deudas, pagos, categorías, movimientos, autenticación JWT, responsabilidades REST API y acceso a datos basado en Dapper.',
     ],
+    deploymentEvidence: {
+      eyebrow: 'Evidencia de despliegue',
+      title: 'Infraestructura de despliegue',
+      description:
+        'Expensux fue desplegado como una aplicación fullstack desacoplada. El frontend Angular se publica mediante Cloudflare Pages, la API ASP.NET Core 8 se ejecuta en Azure App Service y la base de datos utiliza Azure SQL Database. Esta implementación demuestra publicación web, configuración de CORS, consumo HTTPS, despliegue de API y conexión segura a base de datos cloud.',
+      nodes: [
+        {
+          title: 'Frontend',
+          details: [
+            { label: 'Servicio', value: 'Cloudflare Pages' },
+            { label: 'Aplicación', value: 'Angular' },
+            {
+              label: 'URL pública',
+              value: 'https://expensux.pages.dev',
+              url: 'https://expensux.pages.dev',
+            },
+          ],
+          diagramTitle: 'Cloudflare Pages',
+          diagramSubtitle: 'Frontend Angular',
+          connectorLabel: 'HTTPS REST',
+        },
+        {
+          title: 'Backend API',
+          details: [
+            { label: 'Servicio', value: 'Azure App Service' },
+            { label: 'Aplicación', value: 'ASP.NET Core 8 Web API' },
+            {
+              label: 'URL API',
+              value:
+                'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+              url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+            },
+          ],
+          diagramTitle: 'Azure App Service',
+          diagramSubtitle: 'ASP.NET Core 8 API',
+          connectorLabel: 'Dapper / SQL Connection',
+        },
+        {
+          title: 'Base de datos',
+          details: [
+            { label: 'Servicio', value: 'Azure SQL Database' },
+            { label: 'Motor', value: 'SQL Server' },
+            { label: 'Acceso', value: 'conexión segura desde la API desplegada' },
+          ],
+          diagramTitle: 'Azure SQL Database',
+          diagramSubtitle: 'SQL Server',
+        },
+      ],
+      actions: [
+        {
+          label: 'Demo frontend',
+          type: 'Demo',
+          actionLabel: 'Abrir demo frontend',
+          url: 'https://expensux.pages.dev',
+          isExternal: true,
+        },
+        {
+          label: 'API',
+          type: 'Reference',
+          actionLabel: 'Abrir API',
+          url: 'https://api-expensux-demo-dwc2fccychb8ahbw.brazilsouth-01.azurewebsites.net/api',
+          isExternal: true,
+        },
+      ],
+    },
     links: [
       {
         label: 'Demo del Producto',
