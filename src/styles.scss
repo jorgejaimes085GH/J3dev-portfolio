@@ -198,6 +198,8 @@ html.theme-premium-3d .hero-slider {
   overflow: hidden;
   isolation: isolate;
   perspective: 1200px;
+  min-height: min(780px, calc(100vh - 5rem));
+  padding: clamp(4.5rem, 8vw, 7rem) clamp(1rem, 4vw, 3rem) 6rem;
   background:
     radial-gradient(circle at 16% 18%, rgba(196, 167, 255, 0.24), transparent 24rem),
     radial-gradient(circle at 84% 22%, rgba(56, 189, 248, 0.16), transparent 24rem),
@@ -206,15 +208,15 @@ html.theme-premium-3d .hero-slider {
 
 html.theme-premium-3d .hero-slider__background-image {
   position: absolute;
-  inset: -8%;
+  inset: -4%;
   z-index: 0;
   display: block;
-  width: 116%;
-  height: 116%;
+  width: 108%;
+  height: 108%;
   object-fit: cover;
-  opacity: 0.2;
-  filter: saturate(1.12) contrast(1.06) blur(1px);
-  transform: scale(1.04) translate3d(-1.2%, -0.8%, 0);
+  opacity: 0.76;
+  filter: saturate(1.16) contrast(1.08);
+  transform: scale(1.02) translate3d(-0.8%, -0.5%, 0);
   animation: premiumHeroBackgroundDrift 18s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -232,9 +234,16 @@ html.theme-premium-3d .hero-slider::before {
   background:
     linear-gradient(
       90deg,
-      rgba(24, 18, 43, 0.92) 0%,
-      rgba(24, 18, 43, 0.74) 45%,
-      rgba(24, 18, 43, 0.84) 100%
+      rgba(11, 8, 23, 0.94) 0%,
+      rgba(18, 13, 34, 0.74) 34%,
+      rgba(18, 13, 34, 0.34) 62%,
+      rgba(11, 8, 23, 0.76) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(11, 8, 23, 0.28) 0%,
+      rgba(11, 8, 23, 0.08) 48%,
+      rgba(11, 8, 23, 0.88) 100%
     ),
     radial-gradient(circle at 72% 52%, rgba(196, 167, 255, 0.2), transparent 21rem);
 }
@@ -253,6 +262,13 @@ html.theme-premium-3d .hero-slider__content,
 html.theme-premium-3d .hero-slider__navigation {
   position: relative;
   z-index: 2;
+}
+
+html.theme-premium-3d .hero-slider__content {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  max-width: 1180px;
+  min-height: clamp(30rem, 58vh, 42rem);
 }
 
 html.theme-premium-3d .hero-slider__motion-layer {
@@ -317,16 +333,32 @@ html.theme-premium-3d .hero-slider__motion-line--two {
 }
 
 html.theme-premium-3d .hero-slider__copy {
+  position: relative;
+  max-width: min(100%, 43rem);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  border: 1px solid rgba(196, 167, 255, 0.26);
+  border-radius: clamp(1.25rem, 3vw, 2rem);
+  background:
+    linear-gradient(135deg, rgba(20, 15, 39, 0.88), rgba(20, 15, 39, 0.62)),
+    rgba(11, 8, 23, 0.72);
+  box-shadow:
+    0 2rem 5.5rem rgba(0, 0, 0, 0.44),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(1.14);
   text-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.34);
 }
 
 html.theme-premium-3d .hero-slider__visual {
-  transform: rotateX(3deg) rotateY(-4deg) translate3d(0, 0, 2rem);
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.32);
-  transition:
-    transform 700ms ease,
-    box-shadow 700ms ease;
-  animation: premiumHeroVisualFloat 10s ease-in-out infinite alternate;
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 html.theme-premium-3d .hero-slider__visual::after {
@@ -340,20 +372,37 @@ html.theme-premium-3d .hero-slider__visual::after {
 }
 
 html.theme-premium-3d .hero-slider__image {
-  transform: scale(1.04) translate3d(-1.1%, -0.8%, 0);
+  transform: scale(1.02) translate3d(-0.8%, -0.5%, 0);
   transition:
     opacity 520ms ease,
     transform 900ms ease;
   animation: premiumHeroImageDepth 12s ease-in-out infinite alternate;
 }
 
+html.theme-premium-3d .hero-slider__navigation {
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: 1.5rem;
+  left: clamp(1rem, 4vw, 3rem);
+  z-index: 3;
+  width: max-content;
+  max-width: calc(100% - clamp(2rem, 8vw, 6rem));
+  margin: 0 auto;
+  padding: 0.65rem;
+  border: 1px solid rgba(196, 167, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(11, 8, 23, 0.68);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px) saturate(1.18);
+}
+
 @keyframes premiumHeroBackgroundDrift {
   from {
-    transform: scale(1.04) translate3d(-1.2%, -0.8%, 0);
+    transform: scale(1.02) translate3d(-0.8%, -0.5%, 0);
   }
 
   to {
-    transform: scale(1.1) translate3d(1.2%, 0.8%, 0);
+    transform: scale(1.07) translate3d(0.8%, 0.5%, 0);
   }
 }
 
@@ -403,11 +452,11 @@ html.theme-premium-3d .hero-slider__image {
 
 @keyframes premiumHeroImageDepth {
   from {
-    transform: scale(1.04) translate3d(-1.1%, -0.8%, 0);
+    transform: scale(1.02) translate3d(-0.8%, -0.5%, 0);
   }
 
   to {
-    transform: scale(1.1) translate3d(1.1%, 0.8%, 0);
+    transform: scale(1.07) translate3d(0.8%, 0.5%, 0);
   }
 }
 
@@ -427,20 +476,30 @@ html.theme-premium-3d .hero-slider__image {
 }
 
 @media (max-width: 900px) {
+  html.theme-premium-3d .hero-slider {
+    min-height: min(760px, calc(100vh - 4.5rem));
+    padding-top: 4.5rem;
+  }
+
   html.theme-premium-3d .hero-slider__background-image {
     inset: -5%;
     width: 110%;
     height: 110%;
-    opacity: 0.16;
+    opacity: 0.68;
     animation-duration: 22s;
   }
 
-  html.theme-premium-3d .hero-slider__visual {
-    transform: rotateX(1.5deg) rotateY(-2deg) translate3d(0, 0, 1rem);
+  html.theme-premium-3d .hero-slider__content {
+    min-height: clamp(28rem, 56vh, 38rem);
   }
 }
 
 @media (max-width: 760px) {
+  html.theme-premium-3d .hero-slider {
+    min-height: min(720px, calc(100vh - 4rem));
+    padding: 3.5rem 1rem 6.25rem;
+  }
+
   html.theme-premium-3d .hero-slider::after,
   html.theme-premium-3d .hero-slider__motion-line {
     display: none;
@@ -451,13 +510,24 @@ html.theme-premium-3d .hero-slider__image {
   }
 
   html.theme-premium-3d .hero-slider__background-image {
-    opacity: 0.12;
+    opacity: 0.56;
     animation-name: premiumHeroBackgroundDriftMobile;
   }
 
-  html.theme-premium-3d .hero-slider__visual {
-    transform: none;
-    animation-name: premiumHeroVisualFloatMobile;
+  html.theme-premium-3d .hero-slider__content {
+    min-height: auto;
+  }
+
+  html.theme-premium-3d .hero-slider__copy {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  html.theme-premium-3d .hero-slider__navigation {
+    gap: 0.5rem;
+    max-width: calc(100% - 2rem);
+    padding: 0.55rem;
+    border-radius: 1.25rem;
   }
 }
 
