@@ -306,37 +306,49 @@ html.theme-premium-3d .hero-slider__motion-layer::after {
 }
 
 html.theme-premium-3d .hero-slider__motion-layer::before {
-  opacity: 0.44;
+  opacity: 0.5;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.8px),
-    radial-gradient(circle, rgba(196, 167, 255, 0.6) 0 1.2px, transparent 2.2px),
-    radial-gradient(circle, rgba(56, 189, 248, 0.5) 0 1px, transparent 2px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.74) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(196, 167, 255, 0.62) 0 1.2px, transparent 2.2px),
+    radial-gradient(circle, rgba(56, 189, 248, 0.52) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 0.8px, transparent 1.8px);
   background-position:
     8% 16%,
     44% 28%,
-    78% 62%;
+    78% 62%,
+    18% 72%;
   background-size:
     9.5rem 8.5rem,
     13rem 11rem,
-    16rem 14rem;
+    16rem 14rem,
+    21rem 18rem;
   mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 82%, transparent 100%);
-  animation: premiumHeroParticleDrift 38s linear infinite;
+  animation: premiumHeroParticleFieldDrift 46s linear infinite;
+  will-change: transform, opacity, background-position;
 }
 
 html.theme-premium-3d .hero-slider__motion-layer::after {
-  opacity: 0.28;
-  background:
-    linear-gradient(32deg, transparent 18%, rgba(196, 167, 255, 0.22) 18.25%, transparent 18.7%),
-    linear-gradient(147deg, transparent 29%, rgba(56, 189, 248, 0.16) 29.2%, transparent 29.65%),
-    linear-gradient(22deg, transparent 68%, rgba(255, 255, 255, 0.1) 68.18%, transparent 68.55%);
+  opacity: 0.34;
+  background-image:
+    linear-gradient(32deg, transparent 18%, rgba(196, 167, 255, 0.24) 18.25%, transparent 18.7%),
+    linear-gradient(147deg, transparent 29%, rgba(56, 189, 248, 0.18) 29.2%, transparent 29.65%),
+    linear-gradient(22deg, transparent 68%, rgba(255, 255, 255, 0.12) 68.18%, transparent 68.55%),
+    linear-gradient(116deg, transparent 46%, rgba(196, 167, 255, 0.14) 46.18%, transparent 46.5%);
+  background-position:
+    0 0,
+    30% 18%,
+    68% 42%,
+    12% 74%;
   background-size:
     32rem 24rem,
     36rem 26rem,
-    42rem 30rem;
+    42rem 30rem,
+    48rem 34rem;
   mask-image:
     radial-gradient(circle at 72% 48%, #000 0 28rem, transparent 42rem),
     linear-gradient(90deg, transparent, #000 30%, #000 86%, transparent);
-  animation: premiumHeroNetworkDrift 32s ease-in-out infinite alternate;
+  animation: premiumHeroNetworkParallax 34s ease-in-out infinite alternate;
+  will-change: transform, opacity, background-position;
 }
 
 html.theme-premium-3d .hero-slider__motion-orb,
@@ -396,26 +408,29 @@ html.theme-premium-3d .hero-slider__motion-line {
 }
 
 html.theme-premium-3d .hero-slider__motion-line--one {
+  --premium-hero-line-rotation: -14deg;
   top: 28%;
   right: 6%;
   width: min(34vw, 24rem);
-  transform: rotate(-14deg);
+  transform: rotate(var(--premium-hero-line-rotation));
 }
 
 html.theme-premium-3d .hero-slider__motion-line--two {
+  --premium-hero-line-rotation: 11deg;
   right: 22%;
   bottom: 24%;
   width: min(26vw, 18rem);
-  transform: rotate(11deg);
+  transform: rotate(var(--premium-hero-line-rotation));
   animation-delay: -4s;
 }
 
 html.theme-premium-3d .hero-slider__motion-line--three {
+  --premium-hero-line-rotation: 28deg;
   top: 48%;
   right: 14%;
   width: min(30vw, 21rem);
   opacity: 0.26;
-  transform: rotate(28deg);
+  transform: rotate(var(--premium-hero-line-rotation));
   animation-delay: -8s;
 }
 
@@ -558,33 +573,72 @@ html.theme-premium-3d .hero-slider__navigation {
 
 @keyframes premiumHeroLineDrift {
   from {
+    opacity: 0.3;
+    transform: translate3d(-0.85rem, 0.28rem, 0) rotate(var(--premium-hero-line-rotation, 0deg));
+  }
+
+  50% {
+    opacity: 0.62;
+    transform: translate3d(0.35rem, -0.18rem, 0) rotate(var(--premium-hero-line-rotation, 0deg));
+  }
+
+  to {
+    opacity: 0.46;
+    transform: translate3d(0.95rem, -0.35rem, 0) rotate(var(--premium-hero-line-rotation, 0deg));
+  }
+}
+
+@keyframes premiumHeroParticleFieldDrift {
+  from {
     opacity: 0.34;
-    translate: -0.75rem 0;
-  }
-
-  to {
-    opacity: 0.64;
-    translate: 0.75rem 0;
-  }
-}
-
-@keyframes premiumHeroParticleDrift {
-  from {
     transform: translate3d(-1.5rem, -0.75rem, 0);
+    background-position:
+      8% 16%,
+      44% 28%,
+      78% 62%,
+      18% 72%;
+  }
+
+  50% {
+    opacity: 0.56;
+    transform: translate3d(0.55rem, -0.35rem, 0);
+    background-position:
+      14% 22%,
+      39% 34%,
+      73% 56%,
+      23% 66%;
   }
 
   to {
+    opacity: 0.4;
     transform: translate3d(1.75rem, 1rem, 0);
+    background-position:
+      20% 28%,
+      34% 40%,
+      68% 50%,
+      28% 60%;
   }
 }
 
-@keyframes premiumHeroNetworkDrift {
+@keyframes premiumHeroNetworkParallax {
   from {
-    transform: translate3d(-0.75rem, 0.5rem, 0) scale(1);
+    opacity: 0.24;
+    transform: translate3d(-0.85rem, 0.55rem, 0) scale(1);
+    background-position:
+      0 0,
+      30% 18%,
+      68% 42%,
+      12% 74%;
   }
 
   to {
-    transform: translate3d(1rem, -0.75rem, 0) scale(1.02);
+    opacity: 0.42;
+    transform: translate3d(1.1rem, -0.8rem, 0) scale(1.02);
+    background-position:
+      5.5rem 4rem,
+      calc(30% + 3.5rem) calc(18% + 2.5rem),
+      calc(68% + 4.5rem) calc(42% + 3rem),
+      calc(12% + 2.5rem) calc(74% + 4rem);
   }
 }
 
