@@ -7,6 +7,12 @@ interface PremiumHeroParticle {
 }
 
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+const DEBUG_PARTICLE_RADIUS = 18;
+const DEBUG_PARTICLE_GLOW_RADIUS = 68;
+const DEBUG_PARTICLE_SPEED = 2.25;
+const DEBUG_PARTICLE_COLOR = 'rgba(34, 211, 238, 1)';
+const DEBUG_PARTICLE_GLOW_COLOR = 'rgba(34, 211, 238, 0.72)';
+const DEBUG_TEXT = 'Canvas OK';
 
 export class PremiumHeroCanvasAnimation {
   private readonly context: CanvasRenderingContext2D | null;
@@ -38,7 +44,16 @@ export class PremiumHeroCanvasAnimation {
   }
 
   start(): void {
-    if (this.isRunning || !this.context || this.prefersReducedMotion()) {
+    if (!this.context) {
+      return;
+    }
+
+    if (this.prefersReducedMotion()) {
+      this.clear();
+      return;
+    }
+
+    if (this.isRunning) {
       return;
     }
 
@@ -79,11 +94,12 @@ export class PremiumHeroCanvasAnimation {
     this.animationFrameId = null;
 
     if (!this.isRunning || !this.context || !this.particle || this.prefersReducedMotion()) {
+      this.clear();
       return;
     }
 
     this.updateParticle();
-    this.drawParticle();
+    this.drawFrame();
     this.queueFrame();
   }
 
@@ -97,19 +113,20 @@ export class PremiumHeroCanvasAnimation {
       this.canvas.width = canvasWidth;
       this.canvas.height = canvasHeight;
       this.context?.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      this.createParticle();
     }
+
+    this.keepParticleInsideBounds();
   }
 
   private createParticle(): void {
     const bounds = this.getCanvasBounds();
 
     this.particle = {
-      x: bounds.width * 0.72,
-      y: bounds.height * 0.34,
-      radius: 4.5,
-      velocityX: Math.max(0.16, bounds.width * 0.00018),
-      velocityY: Math.max(0.11, bounds.height * 0.00016),
+      x: Math.max(DEBUG_PARTICLE_RADIUS, bounds.width * 0.25),
+      y: Math.max(DEBUG_PARTICLE_RADIUS, bounds.height * 0.25),
+      radius: DEBUG_PARTICLE_RADIUS,
+      velocityX: DEBUG_PARTICLE_SPEED,
+      velocityY: DEBUG_PARTICLE_SPEED,
     };
   }
 
@@ -122,16 +139,24 @@ export class PremiumHeroCanvasAnimation {
     this.particle.x += this.particle.velocityX;
     this.particle.y += this.particle.velocityY;
 
-    if (this.particle.x - this.particle.radius > bounds.width) {
-      this.particle.x = -this.particle.radius;
+    if (this.particle.x + this.particle.radius >= bounds.width) {
+      this.particle.x = bounds.width - this.particle.radius;
+      this.particle.velocityX = -Math.abs(this.particle.velocityX);
+    } else if (this.particle.x - this.particle.radius <= 0) {
+      this.particle.x = this.particle.radius;
+      this.particle.velocityX = Math.abs(this.particle.velocityX);
     }
 
-    if (this.particle.y - this.particle.radius > bounds.height) {
-      this.particle.y = -this.particle.radius;
+    if (this.particle.y + this.particle.radius >= bounds.height) {
+      this.particle.y = bounds.height - this.particle.radius;
+      this.particle.velocityY = -Math.abs(this.particle.velocityY);
+    } else if (this.particle.y - this.particle.radius <= 0) {
+      this.particle.y = this.particle.radius;
+      this.particle.velocityY = Math.abs(this.particle.velocityY);
     }
   }
 
-  private drawParticle(): void {
+  private drawFrame(): void {
     if (!this.context || !this.particle) {
       return;
     }
@@ -143,24 +168,54 @@ export class PremiumHeroCanvasAnimation {
       0,
       this.particle.x,
       this.particle.y,
-      this.particle.radius * 5,
+      DEBUG_PARTICLE_GLOW_RADIUS,
     );
 
     glow.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-    glow.addColorStop(0.2, 'rgba(125, 211, 252, 0.7)');
-    glow.addColorStop(0.55, 'rgba(196, 167, 255, 0.24)');
-    glow.addColorStop(1, 'rgba(196, 167, 255, 0)');
+    glow.addColorStop(0.24, DEBUG_PARTICLE_GLOW_COLOR);
+    glow.addColorStop(1, 'rgba(34, 211, 238, 0)');
 
     this.context.clearRect(0, 0, bounds.width, bounds.height);
     this.context.beginPath();
     this.context.fillStyle = glow;
-    this.context.arc(this.particle.x, this.particle.y, this.particle.radius * 5, 0, Math.PI * 2);
+    this.context.arc(this.particle.x, this.particle.y, DEBUG_PARTICLE_GLOW_RADIUS, 0, Math.PI * 2);
     this.context.fill();
 
     this.context.beginPath();
-    this.context.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    this.context.fillStyle = DEBUG_PARTICLE_COLOR;
+    this.context.shadowColor = DEBUG_PARTICLE_COLOR;
+    this.context.shadowBlur = 24;
     this.context.arc(this.particle.x, this.particle.y, this.particle.radius, 0, Math.PI * 2);
     this.context.fill();
+    this.context.shadowBlur = 0;
+
+    this.drawDebugText(bounds.width, bounds.height);
+  }
+
+  private drawDebugText(width: number, height: number): void {
+    if (!this.context) {
+      return;
+    }
+
+    this.context.save();
+    this.context.font = '600 13px Inter, Arial, sans-serif';
+    this.context.textAlign = 'right';
+    this.context.textBaseline = 'bottom';
+    this.context.fillStyle = 'rgba(165, 243, 252, 0.95)';
+    this.context.shadowColor = 'rgba(34, 211, 238, 0.9)';
+    this.context.shadowBlur = 12;
+    this.context.fillText(DEBUG_TEXT, width - 24, height - 24);
+    this.context.restore();
+  }
+
+  private keepParticleInsideBounds(): void {
+    if (!this.particle) {
+      return;
+    }
+
+    const bounds = this.getCanvasBounds();
+    this.particle.x = Math.min(Math.max(this.particle.x, this.particle.radius), bounds.width - this.particle.radius);
+    this.particle.y = Math.min(Math.max(this.particle.y, this.particle.radius), bounds.height - this.particle.radius);
   }
 
   private clear(): void {
