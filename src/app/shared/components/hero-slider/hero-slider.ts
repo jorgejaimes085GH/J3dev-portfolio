@@ -36,10 +36,15 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           />
         }
         <div class="hero-slider__motion-layer" aria-hidden="true">
+          <span class="hero-slider__motion-particles"></span>
           <span class="hero-slider__motion-orb hero-slider__motion-orb--primary"></span>
           <span class="hero-slider__motion-orb hero-slider__motion-orb--secondary"></span>
+          <span class="hero-slider__motion-node hero-slider__motion-node--one"></span>
+          <span class="hero-slider__motion-node hero-slider__motion-node--two"></span>
+          <span class="hero-slider__motion-node hero-slider__motion-node--three"></span>
           <span class="hero-slider__motion-line hero-slider__motion-line--one"></span>
           <span class="hero-slider__motion-line hero-slider__motion-line--two"></span>
+          <span class="hero-slider__motion-line hero-slider__motion-line--three"></span>
         </div>
         <div class="hero-slider__content" [attr.aria-live]="isAutoPlaying ? 'off' : 'polite'">
           <div class="hero-slider__copy">
