@@ -188,6 +188,11 @@ a {
   display: none;
 }
 
+.hero-slider__motion-particles,
+.hero-slider__motion-node {
+  display: none;
+}
+
 html.theme-dark-tech .hero-slider__image,
 html.theme-premium-3d .hero-slider__image {
   opacity: 0.78;
@@ -292,11 +297,72 @@ html.theme-premium-3d .hero-slider__motion-layer {
   pointer-events: none;
 }
 
+html.theme-premium-3d .hero-slider__motion-layer::before,
+html.theme-premium-3d .hero-slider__motion-layer::after {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+}
+
+html.theme-premium-3d .hero-slider__motion-layer::before {
+  opacity: 0.44;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(196, 167, 255, 0.6) 0 1.2px, transparent 2.2px),
+    radial-gradient(circle, rgba(56, 189, 248, 0.5) 0 1px, transparent 2px);
+  background-position:
+    8% 16%,
+    44% 28%,
+    78% 62%;
+  background-size:
+    9.5rem 8.5rem,
+    13rem 11rem,
+    16rem 14rem;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 82%, transparent 100%);
+  animation: premiumHeroParticleDrift 38s linear infinite;
+}
+
+html.theme-premium-3d .hero-slider__motion-layer::after {
+  opacity: 0.28;
+  background:
+    linear-gradient(32deg, transparent 18%, rgba(196, 167, 255, 0.22) 18.25%, transparent 18.7%),
+    linear-gradient(147deg, transparent 29%, rgba(56, 189, 248, 0.16) 29.2%, transparent 29.65%),
+    linear-gradient(22deg, transparent 68%, rgba(255, 255, 255, 0.1) 68.18%, transparent 68.55%);
+  background-size:
+    32rem 24rem,
+    36rem 26rem,
+    42rem 30rem;
+  mask-image:
+    radial-gradient(circle at 72% 48%, #000 0 28rem, transparent 42rem),
+    linear-gradient(90deg, transparent, #000 30%, #000 86%, transparent);
+  animation: premiumHeroNetworkDrift 32s ease-in-out infinite alternate;
+}
+
 html.theme-premium-3d .hero-slider__motion-orb,
-html.theme-premium-3d .hero-slider__motion-line {
+html.theme-premium-3d .hero-slider__motion-line,
+html.theme-premium-3d .hero-slider__motion-node,
+html.theme-premium-3d .hero-slider__motion-particles {
   position: absolute;
   opacity: 0.58;
   will-change: transform, opacity;
+}
+
+html.theme-premium-3d .hero-slider__motion-particles,
+html.theme-premium-3d .hero-slider__motion-node {
+  display: block;
+}
+
+html.theme-premium-3d .hero-slider__motion-particles {
+  inset: 8% 4% 12% 30%;
+  opacity: 0.34;
+  background-image:
+    radial-gradient(circle at 12% 24%, rgba(255, 255, 255, 0.72) 0 1.5px, transparent 2.2px),
+    radial-gradient(circle at 26% 72%, rgba(196, 167, 255, 0.64) 0 1.8px, transparent 2.6px),
+    radial-gradient(circle at 48% 34%, rgba(56, 189, 248, 0.56) 0 1.4px, transparent 2.3px),
+    radial-gradient(circle at 68% 58%, rgba(255, 255, 255, 0.64) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 86% 28%, rgba(196, 167, 255, 0.56) 0 1.7px, transparent 2.5px);
+  animation: premiumHeroConstellationFloat 24s ease-in-out infinite alternate;
 }
 
 html.theme-premium-3d .hero-slider__motion-orb {
@@ -342,6 +408,43 @@ html.theme-premium-3d .hero-slider__motion-line--two {
   width: min(26vw, 18rem);
   transform: rotate(11deg);
   animation-delay: -4s;
+}
+
+html.theme-premium-3d .hero-slider__motion-line--three {
+  top: 48%;
+  right: 14%;
+  width: min(30vw, 21rem);
+  opacity: 0.26;
+  transform: rotate(28deg);
+  animation-delay: -8s;
+}
+
+html.theme-premium-3d .hero-slider__motion-node {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 0 0 0.35rem rgba(196, 167, 255, 0.09),
+    0 0 1.2rem rgba(196, 167, 255, 0.38);
+  animation: premiumHeroNodePulse 7s ease-in-out infinite alternate;
+}
+
+html.theme-premium-3d .hero-slider__motion-node--one {
+  top: 31%;
+  right: 29%;
+}
+
+html.theme-premium-3d .hero-slider__motion-node--two {
+  right: 10%;
+  bottom: 35%;
+  animation-delay: -2.5s;
+}
+
+html.theme-premium-3d .hero-slider__motion-node--three {
+  top: 62%;
+  right: 42%;
+  animation-delay: -5s;
 }
 
 html.theme-premium-3d .hero-slider__copy {
@@ -465,6 +568,50 @@ html.theme-premium-3d .hero-slider__navigation {
   }
 }
 
+@keyframes premiumHeroParticleDrift {
+  from {
+    transform: translate3d(-1.5rem, -0.75rem, 0);
+  }
+
+  to {
+    transform: translate3d(1.75rem, 1rem, 0);
+  }
+}
+
+@keyframes premiumHeroNetworkDrift {
+  from {
+    transform: translate3d(-0.75rem, 0.5rem, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(1rem, -0.75rem, 0) scale(1.02);
+  }
+}
+
+@keyframes premiumHeroConstellationFloat {
+  from {
+    opacity: 0.24;
+    transform: translate3d(-0.45rem, 0.35rem, 0);
+  }
+
+  to {
+    opacity: 0.42;
+    transform: translate3d(0.55rem, -0.45rem, 0);
+  }
+}
+
+@keyframes premiumHeroNodePulse {
+  from {
+    opacity: 0.34;
+    transform: translate3d(-0.2rem, 0.15rem, 0) scale(0.9);
+  }
+
+  to {
+    opacity: 0.72;
+    transform: translate3d(0.25rem, -0.2rem, 0) scale(1.08);
+  }
+}
+
 @keyframes premiumHeroVisualFloat {
   from {
     transform: rotateX(3deg) rotateY(-4deg) translate3d(0, 0, 2rem);
@@ -491,8 +638,12 @@ html.theme-premium-3d .hero-slider__navigation {
   html.theme-premium-3d .hero-slider,
   html.theme-premium-3d .hero-slider::after,
   html.theme-premium-3d .hero-slider__background-image,
+  html.theme-premium-3d .hero-slider__motion-layer::before,
+  html.theme-premium-3d .hero-slider__motion-layer::after,
   html.theme-premium-3d .hero-slider__motion-orb,
   html.theme-premium-3d .hero-slider__motion-line,
+  html.theme-premium-3d .hero-slider__motion-node,
+  html.theme-premium-3d .hero-slider__motion-particles,
   html.theme-premium-3d .hero-slider__visual,
   html.theme-premium-3d .hero-slider__image {
     animation: none;
@@ -531,6 +682,16 @@ html.theme-premium-3d .hero-slider__navigation {
   html.theme-premium-3d .hero-slider::after,
   html.theme-premium-3d .hero-slider__motion-line {
     display: none;
+  }
+
+  html.theme-premium-3d .hero-slider__motion-layer::after,
+  html.theme-premium-3d .hero-slider__motion-node {
+    display: none;
+  }
+
+  html.theme-premium-3d .hero-slider__motion-layer::before,
+  html.theme-premium-3d .hero-slider__motion-particles {
+    opacity: 0.2;
   }
 
   html.theme-premium-3d .hero-slider__motion-orb {
