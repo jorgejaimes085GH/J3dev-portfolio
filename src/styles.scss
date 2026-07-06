@@ -199,7 +199,9 @@ html.theme-premium-3d .hero-slider {
   isolation: isolate;
   perspective: 1200px;
   width: 100%;
+  height: clamp(40rem, calc(100vh - 5rem), 48.75rem);
   min-height: clamp(40rem, calc(100vh - 5rem), 48.75rem);
+  max-height: clamp(40rem, calc(100vh - 5rem), 48.75rem);
   padding: clamp(4.5rem, 8vw, 7rem) clamp(1rem, 4vw, 3rem) 6rem;
   background:
     radial-gradient(circle at 16% 18%, rgba(196, 167, 255, 0.24), transparent 24rem),
@@ -215,6 +217,8 @@ html.theme-premium-3d .hero-slider__background-image {
   width: 100%;
   height: 100%;
   max-width: none;
+  max-height: none;
+  aspect-ratio: auto;
   object-fit: cover;
   object-position: center center;
   opacity: 0.9;
@@ -272,8 +276,11 @@ html.theme-premium-3d .hero-slider__content {
   align-items: center;
   width: min(100%, 1180px);
   max-width: 1180px;
+  height: 100%;
   min-height: clamp(30rem, 58vh, 42rem);
+  max-height: 100%;
   margin: 0 auto 0 0;
+  overflow: hidden;
 }
 
 html.theme-premium-3d .hero-slider__motion-layer {
@@ -346,8 +353,8 @@ html.theme-premium-3d .hero-slider__copy {
   border: 1px solid rgba(255, 255, 255, 0.055);
   border-radius: clamp(1.25rem, 3vw, 2rem);
   background:
-    linear-gradient(135deg, rgba(12, 8, 30, 0.42), rgba(12, 8, 30, 0.32)),
-    rgba(12, 8, 30, 0.34);
+    linear-gradient(135deg, rgba(12, 8, 30, 0.5), rgba(12, 8, 30, 0.4)),
+    rgba(12, 8, 30, 0.4);
   box-shadow:
     0 1rem 2.5rem rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.045);
@@ -495,7 +502,9 @@ html.theme-premium-3d .hero-slider__navigation {
 
 @media (max-width: 900px) {
   html.theme-premium-3d .hero-slider {
+    height: clamp(38rem, calc(100vh - 4.5rem), 47.5rem);
     min-height: clamp(38rem, calc(100vh - 4.5rem), 47.5rem);
+    max-height: clamp(38rem, calc(100vh - 4.5rem), 47.5rem);
     padding-top: 4.5rem;
   }
 
@@ -513,7 +522,9 @@ html.theme-premium-3d .hero-slider__navigation {
 
 @media (max-width: 760px) {
   html.theme-premium-3d .hero-slider {
+    height: clamp(34rem, calc(100vh - 4rem), 45rem);
     min-height: clamp(34rem, calc(100vh - 4rem), 45rem);
+    max-height: clamp(34rem, calc(100vh - 4rem), 45rem);
     padding: 3.5rem 1rem 6.25rem;
   }
 
@@ -532,16 +543,19 @@ html.theme-premium-3d .hero-slider__navigation {
 
   html.theme-premium-3d .hero-slider__content {
     width: 100%;
-    min-height: auto;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
     margin-inline: auto;
+    overflow: visible;
   }
 
   html.theme-premium-3d .hero-slider__copy {
     padding: 1.25rem;
     border-radius: 1.25rem;
     background:
-      linear-gradient(135deg, rgba(12, 8, 30, 0.46), rgba(12, 8, 30, 0.34)),
-      rgba(12, 8, 30, 0.38);
+      linear-gradient(135deg, rgba(12, 8, 30, 0.54), rgba(12, 8, 30, 0.42)),
+      rgba(12, 8, 30, 0.42);
   }
 
   html.theme-premium-3d .hero-slider__navigation {
