@@ -184,12 +184,7 @@ a {
    while still supporting the three approved theme experiences. */
 
 .hero-slider__background-image,
-.hero-slider__motion-layer {
-  display: none;
-}
-
-.hero-slider__motion-particles,
-.hero-slider__motion-node {
+.hero-slider__premium-canvas {
   display: none;
 }
 
@@ -288,202 +283,14 @@ html.theme-premium-3d .hero-slider__content {
   overflow: hidden;
 }
 
-html.theme-premium-3d .hero-slider__motion-layer {
+html.theme-premium-3d .hero-slider__premium-canvas {
   position: absolute;
   inset: 0;
   z-index: 1;
   display: block;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-}
-
-html.theme-premium-3d .hero-slider__motion-layer::before,
-html.theme-premium-3d .hero-slider__motion-layer::after {
-  content: '';
-  position: absolute;
-  inset: -12%;
-  pointer-events: none;
-}
-
-html.theme-premium-3d .hero-slider__motion-layer::before {
-  opacity: 0.64;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.86) 0 1px, transparent 1.9px),
-    radial-gradient(circle, rgba(196, 167, 255, 0.78) 0 1.35px, transparent 2.35px),
-    radial-gradient(circle, rgba(56, 189, 248, 0.66) 0 1px, transparent 2.1px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.54) 0 0.85px, transparent 1.95px),
-    radial-gradient(circle, rgba(125, 211, 252, 0.52) 0 1.15px, transparent 2.35px),
-    radial-gradient(circle, rgba(216, 180, 254, 0.46) 0 0.9px, transparent 2px);
-  background-position:
-    8% 16%,
-    44% 28%,
-    78% 62%,
-    18% 72%,
-    58% 82%,
-    92% 18%;
-  background-size:
-    7.5rem 6.75rem,
-    10.5rem 9rem,
-    13.5rem 11.5rem,
-    17rem 14.5rem,
-    22rem 18rem,
-    27rem 22rem;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 82%, transparent 100%);
-  animation: premiumHeroParticleFieldDrift 36s linear infinite;
-  will-change: transform, opacity, background-position;
-}
-
-html.theme-premium-3d .hero-slider__motion-layer::after {
-  opacity: 0.46;
-  background-image:
-    linear-gradient(32deg, transparent 17.8%, rgba(196, 167, 255, 0.34) 18.1%, transparent 18.62%),
-    linear-gradient(147deg, transparent 28.8%, rgba(56, 189, 248, 0.26) 29.08%, transparent 29.62%),
-    linear-gradient(22deg, transparent 67.8%, rgba(255, 255, 255, 0.2) 68.06%, transparent 68.5%),
-    linear-gradient(
-      116deg,
-      transparent 45.8%,
-      rgba(196, 167, 255, 0.22) 46.08%,
-      transparent 46.58%
-    ),
-    linear-gradient(63deg, transparent 54.4%, rgba(125, 211, 252, 0.18) 54.62%, transparent 55.05%);
-  background-position:
-    0 0,
-    30% 18%,
-    68% 42%,
-    12% 74%,
-    86% 24%;
-  background-size:
-    27rem 20rem,
-    31rem 22rem,
-    37rem 27rem,
-    43rem 31rem,
-    52rem 36rem;
-  mask-image:
-    radial-gradient(circle at 72% 48%, #000 0 28rem, transparent 42rem),
-    linear-gradient(90deg, transparent, #000 30%, #000 86%, transparent);
-  animation: premiumHeroNetworkParallax 24s ease-in-out infinite alternate;
-  will-change: transform, opacity, background-position;
-}
-
-html.theme-premium-3d .hero-slider__motion-orb,
-html.theme-premium-3d .hero-slider__motion-line,
-html.theme-premium-3d .hero-slider__motion-node,
-html.theme-premium-3d .hero-slider__motion-particles {
-  position: absolute;
-  opacity: 0.58;
-  will-change: transform, opacity;
-}
-
-html.theme-premium-3d .hero-slider__motion-particles,
-html.theme-premium-3d .hero-slider__motion-node {
-  display: block;
-}
-
-html.theme-premium-3d .hero-slider__motion-particles {
-  inset: 8% 4% 12% 30%;
-  opacity: 0.5;
-  background-image:
-    radial-gradient(circle at 12% 24%, rgba(255, 255, 255, 0.86) 0 1.6px, transparent 2.4px),
-    radial-gradient(circle at 26% 72%, rgba(196, 167, 255, 0.78) 0 1.95px, transparent 2.85px),
-    radial-gradient(circle at 48% 34%, rgba(56, 189, 248, 0.72) 0 1.55px, transparent 2.55px),
-    radial-gradient(circle at 68% 58%, rgba(255, 255, 255, 0.74) 0 1.3px, transparent 2.15px),
-    radial-gradient(circle at 86% 28%, rgba(196, 167, 255, 0.68) 0 1.8px, transparent 2.75px),
-    radial-gradient(circle at 38% 12%, rgba(125, 211, 252, 0.64) 0 1.1px, transparent 2.15px),
-    radial-gradient(circle at 76% 82%, rgba(216, 180, 254, 0.58) 0 1.25px, transparent 2.3px);
-  animation: premiumHeroConstellationFloat 18s ease-in-out infinite alternate;
-}
-
-html.theme-premium-3d .hero-slider__motion-orb {
-  border: 1px solid rgba(196, 167, 255, 0.34);
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(196, 167, 255, 0.28), transparent 62%);
-  box-shadow: 0 0 2rem rgba(196, 167, 255, 0.16);
-  animation: premiumHeroOrbFloat 14s ease-in-out infinite alternate;
-}
-
-html.theme-premium-3d .hero-slider__motion-orb--primary {
-  top: 16%;
-  right: 12%;
-  width: clamp(4rem, 9vw, 7.5rem);
-  height: clamp(4rem, 9vw, 7.5rem);
-}
-
-html.theme-premium-3d .hero-slider__motion-orb--secondary {
-  bottom: 18%;
-  left: 48%;
-  width: clamp(2.75rem, 6vw, 4.75rem);
-  height: clamp(2.75rem, 6vw, 4.75rem);
-  animation-delay: -5s;
-}
-
-html.theme-premium-3d .hero-slider__motion-line {
-  height: 1px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(125, 211, 252, 0.24),
-    rgba(196, 167, 255, 0.72),
-    rgba(255, 255, 255, 0.42),
-    transparent
-  );
-  box-shadow: 0 0 1rem rgba(196, 167, 255, 0.18);
-  animation: premiumHeroLineDrift 10s ease-in-out infinite alternate;
-}
-
-html.theme-premium-3d .hero-slider__motion-line--one {
-  --premium-hero-line-rotation: -14deg;
-  top: 28%;
-  right: 6%;
-  width: min(34vw, 24rem);
-  transform: rotate(var(--premium-hero-line-rotation));
-}
-
-html.theme-premium-3d .hero-slider__motion-line--two {
-  --premium-hero-line-rotation: 11deg;
-  right: 22%;
-  bottom: 24%;
-  width: min(26vw, 18rem);
-  transform: rotate(var(--premium-hero-line-rotation));
-  animation-delay: -4s;
-}
-
-html.theme-premium-3d .hero-slider__motion-line--three {
-  --premium-hero-line-rotation: 28deg;
-  top: 48%;
-  right: 14%;
-  width: min(30vw, 21rem);
-  opacity: 0.26;
-  transform: rotate(var(--premium-hero-line-rotation));
-  animation-delay: -8s;
-}
-
-html.theme-premium-3d .hero-slider__motion-node {
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow:
-    0 0 0 0.35rem rgba(196, 167, 255, 0.09),
-    0 0 1.2rem rgba(196, 167, 255, 0.38);
-  animation: premiumHeroNodePulse 7s ease-in-out infinite alternate;
-}
-
-html.theme-premium-3d .hero-slider__motion-node--one {
-  top: 31%;
-  right: 29%;
-}
-
-html.theme-premium-3d .hero-slider__motion-node--two {
-  right: 10%;
-  bottom: 35%;
-  animation-delay: -2.5s;
-}
-
-html.theme-premium-3d .hero-slider__motion-node--three {
-  top: 62%;
-  right: 42%;
-  animation-delay: -5s;
 }
 
 html.theme-premium-3d .hero-slider__copy {
@@ -562,15 +369,6 @@ html.theme-premium-3d .hero-slider__navigation {
   backdrop-filter: blur(14px) saturate(1.18);
 }
 
-@keyframes premiumHeroBackgroundDrift {
-  from {
-    transform: translate3d(0, 0, 0) scale(1.035);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0) scale(1.055);
-  }
-}
 
 @keyframes premiumHeroGridShift {
   from {
@@ -582,157 +380,21 @@ html.theme-premium-3d .hero-slider__navigation {
   }
 }
 
-@keyframes premiumHeroOrbFloat {
-  from {
-    opacity: 0.42;
-    transform: translate3d(-0.75rem, 0.5rem, 0) scale(0.96);
-  }
-
-  to {
-    opacity: 0.68;
-    transform: translate3d(0.9rem, -0.7rem, 0) scale(1.04);
-  }
-}
-
-@keyframes premiumHeroLineDrift {
-  from {
-    opacity: 0.3;
-    transform: translate3d(-0.85rem, 0.28rem, 0) rotate(var(--premium-hero-line-rotation, 0deg));
-  }
-
-  50% {
-    opacity: 0.62;
-    transform: translate3d(0.35rem, -0.18rem, 0) rotate(var(--premium-hero-line-rotation, 0deg));
-  }
-
-  to {
-    opacity: 0.46;
-    transform: translate3d(0.95rem, -0.35rem, 0) rotate(var(--premium-hero-line-rotation, 0deg));
-  }
-}
-
-@keyframes premiumHeroParticleFieldDrift {
-  from {
-    opacity: 0.34;
-    transform: translate3d(-1.5rem, -0.75rem, 0);
-    background-position:
-      8% 16%,
-      44% 28%,
-      78% 62%,
-      18% 72%,
-      58% 82%,
-      92% 18%;
-  }
-
-  50% {
-    opacity: 0.56;
-    transform: translate3d(0.55rem, -0.35rem, 0);
-    background-position:
-      14% 22%,
-      39% 34%,
-      73% 56%,
-      23% 66%,
-      55% 78%,
-      89% 22%;
-  }
-
-  to {
-    opacity: 0.4;
-    transform: translate3d(1.75rem, 1rem, 0);
-    background-position:
-      20% 28%,
-      34% 40%,
-      68% 50%,
-      28% 60%,
-      52% 76%,
-      86% 26%;
-  }
-}
-
-@keyframes premiumHeroNetworkParallax {
-  from {
-    opacity: 0.24;
-    transform: translate3d(-0.85rem, 0.55rem, 0) scale(1);
-    background-position:
-      0 0,
-      30% 18%,
-      68% 42%,
-      12% 74%,
-      86% 24%;
-  }
-
-  to {
-    opacity: 0.42;
-    transform: translate3d(1.1rem, -0.8rem, 0) scale(1.02);
-    background-position:
-      5.5rem 4rem,
-      calc(30% + 3.5rem) calc(18% + 2.5rem),
-      calc(68% + 4.5rem) calc(42% + 3rem),
-      calc(12% + 2.5rem) calc(74% + 4rem),
-      calc(86% - 4rem) calc(24% + 3rem);
-  }
-}
-
-@keyframes premiumHeroConstellationFloat {
-  from {
-    opacity: 0.24;
-    transform: translate3d(-0.45rem, 0.35rem, 0);
-  }
-
-  to {
-    opacity: 0.42;
-    transform: translate3d(0.55rem, -0.45rem, 0);
-  }
-}
-
-@keyframes premiumHeroNodePulse {
-  from {
-    opacity: 0.34;
-    transform: translate3d(-0.2rem, 0.15rem, 0) scale(0.9);
-  }
-
-  to {
-    opacity: 0.72;
-    transform: translate3d(0.25rem, -0.2rem, 0) scale(1.08);
-  }
-}
-
-@keyframes premiumHeroVisualFloat {
-  from {
-    transform: rotateX(3deg) rotateY(-4deg) translate3d(0, 0, 2rem);
-  }
-
-  to {
-    transform: rotateX(2deg) rotateY(-2deg) translate3d(0.35rem, -0.45rem, 2rem);
-  }
-}
-
-@keyframes premiumHeroImageDepth {
-  from {
-    transform: translate3d(0, 0, 0) scale(1.035);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0) scale(1.055);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero-slider__content,
   .hero-slider__image,
   html.theme-premium-3d .hero-slider,
   html.theme-premium-3d .hero-slider::after,
   html.theme-premium-3d .hero-slider__background-image,
-  html.theme-premium-3d .hero-slider__motion-layer::before,
-  html.theme-premium-3d .hero-slider__motion-layer::after,
-  html.theme-premium-3d .hero-slider__motion-orb,
-  html.theme-premium-3d .hero-slider__motion-line,
-  html.theme-premium-3d .hero-slider__motion-node,
-  html.theme-premium-3d .hero-slider__motion-particles,
+  html.theme-premium-3d .hero-slider__premium-canvas,
   html.theme-premium-3d .hero-slider__visual,
   html.theme-premium-3d .hero-slider__image {
     animation: none;
     transition: none;
+  }
+
+  html.theme-premium-3d .hero-slider__premium-canvas {
+    display: none;
   }
 }
 
@@ -764,23 +426,8 @@ html.theme-premium-3d .hero-slider__navigation {
     padding: 3.5rem 1rem 6.25rem;
   }
 
-  html.theme-premium-3d .hero-slider::after,
-  html.theme-premium-3d .hero-slider__motion-line {
+  html.theme-premium-3d .hero-slider::after {
     display: none;
-  }
-
-  html.theme-premium-3d .hero-slider__motion-layer::after,
-  html.theme-premium-3d .hero-slider__motion-node {
-    display: none;
-  }
-
-  html.theme-premium-3d .hero-slider__motion-layer::before,
-  html.theme-premium-3d .hero-slider__motion-particles {
-    opacity: 0.2;
-  }
-
-  html.theme-premium-3d .hero-slider__motion-orb {
-    opacity: 0.26;
   }
 
   html.theme-premium-3d .hero-slider__background-image {
@@ -808,26 +455,6 @@ html.theme-premium-3d .hero-slider__navigation {
     max-width: calc(100% - 2rem);
     padding: 0.55rem;
     border-radius: 1.25rem;
-  }
-}
-
-@keyframes premiumHeroBackgroundDriftMobile {
-  from {
-    transform: translate3d(0, 0, 0) scale(1.035);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0) scale(1.05);
-  }
-}
-
-@keyframes premiumHeroVisualFloatMobile {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(0, -0.25rem, 0);
   }
 }
 
@@ -2667,204 +2294,4 @@ app-navbar
   max-width: 100%;
   height: auto;
   min-height: 100%;
-}
-
-/* Premium Hero living network animation: individual DOM elements only, scoped to Premium 3D. */
-.hero-slider__particle,
-.hero-slider__motion-glow {
-  display: none;
-}
-
-html.theme-premium-3d .hero-slider__particle,
-html.theme-premium-3d .hero-slider__motion-glow {
-  position: absolute;
-  display: block;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-html.theme-premium-3d .hero-slider__particle {
-  left: var(--x);
-  top: var(--y);
-  z-index: 2;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 999px;
-  opacity: var(--opacity);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow:
-    0 0 0.45rem rgba(125, 211, 252, 0.5),
-    0 0 0.95rem rgba(196, 167, 255, 0.22);
-  transform: translate3d(-50%, -50%, 0);
-  animation: premiumHeroParticleFloat var(--duration) ease-in-out var(--delay) infinite alternate;
-}
-
-html.theme-premium-3d .hero-slider__motion-node {
-  left: var(--x);
-  top: var(--y);
-  z-index: 3;
-  display: block;
-  width: var(--size);
-  height: var(--size);
-  opacity: var(--opacity);
-  transform: translate3d(-50%, -50%, 0);
-  animation: premiumHeroLivingNodePulse var(--duration) ease-in-out var(--delay) infinite alternate;
-}
-
-html.theme-premium-3d .hero-slider__motion-node::before,
-html.theme-premium-3d .hero-slider__motion-node::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-}
-
-html.theme-premium-3d .hero-slider__motion-node::before {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 0 0 0.35rem rgba(125, 211, 252, 0.12),
-    0 0 1.25rem rgba(125, 211, 252, 0.72),
-    0 0 2.35rem rgba(196, 167, 255, 0.34);
-}
-
-html.theme-premium-3d .hero-slider__motion-node::after {
-  inset: -0.55rem;
-  border: 1px solid rgba(196, 167, 255, 0.18);
-  opacity: 0.72;
-}
-
-html.theme-premium-3d .hero-slider__motion-line {
-  left: var(--x);
-  top: var(--y);
-  z-index: 2;
-  display: block;
-  width: var(--line-width);
-  height: 1px;
-  opacity: var(--opacity);
-  transform-origin: left center;
-  transform: translate3d(-50%, -50%, 0) rotate(var(--rotation));
-  animation: premiumHeroLivingLineDrift var(--duration) ease-in-out var(--delay) infinite alternate;
-}
-
-html.theme-premium-3d .hero-slider__motion-glow {
-  left: var(--x);
-  top: var(--y);
-  z-index: 1;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 999px;
-  opacity: 0.2;
-  background: radial-gradient(
-    circle,
-    rgba(var(--hue), 0.26),
-    rgba(var(--hue), 0.08) 42%,
-    transparent 70%
-  );
-  transform: translate3d(-50%, -50%, 0) scale(0.92);
-  animation: premiumHeroGlowBreathe var(--duration) ease-in-out var(--delay) infinite alternate;
-}
-
-@keyframes premiumHeroParticleFloat {
-  from {
-    opacity: calc(var(--opacity) * 0.65);
-    transform: translate3d(-50%, -50%, 0) scale(0.82);
-  }
-
-  52% {
-    opacity: var(--opacity);
-    transform: translate3d(
-        calc(-50% + (var(--drift-x) * 0.44)),
-        calc(-50% + (var(--drift-y) * 0.38)),
-        0
-      )
-      scale(1.08);
-  }
-
-  to {
-    opacity: calc(var(--opacity) * 0.78);
-    transform: translate3d(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y)), 0) scale(0.94);
-  }
-}
-
-@keyframes premiumHeroLivingNodePulse {
-  from {
-    opacity: calc(var(--opacity) * 0.72);
-    transform: translate3d(-50%, -50%, 0) scale(0.86);
-  }
-
-  48% {
-    opacity: var(--opacity);
-    transform: translate3d(calc(-50% + 0.35rem), calc(-50% - 0.25rem), 0) scale(var(--scale));
-  }
-
-  to {
-    opacity: calc(var(--opacity) * 0.82);
-    transform: translate3d(calc(-50% - 0.25rem), calc(-50% + 0.2rem), 0) scale(0.98);
-  }
-}
-
-@keyframes premiumHeroLivingLineDrift {
-  from {
-    opacity: calc(var(--opacity) * 0.42);
-    transform: translate3d(calc(-50% - 0.8rem), calc(-50% + 0.35rem), 0) rotate(var(--rotation))
-      scaleX(0.72);
-  }
-
-  44% {
-    opacity: var(--opacity);
-    transform: translate3d(calc(-50% + 0.45rem), calc(-50% - 0.25rem), 0) rotate(var(--rotation))
-      scaleX(1.04);
-  }
-
-  to {
-    opacity: calc(var(--opacity) * 0.58);
-    transform: translate3d(calc(-50% + 1rem), calc(-50% - 0.4rem), 0) rotate(var(--rotation))
-      scaleX(0.9);
-  }
-}
-
-@keyframes premiumHeroGlowBreathe {
-  from {
-    opacity: 0.1;
-    transform: translate3d(-50%, -50%, 0) scale(0.9);
-  }
-
-  to {
-    opacity: 0.24;
-    transform: translate3d(calc(-50% + 1.2rem), calc(-50% - 0.8rem), 0) scale(1.08);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html.theme-premium-3d .hero-slider__particle,
-  html.theme-premium-3d .hero-slider__motion-glow {
-    animation: none;
-    transition: none;
-  }
-
-  html.theme-premium-3d .hero-slider__particle {
-    opacity: 0.14;
-  }
-
-  html.theme-premium-3d .hero-slider__motion-node,
-  html.theme-premium-3d .hero-slider__motion-line,
-  html.theme-premium-3d .hero-slider__motion-glow {
-    opacity: 0.16;
-  }
-}
-
-@media (max-width: 760px) {
-  html.theme-premium-3d .hero-slider__particle:nth-of-type(n + 45),
-  html.theme-premium-3d .hero-slider__motion-node:nth-of-type(n + 14),
-  html.theme-premium-3d .hero-slider__motion-line:nth-of-type(n + 10) {
-    display: none;
-  }
-
-  html.theme-premium-3d .hero-slider__particle {
-    opacity: calc(var(--opacity) * 0.62);
-  }
-
-  html.theme-premium-3d .hero-slider__motion-glow {
-    opacity: 0.12;
-  }
 }

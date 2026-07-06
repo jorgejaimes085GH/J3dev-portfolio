@@ -1,21 +1,22 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
   SimpleChanges,
+  ViewChild,
   computed,
+  effect,
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { LanguageService } from '../../../core/services/language.service';
+import { ThemeService } from '../../../core/services/theme.service';
 import { HeroSlide } from '../../../models/hero-slide.model';
-
-interface PremiumHeroAtmosphereItem {
-  readonly id: string;
-  readonly style: string;
-}
+import { PremiumHeroCanvasAnimation } from '../../animations/premium-hero-canvas.animation';
 
 @Component({
   selector: 'app-hero-slider',
@@ -40,20 +41,11 @@ interface PremiumHeroAtmosphereItem {
             (error)="hideFailedAsset(slide)"
           />
         }
-        <div class="hero-slider__motion-layer" aria-hidden="true">
-          @for (glow of premiumHeroGlows; track glow.id) {
-            <span class="hero-slider__motion-glow" [attr.style]="glow.style"></span>
-          }
-          @for (line of premiumHeroLines; track line.id) {
-            <span class="hero-slider__motion-line" [attr.style]="line.style"></span>
-          }
-          @for (node of premiumHeroNodes; track node.id) {
-            <span class="hero-slider__motion-node" [attr.style]="node.style"></span>
-          }
-          @for (particle of premiumHeroParticles; track particle.id) {
-            <span class="hero-slider__particle" [attr.style]="particle.style"></span>
-          }
-        </div>
+        <canvas
+          #premiumHeroCanvas
+          class="hero-slider__premium-canvas"
+          aria-hidden="true"
+        ></canvas>
         <div class="hero-slider__content" [attr.aria-live]="isAutoPlaying ? 'off' : 'polite'">
           <div class="hero-slider__copy">
             <p class="hero-slider__eyebrow">{{ slide.eyebrow }}</p>
@@ -381,8 +373,11 @@ interface PremiumHeroAtmosphereItem {
     `,
   ],
 })
-export class HeroSlider implements OnChanges, OnDestroy {
+export class HeroSlider implements AfterViewInit, OnChanges, OnDestroy {
   private readonly languageService = inject(LanguageService);
+  private readonly themeService = inject(ThemeService);
+
+  @ViewChild('premiumHeroCanvas') private premiumHeroCanvas?: ElementRef<HTMLCanvasElement>;
 
   @Input() slides: readonly HeroSlide[] = [];
 
@@ -392,14 +387,17 @@ export class HeroSlider implements OnChanges, OnDestroy {
   currentIndex = 0;
   isAutoPlaying = false;
 
-  protected readonly premiumHeroParticles = this.createPremiumHeroParticles();
-  protected readonly premiumHeroNodes = this.createPremiumHeroNodes();
-  protected readonly premiumHeroLines = this.createPremiumHeroLines();
-  protected readonly premiumHeroGlows = this.createPremiumHeroGlows();
+  private premiumHeroAnimation: PremiumHeroCanvasAnimation | null = null;
 
   private readonly autoPlayDelay = 6500;
   private autoPlayTimer: ReturnType<typeof setInterval> | null = null;
   private readonly failedBackgrounds = new Set<string>();
+
+  constructor() {
+    effect(() => {
+      this.syncPremiumHeroAnimation(this.themeService.currentTheme() === 'premium-3d');
+    });
+  }
 
   get currentSlide(): HeroSlide | undefined {
     return this.slides[this.currentIndex];
@@ -413,8 +411,19 @@ export class HeroSlider implements OnChanges, OnDestroy {
     }
   }
 
+  ngAfterViewInit(): void {
+    if (!this.premiumHeroCanvas) {
+      return;
+    }
+
+    this.premiumHeroAnimation = new PremiumHeroCanvasAnimation(this.premiumHeroCanvas.nativeElement);
+    this.syncPremiumHeroAnimation(this.themeService.currentTheme() === 'premium-3d');
+  }
+
   ngOnDestroy(): void {
     this.stopAutoPlay();
+    this.premiumHeroAnimation?.destroy();
+    this.premiumHeroAnimation = null;
   }
 
   showPrevious(userInitiated = false): void {
@@ -464,76 +473,17 @@ export class HeroSlider implements OnChanges, OnDestroy {
     }
   }
 
-  private createPremiumHeroParticles(): readonly PremiumHeroAtmosphereItem[] {
-    return Array.from({ length: 64 }, (_, index) => {
-      const x = 31 + ((index * 17) % 66);
-      const y = 8 + ((index * 29) % 84);
-      const size = 2 + ((index * 7) % 5);
-      const opacity = (0.2 + ((index * 11) % 28) / 100).toFixed(2);
-      const duration = 10 + ((index * 5) % 19);
-      const delay = -(index * 1.37).toFixed(2);
-      const driftX = ((index % 2 === 0 ? 1 : -1) * (16 + ((index * 13) % 42))).toFixed(0);
-      const driftY = ((index % 3 === 0 ? -1 : 1) * (12 + ((index * 19) % 36))).toFixed(0);
+  private syncPremiumHeroAnimation(isPremiumTheme: boolean): void {
+    if (!this.premiumHeroAnimation) {
+      return;
+    }
 
-      return {
-        id: `premium-particle-${index}`,
-        style: `--x: ${x}%; --y: ${y}%; --size: ${size}px; --opacity: ${opacity}; --duration: ${duration}s; --delay: ${delay}s; --drift-x: ${driftX}px; --drift-y: ${driftY}px;`,
-      };
-    });
-  }
+    if (isPremiumTheme) {
+      this.premiumHeroAnimation.start();
+      return;
+    }
 
-  private createPremiumHeroNodes(): readonly PremiumHeroAtmosphereItem[] {
-    return Array.from({ length: 18 }, (_, index) => {
-      const x = 34 + ((index * 23) % 60);
-      const y = 12 + ((index * 31) % 76);
-      const size = 7 + ((index * 5) % 9);
-      const opacity = (0.38 + ((index * 7) % 32) / 100).toFixed(2);
-      const duration = 5 + ((index * 3) % 8);
-      const delay = -(index * 0.83).toFixed(2);
-      const scale = (1.08 + ((index * 4) % 18) / 100).toFixed(2);
-
-      return {
-        id: `premium-node-${index}`,
-        style: `--x: ${x}%; --y: ${y}%; --size: ${size}px; --opacity: ${opacity}; --duration: ${duration}s; --delay: ${delay}s; --scale: ${scale};`,
-      };
-    });
-  }
-
-  private createPremiumHeroLines(): readonly PremiumHeroAtmosphereItem[] {
-    return Array.from({ length: 14 }, (_, index) => {
-      const x = 35 + ((index * 19) % 58);
-      const y = 14 + ((index * 37) % 72);
-      const width = 120 + ((index * 47) % 220);
-      const rotation = -34 + ((index * 29) % 68);
-      const opacity = (0.18 + ((index * 9) % 28) / 100).toFixed(2);
-      const duration = 8 + ((index * 7) % 11);
-      const delay = -(index * 1.11).toFixed(2);
-
-      return {
-        id: `premium-line-${index}`,
-        style: `--x: ${x}%; --y: ${y}%; --line-width: ${width}px; --rotation: ${rotation}deg; --opacity: ${opacity}; --duration: ${duration}s; --delay: ${delay}s;`,
-      };
-    });
-  }
-
-  private createPremiumHeroGlows(): readonly PremiumHeroAtmosphereItem[] {
-    return [
-      {
-        id: 'premium-glow-primary',
-        style:
-          '--x: 72%; --y: 22%; --size: 28rem; --duration: 18s; --delay: -6s; --hue: 196, 167, 255;',
-      },
-      {
-        id: 'premium-glow-secondary',
-        style:
-          '--x: 88%; --y: 70%; --size: 22rem; --duration: 24s; --delay: -12s; --hue: 56, 189, 248;',
-      },
-      {
-        id: 'premium-glow-tertiary',
-        style:
-          '--x: 46%; --y: 58%; --size: 18rem; --duration: 16s; --delay: -3s; --hue: 125, 211, 252;',
-      },
-    ];
+    this.premiumHeroAnimation.stop();
   }
 
   private startAutoPlay(): void {
