@@ -267,8 +267,10 @@ html.theme-premium-3d .hero-slider__navigation {
 html.theme-premium-3d .hero-slider__content {
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
+  width: min(100%, 1180px);
   max-width: 1180px;
   min-height: clamp(30rem, 58vh, 42rem);
+  margin: 0 auto 0 0;
 }
 
 html.theme-premium-3d .hero-slider__motion-layer {
@@ -336,15 +338,15 @@ html.theme-premium-3d .hero-slider__copy {
   position: relative;
   max-width: min(100%, 43rem);
   padding: clamp(1.5rem, 4vw, 2.75rem);
-  border: 1px solid rgba(196, 167, 255, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: clamp(1.25rem, 3vw, 2rem);
   background:
-    linear-gradient(135deg, rgba(20, 15, 39, 0.88), rgba(20, 15, 39, 0.62)),
-    rgba(11, 8, 23, 0.72);
+    linear-gradient(135deg, rgba(12, 8, 30, 0.35), rgba(12, 8, 30, 0.25)),
+    rgba(12, 8, 30, 0.3);
   box-shadow:
-    0 2rem 5.5rem rgba(0, 0, 0, 0.44),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px) saturate(1.14);
+    0 1rem 2.75rem rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px) saturate(1.08);
   text-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.34);
 }
 
@@ -515,7 +517,9 @@ html.theme-premium-3d .hero-slider__navigation {
   }
 
   html.theme-premium-3d .hero-slider__content {
+    width: 100%;
     min-height: auto;
+    margin-inline: auto;
   }
 
   html.theme-premium-3d .hero-slider__copy {
