@@ -306,48 +306,57 @@ html.theme-premium-3d .hero-slider__motion-layer::after {
 }
 
 html.theme-premium-3d .hero-slider__motion-layer::before {
-  opacity: 0.5;
+  opacity: 0.64;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.74) 0 1px, transparent 1.8px),
-    radial-gradient(circle, rgba(196, 167, 255, 0.62) 0 1.2px, transparent 2.2px),
-    radial-gradient(circle, rgba(56, 189, 248, 0.52) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 0.8px, transparent 1.8px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.86) 0 1px, transparent 1.9px),
+    radial-gradient(circle, rgba(196, 167, 255, 0.78) 0 1.35px, transparent 2.35px),
+    radial-gradient(circle, rgba(56, 189, 248, 0.66) 0 1px, transparent 2.1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.54) 0 0.85px, transparent 1.95px),
+    radial-gradient(circle, rgba(125, 211, 252, 0.52) 0 1.15px, transparent 2.35px),
+    radial-gradient(circle, rgba(216, 180, 254, 0.46) 0 0.9px, transparent 2px);
   background-position:
     8% 16%,
     44% 28%,
     78% 62%,
-    18% 72%;
+    18% 72%,
+    58% 82%,
+    92% 18%;
   background-size:
-    9.5rem 8.5rem,
-    13rem 11rem,
-    16rem 14rem,
-    21rem 18rem;
+    7.5rem 6.75rem,
+    10.5rem 9rem,
+    13.5rem 11.5rem,
+    17rem 14.5rem,
+    22rem 18rem,
+    27rem 22rem;
   mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 82%, transparent 100%);
-  animation: premiumHeroParticleFieldDrift 46s linear infinite;
+  animation: premiumHeroParticleFieldDrift 36s linear infinite;
   will-change: transform, opacity, background-position;
 }
 
 html.theme-premium-3d .hero-slider__motion-layer::after {
-  opacity: 0.34;
+  opacity: 0.46;
   background-image:
-    linear-gradient(32deg, transparent 18%, rgba(196, 167, 255, 0.24) 18.25%, transparent 18.7%),
-    linear-gradient(147deg, transparent 29%, rgba(56, 189, 248, 0.18) 29.2%, transparent 29.65%),
-    linear-gradient(22deg, transparent 68%, rgba(255, 255, 255, 0.12) 68.18%, transparent 68.55%),
-    linear-gradient(116deg, transparent 46%, rgba(196, 167, 255, 0.14) 46.18%, transparent 46.5%);
+    linear-gradient(32deg, transparent 17.8%, rgba(196, 167, 255, 0.34) 18.1%, transparent 18.62%),
+    linear-gradient(147deg, transparent 28.8%, rgba(56, 189, 248, 0.26) 29.08%, transparent 29.62%),
+    linear-gradient(22deg, transparent 67.8%, rgba(255, 255, 255, 0.2) 68.06%, transparent 68.5%),
+    linear-gradient(116deg, transparent 45.8%, rgba(196, 167, 255, 0.22) 46.08%, transparent 46.58%),
+    linear-gradient(63deg, transparent 54.4%, rgba(125, 211, 252, 0.18) 54.62%, transparent 55.05%);
   background-position:
     0 0,
     30% 18%,
     68% 42%,
-    12% 74%;
+    12% 74%,
+    86% 24%;
   background-size:
-    32rem 24rem,
-    36rem 26rem,
-    42rem 30rem,
-    48rem 34rem;
+    27rem 20rem,
+    31rem 22rem,
+    37rem 27rem,
+    43rem 31rem,
+    52rem 36rem;
   mask-image:
     radial-gradient(circle at 72% 48%, #000 0 28rem, transparent 42rem),
     linear-gradient(90deg, transparent, #000 30%, #000 86%, transparent);
-  animation: premiumHeroNetworkParallax 34s ease-in-out infinite alternate;
+  animation: premiumHeroNetworkParallax 24s ease-in-out infinite alternate;
   will-change: transform, opacity, background-position;
 }
 
@@ -367,14 +376,16 @@ html.theme-premium-3d .hero-slider__motion-node {
 
 html.theme-premium-3d .hero-slider__motion-particles {
   inset: 8% 4% 12% 30%;
-  opacity: 0.34;
+  opacity: 0.5;
   background-image:
-    radial-gradient(circle at 12% 24%, rgba(255, 255, 255, 0.72) 0 1.5px, transparent 2.2px),
-    radial-gradient(circle at 26% 72%, rgba(196, 167, 255, 0.64) 0 1.8px, transparent 2.6px),
-    radial-gradient(circle at 48% 34%, rgba(56, 189, 248, 0.56) 0 1.4px, transparent 2.3px),
-    radial-gradient(circle at 68% 58%, rgba(255, 255, 255, 0.64) 0 1.2px, transparent 2px),
-    radial-gradient(circle at 86% 28%, rgba(196, 167, 255, 0.56) 0 1.7px, transparent 2.5px);
-  animation: premiumHeroConstellationFloat 24s ease-in-out infinite alternate;
+    radial-gradient(circle at 12% 24%, rgba(255, 255, 255, 0.86) 0 1.6px, transparent 2.4px),
+    radial-gradient(circle at 26% 72%, rgba(196, 167, 255, 0.78) 0 1.95px, transparent 2.85px),
+    radial-gradient(circle at 48% 34%, rgba(56, 189, 248, 0.72) 0 1.55px, transparent 2.55px),
+    radial-gradient(circle at 68% 58%, rgba(255, 255, 255, 0.74) 0 1.3px, transparent 2.15px),
+    radial-gradient(circle at 86% 28%, rgba(196, 167, 255, 0.68) 0 1.8px, transparent 2.75px),
+    radial-gradient(circle at 38% 12%, rgba(125, 211, 252, 0.64) 0 1.1px, transparent 2.15px),
+    radial-gradient(circle at 76% 82%, rgba(216, 180, 254, 0.58) 0 1.25px, transparent 2.3px);
+  animation: premiumHeroConstellationFloat 18s ease-in-out infinite alternate;
 }
 
 html.theme-premium-3d .hero-slider__motion-orb {
@@ -403,8 +414,16 @@ html.theme-premium-3d .hero-slider__motion-orb--secondary {
 html.theme-premium-3d .hero-slider__motion-line {
   height: 1px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(196, 167, 255, 0.58), transparent);
-  animation: premiumHeroLineDrift 13s ease-in-out infinite alternate;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(125, 211, 252, 0.24),
+    rgba(196, 167, 255, 0.72),
+    rgba(255, 255, 255, 0.42),
+    transparent
+  );
+  box-shadow: 0 0 1rem rgba(196, 167, 255, 0.18);
+  animation: premiumHeroLineDrift 10s ease-in-out infinite alternate;
 }
 
 html.theme-premium-3d .hero-slider__motion-line--one {
@@ -596,7 +615,9 @@ html.theme-premium-3d .hero-slider__navigation {
       8% 16%,
       44% 28%,
       78% 62%,
-      18% 72%;
+      18% 72%,
+      58% 82%,
+      92% 18%;
   }
 
   50% {
@@ -606,7 +627,9 @@ html.theme-premium-3d .hero-slider__navigation {
       14% 22%,
       39% 34%,
       73% 56%,
-      23% 66%;
+      23% 66%,
+      55% 78%,
+      89% 22%;
   }
 
   to {
@@ -616,7 +639,9 @@ html.theme-premium-3d .hero-slider__navigation {
       20% 28%,
       34% 40%,
       68% 50%,
-      28% 60%;
+      28% 60%,
+      52% 76%,
+      86% 26%;
   }
 }
 
@@ -628,7 +653,8 @@ html.theme-premium-3d .hero-slider__navigation {
       0 0,
       30% 18%,
       68% 42%,
-      12% 74%;
+      12% 74%,
+      86% 24%;
   }
 
   to {
@@ -638,7 +664,8 @@ html.theme-premium-3d .hero-slider__navigation {
       5.5rem 4rem,
       calc(30% + 3.5rem) calc(18% + 2.5rem),
       calc(68% + 4.5rem) calc(42% + 3rem),
-      calc(12% + 2.5rem) calc(74% + 4rem);
+      calc(12% + 2.5rem) calc(74% + 4rem),
+      calc(86% - 4rem) calc(24% + 3rem);
   }
 }
 
