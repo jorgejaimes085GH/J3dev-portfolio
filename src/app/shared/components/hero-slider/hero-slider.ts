@@ -12,6 +12,11 @@ import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../../core/services/language.service';
 import { HeroSlide } from '../../../models/hero-slide.model';
 
+interface PremiumHeroAtmosphereItem {
+  readonly id: string;
+  readonly style: string;
+}
+
 @Component({
   selector: 'app-hero-slider',
   standalone: true,
@@ -36,15 +41,18 @@ import { HeroSlide } from '../../../models/hero-slide.model';
           />
         }
         <div class="hero-slider__motion-layer" aria-hidden="true">
-          <span class="hero-slider__motion-particles"></span>
-          <span class="hero-slider__motion-orb hero-slider__motion-orb--primary"></span>
-          <span class="hero-slider__motion-orb hero-slider__motion-orb--secondary"></span>
-          <span class="hero-slider__motion-node hero-slider__motion-node--one"></span>
-          <span class="hero-slider__motion-node hero-slider__motion-node--two"></span>
-          <span class="hero-slider__motion-node hero-slider__motion-node--three"></span>
-          <span class="hero-slider__motion-line hero-slider__motion-line--one"></span>
-          <span class="hero-slider__motion-line hero-slider__motion-line--two"></span>
-          <span class="hero-slider__motion-line hero-slider__motion-line--three"></span>
+          @for (glow of premiumHeroGlows; track glow.id) {
+            <span class="hero-slider__motion-glow" [attr.style]="glow.style"></span>
+          }
+          @for (line of premiumHeroLines; track line.id) {
+            <span class="hero-slider__motion-line" [attr.style]="line.style"></span>
+          }
+          @for (node of premiumHeroNodes; track node.id) {
+            <span class="hero-slider__motion-node" [attr.style]="node.style"></span>
+          }
+          @for (particle of premiumHeroParticles; track particle.id) {
+            <span class="hero-slider__particle" [attr.style]="particle.style"></span>
+          }
         </div>
         <div class="hero-slider__content" [attr.aria-live]="isAutoPlaying ? 'off' : 'polite'">
           <div class="hero-slider__copy">
@@ -384,6 +392,11 @@ export class HeroSlider implements OnChanges, OnDestroy {
   currentIndex = 0;
   isAutoPlaying = false;
 
+  protected readonly premiumHeroParticles = this.createPremiumHeroParticles();
+  protected readonly premiumHeroNodes = this.createPremiumHeroNodes();
+  protected readonly premiumHeroLines = this.createPremiumHeroLines();
+  protected readonly premiumHeroGlows = this.createPremiumHeroGlows();
+
   private readonly autoPlayDelay = 6500;
   private autoPlayTimer: ReturnType<typeof setInterval> | null = null;
   private readonly failedBackgrounds = new Set<string>();
@@ -449,6 +462,78 @@ export class HeroSlider implements OnChanges, OnDestroy {
     if (slide.backgroundImageUrl) {
       this.failedBackgrounds.add(slide.backgroundImageUrl);
     }
+  }
+
+  private createPremiumHeroParticles(): readonly PremiumHeroAtmosphereItem[] {
+    return Array.from({ length: 64 }, (_, index) => {
+      const x = 31 + ((index * 17) % 66);
+      const y = 8 + ((index * 29) % 84);
+      const size = 2 + ((index * 7) % 5);
+      const opacity = (0.2 + ((index * 11) % 28) / 100).toFixed(2);
+      const duration = 10 + ((index * 5) % 19);
+      const delay = -(index * 1.37).toFixed(2);
+      const driftX = ((index % 2 === 0 ? 1 : -1) * (16 + ((index * 13) % 42))).toFixed(0);
+      const driftY = ((index % 3 === 0 ? -1 : 1) * (12 + ((index * 19) % 36))).toFixed(0);
+
+      return {
+        id: `premium-particle-${index}`,
+        style: `--x: ${x}%; --y: ${y}%; --size: ${size}px; --opacity: ${opacity}; --duration: ${duration}s; --delay: ${delay}s; --drift-x: ${driftX}px; --drift-y: ${driftY}px;`,
+      };
+    });
+  }
+
+  private createPremiumHeroNodes(): readonly PremiumHeroAtmosphereItem[] {
+    return Array.from({ length: 18 }, (_, index) => {
+      const x = 34 + ((index * 23) % 60);
+      const y = 12 + ((index * 31) % 76);
+      const size = 7 + ((index * 5) % 9);
+      const opacity = (0.38 + ((index * 7) % 32) / 100).toFixed(2);
+      const duration = 5 + ((index * 3) % 8);
+      const delay = -(index * 0.83).toFixed(2);
+      const scale = (1.08 + ((index * 4) % 18) / 100).toFixed(2);
+
+      return {
+        id: `premium-node-${index}`,
+        style: `--x: ${x}%; --y: ${y}%; --size: ${size}px; --opacity: ${opacity}; --duration: ${duration}s; --delay: ${delay}s; --scale: ${scale};`,
+      };
+    });
+  }
+
+  private createPremiumHeroLines(): readonly PremiumHeroAtmosphereItem[] {
+    return Array.from({ length: 14 }, (_, index) => {
+      const x = 35 + ((index * 19) % 58);
+      const y = 14 + ((index * 37) % 72);
+      const width = 120 + ((index * 47) % 220);
+      const rotation = -34 + ((index * 29) % 68);
+      const opacity = (0.18 + ((index * 9) % 28) / 100).toFixed(2);
+      const duration = 8 + ((index * 7) % 11);
+      const delay = -(index * 1.11).toFixed(2);
+
+      return {
+        id: `premium-line-${index}`,
+        style: `--x: ${x}%; --y: ${y}%; --line-width: ${width}px; --rotation: ${rotation}deg; --opacity: ${opacity}; --duration: ${duration}s; --delay: ${delay}s;`,
+      };
+    });
+  }
+
+  private createPremiumHeroGlows(): readonly PremiumHeroAtmosphereItem[] {
+    return [
+      {
+        id: 'premium-glow-primary',
+        style:
+          '--x: 72%; --y: 22%; --size: 28rem; --duration: 18s; --delay: -6s; --hue: 196, 167, 255;',
+      },
+      {
+        id: 'premium-glow-secondary',
+        style:
+          '--x: 88%; --y: 70%; --size: 22rem; --duration: 24s; --delay: -12s; --hue: 56, 189, 248;',
+      },
+      {
+        id: 'premium-glow-tertiary',
+        style:
+          '--x: 46%; --y: 58%; --size: 18rem; --duration: 16s; --delay: -3s; --hue: 125, 211, 252;',
+      },
+    ];
   }
 
   private startAutoPlay(): void {

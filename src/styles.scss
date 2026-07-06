@@ -339,7 +339,12 @@ html.theme-premium-3d .hero-slider__motion-layer::after {
     linear-gradient(32deg, transparent 17.8%, rgba(196, 167, 255, 0.34) 18.1%, transparent 18.62%),
     linear-gradient(147deg, transparent 28.8%, rgba(56, 189, 248, 0.26) 29.08%, transparent 29.62%),
     linear-gradient(22deg, transparent 67.8%, rgba(255, 255, 255, 0.2) 68.06%, transparent 68.5%),
-    linear-gradient(116deg, transparent 45.8%, rgba(196, 167, 255, 0.22) 46.08%, transparent 46.58%),
+    linear-gradient(
+      116deg,
+      transparent 45.8%,
+      rgba(196, 167, 255, 0.22) 46.08%,
+      transparent 46.58%
+    ),
     linear-gradient(63deg, transparent 54.4%, rgba(125, 211, 252, 0.18) 54.62%, transparent 55.05%);
   background-position:
     0 0,
@@ -490,8 +495,7 @@ html.theme-premium-3d .hero-slider__copy {
   border: 1px solid rgba(255, 255, 255, 0.055);
   border-radius: clamp(1.25rem, 3vw, 2rem);
   background:
-    linear-gradient(135deg, rgba(12, 8, 30, 0.5), rgba(12, 8, 30, 0.4)),
-    rgba(12, 8, 30, 0.4);
+    linear-gradient(135deg, rgba(12, 8, 30, 0.5), rgba(12, 8, 30, 0.4)), rgba(12, 8, 30, 0.4);
   box-shadow:
     0 1rem 2.5rem rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.045);
@@ -796,8 +800,7 @@ html.theme-premium-3d .hero-slider__navigation {
     padding: 1.25rem;
     border-radius: 1.25rem;
     background:
-      linear-gradient(135deg, rgba(12, 8, 30, 0.54), rgba(12, 8, 30, 0.42)),
-      rgba(12, 8, 30, 0.42);
+      linear-gradient(135deg, rgba(12, 8, 30, 0.54), rgba(12, 8, 30, 0.42)), rgba(12, 8, 30, 0.42);
   }
 
   html.theme-premium-3d .hero-slider__navigation {
@@ -2664,4 +2667,204 @@ app-navbar
   max-width: 100%;
   height: auto;
   min-height: 100%;
+}
+
+/* Premium Hero living network animation: individual DOM elements only, scoped to Premium 3D. */
+.hero-slider__particle,
+.hero-slider__motion-glow {
+  display: none;
+}
+
+html.theme-premium-3d .hero-slider__particle,
+html.theme-premium-3d .hero-slider__motion-glow {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+html.theme-premium-3d .hero-slider__particle {
+  left: var(--x);
+  top: var(--y);
+  z-index: 2;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  opacity: var(--opacity);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 0 0.45rem rgba(125, 211, 252, 0.5),
+    0 0 0.95rem rgba(196, 167, 255, 0.22);
+  transform: translate3d(-50%, -50%, 0);
+  animation: premiumHeroParticleFloat var(--duration) ease-in-out var(--delay) infinite alternate;
+}
+
+html.theme-premium-3d .hero-slider__motion-node {
+  left: var(--x);
+  top: var(--y);
+  z-index: 3;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  opacity: var(--opacity);
+  transform: translate3d(-50%, -50%, 0);
+  animation: premiumHeroLivingNodePulse var(--duration) ease-in-out var(--delay) infinite alternate;
+}
+
+html.theme-premium-3d .hero-slider__motion-node::before,
+html.theme-premium-3d .hero-slider__motion-node::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+}
+
+html.theme-premium-3d .hero-slider__motion-node::before {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 0 0 0.35rem rgba(125, 211, 252, 0.12),
+    0 0 1.25rem rgba(125, 211, 252, 0.72),
+    0 0 2.35rem rgba(196, 167, 255, 0.34);
+}
+
+html.theme-premium-3d .hero-slider__motion-node::after {
+  inset: -0.55rem;
+  border: 1px solid rgba(196, 167, 255, 0.18);
+  opacity: 0.72;
+}
+
+html.theme-premium-3d .hero-slider__motion-line {
+  left: var(--x);
+  top: var(--y);
+  z-index: 2;
+  display: block;
+  width: var(--line-width);
+  height: 1px;
+  opacity: var(--opacity);
+  transform-origin: left center;
+  transform: translate3d(-50%, -50%, 0) rotate(var(--rotation));
+  animation: premiumHeroLivingLineDrift var(--duration) ease-in-out var(--delay) infinite alternate;
+}
+
+html.theme-premium-3d .hero-slider__motion-glow {
+  left: var(--x);
+  top: var(--y);
+  z-index: 1;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  opacity: 0.2;
+  background: radial-gradient(
+    circle,
+    rgba(var(--hue), 0.26),
+    rgba(var(--hue), 0.08) 42%,
+    transparent 70%
+  );
+  transform: translate3d(-50%, -50%, 0) scale(0.92);
+  animation: premiumHeroGlowBreathe var(--duration) ease-in-out var(--delay) infinite alternate;
+}
+
+@keyframes premiumHeroParticleFloat {
+  from {
+    opacity: calc(var(--opacity) * 0.65);
+    transform: translate3d(-50%, -50%, 0) scale(0.82);
+  }
+
+  52% {
+    opacity: var(--opacity);
+    transform: translate3d(
+        calc(-50% + (var(--drift-x) * 0.44)),
+        calc(-50% + (var(--drift-y) * 0.38)),
+        0
+      )
+      scale(1.08);
+  }
+
+  to {
+    opacity: calc(var(--opacity) * 0.78);
+    transform: translate3d(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y)), 0) scale(0.94);
+  }
+}
+
+@keyframes premiumHeroLivingNodePulse {
+  from {
+    opacity: calc(var(--opacity) * 0.72);
+    transform: translate3d(-50%, -50%, 0) scale(0.86);
+  }
+
+  48% {
+    opacity: var(--opacity);
+    transform: translate3d(calc(-50% + 0.35rem), calc(-50% - 0.25rem), 0) scale(var(--scale));
+  }
+
+  to {
+    opacity: calc(var(--opacity) * 0.82);
+    transform: translate3d(calc(-50% - 0.25rem), calc(-50% + 0.2rem), 0) scale(0.98);
+  }
+}
+
+@keyframes premiumHeroLivingLineDrift {
+  from {
+    opacity: calc(var(--opacity) * 0.42);
+    transform: translate3d(calc(-50% - 0.8rem), calc(-50% + 0.35rem), 0) rotate(var(--rotation))
+      scaleX(0.72);
+  }
+
+  44% {
+    opacity: var(--opacity);
+    transform: translate3d(calc(-50% + 0.45rem), calc(-50% - 0.25rem), 0) rotate(var(--rotation))
+      scaleX(1.04);
+  }
+
+  to {
+    opacity: calc(var(--opacity) * 0.58);
+    transform: translate3d(calc(-50% + 1rem), calc(-50% - 0.4rem), 0) rotate(var(--rotation))
+      scaleX(0.9);
+  }
+}
+
+@keyframes premiumHeroGlowBreathe {
+  from {
+    opacity: 0.1;
+    transform: translate3d(-50%, -50%, 0) scale(0.9);
+  }
+
+  to {
+    opacity: 0.24;
+    transform: translate3d(calc(-50% + 1.2rem), calc(-50% - 0.8rem), 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-premium-3d .hero-slider__particle,
+  html.theme-premium-3d .hero-slider__motion-glow {
+    animation: none;
+    transition: none;
+  }
+
+  html.theme-premium-3d .hero-slider__particle {
+    opacity: 0.14;
+  }
+
+  html.theme-premium-3d .hero-slider__motion-node,
+  html.theme-premium-3d .hero-slider__motion-line,
+  html.theme-premium-3d .hero-slider__motion-glow {
+    opacity: 0.16;
+  }
+}
+
+@media (max-width: 760px) {
+  html.theme-premium-3d .hero-slider__particle:nth-of-type(n + 45),
+  html.theme-premium-3d .hero-slider__motion-node:nth-of-type(n + 14),
+  html.theme-premium-3d .hero-slider__motion-line:nth-of-type(n + 10) {
+    display: none;
+  }
+
+  html.theme-premium-3d .hero-slider__particle {
+    opacity: calc(var(--opacity) * 0.62);
+  }
+
+  html.theme-premium-3d .hero-slider__motion-glow {
+    opacity: 0.12;
+  }
 }
