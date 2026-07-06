@@ -339,11 +339,48 @@ import { LanguageService } from '../../core/services/language.service';
           padding: 2.5rem 1rem;
         }
 
+        .value-introduction__content,
+        .value-introduction__visual,
+        .value-introduction__visual-image {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+
+        .value-introduction__visual-image {
+          height: auto;
+        }
+
         .value-card-grid--three,
         .value-card-grid--four,
         .value-highlight {
           grid-template-columns: 1fr;
         }
+      }
+
+      :host-context(.viewport-preview--mobile) .value-introduction {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      :host-context(.viewport-preview--mobile) .value-introduction__content,
+      :host-context(.viewport-preview--mobile) .value-introduction__visual,
+      :host-context(.viewport-preview--mobile) .value-introduction__visual-image {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      :host-context(.viewport-preview--mobile) .value-introduction__visual {
+        flex-basis: auto;
+      }
+
+      :host-context(.viewport-preview--mobile) .value-introduction__visual-frame {
+        max-height: none;
+      }
+
+      :host-context(.viewport-preview--mobile) .value-introduction__visual-image {
+        height: auto;
       }
     `,
   ],

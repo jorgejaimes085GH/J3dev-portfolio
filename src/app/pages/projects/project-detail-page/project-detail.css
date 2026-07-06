@@ -300,3 +300,120 @@
     padding-left: 1rem;
   }
 }
+
+.project-deployment-grid,
+.project-deployment-actions {
+  margin-top: 1.5rem;
+}
+
+.project-deployment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-deployment-card,
+.project-deployment-diagram {
+  border: 1px solid var(--app-border-color);
+  border-radius: 0.75rem;
+  background: var(--app-surface-color);
+}
+
+.project-deployment-card {
+  min-width: 0;
+  padding: 1rem;
+}
+
+.project-deployment-card h3,
+.project-deployment-card dl,
+.project-deployment-card dd {
+  margin: 0;
+}
+
+.project-deployment-card dl {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.project-deployment-card dt {
+  color: var(--app-link-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-deployment-card dd {
+  overflow-wrap: anywhere;
+}
+
+.project-deployment-card a {
+  color: var(--app-link-color);
+  font-weight: 700;
+}
+
+.project-deployment-diagram {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.project-deployment-diagram__step {
+  display: grid;
+  min-width: 0;
+  gap: 0.75rem;
+}
+
+.project-deployment-diagram__node {
+  display: grid;
+  min-height: 6rem;
+  align-content: center;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid var(--app-border-color);
+  border-radius: 0.75rem;
+  background: var(--app-surface-muted);
+  text-align: center;
+}
+
+.project-deployment-diagram__node span,
+.project-deployment-diagram__connector em {
+  color: var(--app-muted-color);
+}
+
+.project-deployment-diagram__connector {
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  color: var(--app-link-color);
+  font-weight: 700;
+  text-align: center;
+}
+
+.project-deployment-diagram__connector em {
+  font-style: normal;
+  font-size: 0.88rem;
+}
+
+.project-deployment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .project-deployment-grid,
+  .project-deployment-diagram {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .project-deployment-grid,
+  .project-deployment-diagram {
+    grid-template-columns: 1fr;
+  }
+}

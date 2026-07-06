@@ -21,6 +21,26 @@ export interface ProjectLink {
   supportText?: string;
 }
 
+export interface ProjectDeploymentNode {
+  title: string;
+  details: {
+    label: string;
+    value: string;
+    url?: string;
+  }[];
+  diagramTitle: string;
+  diagramSubtitle: string;
+  connectorLabel?: string;
+}
+
+export interface ProjectDeploymentEvidence {
+  eyebrow: string;
+  title: string;
+  description: string;
+  nodes: ProjectDeploymentNode[];
+  actions: ProjectLink[];
+}
+
 export interface ProjectPlaceholders {
   companyName?: string;
   companyAddress?: string;
@@ -58,6 +78,7 @@ export interface Project {
   technologies: string[];
   timeBlocks: ProjectTimeBlock[];
   links?: ProjectLink[];
+  deploymentEvidence?: ProjectDeploymentEvidence;
   placeholders?: ProjectPlaceholders;
   referencePlaceholders?: ProjectReferencePlaceholders;
   sourceCodeNote: string;

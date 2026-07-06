@@ -90,6 +90,70 @@
       </div>
     </section>
 
+    @if (selectedProject.deploymentEvidence; as deploymentEvidence) {
+      <section class="project-detail-section" aria-labelledby="project-deployment-title">
+        <div class="project-detail-section__header">
+          <p class="project-detail-page__eyebrow">{{ deploymentEvidence.eyebrow }}</p>
+          <h2 id="project-deployment-title">{{ deploymentEvidence.title }}</h2>
+          <p>{{ deploymentEvidence.description }}</p>
+        </div>
+
+        <div class="project-deployment-grid">
+          @for (node of deploymentEvidence.nodes; track node.title) {
+            <article class="project-deployment-card">
+              <h3>{{ node.title }}</h3>
+              <dl>
+                @for (detail of node.details; track detail.label) {
+                  <div>
+                    <dt>{{ detail.label }}</dt>
+                    <dd>
+                      @if (detail.url) {
+                        <a [href]="detail.url" target="_blank" rel="noopener noreferrer">
+                          {{ detail.value }}
+                        </a>
+                      } @else {
+                        {{ detail.value }}
+                      }
+                    </dd>
+                  </div>
+                }
+              </dl>
+            </article>
+          }
+        </div>
+
+        <div class="project-deployment-diagram" aria-label="Deployment flow">
+          @for (node of deploymentEvidence.nodes; track node.title; let isLast = $last) {
+            <div class="project-deployment-diagram__step">
+              <div class="project-deployment-diagram__node">
+                <strong>{{ node.diagramTitle }}</strong>
+                <span>{{ node.diagramSubtitle }}</span>
+              </div>
+              @if (!isLast) {
+                <div class="project-deployment-diagram__connector" aria-hidden="true">
+                  <span>↓</span>
+                  <em>{{ node.connectorLabel }}</em>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="project-deployment-actions">
+          @for (action of deploymentEvidence.actions; track action.url) {
+            <a
+              class="btn btn--secondary btn--compact button-link button-link--compact"
+              [href]="action.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ action.actionLabel || action.label }}
+            </a>
+          }
+        </div>
+      </section>
+    }
+
     <section class="project-detail-section" aria-labelledby="project-time-title">
       <div class="project-detail-section__header">
         <p class="project-detail-page__eyebrow">{{ text().timeEyebrow }}</p>
