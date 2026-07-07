@@ -7,7 +7,7 @@ export class PremiumHeroCanvasAnimation {
       return;
     }
 
-    this.drawStaticParticle();
+    this.drawSmokeTest();
   };
 
   constructor(private readonly canvas: HTMLCanvasElement) {
@@ -31,7 +31,7 @@ export class PremiumHeroCanvasAnimation {
     }
 
     this.isRunning = true;
-    this.drawStaticParticle();
+    this.drawSmokeTest();
   }
 
   stop(): void {
@@ -55,6 +55,7 @@ export class PremiumHeroCanvasAnimation {
     const canvasHeight = Math.floor(resizeRect.height);
 
     if (canvasWidth === 0 || canvasHeight === 0) {
+      console.warn('Canvas Size: 0 x 0 - smoke test skipped');
       return false;
     }
 
@@ -68,28 +69,26 @@ export class PremiumHeroCanvasAnimation {
     return true;
   }
 
-  private drawStaticParticle(): void {
+  private drawSmokeTest(): void {
     if (!this.context) {
       return;
     }
 
-    const particleX = this.canvas.width * 0.5;
-    const particleY = this.canvas.height * 0.5;
-    const particleRadius = 18;
-    const particleColor = 'cyan';
-
     this.clear();
-    this.context.save();
-    this.context.globalAlpha = 1;
-    this.context.shadowBlur = 60;
-    this.context.shadowColor = particleColor;
-    this.context.fillStyle = particleColor;
-    this.context.beginPath();
-    this.context.arc(particleX, particleY, particleRadius, 0, Math.PI * 2);
-    this.context.fill();
-    this.context.restore();
 
-    console.log('Canvas Static Particle Drawn');
+    this.context.fillStyle = 'red';
+    this.context.fillRect(20, 20, 300, 300);
+
+    this.context.beginPath();
+    this.context.fillStyle = 'green';
+    this.context.arc(200, 200, 30, 0, Math.PI * 2);
+    this.context.fill();
+
+    this.context.fillStyle = 'white';
+    this.context.font = '40px Arial';
+    this.context.fillText('CANVAS OK', 40, 360);
+
+    console.log('Canvas Smoke Test Drawn');
   }
 
   private clear(): void {
