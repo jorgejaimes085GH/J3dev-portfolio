@@ -76,17 +76,24 @@ export class PremiumHeroCanvasAnimation {
 
     this.clear();
 
-    this.context.fillStyle = 'red';
-    this.context.fillRect(20, 20, 300, 300);
+    const { width, height } = this.canvas;
+
+    if (width === 0 || height === 0) {
+      console.warn('Canvas Size: 0 x 0 - smoke test skipped');
+      return;
+    }
+
+    this.context.fillStyle = 'rgba(255, 0, 0, 0.22)';
+    this.context.fillRect(0, 0, width, height);
 
     this.context.beginPath();
     this.context.fillStyle = 'green';
-    this.context.arc(200, 200, 30, 0, Math.PI * 2);
+    this.context.arc(width / 2, height / 2, 30, 0, Math.PI * 2);
     this.context.fill();
 
     this.context.fillStyle = 'white';
     this.context.font = '40px Arial';
-    this.context.fillText('CANVAS OK', 40, 360);
+    this.context.fillText('CANVAS OK', 40, height - 40);
 
     console.log('Canvas Smoke Test Drawn');
   }
