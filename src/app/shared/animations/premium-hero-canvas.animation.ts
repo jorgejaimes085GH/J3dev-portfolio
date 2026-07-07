@@ -4,8 +4,9 @@ export class PremiumHeroCanvasAnimation {
   private isRunning = false;
 
   private readonly handleResize = (): void => {
-    this.resize();
-    this.drawSmokeTest();
+    if (this.resize()) {
+      this.drawSmokeTest();
+    }
   };
 
   constructor(private readonly canvas: HTMLCanvasElement) {
@@ -25,9 +26,11 @@ export class PremiumHeroCanvasAnimation {
     }
 
     this.isRunning = true;
-    this.resize();
     window.addEventListener('resize', this.handleResize, { passive: true });
-    this.animate();
+
+    if (this.resize()) {
+      this.animate();
+    }
   }
 
   stop(): void {
@@ -53,19 +56,29 @@ export class PremiumHeroCanvasAnimation {
     this.drawSmokeTest();
   }
 
-  private resize(): void {
-    const { width, height } = this.canvas.getBoundingClientRect();
-    const canvasWidth = Math.floor(width);
-    const canvasHeight = Math.floor(height);
+  private resize(): boolean {
+    const canvasRect = this.canvas.getBoundingClientRect();
+    const parentRect =
+      canvasRect.width === 0 || canvasRect.height === 0
+        ? this.canvas.parentElement?.getBoundingClientRect()
+        : null;
+    const resizeRect = parentRect ?? canvasRect;
+    const canvasWidth = Math.floor(resizeRect.width);
+    const canvasHeight = Math.floor(resizeRect.height);
 
     console.log(`Canvas Size:\n${canvasWidth} x ${canvasHeight}`);
 
     if (canvasWidth === 0 || canvasHeight === 0) {
-      console.error(`Canvas size is invalid: ${canvasWidth} x ${canvasHeight}. Width and height must be greater than zero.`);
+      console.warn(
+        `Canvas size is invalid after parent fallback: ${canvasWidth} x ${canvasHeight}. Smoke test draw skipped.`,
+      );
+      return false;
     }
 
     this.canvas.width = canvasWidth;
     this.canvas.height = canvasHeight;
+
+    return true;
   }
 
   private drawSmokeTest(): void {
