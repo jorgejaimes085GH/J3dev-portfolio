@@ -1,6 +1,5 @@
 export class PremiumHeroCanvasAnimation {
   private readonly context: CanvasRenderingContext2D | null;
-  private hasLoggedAnimationFrame = false;
   private isRunning = false;
 
   private readonly handleResize = (): void => {
@@ -29,7 +28,7 @@ export class PremiumHeroCanvasAnimation {
     window.addEventListener('resize', this.handleResize, { passive: true });
 
     if (this.resize()) {
-      this.animate();
+      this.drawSmokeTest();
     }
   }
 
@@ -41,19 +40,6 @@ export class PremiumHeroCanvasAnimation {
   destroy(): void {
     this.stop();
     this.clear();
-  }
-
-  private animate(): void {
-    if (!this.context) {
-      return;
-    }
-
-    if (!this.hasLoggedAnimationFrame) {
-      console.log('Animation Frame Running');
-      this.hasLoggedAnimationFrame = true;
-    }
-
-    this.drawSmokeTest();
   }
 
   private resize(): boolean {
