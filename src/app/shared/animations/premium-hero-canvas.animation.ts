@@ -1,32 +1,13 @@
-interface PremiumHeroParticle {
-  x: number;
-  y: number;
-  radius: number;
-  velocityX: number;
-  velocityY: number;
-  opacity: number;
-  color: string;
-}
-
 export class PremiumHeroCanvasAnimation {
   private readonly context: CanvasRenderingContext2D | null;
-  private readonly reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  private readonly particles: PremiumHeroParticle[] = [];
-  private animationFrameId: number | null = null;
   private isRunning = false;
 
   private readonly handleResize = (): void => {
-    if (!this.resize()) {
+    if (!this.isRunning || !this.resize()) {
       return;
     }
 
-    this.keepParticlesInBounds();
-  };
-
-  private readonly handleReducedMotionChange = (): void => {
-    if (this.reducedMotionQuery.matches) {
-      this.stop();
-    }
+    this.drawStaticParticle();
   };
 
   constructor(private readonly canvas: HTMLCanvasElement) {
@@ -34,8 +15,9 @@ export class PremiumHeroCanvasAnimation {
   }
 
   start(): void {
-    if (!this.context || this.isRunning || this.reducedMotionQuery.matches) {
-      this.clear();
+    console.log('Canvas START');
+
+    if (!this.context) {
       return;
     }
 
@@ -44,32 +26,22 @@ export class PremiumHeroCanvasAnimation {
       return;
     }
 
-    if (this.particles.length === 0) {
-      this.createParticles();
+    if (!this.isRunning) {
+      window.addEventListener('resize', this.handleResize, { passive: true });
     }
 
     this.isRunning = true;
-    window.addEventListener('resize', this.handleResize, { passive: true });
-    this.reducedMotionQuery.addEventListener('change', this.handleReducedMotionChange);
-    this.animate();
+    this.drawStaticParticle();
   }
 
   stop(): void {
     window.removeEventListener('resize', this.handleResize);
-    this.reducedMotionQuery.removeEventListener('change', this.handleReducedMotionChange);
     this.isRunning = false;
-
-    if (this.animationFrameId !== null) {
-      window.cancelAnimationFrame(this.animationFrameId);
-      this.animationFrameId = null;
-    }
-
     this.clear();
   }
 
   destroy(): void {
     this.stop();
-    this.particles.length = 0;
   }
 
   private resize(): boolean {
@@ -91,85 +63,33 @@ export class PremiumHeroCanvasAnimation {
       this.canvas.height = canvasHeight;
     }
 
+    console.log(`Canvas Size: ${canvasWidth} x ${canvasHeight}`);
+
     return true;
   }
 
-  private createParticles(): void {
-    const palette = ['rgba(255, 255, 255, 1)', 'rgba(103, 232, 249, 1)', 'rgba(196, 167, 255, 1)'];
-    const particleSeeds = [
-      { x: 0.18, y: 0.28, radius: 3.2, velocityX: 0.35, velocityY: 0.28, opacity: 0.62 },
-      { x: 0.36, y: 0.68, radius: 2.6, velocityX: -0.42, velocityY: 0.32, opacity: 0.58 },
-      { x: 0.58, y: 0.36, radius: 4.4, velocityX: 0.52, velocityY: -0.36, opacity: 0.5 },
-      { x: 0.74, y: 0.62, radius: 3.8, velocityX: -0.31, velocityY: -0.46, opacity: 0.56 },
-      { x: 0.88, y: 0.24, radius: 2.8, velocityX: 0.27, velocityY: 0.54, opacity: 0.64 },
-    ];
-
-    this.particles.length = 0;
-    this.particles.push(
-      ...particleSeeds.map((seed, index) => ({
-        x: this.canvas.width * seed.x,
-        y: this.canvas.height * seed.y,
-        radius: seed.radius,
-        velocityX: seed.velocityX,
-        velocityY: seed.velocityY,
-        opacity: seed.opacity,
-        color: palette[index % palette.length],
-      })),
-    );
-  }
-
-  private animate(): void {
-    if (!this.isRunning || this.reducedMotionQuery.matches) {
-      this.clear();
-      return;
-    }
-
-    this.clear();
-    this.updateParticles();
-    this.drawParticles();
-    this.animationFrameId = window.requestAnimationFrame(() => this.animate());
-  }
-
-  private updateParticles(): void {
-    for (const particle of this.particles) {
-      particle.x += particle.velocityX;
-      particle.y += particle.velocityY;
-
-      if (particle.x <= particle.radius || particle.x >= this.canvas.width - particle.radius) {
-        particle.velocityX *= -1;
-        particle.x = Math.min(Math.max(particle.x, particle.radius), this.canvas.width - particle.radius);
-      }
-
-      if (particle.y <= particle.radius || particle.y >= this.canvas.height - particle.radius) {
-        particle.velocityY *= -1;
-        particle.y = Math.min(Math.max(particle.y, particle.radius), this.canvas.height - particle.radius);
-      }
-    }
-  }
-
-  private drawParticles(): void {
+  private drawStaticParticle(): void {
     if (!this.context) {
       return;
     }
 
-    for (const particle of this.particles) {
-      this.context.save();
-      this.context.globalAlpha = particle.opacity;
-      this.context.shadowBlur = particle.radius * 4.5;
-      this.context.shadowColor = particle.color;
-      this.context.fillStyle = particle.color;
-      this.context.beginPath();
-      this.context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-      this.context.fill();
-      this.context.restore();
-    }
-  }
+    const particleX = this.canvas.width * 0.5;
+    const particleY = this.canvas.height * 0.5;
+    const particleRadius = 18;
+    const particleColor = 'cyan';
 
-  private keepParticlesInBounds(): void {
-    for (const particle of this.particles) {
-      particle.x = Math.min(Math.max(particle.x, particle.radius), this.canvas.width - particle.radius);
-      particle.y = Math.min(Math.max(particle.y, particle.radius), this.canvas.height - particle.radius);
-    }
+    this.clear();
+    this.context.save();
+    this.context.globalAlpha = 1;
+    this.context.shadowBlur = 60;
+    this.context.shadowColor = particleColor;
+    this.context.fillStyle = particleColor;
+    this.context.beginPath();
+    this.context.arc(particleX, particleY, particleRadius, 0, Math.PI * 2);
+    this.context.fill();
+    this.context.restore();
+
+    console.log('Canvas Static Particle Drawn');
   }
 
   private clear(): void {
