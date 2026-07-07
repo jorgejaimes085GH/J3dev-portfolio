@@ -28,6 +28,16 @@ export class PremiumHeroCanvasAnimation {
     this.createParticle(6, -0.6, -0.2, 0.05, 0.5, 0.0075, '219, 234, 254'),
     this.createParticle(15, 0.25, 0.6, 0.2, 0.9, 0.0035, '125, 211, 252'),
     this.createParticle(8, -0.48, 0.42, 0.1, 0.7, 0.0058, '240, 249, 255'),
+    this.createParticle(11, 0.38, 0.46, 0.09, 0.76, 0.0048, '165, 180, 252'),
+    this.createParticle(6, -0.52, 0.34, 0.13, 0.64, 0.0062, '34, 211, 238'),
+    this.createParticle(13, 0.58, -0.36, 0.06, 0.82, 0.004, '191, 219, 254'),
+    this.createParticle(7, -0.36, -0.58, 0.17, 0.6, 0.0068, '103, 232, 249'),
+    this.createParticle(17, 0.28, 0.5, 0.08, 0.88, 0.0036, '224, 242, 254'),
+    this.createParticle(5, -0.44, -0.32, 0.11, 0.56, 0.0072, '216, 180, 254'),
+    this.createParticle(10, 0.62, 0.18, 0.15, 0.72, 0.0044, '56, 189, 248'),
+    this.createParticle(8, -0.28, 0.56, 0.07, 0.66, 0.0056, '240, 249, 255'),
+    this.createParticle(12, 0.42, -0.48, 0.19, 0.78, 0.0039, '147, 197, 253'),
+    this.createParticle(6, -0.64, 0.24, 0.1, 0.52, 0.0066, '196, 181, 253'),
   ];
   private createParticle(
     radius: number,
@@ -188,6 +198,16 @@ export class PremiumHeroCanvasAnimation {
       { x: width * 0.63, y: height * 0.64 },
       { x: width * 0.78, y: height * 0.2 },
       { x: width * 0.12, y: height * 0.55 },
+      { x: width * 0.56, y: height * 0.52 },
+      { x: width * 0.9, y: height * 0.34 },
+      { x: width * 0.68, y: height * 0.82 },
+      { x: width * 0.38, y: height * 0.18 },
+      { x: width * 0.08, y: height * 0.82 },
+      { x: width * 0.48, y: height * 0.58 },
+      { x: width * 0.88, y: height * 0.5 },
+      { x: width * 0.3, y: height * 0.34 },
+      { x: width * 0.6, y: height * 0.16 },
+      { x: width * 0.16, y: height * 0.38 },
     ];
 
     this.particles.forEach((particle, index) => {
