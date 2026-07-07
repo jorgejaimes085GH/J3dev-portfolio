@@ -86,16 +86,31 @@ export class PremiumHeroCanvasAnimation {
     this.context.fillStyle = 'rgba(255, 0, 0, 0.22)';
     this.context.fillRect(0, 0, width, height);
 
-    this.context.beginPath();
-    this.context.fillStyle = 'green';
-    this.context.arc(width / 2, height / 2, 30, 0, Math.PI * 2);
-    this.context.fill();
+    const particles = [
+      { x: width * 0.25, y: height * 0.3 },
+      { x: width * 0.5, y: height * 0.5 },
+      { x: width * 0.72, y: height * 0.35 },
+      { x: width * 0.82, y: height * 0.68 },
+      { x: width * 0.38, y: height * 0.72 },
+    ];
 
+    this.context.fillStyle = 'rgba(34, 211, 238, 1)';
+    this.context.shadowColor = 'rgba(34, 211, 238, 0.95)';
+    this.context.shadowBlur = 40;
+
+    for (const particle of particles) {
+      this.context.beginPath();
+      this.context.arc(particle.x, particle.y, 14, 0, Math.PI * 2);
+      this.context.fill();
+    }
+
+    this.context.shadowBlur = 0;
+    this.context.shadowColor = 'transparent';
     this.context.fillStyle = 'white';
     this.context.font = '40px Arial';
     this.context.fillText('CANVAS OK', 40, height - 40);
 
-    console.log('Canvas Smoke Test Drawn');
+    console.log('Canvas Five Static Particles Drawn');
   }
 
   private clear(): void {
