@@ -175,6 +175,8 @@ export class PremiumHeroCanvasAnimation {
     }
 
     this.clear();
+    this.context.fillStyle = 'rgba(255, 0, 0, 0.22)';
+    this.context.fillRect(0, 0, width, height);
     this.updateParticles(width, height);
     this.drawParticles();
   }
