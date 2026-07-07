@@ -38,6 +38,16 @@ export class PremiumHeroCanvasAnimation {
     this.createParticle(8, -0.28, 0.56, 0.07, 0.66, 0.0056, '240, 249, 255'),
     this.createParticle(12, 0.42, -0.48, 0.19, 0.78, 0.0039, '147, 197, 253'),
     this.createParticle(6, -0.64, 0.24, 0.1, 0.52, 0.0066, '196, 181, 253'),
+    this.createParticle(9, 0.31, -0.54, 0.12, 0.69, 0.0051, '34, 211, 238'),
+    this.createParticle(13, -0.46, 0.39, 0.07, 0.83, 0.0043, '147, 197, 253'),
+    this.createParticle(7, 0.57, 0.33, 0.15, 0.61, 0.0069, '240, 249, 255'),
+    this.createParticle(15, -0.29, -0.41, 0.09, 0.87, 0.0037, '196, 181, 253'),
+    this.createParticle(5, 0.49, -0.22, 0.18, 0.57, 0.0074, '103, 232, 249'),
+    this.createParticle(11, -0.61, 0.27, 0.06, 0.79, 0.0049, '191, 219, 254'),
+    this.createParticle(8, 0.36, 0.59, 0.13, 0.66, 0.0059, '224, 242, 254'),
+    this.createParticle(14, -0.53, -0.31, 0.11, 0.84, 0.0041, '165, 180, 252'),
+    this.createParticle(6, 0.63, 0.44, 0.08, 0.55, 0.0064, '56, 189, 248'),
+    this.createParticle(10, -0.34, -0.57, 0.16, 0.73, 0.0054, '216, 180, 254'),
   ];
   private createParticle(
     radius: number,
@@ -208,6 +218,16 @@ export class PremiumHeroCanvasAnimation {
       { x: width * 0.3, y: height * 0.34 },
       { x: width * 0.6, y: height * 0.16 },
       { x: width * 0.16, y: height * 0.38 },
+      { x: width * 0.26, y: height * 0.14 },
+      { x: width * 0.74, y: height * 0.76 },
+      { x: width * 0.92, y: height * 0.22 },
+      { x: width * 0.42, y: height * 0.9 },
+      { x: width * 0.1, y: height * 0.18 },
+      { x: width * 0.82, y: height * 0.88 },
+      { x: width * 0.54, y: height * 0.7 },
+      { x: width * 0.7, y: height * 0.1 },
+      { x: width * 0.22, y: height * 0.9 },
+      { x: width * 0.96, y: height * 0.6 },
     ];
 
     this.particles.forEach((particle, index) => {
