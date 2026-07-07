@@ -286,11 +286,11 @@ html.theme-premium-3d .hero-slider__content {
 html.theme-premium-3d .hero-slider__premium-canvas {
   position: absolute;
   inset: 0;
-  z-index: 9999 !important;
+  z-index: 1;
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  opacity: 1 !important;
+  opacity: 0.92;
   pointer-events: none;
 }
 
@@ -394,7 +394,7 @@ html.theme-premium-3d .hero-slider__navigation {
   }
 
   html.theme-premium-3d .hero-slider__premium-canvas {
-    display: none;
+    display: none !important;
   }
 }
 
