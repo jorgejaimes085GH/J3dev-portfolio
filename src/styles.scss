@@ -459,6 +459,14 @@ html.theme-premium-3d .hero-slider__navigation {
     padding: 0.55rem;
     border-radius: 1.25rem;
   }
+
+  html.theme-premium-3d .hero-slider__indicators {
+    display: none;
+  }
+}
+
+html.theme-premium-3d .viewport-preview--mobile .hero-slider__indicators {
+  display: none;
 }
 
 /* Central responsive typography scale for page, section, and card headings.
