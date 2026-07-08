@@ -28,12 +28,24 @@
 
     .premium-dock__item,
     .premium-dock__item + .premium-dock__item {
+      --dock-x: 0px;
+      --dock-y: 0px;
+      --dock-scale: 1;
+      --dock-z: 1;
+
       position: relative;
+      z-index: var(--dock-z);
       flex: 0 0 auto;
       border-left: 0;
       border-right: 0;
       box-shadow: none;
       overflow: visible;
+      transform: translateX(var(--dock-x)) translateY(var(--dock-y)) scale(var(--dock-scale));
+      transform-origin: center center;
+      transition:
+        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+        z-index 0ms linear 150ms;
+      will-change: transform;
     }
 
     .premium-dock__link {
@@ -55,17 +67,13 @@
         inset 0 -1px 0 #02061770,
         0 0.55rem 1.1rem #02061745;
       font-size: 0;
-      transform: translateY(0) scale(1);
-      transform-origin: center center;
       transition:
-        transform 210ms cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 210ms ease,
-        background 210ms ease,
-        border-color 210ms ease,
-        color 190ms ease,
-        opacity 190ms ease,
-        filter 210ms ease;
-      will-change: transform;
+        box-shadow 150ms ease,
+        background 150ms ease,
+        border-color 150ms ease,
+        color 150ms ease,
+        opacity 150ms ease,
+        filter 150ms ease;
     }
 
     .premium-dock__link::before {
@@ -122,10 +130,10 @@
     .premium-dock__label,
     .premium-dock__chevron {
       transition:
-        transform 210ms cubic-bezier(0.22, 1, 0.36, 1),
-        filter 210ms ease,
-        opacity 190ms ease,
-        color 190ms ease;
+        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 150ms ease,
+        opacity 150ms ease,
+        color 150ms ease;
     }
 
     .premium-dock__link:focus-visible {
@@ -217,35 +225,66 @@
 
 @media (min-width: 481px) and (hover: hover) and (pointer: fine) {
   html.theme-premium-3d app-navbar:not(.site-header-shell--preview-mobile) {
-    .premium-dock__item:hover,
-    .premium-dock__item:focus-within {
-      z-index: 24;
+    .premium-dock__item:has(~ .premium-dock__item:hover),
+    .premium-dock__item:has(~ .premium-dock__item:focus-within) {
+      --dock-x: -10px;
+      --dock-z: 2;
+    }
+
+    .premium-dock__item:hover ~ .premium-dock__item,
+    .premium-dock__item:focus-within ~ .premium-dock__item {
+      --dock-x: 10px;
+      --dock-z: 2;
     }
 
     .premium-dock__item:has(+ .premium-dock__item:hover),
-    .premium-dock__item:has(+ .premium-dock__item:focus-within),
+    .premium-dock__item:has(+ .premium-dock__item:focus-within) {
+      --dock-x: -12px;
+      --dock-y: 5px;
+      --dock-scale: 1.16;
+      --dock-z: 16;
+      transition:
+        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+        z-index 0ms linear;
+    }
+
     .premium-dock__item:hover + .premium-dock__item,
     .premium-dock__item:focus-within + .premium-dock__item {
-      z-index: 16;
+      --dock-x: 12px;
+      --dock-y: 5px;
+      --dock-scale: 1.16;
+      --dock-z: 16;
+      transition:
+        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+        z-index 0ms linear;
+    }
+
+    .premium-dock__item:hover,
+    .premium-dock__item:focus-within {
+      --dock-y: 9px;
+      --dock-scale: 1.35;
+      --dock-z: 24;
+      transition:
+        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+        z-index 0ms linear;
     }
 
     .premium-dock__link:hover,
     .premium-dock__link:focus-visible {
-      transform: translateY(11px) scale(1.4);
-      border-color: color-mix(in srgb, #67e8f9 76%, #0284c7 22%, transparent);
+      border-color: color-mix(in srgb, #67e8f9 82%, #0ea5e9 18%, transparent);
       color: #ffffff;
       background:
-        radial-gradient(circle at 34% 16%, #e0faff3d, transparent 42%),
-        radial-gradient(circle at 50% 100%, #0ea5e93d, transparent 54%),
-        linear-gradient(145deg, #0f3f5f9c, #0f172ad9 58%, #020617d1);
+        radial-gradient(circle at 34% 16%, #e0faff42, transparent 42%),
+        radial-gradient(circle at 50% 100%, #22d3ee42, transparent 54%),
+        linear-gradient(145deg, #0b4f6f9f, #0f172ad9 58%, #020617d1);
       box-shadow:
-        inset 0 0 0 1px #e0faff22,
+        inset 0 0 0 1px #e0faff28,
         inset 0 1px 0 #ffffff30,
-        inset 0 -0.7rem 1.15rem #0284c733,
+        inset 0 -0.7rem 1.15rem #0284c738,
         0 1.35rem 2.35rem #02061782,
-        0 0 0 1px #67e8f94a,
-        0 0 1.9rem #22d3ee72,
-        0 0 2.85rem #0ea5e94a;
+        0 0 0 1px #67e8f95c,
+        0 0 1.9rem #22d3ee80,
+        0 0 2.85rem #06b6d456;
       filter: saturate(1.15) brightness(1.08);
     }
 
@@ -257,21 +296,20 @@
     .premium-dock__link:hover .premium-dock__icon-frame,
     .premium-dock__link:focus-visible .premium-dock__icon-frame {
       transform: translateY(-2px) scale(1.12);
-      filter: drop-shadow(0 0 0.8rem #67e8f9a0) drop-shadow(0 0 1.15rem #0ea5e970);
+      filter: drop-shadow(0 0 0.8rem #67e8f9a0) drop-shadow(0 0 1.15rem #22d3ee70);
     }
 
     .premium-dock__item:has(+ .premium-dock__item:hover) .premium-dock__link,
     .premium-dock__item:has(+ .premium-dock__item:focus-within) .premium-dock__link,
     .premium-dock__item:hover + .premium-dock__item .premium-dock__link,
     .premium-dock__item:focus-within + .premium-dock__item .premium-dock__link {
-      transform: translateY(7px) scale(1.19);
-      border-color: color-mix(in srgb, #67e8f9 52%, #0ea5e9 20%, transparent);
+      border-color: color-mix(in srgb, #67e8f9 58%, #0ea5e9 22%, transparent);
       box-shadow:
         inset 0 1px 0 #ffffff20,
         inset 0 -1px 0 #02061760,
         0 1rem 1.55rem #02061762,
         0 0 1.25rem #22d3ee42,
-        0 0 1.65rem #0ea5e92e;
+        0 0 1.65rem #06b6d435;
     }
 
     .premium-dock__item:has(+ .premium-dock__item:hover) .premium-dock__icon-frame,
@@ -279,7 +317,7 @@
     .premium-dock__item:hover + .premium-dock__item .premium-dock__icon-frame,
     .premium-dock__item:focus-within + .premium-dock__item .premium-dock__icon-frame {
       transform: translateY(-1px) scale(1.075);
-      filter: drop-shadow(0 0 0.55rem #67e8f978) drop-shadow(0 0 0.85rem #0ea5e94f);
+      filter: drop-shadow(0 0 0.55rem #67e8f978) drop-shadow(0 0 0.85rem #22d3ee55);
     }
   }
 }
@@ -316,16 +354,34 @@
 
 @media (min-width: 481px) and (max-width: 900px) and (hover: hover) and (pointer: fine) {
   html.theme-premium-3d app-navbar:not(.site-header-shell--preview-mobile) {
-    .premium-dock__link:hover,
-    .premium-dock__link:focus-visible {
-      transform: translateY(8px) scale(1.3);
+    .premium-dock__item:has(~ .premium-dock__item:hover),
+    .premium-dock__item:has(~ .premium-dock__item:focus-within) {
+      --dock-x: -6px;
     }
 
-    .premium-dock__item:has(+ .premium-dock__item:hover) .premium-dock__link,
-    .premium-dock__item:has(+ .premium-dock__item:focus-within) .premium-dock__link,
-    .premium-dock__item:hover + .premium-dock__item .premium-dock__link,
-    .premium-dock__item:focus-within + .premium-dock__item .premium-dock__link {
-      transform: translateY(5px) scale(1.13);
+    .premium-dock__item:hover ~ .premium-dock__item,
+    .premium-dock__item:focus-within ~ .premium-dock__item {
+      --dock-x: 6px;
+    }
+
+    .premium-dock__item:has(+ .premium-dock__item:hover),
+    .premium-dock__item:has(+ .premium-dock__item:focus-within) {
+      --dock-x: -7px;
+      --dock-y: 4px;
+      --dock-scale: 1.1;
+    }
+
+    .premium-dock__item:hover + .premium-dock__item,
+    .premium-dock__item:focus-within + .premium-dock__item {
+      --dock-x: 7px;
+      --dock-y: 4px;
+      --dock-scale: 1.1;
+    }
+
+    .premium-dock__item:hover,
+    .premium-dock__item:focus-within {
+      --dock-y: 7px;
+      --dock-scale: 1.25;
     }
   }
 }
