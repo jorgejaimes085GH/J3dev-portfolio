@@ -1,11 +1,23 @@
-/*
- * Premium Dock Navigation preparation layer.
- *
- * Reserved for future Premium-only dock rules scoped with:
- * :host-context(html.theme-premium-3d) .premium-dock { ... }
- *
- * Sprint 4A intentionally emits no CSS so the stable Light Professional,
- * Dark Tech, Premium, and mobile navbar visuals remain unchanged.
- */
+/* Premium 3D desktop/tablet static dock only. No RocketDock motion logic. */
+@media (min-width: 481px) {
+  html.theme-premium-3d app-navbar:not(.site-header-shell--preview-mobile) {
+    .premium-dock { display: flex; justify-content: center; }
+    .premium-dock__list { width: auto; max-width: min(100%, 68rem); margin-inline: auto; padding: .3rem; gap: .25rem; border: 1px solid color-mix(in srgb, #22d3ee 40%, #a855f7 30%, transparent); border-radius: 999px; background: color-mix(in srgb, #060b1f 82%, transparent); box-shadow: 0 1rem 2.4rem #02061770, 0 0 1.2rem #22d3ee20; backdrop-filter: blur(18px) saturate(135%); }
+    .premium-dock__item { flex: 0 0 auto; border-left: 0; }
+    .premium-dock__link { min-width: clamp(3.6rem, 4.5vw, 5rem); min-height: 3rem; padding: .4rem .58rem; flex-direction: column; gap: .18rem; border-radius: 1.1rem; color: #eef6ff; background: color-mix(in srgb, #0f172a 34%, transparent); font-size: clamp(.62rem, .56vw, .72rem); transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease; }
+    .premium-dock__link:hover, .premium-dock__link:focus-visible { transform: translateY(-2px) scale(1.04); border-color: color-mix(in srgb, #22d3ee 48%, transparent); box-shadow: 0 .55rem 1.1rem #02061745, 0 0 1rem #22d3ee24; }
+    .premium-dock__link.site-nav__link--active, .site-nav__link--active.premium-dock__link { border-color: color-mix(in srgb, #22d3ee 58%, #a855f7 34%, transparent); color: #fff; background: color-mix(in srgb, #312e81 48%, #0f172a 36%, transparent); box-shadow: 0 0 0 1px #a855f733, 0 .65rem 1.4rem #22d3ee24; }
+    .premium-dock__icon-frame { width: 1.28rem; height: 1.28rem; flex-basis: 1.28rem; }
+    .premium-dock__label { max-width: 5rem; font-size: .67rem; line-height: 1.05; opacity: .88; }
+    .premium-dock__chevron { font-size: .58rem; opacity: .72; }
+  }
+}
 
-$premium-dock-navigation-preparation-layer: true !default;
+@media (min-width: 481px) and (max-width: 1240px) {
+  html.theme-premium-3d app-navbar:not(.site-header-shell--preview-mobile) {
+    .premium-dock__list { max-width: min(100%, 46rem); padding: .26rem; gap: .2rem; }
+    .premium-dock__link { min-width: clamp(3.2rem, 8vw, 4.45rem); min-height: 2.8rem; padding: .35rem .42rem; font-size: .6rem; }
+    .premium-dock__icon-frame { width: 1.14rem; height: 1.14rem; flex-basis: 1.14rem; }
+    .premium-dock__label { max-width: 4.25rem; font-size: .59rem; }
+  }
+}
