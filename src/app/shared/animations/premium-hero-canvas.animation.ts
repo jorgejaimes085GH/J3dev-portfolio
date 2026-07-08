@@ -11,6 +11,11 @@ interface PremiumHeroParticle {
   opacitySpeed: number;
   color: string;
   directionChangeDelay: number;
+  directionChangeRate: number;
+  directionJitter: number;
+  driftFactor: number;
+  maxSpeed: number;
+  minSpeed: number;
 }
 
 export class PremiumHeroCanvasAnimation {
@@ -23,7 +28,11 @@ export class PremiumHeroCanvasAnimation {
   private readonly directionChangeMinDelay = 18;
   private readonly directionChangeMaxDelay = 58;
   private readonly directionChangeStrength = 0.045;
-  private readonly maxParticleSpeed = 0.92;
+  private readonly particleSpeedVariationPattern = [0.62, 0.82, 1.08, 1.28, 1.48, 0.74, 1.18, 0.94];
+  private readonly opacitySpeedVariationPattern = [0.72, 1.34, 0.96, 1.52, 0.84, 1.16, 1.42, 0.66];
+  private readonly driftVariationPattern = [0.58, 0.78, 1.04, 1.24, 1.46, 0.68, 1.16, 0.92];
+  private readonly maxParticleSpeed = 1.18;
+  private particleCreationIndex = 0;
   private readonly particles: PremiumHeroParticle[] = [
     this.createParticle(18, 0.45, 0.35, 0.1, 0.92, 0.006, '34, 211, 238'),
     this.createParticle(9, -0.55, 0.3, 0.16, 0.68, 0.0045, '147, 197, 253'),
@@ -75,27 +84,45 @@ export class PremiumHeroCanvasAnimation {
     opacitySpeed: number,
     color: string,
   ): PremiumHeroParticle {
+    const particleIndex = this.particleCreationIndex;
+    this.particleCreationIndex += 1;
+
+    const speedVariation = this.getPatternValue(this.particleSpeedVariationPattern, particleIndex);
+    const opacityVariation = this.getPatternValue(this.opacitySpeedVariationPattern, particleIndex + 3);
+    const driftVariation = this.getPatternValue(this.driftVariationPattern, particleIndex + 5);
+    const opacityRange = maxOpacity - minOpacity;
+    const opacityOffset = ((particleIndex % 5) / 4) * opacityRange;
+
     return {
       x: 0,
       y: 0,
       radius,
-      velocityX: velocityX * this.movementSpeedMultiplier,
-      velocityY: velocityY * this.movementSpeedMultiplier,
-      opacity: minOpacity,
+      velocityX: velocityX * this.movementSpeedMultiplier * speedVariation,
+      velocityY: velocityY * this.movementSpeedMultiplier * speedVariation,
+      opacity: minOpacity + opacityOffset,
       minOpacity,
       maxOpacity,
-      opacityDirection: 1,
-      opacitySpeed: opacitySpeed * this.opacitySpeedMultiplier,
+      opacityDirection: particleIndex % 2 === 0 ? 1 : -1,
+      opacitySpeed: opacitySpeed * this.opacitySpeedMultiplier * opacityVariation,
       color,
-      directionChangeDelay: this.getDirectionChangeDelay(),
+      directionChangeDelay: this.getDirectionChangeDelay(driftVariation),
+      directionChangeRate: driftVariation,
+      directionJitter: this.directionChangeStrength * driftVariation,
+      driftFactor: 0.012 + ((particleIndex % 6) * 0.004),
+      maxSpeed: this.maxParticleSpeed * Math.min(speedVariation + 0.18, 1.42),
+      minSpeed: 0.22 * speedVariation,
     };
   }
 
-  private getDirectionChangeDelay(): number {
-    return Math.floor(
-      this.directionChangeMinDelay +
-        Math.random() * (this.directionChangeMaxDelay - this.directionChangeMinDelay),
-    );
+  private getPatternValue(pattern: number[], index: number): number {
+    return pattern[index % pattern.length];
+  }
+
+  private getDirectionChangeDelay(directionChangeRate = 1): number {
+    const minDelay = this.directionChangeMinDelay / directionChangeRate;
+    const maxDelay = this.directionChangeMaxDelay / directionChangeRate;
+
+    return Math.floor(minDelay + Math.random() * (maxDelay - minDelay));
   }
 
   private updateParticleOpacity(particle: PremiumHeroParticle): void {
@@ -310,20 +337,29 @@ export class PremiumHeroCanvasAnimation {
       return;
     }
 
-    particle.velocityX += (Math.random() - 0.5) * this.directionChangeStrength;
-    particle.velocityY += (Math.random() - 0.5) * this.directionChangeStrength;
+    particle.velocityX += (Math.random() - 0.5) * particle.directionJitter;
+    particle.velocityY += (Math.random() - 0.5) * particle.directionJitter;
+    particle.velocityX += Math.sin(particle.y * 0.01) * particle.driftFactor;
+    particle.velocityY += Math.cos(particle.x * 0.01) * particle.driftFactor;
     this.limitParticleSpeed(particle);
-    particle.directionChangeDelay = this.getDirectionChangeDelay();
+    particle.directionChangeDelay = this.getDirectionChangeDelay(particle.directionChangeRate);
   }
 
   private limitParticleSpeed(particle: PremiumHeroParticle): void {
     const speed = Math.hypot(particle.velocityX, particle.velocityY);
 
-    if (speed <= this.maxParticleSpeed) {
+    if (speed < particle.minSpeed && speed > 0) {
+      const speedScale = particle.minSpeed / speed;
+      particle.velocityX *= speedScale;
+      particle.velocityY *= speedScale;
       return;
     }
 
-    const speedScale = this.maxParticleSpeed / speed;
+    if (speed <= particle.maxSpeed) {
+      return;
+    }
+
+    const speedScale = particle.maxSpeed / speed;
     particle.velocityX *= speedScale;
     particle.velocityY *= speedScale;
   }
