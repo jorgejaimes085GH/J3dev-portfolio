@@ -87,7 +87,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                     [class.site-nav__link--long]="item.labelKey === 'value'"
                     [class.site-nav__link--active]="isNavigationItemActive(item)"
                     [attr.aria-label]="item.label"
-                    [attr.title]="item.label"
+                    [attr.data-label]="item.label"
                     aria-haspopup="true"
                     [attr.aria-expanded]="isDropdownOpen(item.path)"
                     [attr.aria-controls]="submenuId(item.path)"
@@ -109,7 +109,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                       exact: item.path === '/' || item.path === '/about',
                     }"
                     [attr.aria-label]="item.label"
-                    [attr.title]="item.label"
+                    [attr.data-label]="item.label"
                     (click)="handleNavigationClick()"
                     (keydown.escape)="closeAllMenus()"
                   >
