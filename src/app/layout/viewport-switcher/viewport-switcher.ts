@@ -8,37 +8,41 @@ import { ViewportPreviewId } from '../../models/viewport-preview.model';
   selector: 'app-viewport-switcher',
   standalone: true,
   template: `
-    <section class="viewport-switcher" [attr.aria-label]="uiText().header.preview">
-      <span class="viewport-switcher__label">{{ uiText().header.preview }}:</span>
-      <div
-        class="viewport-switcher__options"
-        role="group"
-        [attr.aria-label]="uiText().header.preview"
-      >
-        @for (viewport of viewportOptions; track viewport.id) {
-          <button
-            type="button"
-            class="viewport-switcher__button"
-            [class.viewport-switcher__button--active]="isActiveViewport(viewport.id)"
-            [attr.aria-pressed]="isActiveViewport(viewport.id)"
-            [attr.aria-label]="viewportLabel(viewport.id) + ' ' + uiText().header.viewportPreviewSuffix"
-            [attr.title]="viewportLabel(viewport.id) + ' ' + uiText().header.previewTitleSuffix"
-            (click)="selectViewport(viewport.id)"
-          >
-            @if (viewport.iconUrl) {
-              <img
-                class="viewport-switcher__icon"
-                [src]="viewport.iconUrl"
-                [alt]="''"
-                aria-hidden="true"
-                (error)="showIconFallback($event)"
-              />
-            }
-            <span class="viewport-switcher__fallback">{{ viewport.iconFallback }}</span>
-          </button>
-        }
-      </div>
-    </section>
+    @if (!isRealMobileDevice()) {
+      <section class="viewport-switcher" [attr.aria-label]="uiText().header.preview">
+        <span class="viewport-switcher__label">{{ uiText().header.preview }}:</span>
+        <div
+          class="viewport-switcher__options"
+          role="group"
+          [attr.aria-label]="uiText().header.preview"
+        >
+          @for (viewport of viewportOptions; track viewport.id) {
+            <button
+              type="button"
+              class="viewport-switcher__button"
+              [class.viewport-switcher__button--active]="isActiveViewport(viewport.id)"
+              [attr.aria-pressed]="isActiveViewport(viewport.id)"
+              [attr.aria-label]="
+                viewportLabel(viewport.id) + ' ' + uiText().header.viewportPreviewSuffix
+              "
+              [attr.title]="viewportLabel(viewport.id) + ' ' + uiText().header.previewTitleSuffix"
+              (click)="selectViewport(viewport.id)"
+            >
+              @if (viewport.iconUrl) {
+                <img
+                  class="viewport-switcher__icon"
+                  [src]="viewport.iconUrl"
+                  [alt]="''"
+                  aria-hidden="true"
+                  (error)="showIconFallback($event)"
+                />
+              }
+              <span class="viewport-switcher__fallback">{{ viewport.iconFallback }}</span>
+            </button>
+          }
+        </div>
+      </section>
+    }
   `,
   styleUrl: './viewport-switcher.scss',
 })
@@ -48,6 +52,7 @@ export class ViewportSwitcher {
 
   readonly viewportOptions = this.viewportPreviewService.viewportOptions;
   readonly uiText = this.languageService.uiText;
+  readonly isRealMobileDevice = this.viewportPreviewService.isRealMobileDevice;
 
   selectViewport(viewport: ViewportPreviewId): void {
     this.viewportPreviewService.setViewport(viewport);
