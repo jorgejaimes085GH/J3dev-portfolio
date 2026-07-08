@@ -10,6 +10,7 @@ interface PremiumHeroParticle {
   opacityDirection: 1 | -1;
   opacitySpeed: number;
   color: string;
+  directionChangeDelay: number;
 }
 
 export class PremiumHeroCanvasAnimation {
@@ -17,22 +18,28 @@ export class PremiumHeroCanvasAnimation {
   private animationFrameId: number | null = null;
   private isRunning = false;
   private hasLoggedAnimationRunning = false;
+  private readonly movementSpeedMultiplier = 1.18;
+  private readonly opacitySpeedMultiplier = 1.28;
+  private readonly directionChangeMinDelay = 18;
+  private readonly directionChangeMaxDelay = 58;
+  private readonly directionChangeStrength = 0.045;
+  private readonly maxParticleSpeed = 0.92;
   private readonly particles: PremiumHeroParticle[] = [
-    this.createParticle(14, 0.45, 0.35, 0.1, 0.92, 0.006, '34, 211, 238'),
+    this.createParticle(18, 0.45, 0.35, 0.1, 0.92, 0.006, '34, 211, 238'),
     this.createParticle(9, -0.55, 0.3, 0.16, 0.68, 0.0045, '147, 197, 253'),
-    this.createParticle(16, 0.35, -0.5, 0.05, 0.86, 0.0052, '224, 242, 254'),
+    this.createParticle(18, 0.35, -0.5, 0.05, 0.86, 0.0052, '224, 242, 254'),
     this.createParticle(7, -0.4, -0.45, 0.12, 0.58, 0.007, '103, 232, 249'),
     this.createParticle(12, 0.65, 0.25, 0.18, 0.74, 0.0038, '56, 189, 248'),
     this.createParticle(5, -0.32, 0.52, 0.08, 0.62, 0.0065, '186, 230, 253'),
     this.createParticle(10, 0.5, -0.28, 0.14, 0.8, 0.0042, '34, 211, 238'),
     this.createParticle(6, -0.6, -0.2, 0.05, 0.5, 0.0075, '219, 234, 254'),
-    this.createParticle(15, 0.25, 0.6, 0.2, 0.9, 0.0035, '125, 211, 252'),
+    this.createParticle(20, 0.25, 0.6, 0.2, 0.9, 0.0035, '125, 211, 252'),
     this.createParticle(8, -0.48, 0.42, 0.1, 0.7, 0.0058, '240, 249, 255'),
     this.createParticle(11, 0.38, 0.46, 0.09, 0.76, 0.0048, '165, 180, 252'),
     this.createParticle(6, -0.52, 0.34, 0.13, 0.64, 0.0062, '34, 211, 238'),
     this.createParticle(13, 0.58, -0.36, 0.06, 0.82, 0.004, '191, 219, 254'),
     this.createParticle(7, -0.36, -0.58, 0.17, 0.6, 0.0068, '103, 232, 249'),
-    this.createParticle(17, 0.28, 0.5, 0.08, 0.88, 0.0036, '224, 242, 254'),
+    this.createParticle(20, 0.28, 0.5, 0.08, 0.88, 0.0036, '224, 242, 254'),
     this.createParticle(5, -0.44, -0.32, 0.11, 0.56, 0.0072, '216, 180, 254'),
     this.createParticle(10, 0.62, 0.18, 0.15, 0.72, 0.0044, '56, 189, 248'),
     this.createParticle(8, -0.28, 0.56, 0.07, 0.66, 0.0056, '240, 249, 255'),
@@ -41,23 +48,23 @@ export class PremiumHeroCanvasAnimation {
     this.createParticle(9, 0.31, -0.54, 0.12, 0.69, 0.0051, '34, 211, 238'),
     this.createParticle(13, -0.46, 0.39, 0.07, 0.83, 0.0043, '147, 197, 253'),
     this.createParticle(7, 0.57, 0.33, 0.15, 0.61, 0.0069, '240, 249, 255'),
-    this.createParticle(15, -0.29, -0.41, 0.09, 0.87, 0.0037, '196, 181, 253'),
+    this.createParticle(20, -0.29, -0.41, 0.09, 0.87, 0.0037, '196, 181, 253'),
     this.createParticle(5, 0.49, -0.22, 0.18, 0.57, 0.0074, '103, 232, 249'),
     this.createParticle(11, -0.61, 0.27, 0.06, 0.79, 0.0049, '191, 219, 254'),
     this.createParticle(8, 0.36, 0.59, 0.13, 0.66, 0.0059, '224, 242, 254'),
-    this.createParticle(14, -0.53, -0.31, 0.11, 0.84, 0.0041, '165, 180, 252'),
+    this.createParticle(18, -0.53, -0.31, 0.11, 0.84, 0.0041, '165, 180, 252'),
     this.createParticle(6, 0.63, 0.44, 0.08, 0.55, 0.0064, '56, 189, 248'),
     this.createParticle(10, -0.34, -0.57, 0.16, 0.73, 0.0054, '216, 180, 254'),
     this.createParticle(12, 0.41, 0.29, 0.09, 0.77, 0.0046, '34, 211, 238'),
     this.createParticle(7, -0.47, 0.51, 0.14, 0.63, 0.0061, '147, 197, 253'),
-    this.createParticle(16, 0.22, -0.39, 0.06, 0.89, 0.0039, '224, 242, 254'),
+    this.createParticle(18, 0.22, -0.39, 0.06, 0.89, 0.0039, '224, 242, 254'),
     this.createParticle(5, -0.59, -0.26, 0.18, 0.54, 0.0071, '196, 181, 253'),
     this.createParticle(9, 0.54, 0.37, 0.11, 0.71, 0.0053, '103, 232, 249'),
     this.createParticle(13, -0.31, 0.45, 0.07, 0.81, 0.0044, '191, 219, 254'),
     this.createParticle(6, 0.66, -0.34, 0.15, 0.59, 0.0067, '165, 180, 252'),
     this.createParticle(11, -0.42, -0.49, 0.1, 0.75, 0.005, '240, 249, 255'),
     this.createParticle(8, 0.33, 0.61, 0.13, 0.67, 0.0057, '56, 189, 248'),
-    this.createParticle(15, -0.56, 0.21, 0.08, 0.85, 0.0042, '216, 180, 254'),
+    this.createParticle(20, -0.56, 0.21, 0.08, 0.85, 0.0042, '216, 180, 254'),
   ];
   private createParticle(
     radius: number,
@@ -72,15 +79,23 @@ export class PremiumHeroCanvasAnimation {
       x: 0,
       y: 0,
       radius,
-      velocityX,
-      velocityY,
+      velocityX: velocityX * this.movementSpeedMultiplier,
+      velocityY: velocityY * this.movementSpeedMultiplier,
       opacity: minOpacity,
       minOpacity,
       maxOpacity,
       opacityDirection: 1,
-      opacitySpeed,
+      opacitySpeed: opacitySpeed * this.opacitySpeedMultiplier,
       color,
+      directionChangeDelay: this.getDirectionChangeDelay(),
     };
+  }
+
+  private getDirectionChangeDelay(): number {
+    return Math.floor(
+      this.directionChangeMinDelay +
+        Math.random() * (this.directionChangeMaxDelay - this.directionChangeMinDelay),
+    );
   }
 
   private updateParticleOpacity(particle: PremiumHeroParticle): void {
@@ -269,6 +284,8 @@ export class PremiumHeroCanvasAnimation {
 
   private updateParticles(width: number, height: number): void {
     for (const particle of this.particles) {
+      this.updateParticleDirection(particle);
+
       particle.x += particle.velocityX;
       particle.y += particle.velocityY;
 
@@ -284,6 +301,31 @@ export class PremiumHeroCanvasAnimation {
 
       this.updateParticleOpacity(particle);
     }
+  }
+
+  private updateParticleDirection(particle: PremiumHeroParticle): void {
+    particle.directionChangeDelay -= 1;
+
+    if (particle.directionChangeDelay > 0) {
+      return;
+    }
+
+    particle.velocityX += (Math.random() - 0.5) * this.directionChangeStrength;
+    particle.velocityY += (Math.random() - 0.5) * this.directionChangeStrength;
+    this.limitParticleSpeed(particle);
+    particle.directionChangeDelay = this.getDirectionChangeDelay();
+  }
+
+  private limitParticleSpeed(particle: PremiumHeroParticle): void {
+    const speed = Math.hypot(particle.velocityX, particle.velocityY);
+
+    if (speed <= this.maxParticleSpeed) {
+      return;
+    }
+
+    const speedScale = this.maxParticleSpeed / speed;
+    particle.velocityX *= speedScale;
+    particle.velocityY *= speedScale;
   }
 
   private drawDiagnosticBackground(width: number, height: number): void {
