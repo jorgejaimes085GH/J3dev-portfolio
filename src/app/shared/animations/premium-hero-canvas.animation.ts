@@ -21,6 +21,10 @@ interface PremiumHeroParticle {
 export class PremiumHeroCanvasAnimation {
   private readonly context: CanvasRenderingContext2D | null;
   private animationFrameId: number | null = null;
+  private resizeObserver: ResizeObserver | null = null;
+  private resizeFrameId: number | null = null;
+  private lastCanvasWidth = 0;
+  private lastCanvasHeight = 0;
   private isRunning = false;
   private hasLoggedAnimationRunning = false;
   private readonly movementSpeedMultiplier = 1.18;
@@ -140,11 +144,7 @@ export class PremiumHeroCanvasAnimation {
   }
 
   private readonly handleResize = (): void => {
-    if (!this.isRunning || !this.resize()) {
-      return;
-    }
-
-    this.keepParticlesInBounds();
+    this.queueResize();
   };
 
   constructor(private readonly canvas: HTMLCanvasElement) {
@@ -169,6 +169,7 @@ export class PremiumHeroCanvasAnimation {
     }
 
     this.placeInitialParticles();
+    this.observeElementResize();
     window.addEventListener('resize', this.handleResize, { passive: true });
     this.isRunning = true;
     this.animate();
@@ -176,7 +177,13 @@ export class PremiumHeroCanvasAnimation {
 
   stop(): void {
     window.removeEventListener('resize', this.handleResize);
+    this.disconnectResizeObserver();
     this.isRunning = false;
+
+    if (this.resizeFrameId !== null) {
+      window.cancelAnimationFrame(this.resizeFrameId);
+      this.resizeFrameId = null;
+    }
 
     if (this.animationFrameId !== null) {
       window.cancelAnimationFrame(this.animationFrameId);
@@ -188,6 +195,37 @@ export class PremiumHeroCanvasAnimation {
 
   destroy(): void {
     this.stop();
+  }
+
+  private observeElementResize(): void {
+    if (this.resizeObserver || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+
+    const resizeElement = this.canvas.parentElement ?? this.canvas;
+    this.resizeObserver = new ResizeObserver(() => this.queueResize());
+    this.resizeObserver.observe(resizeElement);
+  }
+
+  private disconnectResizeObserver(): void {
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = null;
+  }
+
+  private queueResize(): void {
+    if (!this.isRunning || this.resizeFrameId !== null) {
+      return;
+    }
+
+    this.resizeFrameId = window.requestAnimationFrame(() => {
+      this.resizeFrameId = null;
+
+      if (!this.resize()) {
+        return;
+      }
+
+      this.drawFrame();
+    });
   }
 
   private resize(): boolean {
@@ -205,10 +243,18 @@ export class PremiumHeroCanvasAnimation {
       return false;
     }
 
-    if (this.canvas.width !== canvasWidth || this.canvas.height !== canvasHeight) {
+    const previousWidth = this.lastCanvasWidth || this.canvas.width;
+    const previousHeight = this.lastCanvasHeight || this.canvas.height;
+    const hasSizeChanged = this.canvas.width !== canvasWidth || this.canvas.height !== canvasHeight;
+
+    if (hasSizeChanged) {
       this.canvas.width = canvasWidth;
       this.canvas.height = canvasHeight;
+      this.adaptParticlesToSize(previousWidth, previousHeight, canvasWidth, canvasHeight);
     }
+
+    this.lastCanvasWidth = canvasWidth;
+    this.lastCanvasHeight = canvasHeight;
 
     console.log(`Canvas Size: ${canvasWidth} x ${canvasHeight}`);
 
@@ -296,6 +342,28 @@ export class PremiumHeroCanvasAnimation {
       particle.x = positions[index].x;
       particle.y = positions[index].y;
     });
+
+    this.keepParticlesInBounds();
+  }
+
+  private adaptParticlesToSize(
+    previousWidth: number,
+    previousHeight: number,
+    nextWidth: number,
+    nextHeight: number,
+  ): void {
+    if (previousWidth <= 0 || previousHeight <= 0) {
+      this.keepParticlesInBounds();
+      return;
+    }
+
+    const widthScale = nextWidth / previousWidth;
+    const heightScale = nextHeight / previousHeight;
+
+    for (const particle of this.particles) {
+      particle.x *= widthScale;
+      particle.y *= heightScale;
+    }
 
     this.keepParticlesInBounds();
   }
