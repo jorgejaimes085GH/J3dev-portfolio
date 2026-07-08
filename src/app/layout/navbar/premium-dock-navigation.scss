@@ -12,20 +12,15 @@
       min-width: min(100%, 58rem);
       max-width: min(100%, 79rem);
       margin-inline: auto;
-      padding: 0.55rem clamp(1.2rem, 1.85vw, 2.05rem);
-      gap: clamp(0.86rem, 1.35vw, 1.42rem);
+      padding: 0.55rem clamp(1.05rem, 1.65vw, 1.85rem);
+      gap: clamp(0.08rem, 0.22vw, 0.22rem);
       justify-content: center;
       overflow: visible;
-      border: 1px solid color-mix(in srgb, #22d3ee 46%, #a855f7 32%, transparent);
+      border: 1px solid color-mix(in srgb, #67e8f9 18%, #a855f7 12%, transparent);
       border-radius: 999px;
-      background: transparent;
-      box-shadow:
-        inset 0 1px 0 #ffffff1f,
-        inset 0 -1px 0 #22d3ee17,
-        0 1.2rem 2.8rem #0206178a,
-        0 0 1.4rem #22d3ee22,
-        0 0 2.2rem #a855f714;
-      backdrop-filter: blur(22px) saturate(150%);
+      background: color-mix(in srgb, #020617 7%, transparent);
+      box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 10%, transparent);
+      backdrop-filter: blur(12px) saturate(118%);
     }
 
     .premium-dock__item,
@@ -37,17 +32,16 @@
 
       position: relative;
       z-index: var(--dock-z);
-      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 clamp(4.05rem, 4.75vw, 4.65rem);
+      min-width: clamp(4.05rem, 4.75vw, 4.65rem);
       border-left: 0;
       border-right: 0;
       box-shadow: none;
       overflow: visible;
-      transform: translateX(var(--dock-x)) translateY(var(--dock-y)) scale(var(--dock-scale));
-      transform-origin: center center;
-      transition:
-        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
-        z-index 0ms linear 150ms;
-      will-change: transform;
+      transition: z-index 0ms linear 150ms;
     }
 
     .premium-dock__link {
@@ -69,13 +63,17 @@
         inset 0 -1px 0 #02061770,
         0 0.55rem 1.1rem #02061745;
       font-size: 0;
+      transform: translateX(var(--dock-x)) translateY(var(--dock-y)) scale(var(--dock-scale));
+      transform-origin: center center;
       transition:
+        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 150ms ease,
         background 150ms ease,
         border-color 150ms ease,
         color 150ms ease,
         opacity 150ms ease,
         filter 150ms ease;
+      will-change: transform;
     }
 
     .premium-dock__link::before {
@@ -245,9 +243,7 @@
       --dock-y: 5px;
       --dock-scale: 1.16;
       --dock-z: 16;
-      transition:
-        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
-        z-index 0ms linear;
+      transition: z-index 0ms linear;
     }
 
     .premium-dock__item:hover + .premium-dock__item,
@@ -256,9 +252,7 @@
       --dock-y: 5px;
       --dock-scale: 1.16;
       --dock-z: 16;
-      transition:
-        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
-        z-index 0ms linear;
+      transition: z-index 0ms linear;
     }
 
     .premium-dock__item:hover,
@@ -266,12 +260,10 @@
       --dock-y: 9px;
       --dock-scale: 1.35;
       --dock-z: 24;
-      transition:
-        transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
-        z-index 0ms linear;
+      transition: z-index 0ms linear;
     }
 
-    .premium-dock__link:hover,
+    .premium-dock__item:hover .premium-dock__link,
     .premium-dock__link:focus-visible {
       border-color: color-mix(in srgb, #67e8f9 82%, #0ea5e9 18%, transparent);
       color: #ffffff;
@@ -290,12 +282,12 @@
       filter: saturate(1.15) brightness(1.08);
     }
 
-    .premium-dock__link:hover::before {
+    .premium-dock__item:hover .premium-dock__link::before {
       opacity: 1;
       transform: translate(-50%, 0) scale(1);
     }
 
-    .premium-dock__link:hover .premium-dock__icon-frame,
+    .premium-dock__item:hover .premium-dock__icon-frame,
     .premium-dock__link:focus-visible .premium-dock__icon-frame {
       transform: translateY(-2px) scale(1.12);
       filter: drop-shadow(0 0 0.8rem #67e8f9a0) drop-shadow(0 0 1.15rem #22d3ee70);
@@ -330,8 +322,14 @@
       width: min(100%, 50rem);
       min-width: 0;
       max-width: min(100%, 50rem);
-      padding: 0.42rem clamp(0.62rem, 1.15vw, 0.95rem);
-      gap: clamp(0.46rem, 0.95vw, 0.78rem);
+      padding: 0.42rem clamp(0.5rem, 1vw, 0.82rem);
+      gap: clamp(0.04rem, 0.16vw, 0.14rem);
+    }
+
+    .premium-dock__item,
+    .premium-dock__item + .premium-dock__item {
+      flex-basis: clamp(3.24rem, 6.8vw, 3.72rem);
+      min-width: clamp(3.24rem, 6.8vw, 3.72rem);
     }
 
     .premium-dock__link {
