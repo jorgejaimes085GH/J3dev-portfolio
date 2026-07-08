@@ -1,0 +1,11 @@
+/*
+ * Premium Dock Navigation preparation layer.
+ *
+ * Reserved for future Premium-only dock rules scoped with:
+ * :host-context(html.theme-premium-3d) .premium-dock { ... }
+ *
+ * Sprint 4A intentionally emits no CSS so the stable Light Professional,
+ * Dark Tech, Premium, and mobile navbar visuals remain unchanged.
+ */
+
+$premium-dock-navigation-preparation-layer: true !default;

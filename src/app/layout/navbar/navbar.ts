@@ -52,7 +52,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
         </a>
 
         <nav
-          class="site-header__nav site-nav"
+          class="site-header__nav site-nav premium-dock"
           [class.site-nav--mobile-open]="isMobileMenuOpen()"
           [class.site-nav--preview-mobile]="currentViewport() === 'mobile'"
           [attr.aria-label]="uiText().nav.home + ' ' + uiText().header.navigation"
@@ -70,10 +70,10 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
             <span>{{ uiText().nav.menu }}</span>
           </button>
 
-          <ul class="site-nav__list" [id]="mobileMenuId">
+          <ul class="site-nav__list premium-dock__list" [id]="mobileMenuId">
             @for (item of navigationItems(); track item.path) {
               <li
-                class="site-nav__item"
+                class="site-nav__item premium-dock__item"
                 [class.site-nav__item--has-children]="item.children?.length"
                 [class.site-nav__item--submenu-open]="isDropdownOpen(item.path)"
                 (mouseenter)="openDropdown(item.path, !!item.children?.length)"
@@ -82,7 +82,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
               >
                 @if (item.children?.length) {
                   <button
-                    class="site-nav__link"
+                    class="site-nav__link premium-dock__link"
                     type="button"
                     [class.site-nav__link--long]="item.labelKey === 'value'"
                     [class.site-nav__link--active]="isNavigationItemActive(item)"
@@ -101,7 +101,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                   </button>
                 } @else {
                   <a
-                    class="site-nav__link"
+                    class="site-nav__link premium-dock__link"
                     [class.site-nav__link--long]="item.labelKey === 'value'"
                     [routerLink]="item.path"
                     routerLinkActive="site-nav__link--active"
@@ -150,30 +150,30 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
           </ul>
 
           <ng-template #navigationLinkContent let-item let-hasChildren="hasChildren">
-            <span class="site-nav__icon-frame" aria-hidden="true">
+            <span class="site-nav__icon-frame premium-dock__icon-frame" aria-hidden="true">
               @if (item.iconUrl) {
                 <img
-                  class="site-nav__icon"
+                  class="site-nav__icon premium-dock__icon"
                   [src]="item.iconUrl"
                   [alt]="''"
                   aria-hidden="true"
                   (error)="showIconFallback($event)"
                 />
-                <span class="site-nav__icon-fallback site-header__icon-fallback" aria-hidden="true">
+                <span class="site-nav__icon-fallback site-header__icon-fallback premium-dock__icon" aria-hidden="true">
                   {{ item.iconFallback }}
                 </span>
               } @else {
                 <span
-                  class="site-nav__icon-fallback site-header__icon-fallback site-header__icon-fallback--visible"
+                  class="site-nav__icon-fallback site-header__icon-fallback site-header__icon-fallback--visible premium-dock__icon"
                   aria-hidden="true"
                 >
                   {{ item.iconFallback }}
                 </span>
               }
             </span>
-            <span class="site-nav__label">{{ item.label }}</span>
+            <span class="site-nav__label premium-dock__label">{{ item.label }}</span>
             @if (hasChildren) {
-              <span class="site-nav__chevron" aria-hidden="true">▾</span>
+              <span class="site-nav__chevron premium-dock__chevron" aria-hidden="true">▾</span>
             }
           </ng-template>
         </nav>
