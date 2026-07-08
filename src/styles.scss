@@ -180,6 +180,17 @@ a {
   }
 }
 
+/* Premium home removes the shared page rail's top padding so the hero artwork
+   starts immediately below the fixed navigation without changing other themes. */
+html.theme-premium-3d .app-shell__content:has(> app-home) {
+  padding-top: 0;
+}
+
+html.theme-premium-3d .viewport-preview--mobile .app-shell__content:has(> app-home),
+html.theme-premium-3d .viewport-preview--tablet .app-shell__content:has(> app-home) {
+  padding-top: 0;
+}
+
 /* Home hero theme polish lives globally to keep the standalone component lightweight
    while still supporting the three approved theme experiences. */
 
