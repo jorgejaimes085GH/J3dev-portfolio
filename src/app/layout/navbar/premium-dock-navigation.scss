@@ -194,7 +194,9 @@
       flex-basis: clamp(2rem, 2.45vw, 2.45rem);
     }
 
-    .premium-dock__icon {
+    img.premium-dock__icon {
+      width: 36px;
+      height: 36px;
       object-fit: contain;
       filter: drop-shadow(0 0.35rem 0.45rem #02061770);
     }
