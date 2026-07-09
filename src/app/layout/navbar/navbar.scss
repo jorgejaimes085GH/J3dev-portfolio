@@ -212,9 +212,11 @@
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 13rem;
+  display: grid;
+  min-width: 14.75rem;
+  gap: 0.3rem;
   margin: 0;
-  padding: 0.4rem;
+  padding: 0.6rem;
   border: 1px solid var(--app-border-color);
   border-radius: 0.9rem;
   background: var(--header-glass);
@@ -226,8 +228,10 @@
 }
 
 .site-nav__submenu-link {
-  display: block;
-  padding: 0.55rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.68rem;
+  padding: 0.68rem 0.85rem;
   border: 1px solid transparent;
   color: var(--app-text-color);
   background: transparent;
