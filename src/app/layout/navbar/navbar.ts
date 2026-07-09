@@ -76,6 +76,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                 class="site-nav__item premium-dock__item"
                 [class.site-nav__item--has-children]="item.children?.length"
                 [class.site-nav__item--submenu-open]="isDropdownOpen(item.path)"
+                [class.premium-dock__item--submenu-open]="isDropdownOpen(item.path)"
                 (mouseenter)="openDropdown(item.path, !!item.children?.length)"
                 (mouseleave)="closeDropdown(item.path, 'hover')"
                 (focusout)="handleDropdownFocusOut($event, item.path)"
@@ -87,11 +88,11 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                     [class.site-nav__link--long]="item.labelKey === 'value'"
                     [class.site-nav__link--active]="isNavigationItemActive(item)"
                     [attr.aria-label]="item.label"
-                    [attr.data-label]="item.label"
-                    aria-haspopup="true"
+                    [attr.data-label]="premiumDockTooltipLabel(item)"
+                    aria-haspopup="menu"
                     [attr.aria-expanded]="isDropdownOpen(item.path)"
                     [attr.aria-controls]="submenuId(item.path)"
-                    (click)="toggleDropdown(item.path)"
+                    (click)="toggleDropdown(item.path, $event)"
                     (keydown.escape)="closeAllMenus()"
                   >
                     <ng-container
@@ -109,7 +110,7 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                       exact: item.path === '/' || item.path === '/about',
                     }"
                     [attr.aria-label]="item.label"
-                    [attr.data-label]="item.label"
+                    [attr.data-label]="premiumDockTooltipLabel(item)"
                     (click)="handleNavigationClick()"
                     (keydown.escape)="closeAllMenus()"
                   >
@@ -122,24 +123,49 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
 
                 @if (item.children?.length) {
                   <ul
-                    class="site-nav__submenu"
+                    class="site-nav__submenu premium-dock__submenu"
                     [id]="submenuId(item.path)"
                     [attr.aria-label]="item.label"
+                    role="menu"
                   >
                     @for (child of item.children; track child.path) {
-                      <li class="site-nav__submenu-item">
+                      <li class="site-nav__submenu-item premium-dock__submenu-item" role="none">
                         <a
-                          class="site-nav__submenu-link"
+                          class="site-nav__submenu-link premium-dock__submenu-link"
                           [class.site-nav__submenu-link--long]="child.labelKey === 'value'"
                           [routerLink]="child.path"
                           routerLinkActive="site-nav__submenu-link--active"
                           [routerLinkActiveOptions]="{ exact: true }"
                           [attr.aria-label]="child.label"
-                          [attr.title]="child.label"
+                          role="menuitem"
                           (click)="handleNavigationClick()"
                           (keydown.escape)="closeAllMenus()"
                         >
-                          {{ child.label }}
+                          <span class="premium-dock__submenu-icon" aria-hidden="true">
+                            @if (child.iconUrl) {
+                              <img
+                                class="premium-dock__submenu-icon-image"
+                                [src]="child.iconUrl"
+                                [alt]="''"
+                                aria-hidden="true"
+                                (error)="showIconFallback($event)"
+                              />
+                              <span
+                                class="site-header__icon-fallback premium-dock__submenu-icon-fallback"
+                                aria-hidden="true"
+                              >
+                                {{ child.iconFallback }}
+                              </span>
+                            } @else {
+                              <span
+                                class="site-header__icon-fallback site-header__icon-fallback--visible premium-dock__submenu-icon-fallback"
+                                aria-hidden="true"
+                              >
+                                {{ child.iconFallback }}
+                              </span>
+                            }
+                          </span>
+                          <span class="premium-dock__submenu-label">{{ child.label }}</span>
                         </a>
                       </li>
                     }
@@ -159,7 +185,10 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
                   aria-hidden="true"
                   (error)="showIconFallback($event)"
                 />
-                <span class="site-nav__icon-fallback site-header__icon-fallback premium-dock__icon" aria-hidden="true">
+                <span
+                  class="site-nav__icon-fallback site-header__icon-fallback premium-dock__icon"
+                  aria-hidden="true"
+                >
                   {{ item.iconFallback }}
                 </span>
               } @else {
@@ -277,12 +306,19 @@ export class Navbar {
     return this.openDropdownPath() === path;
   }
 
+  protected premiumDockTooltipLabel(item: NavigationItem): string {
+    return item.children?.[0]?.label ?? item.label;
+  }
+
   protected openDropdown(
     path: string,
     hasChildren: boolean,
     source: 'click' | 'hover' = 'hover',
   ): void {
-    if (!hasChildren || (source === 'hover' && this.isMobileNavigationMode())) {
+    if (
+      !hasChildren ||
+      (source === 'hover' && (this.isMobileNavigationMode() || this.isPremiumDockMode()))
+    ) {
       return;
     }
 
@@ -309,7 +345,8 @@ export class Navbar {
     }
   }
 
-  protected toggleDropdown(path: string): void {
+  protected toggleDropdown(path: string, event?: MouseEvent): void {
+    event?.stopPropagation();
     if (this.isDropdownOpen(path) && this.openDropdownSource() === 'click') {
       this.closeDropdown(path);
       return;
@@ -371,6 +408,18 @@ export class Navbar {
 
   private isMobileNavigationMode(): boolean {
     return this.currentViewport() === 'mobile' || this.mobileNavigationMediaQuery?.matches === true;
+  }
+
+  private isPremiumDockMode(): boolean {
+    return (
+      !this.isMobileNavigationMode() &&
+      globalThis.document?.documentElement.classList.contains('theme-premium-3d') === true
+    );
+  }
+
+  @HostListener('document:keydown.escape')
+  protected closeDropdownOnEscape(): void {
+    this.closeAllMenus();
   }
 
   @HostListener('document:pointerdown', ['$event'])
