@@ -5,6 +5,7 @@ export interface NavigationItem {
   label: string;
   path: string;
   iconUrl?: string;
+  premiumIcon?: string;
   iconFallback: string;
   children?: NavigationItem[];
 }

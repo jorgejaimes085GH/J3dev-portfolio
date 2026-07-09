@@ -7,6 +7,7 @@ import type { NavigationItem } from '../../core/constants/navigation.constants';
 import { NAVBAR_ASSET_URLS } from '../../data/layout-assets.data';
 import { LanguageService } from '../../core/services/language.service';
 import { NavigationService } from '../../core/services/navigation.service';
+import { ThemeService } from '../../core/services/theme.service';
 import { ViewportPreviewService } from '../../core/services/viewport-preview.service';
 import { ThemeSwitcher } from '../theme-switcher/theme-switcher';
 import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
@@ -177,10 +178,10 @@ import { ViewportSwitcher } from '../viewport-switcher/viewport-switcher';
 
           <ng-template #navigationLinkContent let-item let-hasChildren="hasChildren">
             <span class="site-nav__icon-frame premium-dock__icon-frame" aria-hidden="true">
-              @if (item.iconUrl) {
+              @if (getNavigationIconUrl(item); as iconUrl) {
                 <img
                   class="site-nav__icon premium-dock__icon"
-                  [src]="item.iconUrl"
+                  [src]="iconUrl"
                   [alt]="''"
                   aria-hidden="true"
                   (error)="showIconFallback($event)"
@@ -251,6 +252,7 @@ export class Navbar {
   private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly languageService = inject(LanguageService);
   private readonly navigationService = inject(NavigationService);
+  private readonly themeService = inject(ThemeService);
   private readonly viewportPreviewService = inject(ViewportPreviewService);
   private readonly router = inject(Router);
 
@@ -308,6 +310,14 @@ export class Navbar {
 
   protected premiumDockTooltipLabel(item: NavigationItem): string {
     return item.children?.[0]?.label ?? item.label;
+  }
+
+  protected getNavigationIconUrl(item: NavigationItem): string | undefined {
+    if (this.themeService.currentTheme() === 'premium-3d' && item.premiumIcon) {
+      return item.premiumIcon;
+    }
+
+    return item.iconUrl;
   }
 
   protected openDropdown(
