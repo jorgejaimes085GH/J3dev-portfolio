@@ -16,6 +16,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Home',
     path: '/',
     iconUrl: 'assets/images/icons/navigation/home.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/home-premium-72.webp',
     iconFallback: 'H',
   },
   {
@@ -23,6 +24,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'About',
     path: '/about',
     iconUrl: 'assets/images/icons/navigation/about.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/about-premium-72.webp',
     iconFallback: 'A',
     children: [
       {
@@ -46,6 +48,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Skills',
     path: '/skills',
     iconUrl: 'assets/images/icons/navigation/skills.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/skills-premium-72.webp',
     iconFallback: 'S',
   },
   {
@@ -53,6 +56,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Projects',
     path: '/projects',
     iconUrl: 'assets/images/icons/navigation/projects.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/projects-premium-72.webp',
     iconFallback: 'P',
   },
   {
@@ -60,6 +64,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Experience',
     path: '/experience',
     iconUrl: 'assets/images/icons/navigation/experience.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/experience-premium-72.webp',
     iconFallback: 'X',
   },
   {
@@ -67,6 +72,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Journey',
     path: '/journey',
     iconUrl: 'assets/images/icons/navigation/journey.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/journey-premium-72.webp',
     iconFallback: 'J',
   },
   {
@@ -74,6 +80,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Education',
     path: '/education',
     iconUrl: 'assets/images/icons/navigation/education.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/education-premium-72.webp',
     iconFallback: 'E',
   },
   {
@@ -81,6 +88,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Documents',
     path: '/documents',
     iconUrl: 'assets/images/icons/navigation/documents.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/documents-premium-72.webp',
     iconFallback: 'D',
   },
   {
@@ -88,6 +96,7 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     label: 'Contact',
     path: '/contact',
     iconUrl: 'assets/images/icons/navigation/contact.svg',
+    premiumIcon: 'assets/images/icons/navigation/premium/contact-premium-72.webp',
     iconFallback: 'C',
   },
 ];
