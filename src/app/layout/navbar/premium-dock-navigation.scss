@@ -1,4 +1,4 @@
-/* Premium 3D desktop/tablet static dock only. No RocketDock motion logic. */
+/* Premium 3D desktop/tablet dock. Route active state is visual only; hover owns geometry. */
 @media (min-width: 481px) {
   html.theme-premium-3d app-navbar:not(.site-header-shell--preview-mobile) {
     .premium-dock {
@@ -7,6 +7,7 @@
       overflow: visible;
     }
 
+    .site-nav__list.premium-dock__list,
     .premium-dock__list {
       width: min(100%, 79rem);
       min-width: min(100%, 58rem);
@@ -158,7 +159,6 @@
       --dock-active-dot: #67e8f9;
       --dock-active-glow: #a855f752;
 
-      margin: 0;
       border-color: color-mix(in srgb, #22d3ee 72%, #a855f7 36%, transparent);
       color: #ffffff;
       background:
@@ -172,7 +172,6 @@
         0 0.8rem 1.65rem #02061755,
         0 0 1.45rem #22d3ee45,
         0 0 2rem #a855f72e;
-      transform: translateX(var(--dock-x)) translateY(var(--dock-y)) scale(var(--dock-scale));
     }
 
     .premium-dock__link.site-nav__link--active::after,
@@ -232,20 +231,17 @@
 
 @media (min-width: 481px) and (hover: hover) and (pointer: fine) {
   html.theme-premium-3d app-navbar:not(.site-header-shell--preview-mobile) {
-    .premium-dock__item:has(~ .premium-dock__item:hover),
-    .premium-dock__item:has(~ .premium-dock__item:focus-within) {
+    .premium-dock__item:has(~ .premium-dock__item:hover) {
       --dock-x: -18px;
       --dock-z: 2;
     }
 
-    .premium-dock__item:hover ~ .premium-dock__item,
-    .premium-dock__item:focus-within ~ .premium-dock__item {
+    .premium-dock__item:hover ~ .premium-dock__item {
       --dock-x: 18px;
       --dock-z: 2;
     }
 
-    .premium-dock__item:has(+ .premium-dock__item:hover),
-    .premium-dock__item:has(+ .premium-dock__item:focus-within) {
+    .premium-dock__item:has(+ .premium-dock__item:hover) {
       --dock-x: -17px;
       --dock-y: 5px;
       --dock-scale: 1.16;
@@ -253,8 +249,7 @@
       transition: z-index 0ms linear;
     }
 
-    .premium-dock__item:hover + .premium-dock__item,
-    .premium-dock__item:focus-within + .premium-dock__item {
+    .premium-dock__item:hover + .premium-dock__item {
       --dock-x: 17px;
       --dock-y: 5px;
       --dock-scale: 1.16;
@@ -262,8 +257,7 @@
       transition: z-index 0ms linear;
     }
 
-    .premium-dock__item:hover,
-    .premium-dock__item:focus-within {
+    .premium-dock__item:hover {
       --dock-y: 9px;
       --dock-scale: 1.35;
       --dock-z: 24;
@@ -294,16 +288,13 @@
       transform: translate(-50%, 0) scale(1);
     }
 
-    .premium-dock__item:hover .premium-dock__icon-frame,
-    .premium-dock__link:focus-visible .premium-dock__icon-frame {
+    .premium-dock__item:hover .premium-dock__icon-frame {
       transform: translateY(-2px) scale(1.12);
       filter: drop-shadow(0 0 0.8rem #67e8f9a0) drop-shadow(0 0 1.15rem #22d3ee70);
     }
 
     .premium-dock__item:has(+ .premium-dock__item:hover) .premium-dock__link,
-    .premium-dock__item:has(+ .premium-dock__item:focus-within) .premium-dock__link,
-    .premium-dock__item:hover + .premium-dock__item .premium-dock__link,
-    .premium-dock__item:focus-within + .premium-dock__item .premium-dock__link {
+    .premium-dock__item:hover + .premium-dock__item .premium-dock__link {
       border-color: color-mix(in srgb, #67e8f9 58%, #0ea5e9 22%, transparent);
       box-shadow:
         inset 0 1px 0 #ffffff20,
@@ -314,9 +305,7 @@
     }
 
     .premium-dock__item:has(+ .premium-dock__item:hover) .premium-dock__icon-frame,
-    .premium-dock__item:has(+ .premium-dock__item:focus-within) .premium-dock__icon-frame,
-    .premium-dock__item:hover + .premium-dock__item .premium-dock__icon-frame,
-    .premium-dock__item:focus-within + .premium-dock__item .premium-dock__icon-frame {
+    .premium-dock__item:hover + .premium-dock__item .premium-dock__icon-frame {
       transform: translateY(-1px) scale(1.075);
       filter: drop-shadow(0 0 0.55rem #67e8f978) drop-shadow(0 0 0.85rem #22d3ee55);
     }
@@ -363,32 +352,27 @@
 
 @media (min-width: 481px) and (max-width: 900px) and (hover: hover) and (pointer: fine) {
   html.theme-premium-3d app-navbar:not(.site-header-shell--preview-mobile) {
-    .premium-dock__item:has(~ .premium-dock__item:hover),
-    .premium-dock__item:has(~ .premium-dock__item:focus-within) {
+    .premium-dock__item:has(~ .premium-dock__item:hover) {
       --dock-x: -8px;
     }
 
-    .premium-dock__item:hover ~ .premium-dock__item,
-    .premium-dock__item:focus-within ~ .premium-dock__item {
+    .premium-dock__item:hover ~ .premium-dock__item {
       --dock-x: 8px;
     }
 
-    .premium-dock__item:has(+ .premium-dock__item:hover),
-    .premium-dock__item:has(+ .premium-dock__item:focus-within) {
+    .premium-dock__item:has(+ .premium-dock__item:hover) {
       --dock-x: -9px;
       --dock-y: 4px;
       --dock-scale: 1.1;
     }
 
-    .premium-dock__item:hover + .premium-dock__item,
-    .premium-dock__item:focus-within + .premium-dock__item {
+    .premium-dock__item:hover + .premium-dock__item {
       --dock-x: 9px;
       --dock-y: 4px;
       --dock-scale: 1.1;
     }
 
-    .premium-dock__item:hover,
-    .premium-dock__item:focus-within {
+    .premium-dock__item:hover {
       --dock-y: 7px;
       --dock-scale: 1.25;
     }
